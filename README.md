@@ -1,10 +1,27 @@
-# State Management Benchmark Suite
+# State Management Benchmark Suite 🏆
 
 A comprehensive TypeScript benchmark suite for testing and comparing all major JavaScript/TypeScript state management libraries.
 
 ## 🎯 Purpose
 
 This project provides detailed performance comparisons between state management solutions to help developers make informed decisions based on their specific use cases.
+
+## 📊 **Latest Benchmark Results** (November 2025)
+
+### 🥇 **Winner: Zustand** - 100 points
+- **99,521 ops/sec** (simple reads) - The fastest!
+- **2.25MB avg memory** - Highly efficient
+- **7 benchmark scenarios** - Consistent performance across all tests
+
+**Key Performance Metrics:**
+- 🚀 **Simple Read**: 0.01ms (99,521 ops/sec)
+- ✏️ **Simple Write**: 0.29ms (3,403 ops/sec)
+- 📦 **Batch Write**: 3.02ms (331 ops/sec)
+- 👥 **With Subscribers**: 0.34ms (2,933 ops/sec)
+- 🏗️ **Large State**: 2.23ms (449 ops/sec)
+- ⚡ **Frequent Updates**: 0.57ms (1,757 ops/sec)
+
+*See [BENCHMARK_RESULTS.md](./BENCHMARK_RESULTS.md) for complete results*
 
 ## 📚 Libraries Tested
 
@@ -41,25 +58,30 @@ This project provides detailed performance comparisons between state management 
 
 ```bash
 # Clone and install dependencies
-git clone <repository-url>
-cd state-management-benchmark
+git clone https://github.com/sylphxltd/benchmark-state-management.git
+cd benchmark-state-management
 npm install
 
 # Run all benchmarks
 npm run benchmark
 
-# Run specific library benchmarks
-npm run benchmark:redux
-npm run benchmark:zustand
-npm run benchmark:jotai
-npm run benchmark:mobx
+# Run specific library benchmarks (recommended)
+npm run benchmark:zustand      # ⭐ Fastest - ~2 minutes
+npm run benchmark:jotai        # 🎯 Atomic state - ~3 minutes
+npm run benchmark:valtio       # 🔄 Proxy-based - ~3 minutes
+npm run benchmark:mobx         # 🔮 Reactive - ~4 minutes
+npm run benchmark:recoil       # 🧪 Facebook's - ~5 minutes
+npm run benchmark:redux        # 🏛️ Traditional - ~6 minutes
 
 # Generate comparison report
 npm run benchmark:compare
 
-# Generate detailed report
+# Generate detailed HTML/Markdown reports
 npm run report
 ```
+
+## ⚡ **Pro Tip**
+Start with `npm run benchmark:zustand` to see results in ~2 minutes!
 
 ## 📊 Benchmark Scenarios
 

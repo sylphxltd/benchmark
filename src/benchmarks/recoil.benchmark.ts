@@ -3,8 +3,8 @@
  */
 
 import { atom, selector, RecoilRoot, useRecoilState, useRecoilValue, snapshot_UNSTABLE } from 'recoil';
-import { StateOperations, BenchmarkScenario } from '@/types';
-import { runBenchmark, generateTestData, STANDARD_SCENARIOS } from '@/utils/benchmark-utils';
+import { StateOperations, BenchmarkScenario } from '../types/index.js';
+import { runBenchmark, generateTestData, STANDARD_SCENARIOS } from '../utils/benchmark-utils';
 
 // Define atoms
 const itemsAtom = atom<any[]>({

@@ -2,8 +2,10 @@
  * Utility functions for benchmarking
  */
 
-import { performance, memoryUsage } from 'node:process';
-import { BenchmarkScenario, BenchmarkResult, StateOperations } from '@/types';
+import { performance } from 'node:perf_hooks';
+import { memoryUsage } from 'node:process';
+import * as os from 'node:os';
+import { BenchmarkScenario, BenchmarkResult, StateOperations } from '../types/index.js';
 
 /**
  * Get current memory usage in MB
@@ -172,8 +174,8 @@ export function getSystemInfo() {
     nodeVersion: process.version,
     platform: process.platform,
     arch: process.arch,
-    cpuCount: require('os').cpus().length,
-    totalMemory: require('os').totalmem(),
-    freeMemory: require('os').freemem()
+    cpuCount: os.cpus().length,
+    totalMemory: os.totalmem(),
+    freeMemory: os.freemem()
   };
 }

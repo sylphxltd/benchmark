@@ -3,7 +3,7 @@
  */
 
 import { writeFileSync, mkdirSync, existsSync } from 'fs';
-import { ComparisonReport } from '@/types';
+import { ComparisonReport } from '../types/index.js';
 
 /**
  * Generate HTML report

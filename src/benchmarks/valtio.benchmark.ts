@@ -3,8 +3,8 @@
  */
 
 import { proxy, subscribe, snapshot } from 'valtio';
-import { StateOperations, BenchmarkScenario } from '@/types';
-import { runBenchmark, generateTestData, STANDARD_SCENARIOS } from '@/utils/benchmark-utils';
+import { StateOperations, BenchmarkScenario } from '../types/index.js';
+import { runBenchmark, generateTestData, STANDARD_SCENARIOS } from '../utils/benchmark-utils';
 
 interface ValtioState {
   items: any[];

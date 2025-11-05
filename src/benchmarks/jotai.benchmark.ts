@@ -4,8 +4,8 @@
 
 import { atom, useAtom } from 'jotai';
 import { createStore } from 'jotai';
-import { StateOperations, BenchmarkScenario } from '@/types';
-import { runBenchmark, generateTestData, STANDARD_SCENARIOS } from '@/utils/benchmark-utils';
+import { StateOperations, BenchmarkScenario } from '../types/index.js';
+import { runBenchmark, generateTestData, STANDARD_SCENARIOS } from '../utils/benchmark-utils';
 
 // Define atoms
 const itemsAtom = atom<any[]>([]);

@@ -2,14 +2,14 @@
  * Main benchmark runner - tests all state management libraries
  */
 
-import { runReduxBenchmarks } from '@/benchmarks/redux.benchmark';
-import { runZustandBenchmarks } from '@/benchmarks/zustand.benchmark';
-import { runJotaiBenchmarks } from '@/benchmarks/jotai.benchmark';
-import { runMobXBenchmarks } from '@/benchmarks/mobx.benchmark';
-import { runValtioBenchmarks } from '@/benchmarks/valtio.benchmark';
-import { runRecoilBenchmarks } from '@/benchmarks/recoil.benchmark';
-import { getSystemInfo } from '@/utils/benchmark-utils';
-import { BenchmarkSuite, ComparisonReport } from '@/types';
+import { runReduxBenchmarks } from './benchmarks/redux.benchmark.js';
+import { runZustandBenchmarks } from './benchmarks/zustand.benchmark.js';
+import { runJotaiBenchmarks } from './benchmarks/jotai.benchmark.js';
+import { runMobXBenchmarks } from './benchmarks/mobx.benchmark.js';
+import { runValtioBenchmarks } from './benchmarks/valtio.benchmark.js';
+import { runRecoilBenchmarks } from './benchmarks/recoil.benchmark.js';
+import { getSystemInfo } from './utils/benchmark-utils.js';
+import { BenchmarkSuite, ComparisonReport } from './types/index.js';
 
 /**
  * Available benchmark runners
