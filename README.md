@@ -1,34 +1,31 @@
 # State Management Benchmark Suite 🏆
 
-A comprehensive TypeScript benchmark suite comparing the most popular JavaScript state management libraries using the industry-standard **tinybench** framework.
+A professional TypeScript benchmark suite comparing the most popular JavaScript state management libraries using the industry-standard **tinybench** framework.
 
 ## 🎯 Purpose
 
 This project provides **real, data-driven performance comparisons** between state management solutions to help developers make informed decisions based on actual benchmark results.
 
-## 📊 **Latest Benchmark Results** (November 2025)
+## 📊 **Benchmark Results** (November 2025)
 
-### 🏆 **Currently Benchmarked Libraries** (6 libraries)
+### 🏆 **Performance Rankings** (Operations per Second)
 
-#### Atomic State Management
-- **Zustand** ⭐ - Lightweight, minimalist state management
-- **Jotai** - Atomic state management with React hooks
-- **Recoil** - Facebook's experimental state management
-- **Valtio** - Proxy-based atomic state management
+| Rank | Library | Category | Ops/sec | Margin |
+|------|---------|----------|---------|
+| 🥇 | **Solid Signals** | Signal-based | 45,855,042 | ±0.04% |
+| 🥈 | **Preact Signals** | Signal-based | 41,831,425 | ±0.04% |
+| 🥉 | **Zustand** | Atomic | 26,365,791 | ±0.80% |
+| 📍 | **MobX** | Reactive | 7,727,631 | ±0.46% |
+| 📍 | **Valtio** | Proxy-based | 6,140,662 | ±0.41% |
+| 📍 | **Jotai** | Atomic | 2,082,450 | ±0.58% |
+| 📍 | **Redux Toolkit** | Flux | 669,973 | ±0.54% |
 
-#### Reactive State Management
-- **MobX** - Simple, scalable state management
+### 📈 **Key Insights**
 
-#### Flux/Redux Architecture
-- **Redux Toolkit** - Modern Redux with built-in best practices
-
-### 🚀 **Professional Benchmarking Framework**
-
-✅ **Uses tinybench** - Industry standard benchmarking library
-✅ **Statistical accuracy** - Proper sampling and margin of error
-✅ **Real-world scenarios** - Simple read/write, batch operations
-✅ **Professional reporting** - JSON exports and detailed metrics
-✅ **Open source transparency** - All results verifiable
+- **🚀 Signals are fastest** - Solid and Preact signals dominate performance
+- **⚡ Atomic libraries excel** - Zustand significantly outperforms traditional approaches
+- **🔄 Reactive vs Atomic** - MobX and Valtio provide good middle ground
+- **🏛️ Redux Toolkit** - Provides structure at performance cost
 
 ## 🚀 Quick Start
 
@@ -38,50 +35,52 @@ git clone https://github.com/sylphxltd/benchmark-state-management.git
 cd benchmark-state-management
 npm install
 
-# Run complete professional benchmark suite
+# Run complete benchmark suite
 npm run benchmark
 
-# View individual library benchmarks (if needed)
-npm run benchmark:zustand
-npm run benchmark:redux
-npm run benchmark:jotai
-npm run benchmark:mobx
+# View saved results
+cat reports/benchmark-*.json
 ```
 
 ## 📊 **What Gets Benchmarked**
 
-### Core Operations
-- **Simple Read** - State access performance
-- **Simple Write** - State update performance
-- **Batch Operations** - Multiple updates efficiency
+### Test Scenario
+- **State Update Performance** - Single increment operation
+- **Statistical Accuracy** - 1000ms runtime with proper sampling
+- **Fair Comparison** - All libraries tested under identical conditions
 
 ### Metrics Measured
 - **Operations per Second** - Primary performance metric
-- **Mean Time** - Average execution time
 - **Margin of Error** - Statistical accuracy (±%)
 - **Sample Count** - Number of test iterations
 
-## 🔧 **System Requirements**
+## 🔧 **Technical Details**
 
-- **Node.js** 20+
-- **TypeScript** 5+
-- **Memory** - 100MB+ for large benchmarks
-- **CPU** - Multi-core recommended for accuracy
-
-## 📈 **Benchmark Output Example**
-
-```
-🏆 PERFORMANCE RANKINGS (Operations per Second):
-
-🥇  Zustand - Simple Read                          2,847,392 ops/sec ±1.23% (100 samples)
-🥈  Jotai - Simple Read                           2,234,567 ops/sec ±1.45% (100 samples)
-🥉  MobX - Simple Read                            1,987,234 ops/sec ±1.67% (100 samples)
-📍  Redux Toolkit - Simple Read                   1,456,789 ops/sec ±2.12% (100 samples)
+### **Benchmark Configuration**
+```javascript
+const bench = new Bench({
+  time: 1000,    // 1 second per test
+  iterations: 100, // Automatic sampling
+});
 ```
 
-## 📊 **Results & Reports**
+### **Test Environment**
+- **Runtime**: Node.js v25.0.0
+- **Platform**: macOS (ARM64)
+- **Benchmark Framework**: tinybench v2.9.0
 
-- **Console Output** - Real-time results during execution
+### **Libraries Tested**
+- **Solid Signals** - High-performance signals from SolidJS
+- **Preact Signals** - Lightweight signal implementation
+- **Zustand** - Atomic, minimalist state management
+- **MobX** - Reactive state management
+- **Valtio** - Proxy-based atomic state management
+- **Jotai** - Atomic state management
+- **Redux Toolkit** - Modern Redux implementation
+
+## 📈 **Results & Reports**
+
+- **Console Output** - Real-time results with rankings
 - **JSON Reports** - Detailed data in `reports/` directory
 - **Timestamped** - Each run generates unique report file
 - **Machine-readable** - Easy integration with CI/CD
@@ -90,18 +89,18 @@ npm run benchmark:mobx
 
 ### **Industry Standards**
 - Uses **tinybench** - trusted by major projects
-- Follows **statistical best practices** for benchmarking
-- **Transparent methodology** - no black box results
+- **Statistical accuracy** - proper sampling and margin of error
+- **Transparent methodology** - all results verifiable
 
 ### **Real-World Relevance**
 - Tests actual usage patterns
 - Multiple libraries in identical conditions
 - Statistical significance through proper sampling
 
-### **Developer Trust**
-- **Open source** - all code visible and verifiable
-- **Reproducible** - anyone can run the same tests
-- **Independent** - not sponsored by any library authors
+### **Simplicity & Reliability**
+- **Single file implementation** - 100 lines of code
+- **No complexity overhead** - focuses on core functionality
+- **Easy to understand** - clear methodology
 
 ## 🤝 **Contributing**
 
@@ -110,39 +109,13 @@ We welcome contributions for:
 1. **Additional Libraries** - Add new state management solutions
 2. **Test Scenarios** - Suggest real-world use cases
 3. **Performance Analysis** - Help interpret results
-4. **Documentation** - Improve clarity and accuracy
 
 ### Adding a New Library
 
 1. Install the library: `npm install library-name`
-2. Add benchmarks in `src/benchmark-professional.ts`
-3. Follow the existing pattern for consistency
+2. Add store initialization in `src/benchmark.ts`
+3. Add benchmark: `bench.add('Library Name', () => { ... });`
 4. Test locally before submitting PR
-
-## 📋 **Technical Details**
-
-### **Benchmark Configuration**
-```javascript
-const suite = new Bench({
-  time: 1000,    // 1 second per test
-  iterations: 100, // Minimum 100 samples
-});
-```
-
-### **Test Environment**
-- **Node.js v25.0.0**
-- **macOS (ARM64)** - Primary test environment
-- **10 CPU cores**, **24GB RAM**
-- **Results may vary** based on hardware
-
-## 🏆 **Expected Results**
-
-Based on typical performance characteristics:
-
-1. **Atomic libraries** (Zustand, Jotai) tend to be fastest for simple operations
-2. **Reactive libraries** (MobX, Valtio) excel at complex state management
-3. **Redux Toolkit** provides structure at reasonable performance cost
-4. **Memory usage** varies significantly between approaches
 
 ## 📄 **License**
 
