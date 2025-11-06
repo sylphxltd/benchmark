@@ -1,6 +1,52 @@
 {
-  "lastChecked": "2025-01-01T00:00:00.000Z",
+  "lastChecked": "2025-11-06T19:16:50.773Z",
   "lastBenchmarkRun": "2025-01-01T00:00:00.000Z",
-  "testFilesHash": "",
-  "libraries": {}
+  "testFilesHash": "79a02b31d4954ce33c527343ecfd2fff0fc743866cec332e395890b8b449a7f1",
+  "libraries": {
+    "immer": {
+      "current": "10.1.1",
+      "latest": "10.2.0",
+      "lastUpdated": "2025-11-06T19:16:48.009Z",
+      "size": {
+        "gzip": 4809,
+        "minified": 14159,
+        "lastChecked": "2025-11-06T19:16:50.022Z"
+      }
+    },
+    "mutative": {
+      "current": "1.1.1",
+      "latest": "1.3.0",
+      "lastUpdated": "2025-11-06T19:16:48.992Z"
+    },
+    "immutable": {
+      "current": "4.3.7",
+      "latest": "5.1.4",
+      "lastUpdated": "2025-11-06T19:16:49.257Z",
+      "size": {
+        "gzip": 18166,
+        "minified": 66601,
+        "lastChecked": "2025-11-06T19:16:50.436Z"
+      }
+    },
+    "immutability-helper": {
+      "current": "3.1.1",
+      "latest": "3.1.1",
+      "lastUpdated": "2025-11-06T19:16:49.520Z",
+      "size": {
+        "gzip": 1693,
+        "minified": 4793,
+        "lastChecked": "2025-11-06T19:16:50.602Z"
+      }
+    },
+    "seamless-immutable": {
+      "current": "7.1.4",
+      "latest": "7.1.4",
+      "lastUpdated": "2025-11-06T19:16:49.777Z",
+      "size": {
+        "gzip": 2779,
+        "minified": 7734,
+        "lastChecked": "2025-11-06T19:16:50.773Z"
+      }
+    }
+  }
 }
