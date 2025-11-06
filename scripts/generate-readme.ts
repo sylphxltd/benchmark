@@ -268,14 +268,16 @@ function generateReadme(benchmarkDir: string) {
     readme += `while ${largest_lib[0]} is ${sizeRatio}x larger at ${(largest_lib[1].size!.gzip / 1024).toFixed(2)}KB (gzip).\n\n`;
   }
 
-  // Top performers summary
+  // Top performers summary (libraries only, exclude Native implementations)
   readme += '## 🏆 Top Performers\n\n';
-  readme += 'Quick overview of category winners:\n\n';
+  readme += 'Quick overview of category winners (libraries only):\n\n';
   readme += '| Category | 🥇 Winner | Ops/sec | Runner-up |\n';
   readme += '|----------|-----------|---------|----------|\n';
 
+  const excludeList = metadata._config?.excludeFromCharts || [];
   for (const [category, results] of groupedResults.entries()) {
-    const sorted = [...results].sort((a, b) => b.hz - a.hz);
+    const libraryResults = results.filter(r => !excludeList.includes(r.name));
+    const sorted = [...libraryResults].sort((a, b) => b.hz - a.hz);
     if (sorted.length >= 2) {
       const winner = sorted[0];
       const runnerUp = sorted[1];

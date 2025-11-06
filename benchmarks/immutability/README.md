@@ -37,18 +37,18 @@ Smaller bundle sizes mean faster initial load times and better user experience.
 
 ## 🏆 Top Performers
 
-Quick overview of category winners:
+Quick overview of category winners (libraries only):
 
 | Category | 🥇 Winner | Ops/sec | Runner-up |
 |----------|-----------|---------|----------|
-| **Simple Object Update** | Native Spread | 45.03M | [Immutable.js](https://github.com/immutable-js/immutable-js) (4.79M) |
-| **Nested Object Update** | Native Spread | 36.31M | [Immutability Helper](https://github.com/kolodny/immutability-helper) (1.54M) |
-| **Array Push** | Native Spread | 37.35M | [Immutable.js](https://github.com/immutable-js/immutable-js) (7.90M) |
-| **Array Remove** | Native Filter | 40.65M | [Immutable.js](https://github.com/immutable-js/immutable-js) (2.80M) |
-| **Array Update** | Native Map | 36.32M | [Craft](https://github.com/sylphxltd/craft) (1.54M) |
-| **Deep Nested Update (5 levels)** | Native Spread | 21.58M | [Immutability Helper](https://github.com/kolodny/immutability-helper) (871.23K) |
-| **Large Array Update (1000 items)** | [Mutative](https://github.com/unadlib/mutative) | 1.11M | Native Map (554.63K) |
-| **Multiple Updates (3 changes)** | Native Spread | 31.88M | [Immutability Helper](https://github.com/kolodny/immutability-helper) (823.05K) |
+| **Simple Object Update** | [Immutable.js](https://github.com/immutable-js/immutable-js) | 4.79M | [Craft](https://github.com/sylphxltd/craft) (4.35M) |
+| **Nested Object Update** | [Immutability Helper](https://github.com/kolodny/immutability-helper) | 1.54M | [Craft](https://github.com/sylphxltd/craft) (1.29M) |
+| **Array Push** | [Immutable.js](https://github.com/immutable-js/immutable-js) | 7.90M | [Immutability Helper](https://github.com/kolodny/immutability-helper) (4.78M) |
+| **Array Remove** | [Immutable.js](https://github.com/immutable-js/immutable-js) | 2.80M | [Immutability Helper](https://github.com/kolodny/immutability-helper) (1.74M) |
+| **Array Update** | [Craft](https://github.com/sylphxltd/craft) | 1.54M | [Mutative](https://github.com/unadlib/mutative) (1.37M) |
+| **Deep Nested Update (5 levels)** | [Immutability Helper](https://github.com/kolodny/immutability-helper) | 871.23K | [Craft](https://github.com/sylphxltd/craft) (684.92K) |
+| **Large Array Update (1000 items)** | [Mutative](https://github.com/unadlib/mutative) | 1.11M | [Immer](https://github.com/immerjs/immer) (80.40K) |
+| **Multiple Updates (3 changes)** | [Immutability Helper](https://github.com/kolodny/immutability-helper) | 823.05K | [Craft](https://github.com/sylphxltd/craft) (673.52K) |
 
 ## 📜 Historical Results
 
@@ -314,4 +314,4 @@ This benchmark is automatically updated daily by GitHub Actions. Benchmarks run 
 
 ---
 
-*Last generated: 2025-11-06T19:55:17.056Z*
+*Last generated: 2025-11-06T20:00:23.806Z*
