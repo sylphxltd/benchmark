@@ -1,14 +1,11 @@
 {
   "name": "state-management-benchmark",
   "version": "1.0.0",
-  "description": "Professional state management benchmark suite using tinybench",
+  "description": "Professional state management benchmark suite using Vitest Bench",
   "type": "module",
   "scripts": {
     "benchmark": "vitest bench",
-    "benchmark:tinybench": "bun src/benchmark.ts",
-    "benchmark:simple": "bun src/benchmark-simple.ts",
-    "benchmark:comprehensive": "bun src/benchmark.ts",
-    "clean": "rm -rf reports && mkdir -p reports"
+    "clean": "rm -rf results && mkdir -p results"
   },
   "dependencies": {
     "@preact/signals": "^2.3.2",
@@ -18,7 +15,6 @@
     "mobx": "^6.15.0",
     "recoil": "^0.7.7",
     "solid-js": "^1.9.10",
-    "tinybench": "^2.9.0",
     "valtio": "^1.13.2",
     "zustand": "^4.5.7"
   },
