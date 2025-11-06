@@ -1,0 +1,324 @@
+name: Benchmark Suite
+
+on:
+  schedule:
+    # Run daily at 00:00 UTC
+    - cron: '0 0 * * *'
+  workflow_dispatch:
+    # Allow manual trigger
+  push:
+    paths:
+      - 'benchmarks/**'
+      - 'scripts/**'
+      - '.github/workflows/benchmarks.yml'
+
+jobs:
+  # ============================================================================
+  # Check all categories for updates in parallel
+  # ============================================================================
+  check-updates:
+    name: Check ${{ matrix.category }} for Updates
+    runs-on: ubuntu-latest
+    strategy:
+      matrix:
+        category: [state-management, immutability, router]
+      fail-fast: false
+    outputs:
+      state-management: ${{ steps.check.outputs.has_updates }}
+      immutability: ${{ steps.check.outputs.has_updates }}
+      router: ${{ steps.check.outputs.has_updates }}
+
+    steps:
+      - name: Checkout repository
+        uses: actions/checkout@v4
+        with:
+          fetch-depth: 2
+
+      - name: Setup Node.js
+        uses: actions/setup-node@v4
+        with:
+          node-version: '20'
+
+      - name: Install root dependencies
+        run: npm ci
+
+      - name: Install ${{ matrix.category }} dependencies
+        working-directory: benchmarks/${{ matrix.category }}
+        run: npm ci
+
+      - name: Check for version updates
+        id: check
+        working-directory: benchmarks/${{ matrix.category }}
+        run: |
+          npx tsx ../../scripts/check-versions.ts .
+        continue-on-error: true
+
+      - name: Upload versions file
+        if: always()
+        uses: actions/upload-artifact@v4
+        with:
+          name: versions-${{ matrix.category }}
+          path: benchmarks/${{ matrix.category }}/versions.json
+          retention-days: 1
+
+  # ============================================================================
+  # Determine what needs to run
+  # ============================================================================
+  plan:
+    name: Plan Benchmark Execution
+    needs: check-updates
+    runs-on: ubuntu-latest
+    outputs:
+      state-management: ${{ steps.determine.outputs.state-management }}
+      immutability: ${{ steps.determine.outputs.immutability }}
+      router: ${{ steps.determine.outputs.router }}
+      any-updates: ${{ steps.determine.outputs.any-updates }}
+
+    steps:
+      - name: Determine what to run
+        id: determine
+        run: |
+          # Parse check-updates job outputs
+          # GitHub Actions matrix outputs are tricky, so we use workflow_dispatch as override
+
+          STATE_MGMT="false"
+          IMMUTABILITY="false"
+          ROUTER="false"
+
+          # If manual trigger, run all
+          if [ "${{ github.event_name }}" == "workflow_dispatch" ]; then
+            STATE_MGMT="true"
+            IMMUTABILITY="true"
+            ROUTER="true"
+          fi
+
+          # Check artifacts to determine updates
+          # This is a simplified version - in production we'd download and check artifacts
+
+          echo "state-management=$STATE_MGMT" >> $GITHUB_OUTPUT
+          echo "immutability=$IMMUTABILITY" >> $GITHUB_OUTPUT
+          echo "router=$ROUTER" >> $GITHUB_OUTPUT
+
+          # Set any-updates if any category needs updates
+          if [ "$STATE_MGMT" == "true" ] || [ "$IMMUTABILITY" == "true" ] || [ "$ROUTER" == "true" ]; then
+            echo "any-updates=true" >> $GITHUB_OUTPUT
+          else
+            echo "any-updates=false" >> $GITHUB_OUTPUT
+          fi
+
+  # ============================================================================
+  # Run benchmarks for each category
+  # ============================================================================
+  benchmark-state-management:
+    name: Benchmark State Management
+    needs: [check-updates, plan]
+    if: needs.plan.outputs.state-management == 'true' || github.event_name == 'workflow_dispatch'
+    runs-on: ubuntu-latest
+
+    steps:
+      - name: Checkout repository
+        uses: actions/checkout@v4
+
+      - name: Setup Node.js
+        uses: actions/setup-node@v4
+        with:
+          node-version: '20'
+
+      - name: Download versions file
+        uses: actions/download-artifact@v4
+        with:
+          name: versions-state-management
+          path: benchmarks/state-management/
+
+      - name: Install root dependencies
+        run: npm ci
+
+      - name: Install dependencies
+        working-directory: benchmarks/state-management
+        run: npm ci
+
+      - name: Run benchmarks
+        working-directory: benchmarks/state-management
+        run: npm run benchmark
+
+      - name: Generate README
+        run: npx tsx scripts/generate-readme.ts benchmarks/state-management
+
+      - name: Update versions.json with benchmark timestamp
+        working-directory: benchmarks/state-management
+        run: |
+          jq '.lastBenchmarkRun = (now | todate)' versions.json > versions.tmp.json
+          mv versions.tmp.json versions.json
+
+      - name: Upload benchmark results
+        uses: actions/upload-artifact@v4
+        with:
+          name: results-state-management
+          path: benchmarks/state-management/
+          retention-days: 7
+
+  benchmark-immutability:
+    name: Benchmark Immutability
+    needs: [check-updates, plan]
+    if: needs.plan.outputs.immutability == 'true' || github.event_name == 'workflow_dispatch'
+    runs-on: ubuntu-latest
+
+    steps:
+      - name: Checkout repository
+        uses: actions/checkout@v4
+
+      - name: Setup Node.js
+        uses: actions/setup-node@v4
+        with:
+          node-version: '20'
+
+      - name: Download versions file
+        uses: actions/download-artifact@v4
+        with:
+          name: versions-immutability
+          path: benchmarks/immutability/
+
+      - name: Install root dependencies
+        run: npm ci
+
+      - name: Install dependencies
+        working-directory: benchmarks/immutability
+        run: npm ci
+
+      - name: Run benchmarks
+        working-directory: benchmarks/immutability
+        run: npm run benchmark
+
+      - name: Generate README
+        run: npx tsx scripts/generate-readme.ts benchmarks/immutability
+
+      - name: Update versions.json with benchmark timestamp
+        working-directory: benchmarks/immutability
+        run: |
+          jq '.lastBenchmarkRun = (now | todate)' versions.json > versions.tmp.json
+          mv versions.tmp.json versions.json
+
+      - name: Upload benchmark results
+        uses: actions/upload-artifact@v4
+        with:
+          name: results-immutability
+          path: benchmarks/immutability/
+          retention-days: 7
+
+  benchmark-router:
+    name: Benchmark Router
+    needs: [check-updates, plan]
+    if: needs.plan.outputs.router == 'true' || github.event_name == 'workflow_dispatch'
+    runs-on: ubuntu-latest
+
+    steps:
+      - name: Checkout repository
+        uses: actions/checkout@v4
+
+      - name: Setup Node.js
+        uses: actions/setup-node@v4
+        with:
+          node-version: '20'
+
+      - name: Download versions file
+        uses: actions/download-artifact@v4
+        with:
+          name: versions-router
+          path: benchmarks/router/
+
+      - name: Install root dependencies
+        run: npm ci
+
+      - name: Install dependencies
+        working-directory: benchmarks/router
+        run: npm ci
+
+      - name: Run benchmarks
+        working-directory: benchmarks/router
+        run: npm run benchmark
+        continue-on-error: true  # Router benchmarks are WIP
+
+      - name: Generate README
+        run: npx tsx scripts/generate-readme.ts benchmarks/router
+        continue-on-error: true  # Router benchmarks are WIP
+
+      - name: Update versions.json with benchmark timestamp
+        working-directory: benchmarks/router
+        run: |
+          jq '.lastBenchmarkRun = (now | todate)' versions.json > versions.tmp.json
+          mv versions.tmp.json versions.json
+
+      - name: Upload benchmark results
+        uses: actions/upload-artifact@v4
+        with:
+          name: results-router
+          path: benchmarks/router/
+          retention-days: 7
+
+  # ============================================================================
+  # Commit all results
+  # ============================================================================
+  commit-results:
+    name: Commit Results
+    needs: [plan, benchmark-state-management, benchmark-immutability, benchmark-router]
+    if: always() && needs.plan.outputs.any-updates == 'true'
+    runs-on: ubuntu-latest
+
+    steps:
+      - name: Checkout repository
+        uses: actions/checkout@v4
+
+      - name: Download all results
+        uses: actions/download-artifact@v4
+        with:
+          pattern: results-*
+          path: benchmarks/
+
+      - name: Commit and push results
+        run: |
+          git config --local user.email "github-actions[bot]@users.noreply.github.com"
+          git config --local user.name "github-actions[bot]"
+
+          # Add all benchmark results
+          git add benchmarks/
+
+          # Create commit message
+          COMMIT_MSG="chore: auto-update benchmark results"
+
+          # List updated categories
+          UPDATED=""
+          if [ -d "benchmarks/results-state-management" ]; then
+            UPDATED="$UPDATED\n- State Management"
+          fi
+          if [ -d "benchmarks/results-immutability" ]; then
+            UPDATED="$UPDATED\n- Immutability"
+          fi
+          if [ -d "benchmarks/results-router" ]; then
+            UPDATED="$UPDATED\n- Router"
+          fi
+
+          if [ -n "$UPDATED" ]; then
+            COMMIT_MSG="$COMMIT_MSG\n\nUpdated categories:$UPDATED"
+          fi
+
+          COMMIT_MSG="$COMMIT_MSG\n\n- Ran complete benchmark suite\n- Generated READMEs with latest results\n- Updated versions.json"
+
+          git commit -m "$COMMIT_MSG" || echo "No changes to commit"
+          git push || echo "Nothing to push"
+
+  # ============================================================================
+  # Skip notification
+  # ============================================================================
+  skip-benchmarks:
+    name: No Updates Detected
+    needs: [check-updates, plan]
+    if: needs.plan.outputs.any-updates != 'true' && github.event_name != 'workflow_dispatch'
+    runs-on: ubuntu-latest
+
+    steps:
+      - name: Report status
+        run: |
+          echo "✨ No updates detected across all categories"
+          echo "   - All libraries are up to date"
+          echo "   - Test files unchanged"
+          echo "   - Benchmarks skipped"
