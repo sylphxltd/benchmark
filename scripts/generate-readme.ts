@@ -172,8 +172,8 @@ function generateReadme(benchmarkDir: string) {
 
   // Library versions table
   readme += '## 📦 Library Versions\n\n';
-  readme += '| Library | Version | Last Updated |\n';
-  readme += '|---------|---------|-------------|\n';
+  readme += '| Library | Version | Size (gzip) | Last Updated |\n';
+  readme += '|---------|---------|-------------|-------------|\n';
 
   const sortedLibs = Object.entries(versions.libraries)
     .sort(([a], [b]) => a.localeCompare(b));
@@ -184,9 +184,47 @@ function generateReadme(benchmarkDir: string) {
       month: 'short',
       day: 'numeric'
     });
-    readme += `| **${getLibraryLink(name, metadata)}** | \`v${info.current}\` | ${updatedDate} |\n`;
+    const sizeKB = info.size ? `${(info.size.gzip / 1024).toFixed(2)}KB` : 'N/A';
+    readme += `| **${getLibraryLink(name, metadata)}** | \`v${info.current}\` | ${sizeKB} | ${updatedDate} |\n`;
   }
   readme += '\n';
+
+  // Bundle size comparison
+  readme += '## 📦 Bundle Size Comparison\n\n';
+  readme += 'Smaller bundle sizes mean faster initial load times and better user experience.\n\n';
+
+  // Sort libraries by gzip size
+  const libsWithSize = sortedLibs
+    .filter(([_, info]) => info.size)
+    .sort(([_a, a], [_b, b]) => a.size!.gzip - b.size!.gzip);
+
+  readme += '| Rank | Library | Minified + Gzipped | Minified | Relative to Smallest |\n';
+  readme += '|------|---------|-------------------|----------|---------------------|\n';
+
+  if (libsWithSize.length > 0) {
+    const smallest = libsWithSize[0][1].size!.gzip;
+
+    libsWithSize.forEach(([name, info], index) => {
+      const medal = getMedal(index);
+      const gzipKB = (info.size!.gzip / 1024).toFixed(2);
+      const minifiedKB = (info.size!.minified / 1024).toFixed(2);
+      const relative = (info.size!.gzip / smallest).toFixed(2);
+      const relativeText = index === 0 ? 'Baseline' : `${relative}x`;
+
+      readme += `| ${medal} | **${getLibraryLink(name, metadata)}** | `;
+      readme += `${gzipKB}KB | ${minifiedKB}KB | ${relativeText} |\n`;
+    });
+
+    readme += '\n';
+
+    // Add insights
+    const smallest_lib = libsWithSize[0];
+    const largest_lib = libsWithSize[libsWithSize.length - 1];
+    const sizeRatio = (largest_lib[1].size!.gzip / smallest_lib[1].size!.gzip).toFixed(2);
+
+    readme += `**Size Insight:** ${smallest_lib[0]} is the most lightweight at ${(smallest_lib[1].size!.gzip / 1024).toFixed(2)}KB (gzip), `;
+    readme += `while ${largest_lib[0]} is ${sizeRatio}x larger at ${(largest_lib[1].size!.gzip / 1024).toFixed(2)}KB (gzip).\n\n`;
+  }
 
   // Top performers summary
   readme += '## 🏆 Top Performers\n\n';

@@ -1,52 +1,97 @@
 {
-  "lastChecked": "2025-11-06T17:11:41.733Z",
+  "lastChecked": "2025-11-06T17:48:14.221Z",
   "lastBenchmarkRun": "2025-11-06T17:14:06Z",
   "testFilesHash": "aa260b2e3d4b2f3ffbb4f59a27bdfb48ecb132b58e642f9f715b145303b8f3ff",
   "libraries": {
     "@sylphx/zen": {
       "current": "1.0.0",
       "latest": "1.0.0",
-      "lastUpdated": "2024-12-06T15:43:00.000Z"
+      "lastUpdated": "2024-12-06T15:43:00.000Z",
+      "size": {
+        "gzip": 4198,
+        "minified": 14835,
+        "lastChecked": "2025-11-06T17:48:11.645Z"
+      }
     },
     "@preact/signals": {
       "current": "2.3.2",
       "latest": "2.3.2",
-      "lastUpdated": "2024-12-06T00:00:00.000Z"
+      "lastUpdated": "2024-12-06T00:00:00.000Z",
+      "size": {
+        "gzip": 3111,
+        "minified": 9187,
+        "lastChecked": "2025-11-06T17:48:12.099Z"
+      }
     },
     "solid-js": {
       "current": "1.9.10",
       "latest": "1.9.10",
-      "lastUpdated": "2024-12-06T00:00:00.000Z"
+      "lastUpdated": "2024-12-06T00:00:00.000Z",
+      "size": {
+        "gzip": 4058,
+        "minified": 12200,
+        "lastChecked": "2025-11-06T17:48:12.526Z"
+      }
     },
     "zustand": {
       "current": "4.5.7",
       "latest": "5.0.8",
-      "lastUpdated": "2025-11-06T17:11:41.733Z"
+      "lastUpdated": "2025-11-06T17:11:41.733Z",
+      "size": {
+        "gzip": 1201,
+        "minified": 3151,
+        "lastChecked": "2025-11-06T17:48:12.850Z"
+      }
     },
     "jotai": {
       "current": "2.15.1",
       "latest": "2.15.1",
-      "lastUpdated": "2024-12-06T00:00:00.000Z"
+      "lastUpdated": "2024-12-06T00:00:00.000Z",
+      "size": {
+        "gzip": 4397,
+        "minified": 11389,
+        "lastChecked": "2025-11-06T17:48:13.155Z"
+      }
     },
     "mobx": {
       "current": "6.15.0",
       "latest": "6.15.0",
-      "lastUpdated": "2024-12-06T00:00:00.000Z"
+      "lastUpdated": "2024-12-06T00:00:00.000Z",
+      "size": {
+        "gzip": 17984,
+        "minified": 65182,
+        "lastChecked": "2025-11-06T17:48:13.323Z"
+      }
     },
     "valtio": {
       "current": "1.13.2",
       "latest": "2.2.0",
-      "lastUpdated": "2025-11-06T17:11:41.371Z"
+      "lastUpdated": "2025-11-06T17:11:41.371Z",
+      "size": {
+        "gzip": 3145,
+        "minified": 8466,
+        "lastChecked": "2025-11-06T17:48:13.629Z"
+      }
     },
     "@reduxjs/toolkit": {
       "current": "2.10.1",
       "latest": "2.10.1",
-      "lastUpdated": "2024-12-06T00:00:00.000Z"
+      "lastUpdated": "2024-12-06T00:00:00.000Z",
+      "size": {
+        "gzip": 14162,
+        "minified": 41575,
+        "lastChecked": "2025-11-06T17:48:13.936Z"
+      }
     },
     "recoil": {
       "current": "0.7.7",
       "latest": "0.7.7",
-      "lastUpdated": "2025-11-06T16:12:16.226Z"
+      "lastUpdated": "2025-11-06T16:12:16.226Z",
+      "size": {
+        "gzip": 24047,
+        "minified": 81295,
+        "lastChecked": "2025-11-06T17:48:14.221Z"
+      }
     }
   }
 }

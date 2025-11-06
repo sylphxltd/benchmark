@@ -18,8 +18,39 @@ interface VersionTracker {
       current: string;
       latest: string;
       lastUpdated: string;
+      size?: {
+        gzip: number;
+        minified: number;
+        lastChecked: string;
+      };
     };
   };
+}
+
+interface BundlephobiaResponse {
+  size: number;
+  gzip: number;
+}
+
+async function fetchPackageSize(packageName: string, version: string): Promise<{ gzip: number; minified: number } | null> {
+  try {
+    const url = `https://bundlephobia.com/api/size?package=${encodeURIComponent(packageName)}@${version}`;
+    const response = await fetch(url);
+
+    if (!response.ok) {
+      console.warn(`   ⚠️  Could not fetch size for ${packageName}@${version}`);
+      return null;
+    }
+
+    const data: BundlephobiaResponse = await response.json();
+    return {
+      gzip: data.gzip,
+      minified: data.size
+    };
+  } catch (error) {
+    console.warn(`   ⚠️  Error fetching size for ${packageName}:`, error instanceof Error ? error.message : 'Unknown error');
+    return null;
+  }
 }
 
 function getTestFilesHash(benchmarkDir: string): string {
@@ -94,7 +125,8 @@ async function checkVersions(benchmarkDir: string) {
         versions.libraries[name] = {
           current: cleanCurrent,
           latest: latestVersion,
-          lastUpdated: new Date().toISOString()
+          lastUpdated: new Date().toISOString(),
+          size: versions.libraries[name]?.size // Preserve existing size data
         };
       } else {
         console.log(`   ✓ ${name}: ${cleanCurrent} (up to date)`);
@@ -110,6 +142,35 @@ async function checkVersions(benchmarkDir: string) {
       }
     } catch (error) {
       console.error(`   ⚠️  Failed to check ${name}: ${error instanceof Error ? error.message : 'Unknown error'}`);
+    }
+  }
+
+  // Fetch package sizes
+  console.log('\n📏 Checking package sizes:\n');
+
+  for (const [name, info] of Object.entries(versions.libraries)) {
+    try {
+      // Only fetch if we don't have size data or if the version was updated
+      const needsSizeUpdate = !info.size || updatedLibs.includes(name);
+
+      if (needsSizeUpdate) {
+        console.log(`   🔍 Fetching size for ${name}@${info.current}...`);
+        const sizeData = await fetchPackageSize(name, info.current);
+
+        if (sizeData) {
+          versions.libraries[name].size = {
+            gzip: sizeData.gzip,
+            minified: sizeData.minified,
+            lastChecked: new Date().toISOString()
+          };
+          console.log(`   ✓ ${name}: ${(sizeData.gzip / 1024).toFixed(2)}KB (gzip)`);
+        }
+      } else {
+        const sizeKB = (info.size.gzip / 1024).toFixed(2);
+        console.log(`   ✓ ${name}: ${sizeKB}KB (cached)`);
+      }
+    } catch (error) {
+      console.error(`   ⚠️  Failed to fetch size for ${name}: ${error instanceof Error ? error.message : 'Unknown error'}`);
     }
   }
 

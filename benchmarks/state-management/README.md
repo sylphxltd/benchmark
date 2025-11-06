@@ -12,17 +12,35 @@ Professional performance comparison of JavaScript state management libraries.
 
 ## 📦 Library Versions
 
-| Library | Version | Last Updated |
-|---------|---------|-------------|
-| **[@preact/signals](https://github.com/preactjs/signals)** | `v2.3.2` | Dec 6, 2024 |
-| **[@reduxjs/toolkit](https://github.com/reduxjs/redux-toolkit)** | `v2.10.1` | Dec 6, 2024 |
-| **[@sylphx/zen](https://github.com/sylphxltd/zen)** | `v1.0.0` | Dec 6, 2024 |
-| **[jotai](https://github.com/pmndrs/jotai)** | `v2.15.1` | Dec 6, 2024 |
-| **[mobx](https://github.com/mobxjs/mobx)** | `v6.15.0` | Dec 6, 2024 |
-| **[recoil](https://github.com/facebookexperimental/Recoil)** | `v0.7.7` | Nov 6, 2025 |
-| **[solid-js](https://github.com/solidjs/solid)** | `v1.9.10` | Dec 6, 2024 |
-| **[valtio](https://github.com/pmndrs/valtio)** | `v1.13.2` | Nov 6, 2025 |
-| **[zustand](https://github.com/pmndrs/zustand)** | `v4.5.7` | Nov 6, 2025 |
+| Library | Version | Size (gzip) | Last Updated |
+|---------|---------|-------------|-------------|
+| **[@preact/signals](https://github.com/preactjs/signals)** | `v2.3.2` | 3.04KB | Dec 6, 2024 |
+| **[@reduxjs/toolkit](https://github.com/reduxjs/redux-toolkit)** | `v2.10.1` | 13.83KB | Dec 6, 2024 |
+| **[@sylphx/zen](https://github.com/sylphxltd/zen)** | `v1.0.0` | 4.10KB | Dec 6, 2024 |
+| **[jotai](https://github.com/pmndrs/jotai)** | `v2.15.1` | 4.29KB | Dec 6, 2024 |
+| **[mobx](https://github.com/mobxjs/mobx)** | `v6.15.0` | 17.56KB | Dec 6, 2024 |
+| **[recoil](https://github.com/facebookexperimental/Recoil)** | `v0.7.7` | 23.48KB | Nov 6, 2025 |
+| **[solid-js](https://github.com/solidjs/solid)** | `v1.9.10` | 3.96KB | Dec 6, 2024 |
+| **[valtio](https://github.com/pmndrs/valtio)** | `v1.13.2` | 3.07KB | Nov 6, 2025 |
+| **[zustand](https://github.com/pmndrs/zustand)** | `v4.5.7` | 1.17KB | Nov 6, 2025 |
+
+## 📦 Bundle Size Comparison
+
+Smaller bundle sizes mean faster initial load times and better user experience.
+
+| Rank | Library | Minified + Gzipped | Minified | Relative to Smallest |
+|------|---------|-------------------|----------|---------------------|
+| 🥇 | **[zustand](https://github.com/pmndrs/zustand)** | 1.17KB | 3.08KB | Baseline |
+| 🥈 | **[@preact/signals](https://github.com/preactjs/signals)** | 3.04KB | 8.97KB | 2.59x |
+| 🥉 | **[valtio](https://github.com/pmndrs/valtio)** | 3.07KB | 8.27KB | 2.62x |
+| 📍 | **[solid-js](https://github.com/solidjs/solid)** | 3.96KB | 11.91KB | 3.38x |
+| 📍 | **[@sylphx/zen](https://github.com/sylphxltd/zen)** | 4.10KB | 14.49KB | 3.50x |
+| 📍 | **[jotai](https://github.com/pmndrs/jotai)** | 4.29KB | 11.12KB | 3.66x |
+| 📍 | **[@reduxjs/toolkit](https://github.com/reduxjs/redux-toolkit)** | 13.83KB | 40.60KB | 11.79x |
+| 📍 | **[mobx](https://github.com/mobxjs/mobx)** | 17.56KB | 63.65KB | 14.97x |
+| 📍 | **[recoil](https://github.com/facebookexperimental/Recoil)** | 23.48KB | 79.39KB | 20.02x |
+
+**Size Insight:** zustand is the most lightweight at 1.17KB (gzip), while recoil is 20.02x larger at 23.48KB (gzip).
 
 ## 🏆 Top Performers
 
@@ -261,4 +279,4 @@ This benchmark is automatically updated daily by GitHub Actions. Benchmarks run 
 
 ---
 
-*Last generated: 2025-11-06T17:40:16.147Z*
+*Last generated: 2025-11-06T17:49:08.914Z*
