@@ -1,0 +1,38 @@
+{
+  "@reduxjs/toolkit": {
+    "github": "https://github.com/reduxjs/redux-toolkit",
+    "displayName": "Redux Toolkit"
+  },
+  "zustand": {
+    "github": "https://github.com/pmndrs/zustand",
+    "displayName": "Zustand"
+  },
+  "jotai": {
+    "github": "https://github.com/pmndrs/jotai",
+    "displayName": "Jotai"
+  },
+  "mobx": {
+    "github": "https://github.com/mobxjs/mobx",
+    "displayName": "MobX"
+  },
+  "valtio": {
+    "github": "https://github.com/pmndrs/valtio",
+    "displayName": "Valtio"
+  },
+  "@preact/signals": {
+    "github": "https://github.com/preactjs/signals",
+    "displayName": "Preact Signals"
+  },
+  "solid-js": {
+    "github": "https://github.com/solidjs/solid",
+    "displayName": "Solid Signals"
+  },
+  "@sylphx/zen": {
+    "github": "https://github.com/sylphxltd/zen",
+    "displayName": "Zen"
+  },
+  "recoil": {
+    "github": "https://github.com/facebookexperimental/Recoil",
+    "displayName": "Recoil"
+  }
+}

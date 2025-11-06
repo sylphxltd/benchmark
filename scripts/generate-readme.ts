@@ -34,6 +34,13 @@ interface BenchmarkResult {
   samples: number;
 }
 
+interface LibraryMetadata {
+  [packageName: string]: {
+    github: string;
+    displayName: string;
+  };
+}
+
 function formatNumber(num: number): string {
   if (num >= 1_000_000) {
     return (num / 1_000_000).toFixed(2) + 'M';
@@ -48,6 +55,36 @@ function getMedal(index: number): string {
   if (index === 1) return '🥈';
   if (index === 2) return '🥉';
   return '📍';
+}
+
+function loadLibraryMetadata(benchmarkDir: string): LibraryMetadata {
+  const metadataPath = join(benchmarkDir, 'library-metadata.json');
+  if (!existsSync(metadataPath)) {
+    console.warn('⚠️  library-metadata.json not found, links will not be generated');
+    return {};
+  }
+  return JSON.parse(readFileSync(metadataPath, 'utf-8'));
+}
+
+function getLibraryLink(name: string, metadata: LibraryMetadata): string {
+  const meta = metadata[name];
+  return meta ? `[${name}](${meta.github})` : name;
+}
+
+function formatLibraryName(fullName: string, metadata: LibraryMetadata): string {
+  // Handle names with suffixes like "Redux Toolkit - Async Fetch"
+  // Extract the library name and add link, keep the suffix
+
+  // Try to find a matching library by display name
+  for (const [packageName, meta] of Object.entries(metadata)) {
+    if (fullName.startsWith(meta.displayName)) {
+      const suffix = fullName.substring(meta.displayName.length);
+      return `[${meta.displayName}](${meta.github})${suffix}`;
+    }
+  }
+
+  // Fallback: return as-is if no match found
+  return fullName;
 }
 
 function parseResultsFromLatestRun(resultsDir: string): Map<string, BenchmarkResult[]> | null {
@@ -107,6 +144,9 @@ function generateReadme(benchmarkDir: string) {
   const versionsPath = join(benchmarkDir, 'versions.json');
   const resultsDir = join(benchmarkDir, 'results');
 
+  // Load library metadata
+  const metadata = loadLibraryMetadata(benchmarkDir);
+
   // Read versions
   const versions: VersionTracker = JSON.parse(readFileSync(versionsPath, 'utf-8'));
 
@@ -144,7 +184,7 @@ function generateReadme(benchmarkDir: string) {
       month: 'short',
       day: 'numeric'
     });
-    readme += `| **${name}** | \`v${info.current}\` | ${updatedDate} |\n`;
+    readme += `| **${getLibraryLink(name, metadata)}** | \`v${info.current}\` | ${updatedDate} |\n`;
   }
   readme += '\n';
 
@@ -159,7 +199,7 @@ function generateReadme(benchmarkDir: string) {
     if (sorted.length >= 2) {
       const winner = sorted[0];
       const runnerUp = sorted[1];
-      readme += `| **${category}** | ${winner.name} | ${formatNumber(winner.hz)} | ${runnerUp.name} (${formatNumber(runnerUp.hz)}) |\n`;
+      readme += `| **${category}** | ${formatLibraryName(winner.name, metadata)} | ${formatNumber(winner.hz)} | ${formatLibraryName(runnerUp.name, metadata)} (${formatNumber(runnerUp.hz)}) |\n`;
     }
   }
   readme += '\n';
@@ -178,7 +218,7 @@ function generateReadme(benchmarkDir: string) {
 
     sorted.forEach((result, index) => {
       const medal = getMedal(index);
-      readme += `| ${medal} | **${result.name}** | `;
+      readme += `| ${medal} | **${formatLibraryName(result.name, metadata)}** | `;
       readme += `${formatNumber(result.hz)} | `;
       readme += `±${result.rme.toFixed(2)}% | `;
       readme += `${(result.mean * 1000).toFixed(4)}ms | `;
