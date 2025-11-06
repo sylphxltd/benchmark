@@ -1,4 +1,62 @@
-<div align="center">
+#!/usr/bin/env node
+/**
+ * Generate root README with automatic library counts
+ */
+
+import { readFileSync, writeFileSync, existsSync } from 'fs';
+import { join } from 'path';
+
+interface CategoryInfo {
+  name: string;
+  displayName: string;
+  emoji: string;
+  description: string;
+  status: 'Active' | 'WIP';
+  libraryCount: number;
+}
+
+function getLibraryCount(categoryPath: string): number {
+  const metadataPath = join(categoryPath, 'library-metadata.json');
+
+  if (!existsSync(metadataPath)) {
+    return 0;
+  }
+
+  const metadata = JSON.parse(readFileSync(metadataPath, 'utf-8'));
+
+  // Count non-_config entries
+  return Object.keys(metadata).filter(key => !key.startsWith('_')).length;
+}
+
+function generateRootReadme(): string {
+  const categories: CategoryInfo[] = [
+    {
+      name: 'state-management',
+      displayName: 'State Management',
+      emoji: '🗃️',
+      description: 'React state management libraries',
+      status: 'Active',
+      libraryCount: getLibraryCount('benchmarks/state-management')
+    },
+    {
+      name: 'immutability',
+      displayName: 'Immutability',
+      emoji: '🔄',
+      description: 'Immutability helper libraries',
+      status: 'Active',
+      libraryCount: getLibraryCount('benchmarks/immutability')
+    },
+    {
+      name: 'router',
+      displayName: 'Router',
+      emoji: '🧭',
+      description: 'React routing libraries',
+      status: 'WIP',
+      libraryCount: getLibraryCount('benchmarks/router')
+    }
+  ];
+
+  const readme = `<div align="center">
 
 # 🏆 JavaScript Library Benchmarks
 
@@ -17,9 +75,13 @@
 
 | Category | Description | Libraries | Status | View Results |
 |----------|-------------|-----------|--------|--------------|
-| **[🗃️ State Management](./benchmarks/state-management/)** | React state management libraries | 9 | ![Active](https://img.shields.io/badge/Active-success) | **[View →](./benchmarks/state-management/)** |
-| **[🔄 Immutability](./benchmarks/immutability/)** | Immutability helper libraries | 6 | ![Active](https://img.shields.io/badge/Active-success) | **[View →](./benchmarks/immutability/)** |
-| **[🧭 Router](./benchmarks/router/)** | React routing libraries | 4 | ![WIP](https://img.shields.io/badge/WIP-yellow) | **[View →](./benchmarks/router/)** |
+${categories.map(cat => {
+  const statusBadge = cat.status === 'Active'
+    ? '![Active](https://img.shields.io/badge/Active-success)'
+    : '![WIP](https://img.shields.io/badge/WIP-yellow)';
+
+  return `| **[${cat.emoji} ${cat.displayName}](./benchmarks/${cat.name}/)** | ${cat.description} | ${cat.libraryCount} | ${statusBadge} | **[View →](./benchmarks/${cat.name}/)** |`;
+}).join('\n')}
 
 Each category has its own detailed README with benchmark results, methodology, and insights.
 
@@ -40,7 +102,7 @@ Each category has its own detailed README with benchmark results, methodology, a
 Browse to any category folder to see detailed benchmark results and insights.
 
 ### Run Locally
-```bash
+\`\`\`bash
 # Clone the repo
 git clone https://github.com/sylphxltd/benchmark.git
 cd benchmark
@@ -55,21 +117,21 @@ npm run benchmark
 
 # Generate report
 npx tsx ../../scripts/generate-readme.ts .
-```
+\`\`\`
 
 ---
 
 ## 🤝 Contributing
 
 ### Adding a New Library
-1. Update `package.json` in the category folder
-2. Update `library-metadata.json` with GitHub link
-3. Add benchmark tests in `src/benchmark.bench.ts`
+1. Update \`package.json\` in the category folder
+2. Update \`library-metadata.json\` with GitHub link
+3. Add benchmark tests in \`src/benchmark.bench.ts\`
 4. Run benchmarks and generate README
 5. Submit PR with results
 
 ### Adding a New Category
-1. Create directory in `benchmarks/`
+1. Create directory in \`benchmarks/\`
 2. Copy structure from existing category
 3. Add libraries and write tests
 4. Update main README table
@@ -101,3 +163,15 @@ Each category README includes:
 [⬆ Back to Top](#-javascript-library-benchmarks)
 
 </div>
+`;
+
+  return readme;
+}
+
+// Main
+console.log('📝 Generating root README...');
+
+const readme = generateRootReadme();
+writeFileSync('README.md', readme);
+
+console.log('✅ Root README generated successfully!');

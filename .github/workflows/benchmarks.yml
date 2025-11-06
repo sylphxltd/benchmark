@@ -299,13 +299,16 @@ jobs:
           name: results-router
           path: benchmarks/router/
 
+      - name: Generate root README
+        run: npx tsx scripts/generate-root-readme.ts
+
       - name: Commit and push results
         run: |
           git config --local user.email "github-actions[bot]@users.noreply.github.com"
           git config --local user.name "github-actions[bot]"
 
           # Add all benchmark results (including READMEs, results, versions.json)
-          git add benchmarks/
+          git add benchmarks/ README.md
 
           # Create commit message
           COMMIT_MSG="chore: auto-update benchmark results"
@@ -326,7 +329,7 @@ jobs:
             COMMIT_MSG="$COMMIT_MSG\n\nUpdated categories:$UPDATED"
           fi
 
-          COMMIT_MSG="$COMMIT_MSG\n\n- Ran complete benchmark suite\n- Generated READMEs with latest results\n- Updated versions.json"
+          COMMIT_MSG="$COMMIT_MSG\n\n- Ran complete benchmark suite\n- Generated category READMEs with latest results\n- Updated root README with library counts\n- Updated versions.json"
 
           git commit -m "$COMMIT_MSG" || echo "No changes to commit"
           git push || echo "Nothing to push"
