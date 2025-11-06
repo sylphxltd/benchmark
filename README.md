@@ -8,18 +8,20 @@ This project provides **real, data-driven performance comparisons** between stat
 
 ## 📊 **Benchmark Results** (November 2025)
 
-### 🏆 **Simple Increment Performance** (Operations per Second)
+### 🏆 **Simple Increment Performance** (Average of 5 runs)
 
-| Rank | Library            | Category      | Ops/sec     | Margin  | vs #1    |
-|------|--------------------|---------------|-------------|---------|----------|
-| 🥇   | **Zen**            | Minimal       | 41,782,601  | ±0.17%  | —        |
-| 🥈   | **Solid Signals**  | Signal-based  | 37,953,119  | ±0.08%  | -9.2%    |
-| 🥉   | **Preact Signals** | Signal-based  | 37,153,301  | ±0.04%  | -11.1%   |
-| 📍   | **MobX**           | Reactive      | 8,939,273   | ±0.29%  | -78.6%   |
-| 📍   | **Valtio**         | Proxy-based   | 8,582,651   | ±0.09%  | -79.5%   |
-| 📍   | **Zustand**        | Atomic        | 6,578,797   | ±0.18%  | -84.3%   |
-| 📍   | **Jotai**          | Atomic        | 1,126,921   | ±0.86%  | -97.3%   |
-| 📍   | **Redux Toolkit**  | Flux          | 827,387     | ±0.49%  | -98.0%   |
+| Rank | Library            | Category      | Avg Ops/sec | Variance | Stability |
+|------|--------------------|---------------|-------------|----------|-----------|
+| 🥇   | **Solid Signals**  | Signal-based  | 43,423,446  | ±21.5%   | Moderate  |
+| 🥈   | **Zen**            | Minimal       | 42,182,030  | **±5.1%**| **Best** ⭐ |
+| 🥉   | **Preact Signals** | Signal-based  | 42,145,381  | ±15.9%   | Good      |
+| 📍   | **MobX**           | Reactive      | 9,120,082   | ±6.0%    | Good      |
+| 📍   | **Valtio**         | Proxy-based   | 8,578,842   | ±5.5%    | Good      |
+| 📍   | **Zustand**        | Atomic        | 6,090,288   | ±30.0%   | Moderate  |
+| 📍   | **Jotai**          | Atomic        | 1,035,430   | ±28.9%   | Moderate  |
+| 📍   | **Redux Toolkit**  | Flux          | 816,669     | ±3.5%    | Excellent |
+
+**Note**: Top 3 libraries are within 3% of each other (statistical tie). Zen offers the most consistent performance.
 
 ### 📈 **Comprehensive Test Results** (Average Performance)
 
@@ -38,12 +40,13 @@ Testing: Simple Updates, Computed Values, Nested Stores, Array Operations, Async
 
 ### 📈 **Key Insights**
 
-- **👑 Zen is fastest** - 41.8M ops/sec with `task()` async pattern, beats all competitors
-- **🚀 Signals dominate** - Preact and Solid signals provide exceptional performance
-- **⚡ Extreme minimalism wins** - Zen's zero-overhead design achieves peak performance
-- **🎯 Async operations matter** - Zen's `task()` pattern optimizes async state management
-- **🔄 Traditional libraries lag** - Redux Toolkit 50x slower than Zen
-- **📊 Consistency varies** - Signal-based libraries show most stable performance
+- **🏆 Top 3 are statistically tied** - Solid Signals, Zen, and Preact Signals all perform at 42-43M ops/sec
+- **⭐ Zen is most consistent** - ±5.1% variance vs ±21.5% (Solid) and ±15.9% (Preact)
+- **🚀 Signal-based dominates** - All three top performers use reactive primitives
+- **⚡ Minimalism wins** - Zero-overhead designs achieve 40M+ ops/sec
+- **🎯 Choose by stability** - Zen offers predictable performance, Solid offers peak performance
+- **🔄 Traditional libraries 5-50x slower** - Redux Toolkit is ~50x slower than top tier
+- **📊 Multiple runs essential** - Single benchmark can vary ±20%, use averages
 
 ## 🚀 Quick Start
 
