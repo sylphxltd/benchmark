@@ -112,7 +112,7 @@ const bench = new Bench({
 - **Benchmark Framework**: tinybench v2.9.0
 
 ### **Libraries Tested**
-- **Zen** ([@sylphx/zen](https://github.com/sylphxltd)) - Extreme minimalism, extreme speed with `task()` async pattern
+- **Zen** ([@sylphx/zen](https://github.com/sylphxltd/zen)) - Extreme minimalism, extreme speed with `task()` async pattern
 - **Solid Signals** ([solidjs/solid](https://github.com/solidjs/solid)) - High-performance signals from SolidJS
 - **Preact Signals** ([@preact/signals](https://github.com/preactjs/signals)) - Lightweight signal implementation
 - **Zustand** ([pmndrs/zustand](https://github.com/pmndrs/zustand)) - Atomic, minimalist state management
