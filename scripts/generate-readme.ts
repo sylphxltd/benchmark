@@ -71,6 +71,19 @@ function getLibraryLink(name: string, metadata: LibraryMetadata): string {
   return meta ? `[${name}](${meta.github})` : name;
 }
 
+function getHistoricalResults(benchmarkDir: string): string[] {
+  const resultsDir = join(benchmarkDir, 'results');
+  if (!existsSync(resultsDir)) return [];
+
+  const files = readdirSync(resultsDir)
+    .filter(f => f.match(/^\d{4}-\d{2}-\d{2}\.json$/))
+    .sort()
+    .reverse()
+    .slice(0, 5); // Get latest 5
+
+  return files;
+}
+
 function formatLibraryName(fullName: string, metadata: LibraryMetadata): string {
   // Handle names with suffixes like "Redux Toolkit - Async Fetch"
   // Extract the library name and add link, keep the suffix
@@ -241,6 +254,24 @@ function generateReadme(benchmarkDir: string) {
     }
   }
   readme += '\n';
+
+  // Historical results
+  const historicalFiles = getHistoricalResults(benchmarkDir);
+  if (historicalFiles.length > 0) {
+    readme += '## 📜 Historical Results\n\n';
+    readme += 'Track performance changes over time:\n\n';
+    readme += '| Date | Results | Notes |\n';
+    readme += '|------|---------|-------|\n';
+
+    historicalFiles.forEach(file => {
+      const date = file.replace('.json', '');
+      const resultLink = `[View Results](./results/${file})`;
+      readme += `| ${date} | ${resultLink} | Benchmark run |\n`;
+    });
+
+    readme += '\n';
+    readme += '> 💡 **Tip:** Compare historical results to track performance improvements or regressions over time.\n\n';
+  }
 
   // Detailed results for each category
   readme += '## 📊 Detailed Results\n\n';

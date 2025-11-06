@@ -4,7 +4,7 @@
   "description": "Professional React router library benchmark suite using Vitest Bench",
   "type": "module",
   "scripts": {
-    "benchmark": "vitest bench --run --outputJson=results/latest.json",
+    "benchmark": "vitest bench --run --outputJson=results/latest.json && node ../../scripts/save-dated-result.cjs results",
     "clean": "rm -rf results && mkdir -p results"
   },
   "dependencies": {

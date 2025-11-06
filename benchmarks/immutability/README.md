@@ -48,6 +48,16 @@ Quick overview of category winners:
 | **Large Array Update (1000 items)** | [Mutative](https://github.com/unadlib/mutative) | 1.12M | Native Map (564.87K) |
 | **Multiple Updates (3 changes)** | Native Spread | 32.21M | [Immutability Helper](https://github.com/kolodny/immutability-helper) (847.86K) |
 
+## 📜 Historical Results
+
+Track performance changes over time:
+
+| Date | Results | Notes |
+|------|---------|-------|
+| 2025-11-06 | [View Results](./results/2025-11-06.json) | Benchmark run |
+
+> 💡 **Tip:** Compare historical results to track performance improvements or regressions over time.
+
 ## 📊 Detailed Results
 
 ### Simple Object Update
@@ -174,4 +184,4 @@ This benchmark is automatically updated daily by GitHub Actions. Benchmarks run 
 
 ---
 
-*Last generated: 2025-11-06T19:16:58.909Z*
+*Last generated: 2025-11-06T19:25:25.368Z*
