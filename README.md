@@ -1,6 +1,6 @@
 # State Management Benchmark Suite 🏆
 
-A professional TypeScript benchmark suite comparing the most popular JavaScript state management libraries using the industry-standard **tinybench** framework.
+A **comprehensive, professional** TypeScript benchmark suite comparing 8 popular JavaScript state management libraries using **Vitest Bench** - covering **13 real-world test scenarios**.
 
 ## 🎯 Purpose
 
@@ -65,54 +65,101 @@ cat reports/benchmark-*.json
 
 ## 📊 **What Gets Benchmarked**
 
-### Test Scenarios
+This is a **comprehensive, professional benchmark suite** with **13 test categories** covering real-world usage patterns:
 
-#### **Simple Increment** (Core Performance)
-- Basic state update operations
-- Pure synchronous performance measurement
-- Fastest possible state mutations
+### 🔥 Core Performance Tests
 
-#### **Computed Values** (Derived State)
+#### **1. Simple Increment** - Basic State Updates
+- Single value mutations
+- Pure synchronous performance
+- Baseline performance measurement
+
+#### **2. Computed Access** - Derived State
 - Memoized/computed value access
 - Dependency tracking overhead
 - Cache efficiency
 
-#### **Nested Updates** (Complex State)
-- Deeply nested object mutations
+#### **3. Nested Update** - Complex Object Mutations
+- Shallow nested object updates (1-level)
 - Immutability handling
 - Reference tracking
 
-#### **Array Operations** (List Management)
-- Array push operations
+#### **4. Deep Nested Update** - 5-Level Deep Mutations
+- Deep object mutations: `obj.level1.level2.level3.level4.level5.value`
+- Tests immutability overhead at scale
+- Real-world complex state structures
+
+### 📦 Array Operations Tests
+
+#### **5. Array Push** - Adding Items
+- Appending new items to arrays
 - Immutable array updates
 - Memory allocation patterns
 
-#### **Async Operations** (Real-world Usage)
-- Async data fetching simulation
+#### **6. Array Filter** - Filtering Items
+- Removing items by condition
+- Array recreation overhead
+- Filter performance at scale
+
+#### **7. Array Remove** - Removing Specific Items
+- Finding and removing by ID
+- Splice vs filter approaches
+- Deletion performance
+
+#### **8. Array Update** - Modifying Existing Items
+- Finding and updating item properties
+- In-place vs immutable updates
+- Update efficiency
+
+### 🚀 Real-World Scenario Tests
+
+#### **9. Multiple Subscriptions** - 10 Concurrent Subscribers
+- **Critical for React/UI frameworks!**
+- Measures notification overhead
+- Tests subscription management efficiency
+- Reveals real-world performance bottlenecks
+
+#### **10. Batch Updates** - Multiple State Changes
+- Updating 3 different state values at once
+- Tests batching optimizations
+- Transaction/runInAction efficiency
+
+#### **11. Async Operations** - Data Fetching
+- Async/await with state updates
 - Loading state management
-- Error handling overhead
 - **Zen's task() pattern** vs traditional approaches
 
-### Metrics Measured
-- **Operations per Second** - Primary performance metric
-- **Margin of Error** - Statistical accuracy (±%)
-- **Consistency** - Performance stability across tests
-- **Average Performance** - Overall across all scenarios
+#### **12. Loading State Toggle** - Boolean Flags
+- Simple boolean state updates
+- Common UI state pattern
+- Lightweight state changes
+
+#### **13. Large State Update** - 1000-Item Array
+- Finding and updating in large arrays
+- Scalability testing
+- Memory efficiency at scale
+
+### 📊 Metrics Measured
+
+- **Operations per Second (hz)** - Primary performance metric
+- **Percentiles (p75, p99, p995, p999)** - Performance distribution
+- **Min/Max/Mean** - Statistical analysis
+- **RME (Relative Margin of Error)** - Statistical accuracy (±%)
+- **Samples** - Number of iterations for statistical significance
 
 ## 🔧 **Technical Details**
 
-### **Benchmark Configuration**
-```javascript
-const bench = new Bench({
-  time: 1000,    // 1 second per test
-  iterations: 100, // Automatic sampling
-});
-```
+### **Benchmark Framework**
+- **Vitest Bench** - Industry-standard benchmarking with statistical analysis
+- Automatic iteration sampling for statistical significance
+- Percentile measurements (p75, p99, p995, p999)
+- Relative Margin of Error (RME) for accuracy
 
 ### **Test Environment**
-- **Runtime**: Node.js v25.0.0
-- **Platform**: macOS (ARM64)
-- **Benchmark Framework**: tinybench v2.9.0
+- **Runtime**: Node.js v20+
+- **Platform**: macOS / Linux / Windows
+- **Benchmark Tool**: Vitest v4.0.7
+- **Execution**: `npm run benchmark`
 
 ### **Libraries Tested**
 - **Zen** ([@sylphx/zen](https://github.com/sylphxltd/zen)) - Extreme minimalism, extreme speed with `task()` async pattern
@@ -183,20 +230,30 @@ await fetchTask.run();
 ## 🧪 **Why This Approach?**
 
 ### **Industry Standards**
-- Uses **tinybench** - trusted by major projects
-- **Statistical accuracy** - proper sampling and margin of error
-- **Transparent methodology** - all results verifiable
+- Uses **Vitest Bench** - trusted framework from the Vitest ecosystem
+- **Statistical accuracy** - percentile analysis (p75, p99, p995, p999)
+- **Transparent methodology** - all results verifiable and reproducible
+- **Professional metrics** - RME, min/max/mean, sample counts
+
+### **Comprehensive Coverage**
+- **13 test scenarios** - from basic updates to complex real-world patterns
+- **Multiple subscriptions test** - critical for React/UI frameworks
+- **Array operations** - push, filter, remove, update
+- **Deep nesting** - 5-level deep object mutations
+- **Large state** - 1000-item array operations
+- **Batch updates** - measuring transaction performance
 
 ### **Real-World Relevance**
-- Tests actual usage patterns
-- Multiple libraries in identical conditions
-- Statistical significance through proper sampling
+- Tests actual usage patterns from production applications
+- Multiple libraries in identical conditions for fair comparison
+- Statistical significance through automatic sampling
+- Covers both simple and complex state management scenarios
 
 ### **Simplicity & Reliability**
-- **Modular architecture** - Clean separation of concerns
-- **No complexity overhead** - Focuses on core functionality
+- **Modular architecture** - Clean separation of concerns (stores/, benchmarks/)
+- **Type-safe** - Full TypeScript support
 - **Easy to understand** - Clear methodology and structure
-- **Easy to extend** - Add new libraries with minimal changes
+- **Easy to extend** - Add new libraries or tests with minimal changes
 
 ## 🤝 **Contributing**
 
@@ -223,9 +280,10 @@ MIT License - see LICENSE file for details
 
 ## 🙏 **Acknowledgments**
 
-- **tinybench** - Professional benchmarking framework
+- **Vitest** - Professional benchmarking framework with statistical analysis
 - **@sylphx/zen** - Revolutionary minimal state management with task() pattern
-- All **state management library authors** for their excellent work
+- All **state management library authors** for their excellent work:
+  - Redux Toolkit, Zustand, Jotai, MobX, Valtio, Preact Signals, Solid Signals
 - **JavaScript community** for advancing state management patterns
 
 ---

@@ -67,6 +67,20 @@ export function task<T, Args extends any[]>(
 export const zenCountStore = zen(0);
 export const zenNestedStore = zen({ value: 0 });
 export const zenUsersStore = zen<any[]>([]);
+// Deep nesting for 5-level test
+export const zenDeepNestedStore = zen({
+  level1: {
+    level2: {
+      level3: {
+        level4: {
+          level5: { value: 0 }
+        }
+      }
+    }
+  }
+});
+// Large state array
+export const zenItemsStore = zen(Array.from({ length: 1000 }, (_, i) => ({ id: i, value: i })));
 
 // Async task using task() - Zen's proper async pattern
 export const zenFetchTask = task(async (data: any) => {
@@ -117,5 +131,55 @@ export const zenActions = {
   },
   getLoading: () => zenFetchTask.store.get().loading,
   getAsyncData: () => zenFetchTask.store.get().data,
-  fetchData: (data: any) => zenFetchTask.run(data)
+  fetchData: (data: any) => zenFetchTask.run(data),
+  // New benchmark actions
+  batchUpdate: (count: number, nestedValue: number, loading: boolean) => {
+    zenCountStore.set(count);
+    zenNestedStore.set({ value: nestedValue });
+    const currentState = zenFetchTask.store.get();
+    zenFetchTask.store.set({ ...currentState, loading });
+  },
+  filterUsers: (id: number) =>
+    zenUsersStore.set(users => users.filter((u: any) => u.id !== id)),
+  removeUser: (id: number) => {
+    const users = zenUsersStore.get();
+    const index = users.findIndex((u: any) => u.id === id);
+    if (index !== -1) {
+      const newUsers = [...users];
+      newUsers.splice(index, 1);
+      zenUsersStore.set(newUsers);
+    }
+  },
+  updateUser: (id: number, data: any) =>
+    zenUsersStore.set(users =>
+      users.map((u: any) => u.id === id ? { ...u, ...data } : u)
+    ),
+  setDeepNested: (value: number) =>
+    zenDeepNestedStore.set({
+      level1: {
+        level2: {
+          level3: {
+            level4: {
+              level5: { value }
+            }
+          }
+        }
+      }
+    }),
+  updateLargeState: (id: number, value: number) =>
+    zenItemsStore.set(items =>
+      items.map((i: any) => i.id === id ? { ...i, value } : i)
+    ),
+  // Subscription test - measure notifying multiple subscribers
+  subscribeMultiple: (count: number) => {
+    const unsubscribers: (() => void)[] = [];
+    for (let i = 0; i < count; i++) {
+      const unsub = zenCountStore.subscribe(() => {
+        // Simulate component reading state
+        zenCountStore.get();
+      });
+      unsubscribers.push(unsub);
+    }
+    return () => unsubscribers.forEach(u => u());
+  }
 };

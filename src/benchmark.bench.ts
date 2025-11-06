@@ -219,3 +219,257 @@ describe('Loading State Toggle', () => {
     zenActions.setLoading(Math.random() > 0.5);
   });
 });
+
+describe('Multiple Subscriptions (10 subscribers)', () => {
+  bench('Redux Toolkit', () => {
+    const unsub = reduxActions.subscribeMultiple(10);
+    reduxActions.increment();
+    unsub();
+  });
+
+  bench('Zustand', () => {
+    const unsub = zustandActions.subscribeMultiple(10);
+    zustandActions.increment();
+    unsub();
+  });
+
+  bench('Jotai', () => {
+    const unsub = jotaiActions.subscribeMultiple(10);
+    jotaiActions.increment();
+    unsub();
+  });
+
+  bench('MobX', () => {
+    const unsub = mobxActions.subscribeMultiple(10);
+    mobxActions.increment();
+    unsub();
+  });
+
+  bench('Valtio', () => {
+    const unsub = valtioActions.subscribeMultiple(10);
+    valtioActions.increment();
+    unsub();
+  });
+
+  bench('Preact Signals', () => {
+    const unsub = preactActions.subscribeMultiple(10);
+    preactActions.increment();
+    unsub();
+  });
+
+  bench('Solid Signals', () => {
+    const unsub = solidActions.subscribeMultiple(10);
+    solidActions.increment();
+    unsub();
+  });
+
+  bench('Zen', () => {
+    const unsub = zenActions.subscribeMultiple(10);
+    zenActions.increment();
+    unsub();
+  });
+});
+
+describe('Batch Updates (3 state changes)', () => {
+  bench('Redux Toolkit', () => {
+    reduxActions.batchUpdate(Math.random(), Math.random(), true);
+  });
+
+  bench('Zustand', () => {
+    zustandActions.batchUpdate(Math.random(), Math.random(), true);
+  });
+
+  bench('Jotai', () => {
+    jotaiActions.batchUpdate(Math.random(), Math.random(), true);
+  });
+
+  bench('MobX', () => {
+    mobxActions.batchUpdate(Math.random(), Math.random(), true);
+  });
+
+  bench('Valtio', () => {
+    valtioActions.batchUpdate(Math.random(), Math.random(), true);
+  });
+
+  bench('Preact Signals', () => {
+    preactActions.batchUpdate(Math.random(), Math.random(), true);
+  });
+
+  bench('Solid Signals', () => {
+    solidActions.batchUpdate(Math.random(), Math.random(), true);
+  });
+
+  bench('Zen', () => {
+    zenActions.batchUpdate(Math.random(), Math.random(), true);
+  });
+});
+
+describe('Array Filter', () => {
+  bench('Redux Toolkit', () => {
+    reduxActions.filterUsers(Math.floor(Math.random() * 100));
+  });
+
+  bench('Zustand', () => {
+    zustandActions.filterUsers(Math.floor(Math.random() * 100));
+  });
+
+  bench('Jotai', () => {
+    jotaiActions.filterUsers(Math.floor(Math.random() * 100));
+  });
+
+  bench('MobX', () => {
+    mobxActions.filterUsers(Math.floor(Math.random() * 100));
+  });
+
+  bench('Valtio', () => {
+    valtioActions.filterUsers(Math.floor(Math.random() * 100));
+  });
+
+  bench('Preact Signals', () => {
+    preactActions.filterUsers(Math.floor(Math.random() * 100));
+  });
+
+  bench('Solid Signals', () => {
+    solidActions.filterUsers(Math.floor(Math.random() * 100));
+  });
+
+  bench('Zen', () => {
+    zenActions.filterUsers(Math.floor(Math.random() * 100));
+  });
+});
+
+describe('Array Remove', () => {
+  bench('Redux Toolkit', () => {
+    reduxActions.removeUser(Math.floor(Math.random() * 100));
+  });
+
+  bench('Zustand', () => {
+    zustandActions.removeUser(Math.floor(Math.random() * 100));
+  });
+
+  bench('Jotai', () => {
+    jotaiActions.removeUser(Math.floor(Math.random() * 100));
+  });
+
+  bench('MobX', () => {
+    mobxActions.removeUser(Math.floor(Math.random() * 100));
+  });
+
+  bench('Valtio', () => {
+    valtioActions.removeUser(Math.floor(Math.random() * 100));
+  });
+
+  bench('Preact Signals', () => {
+    preactActions.removeUser(Math.floor(Math.random() * 100));
+  });
+
+  bench('Solid Signals', () => {
+    solidActions.removeUser(Math.floor(Math.random() * 100));
+  });
+
+  bench('Zen', () => {
+    zenActions.removeUser(Math.floor(Math.random() * 100));
+  });
+});
+
+describe('Array Update', () => {
+  bench('Redux Toolkit', () => {
+    reduxActions.updateUser(Math.floor(Math.random() * 100), { name: 'Updated' });
+  });
+
+  bench('Zustand', () => {
+    zustandActions.updateUser(Math.floor(Math.random() * 100), { name: 'Updated' });
+  });
+
+  bench('Jotai', () => {
+    jotaiActions.updateUser(Math.floor(Math.random() * 100), { name: 'Updated' });
+  });
+
+  bench('MobX', () => {
+    mobxActions.updateUser(Math.floor(Math.random() * 100), { name: 'Updated' });
+  });
+
+  bench('Valtio', () => {
+    valtioActions.updateUser(Math.floor(Math.random() * 100), { name: 'Updated' });
+  });
+
+  bench('Preact Signals', () => {
+    preactActions.updateUser(Math.floor(Math.random() * 100), { name: 'Updated' });
+  });
+
+  bench('Solid Signals', () => {
+    solidActions.updateUser(Math.floor(Math.random() * 100), { name: 'Updated' });
+  });
+
+  bench('Zen', () => {
+    zenActions.updateUser(Math.floor(Math.random() * 100), { name: 'Updated' });
+  });
+});
+
+describe('Deep Nested Update (5 levels)', () => {
+  bench('Redux Toolkit', () => {
+    reduxActions.setDeepNested(Math.random());
+  });
+
+  bench('Zustand', () => {
+    zustandActions.setDeepNested(Math.random());
+  });
+
+  bench('Jotai', () => {
+    jotaiActions.setDeepNested(Math.random());
+  });
+
+  bench('MobX', () => {
+    mobxActions.setDeepNested(Math.random());
+  });
+
+  bench('Valtio', () => {
+    valtioActions.setDeepNested(Math.random());
+  });
+
+  bench('Preact Signals', () => {
+    preactActions.setDeepNested(Math.random());
+  });
+
+  bench('Solid Signals', () => {
+    solidActions.setDeepNested(Math.random());
+  });
+
+  bench('Zen', () => {
+    zenActions.setDeepNested(Math.random());
+  });
+});
+
+describe('Large State Update (1000 items)', () => {
+  bench('Redux Toolkit', () => {
+    reduxActions.updateLargeState(Math.floor(Math.random() * 1000), Math.random());
+  });
+
+  bench('Zustand', () => {
+    zustandActions.updateLargeState(Math.floor(Math.random() * 1000), Math.random());
+  });
+
+  bench('Jotai', () => {
+    jotaiActions.updateLargeState(Math.floor(Math.random() * 1000), Math.random());
+  });
+
+  bench('MobX', () => {
+    mobxActions.updateLargeState(Math.floor(Math.random() * 1000), Math.random());
+  });
+
+  bench('Valtio', () => {
+    valtioActions.updateLargeState(Math.floor(Math.random() * 1000), Math.random());
+  });
+
+  bench('Preact Signals', () => {
+    preactActions.updateLargeState(Math.floor(Math.random() * 1000), Math.random());
+  });
+
+  bench('Solid Signals', () => {
+    solidActions.updateLargeState(Math.floor(Math.random() * 1000), Math.random());
+  });
+
+  bench('Zen', () => {
+    zenActions.updateLargeState(Math.floor(Math.random() * 1000), Math.random());
+  });
+});
