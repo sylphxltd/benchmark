@@ -7,6 +7,13 @@ export const jotaiNestedAtom = atom({ value: 0 });
 export const jotaiUsersAtom = atom([]);
 export const jotaiLoadingAtom = atom(false);
 export const jotaiAsyncDataAtom = atom(null);
+
+// Native async atom - reactive async support
+export const jotaiAsyncAtom = atom(async (get) => {
+  const count = get(jotaiCountAtom);
+  await new Promise(resolve => setTimeout(resolve, 0));
+  return { count, timestamp: Date.now() };
+});
 // Deep nesting for 5-level test
 export const jotaiDeepNestedAtom = atom({
   level1: {
@@ -88,5 +95,7 @@ export const jotaiActions = {
       unsubscribers.push(unsub);
     }
     return () => unsubscribers.forEach(u => u());
-  }
+  },
+  // Reactive async atom access
+  getAsyncAtom: async () => jotaiStore.get(jotaiAsyncAtom)
 };

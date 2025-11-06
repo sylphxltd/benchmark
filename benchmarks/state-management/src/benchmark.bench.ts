@@ -439,3 +439,13 @@ describe('Large State Update (1000 items)', () => {
     zenActions.updateLargeState(Math.floor(Math.random() * 1000), Math.random());
   });
 });
+
+describe('Reactive Async Operations', () => {
+  bench('Jotai', async () => {
+    await jotaiActions.getAsyncAtom();
+  });
+
+  bench('Zen', async () => {
+    await zenActions.getAsyncKarma();
+  });
+});
