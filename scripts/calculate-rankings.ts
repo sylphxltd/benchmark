@@ -201,7 +201,10 @@ export function calculateRankings(
 
   for (const [category, results] of allBenchmarks.entries()) {
     for (const result of results) {
-      if (!excludeList.includes(result.name) && (result.hz || 0) > 0) {
+      // Check if result has valid performance data (hz for runtime, mean for build tests)
+      const hasValidData = (result.hz && result.hz > 0) || (result.mean && result.mean > 0);
+
+      if (!excludeList.includes(result.name) && hasValidData) {
         const libraryName = extractLibraryName(result.name, metadata);
         if (!libraryTestCounts.has(libraryName)) {
           libraryTestCounts.set(libraryName, new Set());

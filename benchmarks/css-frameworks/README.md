@@ -5,8 +5,8 @@ Professional performance comparison of JavaScript state management libraries.
 ## 📋 Benchmark Information
 
 - **Last Updated:** November 7, 2025
-- **Last Run:** 9:08:40 AM UTC
-- **Environment:** Node.js v20.19.5, linux x64
+- **Last Run:** 9:15:43 AM UTC
+- **Environment:** Node.js v25.0.0, darwin arm64
 - **Test Framework:** Vitest Bench
 - **Iterations:** 3 runs averaged for statistical accuracy
 
@@ -68,10 +68,10 @@ Percentage of benchmark tests supported:
 
 | Rank | Library | Supported | Coverage |
 |------|---------|-----------|----------|
-| 🥇 | **[Silk](https://github.com/sylphxltd/silk)** | 5/7 | 71% |
-| 🥇 | **[Tailwind CSS](https://github.com/tailwindlabs/tailwindcss)** | 5/7 | 71% |
-| 🥇 | **[Panda CSS](https://github.com/chakra-ui/panda)** | 5/7 | 71% |
-| 🥇 | **[UnoCSS](https://github.com/unocss/unocss)** | 5/7 | 71% |
+| 🥇 | **[Silk](https://github.com/sylphxltd/silk)** | 7/7 | 100% |
+| 🥇 | **[Tailwind CSS](https://github.com/tailwindlabs/tailwindcss)** | 7/7 | 100% |
+| 🥇 | **[Panda CSS](https://github.com/chakra-ui/panda)** | 7/7 | 100% |
+| 🥇 | **[UnoCSS](https://github.com/unocss/unocss)** | 7/7 | 100% |
 
 > 🎯 **Note:** Higher coverage means more features, but evaluate based on your specific needs.
 
@@ -243,4 +243,4 @@ This benchmark is automatically updated daily by GitHub Actions. Benchmarks run 
 
 ---
 
-*Last generated: 2025-11-07T09:15:43.940Z*
+*Last generated: 2025-11-07T09:20:37.952Z*
