@@ -4,6 +4,9 @@
 
 ### *Automated performance benchmarks for popular JavaScript libraries*
 
+![GitHub stars](https://img.shields.io/github/stars/sylphxltd/benchmark?style=social)
+![GitHub forks](https://img.shields.io/github/forks/sylphxltd/benchmark?style=social)
+
 [![Automated Daily](https://img.shields.io/badge/Automated-Daily-brightgreen?style=for-the-badge)](https://github.com/sylphxltd/benchmark/actions)
 [![Node.js](https://img.shields.io/badge/Node.js-20+-339933?style=for-the-badge&logo=node.js&logoColor=white)](https://nodejs.org)
 [![Vitest](https://img.shields.io/badge/Vitest-Bench-729B1B?style=for-the-badge&logo=vitest&logoColor=white)](https://vitest.dev)
