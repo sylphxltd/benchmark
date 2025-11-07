@@ -14,7 +14,7 @@ Professional performance comparison of JavaScript state management libraries.
 
 | Library | Version | Size (gzip) | Last Updated | Status |
 |---------|---------|-------------|--------------|--------|
-| **[@sylphx/zen-router](https://github.com/sylphx/zen)** | `v1.0.2` | 1.57KB | Nov 7, 2025 | ✅ Latest |
+| **[@sylphx/zen-router](https://github.com/sylphxltd/zen-router)** | `v1.0.2` | 1.57KB | Nov 7, 2025 | ✅ Latest |
 | **[react-router-dom](https://github.com/remix-run/react-router)** | `v6.30.1` | 26.34KB | Nov 7, 2025 | 📦 v7.9.5 available |
 | **[wouter](https://github.com/molefrog/wouter)** | `v3.7.1` | 2.37KB | Nov 7, 2025 | ✅ Latest |
 
@@ -24,7 +24,7 @@ Smaller bundle sizes mean faster initial load times and better user experience.
 
 | Rank | Library | Minified + Gzipped | Minified | Relative to Smallest |
 |------|---------|-------------------|----------|---------------------|
-| 🥇 | **[@sylphx/zen-router](https://github.com/sylphx/zen)** | 1.57KB | 3.48KB | Baseline |
+| 🥇 | **[@sylphx/zen-router](https://github.com/sylphxltd/zen-router)** | 1.57KB | 3.48KB | Baseline |
 | 🥈 | **[wouter](https://github.com/molefrog/wouter)** | 2.37KB | 5.38KB | 1.51x |
 | 🥉 | **[react-router-dom](https://github.com/remix-run/react-router)** | 26.34KB | 85.74KB | 16.73x |
 
@@ -36,7 +36,7 @@ Based on geometric mean across all supported tests (excludes extreme values):
 
 | Rank | Library | Score | Relative |
 |------|---------|-------|----------|
-| 🥇 | **[Zen Router](https://github.com/sylphx/zen)** | 100.0/100 | Baseline |
+| 🥇 | **[Zen Router](https://github.com/sylphxltd/zen-router)** | 100.0/100 | Baseline |
 | 🥈 | **[Wouter](https://github.com/molefrog/wouter)** | 17.7/100 | 17.7% |
 | 🥉 | **[React Router](https://github.com/remix-run/react-router)** | 2.2/100 | 2.2% |
 
@@ -48,7 +48,7 @@ Smaller is better. Scores use logarithmic scale (like Lighthouse):
 
 | Rank | Library | Size (gzip) | Score | Rating |
 |------|---------|-------------|-------|--------|
-| 🥇 | **[Zen Router](https://github.com/sylphx/zen)** | 1.57KB | 100/100 | Excellent |
+| 🥇 | **[Zen Router](https://github.com/sylphxltd/zen-router)** | 1.57KB | 100/100 | Excellent |
 | 🥈 | **[Wouter](https://github.com/molefrog/wouter)** | 2.37KB | 96/100 | Excellent |
 | 🥉 | **[React Router](https://github.com/remix-run/react-router)** | 26.34KB | 37.32421875/100 | Poor |
 
@@ -62,7 +62,7 @@ Percentage of benchmark tests supported:
 |------|---------|-----------|----------|
 | 🥇 | **[React Router](https://github.com/remix-run/react-router)** | 9/9 | 100% |
 | 🥇 | **[Wouter](https://github.com/molefrog/wouter)** | 9/9 | 100% |
-| 🥇 | **[Zen Router](https://github.com/sylphx/zen)** | 9/9 | 100% |
+| 🥇 | **[Zen Router](https://github.com/sylphxltd/zen-router)** | 9/9 | 100% |
 
 > 🎯 **Note:** Higher coverage means more features, but evaluate based on your specific needs.
 
@@ -86,7 +86,7 @@ Percentage of benchmark tests supported:
 
 | Rank | Library | Ops/sec | Variance | Mean | p99 | Samples |
 |------|---------|---------|----------|------|-----|--------|
-| 🥇 | **[Zen Router](https://github.com/sylphx/zen)** | 22.40M | ±0.08% | 0.0446ms | 0.0840ms | 11.20M |
+| 🥇 | **[Zen Router](https://github.com/sylphxltd/zen-router)** | 22.40M | ±0.08% | 0.0446ms | 0.0840ms | 11.20M |
 | 🥈 | **[Wouter](https://github.com/molefrog/wouter)** | 5.65M | ±1.07% | 0.1770ms | 0.2500ms | 2.82M |
 | 🥉 | **[React Router](https://github.com/remix-run/react-router)** | 109.40K | ±0.20% | 9.1406ms | 11.2080ms | 54.70K |
 
@@ -104,7 +104,7 @@ Percentage of benchmark tests supported:
 
 | Rank | Library | Ops/sec | Variance | Mean | p99 | Samples |
 |------|---------|---------|----------|------|-----|--------|
-| 🥇 | **[Zen Router](https://github.com/sylphx/zen)** | 17.62M | ±0.12% | 0.0567ms | 0.0840ms | 8.81M |
+| 🥇 | **[Zen Router](https://github.com/sylphxltd/zen-router)** | 17.62M | ±0.12% | 0.0567ms | 0.0840ms | 8.81M |
 | 🥈 | **[Wouter](https://github.com/molefrog/wouter)** | 3.33M | ±0.15% | 0.3000ms | 0.3750ms | 1.67M |
 | 🥉 | **[React Router](https://github.com/remix-run/react-router)** | 119.53K | ±0.37% | 8.3663ms | 10.1660ms | 59.76K |
 
@@ -122,7 +122,7 @@ Percentage of benchmark tests supported:
 
 | Rank | Library | Ops/sec | Variance | Mean | p99 | Samples |
 |------|---------|---------|----------|------|-----|--------|
-| 🥇 | **[Zen Router](https://github.com/sylphx/zen)** | 6.08M | ±0.22% | 0.1646ms | 0.2090ms | 3.04M |
+| 🥇 | **[Zen Router](https://github.com/sylphxltd/zen-router)** | 6.08M | ±0.22% | 0.1646ms | 0.2090ms | 3.04M |
 | 🥈 | **[Wouter](https://github.com/molefrog/wouter)** | 1.10M | ±0.32% | 0.9051ms | 1.1670ms | 552.41K |
 | 🥉 | **[React Router](https://github.com/remix-run/react-router)** | 134.65K | ±0.32% | 7.4265ms | 9.1250ms | 67.33K |
 
@@ -140,7 +140,7 @@ Percentage of benchmark tests supported:
 
 | Rank | Library | Ops/sec | Variance | Mean | p99 | Samples |
 |------|---------|---------|----------|------|-----|--------|
-| 🥇 | **[Zen Router](https://github.com/sylphx/zen)** | 3.74M | ±0.24% | 0.2672ms | 0.3340ms | 1.87M |
+| 🥇 | **[Zen Router](https://github.com/sylphxltd/zen-router)** | 3.74M | ±0.24% | 0.2672ms | 0.3340ms | 1.87M |
 | 🥈 | **[Wouter](https://github.com/molefrog/wouter)** | 646.31K | ±0.36% | 1.5473ms | 1.9580ms | 323.15K |
 | 🥉 | **[React Router](https://github.com/remix-run/react-router)** | 188.95K | ±0.40% | 5.2924ms | 6.4170ms | 94.48K |
 
@@ -158,7 +158,7 @@ Percentage of benchmark tests supported:
 
 | Rank | Library | Ops/sec | Variance | Mean | p99 | Samples |
 |------|---------|---------|----------|------|-----|--------|
-| 🥇 | **[Zen Router](https://github.com/sylphx/zen)** | 3.99M | ±0.26% | 0.2507ms | 0.2920ms | 1.99M |
+| 🥇 | **[Zen Router](https://github.com/sylphxltd/zen-router)** | 3.99M | ±0.26% | 0.2507ms | 0.2920ms | 1.99M |
 | 🥈 | **[Wouter](https://github.com/molefrog/wouter)** | 639.58K | ±0.34% | 1.5635ms | 1.9580ms | 319.79K |
 | 🥉 | **[React Router](https://github.com/remix-run/react-router)** | 83.54K | ±0.43% | 11.9707ms | 14.5830ms | 41.77K |
 
@@ -176,7 +176,7 @@ Percentage of benchmark tests supported:
 
 | Rank | Library | Ops/sec | Variance | Mean | p99 | Samples |
 |------|---------|---------|----------|------|-----|--------|
-| 🥇 | **[Zen Router](https://github.com/sylphx/zen)** | 2.67M | ±0.27% | 0.3739ms | 0.4580ms | 1.34M |
+| 🥇 | **[Zen Router](https://github.com/sylphxltd/zen-router)** | 2.67M | ±0.27% | 0.3739ms | 0.4580ms | 1.34M |
 | 🥈 | **[Wouter](https://github.com/molefrog/wouter)** | 487.12K | ±0.36% | 2.0529ms | 2.5410ms | 243.56K |
 | 🥉 | **[React Router](https://github.com/remix-run/react-router)** | 136.87K | ±0.39% | 7.3064ms | 8.5410ms | 68.43K |
 
@@ -194,7 +194,7 @@ Percentage of benchmark tests supported:
 
 | Rank | Library | Ops/sec | Variance | Mean | p99 | Samples |
 |------|---------|---------|----------|------|-----|--------|
-| 🥇 | **[Zen Router](https://github.com/sylphx/zen)** | 3.59M | ±0.22% | 0.2786ms | 0.3340ms | 1.79M |
+| 🥇 | **[Zen Router](https://github.com/sylphxltd/zen-router)** | 3.59M | ±0.22% | 0.2786ms | 0.3340ms | 1.79M |
 | 🥈 | **[Wouter](https://github.com/molefrog/wouter)** | 492.31K | ±0.37% | 2.0313ms | 2.5000ms | 246.15K |
 | 🥉 | **[React Router](https://github.com/remix-run/react-router)** | 112.53K | ±0.49% | 8.8861ms | 10.7090ms | 56.27K |
 
@@ -212,7 +212,7 @@ Percentage of benchmark tests supported:
 
 | Rank | Library | Ops/sec | Variance | Mean | p99 | Samples |
 |------|---------|---------|----------|------|-----|--------|
-| 🥇 | **[Zen Router](https://github.com/sylphx/zen)** | 819.47K | ±0.34% | 1.2203ms | 1.5000ms | 409.74K |
+| 🥇 | **[Zen Router](https://github.com/sylphxltd/zen-router)** | 819.47K | ±0.34% | 1.2203ms | 1.5000ms | 409.74K |
 | 🥈 | **[Wouter](https://github.com/molefrog/wouter)** | 130.45K | ±0.33% | 7.6660ms | 8.7500ms | 65.22K |
 | 🥉 | **[React Router](https://github.com/remix-run/react-router)** | 17.22K | ±0.56% | 58.0655ms | 67.3750ms | 8.61K |
 
@@ -230,7 +230,7 @@ Percentage of benchmark tests supported:
 
 | Rank | Library | Ops/sec | Variance | Mean | p99 | Samples |
 |------|---------|---------|----------|------|-----|--------|
-| 🥇 | **[Zen Router](https://github.com/sylphx/zen)** | 2.75M | ±0.36% | 0.3637ms | 0.4580ms | 1.37M |
+| 🥇 | **[Zen Router](https://github.com/sylphxltd/zen-router)** | 2.75M | ±0.36% | 0.3637ms | 0.4580ms | 1.37M |
 | 🥈 | **[Wouter](https://github.com/molefrog/wouter)** | 491.59K | ±0.36% | 2.0342ms | 2.5000ms | 245.79K |
 | 🥉 | **[React Router](https://github.com/remix-run/react-router)** | 137.64K | ±0.44% | 7.2653ms | 8.7500ms | 68.82K |
 
@@ -256,4 +256,4 @@ This benchmark is automatically updated daily by GitHub Actions. Benchmarks run 
 
 ---
 
-*Last generated: 2025-11-07T04:47:11.007Z*
+*Last generated: 2025-11-07T04:49:22.124Z*
