@@ -1,7 +1,7 @@
 {
-  "lastChecked": "2025-11-07T05:00:00.000Z",
-  "lastBenchmarkRun": "2025-11-07T05:00:00Z",
-  "testFilesHash": "css-frameworks-initial",
+  "lastChecked": "2025-11-07T08:58:47.483Z",
+  "lastBenchmarkRun": "2025-11-07T09:00:07Z",
+  "testFilesHash": "10e72122c5106723a05435d74c8d1394d6d995b85e980ccdb6bbb10748da639d",
   "libraries": {
     "@sylphx/silk": {
       "current": "0.1.0",
@@ -15,13 +15,16 @@
     },
     "tailwindcss": {
       "current": "3.4.15",
-      "latest": "3.4.15",
-      "lastUpdated": "2025-11-07T05:00:00.000Z",
+      "latest": "4.1.17",
+      "lastUpdated": "2025-11-07T08:58:33.230Z",
       "size": {
-        "gzip": 4600,
-        "minified": 12000,
-        "lastChecked": "2025-11-07T05:00:00.000Z"
-      }
+        "gzip": 529088,
+        "minified": 2135340,
+        "lastChecked": "2025-11-07T08:58:36.540Z"
+      },
+      "incompatible": true,
+      "incompatibleVersion": "4.1.17",
+      "incompatibleReason": "Command failed: npx tsx -e \"import('./src/stores/index.ts').then(() => { console.log('✓ OK'); process.exit(0); }).catch((e) => { console.error('✗', e.message); process.exit(1); })\"\n✗ Cannot find module '/home/runner/work/benchmark/benchmark/benchmarks/css-frameworks/src/stores/index.ts' imported from /home/runner/work/benchmark/benchmark/benchmarks/css-frameworks/[eval]\n"
     },
     "@pandacss/dev": {
       "current": "0.49.1",
@@ -35,12 +38,38 @@
     },
     "unocss": {
       "current": "0.65.3",
-      "latest": "0.65.3",
-      "lastUpdated": "2025-11-07T05:00:00.000Z",
+      "latest": "66.5.4",
+      "lastUpdated": "2025-11-07T08:58:34.269Z",
       "size": {
         "gzip": 3500,
         "minified": 9000,
         "lastChecked": "2025-11-07T05:00:00.000Z"
+      },
+      "incompatible": true,
+      "incompatibleVersion": "66.5.4",
+      "incompatibleReason": "Command failed: npx tsx -e \"import('./src/stores/index.ts').then(() => { console.log('✓ OK'); process.exit(0); }).catch((e) => { console.error('✗', e.message); process.exit(1); })\"\n✗ Cannot find module '/home/runner/work/benchmark/benchmark/benchmarks/css-frameworks/src/stores/index.ts' imported from /home/runner/work/benchmark/benchmark/benchmarks/css-frameworks/[eval]\n"
+    },
+    "react": {
+      "current": "18.3.1",
+      "latest": "19.2.0",
+      "lastUpdated": "2025-11-07T08:58:35.029Z",
+      "size": {
+        "gzip": 2576,
+        "minified": 6599,
+        "lastChecked": "2025-11-07T08:58:47.464Z"
+      },
+      "incompatible": true,
+      "incompatibleVersion": "19.2.0",
+      "incompatibleReason": "Command failed: npx tsx -e \"import('./src/stores/index.ts').then(() => { console.log('✓ OK'); process.exit(0); }).catch((e) => { console.error('✗', e.message); process.exit(1); })\"\n✗ Cannot find module '/home/runner/work/benchmark/benchmark/benchmarks/css-frameworks/src/stores/index.ts' imported from /home/runner/work/benchmark/benchmark/benchmarks/css-frameworks/[eval]\n"
+    },
+    "react-dom": {
+      "current": "18.3.1",
+      "latest": "19.2.0",
+      "lastUpdated": "2025-11-07T08:58:35.716Z",
+      "size": {
+        "gzip": 42942,
+        "minified": 133258,
+        "lastChecked": "2025-11-07T08:58:47.483Z"
       }
     }
   }
