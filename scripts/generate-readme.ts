@@ -23,7 +23,7 @@ interface VersionTracker {
 
 interface BenchmarkResult {
   name: string;
-  hz: number;
+  hz?: number;  // Operations per second (for runtime benchmarks)
   rme: number;
   min: number;
   max: number;
@@ -33,6 +33,8 @@ interface BenchmarkResult {
   p995: number;
   p999: number;
   samples: number;
+  metricType?: 'time' | 'size' | 'throughput';
+  metricUnit?: string;
 }
 
 interface BenchmarkConfig {
@@ -120,22 +122,68 @@ function getHistoricalResults(benchmarkDir: string): string[] {
 function generateASCIIChart(results: BenchmarkResult[], maxBarLength: number = 40): string {
   if (results.length === 0) return '';
 
-  const sorted = [...results].sort((a, b) => b.hz - a.hz);
-  const maxHz = sorted[0].hz;
-  const ranks = assignRanksWithTies(sorted, r => r.hz);
+  // Detect metric type from first result
+  const metricType = results[0].metricType || 'throughput';
+  const metricUnit = results[0].metricUnit || 'ops/sec';
+
+  // Determine sorting and value extraction based on metric type
+  const isLowerBetter = metricType === 'time' || metricType === 'size';
+  const getValue = (r: BenchmarkResult) => {
+    if (metricType === 'throughput' || r.hz !== undefined) {
+      return r.hz || 0;
+    }
+    return r.mean;
+  };
+
+  // Sort: for time/size, ascending (lower is better); for throughput, descending (higher is better)
+  const sorted = [...results].sort((a, b) => {
+    const aVal = getValue(a);
+    const bVal = getValue(b);
+    return isLowerBetter ? aVal - bVal : bVal - aVal;
+  });
+
+  // Get max/min value for bar scaling
+  const values = sorted.map(getValue);
+  const maxValue = isLowerBetter ? Math.max(...values) : values[0];
+  const minValue = isLowerBetter ? values[0] : Math.min(...values);
+
+  const ranks = assignRanksWithTies(sorted, getValue);
 
   let chart = '```\n';
   sorted.forEach((result, index) => {
-    const barLength = Math.round((result.hz / maxHz) * maxBarLength);
-    const bar = '█'.repeat(barLength);
-    const opsDisplay = formatNumber(result.hz);
+    const value = getValue(result);
+
+    // Scale bar: for lower-is-better, invert the scale
+    let barLength: number;
+    if (isLowerBetter) {
+      // Smaller values get longer bars
+      barLength = Math.round(((maxValue - value) / (maxValue - minValue || 1)) * maxBarLength);
+    } else {
+      // Larger values get longer bars
+      barLength = Math.round((value / maxValue) * maxBarLength);
+    }
+
+    const bar = '█'.repeat(Math.max(1, barLength));
+
+    // Format display value based on metric type
+    let displayValue: string;
+    if (metricType === 'time') {
+      displayValue = `${formatNumber(value)}${metricUnit}`;
+    } else if (metricType === 'size') {
+      // Convert bytes to KB for readability
+      const kb = value / 1024;
+      displayValue = `${kb.toFixed(2)}KB`;
+    } else {
+      displayValue = formatNumber(value);
+    }
+
     const medal = getMedalForRank(ranks[index]);
 
     // Truncate name if too long
     const name = result.name.length > 20 ? result.name.substring(0, 17) + '...' : result.name;
 
     const prefix = medal ? `${medal} ` : '   ';
-    chart += `${prefix}${name.padEnd(20)} ${bar} ${opsDisplay}\n`;
+    chart += `${prefix}${name.padEnd(20)} ${bar} ${displayValue}\n`;
   });
   chart += '```\n';
 
@@ -201,6 +249,8 @@ function parseResultsFromLatestRun(resultsDir: string): Map<string, BenchmarkRes
           p995: benchmark.p995,
           p999: benchmark.p999,
           samples: benchmark.sampleCount || 0,
+          metricType: benchmark.metricType || group.metricType,
+          metricUnit: benchmark.metricUnit || group.metricUnit,
         });
       }
     }
@@ -391,31 +441,86 @@ function generateReadme(benchmarkDir: string) {
     readme += generateASCIIChart(libraryResults);
     readme += '\n';
 
-    // Sort by performance
-    const sorted = [...results].sort((a, b) => b.hz - a.hz);
-    const detailRanks = assignRanksWithTies(sorted, r => r.hz);
+    // Detect metric type from first result
+    const metricType = results[0]?.metricType || 'throughput';
+    const metricUnit = results[0]?.metricUnit || 'ops/sec';
+    const isLowerBetter = metricType === 'time' || metricType === 'size';
 
-    readme += '| Rank | Library | Ops/sec | Variance | Mean | p99 | Samples |\n';
-    readme += '|------|---------|---------|----------|------|-----|--------|\n';
+    // Get value based on metric type
+    const getValue = (r: BenchmarkResult) => {
+      if (metricType === 'throughput' || r.hz !== undefined) {
+        return r.hz || 0;
+      }
+      return r.mean;
+    };
+
+    // Sort: for time/size, ascending (lower is better); for throughput, descending (higher is better)
+    const sorted = [...results].sort((a, b) => {
+      const aVal = getValue(a);
+      const bVal = getValue(b);
+      return isLowerBetter ? aVal - bVal : bVal - aVal;
+    });
+    const detailRanks = assignRanksWithTies(sorted, getValue);
+
+    // Generate table headers based on metric type
+    if (metricType === 'time') {
+      readme += '| Rank | Library | Time | Variance | p75 | p99 | Samples |\n';
+      readme += '|------|---------|------|----------|-----|-----|--------|\n';
+    } else if (metricType === 'size') {
+      readme += '| Rank | Library | Size | Min | Max | p99 | Samples |\n';
+      readme += '|------|---------|------|-----|-----|-----|--------|\n';
+    } else {
+      readme += '| Rank | Library | Ops/sec | Variance | Mean | p99 | Samples |\n';
+      readme += '|------|---------|---------|----------|------|-----|--------|\n';
+    }
 
     sorted.forEach((result, index) => {
       const medal = getMedalForRank(detailRanks[index]);
       readme += `| ${medal || detailRanks[index].toString()} | **${formatLibraryName(result.name, metadata)}** | `;
-      readme += `${formatNumber(result.hz)} | `;
-      readme += `±${result.rme.toFixed(2)}% | `;
-      readme += `${(result.mean * 1000).toFixed(4)}ms | `;
-      readme += `${(result.p99 * 1000).toFixed(4)}ms | `;
+
+      if (metricType === 'time') {
+        readme += `${formatNumber(result.mean)}${metricUnit} | `;
+        readme += `±${result.rme.toFixed(2)}% | `;
+        readme += `${formatNumber(result.p75)}${metricUnit} | `;
+        readme += `${formatNumber(result.p99)}${metricUnit} | `;
+      } else if (metricType === 'size') {
+        const sizeKB = result.mean / 1024;
+        const minKB = result.min / 1024;
+        const maxKB = result.max / 1024;
+        const p99KB = result.p99 / 1024;
+        readme += `${sizeKB.toFixed(2)}KB | `;
+        readme += `${minKB.toFixed(2)}KB | `;
+        readme += `${maxKB.toFixed(2)}KB | `;
+        readme += `${p99KB.toFixed(2)}KB | `;
+      } else {
+        readme += `${formatNumber(result.hz || 0)} | `;
+        readme += `±${result.rme.toFixed(2)}% | `;
+        readme += `${(result.mean * 1000).toFixed(4)}ms | `;
+        readme += `${(result.p99 * 1000).toFixed(4)}ms | `;
+      }
+
       readme += `${formatNumber(result.samples)} |\n`;
     });
 
     readme += '\n';
 
-    // Performance insights
+    // Performance insights based on metric type
     if (sorted.length >= 3) {
-      const fastest = sorted[0];
-      const slowest = sorted[sorted.length - 1];
-      const speedup = (fastest.hz / slowest.hz).toFixed(2);
-      readme += `**Key Insight:** ${fastest.name} is **${speedup}x faster** than ${slowest.name} in this category.\n\n`;
+      const best = sorted[0];
+      const worst = sorted[sorted.length - 1];
+      const bestVal = getValue(best);
+      const worstVal = getValue(worst);
+
+      if (metricType === 'time') {
+        const speedup = (worstVal / bestVal).toFixed(2);
+        readme += `**Key Insight:** ${best.name} is **${speedup}x faster** than ${worst.name} in this category.\n\n`;
+      } else if (metricType === 'size') {
+        const ratio = (worstVal / bestVal).toFixed(2);
+        readme += `**Key Insight:** ${best.name} generates **${ratio}x smaller** CSS than ${worst.name} in this category.\n\n`;
+      } else {
+        const speedup = (bestVal / worstVal).toFixed(2);
+        readme += `**Key Insight:** ${best.name} is **${speedup}x faster** than ${worst.name} in this category.\n\n`;
+      }
     }
   }
 
