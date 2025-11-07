@@ -96,12 +96,30 @@ async function updateSinglePackage(packageName: string, benchmarkDir: string): P
   const pkg = JSON.parse(readFileSync(packagePath, 'utf-8'));
   const packageInfo = versions.libraries[packageName];
 
-  if (!packageInfo || packageInfo.current === packageInfo.latest) {
-    console.log(`\n✓ ${displayName} is already up to date (${packageInfo?.current})`);
+  if (!packageInfo) {
+    console.log(`\n⚠️  ${displayName} not found in versions.json`);
     return false;
   }
 
-  console.log(`\n📦 Updating ${displayName}: ${packageInfo.current} → ${packageInfo.latest}`);
+  // Get actual installed version from package.json
+  const installedVersion = pkg.dependencies[packageName]?.replace(/^[\^~]/, '') || packageInfo.current;
+
+  // Sync versions.json if out of sync with package.json
+  if (installedVersion !== packageInfo.current) {
+    console.log(`\n🔄 Syncing ${displayName}: versions.json shows ${packageInfo.current}, but package.json has ${installedVersion}`);
+    versions.libraries[packageName].current = installedVersion;
+    versions.libraries[packageName].lastUpdated = new Date().toISOString();
+    writeFileSync(versionsPath, JSON.stringify(versions, null, 2));
+    console.log(`   ✅ Synced to ${installedVersion}`);
+  }
+
+  // Check if update is needed
+  if (installedVersion === packageInfo.latest) {
+    console.log(`\n✓ ${displayName} is already up to date (${installedVersion})`);
+    return false;
+  }
+
+  console.log(`\n📦 Updating ${displayName}: ${installedVersion} → ${packageInfo.latest}`);
 
   // Backup current state
   backupFiles(benchmarkDir);
