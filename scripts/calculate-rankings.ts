@@ -9,7 +9,9 @@ import { join } from 'path';
 
 interface BenchmarkResult {
   name: string;
-  hz: number;
+  hz?: number;
+  mean?: number;
+  metricType?: 'time' | 'size' | 'throughput';
 }
 
 interface LibraryInfo {
@@ -73,6 +75,32 @@ function getDisplayName(packageName: string, metadata: LibraryMetadata): string 
 }
 
 /**
+ * Extract base library name from benchmark result name
+ * E.g., "Silk - Apply styles" -> "Silk"
+ *       "Tailwind CSS" -> "Tailwind CSS"
+ */
+function extractLibraryName(fullName: string, metadata: LibraryMetadata): string {
+  // Try to match against known display names from metadata
+  for (const packageName in metadata) {
+    if (packageName.startsWith('_')) continue; // Skip _config
+    const displayName = metadata[packageName].displayName;
+
+    // Check if fullName starts with this display name
+    if (fullName === displayName || fullName.startsWith(displayName + ' -')) {
+      return displayName;
+    }
+  }
+
+  // Fallback: if no match found, extract before first " - "
+  const dashIndex = fullName.indexOf(' - ');
+  if (dashIndex > 0) {
+    return fullName.substring(0, dashIndex);
+  }
+
+  return fullName;
+}
+
+/**
  * Parse benchmark results and calculate rankings
  */
 export function calculateRankings(
@@ -98,7 +126,9 @@ export function calculateRankings(
       for (const benchmark of group.benchmarks || []) {
         allBenchmarks.get(category)!.push({
           name: benchmark.name,
-          hz: benchmark.hz
+          hz: benchmark.hz,
+          mean: benchmark.mean,
+          metricType: benchmark.metricType || group.metricType || 'throughput'
         });
       }
     }
@@ -109,29 +139,37 @@ export function calculateRankings(
   for (const results of allBenchmarks.values()) {
     for (const result of results) {
       if (!excludeList.includes(result.name)) {
-        allLibraries.add(result.name);
+        const libraryName = extractLibraryName(result.name, metadata);
+        allLibraries.add(libraryName);
       }
     }
   }
 
-  // 1. Calculate Performance Rankings
+  // 1. Calculate Performance Rankings (Runtime performance only)
   const performanceScores = new Map<string, number[]>();
 
   for (const [category, results] of allBenchmarks.entries()) {
-    // Filter out excluded benchmarks
-    const libraryResults = results.filter(r => !excludeList.includes(r.name));
+    // Filter out excluded benchmarks and non-throughput metrics
+    const libraryResults = results.filter(r =>
+      !excludeList.includes(r.name) &&
+      (r.metricType === 'throughput' || r.metricType === undefined)
+    );
     if (libraryResults.length === 0) continue;
 
     // Find max for this category
-    const maxHz = Math.max(...libraryResults.map(r => r.hz));
+    const maxHz = Math.max(...libraryResults.map(r => r.hz || 0));
+    if (maxHz === 0) continue;
 
     // Calculate relative scores
     for (const result of libraryResults) {
-      const score = (result.hz / maxHz) * 100;
-      if (!performanceScores.has(result.name)) {
-        performanceScores.set(result.name, []);
+      const hz = result.hz || 0;
+      const score = (hz / maxHz) * 100;
+      const libraryName = extractLibraryName(result.name, metadata);
+
+      if (!performanceScores.has(libraryName)) {
+        performanceScores.set(libraryName, []);
       }
-      performanceScores.get(result.name)!.push(score);
+      performanceScores.get(libraryName)!.push(score);
     }
   }
 
@@ -159,22 +197,26 @@ export function calculateRankings(
 
   // 3. Calculate Coverage Rankings
   const totalTests = allBenchmarks.size;
-  const libraryTestCounts = new Map<string, number>();
+  const libraryTestCounts = new Map<string, Set<string>>();
 
-  for (const results of allBenchmarks.values()) {
+  for (const [category, results] of allBenchmarks.entries()) {
     for (const result of results) {
-      if (!excludeList.includes(result.name) && result.hz > 0) {
-        libraryTestCounts.set(result.name, (libraryTestCounts.get(result.name) || 0) + 1);
+      if (!excludeList.includes(result.name) && (result.hz || 0) > 0) {
+        const libraryName = extractLibraryName(result.name, metadata);
+        if (!libraryTestCounts.has(libraryName)) {
+          libraryTestCounts.set(libraryName, new Set());
+        }
+        libraryTestCounts.get(libraryName)!.add(category);
       }
     }
   }
 
   const coverageRankings = Array.from(libraryTestCounts.entries())
-    .map(([name, count]) => ({
+    .map(([name, categories]) => ({
       name,
-      supported: count,
+      supported: categories.size,
       total: totalTests,
-      percentage: Math.round((count / totalTests) * 100)
+      percentage: Math.round((categories.size / totalTests) * 100)
     }))
     .sort((a, b) => b.percentage - a.percentage);
 

@@ -19,7 +19,7 @@ describe('Style Application Performance', () => {
       return styles.join(' ');
     });
 
-    bench('Tailwind - Apply styles', () => {
+    bench('Tailwind CSS - Apply styles', () => {
       // Tailwind utility classes
       const styles: string[] = [];
       for (let i = 0; i < 100; i++) {
@@ -58,7 +58,7 @@ describe('Style Application Performance', () => {
       return result;
     });
 
-    bench('Tailwind - Conditional styles', () => {
+    bench('Tailwind CSS - Conditional styles', () => {
       let result = '';
       for (let i = 0; i < 1000; i++) {
         result = condition ? 'tw-active' : 'tw-inactive';
@@ -99,7 +99,7 @@ describe('Style Application Performance', () => {
       return `${base} ${variant} ${size} ${state} ${spacing} ${layout} ${align} ${border} ${shadow} ${transition}`;
     });
 
-    bench('Tailwind - Concat 10 classes', () => {
+    bench('Tailwind CSS - Concat 10 classes', () => {
       const base = 'tw-base';
       const variant = 'bg-blue-500';
       const size = 'text-md';
@@ -157,7 +157,7 @@ describe('Dynamic Style Updates', () => {
       }
     });
 
-    bench('Tailwind - Toggle theme 1000x', () => {
+    bench('Tailwind CSS - Toggle theme 1000x', () => {
       for (let i = 0; i < 1000; i++) {
         theme = theme === 'light' ? 'dark' : 'light';
         const className = theme === 'dark' ? 'dark:bg-gray-900' : 'bg-white';
@@ -189,7 +189,7 @@ describe('Dynamic Style Updates', () => {
       }
     });
 
-    bench('Tailwind - Match breakpoint 1000x', () => {
+    bench('Tailwind CSS - Match breakpoint 1000x', () => {
       for (let i = 0; i < 1000; i++) {
         const bp = breakpoints[i % breakpoints.length];
         const className = `${bp}:hidden`;
