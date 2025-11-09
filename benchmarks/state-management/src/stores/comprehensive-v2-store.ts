@@ -1248,6 +1248,11 @@ export const preactActionsV2 = {
     }));
     return largeArray;
   },
+
+  // Add missing getDoubled method
+  getDoubled: () => {
+    return preactCountSignal.value * 2;
+  },
 };
 
 // ============================================================================
@@ -1424,6 +1429,11 @@ export const solidActionsV2 = {
       data: new Array(100).fill(Math.random())
     }));
     return largeArray;
+  },
+
+  // Add missing getDoubled method
+  getDoubled: () => {
+    return solidCountSignal() * 2;
   },
 };
 
@@ -1604,5 +1614,10 @@ export const zenActionsV2 = {
       data: new Array(100).fill(Math.random())
     }));
     return largeArray;
+  },
+
+  // Add missing getDoubled method
+  getDoubled: () => {
+    return get(zenCountStore) * 2;
   },
 };
