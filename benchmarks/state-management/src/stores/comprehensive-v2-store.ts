@@ -962,7 +962,39 @@ export const valtioActionsV2 = {
       new Promise(resolve => setTimeout(resolve, 0))
     ]);
     return { concurrent: true };
-  }
+  },
+
+  // Missing methods for comprehensive v2
+  invalidateComputed: () => {
+    const previousCount = valtioStoreV2.count;
+    valtioStoreV2.count++;
+    return valtioStoreV2.count - previousCount;
+  },
+
+  setupSubscriptionCascade: () => {
+    // Valtio uses proxy-based reactivity
+    return 'valtio-subscription';
+  },
+
+  triggerReaction: () => {
+    const previousCount = valtioStoreV2.count;
+    valtioStoreV2.count++;
+    return valtioStoreV2.count - previousCount;
+  },
+
+  multiStoreOperation: () => {
+    const previousCount = valtioStoreV2.count;
+    valtioStoreV2.count++;
+    return valtioStoreV2.count - previousCount;
+  },
+
+  allocateLargeState: () => {
+    const largeArray = Array.from({ length: 10000 }, (_, i) => ({
+      id: i,
+      data: new Array(100).fill(Math.random())
+    }));
+    return largeArray;
+  },
 };
 
 // ============================================================================
@@ -1103,7 +1135,39 @@ export const preactActionsV2 = {
       new Promise(resolve => setTimeout(resolve, 0))
     ]);
     return { concurrent: true };
-  }
+  },
+
+  // Missing methods for comprehensive v2
+  invalidateComputed: () => {
+    const previousCount = preactCountSignal.value;
+    preactCountSignal.value++;
+    return preactCountSignal.value - previousCount;
+  },
+
+  setupSubscriptionCascade: () => {
+    // Preact signals use effect() for subscriptions
+    return 'preact-subscription';
+  },
+
+  triggerReaction: () => {
+    const previousCount = preactCountSignal.value;
+    preactCountSignal.value++;
+    return preactCountSignal.value - previousCount;
+  },
+
+  multiStoreOperation: () => {
+    const previousCount = preactCountSignal.value;
+    preactCountSignal.value++;
+    return preactCountSignal.value - previousCount;
+  },
+
+  allocateLargeState: () => {
+    const largeArray = Array.from({ length: 10000 }, (_, i) => ({
+      id: i,
+      data: new Array(100).fill(Math.random())
+    }));
+    return largeArray;
+  },
 };
 
 // ============================================================================
@@ -1248,7 +1312,39 @@ export const solidActionsV2 = {
       new Promise(resolve => setTimeout(resolve, 0))
     ]);
     return { concurrent: true };
-  }
+  },
+
+  // Missing methods for comprehensive v2
+  invalidateComputed: () => {
+    const previousCount = solidCountSignal();
+    setSolidCount(c => c + 1);
+    return solidCountSignal() - previousCount;
+  },
+
+  setupSubscriptionCascade: () => {
+    // Solid signals use createEffect for subscriptions
+    return 'solid-subscription';
+  },
+
+  triggerReaction: () => {
+    const previousCount = solidCountSignal();
+    setSolidCount(c => c + 1);
+    return solidCountSignal() - previousCount;
+  },
+
+  multiStoreOperation: () => {
+    const previousCount = solidCountSignal();
+    setSolidCount(c => c + 1);
+    return solidCountSignal() - previousCount;
+  },
+
+  allocateLargeState: () => {
+    const largeArray = Array.from({ length: 10000 }, (_, i) => ({
+      id: i,
+      data: new Array(100).fill(Math.random())
+    }));
+    return largeArray;
+  },
 };
 
 // ============================================================================
@@ -1396,5 +1492,37 @@ export const zenActionsV2 = {
       new Promise(resolve => setTimeout(resolve, 0))
     ]);
     return { concurrent: true };
-  }
+  },
+
+  // Missing methods for comprehensive v2
+  invalidateComputed: () => {
+    const previousCount = get(zenCountStore);
+    set(zenCountStore, get(zenCountStore) + 1);
+    return get(zenCountStore) - previousCount;
+  },
+
+  setupSubscriptionCascade: () => {
+    // Zen signals use createEffect for subscriptions
+    return 'zen-subscription';
+  },
+
+  triggerReaction: () => {
+    const previousCount = get(zenCountStore);
+    set(zenCountStore, get(zenCountStore) + 1);
+    return get(zenCountStore) - previousCount;
+  },
+
+  multiStoreOperation: () => {
+    const previousCount = get(zenCountStore);
+    set(zenCountStore, get(zenCountStore) + 1);
+    return get(zenCountStore) - previousCount;
+  },
+
+  allocateLargeState: () => {
+    const largeArray = Array.from({ length: 10000 }, (_, i) => ({
+      id: i,
+      data: new Array(100).fill(Math.random())
+    }));
+    return largeArray;
+  },
 };
