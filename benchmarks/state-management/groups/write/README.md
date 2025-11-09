@@ -1,6 +1,6 @@
-# Read Operations
+# Write Operations
 
-Performance benchmarks for state read operations across different scales and access patterns.
+Performance benchmarks for state write and mutation operations.
 
 ## Performance Results
 
@@ -9,34 +9,34 @@ No benchmark results available yet.
 To generate results:
 
 ``ash
-# Run all read benchmarks
-npm run benchmark:read
+# Run all write benchmarks
+npm run benchmark:write
 
 # Or run specific tests
-node scripts/run-generated-tests.cjs read-single.bench.ts
+node scripts/run-generated-tests.cjs write-single.bench.ts
 ``
 
 ## Available Tests
 
 ### Test Files
 
-- `read-x1` - Individual benchmark test
-- `read-x1000` - Individual benchmark test
-- `read-x10000` - Individual benchmark test
+- `write-x1` - Individual benchmark test
+- `write-x1000` - Individual benchmark test
+- `write-x10000` - Individual benchmark test
 
 ## How to Run Tests
 
 ### Quick Start
 
 ``ash
-# Run all read benchmarks
-npm run benchmark:read
+# Run all write benchmarks
+npm run benchmark:write
 
 # Run specific test
-node scripts/run-generated-tests.cjs read-single.bench.ts
+node scripts/run-generated-tests.cjs write-single.bench.ts
 
-# Run all read tests
-node scripts/run-generated-tests.cjs read-*.bench.ts
+# Run all write tests
+node scripts/run-generated-tests.cjs write-*.bench.ts
 
 # Use developer dashboard
 node scripts/dev-dashboard.cjs
@@ -45,20 +45,20 @@ node scripts/dev-dashboard.cjs
 ### Available Commands
 
 ``ash
-npm run benchmark:read        # Run all read tests
+npm run benchmark:write        # Run all write tests
 node scripts/run-generated-tests.cjs list # List all available tests
 npx tsx scripts/test-generator.ts state-management # Regenerate tests
 ``
 
 ## Technical Details
 
-**Description**: Read operations test the performance of state access patterns.
+**Description**: Write operations test state mutation and update performance.
 
-**Test Scales**: `Single`, `Burst`, `Moderate`, `High Frequency`, `Extreme`
+**Test Scales**: `Single`, `Burst`, `Batch`, `Heavy`
 
-**Focus Areas**: - State access speed
-- Memory usage patterns
-- Computation overhead
+**Focus Areas**: - Mutation speed
+- Batch operations
+- State consistency
 
 **Library Interface**: All libraries implement a standardized interface with these methods:
  `get count`, `increment`, `setNested`, `addUser`, etc.
