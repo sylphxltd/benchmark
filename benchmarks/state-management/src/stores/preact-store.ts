@@ -2,6 +2,12 @@ import { signal, computed as preactComputed, effect } from '@preact/signals';
 
 export const preactCountSignal = signal(0);
 export const preactDoubledSignal = preactComputed(() => preactCountSignal.value * 2);
+
+// Chained computed (3 levels)
+export const preactLevel1Computed = preactComputed(() => preactCountSignal.value * 2);
+export const preactLevel2Computed = preactComputed(() => preactLevel1Computed.value + 10);
+export const preactLevel3Computed = preactComputed(() => preactLevel2Computed.value * 3);
+
 export const preactNestedSignal = signal({ value: 0 });
 export const preactUsersSignal = signal([]);
 export const preactLoadingSignal = signal(false);
@@ -89,5 +95,60 @@ export const preactActions = {
       disposers.push(dispose);
     }
     return () => disposers.forEach(d => d());
+  },
+
+  // New comprehensive benchmark tests
+
+  // Creation test - create a new signal
+  createStore: () => signal(0),
+
+  // Read test - read count 1000 times
+  readBatch: () => {
+    for (let i = 0; i < 1000; i++) {
+      preactCountSignal.value;
+    }
+  },
+
+  // Write with no listeners
+  writeNoListeners: () => preactCountSignal.value++,
+
+  // Write with N subscribers
+  writeWithSubscribers: (subscriberCount: number) => {
+    const disposers: (() => void)[] = [];
+    for (let i = 0; i < subscriberCount; i++) {
+      const dispose = effect(() => {
+        preactCountSignal.value;
+      });
+      disposers.push(dispose);
+    }
+    preactCountSignal.value++;
+    disposers.forEach(d => d());
+  },
+
+  // Computed cached read
+  readComputedCached: () => preactDoubledSignal.value,
+
+  // Computed update (trigger recomputation)
+  updateComputed: () => {
+    preactCountSignal.value++;
+    preactDoubledSignal.value;
+  },
+
+  // Chained computed read
+  readChainedComputed: () => preactLevel3Computed.value,
+
+  // Batching 100 updates
+  batch100Updates: () => {
+    for (let i = 0; i < 100; i++) {
+      preactCountSignal.value = i;
+    }
+  },
+
+  // Subscribe/Unsubscribe test
+  subscribeUnsubscribe: () => {
+    const dispose = effect(() => {
+      preactCountSignal.value;
+    });
+    dispose();
   }
 };

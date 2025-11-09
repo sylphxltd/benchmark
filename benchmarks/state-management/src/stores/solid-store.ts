@@ -2,6 +2,11 @@ import { createSignal, createMemo, createEffect } from 'solid-js';
 
 export const [solidCountSignal, setSolidCount] = createSignal(0);
 export const solidDoubledSignal = createMemo(() => solidCountSignal() * 2);
+
+// Chained computed (3 levels)
+export const solidLevel1Computed = createMemo(() => solidCountSignal() * 2);
+export const solidLevel2Computed = createMemo(() => solidLevel1Computed() + 10);
+export const solidLevel3Computed = createMemo(() => solidLevel2Computed() * 3);
 export const [solidNestedSignal, setSolidNested] = createSignal({ value: 0 });
 export const [solidUsersSignal, setSolidUsers] = createSignal([]);
 export const [solidLoadingSignal, setSolidLoading] = createSignal(false);
@@ -93,5 +98,60 @@ export const solidActions = {
       disposers.push(() => {});
     }
     return () => disposers.forEach(d => d());
+  },
+
+  // New comprehensive benchmark tests
+
+  // Creation test - create a new signal
+  createStore: () => createSignal(0),
+
+  // Read test - read count 1000 times
+  readBatch: () => {
+    for (let i = 0; i < 1000; i++) {
+      solidCountSignal();
+    }
+  },
+
+  // Write with no listeners
+  writeNoListeners: () => setSolidCount(c => c + 1),
+
+  // Write with N subscribers
+  writeWithSubscribers: (subscriberCount: number) => {
+    const disposers: (() => void)[] = [];
+    for (let i = 0; i < subscriberCount; i++) {
+      createEffect(() => {
+        solidCountSignal();
+      });
+      disposers.push(() => {});
+    }
+    setSolidCount(c => c + 1);
+    disposers.forEach(d => d());
+  },
+
+  // Computed cached read
+  readComputedCached: () => solidDoubledSignal(),
+
+  // Computed update (trigger recomputation)
+  updateComputed: () => {
+    setSolidCount(c => c + 1);
+    solidDoubledSignal();
+  },
+
+  // Chained computed read
+  readChainedComputed: () => solidLevel3Computed(),
+
+  // Batching 100 updates
+  batch100Updates: () => {
+    for (let i = 0; i < 100; i++) {
+      setSolidCount(i);
+    }
+  },
+
+  // Subscribe/Unsubscribe test
+  subscribeUnsubscribe: () => {
+    const dispose = createEffect(() => {
+      solidCountSignal();
+    });
+    // Note: Solid's createEffect doesn't return disposer in benchmark context
   }
 };

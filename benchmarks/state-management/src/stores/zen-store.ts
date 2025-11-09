@@ -30,6 +30,11 @@ export const zenItemsStore = zen(Array.from({ length: 1000 }, (_, i) => ({ id: i
 // Computed value
 export const zenDoubledStore = computed([zenCountStore], (count) => count * 2);
 
+// Chained computed (3 levels)
+export const zenLevel1Computed = computed([zenCountStore], (count) => count * 2);
+export const zenLevel2Computed = computed([zenLevel1Computed], (doubled) => doubled + 10);
+export const zenLevel3Computed = computed([zenLevel2Computed], (result) => result * 3);
+
 // Async operation using karma (Zen's async pattern)
 export const zenFetchKarma = karma(async (data: any) => {
   await new Promise(resolve => setTimeout(resolve, 0));
@@ -147,5 +152,58 @@ export const zenActions = {
   // Reactive async karma access - with reactive cache
   getAsyncKarma: async () => {
     return await runKarma(zenFetchKarma, get(zenCountStore));
+  },
+
+  // New comprehensive benchmark tests
+
+  // Creation test - create a new store
+  createStore: () => zen(0),
+
+  // Read test - read count 1000 times
+  readBatch: () => {
+    for (let i = 0; i < 1000; i++) {
+      get(zenCountStore);
+    }
+  },
+
+  // Write with no listeners
+  writeNoListeners: () => set(zenCountStore, get(zenCountStore) + 1),
+
+  // Write with N subscribers
+  writeWithSubscribers: (subscriberCount: number) => {
+    const unsubscribers: (() => void)[] = [];
+    for (let i = 0; i < subscriberCount; i++) {
+      const unsub = subscribe(zenCountStore, () => {
+        get(zenCountStore);
+      });
+      unsubscribers.push(unsub);
+    }
+    set(zenCountStore, get(zenCountStore) + 1);
+    unsubscribers.forEach(u => u());
+  },
+
+  // Computed cached read
+  readComputedCached: () => get(zenDoubledStore),
+
+  // Computed update (trigger recomputation)
+  updateComputed: () => {
+    set(zenCountStore, get(zenCountStore) + 1);
+    get(zenDoubledStore);
+  },
+
+  // Chained computed read
+  readChainedComputed: () => get(zenLevel3Computed),
+
+  // Batching 100 updates
+  batch100Updates: () => {
+    for (let i = 0; i < 100; i++) {
+      set(zenCountStore, i);
+    }
+  },
+
+  // Subscribe/Unsubscribe test
+  subscribeUnsubscribe: () => {
+    const unsub = subscribe(zenCountStore, () => {});
+    unsub();
   }
 };

@@ -3,6 +3,12 @@ import { atom, createStore } from 'jotai';
 export const jotaiStore = createStore();
 export const jotaiCountAtom = atom(0);
 export const jotaiDoubledAtom = atom(get => get(jotaiCountAtom) * 2);
+
+// Chained computed (3 levels)
+export const jotaiLevel1Computed = atom(get => get(jotaiCountAtom) * 2);
+export const jotaiLevel2Computed = atom(get => get(jotaiLevel1Computed) + 10);
+export const jotaiLevel3Computed = atom(get => get(jotaiLevel2Computed) * 3);
+
 export const jotaiNestedAtom = atom({ value: 0 });
 export const jotaiUsersAtom = atom([]);
 export const jotaiLoadingAtom = atom(false);
@@ -97,5 +103,62 @@ export const jotaiActions = {
     return () => unsubscribers.forEach(u => u());
   },
   // Reactive async atom access
-  getAsyncAtom: async () => jotaiStore.get(jotaiAsyncAtom)
+  getAsyncAtom: async () => jotaiStore.get(jotaiAsyncAtom),
+
+  // New comprehensive benchmark tests
+
+  // Creation test - create a new atom and store
+  createStore: () => {
+    const newStore = createStore();
+    const newAtom = atom(0);
+    return { store: newStore, atom: newAtom };
+  },
+
+  // Read test - read count 1000 times
+  readBatch: () => {
+    for (let i = 0; i < 1000; i++) {
+      jotaiStore.get(jotaiCountAtom);
+    }
+  },
+
+  // Write with no listeners
+  writeNoListeners: () => jotaiStore.set(jotaiCountAtom, c => c + 1),
+
+  // Write with N subscribers
+  writeWithSubscribers: (subscriberCount: number) => {
+    const unsubscribers: (() => void)[] = [];
+    for (let i = 0; i < subscriberCount; i++) {
+      const unsub = jotaiStore.sub(jotaiCountAtom, () => {
+        jotaiStore.get(jotaiCountAtom);
+      });
+      unsubscribers.push(unsub);
+    }
+    jotaiStore.set(jotaiCountAtom, c => c + 1);
+    unsubscribers.forEach(u => u());
+  },
+
+  // Computed cached read
+  readComputedCached: () => jotaiStore.get(jotaiDoubledAtom),
+
+  // Computed update (trigger recomputation)
+  updateComputed: () => {
+    jotaiStore.set(jotaiCountAtom, c => c + 1);
+    jotaiStore.get(jotaiDoubledAtom);
+  },
+
+  // Chained computed read
+  readChainedComputed: () => jotaiStore.get(jotaiLevel3Computed),
+
+  // Batching 100 updates
+  batch100Updates: () => {
+    for (let i = 0; i < 100; i++) {
+      jotaiStore.set(jotaiCountAtom, i);
+    }
+  },
+
+  // Subscribe/Unsubscribe test
+  subscribeUnsubscribe: () => {
+    const unsub = jotaiStore.sub(jotaiCountAtom, () => {});
+    unsub();
+  }
 };

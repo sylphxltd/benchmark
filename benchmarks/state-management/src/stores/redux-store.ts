@@ -1,4 +1,4 @@
-import { configureStore, createSlice } from '@reduxjs/toolkit';
+import { configureStore, createSlice, createSelector } from '@reduxjs/toolkit';
 
 export const reduxSlice = createSlice({
   name: 'counter',
@@ -81,6 +81,27 @@ export const reduxStore = configureStore({
     })
 });
 
+// Selectors for computed values
+const selectCount = (state: any) => state.counter.count;
+export const reduxDoubledSelector = createSelector(
+  [selectCount],
+  (count) => count * 2
+);
+
+// Chained computed (3 levels)
+export const reduxLevel1Selector = createSelector(
+  [selectCount],
+  (count) => count * 2
+);
+export const reduxLevel2Selector = createSelector(
+  [reduxLevel1Selector],
+  (doubled) => doubled + 10
+);
+export const reduxLevel3Selector = createSelector(
+  [reduxLevel2Selector],
+  (result) => result * 3
+);
+
 export const reduxActions = {
   increment: () => reduxStore.dispatch(reduxSlice.actions.increment()),
   setNested: (value: number) => reduxStore.dispatch(reduxSlice.actions.setNested(value)),
@@ -120,5 +141,67 @@ export const reduxActions = {
       unsubscribers.push(unsub);
     }
     return () => unsubscribers.forEach(u => u());
+  },
+
+  // New comprehensive benchmark tests
+
+  // Creation test - create a new store
+  createStore: () => {
+    const tempSlice = createSlice({
+      name: 'temp',
+      initialState: { count: 0 },
+      reducers: {}
+    });
+    return configureStore({
+      reducer: { temp: tempSlice.reducer }
+    });
+  },
+
+  // Read test - read count 1000 times
+  readBatch: () => {
+    for (let i = 0; i < 1000; i++) {
+      reduxStore.getState().counter.count;
+    }
+  },
+
+  // Write with no listeners
+  writeNoListeners: () => reduxStore.dispatch(reduxSlice.actions.increment()),
+
+  // Write with N subscribers
+  writeWithSubscribers: (subscriberCount: number) => {
+    const unsubscribers: (() => void)[] = [];
+    for (let i = 0; i < subscriberCount; i++) {
+      const unsub = reduxStore.subscribe(() => {
+        reduxStore.getState().counter.count;
+      });
+      unsubscribers.push(unsub);
+    }
+    reduxStore.dispatch(reduxSlice.actions.increment());
+    unsubscribers.forEach(u => u());
+  },
+
+  // Computed cached read
+  readComputedCached: () => reduxDoubledSelector(reduxStore.getState()),
+
+  // Computed update (trigger recomputation)
+  updateComputed: () => {
+    reduxStore.dispatch(reduxSlice.actions.increment());
+    reduxDoubledSelector(reduxStore.getState());
+  },
+
+  // Chained computed read
+  readChainedComputed: () => reduxLevel3Selector(reduxStore.getState()),
+
+  // Batching 100 updates
+  batch100Updates: () => {
+    for (let i = 0; i < 100; i++) {
+      reduxStore.dispatch(reduxSlice.actions.batchUpdate({ count: i, nestedValue: 0, loading: false }));
+    }
+  },
+
+  // Subscribe/Unsubscribe test
+  subscribeUnsubscribe: () => {
+    const unsub = reduxStore.subscribe(() => {});
+    unsub();
   }
 };

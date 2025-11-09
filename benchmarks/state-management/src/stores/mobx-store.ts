@@ -1,4 +1,4 @@
-import { makeAutoObservable, runInAction, autorun } from 'mobx';
+import { makeAutoObservable, runInAction, autorun, computed, observable } from 'mobx';
 
 export class MobXStore {
   count = 0;
@@ -27,6 +27,19 @@ export class MobXStore {
 
   get doubled() {
     return this.count * 2;
+  }
+
+  // Chained computed (3 levels)
+  get level1Computed() {
+    return this.count * 2;
+  }
+
+  get level2Computed() {
+    return this.level1Computed + 10;
+  }
+
+  get level3Computed() {
+    return this.level2Computed * 3;
   }
 
   increment() {
@@ -127,5 +140,70 @@ export const mobxActions = {
       disposers.push(dispose);
     }
     return () => disposers.forEach(d => d());
+  },
+
+  // New comprehensive benchmark tests
+
+  // Creation test - create a new observable store
+  createStore: () => {
+    class TempStore {
+      count = 0;
+      constructor() {
+        makeAutoObservable(this);
+      }
+    }
+    return new TempStore();
+  },
+
+  // Read test - read count 1000 times
+  readBatch: () => {
+    for (let i = 0; i < 1000; i++) {
+      mobxStore.count;
+    }
+  },
+
+  // Write with no listeners
+  writeNoListeners: () => mobxStore.count++,
+
+  // Write with N subscribers
+  writeWithSubscribers: (subscriberCount: number) => {
+    const disposers: (() => void)[] = [];
+    for (let i = 0; i < subscriberCount; i++) {
+      const dispose = autorun(() => {
+        mobxStore.count;
+      });
+      disposers.push(dispose);
+    }
+    mobxStore.count++;
+    disposers.forEach(d => d());
+  },
+
+  // Computed cached read
+  readComputedCached: () => mobxStore.doubled,
+
+  // Computed update (trigger recomputation)
+  updateComputed: () => {
+    mobxStore.count++;
+    mobxStore.doubled;
+  },
+
+  // Chained computed read
+  readChainedComputed: () => mobxStore.level3Computed,
+
+  // Batching 100 updates
+  batch100Updates: () => {
+    runInAction(() => {
+      for (let i = 0; i < 100; i++) {
+        mobxStore.count = i;
+      }
+    });
+  },
+
+  // Subscribe/Unsubscribe test
+  subscribeUnsubscribe: () => {
+    const dispose = autorun(() => {
+      mobxStore.count;
+    });
+    dispose();
   }
 };

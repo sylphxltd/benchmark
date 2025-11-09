@@ -1,5 +1,13 @@
 import { create } from 'zustand';
 
+// Derived selectors for computed values
+export const zustandDoubledSelector = (state: any) => state.count * 2;
+
+// Chained computed (3 levels)
+export const zustandLevel1Selector = (state: any) => state.count * 2;
+export const zustandLevel2Selector = (state: any) => zustandLevel1Selector(state) + 10;
+export const zustandLevel3Selector = (state: any) => zustandLevel2Selector(state) * 3;
+
 export const zustandStore = create((set, get) => ({
   count: 0,
   doubled: 0,
@@ -113,5 +121,58 @@ export const zustandActions = {
       unsubscribers.push(unsub);
     }
     return () => unsubscribers.forEach(u => u());
+  },
+
+  // New comprehensive benchmark tests
+
+  // Creation test - create a new store
+  createStore: () => create((set) => ({ count: 0 })),
+
+  // Read test - read count 1000 times
+  readBatch: () => {
+    for (let i = 0; i < 1000; i++) {
+      zustandStore.getState().count;
+    }
+  },
+
+  // Write with no listeners
+  writeNoListeners: () => zustandStore.setState({ count: zustandStore.getState().count + 1 }),
+
+  // Write with N subscribers
+  writeWithSubscribers: (subscriberCount: number) => {
+    const unsubscribers: (() => void)[] = [];
+    for (let i = 0; i < subscriberCount; i++) {
+      const unsub = zustandStore.subscribe(() => {
+        zustandStore.getState().count;
+      });
+      unsubscribers.push(unsub);
+    }
+    zustandStore.setState({ count: zustandStore.getState().count + 1 });
+    unsubscribers.forEach(u => u());
+  },
+
+  // Computed cached read
+  readComputedCached: () => zustandDoubledSelector(zustandStore.getState()),
+
+  // Computed update (trigger recomputation)
+  updateComputed: () => {
+    zustandStore.setState({ count: zustandStore.getState().count + 1 });
+    zustandDoubledSelector(zustandStore.getState());
+  },
+
+  // Chained computed read
+  readChainedComputed: () => zustandLevel3Selector(zustandStore.getState()),
+
+  // Batching 100 updates
+  batch100Updates: () => {
+    for (let i = 0; i < 100; i++) {
+      zustandStore.setState({ count: i });
+    }
+  },
+
+  // Subscribe/Unsubscribe test
+  subscribeUnsubscribe: () => {
+    const unsub = zustandStore.subscribe(() => {});
+    unsub();
   }
 };

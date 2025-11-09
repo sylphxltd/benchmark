@@ -23,6 +23,16 @@ export const valtioStore = proxy({
   get doubled() {
     return this.count * 2;
   },
+  // Chained computed (3 levels)
+  get level1Computed() {
+    return this.count * 2;
+  },
+  get level2Computed() {
+    return this.level1Computed + 10;
+  },
+  get level3Computed() {
+    return this.level2Computed * 3;
+  },
   increment() {
     this.count++;
   },
@@ -106,5 +116,58 @@ export const valtioActions = {
       unsubscribers.push(unsub);
     }
     return () => unsubscribers.forEach(u => u());
+  },
+
+  // New comprehensive benchmark tests
+
+  // Creation test - create a new proxy
+  createStore: () => proxy({ count: 0 }),
+
+  // Read test - read count 1000 times
+  readBatch: () => {
+    for (let i = 0; i < 1000; i++) {
+      valtioStore.count;
+    }
+  },
+
+  // Write with no listeners
+  writeNoListeners: () => valtioStore.count++,
+
+  // Write with N subscribers
+  writeWithSubscribers: (subscriberCount: number) => {
+    const unsubscribers: (() => void)[] = [];
+    for (let i = 0; i < subscriberCount; i++) {
+      const unsub = subscribe(valtioStore, () => {
+        valtioStore.count;
+      });
+      unsubscribers.push(unsub);
+    }
+    valtioStore.count++;
+    unsubscribers.forEach(u => u());
+  },
+
+  // Computed cached read
+  readComputedCached: () => valtioStore.doubled,
+
+  // Computed update (trigger recomputation)
+  updateComputed: () => {
+    valtioStore.count++;
+    valtioStore.doubled;
+  },
+
+  // Chained computed read
+  readChainedComputed: () => valtioStore.level3Computed,
+
+  // Batching 100 updates
+  batch100Updates: () => {
+    for (let i = 0; i < 100; i++) {
+      valtioStore.count = i;
+    }
+  },
+
+  // Subscribe/Unsubscribe test
+  subscribeUnsubscribe: () => {
+    const unsub = subscribe(valtioStore, () => {});
+    unsub();
   }
 };
