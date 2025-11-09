@@ -614,7 +614,7 @@ export const jotaiActionsV2 = {
   createStore: () => {
     jotaiStore = {
       count: 0,
-      users: largeArray,
+      users: [...largeArray], // Create a copy to avoid read-only issues
       deepNested: createDeepNested(),
       formData: createFormState(),
       optimisticData: null,
@@ -633,6 +633,7 @@ export const jotaiActionsV2 = {
   spliceUser: (index, deleteCount, item) => {
     jotaiStore.users.splice(index, deleteCount, item);
     notifyListeners();
+    return jotaiStore.users.length;
   },
 
   sortUsers: (key) => {
@@ -642,6 +643,7 @@ export const jotaiActionsV2 = {
       return 0;
     });
     notifyListeners();
+    return jotaiStore.users.length;
   },
 
   findUser: (id) => {
@@ -808,6 +810,7 @@ class MobxStoreV2 {
         if (a[key] > b[key]) return 1;
         return 0;
       });
+      return this.users.length;
     });
   };
 
@@ -961,7 +964,7 @@ export const mobxActionsV2 = {
 
 const valtioStoreV2 = proxy({
   count: 0,
-  users: largeArray,
+  users: [...largeArray], // Create a copy to avoid read-only issues
   deepNested: createDeepNested(),
   formData: createFormState(),
   history: [],
@@ -980,6 +983,7 @@ export const valtioActionsV2 = {
 
   spliceUser: (index, deleteCount, item) => {
     valtioStoreV2.users.splice(index, deleteCount, item);
+    return valtioStoreV2.users.length;
   },
 
   sortUsers: (key) => {
@@ -988,6 +992,7 @@ export const valtioActionsV2 = {
       if (a[key] > b[key]) return 1;
       return 0;
     });
+    return valtioStoreV2.users.length;
   },
 
   findUser: (id) => {
@@ -1098,6 +1103,11 @@ export const valtioActionsV2 = {
     return largeArray;
   },
 
+  // Add missing getDoubled method
+  getDoubled: () => {
+    return valtioStoreV2.count * 2;
+  },
+
   // Add missing getComplexComputed method
   getComplexComputed: () => {
     return valtioStoreV2.count * 4 + 100;
@@ -1133,14 +1143,17 @@ export const preactActionsV2 = {
     const newUsers = [...preactUsersSignal.value];
     newUsers.splice(index, deleteCount, item);
     preactUsersSignal.value = newUsers;
+    return newUsers.length;
   },
 
   sortUsers: (key) => {
-    preactUsersSignal.value = [...preactUsersSignal.value].sort((a, b) => {
+    const sortedUsers = [...preactUsersSignal.value].sort((a, b) => {
       if (a[key] < b[key]) return -1;
       if (a[key] > b[key]) return 1;
       return 0;
     });
+    preactUsersSignal.value = sortedUsers;
+    return sortedUsers.length;
   },
 
   findUser: (id) => {
@@ -1316,16 +1329,17 @@ export const solidActionsV2 = {
     const newUsers = [...solidUsersSignal()];
     newUsers.splice(index, deleteCount, item);
     setSolidUsers(newUsers);
+    return newUsers.length;
   },
 
   sortUsers: (key) => {
-    setSolidUsers(users =>
-      [...users].sort((a, b) => {
-        if (a[key] < b[key]) return -1;
-        if (a[key] > b[key]) return 1;
-        return 0;
-      })
-    );
+    const sortedUsers = [...solidUsersSignal()].sort((a, b) => {
+      if (a[key] < b[key]) return -1;
+      if (a[key] > b[key]) return 1;
+      return 0;
+    });
+    setSolidUsers(sortedUsers);
+    return sortedUsers.length;
   },
 
   findUser: (id) => {
@@ -1504,15 +1518,18 @@ export const zenActionsV2 = {
     const newUsers = [...users];
     newUsers.splice(index, deleteCount, item);
     set(zenUsersStore, newUsers);
+    return newUsers.length;
   },
 
   sortUsers: (key) => {
     const users = get(zenUsersStore);
-    set(zenUsersStore, [...users].sort((a, b) => {
+    const sortedUsers = [...users].sort((a, b) => {
       if (a[key] < b[key]) return -1;
       if (a[key] > b[key]) return 1;
       return 0;
-    }));
+    });
+    set(zenUsersStore, sortedUsers);
+    return sortedUsers.length;
   },
 
   findUser: (id) => {
