@@ -20,7 +20,7 @@ Comprehensive performance testing of JavaScript immutability libraries and patte
 ## 📋 Benchmark Information
 
 - **Last Updated:** November 9, 2025
-- **Last Run:** 2:02:33 PM UTC
+- **Last Run:** 2:12:08 PM UTC
 - **Environment:** Node.js v20.19.5, linux x64
 - **Test Framework:** Vitest Bench
 - **Iterations:** 3 runs averaged for statistical accuracy
@@ -57,12 +57,12 @@ Based on geometric mean across all supported tests (excludes extreme values):
 
 | Rank | Library | Score | Relative |
 |------|---------|-------|----------|
-| 🥇 | **[Craft](https://github.com/sylphxltd/craft)** | 72.8/100 | Baseline |
-| 🥈 | **[Mutative](https://github.com/unadlib/mutative)** | 55.7/100 | 76.5% |
-| 🥉 | **[Immutability Helper](https://github.com/kolodny/immutability-helper)** | 54.3/100 | 74.6% |
-| 4 | **[Immutable.js](https://github.com/immutable-js/immutable-js)** | 31.4/100 | 43.1% |
-| 5 | **[Immer](https://github.com/immerjs/immer)** | 24.4/100 | 33.5% |
-| 6 | **[Seamless Immutable](https://github.com/rtfeldman/seamless-immutable)** | 3.9/100 | 5.4% |
+| 🥇 | **[Craft](https://github.com/sylphxltd/craft)** | 73.4/100 | Baseline |
+| 🥈 | **[Mutative](https://github.com/unadlib/mutative)** | 56.6/100 | 77.1% |
+| 🥉 | **[Immutability Helper](https://github.com/kolodny/immutability-helper)** | 54.3/100 | 74.0% |
+| 4 | **[Immutable.js](https://github.com/immutable-js/immutable-js)** | 32.4/100 | 44.1% |
+| 5 | **[Immer](https://github.com/immerjs/immer)** | 24.2/100 | 33.0% |
+| 6 | **[Seamless Immutable](https://github.com/rtfeldman/seamless-immutable)** | 3.9/100 | 5.3% |
 
 > 📊 **Methodology:** Geometric mean prevents extreme values from skewing results. Each test is normalized (fastest = 100) then averaged.
 
@@ -149,164 +149,164 @@ Comparison of core features and capabilities across immutability libraries
 **Performance Comparison:**
 
 ```
-🥇 Craft                ████████████████████████████████████████ 216.03K
-🥈 Immer                ████████████████████ 109.16K
+🥇 Craft                ████████████████████████████████████████ 222.64K
+🥈 Immer                █████████████████████ 115.43K
 ```
 
 | Rank | Library | Ops/sec | Variance | Mean | p99 | Samples |
 |------|---------|---------|----------|------|-----|--------|
-| 🥇 | **[Craft](https://github.com/sylphxltd/craft)** | 216.03K | ±2.31% | 4.6290ms | 9.0670ms | 108.02K |
-| 🥈 | **[Immer](https://github.com/immerjs/immer)** | 109.16K | ±1.93% | 9.1611ms | 25.7180ms | 54.58K |
+| 🥇 | **[Craft](https://github.com/sylphxltd/craft)** | 222.64K | ±1.91% | 4.4915ms | 8.9060ms | 111.32K |
+| 🥈 | **[Immer](https://github.com/immerjs/immer)** | 115.43K | ±1.42% | 8.6633ms | 18.3540ms | 57.72K |
 
 ### JSON Patches - Apply {#json-patches-apply}
 
 **Performance Comparison:**
 
 ```
-🥇 Craft                ████████████████████████████████████████ 944.04K
-🥈 Immer                █████ 129.69K
+🥇 Craft                ████████████████████████████████████████ 981.76K
+🥈 Immer                █████ 131.25K
 ```
 
 | Rank | Library | Ops/sec | Variance | Mean | p99 | Samples |
 |------|---------|---------|----------|------|-----|--------|
-| 🥇 | **[Craft](https://github.com/sylphxltd/craft)** | 944.04K | ±0.21% | 1.0593ms | 1.2630ms | 472.02K |
-| 🥈 | **[Immer](https://github.com/immerjs/immer)** | 129.69K | ±2.01% | 7.7109ms | 15.0980ms | 64.84K |
+| 🥇 | **[Craft](https://github.com/sylphxltd/craft)** | 981.76K | ±0.45% | 1.0186ms | 1.2620ms | 490.88K |
+| 🥈 | **[Immer](https://github.com/immerjs/immer)** | 131.25K | ±1.57% | 7.6190ms | 13.7950ms | 65.63K |
 
 ### JSON Patches - Roundtrip {#json-patches-roundtrip}
 
 **Performance Comparison:**
 
 ```
-🥇 Craft                ████████████████████████████████████████ 173.88K
-🥈 Immer                ██████████████ 59.94K
+🥇 Craft                ████████████████████████████████████████ 175.24K
+🥈 Immer                ██████████████ 60.10K
 ```
 
 | Rank | Library | Ops/sec | Variance | Mean | p99 | Samples |
 |------|---------|---------|----------|------|-----|--------|
-| 🥇 | **[Craft](https://github.com/sylphxltd/craft)** | 173.88K | ±1.90% | 5.7510ms | 12.0630ms | 86.94K |
-| 🥈 | **[Immer](https://github.com/immerjs/immer)** | 59.94K | ±1.85% | 16.6821ms | 31.0280ms | 29.97K |
+| 🥇 | **[Craft](https://github.com/sylphxltd/craft)** | 175.24K | ±1.63% | 5.7064ms | 11.1100ms | 87.62K |
+| 🥈 | **[Immer](https://github.com/immerjs/immer)** | 60.10K | ±1.47% | 16.6387ms | 33.9130ms | 30.05K |
 
 ### Map - Set Operation {#map-set-operation}
 
 **Performance Comparison:**
 
 ```
-🥇 Craft                ████████████████████████████████████████ 739.31K
-🥈 Mutative             █████████████████████████ 468.68K
-🥉 Immer                █████████ 174.42K
+🥇 Craft                ████████████████████████████████████████ 746.59K
+🥈 Mutative             ██████████████████████████ 482.38K
+🥉 Immer                ██████████ 178.41K
 ```
 
 | Rank | Library | Ops/sec | Variance | Mean | p99 | Samples |
 |------|---------|---------|----------|------|-----|--------|
-| 🥇 | **[Craft](https://github.com/sylphxltd/craft)** | 739.31K | ±1.90% | 1.3526ms | 3.0060ms | 369.65K |
-| 🥈 | **[Mutative](https://github.com/unadlib/mutative)** | 468.68K | ±0.97% | 2.1336ms | 3.1860ms | 234.34K |
-| 🥉 | **[Immer](https://github.com/immerjs/immer)** | 174.42K | ±1.19% | 5.7333ms | 12.5230ms | 87.27K |
+| 🥇 | **[Craft](https://github.com/sylphxltd/craft)** | 746.59K | ±1.65% | 1.3394ms | 2.8550ms | 373.30K |
+| 🥈 | **[Mutative](https://github.com/unadlib/mutative)** | 482.38K | ±0.40% | 2.0730ms | 2.5150ms | 241.19K |
+| 🥉 | **[Immer](https://github.com/immerjs/immer)** | 178.41K | ±0.90% | 5.6052ms | 12.0220ms | 89.20K |
 
-**Key Insight:** Craft is **4.24x faster** than Immer in this category.
+**Key Insight:** Craft is **4.18x faster** than Immer in this category.
 
 ### Map - Update Nested Value {#map-update-nested-value}
 
 **Performance Comparison:**
 
 ```
-🥇 Craft                ████████████████████████████████████████ 1.23M
-🥈 Mutative             ██████████████ 420.01K
-🥉 Immer                █████ 157.83K
+🥇 Craft                ████████████████████████████████████████ 1.27M
+🥈 Mutative             █████████████ 427.81K
+🥉 Immer                █████ 160.86K
 ```
 
 | Rank | Library | Ops/sec | Variance | Mean | p99 | Samples |
 |------|---------|---------|----------|------|-----|--------|
-| 🥇 | **[Craft](https://github.com/sylphxltd/craft)** | 1.23M | ±0.83% | 0.8106ms | 1.2920ms | 616.81K |
-| 🥈 | **[Mutative](https://github.com/unadlib/mutative)** | 420.01K | ±0.74% | 2.3809ms | 3.0560ms | 210.01K |
-| 🥉 | **[Immer](https://github.com/immerjs/immer)** | 157.83K | ±0.44% | 6.3359ms | 13.4150ms | 78.92K |
+| 🥇 | **[Craft](https://github.com/sylphxltd/craft)** | 1.27M | ±0.64% | 0.7883ms | 1.1220ms | 634.30K |
+| 🥈 | **[Mutative](https://github.com/unadlib/mutative)** | 427.81K | ±0.39% | 2.3375ms | 2.9660ms | 213.90K |
+| 🥉 | **[Immer](https://github.com/immerjs/immer)** | 160.86K | ±0.32% | 6.2165ms | 10.5190ms | 80.43K |
 
-**Key Insight:** Craft is **7.82x faster** than Immer in this category.
+**Key Insight:** Craft is **7.89x faster** than Immer in this category.
 
 ### Set - Add Operation {#set-add-operation}
 
 **Performance Comparison:**
 
 ```
-🥇 Craft                ████████████████████████████████████████ 845.79K
-🥈 Mutative             █████████████████████ 440.25K
-🥉 Immer                ████████ 167.09K
+🥇 Craft                ████████████████████████████████████████ 869.26K
+🥈 Mutative             █████████████████████ 453.91K
+🥉 Immer                ████████ 165.28K
 ```
 
 | Rank | Library | Ops/sec | Variance | Mean | p99 | Samples |
 |------|---------|---------|----------|------|-----|--------|
-| 🥇 | **[Craft](https://github.com/sylphxltd/craft)** | 845.79K | ±0.65% | 1.1823ms | 1.7130ms | 422.90K |
-| 🥈 | **[Mutative](https://github.com/unadlib/mutative)** | 440.25K | ±0.68% | 2.2714ms | 2.9760ms | 220.13K |
-| 🥉 | **[Immer](https://github.com/immerjs/immer)** | 167.09K | ±0.47% | 5.9846ms | 11.1610ms | 83.55K |
+| 🥇 | **[Craft](https://github.com/sylphxltd/craft)** | 869.26K | ±0.35% | 1.1504ms | 1.4830ms | 434.63K |
+| 🥈 | **[Mutative](https://github.com/unadlib/mutative)** | 453.91K | ±0.38% | 2.2031ms | 2.6450ms | 226.98K |
+| 🥉 | **[Immer](https://github.com/immerjs/immer)** | 165.28K | ±0.55% | 6.0503ms | 12.2130ms | 82.64K |
 
-**Key Insight:** Craft is **5.06x faster** than Immer in this category.
+**Key Insight:** Craft is **5.26x faster** than Immer in this category.
 
 ### Set - Delete Operation {#set-delete-operation}
 
 **Performance Comparison:**
 
 ```
-🥇 Craft                ████████████████████████████████████████ 829.64K
-🥈 Mutative             █████████████████████ 433.02K
-🥉 Immer                █████████ 179.84K
+🥇 Craft                ████████████████████████████████████████ 843.61K
+🥈 Mutative             █████████████████████ 443.74K
+🥉 Immer                █████████ 181.50K
 ```
 
 | Rank | Library | Ops/sec | Variance | Mean | p99 | Samples |
 |------|---------|---------|----------|------|-----|--------|
-| 🥇 | **[Craft](https://github.com/sylphxltd/craft)** | 829.64K | ±0.71% | 1.2053ms | 1.6130ms | 414.82K |
-| 🥈 | **[Mutative](https://github.com/unadlib/mutative)** | 433.02K | ±0.66% | 2.3094ms | 2.9650ms | 216.51K |
-| 🥉 | **[Immer](https://github.com/immerjs/immer)** | 179.84K | ±0.50% | 5.5605ms | 7.0930ms | 89.92K |
+| 🥇 | **[Craft](https://github.com/sylphxltd/craft)** | 843.61K | ±0.37% | 1.1854ms | 1.4730ms | 421.80K |
+| 🥈 | **[Mutative](https://github.com/unadlib/mutative)** | 443.74K | ±0.38% | 2.2536ms | 2.7050ms | 221.87K |
+| 🥉 | **[Immer](https://github.com/immerjs/immer)** | 181.50K | ±0.32% | 5.5097ms | 8.8070ms | 90.75K |
 
-**Key Insight:** Craft is **4.61x faster** than Immer in this category.
+**Key Insight:** Craft is **4.65x faster** than Immer in this category.
 
 ### Map - Large (100 items) {#map-large-100-items-}
 
 **Performance Comparison:**
 
 ```
-🥇 Craft                ████████████████████████████████████████ 180.23K
-🥈 Mutative             █████████████████████████████████ 147.86K
-🥉 Immer                █████████████████ 77.35K
+🥇 Craft                ████████████████████████████████████████ 184.93K
+🥈 Mutative             █████████████████████████████████ 150.55K
+🥉 Immer                █████████████████ 78.67K
 ```
 
 | Rank | Library | Ops/sec | Variance | Mean | p99 | Samples |
 |------|---------|---------|----------|------|-----|--------|
-| 🥇 | **[Craft](https://github.com/sylphxltd/craft)** | 180.23K | ±0.76% | 5.5484ms | 8.9070ms | 90.12K |
-| 🥈 | **[Mutative](https://github.com/unadlib/mutative)** | 147.86K | ±0.76% | 6.7630ms | 9.9080ms | 73.93K |
-| 🥉 | **[Immer](https://github.com/immerjs/immer)** | 77.35K | ±0.69% | 12.9275ms | 23.9450ms | 38.68K |
+| 🥇 | **[Craft](https://github.com/sylphxltd/craft)** | 184.93K | ±0.52% | 5.4075ms | 8.9160ms | 92.47K |
+| 🥈 | **[Mutative](https://github.com/unadlib/mutative)** | 150.55K | ±0.50% | 6.6425ms | 11.0410ms | 75.27K |
+| 🥉 | **[Immer](https://github.com/immerjs/immer)** | 78.67K | ±0.45% | 12.7116ms | 23.4630ms | 39.34K |
 
-**Key Insight:** Craft is **2.33x faster** than Immer in this category.
+**Key Insight:** Craft is **2.35x faster** than Immer in this category.
 
 ### Set - Large (100 items) {#set-large-100-items-}
 
 **Performance Comparison:**
 
 ```
-🥇 Craft                ████████████████████████████████████████ 226.33K
-🥈 Mutative             █████████████ 75.56K
-🥉 Immer                ██ 13.78K
+🥇 Craft                ████████████████████████████████████████ 225.07K
+🥈 Mutative             ██████████████ 76.31K
+🥉 Immer                ██ 13.05K
 ```
 
 | Rank | Library | Ops/sec | Variance | Mean | p99 | Samples |
 |------|---------|---------|----------|------|-----|--------|
-| 🥇 | **[Craft](https://github.com/sylphxltd/craft)** | 226.33K | ±0.73% | 4.4183ms | 5.9710ms | 113.17K |
-| 🥈 | **[Mutative](https://github.com/unadlib/mutative)** | 75.56K | ±0.76% | 13.2344ms | 22.9230ms | 37.78K |
-| 🥉 | **[Immer](https://github.com/immerjs/immer)** | 13.78K | ±0.51% | 72.5545ms | 89.4570ms | 6.89K |
+| 🥇 | **[Craft](https://github.com/sylphxltd/craft)** | 225.07K | ±0.44% | 4.4430ms | 8.7970ms | 112.54K |
+| 🥈 | **[Mutative](https://github.com/unadlib/mutative)** | 76.31K | ±0.46% | 13.1038ms | 22.7920ms | 38.16K |
+| 🥉 | **[Immer](https://github.com/immerjs/immer)** | 13.05K | ±0.41% | 76.6188ms | 95.9680ms | 6.53K |
 
-**Key Insight:** Craft is **16.42x faster** than Immer in this category.
+**Key Insight:** Craft is **17.24x faster** than Immer in this category.
 
 ### Undo/Redo - Inverse Patches {#undo-redo-inverse-patches}
 
 **Performance Comparison:**
 
 ```
-🥇 Craft                ████████████████████████████████████████ 220.66K
-🥈 Immer                █████████████ 70.25K
+🥇 Craft                ████████████████████████████████████████ 226.41K
+🥈 Immer                ████████████ 70.58K
 ```
 
 | Rank | Library | Ops/sec | Variance | Mean | p99 | Samples |
 |------|---------|---------|----------|------|-----|--------|
-| 🥇 | **[Craft](https://github.com/sylphxltd/craft)** | 220.66K | ±0.71% | 4.5318ms | 5.4500ms | 110.33K |
-| 🥈 | **[Immer](https://github.com/immerjs/immer)** | 70.25K | ±0.39% | 14.2343ms | 25.0670ms | 35.13K |
+| 🥇 | **[Craft](https://github.com/sylphxltd/craft)** | 226.41K | ±0.37% | 4.4167ms | 5.1390ms | 113.21K |
+| 🥈 | **[Immer](https://github.com/immerjs/immer)** | 70.58K | ±0.31% | 14.1687ms | 25.0560ms | 35.29K |
 
 ### Simple Object Update {#simple-object-update}
 
@@ -314,199 +314,199 @@ Comparison of core features and capabilities across immutability libraries
 
 ```
 🥇 Immutable.js         ████████████████████████████████████████ 1.07M
-🥈 Immutability Helper  ████████████████████████████████████ 963.45K
-🥉 Craft                ████████████████████████████████████ 959.58K
-   Mutative             ████████████████████████████████████ 958.71K
-   Immer                █████████████████████████ 678.99K
-   Seamless Immutable   █████ 129.66K
+🥈 Mutative             ████████████████████████████████████ 969.72K
+🥉 Immutability Helper  ████████████████████████████████████ 964.08K
+   Craft                ████████████████████████████████████ 961.82K
+   Immer                █████████████████████████ 679.93K
+   Seamless Immutable   █████ 124.76K
 ```
 
 | Rank | Library | Ops/sec | Variance | Mean | p99 | Samples |
 |------|---------|---------|----------|------|-----|--------|
-| 🥇 | **Native Spread** | 14.63M | ±0.10% | 0.0684ms | 0.0910ms | 7.31M |
-| 🥈 | **[Immutable.js](https://github.com/immutable-js/immutable-js)** | 1.07M | ±0.11% | 0.9342ms | 1.3720ms | 535.25K |
-| 🥉 | **[Immutability Helper](https://github.com/kolodny/immutability-helper)** | 963.45K | ±0.59% | 1.0379ms | 1.3230ms | 481.72K |
-| 4 | **[Craft](https://github.com/sylphxltd/craft)** | 959.58K | ±2.89% | 1.0421ms | 2.6050ms | 479.79K |
-| 5 | **[Mutative](https://github.com/unadlib/mutative)** | 958.71K | ±0.80% | 1.0431ms | 1.6230ms | 479.36K |
-| 6 | **[Immer](https://github.com/immerjs/immer)** | 678.99K | ±2.13% | 1.4728ms | 3.2060ms | 339.49K |
-| 7 | **[Seamless Immutable](https://github.com/rtfeldman/seamless-immutable)** | 129.66K | ±0.38% | 7.7125ms | 12.7950ms | 64.83K |
+| 🥇 | **Native Spread** | 14.54M | ±0.10% | 0.0688ms | 0.1100ms | 7.27M |
+| 🥈 | **[Immutable.js](https://github.com/immutable-js/immutable-js)** | 1.07M | ±0.13% | 0.9324ms | 1.0620ms | 536.27K |
+| 🥉 | **[Mutative](https://github.com/unadlib/mutative)** | 969.72K | ±0.41% | 1.0312ms | 1.3830ms | 484.86K |
+| 4 | **[Immutability Helper](https://github.com/kolodny/immutability-helper)** | 964.08K | ±0.16% | 1.0373ms | 1.7930ms | 482.04K |
+| 5 | **[Craft](https://github.com/sylphxltd/craft)** | 961.82K | ±2.54% | 1.0397ms | 2.6450ms | 480.91K |
+| 6 | **[Immer](https://github.com/immerjs/immer)** | 679.93K | ±2.03% | 1.4707ms | 3.2360ms | 339.97K |
+| 7 | **[Seamless Immutable](https://github.com/rtfeldman/seamless-immutable)** | 124.76K | ±0.27% | 8.0153ms | 16.6810ms | 62.38K |
 
-**Key Insight:** Native Spread is **112.82x faster** than Seamless Immutable in this category.
+**Key Insight:** Native Spread is **116.52x faster** than Seamless Immutable in this category.
 
 ### Nested Object Update {#nested-object-update}
 
 **Performance Comparison:**
 
 ```
-🥇 Immutability Helper  ████████████████████████████████████████ 519.24K
-🥈 Mutative             ██████████████████████████████ 395.81K
-🥉 Craft                ████████████████████████ 314.61K
-   Immutable.js         █████████████████ 226.77K
-   Immer                ████████████ 153.03K
-   Seamless Immutable   ███ 37.34K
+🥇 Immutability Helper  ████████████████████████████████████████ 495.96K
+🥈 Mutative             █████████████████████████████████ 405.57K
+🥉 Craft                ████████████████████████████ 347.65K
+   Immutable.js         ███████████████████ 240.71K
+   Immer                ████████████ 154.07K
+   Seamless Immutable   ███ 37.73K
 ```
 
 | Rank | Library | Ops/sec | Variance | Mean | p99 | Samples |
 |------|---------|---------|----------|------|-----|--------|
-| 🥇 | **Native Spread** | 11.63M | ±0.59% | 0.0860ms | 0.1400ms | 5.81M |
-| 🥈 | **[Immutability Helper](https://github.com/kolodny/immutability-helper)** | 519.24K | ±0.64% | 1.9259ms | 2.5650ms | 259.62K |
-| 🥉 | **[Mutative](https://github.com/unadlib/mutative)** | 395.81K | ±0.59% | 2.5265ms | 4.8990ms | 197.91K |
-| 4 | **[Craft](https://github.com/sylphxltd/craft)** | 314.61K | ±3.16% | 3.1785ms | 6.5020ms | 157.31K |
-| 5 | **[Immutable.js](https://github.com/immutable-js/immutable-js)** | 226.77K | ±0.78% | 4.4097ms | 8.2250ms | 113.39K |
-| 6 | **[Immer](https://github.com/immerjs/immer)** | 153.03K | ±2.35% | 6.5348ms | 11.9820ms | 76.51K |
-| 7 | **[Seamless Immutable](https://github.com/rtfeldman/seamless-immutable)** | 37.34K | ±0.42% | 26.7812ms | 39.5030ms | 18.67K |
+| 🥇 | **Native Spread** | 11.74M | ±0.16% | 0.0852ms | 0.1200ms | 5.87M |
+| 🥈 | **[Immutability Helper](https://github.com/kolodny/immutability-helper)** | 495.96K | ±0.48% | 2.0163ms | 2.3350ms | 247.98K |
+| 🥉 | **[Mutative](https://github.com/unadlib/mutative)** | 405.57K | ±0.53% | 2.4656ms | 2.9760ms | 202.79K |
+| 4 | **[Craft](https://github.com/sylphxltd/craft)** | 347.65K | ±2.63% | 2.8765ms | 5.3300ms | 173.82K |
+| 5 | **[Immutable.js](https://github.com/immutable-js/immutable-js)** | 240.71K | ±0.40% | 4.1543ms | 4.8290ms | 120.36K |
+| 6 | **[Immer](https://github.com/immerjs/immer)** | 154.07K | ±1.81% | 6.4904ms | 13.4250ms | 77.04K |
+| 7 | **[Seamless Immutable](https://github.com/rtfeldman/seamless-immutable)** | 37.73K | ±0.27% | 26.5073ms | 36.0170ms | 18.86K |
 
-**Key Insight:** Native Spread is **311.42x faster** than Seamless Immutable in this category.
+**Key Insight:** Native Spread is **311.28x faster** than Seamless Immutable in this category.
 
 ### Array Push {#array-push}
 
 **Performance Comparison:**
 
 ```
-🥇 Immutable.js         ████████████████████████████████████████ 1.84M
-🥈 Immutability Helper  ██████████████████████████████ 1.39M
-🥉 Craft                ███████████ 509.68K
-   Mutative             █████████ 413.26K
-   Immer                ██████ 278.02K
-   Seamless Immutable   █ 60.47K
+🥇 Immutable.js         ████████████████████████████████████████ 1.80M
+🥈 Immutability Helper  ████████████████████████████████ 1.44M
+🥉 Craft                ███████████ 509.84K
+   Mutative             █████████ 414.84K
+   Immer                ██████ 281.08K
+   Seamless Immutable   █ 62.07K
 ```
 
 | Rank | Library | Ops/sec | Variance | Mean | p99 | Samples |
 |------|---------|---------|----------|------|-----|--------|
-| 🥇 | **Native Spread** | 10.97M | ±2.44% | 0.0911ms | 0.1400ms | 5.49M |
-| 🥈 | **[Immutable.js](https://github.com/immutable-js/immutable-js)** | 1.84M | ±0.77% | 0.5428ms | 0.9210ms | 921.22K |
-| 🥉 | **[Immutability Helper](https://github.com/kolodny/immutability-helper)** | 1.39M | ±0.56% | 0.7201ms | 0.8010ms | 694.38K |
-| 4 | **[Craft](https://github.com/sylphxltd/craft)** | 509.68K | ±0.75% | 1.9620ms | 2.5350ms | 254.84K |
-| 5 | **[Mutative](https://github.com/unadlib/mutative)** | 413.26K | ±0.99% | 2.4198ms | 3.8170ms | 206.63K |
-| 6 | **[Immer](https://github.com/immerjs/immer)** | 278.02K | ±0.79% | 3.5969ms | 6.2810ms | 139.01K |
-| 7 | **[Seamless Immutable](https://github.com/rtfeldman/seamless-immutable)** | 60.47K | ±0.53% | 16.5370ms | 30.1660ms | 30.24K |
+| 🥇 | **Native Spread** | 11.90M | ±1.19% | 0.0840ms | 0.1200ms | 5.95M |
+| 🥈 | **[Immutable.js](https://github.com/immutable-js/immutable-js)** | 1.80M | ±0.59% | 0.5569ms | 0.9210ms | 897.75K |
+| 🥉 | **[Immutability Helper](https://github.com/kolodny/immutability-helper)** | 1.44M | ±0.14% | 0.6922ms | 0.8420ms | 722.36K |
+| 4 | **[Craft](https://github.com/sylphxltd/craft)** | 509.84K | ±0.31% | 1.9614ms | 2.2940ms | 254.92K |
+| 5 | **[Mutative](https://github.com/unadlib/mutative)** | 414.84K | ±0.39% | 2.4106ms | 4.1380ms | 207.42K |
+| 6 | **[Immer](https://github.com/immerjs/immer)** | 281.08K | ±0.44% | 3.5577ms | 4.7690ms | 140.54K |
+| 7 | **[Seamless Immutable](https://github.com/rtfeldman/seamless-immutable)** | 62.07K | ±0.28% | 16.1116ms | 25.3870ms | 31.03K |
 
-**Key Insight:** Native Spread is **181.49x faster** than Seamless Immutable in this category.
+**Key Insight:** Native Spread is **191.75x faster** than Seamless Immutable in this category.
 
 ### Array Remove {#array-remove}
 
 **Performance Comparison:**
 
 ```
-🥇 Immutable.js         ████████████████████████████████████████ 792.53K
-🥈 Immutability Helper  █████████████████████████████ 580.72K
-🥉 Craft                ████████████████ 321.96K
-   Mutative             ███████████ 212.53K
-   Immer                ███████ 144.22K
-   Seamless Immutable   ███ 60.76K
+🥇 Immutable.js         ████████████████████████████████████████ 797.26K
+🥈 Immutability Helper  █████████████████████████████ 582.89K
+🥉 Craft                ████████████████ 320.65K
+   Mutative             ███████████ 217.77K
+   Immer                ███████ 142.50K
+   Seamless Immutable   ███ 61.34K
 ```
 
 | Rank | Library | Ops/sec | Variance | Mean | p99 | Samples |
 |------|---------|---------|----------|------|-----|--------|
-| 🥇 | **Native Filter** | 11.41M | ±2.06% | 0.0876ms | 0.1100ms | 5.71M |
-| 🥈 | **[Immutable.js](https://github.com/immutable-js/immutable-js)** | 792.53K | ±1.09% | 1.2618ms | 1.8540ms | 396.27K |
-| 🥉 | **[Immutability Helper](https://github.com/kolodny/immutability-helper)** | 580.72K | ±0.20% | 1.7220ms | 1.9040ms | 290.36K |
-| 4 | **[Craft](https://github.com/sylphxltd/craft)** | 321.96K | ±0.53% | 3.1060ms | 3.7870ms | 160.98K |
-| 5 | **[Mutative](https://github.com/unadlib/mutative)** | 212.53K | ±0.62% | 4.7051ms | 9.9290ms | 106.27K |
-| 6 | **[Immer](https://github.com/immerjs/immer)** | 144.22K | ±0.59% | 6.9339ms | 11.9420ms | 72.11K |
-| 7 | **[Seamless Immutable](https://github.com/rtfeldman/seamless-immutable)** | 60.76K | ±0.75% | 16.4594ms | 25.9290ms | 30.38K |
+| 🥇 | **Native Filter** | 12.48M | ±0.96% | 0.0801ms | 0.1100ms | 6.24M |
+| 🥈 | **[Immutable.js](https://github.com/immutable-js/immutable-js)** | 797.26K | ±0.57% | 1.2543ms | 1.6030ms | 398.63K |
+| 🥉 | **[Immutability Helper](https://github.com/kolodny/immutability-helper)** | 582.89K | ±0.16% | 1.7156ms | 1.8330ms | 291.45K |
+| 4 | **[Craft](https://github.com/sylphxltd/craft)** | 320.65K | ±0.27% | 3.1187ms | 3.5470ms | 160.33K |
+| 5 | **[Mutative](https://github.com/unadlib/mutative)** | 217.77K | ±0.29% | 4.5921ms | 5.5110ms | 108.88K |
+| 6 | **[Immer](https://github.com/immerjs/immer)** | 142.50K | ±0.33% | 7.0176ms | 12.3130ms | 71.25K |
+| 7 | **[Seamless Immutable](https://github.com/rtfeldman/seamless-immutable)** | 61.34K | ±0.35% | 16.3016ms | 25.5470ms | 30.67K |
 
-**Key Insight:** Native Filter is **187.84x faster** than Seamless Immutable in this category.
+**Key Insight:** Native Filter is **203.46x faster** than Seamless Immutable in this category.
 
 ### Array Update {#array-update}
 
 **Performance Comparison:**
 
 ```
-🥇 Craft                ████████████████████████████████████████ 484.04K
-🥈 Mutative             ████████████████████████████████████ 434.99K
-🥉 Immutability Helper  █████████████████████████████████ 401.60K
-   Immer                ███████████████████████ 284.11K
-   Immutable.js         ██████████████ 173.05K
-   Seamless Immutable   ███ 31.20K
+🥇 Craft                ████████████████████████████████████████ 502.37K
+🥈 Mutative             ████████████████████████████████████ 454.54K
+🥉 Immutability Helper  ████████████████████████████████ 399.59K
+   Immer                ███████████████████████ 284.57K
+   Immutable.js         ███████████████ 187.52K
+   Seamless Immutable   ███ 31.43K
 ```
 
 | Rank | Library | Ops/sec | Variance | Mean | p99 | Samples |
 |------|---------|---------|----------|------|-----|--------|
-| 🥇 | **Native Map** | 10.90M | ±1.60% | 0.0917ms | 0.1310ms | 5.45M |
-| 🥈 | **[Craft](https://github.com/sylphxltd/craft)** | 484.04K | ±1.38% | 2.0660ms | 2.7350ms | 242.02K |
-| 🥉 | **[Mutative](https://github.com/unadlib/mutative)** | 434.99K | ±1.54% | 2.2989ms | 4.1580ms | 217.50K |
-| 4 | **[Immutability Helper](https://github.com/kolodny/immutability-helper)** | 401.60K | ±0.57% | 2.4901ms | 3.2660ms | 200.80K |
-| 5 | **[Immer](https://github.com/immerjs/immer)** | 284.11K | ±0.42% | 3.5198ms | 4.4280ms | 142.05K |
-| 6 | **[Immutable.js](https://github.com/immutable-js/immutable-js)** | 173.05K | ±1.53% | 5.7788ms | 9.0160ms | 86.52K |
-| 7 | **[Seamless Immutable](https://github.com/rtfeldman/seamless-immutable)** | 31.20K | ±1.07% | 32.0482ms | 45.1850ms | 15.60K |
+| 🥇 | **Native Map** | 11.45M | ±0.93% | 0.0873ms | 0.1300ms | 5.73M |
+| 🥈 | **[Craft](https://github.com/sylphxltd/craft)** | 502.37K | ±0.46% | 1.9905ms | 2.3040ms | 251.19K |
+| 🥉 | **[Mutative](https://github.com/unadlib/mutative)** | 454.54K | ±0.60% | 2.2000ms | 2.5550ms | 227.27K |
+| 4 | **[Immutability Helper](https://github.com/kolodny/immutability-helper)** | 399.59K | ±0.30% | 2.5026ms | 2.9150ms | 199.79K |
+| 5 | **[Immer](https://github.com/immerjs/immer)** | 284.57K | ±0.29% | 3.5141ms | 4.2380ms | 142.28K |
+| 6 | **[Immutable.js](https://github.com/immutable-js/immutable-js)** | 187.52K | ±0.55% | 5.3327ms | 6.1810ms | 93.76K |
+| 7 | **[Seamless Immutable](https://github.com/rtfeldman/seamless-immutable)** | 31.43K | ±0.49% | 31.8209ms | 46.7870ms | 15.71K |
 
-**Key Insight:** Native Map is **349.37x faster** than Seamless Immutable in this category.
+**Key Insight:** Native Map is **364.50x faster** than Seamless Immutable in this category.
 
 ### Deep Nested Update (5 levels) {#deep-nested-update-5-levels-}
 
 **Performance Comparison:**
 
 ```
-🥇 Immutability Helper  ████████████████████████████████████████ 312.01K
-🥈 Craft                ███████████████████████████████████ 271.22K
-🥉 Mutative             ███████████████████████████ 208.25K
-   Immutable.js         ██████████████████████ 172.76K
-   Immer                █████████████ 97.76K
-   Seamless Immutable   ███ 22.10K
+🥇 Immutability Helper  ████████████████████████████████████████ 313.27K
+🥈 Craft                ███████████████████████████████████ 274.38K
+🥉 Mutative             ████████████████████████████ 215.91K
+   Immutable.js         ██████████████████████ 174.87K
+   Immer                █████████████ 98.66K
+   Seamless Immutable   ███ 22.34K
 ```
 
 | Rank | Library | Ops/sec | Variance | Mean | p99 | Samples |
 |------|---------|---------|----------|------|-----|--------|
-| 🥇 | **Native Spread** | 9.11M | ±0.68% | 0.1098ms | 0.1610ms | 4.55M |
-| 🥈 | **[Immutability Helper](https://github.com/kolodny/immutability-helper)** | 312.01K | ±0.53% | 3.2050ms | 4.4280ms | 156.00K |
-| 🥉 | **[Craft](https://github.com/sylphxltd/craft)** | 271.22K | ±0.96% | 3.6870ms | 4.5180ms | 135.61K |
-| 4 | **[Mutative](https://github.com/unadlib/mutative)** | 208.25K | ±0.97% | 4.8019ms | 9.5380ms | 104.13K |
-| 5 | **[Immutable.js](https://github.com/immutable-js/immutable-js)** | 172.76K | ±2.95% | 5.7883ms | 9.7780ms | 86.38K |
-| 6 | **[Immer](https://github.com/immerjs/immer)** | 97.76K | ±0.80% | 10.2293ms | 19.4070ms | 48.88K |
-| 7 | **[Seamless Immutable](https://github.com/rtfeldman/seamless-immutable)** | 22.10K | ±0.60% | 45.2416ms | 60.0620ms | 11.05K |
+| 🥇 | **Native Spread** | 9.14M | ±0.61% | 0.1094ms | 0.1400ms | 4.57M |
+| 🥈 | **[Immutability Helper](https://github.com/kolodny/immutability-helper)** | 313.27K | ±0.36% | 3.1921ms | 3.5460ms | 156.63K |
+| 🥉 | **[Craft](https://github.com/sylphxltd/craft)** | 274.38K | ±0.45% | 3.6446ms | 4.4590ms | 137.19K |
+| 4 | **[Mutative](https://github.com/unadlib/mutative)** | 215.91K | ±0.42% | 4.6315ms | 5.4600ms | 107.96K |
+| 5 | **[Immutable.js](https://github.com/immutable-js/immutable-js)** | 174.87K | ±0.45% | 5.7185ms | 7.0140ms | 87.44K |
+| 6 | **[Immer](https://github.com/immerjs/immer)** | 98.66K | ±0.37% | 10.1355ms | 19.3160ms | 49.33K |
+| 7 | **[Seamless Immutable](https://github.com/rtfeldman/seamless-immutable)** | 22.34K | ±0.32% | 44.7603ms | 54.3910ms | 11.17K |
 
-**Key Insight:** Native Spread is **412.03x faster** than Seamless Immutable in this category.
+**Key Insight:** Native Spread is **409.28x faster** than Seamless Immutable in this category.
 
 ### Large Array Update (1000 items) {#large-array-update-1000-items-}
 
 **Performance Comparison:**
 
 ```
-🥇 Mutative             ████████████████████████████████████████ 348.77K
-🥈 Immer                ███ 29.86K
-🥉 Craft                ███ 21.95K
-   Immutability Helper  █ 6.39K
-   Immutable.js         █ 664.31
-   Seamless Immutable   █ 248.23
+🥇 Mutative             ████████████████████████████████████████ 357.98K
+🥈 Immer                ███ 29.23K
+🥉 Craft                ██ 21.95K
+   Immutability Helper  █ 6.44K
+   Immutable.js         █ 738.37
+   Seamless Immutable   █ 254.34
 ```
 
 | Rank | Library | Ops/sec | Variance | Mean | p99 | Samples |
 |------|---------|---------|----------|------|-----|--------|
-| 🥇 | **[Mutative](https://github.com/unadlib/mutative)** | 348.77K | ±0.96% | 2.8672ms | 3.5970ms | 174.39K |
-| 🥈 | **Native Map** | 343.09K | ±1.07% | 2.9147ms | 3.6670ms | 171.54K |
-| 🥉 | **[Immer](https://github.com/immerjs/immer)** | 29.86K | ±0.54% | 33.4909ms | 47.0980ms | 14.93K |
-| 4 | **[Craft](https://github.com/sylphxltd/craft)** | 21.95K | ±0.54% | 45.5527ms | 59.5310ms | 10.98K |
-| 5 | **[Immutability Helper](https://github.com/kolodny/immutability-helper)** | 6.39K | ±0.60% | 156.4157ms | 197.6600ms | 3.20K |
-| 6 | **[Immutable.js](https://github.com/immutable-js/immutable-js)** | 664.31 | ±1.87% | 1505.3185ms | 2313.9800ms | 333.00 |
-| 7 | **[Seamless Immutable](https://github.com/rtfeldman/seamless-immutable)** | 248.23 | ±0.68% | 4028.5608ms | 4634.8730ms | 125.00 |
+| 🥇 | **[Mutative](https://github.com/unadlib/mutative)** | 357.98K | ±0.84% | 2.7934ms | 4.9790ms | 178.99K |
+| 🥈 | **Native Map** | 354.19K | ±0.68% | 2.8234ms | 3.8970ms | 177.09K |
+| 🥉 | **[Immer](https://github.com/immerjs/immer)** | 29.23K | ±0.50% | 34.2083ms | 67.5560ms | 14.62K |
+| 4 | **[Craft](https://github.com/sylphxltd/craft)** | 21.95K | ±0.45% | 45.5489ms | 54.5720ms | 10.98K |
+| 5 | **[Immutability Helper](https://github.com/kolodny/immutability-helper)** | 6.44K | ±0.38% | 155.3072ms | 185.6950ms | 3.22K |
+| 6 | **[Immutable.js](https://github.com/immutable-js/immutable-js)** | 738.37 | ±1.15% | 1354.3417ms | 1831.4130ms | 370.00 |
+| 7 | **[Seamless Immutable](https://github.com/rtfeldman/seamless-immutable)** | 254.34 | ±0.50% | 3931.6714ms | 4402.6890ms | 128.00 |
 
-**Key Insight:** Mutative is **1405.04x faster** than Seamless Immutable in this category.
+**Key Insight:** Mutative is **1407.46x faster** than Seamless Immutable in this category.
 
 ### Multiple Updates (3 changes) {#multiple-updates-3-changes-}
 
 **Performance Comparison:**
 
 ```
-🥇 Immutability Helper  ████████████████████████████████████████ 277.54K
-🥈 Craft                ███████████████████████████████████████ 273.57K
-🥉 Mutative             ████████████████████████████ 195.58K
-   Immutable.js         ███████████████████████ 161.29K
-   Immer                ██████████████████ 126.70K
-   Seamless Immutable   ███ 19.08K
+🥇 Immutability Helper  ████████████████████████████████████████ 277.85K
+🥈 Craft                ███████████████████████████████████████ 273.27K
+🥉 Mutative             █████████████████████████████ 201.54K
+   Immutable.js         ███████████████████████ 161.00K
+   Immer                ██████████████████ 125.48K
+   Seamless Immutable   ███ 19.04K
 ```
 
 | Rank | Library | Ops/sec | Variance | Mean | p99 | Samples |
 |------|---------|---------|----------|------|-----|--------|
-| 🥇 | **Native Spread** | 6.37M | ±1.32% | 0.1570ms | 0.1800ms | 3.18M |
-| 🥈 | **[Immutability Helper](https://github.com/kolodny/immutability-helper)** | 277.54K | ±0.70% | 3.6031ms | 4.8790ms | 138.77K |
-| 🥉 | **[Craft](https://github.com/sylphxltd/craft)** | 273.57K | ±0.81% | 3.6554ms | 4.5790ms | 136.78K |
-| 4 | **[Mutative](https://github.com/unadlib/mutative)** | 195.58K | ±0.82% | 5.1131ms | 7.1030ms | 97.79K |
-| 5 | **[Immutable.js](https://github.com/immutable-js/immutable-js)** | 161.29K | ±0.88% | 6.1999ms | 7.3730ms | 80.65K |
-| 6 | **[Immer](https://github.com/immerjs/immer)** | 126.70K | ±0.74% | 7.8925ms | 14.6280ms | 63.35K |
-| 7 | **[Seamless Immutable](https://github.com/rtfeldman/seamless-immutable)** | 19.08K | ±0.56% | 52.4219ms | 63.6090ms | 9.54K |
+| 🥇 | **Native Spread** | 6.39M | ±1.00% | 0.1566ms | 0.1710ms | 3.19M |
+| 🥈 | **[Immutability Helper](https://github.com/kolodny/immutability-helper)** | 277.85K | ±0.51% | 3.5991ms | 3.9970ms | 138.92K |
+| 🥉 | **[Craft](https://github.com/sylphxltd/craft)** | 273.27K | ±0.50% | 3.6594ms | 5.9610ms | 136.64K |
+| 4 | **[Mutative](https://github.com/unadlib/mutative)** | 201.54K | ±0.48% | 4.9618ms | 5.6610ms | 100.77K |
+| 5 | **[Immutable.js](https://github.com/immutable-js/immutable-js)** | 161.00K | ±0.59% | 6.2114ms | 9.8180ms | 80.50K |
+| 6 | **[Immer](https://github.com/immerjs/immer)** | 125.48K | ±0.63% | 7.9695ms | 16.2200ms | 62.74K |
+| 7 | **[Seamless Immutable](https://github.com/rtfeldman/seamless-immutable)** | 19.04K | ±0.38% | 52.5209ms | 63.0480ms | 9.52K |
 
-**Key Insight:** Native Spread is **333.83x faster** than Seamless Immutable in this category.
+**Key Insight:** Native Spread is **335.48x faster** than Seamless Immutable in this category.
 
 ## 🚀 Running Benchmarks
 
@@ -528,4 +528,4 @@ This benchmark is automatically updated daily by GitHub Actions. Benchmarks run 
 
 ---
 
-*Last generated: 2025-11-09T14:12:08.806Z*
+*Last generated: 2025-11-09T14:54:05.355Z*

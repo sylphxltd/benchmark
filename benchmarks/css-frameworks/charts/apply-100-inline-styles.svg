@@ -10,23 +10,23 @@
   <!-- Grid lines -->
   <line x1="60" y1="60" x2="740" y2="60" stroke="#e5e7eb" stroke-width="1"/>
   <text x="50" y="65" text-anchor="end" font-size="12" fill="#6b7280">
-    337K
+    340K
   </text>
   <line x1="60" y1="116" x2="740" y2="116" stroke="#e5e7eb" stroke-width="1"/>
   <text x="50" y="121" text-anchor="end" font-size="12" fill="#6b7280">
-    269K
+    272K
   </text>
   <line x1="60" y1="172" x2="740" y2="172" stroke="#e5e7eb" stroke-width="1"/>
   <text x="50" y="177" text-anchor="end" font-size="12" fill="#6b7280">
-    202K
+    204K
   </text>
   <line x1="60" y1="228" x2="740" y2="228" stroke="#e5e7eb" stroke-width="1"/>
   <text x="50" y="233" text-anchor="end" font-size="12" fill="#6b7280">
-    135K
+    136K
   </text>
   <line x1="60" y1="284" x2="740" y2="284" stroke="#e5e7eb" stroke-width="1"/>
   <text x="50" y="289" text-anchor="end" font-size="12" fill="#6b7280">
-    67K
+    68K
   </text>
   <line x1="60" y1="340" x2="740" y2="340" stroke="#e5e7eb" stroke-width="1"/>
   <text x="50" y="345" text-anchor="end" font-size="12" fill="#6b7280">
@@ -41,22 +41,22 @@
   <text x="740" y="365" text-anchor="middle" font-size="10" fill="#6b7280" transform="rotate(-45, 740, 365)">
     11-09
   </text>
-  <polyline points="60,97.77492240751354 400,96.57360963829544 740,103.16464283583218" fill="none" stroke="#3b82f6" stroke-width="2"/>
-  <circle cx="60" cy="97.77492240751354" r="4" fill="#3b82f6"/>
-  <circle cx="400" cy="96.57360963829544" r="4" fill="#3b82f6"/>
-  <circle cx="740" cy="103.16464283583218" r="4" fill="#3b82f6"/>
-  <polyline points="60,99.2219434408259 400,99.10485305112732 740,100.9951072325415" fill="none" stroke="#ef4444" stroke-width="2"/>
-  <circle cx="60" cy="99.2219434408259" r="4" fill="#ef4444"/>
-  <circle cx="400" cy="99.10485305112732" r="4" fill="#ef4444"/>
-  <circle cx="740" cy="100.9951072325415" r="4" fill="#ef4444"/>
-  <polyline points="60,90.30298361498737 400,85.4545454545455 740,92.83129648841168" fill="none" stroke="#10b981" stroke-width="2"/>
-  <circle cx="60" cy="90.30298361498737" r="4" fill="#10b981"/>
-  <circle cx="400" cy="85.4545454545455" r="4" fill="#10b981"/>
-  <circle cx="740" cy="92.83129648841168" r="4" fill="#10b981"/>
-  <polyline points="60,98.74434647308766 400,95.53378080422141 740,95.88731716592153" fill="none" stroke="#f59e0b" stroke-width="2"/>
-  <circle cx="60" cy="98.74434647308766" r="4" fill="#f59e0b"/>
-  <circle cx="400" cy="95.53378080422141" r="4" fill="#f59e0b"/>
-  <circle cx="740" cy="95.88731716592153" r="4" fill="#f59e0b"/>
+  <polyline points="60,99.94226784839591 400,98.751704006495 740,100.07668007415782" fill="none" stroke="#3b82f6" stroke-width="2"/>
+  <circle cx="60" cy="99.94226784839591" r="4" fill="#3b82f6"/>
+  <circle cx="400" cy="98.751704006495" r="4" fill="#3b82f6"/>
+  <circle cx="740" cy="100.07668007415782" r="4" fill="#3b82f6"/>
+  <polyline points="60,101.3763414426133 400,101.26029873684902 740,100.78238183157154" fill="none" stroke="#ef4444" stroke-width="2"/>
+  <circle cx="60" cy="101.3763414426133" r="4" fill="#ef4444"/>
+  <circle cx="400" cy="101.26029873684902" r="4" fill="#ef4444"/>
+  <circle cx="740" cy="100.78238183157154" r="4" fill="#ef4444"/>
+  <polyline points="60,92.53718535595846 400,87.73212932773376 740,85.45454545454547" fill="none" stroke="#10b981" stroke-width="2"/>
+  <circle cx="60" cy="92.53718535595846" r="4" fill="#10b981"/>
+  <circle cx="400" cy="87.73212932773376" r="4" fill="#10b981"/>
+  <circle cx="740" cy="85.45454545454547" r="4" fill="#10b981"/>
+  <polyline points="60,100.90301784582778 400,97.72117919785563 740,96.99848085496629" fill="none" stroke="#f59e0b" stroke-width="2"/>
+  <circle cx="60" cy="100.90301784582778" r="4" fill="#f59e0b"/>
+  <circle cx="400" cy="97.72117919785563" r="4" fill="#f59e0b"/>
+  <circle cx="740" cy="96.99848085496629" r="4" fill="#f59e0b"/>
   <rect x="650" y="42" width="12" height="12" fill="#3b82f6"/>
   <text x="668" y="53" font-size="12" fill="#374151">Silk - Apply styles</text>
   <rect x="650" y="62" width="12" height="12" fill="#ef4444"/>
