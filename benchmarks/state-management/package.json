@@ -11,7 +11,14 @@
     "benchmark:async": "node ../../scripts/run-group-benchmark.cjs async .",
     "benchmark:complexity": "node ../../scripts/run-group-benchmark.cjs complexity .",
     "benchmark:memory": "node ../../scripts/run-group-benchmark.cjs memory .",
-    "benchmark:all-groups": "npm run benchmark:read && npm run benchmark:write && npm run benchmark:creation && npm run benchmark:async && npm run benchmark:complexity && npm run benchmark:memory",
+    "benchmark:form": "node ../../scripts/run-group-benchmark.cjs form .",
+    "benchmark:cache": "node ../../scripts/run-group-benchmark.cjs cache .",
+    "benchmark:read-x1000": "node ../../scripts/run-group-benchmark.cjs read-x1000 .",
+    "benchmark:read-x10000": "node ../../scripts/run-group-benchmark.cjs read-x10000 .",
+    "benchmark:write-x1000": "node ../../scripts/run-group-benchmark.cjs write-x1000 .",
+    "benchmark:write-x10000": "node ../../scripts/run-group-benchmark.cjs write-x10000 .",
+    "benchmark:all-groups": "npm run benchmark:read && npm run benchmark:write && npm run benchmark:creation && npm run benchmark:async && npm run benchmark:complexity && npm run benchmark:memory && npm run benchmark:form && npm run benchmark:cache",
+    "benchmark:all-scales": "npm run benchmark:read && npm run benchmark:read-x1000 && npm run benchmark:write && npm run benchmark:write-x1000 && npm run benchmark:creation && npm run benchmark:async && npm run benchmark:complexity && npm run benchmark:memory && npm run benchmark:form && npm run benchmark:cache",
     "clean": "rm -rf results && rm -rf groups/*/results.json && mkdir -p results"
   },
   "dependencies": {

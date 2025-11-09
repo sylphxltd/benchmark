@@ -34,7 +34,10 @@
   },
   "include": [
     "src/**/*",
-    "groups/**/*"
+    "groups/**/*",
+    "libraries/**/*",
+    "test-types/**/*",
+    "generated/**/*"
   ],
   "exclude": [
     "node_modules",
