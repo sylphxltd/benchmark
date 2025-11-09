@@ -472,21 +472,72 @@ export const zustandStoreV2 = create((set, get) => ({
 export const zustandActionsV2 = {
   createStore: () => create(() => ({ count: 0 })),
 
-  increment: () => zustandStoreV2.increment(),
-  spliceUser: (index, deleteCount, item) => zustandStoreV2.spliceUser(index, deleteCount, item),
-  sortUsers: (key) => zustandStoreV2.sortUsers(key),
-  findUser: (id) => zustandStoreV2.findUser(id),
-  setTenLevelNested: (value) => zustandStoreV2.setTenLevelNested(value),
-  getDeepValue: () => zustandStoreV2.getDeepValue(),
-  createDeepObject: () => zustandStoreV2.createDeepObject(),
-  updateFormField: (path, value) => zustandStoreV2.updateFormField(path, value),
-  optimisticUpdate: () => zustandStoreV2.optimisticUpdate(),
-  undo: () => zustandStoreV2.undo(),
-  batchComplexState: () => zustandStoreV2.batchComplexState(),
-  setNullValue: () => zustandStoreV2.setNullValue(),
-  setUndefinedValue: () => zustandStoreV2.setUndefinedValue(),
-  loadAsyncData: () => zustandStoreV2.loadAsyncData(),
-  concurrentAsync: () => zustandStoreV2.concurrentAsync(),
+  increment: () => {
+    const state = zustandStoreV2.getState();
+    return state.increment();
+  },
+  spliceUser: (index, deleteCount, item) => {
+    const state = zustandStoreV2.getState();
+    return state.spliceUser(index, deleteCount, item);
+  },
+  sortUsers: (key) => {
+    const state = zustandStoreV2.getState();
+    return state.sortUsers(key);
+  },
+  findUser: (id) => {
+    const state = zustandStoreV2.getState();
+    return state.findUser(id);
+  },
+  setTenLevelNested: (value) => {
+    const state = zustandStoreV2.getState();
+    return state.setTenLevelNested(value);
+  },
+  getDeepValue: () => {
+    const state = zustandStoreV2.getState();
+    return state.getDeepValue();
+  },
+  createDeepObject: () => {
+    const state = zustandStoreV2.getState();
+    return state.createDeepObject();
+  },
+  updateFormField: (path, value) => {
+    const state = zustandStoreV2.getState();
+    return state.updateFormField(path, value);
+  },
+  optimisticUpdate: () => {
+    const state = zustandStoreV2.getState();
+    return state.optimisticUpdate();
+  },
+  undo: () => {
+    const state = zustandStoreV2.getState();
+    return state.undo();
+  },
+  batchComplexState: () => {
+    const state = zustandStoreV2.getState();
+    return state.batchComplexState();
+  },
+  setNullValue: () => {
+    const state = zustandStoreV2.getState();
+    return state.setNullValue();
+  },
+  setUndefinedValue: () => {
+    const state = zustandStoreV2.getState();
+    return state.setUndefinedValue();
+  },
+  loadAsyncData: () => {
+    const state = zustandStoreV2.getState();
+    return state.loadAsyncData();
+  },
+  concurrentAsync: () => {
+    const state = zustandStoreV2.getState();
+    return state.concurrentAsync();
+  },
+
+  // Add missing getDoubled method
+  getDoubled: () => {
+    const state = zustandStoreV2.getState();
+    return state.count * 2;
+  },
 
   // Missing methods for comprehensive v2
   invalidateComputed: () => {
@@ -701,6 +752,11 @@ export const jotaiActionsV2 = {
     }));
     return largeArray;
   },
+
+  // Add missing getDoubled method
+  getDoubled: () => {
+    return jotaiStore.count * 2;
+  },
 };
 
 // ============================================================================
@@ -869,6 +925,11 @@ export const mobxActionsV2 = {
       data: new Array(100).fill(Math.random())
     }));
     return largeArray;
+  },
+
+  // Add missing getDoubled method
+  getDoubled: () => {
+    return mobxStoreV2.count * 2;
   },
 };
 
