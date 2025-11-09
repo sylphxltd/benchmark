@@ -21,7 +21,7 @@ Professional performance comparison of JavaScript state management libraries.
 
 - **Last Updated:** November 9, 2025
 - **Last Run:** 6:20:00 AM UTC
-- **Environment:** Node.js v25.0.0, darwin arm64
+- **Environment:** Node.js v20.19.5, linux x64
 - **Test Framework:** Vitest Bench
 - **Iterations:** 3 runs averaged for statistical accuracy
 
@@ -63,14 +63,14 @@ Based on geometric mean across all supported tests (excludes extreme values):
 
 | Rank | Library | Score | Relative |
 |------|---------|-------|----------|
-| 🥇 | **[Solid Signals](https://github.com/solidjs/solid)** | 76.7/100 | Baseline |
-| 🥈 | **[Zen](https://github.com/sylphxltd/zen)** | 60.3/100 | 78.6% |
-| 🥉 | **[Preact Signals](https://github.com/preactjs/signals)** | 52.4/100 | 68.3% |
-| 4 | **[Zustand](https://github.com/pmndrs/zustand)** | 7.7/100 | 10.0% |
-| 5 | **[Jotai](https://github.com/pmndrs/jotai)** | 5.5/100 | 7.2% |
-| 6 | **[MobX](https://github.com/mobxjs/mobx)** | 3.6/100 | 4.7% |
-| 7 | **[Redux Toolkit](https://github.com/reduxjs/redux-toolkit)** | 3.2/100 | 4.2% |
-| 8 | **[Valtio](https://github.com/pmndrs/valtio)** | 1.9/100 | 2.5% |
+| 🥇 | **[Redux Toolkit](https://github.com/reduxjs/redux-toolkit)** | 0.0/100 | Baseline |
+| 🥇 | **[Zustand](https://github.com/pmndrs/zustand)** | 0.0/100 | Baseline |
+| 🥇 | **[Jotai](https://github.com/pmndrs/jotai)** | 0.0/100 | Baseline |
+| 🥇 | **[MobX](https://github.com/mobxjs/mobx)** | 0.0/100 | Baseline |
+| 🥇 | **[Valtio](https://github.com/pmndrs/valtio)** | 0.0/100 | Baseline |
+| 🥇 | **[Preact Signals](https://github.com/preactjs/signals)** | 0.0/100 | Baseline |
+| 🥇 | **[Solid Signals](https://github.com/solidjs/solid)** | 0.0/100 | Baseline |
+| 🥇 | **[Zen](https://github.com/sylphxltd/zen)** | 0.0/100 | Baseline |
 
 > 📊 **Methodology:** Geometric mean prevents extreme values from skewing results. Each test is normalized (fastest = 100) then averaged.
 
@@ -97,14 +97,14 @@ Percentage of benchmark tests supported:
 
 | Rank | Library | Supported | Coverage |
 |------|---------|-----------|----------|
-| 🥇 | **[Jotai](https://github.com/pmndrs/jotai)** | 23/23 | 100% |
-| 🥇 | **[Zen](https://github.com/sylphxltd/zen)** | 23/23 | 100% |
-| 🥉 | **[Redux Toolkit](https://github.com/reduxjs/redux-toolkit)** | 22/23 | 96% |
-| 🥉 | **[Zustand](https://github.com/pmndrs/zustand)** | 22/23 | 96% |
-| 🥉 | **[MobX](https://github.com/mobxjs/mobx)** | 22/23 | 96% |
-| 🥉 | **[Valtio](https://github.com/pmndrs/valtio)** | 22/23 | 96% |
-| 🥉 | **[Preact Signals](https://github.com/preactjs/signals)** | 22/23 | 96% |
-| 🥉 | **[Solid Signals](https://github.com/solidjs/solid)** | 22/23 | 96% |
+| 🥇 | **[Jotai](https://github.com/pmndrs/jotai)** | 23/45 | 51% |
+| 🥇 | **[Zen](https://github.com/sylphxltd/zen)** | 23/45 | 51% |
+| 🥉 | **[Redux Toolkit](https://github.com/reduxjs/redux-toolkit)** | 22/45 | 49% |
+| 🥉 | **[Zustand](https://github.com/pmndrs/zustand)** | 22/45 | 49% |
+| 🥉 | **[MobX](https://github.com/mobxjs/mobx)** | 22/45 | 49% |
+| 🥉 | **[Valtio](https://github.com/pmndrs/valtio)** | 22/45 | 49% |
+| 🥉 | **[Preact Signals](https://github.com/preactjs/signals)** | 22/45 | 49% |
+| 🥉 | **[Solid Signals](https://github.com/solidjs/solid)** | 22/45 | 49% |
 
 > 🎯 **Note:** Higher coverage means more features, but evaluate based on your specific needs.
 
@@ -136,6 +136,29 @@ Comparison of core features and capabilities across state management libraries
 ### 📑 Test Categories
 
 - [Store Creation](#store-creation)
+- [Simple Increment](#simple-increment)
+- [High Frequency Read](#high-frequency-read)
+- [Burst Updates](#burst-updates)
+- [Array Splice Operations](#array-splice-operations)
+- [Large Array Sort](#large-array-sort)
+- [Array Find Operations](#array-find-operations)
+- [Deep Object Creation](#deep-object-creation)
+- [10-Level Nested Update](#10-level-nested-update)
+- [Deep Read Access](#deep-read-access)
+- [Complex Computed Chain](#complex-computed-chain)
+- [Computed Invalidation](#computed-invalidation)
+- [Subscription Cascade](#subscription-cascade)
+- [Reaction Performance](#reaction-performance)
+- [Multi-Store Operations](#multi-store-operations)
+- [Memory Allocation](#memory-allocation)
+- [Form State Management](#form-state-management)
+- [Optimistic Update](#optimistic-update)
+- [Undo/Redo Operations](#undo-redo-operations)
+- [Batch State Operations](#batch-state-operations)
+- [Null Value Handling](#null-value-handling)
+- [Undefined Value Handling](#undefined-value-handling)
+- [Async State Loading](#async-state-loading)
+- [Concurrent Async Operations](#concurrent-async-operations)
 - [Read (1000x)](#read-1000x-)
 - [Write (no listeners)](#write-no-listeners-)
 - [Write (1 subscriber)](#write-1-subscriber-)
@@ -145,7 +168,6 @@ Comparison of core features and capabilities across state management libraries
 - [Chained Computed (3 levels)](#chained-computed-3-levels-)
 - [Batching (100 updates)](#batching-100-updates-)
 - [Subscribe/Unsubscribe](#subscribe-unsubscribe)
-- [Simple Increment](#simple-increment)
 - [Computed Access](#computed-access)
 - [Nested Update](#nested-update)
 - [Array Push](#array-push)
@@ -164,630 +186,1278 @@ Comparison of core features and capabilities across state management libraries
 **Performance Comparison:**
 
 ```
-🥇 Zen                  ████████████████████████████████████████ 11.21M
-🥈 Preact Signals       ███████████████████████████████████████ 11.01M
-🥉 Solid Signals        ██████████████████████████████████████ 10.64M
-   Zustand              █████████████████ 4.71M
-   Jotai                ███ 846.40K
-   Valtio               █ 320.97K
-   MobX                 █ 87.67K
-   Redux Toolkit        █ 42.44K
+🥇 Preact Signals       ████████████████████████████████████████ 10.54M
+🥈 Zen                  ████████████████████████████████████████ 10.53M
+🥉 Solid Signals        ██████████████████████████████████████ 9.89M
+   Zustand              ████████████████ 4.32M
+   Jotai                ███ 851.82K
+   Valtio               █ 377.79K
+   MobX                 █ 90.52K
+   Redux Toolkit        █ 42.06K
+   Redux Toolkit        █ 0.00
+   Zustand              █ 0.00
+   Jotai                █ 0.00
+   MobX                 █ 0.00
+   Valtio               █ 0.00
+   Preact Signals       █ 0.00
+   Solid Signals        █ 0.00
+   Zen                  █ 0.00
 ```
 
 | Rank | Library | Ops/sec | Variance | Mean | p99 | Samples |
 |------|---------|---------|----------|------|-----|--------|
-| 🥇 | **[Zen](https://github.com/sylphxltd/zen)** | 11.21M | ±0.10% | 0.0892ms | 0.1110ms | 5.61M |
-| 🥈 | **[Preact Signals](https://github.com/preactjs/signals)** | 11.01M | ±0.10% | 0.0908ms | 0.1200ms | 5.50M |
-| 🥉 | **[Solid Signals](https://github.com/solidjs/solid)** | 10.64M | ±0.10% | 0.0940ms | 0.1200ms | 5.32M |
-| 4 | **[Zustand](https://github.com/pmndrs/zustand)** | 4.71M | ±0.68% | 0.2123ms | 0.3510ms | 2.35M |
-| 5 | **[Jotai](https://github.com/pmndrs/jotai)** | 846.40K | ±8.89% | 1.1815ms | 1.1820ms | 423.20K |
-| 6 | **[Valtio](https://github.com/pmndrs/valtio)** | 320.97K | ±18.02% | 3.1156ms | 4.3480ms | 160.48K |
-| 7 | **[MobX](https://github.com/mobxjs/mobx)** | 87.67K | ±4.90% | 11.4066ms | 27.6420ms | 43.84K |
-| 8 | **[Redux Toolkit](https://github.com/reduxjs/redux-toolkit)** | 42.44K | ±4.95% | 23.5605ms | 62.6960ms | 21.22K |
+| 🥇 | **[Preact Signals](https://github.com/preactjs/signals)** | 10.54M | ±0.09% | 0.0949ms | 0.1110ms | 5.27M |
+| 🥈 | **[Zen](https://github.com/sylphxltd/zen)** | 10.53M | ±0.09% | 0.0950ms | 0.1200ms | 5.26M |
+| 🥉 | **[Solid Signals](https://github.com/solidjs/solid)** | 9.89M | ±0.11% | 0.1011ms | 0.1210ms | 4.95M |
+| 4 | **[Zustand](https://github.com/pmndrs/zustand)** | 4.32M | ±0.79% | 0.2314ms | 0.3400ms | 2.16M |
+| 5 | **[Jotai](https://github.com/pmndrs/jotai)** | 851.82K | ±8.89% | 1.1740ms | 1.1930ms | 425.91K |
+| 6 | **[Valtio](https://github.com/pmndrs/valtio)** | 377.79K | ±13.30% | 2.6470ms | 3.6470ms | 188.89K |
+| 7 | **[MobX](https://github.com/mobxjs/mobx)** | 90.52K | ±4.13% | 11.0477ms | 27.1510ms | 45.26K |
+| 8 | **[Redux Toolkit](https://github.com/reduxjs/redux-toolkit)** | 42.06K | ±4.37% | 23.7747ms | 55.9540ms | 21.03K |
+| 9 | **[Redux Toolkit](https://github.com/reduxjs/redux-toolkit)** | 0.00 | ±0.00% | NaNms | NaNms | 0.00 |
+| 9 | **[Zustand](https://github.com/pmndrs/zustand)** | 0.00 | ±0.00% | NaNms | NaNms | 0.00 |
+| 9 | **[Jotai](https://github.com/pmndrs/jotai)** | 0.00 | ±0.00% | NaNms | NaNms | 0.00 |
+| 9 | **[MobX](https://github.com/mobxjs/mobx)** | 0.00 | ±0.00% | NaNms | NaNms | 0.00 |
+| 9 | **[Valtio](https://github.com/pmndrs/valtio)** | 0.00 | ±0.00% | NaNms | NaNms | 0.00 |
+| 9 | **[Preact Signals](https://github.com/preactjs/signals)** | 0.00 | ±0.00% | NaNms | NaNms | 0.00 |
+| 9 | **[Solid Signals](https://github.com/solidjs/solid)** | 0.00 | ±0.00% | NaNms | NaNms | 0.00 |
+| 9 | **[Zen](https://github.com/sylphxltd/zen)** | 0.00 | ±0.00% | NaNms | NaNms | 0.00 |
 
-**Key Insight:** Zen is **264.16x faster** than Redux Toolkit in this category.
-
-### Read (1000x) {#read-1000x-}
-
-**Performance Comparison:**
-
-```
-🥇 Solid Signals        ████████████████████████████████████████ 2.38M
-🥈 Zen                  ███████████████████ 1.13M
-🥉 Preact Signals       ████████████ 739.01K
-   Zustand              ██████████ 602.89K
-   Redux Toolkit        ███████ 437.11K
-   Valtio               █ 40.94K
-   MobX                 █ 31.83K
-   Jotai                █ 3.21K
-```
-
-| Rank | Library | Ops/sec | Variance | Mean | p99 | Samples |
-|------|---------|---------|----------|------|-----|--------|
-| 🥇 | **[Solid Signals](https://github.com/solidjs/solid)** | 2.38M | ±0.10% | 0.4200ms | 0.7110ms | 1.19M |
-| 🥈 | **[Zen](https://github.com/sylphxltd/zen)** | 1.13M | ±0.20% | 0.8888ms | 0.9020ms | 562.53K |
-| 🥉 | **[Preact Signals](https://github.com/preactjs/signals)** | 739.01K | ±0.08% | 1.3532ms | 1.3520ms | 369.50K |
-| 4 | **[Zustand](https://github.com/pmndrs/zustand)** | 602.89K | ±0.08% | 1.6587ms | 1.6630ms | 301.45K |
-| 5 | **[Redux Toolkit](https://github.com/reduxjs/redux-toolkit)** | 437.11K | ±0.08% | 2.2878ms | 2.3340ms | 218.55K |
-| 6 | **[Valtio](https://github.com/pmndrs/valtio)** | 40.94K | ±0.30% | 24.4244ms | 31.4890ms | 20.47K |
-| 7 | **[MobX](https://github.com/mobxjs/mobx)** | 31.83K | ±0.09% | 31.4135ms | 38.6520ms | 15.92K |
-| 8 | **[Jotai](https://github.com/pmndrs/jotai)** | 3.21K | ±0.48% | 311.6611ms | 481.7070ms | 1.60K |
-
-**Key Insight:** Solid Signals is **742.00x faster** than Jotai in this category.
-
-### Write (no listeners) {#write-no-listeners-}
-
-**Performance Comparison:**
-
-```
-🥇 Preact Signals       ████████████████████████████████████████ 10.30M
-🥈 Solid Signals        ████████████████████████████████████████ 10.30M
-🥉 Zen                  ████████████████████████████████████████ 10.27M
-   MobX                 ██████████ 2.48M
-   Valtio               ██████ 1.65M
-   Jotai                ██ 536.31K
-   Redux Toolkit        █ 265.36K
-   Zustand              █ 166.91K
-```
-
-| Rank | Library | Ops/sec | Variance | Mean | p99 | Samples |
-|------|---------|---------|----------|------|-----|--------|
-| 🥇 | **[Preact Signals](https://github.com/preactjs/signals)** | 10.30M | ±0.09% | 0.0971ms | 0.1200ms | 5.15M |
-| 🥈 | **[Solid Signals](https://github.com/solidjs/solid)** | 10.30M | ±0.09% | 0.0971ms | 0.1200ms | 5.15M |
-| 🥉 | **[Zen](https://github.com/sylphxltd/zen)** | 10.27M | ±0.10% | 0.0973ms | 0.1200ms | 5.14M |
-| 4 | **[MobX](https://github.com/mobxjs/mobx)** | 2.48M | ±0.97% | 0.4037ms | 0.4510ms | 1.24M |
-| 5 | **[Valtio](https://github.com/pmndrs/valtio)** | 1.65M | ±0.96% | 0.6061ms | 0.6710ms | 824.91K |
-| 6 | **[Jotai](https://github.com/pmndrs/jotai)** | 536.31K | ±0.80% | 1.8646ms | 3.5360ms | 268.15K |
-| 7 | **[Redux Toolkit](https://github.com/reduxjs/redux-toolkit)** | 265.36K | ±0.73% | 3.7685ms | 4.6890ms | 132.68K |
-| 8 | **[Zustand](https://github.com/pmndrs/zustand)** | 166.91K | ±0.69% | 5.9912ms | 9.4880ms | 83.46K |
-
-**Key Insight:** Preact Signals is **61.72x faster** than Zustand in this category.
-
-### Write (1 subscriber) {#write-1-subscriber-}
-
-**Performance Comparison:**
-
-```
-🥇 Solid Signals        ████████████████████████████████████████ 7.90M
-🥈 Zen                  ██████████████████████ 4.42M
-🥉 Preact Signals       ███████████████ 2.96M
-   Redux Toolkit        █ 234.39K
-   Jotai                █ 206.27K
-   Zustand              █ 159.78K
-   MobX                 █ 5.41K
-   Valtio               █ 2.44K
-```
-
-| Rank | Library | Ops/sec | Variance | Mean | p99 | Samples |
-|------|---------|---------|----------|------|-----|--------|
-| 🥇 | **[Solid Signals](https://github.com/solidjs/solid)** | 7.90M | ±1.13% | 0.1266ms | 0.2000ms | 3.95M |
-| 🥈 | **[Zen](https://github.com/sylphxltd/zen)** | 4.42M | ±0.61% | 0.2262ms | 0.3210ms | 2.21M |
-| 🥉 | **[Preact Signals](https://github.com/preactjs/signals)** | 2.96M | ±1.65% | 0.3376ms | 0.3910ms | 1.48M |
-| 4 | **[Redux Toolkit](https://github.com/reduxjs/redux-toolkit)** | 234.39K | ±0.70% | 4.2664ms | 6.7230ms | 117.19K |
-| 5 | **[Jotai](https://github.com/pmndrs/jotai)** | 206.27K | ±5.36% | 4.8481ms | 8.9370ms | 103.13K |
-| 6 | **[Zustand](https://github.com/pmndrs/zustand)** | 159.78K | ±0.78% | 6.2586ms | 9.6980ms | 79.89K |
-| 7 | **[MobX](https://github.com/mobxjs/mobx)** | 5.41K | ±2.29% | 184.8195ms | 274.3510ms | 2.71K |
-| 8 | **[Valtio](https://github.com/pmndrs/valtio)** | 2.44K | ±2.87% | 409.0260ms | 1656.9250ms | 1.22K |
-
-**Key Insight:** Solid Signals is **3230.32x faster** than Valtio in this category.
-
-### Write (5 subscribers) {#write-5-subscribers-}
-
-**Performance Comparison:**
-
-```
-🥇 Solid Signals        ████████████████████████████████████████ 6.76M
-🥈 Zen                  ████████████████ 2.73M
-🥉 Preact Signals       ████████ 1.29M
-   Redux Toolkit        █ 164.44K
-   Zustand              █ 134.57K
-   Jotai                █ 84.92K
-   MobX                 █ 5.55K
-   Valtio               █ 2.48K
-```
-
-| Rank | Library | Ops/sec | Variance | Mean | p99 | Samples |
-|------|---------|---------|----------|------|-----|--------|
-| 🥇 | **[Solid Signals](https://github.com/solidjs/solid)** | 6.76M | ±1.44% | 0.1479ms | 0.2110ms | 3.38M |
-| 🥈 | **[Zen](https://github.com/sylphxltd/zen)** | 2.73M | ±0.52% | 0.3663ms | 0.5910ms | 1.37M |
-| 🥉 | **[Preact Signals](https://github.com/preactjs/signals)** | 1.29M | ±0.51% | 0.7750ms | 1.1220ms | 645.19K |
-| 4 | **[Redux Toolkit](https://github.com/reduxjs/redux-toolkit)** | 164.44K | ±2.94% | 6.0813ms | 10.8610ms | 82.22K |
-| 5 | **[Zustand](https://github.com/pmndrs/zustand)** | 134.57K | ±3.19% | 7.4313ms | 12.8740ms | 67.28K |
-| 6 | **[Jotai](https://github.com/pmndrs/jotai)** | 84.92K | ±13.29% | 11.7764ms | 31.4990ms | 42.46K |
-| 7 | **[MobX](https://github.com/mobxjs/mobx)** | 5.55K | ±2.74% | 180.0362ms | 454.5070ms | 2.78K |
-| 8 | **[Valtio](https://github.com/pmndrs/valtio)** | 2.48K | ±2.73% | 403.7286ms | 1297.9570ms | 1.24K |
-
-**Key Insight:** Solid Signals is **2729.89x faster** than Valtio in this category.
-
-### Computed - Cached Read {#computed-cached-read}
-
-**Performance Comparison:**
-
-```
-🥇 Preact Signals       ████████████████████████████████████████ 10.60M
-🥈 Zen                  ███████████████████████████████████████ 10.47M
-🥉 Zustand              ███████████████████████████████████████ 10.33M
-   Solid Signals        ███████████████████████████████████████ 10.24M
-   Redux Toolkit        ██████████████████████████████████ 9.04M
-   Valtio               ████████████████████████ 6.35M
-   MobX                 ████████████ 3.23M
-   Jotai                ████ 950.13K
-```
-
-| Rank | Library | Ops/sec | Variance | Mean | p99 | Samples |
-|------|---------|---------|----------|------|-----|--------|
-| 🥇 | **[Preact Signals](https://github.com/preactjs/signals)** | 10.60M | ±0.10% | 0.0943ms | 0.1200ms | 5.30M |
-| 🥈 | **[Zen](https://github.com/sylphxltd/zen)** | 10.47M | ±0.26% | 0.0956ms | 0.1110ms | 5.23M |
-| 🥉 | **[Zustand](https://github.com/pmndrs/zustand)** | 10.33M | ±0.15% | 0.0968ms | 0.1100ms | 5.16M |
-| 4 | **[Solid Signals](https://github.com/solidjs/solid)** | 10.24M | ±0.10% | 0.0977ms | 0.1110ms | 5.12M |
-| 5 | **[Redux Toolkit](https://github.com/reduxjs/redux-toolkit)** | 9.04M | ±0.10% | 0.1106ms | 0.1410ms | 4.52M |
-| 6 | **[Valtio](https://github.com/pmndrs/valtio)** | 6.35M | ±0.09% | 0.1575ms | 0.1810ms | 3.17M |
-| 7 | **[MobX](https://github.com/mobxjs/mobx)** | 3.23M | ±0.75% | 0.3100ms | 0.3500ms | 1.61M |
-| 8 | **[Jotai](https://github.com/pmndrs/jotai)** | 950.13K | ±0.60% | 1.0525ms | 1.4020ms | 475.06K |
-
-**Key Insight:** Preact Signals is **11.16x faster** than Jotai in this category.
-
-### Computed - Update {#computed-update}
-
-**Performance Comparison:**
-
-```
-🥇 Solid Signals        ████████████████████████████████████████ 10.30M
-🥈 Zen                  ████████████████████████████████████ 9.25M
-🥉 Preact Signals       ██████████████████████████ 6.70M
-   MobX                 ██████ 1.59M
-   Valtio               ██████ 1.51M
-   Jotai                █ 225.59K
-   Redux Toolkit        █ 199.18K
-   Zustand              █ 166.19K
-```
-
-| Rank | Library | Ops/sec | Variance | Mean | p99 | Samples |
-|------|---------|---------|----------|------|-----|--------|
-| 🥇 | **[Solid Signals](https://github.com/solidjs/solid)** | 10.30M | ±0.31% | 0.0971ms | 0.1300ms | 5.15M |
-| 🥈 | **[Zen](https://github.com/sylphxltd/zen)** | 9.25M | ±0.10% | 0.1081ms | 0.1410ms | 4.63M |
-| 🥉 | **[Preact Signals](https://github.com/preactjs/signals)** | 6.70M | ±0.09% | 0.1493ms | 0.1710ms | 3.35M |
-| 4 | **[MobX](https://github.com/mobxjs/mobx)** | 1.59M | ±0.22% | 0.6302ms | 0.8520ms | 793.34K |
-| 5 | **[Valtio](https://github.com/pmndrs/valtio)** | 1.51M | ±0.61% | 0.6631ms | 0.7310ms | 753.99K |
-| 6 | **[Jotai](https://github.com/pmndrs/jotai)** | 225.59K | ±3.15% | 4.4328ms | 8.6660ms | 112.80K |
-| 7 | **[Redux Toolkit](https://github.com/reduxjs/redux-toolkit)** | 199.18K | ±1.56% | 5.0206ms | 7.4740ms | 99.59K |
-| 8 | **[Zustand](https://github.com/pmndrs/zustand)** | 166.19K | ±0.56% | 6.0173ms | 9.1170ms | 83.09K |
-
-**Key Insight:** Solid Signals is **61.98x faster** than Zustand in this category.
-
-### Chained Computed (3 levels) {#chained-computed-3-levels-}
-
-**Performance Comparison:**
-
-```
-🥇 Zen                  ████████████████████████████████████████ 10.67M
-🥈 Solid Signals        ███████████████████████████████████████ 10.32M
-🥉 Zustand              ██████████████████████████████████████ 10.19M
-   Preact Signals       ██████████████████████████████████████ 10.17M
-   Redux Toolkit        ██████████████████████████████████ 9.10M
-   Valtio               █████████████████ 4.48M
-   MobX                 ██ 526.86K
-   Jotai                ██ 482.76K
-```
-
-| Rank | Library | Ops/sec | Variance | Mean | p99 | Samples |
-|------|---------|---------|----------|------|-----|--------|
-| 🥇 | **[Zen](https://github.com/sylphxltd/zen)** | 10.67M | ±0.09% | 0.0937ms | 0.1200ms | 5.34M |
-| 🥈 | **[Solid Signals](https://github.com/solidjs/solid)** | 10.32M | ±0.10% | 0.0969ms | 0.1110ms | 5.16M |
-| 🥉 | **[Zustand](https://github.com/pmndrs/zustand)** | 10.19M | ±0.10% | 0.0981ms | 0.1200ms | 5.10M |
-| 4 | **[Preact Signals](https://github.com/preactjs/signals)** | 10.17M | ±0.09% | 0.0983ms | 0.1300ms | 5.09M |
-| 5 | **[Redux Toolkit](https://github.com/reduxjs/redux-toolkit)** | 9.10M | ±0.10% | 0.1098ms | 0.1500ms | 4.55M |
-| 6 | **[Valtio](https://github.com/pmndrs/valtio)** | 4.48M | ±0.10% | 0.2234ms | 0.2700ms | 2.24M |
-| 7 | **[MobX](https://github.com/mobxjs/mobx)** | 526.86K | ±0.47% | 1.8980ms | 3.5770ms | 263.43K |
-| 8 | **[Jotai](https://github.com/pmndrs/jotai)** | 482.76K | ±0.39% | 2.0714ms | 2.4540ms | 241.38K |
-
-**Key Insight:** Zen is **22.11x faster** than Jotai in this category.
-
-### Batching (100 updates) {#batching-100-updates-}
-
-**Performance Comparison:**
-
-```
-🥇 Solid Signals        ████████████████████████████████████████ 6.26M
-🥈 Preact Signals       ██████ 884.07K
-🥉 Zen                  █████ 840.65K
-   MobX                 █ 49.47K
-   Valtio               █ 24.78K
-   Jotai                █ 7.69K
-   Redux Toolkit        █ 2.04K
-   Zustand              █ 1.76K
-```
-
-| Rank | Library | Ops/sec | Variance | Mean | p99 | Samples |
-|------|---------|---------|----------|------|-----|--------|
-| 🥇 | **[Solid Signals](https://github.com/solidjs/solid)** | 6.26M | ±0.12% | 0.1596ms | 0.2510ms | 3.13M |
-| 🥈 | **[Preact Signals](https://github.com/preactjs/signals)** | 884.07K | ±0.09% | 1.1311ms | 1.1430ms | 442.04K |
-| 🥉 | **[Zen](https://github.com/sylphxltd/zen)** | 840.65K | ±0.10% | 1.1895ms | 2.1540ms | 420.33K |
-| 4 | **[MobX](https://github.com/mobxjs/mobx)** | 49.47K | ±0.87% | 20.2130ms | 28.0420ms | 24.74K |
-| 5 | **[Valtio](https://github.com/pmndrs/valtio)** | 24.78K | ±0.81% | 40.3557ms | 49.7530ms | 12.39K |
-| 6 | **[Jotai](https://github.com/pmndrs/jotai)** | 7.69K | ±0.83% | 130.0376ms | 213.6080ms | 3.85K |
-| 7 | **[Redux Toolkit](https://github.com/reduxjs/redux-toolkit)** | 2.04K | ±0.72% | 491.2883ms | 833.0100ms | 1.02K |
-| 8 | **[Zustand](https://github.com/pmndrs/zustand)** | 1.76K | ±0.60% | 569.0557ms | 951.4820ms | 879.00 |
-
-**Key Insight:** Solid Signals is **3564.47x faster** than Zustand in this category.
-
-### Subscribe/Unsubscribe {#subscribe-unsubscribe}
-
-**Performance Comparison:**
-
-```
-🥇 Solid Signals        ████████████████████████████████████████ 10.45M
-🥈 Zen                  ████████████████████████ 6.24M
-🥉 Preact Signals       ███████████████████ 5.02M
-   Zustand              ████████████████ 4.06M
-   Redux Toolkit        █████████ 2.28M
-   MobX                 ███ 753.66K
-   Jotai                █ 374.27K
-   Valtio               █ 2.56K
-```
-
-| Rank | Library | Ops/sec | Variance | Mean | p99 | Samples |
-|------|---------|---------|----------|------|-----|--------|
-| 🥇 | **[Solid Signals](https://github.com/solidjs/solid)** | 10.45M | ±0.09% | 0.0957ms | 0.1110ms | 5.23M |
-| 🥈 | **[Zen](https://github.com/sylphxltd/zen)** | 6.24M | ±0.91% | 0.1603ms | 0.2500ms | 3.12M |
-| 🥉 | **[Preact Signals](https://github.com/preactjs/signals)** | 5.02M | ±0.51% | 0.1991ms | 0.2410ms | 2.51M |
-| 4 | **[Zustand](https://github.com/pmndrs/zustand)** | 4.06M | ±2.05% | 0.2462ms | 1.8340ms | 2.03M |
-| 5 | **[Redux Toolkit](https://github.com/reduxjs/redux-toolkit)** | 2.28M | ±1.85% | 0.4384ms | 2.0040ms | 1.14M |
-| 6 | **[MobX](https://github.com/mobxjs/mobx)** | 753.66K | ±2.65% | 1.3269ms | 1.6740ms | 376.83K |
-| 7 | **[Jotai](https://github.com/pmndrs/jotai)** | 374.27K | ±7.35% | 2.6718ms | 5.1200ms | 187.14K |
-| 8 | **[Valtio](https://github.com/pmndrs/valtio)** | 2.56K | ±3.02% | 390.8854ms | 1195.4850ms | 1.28K |
-
-**Key Insight:** Solid Signals is **4086.44x faster** than Valtio in this category.
+**Key Insight:** Preact Signals is **Infinityx faster** than Zen in this category.
 
 ### Simple Increment {#simple-increment}
 
 **Performance Comparison:**
 
 ```
-🥇 Zen                  ████████████████████████████████████████ 10.63M
-🥈 Solid Signals        ███████████████████████████████████████ 10.44M
-🥉 Preact Signals       ██████████████████████████████████████ 10.11M
-   MobX                 ███████ 1.97M
-   Valtio               ██████ 1.59M
-   Jotai                ██ 535.26K
-   Redux Toolkit        █ 283.41K
-   Zustand              █ 168.51K
+🥇 Solid Signals        ████████████████████████████████████████ 10.36M
+🥈 Zen                  ████████████████████████████████████████ 10.29M
+🥉 Preact Signals       ████████████████████████████████████ 9.26M
+   MobX                 ███████ 1.70M
+   Valtio               ██████ 1.61M
+   Jotai                ██ 516.73K
+   Redux Toolkit        █ 280.64K
+   Zustand              █ 171.27K
+   Redux Toolkit        █ 0.00
+   Zustand              █ 0.00
+   Jotai                █ 0.00
+   MobX                 █ 0.00
+   Valtio               █ 0.00
+   Preact Signals       █ 0.00
+   Solid Signals        █ 0.00
+   Zen                  █ 0.00
 ```
 
 | Rank | Library | Ops/sec | Variance | Mean | p99 | Samples |
 |------|---------|---------|----------|------|-----|--------|
-| 🥇 | **[Zen](https://github.com/sylphxltd/zen)** | 10.63M | ±0.11% | 0.0941ms | 0.1300ms | 5.31M |
-| 🥈 | **[Solid Signals](https://github.com/solidjs/solid)** | 10.44M | ±0.11% | 0.0958ms | 0.1500ms | 5.22M |
-| 🥉 | **[Preact Signals](https://github.com/preactjs/signals)** | 10.11M | ±0.10% | 0.0989ms | 0.1610ms | 5.06M |
-| 4 | **[MobX](https://github.com/mobxjs/mobx)** | 1.97M | ±0.57% | 0.5071ms | 0.8720ms | 986.06K |
-| 5 | **[Valtio](https://github.com/pmndrs/valtio)** | 1.59M | ±0.42% | 0.6298ms | 0.7110ms | 793.92K |
-| 6 | **[Jotai](https://github.com/pmndrs/jotai)** | 535.26K | ±0.93% | 1.8683ms | 3.8280ms | 267.63K |
-| 7 | **[Redux Toolkit](https://github.com/reduxjs/redux-toolkit)** | 283.41K | ±0.71% | 3.5285ms | 5.8110ms | 141.71K |
-| 8 | **[Zustand](https://github.com/pmndrs/zustand)** | 168.51K | ±0.27% | 5.9343ms | 6.7420ms | 84.26K |
+| 🥇 | **[Solid Signals](https://github.com/solidjs/solid)** | 10.36M | ±0.10% | 0.0965ms | 0.1510ms | 5.18M |
+| 🥈 | **[Zen](https://github.com/sylphxltd/zen)** | 10.29M | ±0.15% | 0.0972ms | 0.1100ms | 5.14M |
+| 🥉 | **[Preact Signals](https://github.com/preactjs/signals)** | 9.26M | ±0.09% | 0.1079ms | 0.1610ms | 4.63M |
+| 4 | **[MobX](https://github.com/mobxjs/mobx)** | 1.70M | ±0.15% | 0.5891ms | 0.7120ms | 848.79K |
+| 5 | **[Valtio](https://github.com/pmndrs/valtio)** | 1.61M | ±0.24% | 0.6203ms | 0.6620ms | 806.01K |
+| 6 | **[Jotai](https://github.com/pmndrs/jotai)** | 516.73K | ±1.00% | 1.9353ms | 4.0980ms | 258.36K |
+| 7 | **[Redux Toolkit](https://github.com/reduxjs/redux-toolkit)** | 280.64K | ±0.45% | 3.5633ms | 4.4090ms | 140.32K |
+| 8 | **[Zustand](https://github.com/pmndrs/zustand)** | 171.27K | ±0.24% | 5.8387ms | 10.2690ms | 85.64K |
+| 9 | **[Redux Toolkit](https://github.com/reduxjs/redux-toolkit)** | 0.00 | ±0.00% | NaNms | NaNms | 0.00 |
+| 9 | **[Zustand](https://github.com/pmndrs/zustand)** | 0.00 | ±0.00% | NaNms | NaNms | 0.00 |
+| 9 | **[Jotai](https://github.com/pmndrs/jotai)** | 0.00 | ±0.00% | NaNms | NaNms | 0.00 |
+| 9 | **[MobX](https://github.com/mobxjs/mobx)** | 0.00 | ±0.00% | NaNms | NaNms | 0.00 |
+| 9 | **[Valtio](https://github.com/pmndrs/valtio)** | 0.00 | ±0.00% | NaNms | NaNms | 0.00 |
+| 9 | **[Preact Signals](https://github.com/preactjs/signals)** | 0.00 | ±0.00% | NaNms | NaNms | 0.00 |
+| 9 | **[Solid Signals](https://github.com/solidjs/solid)** | 0.00 | ±0.00% | NaNms | NaNms | 0.00 |
+| 9 | **[Zen](https://github.com/sylphxltd/zen)** | 0.00 | ±0.00% | NaNms | NaNms | 0.00 |
 
-**Key Insight:** Zen is **63.06x faster** than Zustand in this category.
+**Key Insight:** Solid Signals is **Infinityx faster** than Zen in this category.
+
+### High Frequency Read {#high-frequency-read}
+
+**Performance Comparison:**
+
+```
+🥇 Redux Toolkit         0.00
+🥇 Zustand               0.00
+🥇 Jotai                 0.00
+🥇 MobX                  0.00
+🥇 Valtio                0.00
+🥇 Preact Signals        0.00
+🥇 Solid Signals         0.00
+🥇 Zen                   0.00
+```
+
+| Rank | Library | Ops/sec | Variance | Mean | p99 | Samples |
+|------|---------|---------|----------|------|-----|--------|
+| 🥇 | **[Redux Toolkit](https://github.com/reduxjs/redux-toolkit)** | 0.00 | ±0.00% | NaNms | NaNms | 0.00 |
+| 🥇 | **[Zustand](https://github.com/pmndrs/zustand)** | 0.00 | ±0.00% | NaNms | NaNms | 0.00 |
+| 🥇 | **[Jotai](https://github.com/pmndrs/jotai)** | 0.00 | ±0.00% | NaNms | NaNms | 0.00 |
+| 🥇 | **[MobX](https://github.com/mobxjs/mobx)** | 0.00 | ±0.00% | NaNms | NaNms | 0.00 |
+| 🥇 | **[Valtio](https://github.com/pmndrs/valtio)** | 0.00 | ±0.00% | NaNms | NaNms | 0.00 |
+| 🥇 | **[Preact Signals](https://github.com/preactjs/signals)** | 0.00 | ±0.00% | NaNms | NaNms | 0.00 |
+| 🥇 | **[Solid Signals](https://github.com/solidjs/solid)** | 0.00 | ±0.00% | NaNms | NaNms | 0.00 |
+| 🥇 | **[Zen](https://github.com/sylphxltd/zen)** | 0.00 | ±0.00% | NaNms | NaNms | 0.00 |
+
+**Key Insight:** Redux Toolkit is **NaNx faster** than Zen in this category.
+
+### Burst Updates {#burst-updates}
+
+**Performance Comparison:**
+
+```
+🥇 Redux Toolkit         0.00
+🥇 Zustand               0.00
+🥇 Jotai                 0.00
+🥇 MobX                  0.00
+🥇 Valtio                0.00
+🥇 Preact Signals        0.00
+🥇 Solid Signals         0.00
+🥇 Zen                   0.00
+```
+
+| Rank | Library | Ops/sec | Variance | Mean | p99 | Samples |
+|------|---------|---------|----------|------|-----|--------|
+| 🥇 | **[Redux Toolkit](https://github.com/reduxjs/redux-toolkit)** | 0.00 | ±0.00% | NaNms | NaNms | 0.00 |
+| 🥇 | **[Zustand](https://github.com/pmndrs/zustand)** | 0.00 | ±0.00% | NaNms | NaNms | 0.00 |
+| 🥇 | **[Jotai](https://github.com/pmndrs/jotai)** | 0.00 | ±0.00% | NaNms | NaNms | 0.00 |
+| 🥇 | **[MobX](https://github.com/mobxjs/mobx)** | 0.00 | ±0.00% | NaNms | NaNms | 0.00 |
+| 🥇 | **[Valtio](https://github.com/pmndrs/valtio)** | 0.00 | ±0.00% | NaNms | NaNms | 0.00 |
+| 🥇 | **[Preact Signals](https://github.com/preactjs/signals)** | 0.00 | ±0.00% | NaNms | NaNms | 0.00 |
+| 🥇 | **[Solid Signals](https://github.com/solidjs/solid)** | 0.00 | ±0.00% | NaNms | NaNms | 0.00 |
+| 🥇 | **[Zen](https://github.com/sylphxltd/zen)** | 0.00 | ±0.00% | NaNms | NaNms | 0.00 |
+
+**Key Insight:** Redux Toolkit is **NaNx faster** than Zen in this category.
+
+### Array Splice Operations {#array-splice-operations}
+
+**Performance Comparison:**
+
+```
+🥇 Redux Toolkit         0.00
+🥇 Zustand               0.00
+🥇 Jotai                 0.00
+🥇 MobX                  0.00
+🥇 Valtio                0.00
+🥇 Preact Signals        0.00
+🥇 Solid Signals         0.00
+🥇 Zen                   0.00
+```
+
+| Rank | Library | Ops/sec | Variance | Mean | p99 | Samples |
+|------|---------|---------|----------|------|-----|--------|
+| 🥇 | **[Redux Toolkit](https://github.com/reduxjs/redux-toolkit)** | 0.00 | ±0.00% | NaNms | NaNms | 0.00 |
+| 🥇 | **[Zustand](https://github.com/pmndrs/zustand)** | 0.00 | ±0.00% | NaNms | NaNms | 0.00 |
+| 🥇 | **[Jotai](https://github.com/pmndrs/jotai)** | 0.00 | ±0.00% | NaNms | NaNms | 0.00 |
+| 🥇 | **[MobX](https://github.com/mobxjs/mobx)** | 0.00 | ±0.00% | NaNms | NaNms | 0.00 |
+| 🥇 | **[Valtio](https://github.com/pmndrs/valtio)** | 0.00 | ±0.00% | NaNms | NaNms | 0.00 |
+| 🥇 | **[Preact Signals](https://github.com/preactjs/signals)** | 0.00 | ±0.00% | NaNms | NaNms | 0.00 |
+| 🥇 | **[Solid Signals](https://github.com/solidjs/solid)** | 0.00 | ±0.00% | NaNms | NaNms | 0.00 |
+| 🥇 | **[Zen](https://github.com/sylphxltd/zen)** | 0.00 | ±0.00% | NaNms | NaNms | 0.00 |
+
+**Key Insight:** Redux Toolkit is **NaNx faster** than Zen in this category.
+
+### Large Array Sort {#large-array-sort}
+
+**Performance Comparison:**
+
+```
+🥇 Redux Toolkit         0.00
+🥇 Zustand               0.00
+🥇 Jotai                 0.00
+🥇 MobX                  0.00
+🥇 Valtio                0.00
+🥇 Preact Signals        0.00
+🥇 Solid Signals         0.00
+🥇 Zen                   0.00
+```
+
+| Rank | Library | Ops/sec | Variance | Mean | p99 | Samples |
+|------|---------|---------|----------|------|-----|--------|
+| 🥇 | **[Redux Toolkit](https://github.com/reduxjs/redux-toolkit)** | 0.00 | ±0.00% | NaNms | NaNms | 0.00 |
+| 🥇 | **[Zustand](https://github.com/pmndrs/zustand)** | 0.00 | ±0.00% | NaNms | NaNms | 0.00 |
+| 🥇 | **[Jotai](https://github.com/pmndrs/jotai)** | 0.00 | ±0.00% | NaNms | NaNms | 0.00 |
+| 🥇 | **[MobX](https://github.com/mobxjs/mobx)** | 0.00 | ±0.00% | NaNms | NaNms | 0.00 |
+| 🥇 | **[Valtio](https://github.com/pmndrs/valtio)** | 0.00 | ±0.00% | NaNms | NaNms | 0.00 |
+| 🥇 | **[Preact Signals](https://github.com/preactjs/signals)** | 0.00 | ±0.00% | NaNms | NaNms | 0.00 |
+| 🥇 | **[Solid Signals](https://github.com/solidjs/solid)** | 0.00 | ±0.00% | NaNms | NaNms | 0.00 |
+| 🥇 | **[Zen](https://github.com/sylphxltd/zen)** | 0.00 | ±0.00% | NaNms | NaNms | 0.00 |
+
+**Key Insight:** Redux Toolkit is **NaNx faster** than Zen in this category.
+
+### Array Find Operations {#array-find-operations}
+
+**Performance Comparison:**
+
+```
+🥇 Redux Toolkit         0.00
+🥇 Zustand               0.00
+🥇 Jotai                 0.00
+🥇 MobX                  0.00
+🥇 Valtio                0.00
+🥇 Preact Signals        0.00
+🥇 Solid Signals         0.00
+🥇 Zen                   0.00
+```
+
+| Rank | Library | Ops/sec | Variance | Mean | p99 | Samples |
+|------|---------|---------|----------|------|-----|--------|
+| 🥇 | **[Redux Toolkit](https://github.com/reduxjs/redux-toolkit)** | 0.00 | ±0.00% | NaNms | NaNms | 0.00 |
+| 🥇 | **[Zustand](https://github.com/pmndrs/zustand)** | 0.00 | ±0.00% | NaNms | NaNms | 0.00 |
+| 🥇 | **[Jotai](https://github.com/pmndrs/jotai)** | 0.00 | ±0.00% | NaNms | NaNms | 0.00 |
+| 🥇 | **[MobX](https://github.com/mobxjs/mobx)** | 0.00 | ±0.00% | NaNms | NaNms | 0.00 |
+| 🥇 | **[Valtio](https://github.com/pmndrs/valtio)** | 0.00 | ±0.00% | NaNms | NaNms | 0.00 |
+| 🥇 | **[Preact Signals](https://github.com/preactjs/signals)** | 0.00 | ±0.00% | NaNms | NaNms | 0.00 |
+| 🥇 | **[Solid Signals](https://github.com/solidjs/solid)** | 0.00 | ±0.00% | NaNms | NaNms | 0.00 |
+| 🥇 | **[Zen](https://github.com/sylphxltd/zen)** | 0.00 | ±0.00% | NaNms | NaNms | 0.00 |
+
+**Key Insight:** Redux Toolkit is **NaNx faster** than Zen in this category.
+
+### Deep Object Creation {#deep-object-creation}
+
+**Performance Comparison:**
+
+```
+🥇 Redux Toolkit         0.00
+🥇 Zustand               0.00
+🥇 Jotai                 0.00
+🥇 MobX                  0.00
+🥇 Valtio                0.00
+🥇 Preact Signals        0.00
+🥇 Solid Signals         0.00
+🥇 Zen                   0.00
+```
+
+| Rank | Library | Ops/sec | Variance | Mean | p99 | Samples |
+|------|---------|---------|----------|------|-----|--------|
+| 🥇 | **[Redux Toolkit](https://github.com/reduxjs/redux-toolkit)** | 0.00 | ±0.00% | NaNms | NaNms | 0.00 |
+| 🥇 | **[Zustand](https://github.com/pmndrs/zustand)** | 0.00 | ±0.00% | NaNms | NaNms | 0.00 |
+| 🥇 | **[Jotai](https://github.com/pmndrs/jotai)** | 0.00 | ±0.00% | NaNms | NaNms | 0.00 |
+| 🥇 | **[MobX](https://github.com/mobxjs/mobx)** | 0.00 | ±0.00% | NaNms | NaNms | 0.00 |
+| 🥇 | **[Valtio](https://github.com/pmndrs/valtio)** | 0.00 | ±0.00% | NaNms | NaNms | 0.00 |
+| 🥇 | **[Preact Signals](https://github.com/preactjs/signals)** | 0.00 | ±0.00% | NaNms | NaNms | 0.00 |
+| 🥇 | **[Solid Signals](https://github.com/solidjs/solid)** | 0.00 | ±0.00% | NaNms | NaNms | 0.00 |
+| 🥇 | **[Zen](https://github.com/sylphxltd/zen)** | 0.00 | ±0.00% | NaNms | NaNms | 0.00 |
+
+**Key Insight:** Redux Toolkit is **NaNx faster** than Zen in this category.
+
+### 10-Level Nested Update {#10-level-nested-update}
+
+**Performance Comparison:**
+
+```
+🥇 Redux Toolkit         0.00
+🥇 Zustand               0.00
+🥇 Jotai                 0.00
+🥇 MobX                  0.00
+🥇 Valtio                0.00
+🥇 Preact Signals        0.00
+🥇 Solid Signals         0.00
+🥇 Zen                   0.00
+```
+
+| Rank | Library | Ops/sec | Variance | Mean | p99 | Samples |
+|------|---------|---------|----------|------|-----|--------|
+| 🥇 | **[Redux Toolkit](https://github.com/reduxjs/redux-toolkit)** | 0.00 | ±0.00% | NaNms | NaNms | 0.00 |
+| 🥇 | **[Zustand](https://github.com/pmndrs/zustand)** | 0.00 | ±0.00% | NaNms | NaNms | 0.00 |
+| 🥇 | **[Jotai](https://github.com/pmndrs/jotai)** | 0.00 | ±0.00% | NaNms | NaNms | 0.00 |
+| 🥇 | **[MobX](https://github.com/mobxjs/mobx)** | 0.00 | ±0.00% | NaNms | NaNms | 0.00 |
+| 🥇 | **[Valtio](https://github.com/pmndrs/valtio)** | 0.00 | ±0.00% | NaNms | NaNms | 0.00 |
+| 🥇 | **[Preact Signals](https://github.com/preactjs/signals)** | 0.00 | ±0.00% | NaNms | NaNms | 0.00 |
+| 🥇 | **[Solid Signals](https://github.com/solidjs/solid)** | 0.00 | ±0.00% | NaNms | NaNms | 0.00 |
+| 🥇 | **[Zen](https://github.com/sylphxltd/zen)** | 0.00 | ±0.00% | NaNms | NaNms | 0.00 |
+
+**Key Insight:** Redux Toolkit is **NaNx faster** than Zen in this category.
+
+### Deep Read Access {#deep-read-access}
+
+**Performance Comparison:**
+
+```
+🥇 Redux Toolkit         0.00
+🥇 Zustand               0.00
+🥇 Jotai                 0.00
+🥇 MobX                  0.00
+🥇 Valtio                0.00
+🥇 Preact Signals        0.00
+🥇 Solid Signals         0.00
+🥇 Zen                   0.00
+```
+
+| Rank | Library | Ops/sec | Variance | Mean | p99 | Samples |
+|------|---------|---------|----------|------|-----|--------|
+| 🥇 | **[Redux Toolkit](https://github.com/reduxjs/redux-toolkit)** | 0.00 | ±0.00% | NaNms | NaNms | 0.00 |
+| 🥇 | **[Zustand](https://github.com/pmndrs/zustand)** | 0.00 | ±0.00% | NaNms | NaNms | 0.00 |
+| 🥇 | **[Jotai](https://github.com/pmndrs/jotai)** | 0.00 | ±0.00% | NaNms | NaNms | 0.00 |
+| 🥇 | **[MobX](https://github.com/mobxjs/mobx)** | 0.00 | ±0.00% | NaNms | NaNms | 0.00 |
+| 🥇 | **[Valtio](https://github.com/pmndrs/valtio)** | 0.00 | ±0.00% | NaNms | NaNms | 0.00 |
+| 🥇 | **[Preact Signals](https://github.com/preactjs/signals)** | 0.00 | ±0.00% | NaNms | NaNms | 0.00 |
+| 🥇 | **[Solid Signals](https://github.com/solidjs/solid)** | 0.00 | ±0.00% | NaNms | NaNms | 0.00 |
+| 🥇 | **[Zen](https://github.com/sylphxltd/zen)** | 0.00 | ±0.00% | NaNms | NaNms | 0.00 |
+
+**Key Insight:** Redux Toolkit is **NaNx faster** than Zen in this category.
+
+### Complex Computed Chain {#complex-computed-chain}
+
+**Performance Comparison:**
+
+```
+🥇 Redux Toolkit         0.00
+🥇 Zustand               0.00
+🥇 Jotai                 0.00
+🥇 MobX                  0.00
+🥇 Valtio                0.00
+🥇 Preact Signals        0.00
+🥇 Solid Signals         0.00
+🥇 Zen                   0.00
+```
+
+| Rank | Library | Ops/sec | Variance | Mean | p99 | Samples |
+|------|---------|---------|----------|------|-----|--------|
+| 🥇 | **[Redux Toolkit](https://github.com/reduxjs/redux-toolkit)** | 0.00 | ±0.00% | NaNms | NaNms | 0.00 |
+| 🥇 | **[Zustand](https://github.com/pmndrs/zustand)** | 0.00 | ±0.00% | NaNms | NaNms | 0.00 |
+| 🥇 | **[Jotai](https://github.com/pmndrs/jotai)** | 0.00 | ±0.00% | NaNms | NaNms | 0.00 |
+| 🥇 | **[MobX](https://github.com/mobxjs/mobx)** | 0.00 | ±0.00% | NaNms | NaNms | 0.00 |
+| 🥇 | **[Valtio](https://github.com/pmndrs/valtio)** | 0.00 | ±0.00% | NaNms | NaNms | 0.00 |
+| 🥇 | **[Preact Signals](https://github.com/preactjs/signals)** | 0.00 | ±0.00% | NaNms | NaNms | 0.00 |
+| 🥇 | **[Solid Signals](https://github.com/solidjs/solid)** | 0.00 | ±0.00% | NaNms | NaNms | 0.00 |
+| 🥇 | **[Zen](https://github.com/sylphxltd/zen)** | 0.00 | ±0.00% | NaNms | NaNms | 0.00 |
+
+**Key Insight:** Redux Toolkit is **NaNx faster** than Zen in this category.
+
+### Computed Invalidation {#computed-invalidation}
+
+**Performance Comparison:**
+
+```
+🥇 Redux Toolkit         0.00
+🥇 Zustand               0.00
+🥇 Jotai                 0.00
+🥇 MobX                  0.00
+🥇 Valtio                0.00
+🥇 Preact Signals        0.00
+🥇 Solid Signals         0.00
+🥇 Zen                   0.00
+```
+
+| Rank | Library | Ops/sec | Variance | Mean | p99 | Samples |
+|------|---------|---------|----------|------|-----|--------|
+| 🥇 | **[Redux Toolkit](https://github.com/reduxjs/redux-toolkit)** | 0.00 | ±0.00% | NaNms | NaNms | 0.00 |
+| 🥇 | **[Zustand](https://github.com/pmndrs/zustand)** | 0.00 | ±0.00% | NaNms | NaNms | 0.00 |
+| 🥇 | **[Jotai](https://github.com/pmndrs/jotai)** | 0.00 | ±0.00% | NaNms | NaNms | 0.00 |
+| 🥇 | **[MobX](https://github.com/mobxjs/mobx)** | 0.00 | ±0.00% | NaNms | NaNms | 0.00 |
+| 🥇 | **[Valtio](https://github.com/pmndrs/valtio)** | 0.00 | ±0.00% | NaNms | NaNms | 0.00 |
+| 🥇 | **[Preact Signals](https://github.com/preactjs/signals)** | 0.00 | ±0.00% | NaNms | NaNms | 0.00 |
+| 🥇 | **[Solid Signals](https://github.com/solidjs/solid)** | 0.00 | ±0.00% | NaNms | NaNms | 0.00 |
+| 🥇 | **[Zen](https://github.com/sylphxltd/zen)** | 0.00 | ±0.00% | NaNms | NaNms | 0.00 |
+
+**Key Insight:** Redux Toolkit is **NaNx faster** than Zen in this category.
+
+### Subscription Cascade {#subscription-cascade}
+
+**Performance Comparison:**
+
+```
+🥇 Redux Toolkit         0.00
+🥇 Zustand               0.00
+🥇 Jotai                 0.00
+🥇 MobX                  0.00
+🥇 Valtio                0.00
+🥇 Preact Signals        0.00
+🥇 Solid Signals         0.00
+🥇 Zen                   0.00
+```
+
+| Rank | Library | Ops/sec | Variance | Mean | p99 | Samples |
+|------|---------|---------|----------|------|-----|--------|
+| 🥇 | **[Redux Toolkit](https://github.com/reduxjs/redux-toolkit)** | 0.00 | ±0.00% | NaNms | NaNms | 0.00 |
+| 🥇 | **[Zustand](https://github.com/pmndrs/zustand)** | 0.00 | ±0.00% | NaNms | NaNms | 0.00 |
+| 🥇 | **[Jotai](https://github.com/pmndrs/jotai)** | 0.00 | ±0.00% | NaNms | NaNms | 0.00 |
+| 🥇 | **[MobX](https://github.com/mobxjs/mobx)** | 0.00 | ±0.00% | NaNms | NaNms | 0.00 |
+| 🥇 | **[Valtio](https://github.com/pmndrs/valtio)** | 0.00 | ±0.00% | NaNms | NaNms | 0.00 |
+| 🥇 | **[Preact Signals](https://github.com/preactjs/signals)** | 0.00 | ±0.00% | NaNms | NaNms | 0.00 |
+| 🥇 | **[Solid Signals](https://github.com/solidjs/solid)** | 0.00 | ±0.00% | NaNms | NaNms | 0.00 |
+| 🥇 | **[Zen](https://github.com/sylphxltd/zen)** | 0.00 | ±0.00% | NaNms | NaNms | 0.00 |
+
+**Key Insight:** Redux Toolkit is **NaNx faster** than Zen in this category.
+
+### Reaction Performance {#reaction-performance}
+
+**Performance Comparison:**
+
+```
+🥇 Redux Toolkit         0.00
+🥇 Zustand               0.00
+🥇 Jotai                 0.00
+🥇 MobX                  0.00
+🥇 Valtio                0.00
+🥇 Preact Signals        0.00
+🥇 Solid Signals         0.00
+🥇 Zen                   0.00
+```
+
+| Rank | Library | Ops/sec | Variance | Mean | p99 | Samples |
+|------|---------|---------|----------|------|-----|--------|
+| 🥇 | **[Redux Toolkit](https://github.com/reduxjs/redux-toolkit)** | 0.00 | ±0.00% | NaNms | NaNms | 0.00 |
+| 🥇 | **[Zustand](https://github.com/pmndrs/zustand)** | 0.00 | ±0.00% | NaNms | NaNms | 0.00 |
+| 🥇 | **[Jotai](https://github.com/pmndrs/jotai)** | 0.00 | ±0.00% | NaNms | NaNms | 0.00 |
+| 🥇 | **[MobX](https://github.com/mobxjs/mobx)** | 0.00 | ±0.00% | NaNms | NaNms | 0.00 |
+| 🥇 | **[Valtio](https://github.com/pmndrs/valtio)** | 0.00 | ±0.00% | NaNms | NaNms | 0.00 |
+| 🥇 | **[Preact Signals](https://github.com/preactjs/signals)** | 0.00 | ±0.00% | NaNms | NaNms | 0.00 |
+| 🥇 | **[Solid Signals](https://github.com/solidjs/solid)** | 0.00 | ±0.00% | NaNms | NaNms | 0.00 |
+| 🥇 | **[Zen](https://github.com/sylphxltd/zen)** | 0.00 | ±0.00% | NaNms | NaNms | 0.00 |
+
+**Key Insight:** Redux Toolkit is **NaNx faster** than Zen in this category.
+
+### Multi-Store Operations {#multi-store-operations}
+
+**Performance Comparison:**
+
+```
+🥇 Redux Toolkit         0.00
+🥇 Zustand               0.00
+🥇 Jotai                 0.00
+🥇 MobX                  0.00
+🥇 Valtio                0.00
+🥇 Preact Signals        0.00
+🥇 Solid Signals         0.00
+🥇 Zen                   0.00
+```
+
+| Rank | Library | Ops/sec | Variance | Mean | p99 | Samples |
+|------|---------|---------|----------|------|-----|--------|
+| 🥇 | **[Redux Toolkit](https://github.com/reduxjs/redux-toolkit)** | 0.00 | ±0.00% | NaNms | NaNms | 0.00 |
+| 🥇 | **[Zustand](https://github.com/pmndrs/zustand)** | 0.00 | ±0.00% | NaNms | NaNms | 0.00 |
+| 🥇 | **[Jotai](https://github.com/pmndrs/jotai)** | 0.00 | ±0.00% | NaNms | NaNms | 0.00 |
+| 🥇 | **[MobX](https://github.com/mobxjs/mobx)** | 0.00 | ±0.00% | NaNms | NaNms | 0.00 |
+| 🥇 | **[Valtio](https://github.com/pmndrs/valtio)** | 0.00 | ±0.00% | NaNms | NaNms | 0.00 |
+| 🥇 | **[Preact Signals](https://github.com/preactjs/signals)** | 0.00 | ±0.00% | NaNms | NaNms | 0.00 |
+| 🥇 | **[Solid Signals](https://github.com/solidjs/solid)** | 0.00 | ±0.00% | NaNms | NaNms | 0.00 |
+| 🥇 | **[Zen](https://github.com/sylphxltd/zen)** | 0.00 | ±0.00% | NaNms | NaNms | 0.00 |
+
+**Key Insight:** Redux Toolkit is **NaNx faster** than Zen in this category.
+
+### Memory Allocation {#memory-allocation}
+
+**Performance Comparison:**
+
+```
+🥇 Redux Toolkit         0.00
+🥇 Zustand               0.00
+🥇 Jotai                 0.00
+🥇 MobX                  0.00
+🥇 Valtio                0.00
+🥇 Preact Signals        0.00
+🥇 Solid Signals         0.00
+🥇 Zen                   0.00
+```
+
+| Rank | Library | Ops/sec | Variance | Mean | p99 | Samples |
+|------|---------|---------|----------|------|-----|--------|
+| 🥇 | **[Redux Toolkit](https://github.com/reduxjs/redux-toolkit)** | 0.00 | ±0.00% | NaNms | NaNms | 0.00 |
+| 🥇 | **[Zustand](https://github.com/pmndrs/zustand)** | 0.00 | ±0.00% | NaNms | NaNms | 0.00 |
+| 🥇 | **[Jotai](https://github.com/pmndrs/jotai)** | 0.00 | ±0.00% | NaNms | NaNms | 0.00 |
+| 🥇 | **[MobX](https://github.com/mobxjs/mobx)** | 0.00 | ±0.00% | NaNms | NaNms | 0.00 |
+| 🥇 | **[Valtio](https://github.com/pmndrs/valtio)** | 0.00 | ±0.00% | NaNms | NaNms | 0.00 |
+| 🥇 | **[Preact Signals](https://github.com/preactjs/signals)** | 0.00 | ±0.00% | NaNms | NaNms | 0.00 |
+| 🥇 | **[Solid Signals](https://github.com/solidjs/solid)** | 0.00 | ±0.00% | NaNms | NaNms | 0.00 |
+| 🥇 | **[Zen](https://github.com/sylphxltd/zen)** | 0.00 | ±0.00% | NaNms | NaNms | 0.00 |
+
+**Key Insight:** Redux Toolkit is **NaNx faster** than Zen in this category.
+
+### Form State Management {#form-state-management}
+
+**Performance Comparison:**
+
+```
+🥇 Redux Toolkit         0.00
+🥇 Zustand               0.00
+🥇 Jotai                 0.00
+🥇 MobX                  0.00
+🥇 Valtio                0.00
+🥇 Preact Signals        0.00
+🥇 Solid Signals         0.00
+🥇 Zen                   0.00
+```
+
+| Rank | Library | Ops/sec | Variance | Mean | p99 | Samples |
+|------|---------|---------|----------|------|-----|--------|
+| 🥇 | **[Redux Toolkit](https://github.com/reduxjs/redux-toolkit)** | 0.00 | ±0.00% | NaNms | NaNms | 0.00 |
+| 🥇 | **[Zustand](https://github.com/pmndrs/zustand)** | 0.00 | ±0.00% | NaNms | NaNms | 0.00 |
+| 🥇 | **[Jotai](https://github.com/pmndrs/jotai)** | 0.00 | ±0.00% | NaNms | NaNms | 0.00 |
+| 🥇 | **[MobX](https://github.com/mobxjs/mobx)** | 0.00 | ±0.00% | NaNms | NaNms | 0.00 |
+| 🥇 | **[Valtio](https://github.com/pmndrs/valtio)** | 0.00 | ±0.00% | NaNms | NaNms | 0.00 |
+| 🥇 | **[Preact Signals](https://github.com/preactjs/signals)** | 0.00 | ±0.00% | NaNms | NaNms | 0.00 |
+| 🥇 | **[Solid Signals](https://github.com/solidjs/solid)** | 0.00 | ±0.00% | NaNms | NaNms | 0.00 |
+| 🥇 | **[Zen](https://github.com/sylphxltd/zen)** | 0.00 | ±0.00% | NaNms | NaNms | 0.00 |
+
+**Key Insight:** Redux Toolkit is **NaNx faster** than Zen in this category.
+
+### Optimistic Update {#optimistic-update}
+
+**Performance Comparison:**
+
+```
+🥇 Redux Toolkit         0.00
+🥇 Zustand               0.00
+🥇 Jotai                 0.00
+🥇 MobX                  0.00
+🥇 Valtio                0.00
+🥇 Preact Signals        0.00
+🥇 Solid Signals         0.00
+🥇 Zen                   0.00
+```
+
+| Rank | Library | Ops/sec | Variance | Mean | p99 | Samples |
+|------|---------|---------|----------|------|-----|--------|
+| 🥇 | **[Redux Toolkit](https://github.com/reduxjs/redux-toolkit)** | 0.00 | ±0.00% | NaNms | NaNms | 0.00 |
+| 🥇 | **[Zustand](https://github.com/pmndrs/zustand)** | 0.00 | ±0.00% | NaNms | NaNms | 0.00 |
+| 🥇 | **[Jotai](https://github.com/pmndrs/jotai)** | 0.00 | ±0.00% | NaNms | NaNms | 0.00 |
+| 🥇 | **[MobX](https://github.com/mobxjs/mobx)** | 0.00 | ±0.00% | NaNms | NaNms | 0.00 |
+| 🥇 | **[Valtio](https://github.com/pmndrs/valtio)** | 0.00 | ±0.00% | NaNms | NaNms | 0.00 |
+| 🥇 | **[Preact Signals](https://github.com/preactjs/signals)** | 0.00 | ±0.00% | NaNms | NaNms | 0.00 |
+| 🥇 | **[Solid Signals](https://github.com/solidjs/solid)** | 0.00 | ±0.00% | NaNms | NaNms | 0.00 |
+| 🥇 | **[Zen](https://github.com/sylphxltd/zen)** | 0.00 | ±0.00% | NaNms | NaNms | 0.00 |
+
+**Key Insight:** Redux Toolkit is **NaNx faster** than Zen in this category.
+
+### Undo/Redo Operations {#undo-redo-operations}
+
+**Performance Comparison:**
+
+```
+🥇 Redux Toolkit         0.00
+🥇 Zustand               0.00
+🥇 Jotai                 0.00
+🥇 MobX                  0.00
+🥇 Valtio                0.00
+🥇 Preact Signals        0.00
+🥇 Solid Signals         0.00
+🥇 Zen                   0.00
+```
+
+| Rank | Library | Ops/sec | Variance | Mean | p99 | Samples |
+|------|---------|---------|----------|------|-----|--------|
+| 🥇 | **[Redux Toolkit](https://github.com/reduxjs/redux-toolkit)** | 0.00 | ±0.00% | NaNms | NaNms | 0.00 |
+| 🥇 | **[Zustand](https://github.com/pmndrs/zustand)** | 0.00 | ±0.00% | NaNms | NaNms | 0.00 |
+| 🥇 | **[Jotai](https://github.com/pmndrs/jotai)** | 0.00 | ±0.00% | NaNms | NaNms | 0.00 |
+| 🥇 | **[MobX](https://github.com/mobxjs/mobx)** | 0.00 | ±0.00% | NaNms | NaNms | 0.00 |
+| 🥇 | **[Valtio](https://github.com/pmndrs/valtio)** | 0.00 | ±0.00% | NaNms | NaNms | 0.00 |
+| 🥇 | **[Preact Signals](https://github.com/preactjs/signals)** | 0.00 | ±0.00% | NaNms | NaNms | 0.00 |
+| 🥇 | **[Solid Signals](https://github.com/solidjs/solid)** | 0.00 | ±0.00% | NaNms | NaNms | 0.00 |
+| 🥇 | **[Zen](https://github.com/sylphxltd/zen)** | 0.00 | ±0.00% | NaNms | NaNms | 0.00 |
+
+**Key Insight:** Redux Toolkit is **NaNx faster** than Zen in this category.
+
+### Batch State Operations {#batch-state-operations}
+
+**Performance Comparison:**
+
+```
+🥇 Redux Toolkit         0.00
+🥇 Zustand               0.00
+🥇 Jotai                 0.00
+🥇 MobX                  0.00
+🥇 Valtio                0.00
+🥇 Preact Signals        0.00
+🥇 Solid Signals         0.00
+🥇 Zen                   0.00
+```
+
+| Rank | Library | Ops/sec | Variance | Mean | p99 | Samples |
+|------|---------|---------|----------|------|-----|--------|
+| 🥇 | **[Redux Toolkit](https://github.com/reduxjs/redux-toolkit)** | 0.00 | ±0.00% | NaNms | NaNms | 0.00 |
+| 🥇 | **[Zustand](https://github.com/pmndrs/zustand)** | 0.00 | ±0.00% | NaNms | NaNms | 0.00 |
+| 🥇 | **[Jotai](https://github.com/pmndrs/jotai)** | 0.00 | ±0.00% | NaNms | NaNms | 0.00 |
+| 🥇 | **[MobX](https://github.com/mobxjs/mobx)** | 0.00 | ±0.00% | NaNms | NaNms | 0.00 |
+| 🥇 | **[Valtio](https://github.com/pmndrs/valtio)** | 0.00 | ±0.00% | NaNms | NaNms | 0.00 |
+| 🥇 | **[Preact Signals](https://github.com/preactjs/signals)** | 0.00 | ±0.00% | NaNms | NaNms | 0.00 |
+| 🥇 | **[Solid Signals](https://github.com/solidjs/solid)** | 0.00 | ±0.00% | NaNms | NaNms | 0.00 |
+| 🥇 | **[Zen](https://github.com/sylphxltd/zen)** | 0.00 | ±0.00% | NaNms | NaNms | 0.00 |
+
+**Key Insight:** Redux Toolkit is **NaNx faster** than Zen in this category.
+
+### Null Value Handling {#null-value-handling}
+
+**Performance Comparison:**
+
+```
+🥇 Redux Toolkit         0.00
+🥇 Zustand               0.00
+🥇 Jotai                 0.00
+🥇 MobX                  0.00
+🥇 Valtio                0.00
+🥇 Preact Signals        0.00
+🥇 Solid Signals         0.00
+🥇 Zen                   0.00
+```
+
+| Rank | Library | Ops/sec | Variance | Mean | p99 | Samples |
+|------|---------|---------|----------|------|-----|--------|
+| 🥇 | **[Redux Toolkit](https://github.com/reduxjs/redux-toolkit)** | 0.00 | ±0.00% | NaNms | NaNms | 0.00 |
+| 🥇 | **[Zustand](https://github.com/pmndrs/zustand)** | 0.00 | ±0.00% | NaNms | NaNms | 0.00 |
+| 🥇 | **[Jotai](https://github.com/pmndrs/jotai)** | 0.00 | ±0.00% | NaNms | NaNms | 0.00 |
+| 🥇 | **[MobX](https://github.com/mobxjs/mobx)** | 0.00 | ±0.00% | NaNms | NaNms | 0.00 |
+| 🥇 | **[Valtio](https://github.com/pmndrs/valtio)** | 0.00 | ±0.00% | NaNms | NaNms | 0.00 |
+| 🥇 | **[Preact Signals](https://github.com/preactjs/signals)** | 0.00 | ±0.00% | NaNms | NaNms | 0.00 |
+| 🥇 | **[Solid Signals](https://github.com/solidjs/solid)** | 0.00 | ±0.00% | NaNms | NaNms | 0.00 |
+| 🥇 | **[Zen](https://github.com/sylphxltd/zen)** | 0.00 | ±0.00% | NaNms | NaNms | 0.00 |
+
+**Key Insight:** Redux Toolkit is **NaNx faster** than Zen in this category.
+
+### Undefined Value Handling {#undefined-value-handling}
+
+**Performance Comparison:**
+
+```
+🥇 Redux Toolkit         0.00
+🥇 Zustand               0.00
+🥇 Jotai                 0.00
+🥇 MobX                  0.00
+🥇 Valtio                0.00
+🥇 Preact Signals        0.00
+🥇 Solid Signals         0.00
+🥇 Zen                   0.00
+```
+
+| Rank | Library | Ops/sec | Variance | Mean | p99 | Samples |
+|------|---------|---------|----------|------|-----|--------|
+| 🥇 | **[Redux Toolkit](https://github.com/reduxjs/redux-toolkit)** | 0.00 | ±0.00% | NaNms | NaNms | 0.00 |
+| 🥇 | **[Zustand](https://github.com/pmndrs/zustand)** | 0.00 | ±0.00% | NaNms | NaNms | 0.00 |
+| 🥇 | **[Jotai](https://github.com/pmndrs/jotai)** | 0.00 | ±0.00% | NaNms | NaNms | 0.00 |
+| 🥇 | **[MobX](https://github.com/mobxjs/mobx)** | 0.00 | ±0.00% | NaNms | NaNms | 0.00 |
+| 🥇 | **[Valtio](https://github.com/pmndrs/valtio)** | 0.00 | ±0.00% | NaNms | NaNms | 0.00 |
+| 🥇 | **[Preact Signals](https://github.com/preactjs/signals)** | 0.00 | ±0.00% | NaNms | NaNms | 0.00 |
+| 🥇 | **[Solid Signals](https://github.com/solidjs/solid)** | 0.00 | ±0.00% | NaNms | NaNms | 0.00 |
+| 🥇 | **[Zen](https://github.com/sylphxltd/zen)** | 0.00 | ±0.00% | NaNms | NaNms | 0.00 |
+
+**Key Insight:** Redux Toolkit is **NaNx faster** than Zen in this category.
+
+### Async State Loading {#async-state-loading}
+
+**Performance Comparison:**
+
+```
+🥇 Redux Toolkit         0.00
+🥇 Zustand               0.00
+🥇 Jotai                 0.00
+🥇 MobX                  0.00
+🥇 Valtio                0.00
+🥇 Preact Signals        0.00
+🥇 Solid Signals         0.00
+🥇 Zen                   0.00
+```
+
+| Rank | Library | Ops/sec | Variance | Mean | p99 | Samples |
+|------|---------|---------|----------|------|-----|--------|
+| 🥇 | **[Redux Toolkit](https://github.com/reduxjs/redux-toolkit)** | 0.00 | ±0.00% | NaNms | NaNms | 0.00 |
+| 🥇 | **[Zustand](https://github.com/pmndrs/zustand)** | 0.00 | ±0.00% | NaNms | NaNms | 0.00 |
+| 🥇 | **[Jotai](https://github.com/pmndrs/jotai)** | 0.00 | ±0.00% | NaNms | NaNms | 0.00 |
+| 🥇 | **[MobX](https://github.com/mobxjs/mobx)** | 0.00 | ±0.00% | NaNms | NaNms | 0.00 |
+| 🥇 | **[Valtio](https://github.com/pmndrs/valtio)** | 0.00 | ±0.00% | NaNms | NaNms | 0.00 |
+| 🥇 | **[Preact Signals](https://github.com/preactjs/signals)** | 0.00 | ±0.00% | NaNms | NaNms | 0.00 |
+| 🥇 | **[Solid Signals](https://github.com/solidjs/solid)** | 0.00 | ±0.00% | NaNms | NaNms | 0.00 |
+| 🥇 | **[Zen](https://github.com/sylphxltd/zen)** | 0.00 | ±0.00% | NaNms | NaNms | 0.00 |
+
+**Key Insight:** Redux Toolkit is **NaNx faster** than Zen in this category.
+
+### Concurrent Async Operations {#concurrent-async-operations}
+
+**Performance Comparison:**
+
+```
+🥇 Redux Toolkit         0.00
+🥇 Zustand               0.00
+🥇 Jotai                 0.00
+🥇 MobX                  0.00
+🥇 Valtio                0.00
+🥇 Preact Signals        0.00
+🥇 Solid Signals         0.00
+🥇 Zen                   0.00
+```
+
+| Rank | Library | Ops/sec | Variance | Mean | p99 | Samples |
+|------|---------|---------|----------|------|-----|--------|
+| 🥇 | **[Redux Toolkit](https://github.com/reduxjs/redux-toolkit)** | 0.00 | ±0.00% | NaNms | NaNms | 0.00 |
+| 🥇 | **[Zustand](https://github.com/pmndrs/zustand)** | 0.00 | ±0.00% | NaNms | NaNms | 0.00 |
+| 🥇 | **[Jotai](https://github.com/pmndrs/jotai)** | 0.00 | ±0.00% | NaNms | NaNms | 0.00 |
+| 🥇 | **[MobX](https://github.com/mobxjs/mobx)** | 0.00 | ±0.00% | NaNms | NaNms | 0.00 |
+| 🥇 | **[Valtio](https://github.com/pmndrs/valtio)** | 0.00 | ±0.00% | NaNms | NaNms | 0.00 |
+| 🥇 | **[Preact Signals](https://github.com/preactjs/signals)** | 0.00 | ±0.00% | NaNms | NaNms | 0.00 |
+| 🥇 | **[Solid Signals](https://github.com/solidjs/solid)** | 0.00 | ±0.00% | NaNms | NaNms | 0.00 |
+| 🥇 | **[Zen](https://github.com/sylphxltd/zen)** | 0.00 | ±0.00% | NaNms | NaNms | 0.00 |
+
+**Key Insight:** Redux Toolkit is **NaNx faster** than Zen in this category.
+
+### Read (1000x) {#read-1000x-}
+
+**Performance Comparison:**
+
+```
+🥇 Solid Signals        ████████████████████████████████████████ 2.33M
+🥈 Zen                  ███████████████████ 1.13M
+🥉 Preact Signals       █████████████ 733.78K
+   Zustand              ██████████ 597.21K
+   Redux Toolkit        ███████ 436.41K
+   Valtio               █ 41.01K
+   MobX                 █ 29.20K
+   Jotai                █ 3.04K
+```
+
+| Rank | Library | Ops/sec | Variance | Mean | p99 | Samples |
+|------|---------|---------|----------|------|-----|--------|
+| 🥇 | **[Solid Signals](https://github.com/solidjs/solid)** | 2.33M | ±0.09% | 0.4284ms | 0.7110ms | 1.17M |
+| 🥈 | **[Zen](https://github.com/sylphxltd/zen)** | 1.13M | ±0.08% | 0.8888ms | 1.0220ms | 562.56K |
+| 🥉 | **[Preact Signals](https://github.com/preactjs/signals)** | 733.78K | ±0.08% | 1.3628ms | 1.3730ms | 366.89K |
+| 4 | **[Zustand](https://github.com/pmndrs/zustand)** | 597.21K | ±0.08% | 1.6744ms | 1.6830ms | 298.61K |
+| 5 | **[Redux Toolkit](https://github.com/reduxjs/redux-toolkit)** | 436.41K | ±0.08% | 2.2914ms | 2.3140ms | 218.21K |
+| 6 | **[Valtio](https://github.com/pmndrs/valtio)** | 41.01K | ±0.09% | 24.3869ms | 31.3790ms | 20.50K |
+| 7 | **[MobX](https://github.com/mobxjs/mobx)** | 29.20K | ±0.09% | 34.2444ms | 41.2570ms | 14.60K |
+| 8 | **[Jotai](https://github.com/pmndrs/jotai)** | 3.04K | ±0.51% | 328.5426ms | 526.2370ms | 1.52K |
+
+**Key Insight:** Solid Signals is **766.94x faster** than Jotai in this category.
+
+### Write (no listeners) {#write-no-listeners-}
+
+**Performance Comparison:**
+
+```
+🥇 Zen                  ████████████████████████████████████████ 10.02M
+🥈 Solid Signals        ███████████████████████████████████████ 9.81M
+🥉 Preact Signals       ███████████████████████████████████████ 9.73M
+   MobX                 ████████ 2.01M
+   Valtio               ██████ 1.52M
+   Jotai                ██ 495.54K
+   Redux Toolkit        █ 263.91K
+   Zustand              █ 166.84K
+```
+
+| Rank | Library | Ops/sec | Variance | Mean | p99 | Samples |
+|------|---------|---------|----------|------|-----|--------|
+| 🥇 | **[Zen](https://github.com/sylphxltd/zen)** | 10.02M | ±0.16% | 0.0998ms | 0.1210ms | 5.01M |
+| 🥈 | **[Solid Signals](https://github.com/solidjs/solid)** | 9.81M | ±0.09% | 0.1020ms | 0.1110ms | 4.90M |
+| 🥉 | **[Preact Signals](https://github.com/preactjs/signals)** | 9.73M | ±0.09% | 0.1028ms | 0.1210ms | 4.86M |
+| 4 | **[MobX](https://github.com/mobxjs/mobx)** | 2.01M | ±0.43% | 0.4981ms | 0.8420ms | 1.00M |
+| 5 | **[Valtio](https://github.com/pmndrs/valtio)** | 1.52M | ±0.51% | 0.6569ms | 0.8110ms | 761.16K |
+| 6 | **[Jotai](https://github.com/pmndrs/jotai)** | 495.54K | ±9.48% | 2.0180ms | 3.9080ms | 247.77K |
+| 7 | **[Redux Toolkit](https://github.com/reduxjs/redux-toolkit)** | 263.91K | ±0.81% | 3.7891ms | 4.4680ms | 131.96K |
+| 8 | **[Zustand](https://github.com/pmndrs/zustand)** | 166.84K | ±0.73% | 5.9936ms | 8.4550ms | 83.42K |
+
+**Key Insight:** Zen is **60.03x faster** than Zustand in this category.
+
+### Write (1 subscriber) {#write-1-subscriber-}
+
+**Performance Comparison:**
+
+```
+🥇 Solid Signals        ████████████████████████████████████████ 7.70M
+🥈 Zen                  ████████████████████████ 4.56M
+🥉 Preact Signals       ███████████████ 2.95M
+   Redux Toolkit        █ 237.78K
+   Jotai                █ 212.75K
+   Zustand              █ 158.28K
+   MobX                 █ 5.30K
+   Valtio               █ 2.52K
+```
+
+| Rank | Library | Ops/sec | Variance | Mean | p99 | Samples |
+|------|---------|---------|----------|------|-----|--------|
+| 🥇 | **[Solid Signals](https://github.com/solidjs/solid)** | 7.70M | ±1.00% | 0.1298ms | 0.1710ms | 3.85M |
+| 🥈 | **[Zen](https://github.com/sylphxltd/zen)** | 4.56M | ±0.54% | 0.2192ms | 0.2700ms | 2.28M |
+| 🥉 | **[Preact Signals](https://github.com/preactjs/signals)** | 2.95M | ±1.42% | 0.3389ms | 0.4410ms | 1.48M |
+| 4 | **[Redux Toolkit](https://github.com/reduxjs/redux-toolkit)** | 237.78K | ±0.67% | 4.2056ms | 6.9430ms | 118.89K |
+| 5 | **[Jotai](https://github.com/pmndrs/jotai)** | 212.75K | ±4.84% | 4.7004ms | 8.6360ms | 106.38K |
+| 6 | **[Zustand](https://github.com/pmndrs/zustand)** | 158.28K | ±0.55% | 6.3179ms | 11.1210ms | 79.14K |
+| 7 | **[MobX](https://github.com/mobxjs/mobx)** | 5.30K | ±2.38% | 188.7861ms | 289.6500ms | 2.65K |
+| 8 | **[Valtio](https://github.com/pmndrs/valtio)** | 2.52K | ±2.62% | 397.2482ms | 1548.1910ms | 1.26K |
+
+**Key Insight:** Solid Signals is **3060.47x faster** than Valtio in this category.
+
+### Write (5 subscribers) {#write-5-subscribers-}
+
+**Performance Comparison:**
+
+```
+🥇 Solid Signals        ████████████████████████████████████████ 6.40M
+🥈 Zen                  █████████████████ 2.65M
+🥉 Preact Signals       ████████ 1.23M
+   Redux Toolkit        █ 169.77K
+   Zustand              █ 136.92K
+   Jotai                █ 87.30K
+   MobX                 █ 5.89K
+   Valtio               █ 2.63K
+```
+
+| Rank | Library | Ops/sec | Variance | Mean | p99 | Samples |
+|------|---------|---------|----------|------|-----|--------|
+| 🥇 | **[Solid Signals](https://github.com/solidjs/solid)** | 6.40M | ±0.68% | 0.1562ms | 0.2100ms | 3.20M |
+| 🥈 | **[Zen](https://github.com/sylphxltd/zen)** | 2.65M | ±0.53% | 0.3768ms | 0.5410ms | 1.33M |
+| 🥉 | **[Preact Signals](https://github.com/preactjs/signals)** | 1.23M | ±0.57% | 0.8129ms | 1.5230ms | 615.11K |
+| 4 | **[Redux Toolkit](https://github.com/reduxjs/redux-toolkit)** | 169.77K | ±2.44% | 5.8904ms | 10.7300ms | 85.02K |
+| 5 | **[Zustand](https://github.com/pmndrs/zustand)** | 136.92K | ±2.89% | 7.3034ms | 11.8620ms | 68.46K |
+| 6 | **[Jotai](https://github.com/pmndrs/jotai)** | 87.30K | ±8.80% | 11.4554ms | 30.9580ms | 43.65K |
+| 7 | **[MobX](https://github.com/mobxjs/mobx)** | 5.89K | ±1.75% | 169.6815ms | 221.1850ms | 2.95K |
+| 8 | **[Valtio](https://github.com/pmndrs/valtio)** | 2.63K | ±2.85% | 379.9030ms | 1237.5790ms | 1.32K |
+
+**Key Insight:** Solid Signals is **2432.06x faster** than Valtio in this category.
+
+### Computed - Cached Read {#computed-cached-read}
+
+**Performance Comparison:**
+
+```
+🥇 Zen                  ████████████████████████████████████████ 10.34M
+🥈 Preact Signals       ███████████████████████████████████████ 10.02M
+🥉 Solid Signals        ██████████████████████████████████████ 9.79M
+   Zustand              ████████████████████████████████████ 9.26M
+   Redux Toolkit        ███████████████████████████████████ 8.95M
+   Valtio               ███████████████████████ 6.06M
+   MobX                 ███████████ 2.78M
+   Jotai                ████ 937.84K
+```
+
+| Rank | Library | Ops/sec | Variance | Mean | p99 | Samples |
+|------|---------|---------|----------|------|-----|--------|
+| 🥇 | **[Zen](https://github.com/sylphxltd/zen)** | 10.34M | ±0.20% | 0.0968ms | 0.1200ms | 5.17M |
+| 🥈 | **[Preact Signals](https://github.com/preactjs/signals)** | 10.02M | ±0.09% | 0.0998ms | 0.1300ms | 5.01M |
+| 🥉 | **[Solid Signals](https://github.com/solidjs/solid)** | 9.79M | ±0.09% | 0.1021ms | 0.1400ms | 4.90M |
+| 4 | **[Zustand](https://github.com/pmndrs/zustand)** | 9.26M | ±0.15% | 0.1080ms | 0.1210ms | 4.63M |
+| 5 | **[Redux Toolkit](https://github.com/reduxjs/redux-toolkit)** | 8.95M | ±0.09% | 0.1117ms | 0.1400ms | 4.48M |
+| 6 | **[Valtio](https://github.com/pmndrs/valtio)** | 6.06M | ±0.10% | 0.1649ms | 0.1910ms | 3.03M |
+| 7 | **[MobX](https://github.com/mobxjs/mobx)** | 2.78M | ±1.08% | 0.3595ms | 0.3810ms | 1.39M |
+| 8 | **[Jotai](https://github.com/pmndrs/jotai)** | 937.84K | ±0.87% | 1.0663ms | 1.2030ms | 468.92K |
+
+**Key Insight:** Zen is **11.02x faster** than Jotai in this category.
+
+### Computed - Update {#computed-update}
+
+**Performance Comparison:**
+
+```
+🥇 Solid Signals        ████████████████████████████████████████ 9.83M
+🥈 Zen                  ████████████████████████████████████ 8.95M
+🥉 Preact Signals       ██████████████████████████ 6.43M
+   Valtio               ██████ 1.39M
+   MobX                 █████ 1.29M
+   Jotai                █ 213.67K
+   Redux Toolkit        █ 199.05K
+   Zustand              █ 166.31K
+```
+
+| Rank | Library | Ops/sec | Variance | Mean | p99 | Samples |
+|------|---------|---------|----------|------|-----|--------|
+| 🥇 | **[Solid Signals](https://github.com/solidjs/solid)** | 9.83M | ±0.09% | 0.1017ms | 0.1400ms | 4.92M |
+| 🥈 | **[Zen](https://github.com/sylphxltd/zen)** | 8.95M | ±0.09% | 0.1117ms | 0.1400ms | 4.48M |
+| 🥉 | **[Preact Signals](https://github.com/preactjs/signals)** | 6.43M | ±0.12% | 0.1554ms | 0.1800ms | 3.22M |
+| 4 | **[Valtio](https://github.com/pmndrs/valtio)** | 1.39M | ±0.39% | 0.7211ms | 1.2620ms | 693.38K |
+| 5 | **[MobX](https://github.com/mobxjs/mobx)** | 1.29M | ±0.27% | 0.7726ms | 0.8520ms | 647.19K |
+| 6 | **[Jotai](https://github.com/pmndrs/jotai)** | 213.67K | ±3.69% | 4.6802ms | 8.8770ms | 106.83K |
+| 7 | **[Redux Toolkit](https://github.com/reduxjs/redux-toolkit)** | 199.05K | ±1.30% | 5.0239ms | 9.2170ms | 99.53K |
+| 8 | **[Zustand](https://github.com/pmndrs/zustand)** | 166.31K | ±0.51% | 6.0129ms | 11.0210ms | 83.16K |
+
+**Key Insight:** Solid Signals is **59.12x faster** than Zustand in this category.
+
+### Chained Computed (3 levels) {#chained-computed-3-levels-}
+
+**Performance Comparison:**
+
+```
+🥇 Zen                  ████████████████████████████████████████ 10.39M
+🥈 Solid Signals        ██████████████████████████████████████ 9.85M
+🥉 Preact Signals       █████████████████████████████████████ 9.70M
+   Zustand              ███████████████████████████████████ 9.10M
+   Redux Toolkit        ██████████████████████████████████ 8.92M
+   Valtio               ████████████████ 4.28M
+   MobX                 ██ 507.77K
+   Jotai                ██ 466.02K
+```
+
+| Rank | Library | Ops/sec | Variance | Mean | p99 | Samples |
+|------|---------|---------|----------|------|-----|--------|
+| 🥇 | **[Zen](https://github.com/sylphxltd/zen)** | 10.39M | ±0.09% | 0.0963ms | 0.1110ms | 5.19M |
+| 🥈 | **[Solid Signals](https://github.com/solidjs/solid)** | 9.85M | ±0.09% | 0.1015ms | 0.1110ms | 4.93M |
+| 🥉 | **[Preact Signals](https://github.com/preactjs/signals)** | 9.70M | ±0.09% | 0.1031ms | 0.1300ms | 4.85M |
+| 4 | **[Zustand](https://github.com/pmndrs/zustand)** | 9.10M | ±0.20% | 0.1099ms | 0.1210ms | 4.55M |
+| 5 | **[Redux Toolkit](https://github.com/reduxjs/redux-toolkit)** | 8.92M | ±0.10% | 0.1121ms | 0.1410ms | 4.46M |
+| 6 | **[Valtio](https://github.com/pmndrs/valtio)** | 4.28M | ±0.09% | 0.2336ms | 0.2600ms | 2.14M |
+| 7 | **[MobX](https://github.com/mobxjs/mobx)** | 507.77K | ±0.61% | 1.9694ms | 3.6970ms | 253.89K |
+| 8 | **[Jotai](https://github.com/pmndrs/jotai)** | 466.02K | ±0.50% | 2.1458ms | 2.5350ms | 233.01K |
+
+**Key Insight:** Zen is **22.29x faster** than Jotai in this category.
+
+### Batching (100 updates) {#batching-100-updates-}
+
+**Performance Comparison:**
+
+```
+🥇 Solid Signals        ████████████████████████████████████████ 6.06M
+🥈 Preact Signals       ██████ 874.72K
+🥉 Zen                  ██████ 848.19K
+   MobX                 █ 41.87K
+   Valtio               █ 22.60K
+   Jotai                █ 7.68K
+   Redux Toolkit        █ 2.05K
+   Zustand              █ 1.74K
+```
+
+| Rank | Library | Ops/sec | Variance | Mean | p99 | Samples |
+|------|---------|---------|----------|------|-----|--------|
+| 🥇 | **[Solid Signals](https://github.com/solidjs/solid)** | 6.06M | ±0.13% | 0.1650ms | 0.2510ms | 3.03M |
+| 🥈 | **[Preact Signals](https://github.com/preactjs/signals)** | 874.72K | ±0.08% | 1.1432ms | 1.3220ms | 437.36K |
+| 🥉 | **[Zen](https://github.com/sylphxltd/zen)** | 848.19K | ±0.09% | 1.1790ms | 1.2030ms | 424.09K |
+| 4 | **[MobX](https://github.com/mobxjs/mobx)** | 41.87K | ±0.82% | 23.8821ms | 31.2690ms | 20.94K |
+| 5 | **[Valtio](https://github.com/pmndrs/valtio)** | 22.60K | ±0.90% | 44.2455ms | 52.6090ms | 11.30K |
+| 6 | **[Jotai](https://github.com/pmndrs/jotai)** | 7.68K | ±0.92% | 130.2179ms | 407.3930ms | 3.84K |
+| 7 | **[Redux Toolkit](https://github.com/reduxjs/redux-toolkit)** | 2.05K | ±0.77% | 488.2960ms | 840.5450ms | 1.02K |
+| 8 | **[Zustand](https://github.com/pmndrs/zustand)** | 1.74K | ±0.59% | 575.8241ms | 949.3190ms | 869.00 |
+
+**Key Insight:** Solid Signals is **3489.71x faster** than Zustand in this category.
+
+### Subscribe/Unsubscribe {#subscribe-unsubscribe}
+
+**Performance Comparison:**
+
+```
+🥇 Solid Signals        ████████████████████████████████████████ 9.79M
+🥈 Zen                  █████████████████████████ 6.17M
+🥉 Preact Signals       ████████████████████ 4.93M
+   Zustand              ████████████████ 3.80M
+   Redux Toolkit        ███████████ 2.66M
+   MobX                 ███ 711.46K
+   Jotai                █ 356.42K
+   Valtio               █ 2.61K
+```
+
+| Rank | Library | Ops/sec | Variance | Mean | p99 | Samples |
+|------|---------|---------|----------|------|-----|--------|
+| 🥇 | **[Solid Signals](https://github.com/solidjs/solid)** | 9.79M | ±0.09% | 0.1021ms | 0.1110ms | 4.90M |
+| 🥈 | **[Zen](https://github.com/sylphxltd/zen)** | 6.17M | ±0.18% | 0.1621ms | 0.2010ms | 3.08M |
+| 🥉 | **[Preact Signals](https://github.com/preactjs/signals)** | 4.93M | ±0.54% | 0.2030ms | 0.2510ms | 2.46M |
+| 4 | **[Zustand](https://github.com/pmndrs/zustand)** | 3.80M | ±1.40% | 0.2631ms | 1.8430ms | 1.90M |
+| 5 | **[Redux Toolkit](https://github.com/reduxjs/redux-toolkit)** | 2.66M | ±1.14% | 0.3761ms | 1.9240ms | 1.33M |
+| 6 | **[MobX](https://github.com/mobxjs/mobx)** | 711.46K | ±1.91% | 1.4056ms | 3.0550ms | 355.73K |
+| 7 | **[Jotai](https://github.com/pmndrs/jotai)** | 356.42K | ±6.91% | 2.8057ms | 6.5720ms | 178.21K |
+| 8 | **[Valtio](https://github.com/pmndrs/valtio)** | 2.61K | ±2.56% | 383.3995ms | 1096.8350ms | 1.31K |
+
+**Key Insight:** Solid Signals is **3754.79x faster** than Valtio in this category.
 
 ### Computed Access {#computed-access}
 
 **Performance Comparison:**
 
 ```
-🥇 Redux Toolkit        ████████████████████████████████████████ 10.59M
-🥈 Zen                  ███████████████████████████████████████ 10.29M
-🥉 Preact Signals       ██████████████████████████████████████ 10.10M
-   Solid Signals        ██████████████████████████████████████ 9.95M
-   Zustand              ██████████████████████████████████ 9.03M
-   Valtio               ████████████████████████ 6.22M
-   MobX                 ████████████ 3.11M
-   Jotai                ████ 930.04K
+🥇 Redux Toolkit        ████████████████████████████████████████ 10.66M
+🥈 Solid Signals        ███████████████████████████████████████ 10.47M
+🥉 Preact Signals       ███████████████████████████████████████ 10.28M
+   Zen                  ██████████████████████████████████████ 10.20M
+   Zustand              █████████████████████████████████ 8.89M
+   Valtio               ████████████████████████ 6.39M
+   MobX                 █████████████ 3.37M
+   Jotai                ████ 959.44K
 ```
 
 | Rank | Library | Ops/sec | Variance | Mean | p99 | Samples |
 |------|---------|---------|----------|------|-----|--------|
-| 🥇 | **[Redux Toolkit](https://github.com/reduxjs/redux-toolkit)** | 10.59M | ±0.10% | 0.0945ms | 0.1600ms | 5.29M |
-| 🥈 | **[Zen](https://github.com/sylphxltd/zen)** | 10.29M | ±0.10% | 0.0971ms | 0.1500ms | 5.15M |
-| 🥉 | **[Preact Signals](https://github.com/preactjs/signals)** | 10.10M | ±0.10% | 0.0991ms | 0.1400ms | 5.05M |
-| 4 | **[Solid Signals](https://github.com/solidjs/solid)** | 9.95M | ±0.11% | 0.1005ms | 0.1400ms | 4.97M |
-| 5 | **[Zustand](https://github.com/pmndrs/zustand)** | 9.03M | ±0.18% | 0.1108ms | 0.1300ms | 4.51M |
-| 6 | **[Valtio](https://github.com/pmndrs/valtio)** | 6.22M | ±0.10% | 0.1608ms | 0.2300ms | 3.11M |
-| 7 | **[MobX](https://github.com/mobxjs/mobx)** | 3.11M | ±0.84% | 0.3215ms | 0.4110ms | 1.56M |
-| 8 | **[Jotai](https://github.com/pmndrs/jotai)** | 930.04K | ±0.65% | 1.0752ms | 1.9240ms | 465.02K |
+| 🥇 | **[Redux Toolkit](https://github.com/reduxjs/redux-toolkit)** | 10.66M | ±0.09% | 0.0938ms | 0.1100ms | 5.33M |
+| 🥈 | **[Solid Signals](https://github.com/solidjs/solid)** | 10.47M | ±0.26% | 0.0955ms | 0.1100ms | 5.23M |
+| 🥉 | **[Preact Signals](https://github.com/preactjs/signals)** | 10.28M | ±0.09% | 0.0972ms | 0.1110ms | 5.14M |
+| 4 | **[Zen](https://github.com/sylphxltd/zen)** | 10.20M | ±0.09% | 0.0981ms | 0.1110ms | 5.10M |
+| 5 | **[Zustand](https://github.com/pmndrs/zustand)** | 8.89M | ±0.22% | 0.1124ms | 0.1300ms | 4.45M |
+| 6 | **[Valtio](https://github.com/pmndrs/valtio)** | 6.39M | ±0.10% | 0.1565ms | 0.2500ms | 3.20M |
+| 7 | **[MobX](https://github.com/mobxjs/mobx)** | 3.37M | ±0.74% | 0.2967ms | 0.3500ms | 1.69M |
+| 8 | **[Jotai](https://github.com/pmndrs/jotai)** | 959.44K | ±0.64% | 1.0423ms | 1.2120ms | 479.72K |
 
-**Key Insight:** Redux Toolkit is **11.38x faster** than Jotai in this category.
+**Key Insight:** Redux Toolkit is **11.11x faster** than Jotai in this category.
 
 ### Nested Update {#nested-update}
 
 **Performance Comparison:**
 
 ```
-🥇 Zen                  ████████████████████████████████████████ 8.67M
-🥈 Solid Signals        ████████████████████████████████████████ 8.65M
-🥉 Preact Signals       ███████████████████████████████████████ 8.40M
-   MobX                 ██████████ 2.13M
-   Valtio               ██████ 1.37M
-   Jotai                ███ 668.84K
-   Redux Toolkit        █ 200.79K
-   Zustand              █ 159.09K
+🥇 Solid Signals        ████████████████████████████████████████ 8.88M
+🥈 Zen                  ██████████████████████████████████████ 8.51M
+🥉 Preact Signals       ██████████████████████████████████████ 8.41M
+   MobX                 ████████ 1.75M
+   Valtio               ██████ 1.35M
+   Jotai                ███ 693.13K
+   Redux Toolkit        █ 203.29K
+   Zustand              █ 161.01K
 ```
 
 | Rank | Library | Ops/sec | Variance | Mean | p99 | Samples |
 |------|---------|---------|----------|------|-----|--------|
-| 🥇 | **[Zen](https://github.com/sylphxltd/zen)** | 8.67M | ±0.09% | 0.1153ms | 0.2110ms | 4.34M |
-| 🥈 | **[Solid Signals](https://github.com/solidjs/solid)** | 8.65M | ±0.10% | 0.1156ms | 0.2110ms | 4.32M |
-| 🥉 | **[Preact Signals](https://github.com/preactjs/signals)** | 8.40M | ±0.10% | 0.1191ms | 0.2200ms | 4.20M |
-| 4 | **[MobX](https://github.com/mobxjs/mobx)** | 2.13M | ±0.40% | 0.4691ms | 0.7610ms | 1.07M |
-| 5 | **[Valtio](https://github.com/pmndrs/valtio)** | 1.37M | ±0.27% | 0.7293ms | 0.8310ms | 685.54K |
-| 6 | **[Jotai](https://github.com/pmndrs/jotai)** | 668.84K | ±1.25% | 1.4951ms | 3.2060ms | 334.42K |
-| 7 | **[Redux Toolkit](https://github.com/reduxjs/redux-toolkit)** | 200.79K | ±0.61% | 4.9804ms | 8.4360ms | 100.39K |
-| 8 | **[Zustand](https://github.com/pmndrs/zustand)** | 159.09K | ±0.37% | 6.2858ms | 7.0240ms | 79.55K |
+| 🥇 | **[Solid Signals](https://github.com/solidjs/solid)** | 8.88M | ±0.09% | 0.1126ms | 0.2100ms | 4.44M |
+| 🥈 | **[Zen](https://github.com/sylphxltd/zen)** | 8.51M | ±0.09% | 0.1175ms | 0.2110ms | 4.25M |
+| 🥉 | **[Preact Signals](https://github.com/preactjs/signals)** | 8.41M | ±0.09% | 0.1189ms | 0.2110ms | 4.21M |
+| 4 | **[MobX](https://github.com/mobxjs/mobx)** | 1.75M | ±0.57% | 0.5710ms | 0.7710ms | 875.64K |
+| 5 | **[Valtio](https://github.com/pmndrs/valtio)** | 1.35M | ±0.46% | 0.7387ms | 0.8620ms | 676.91K |
+| 6 | **[Jotai](https://github.com/pmndrs/jotai)** | 693.13K | ±0.36% | 1.4427ms | 3.1250ms | 346.56K |
+| 7 | **[Redux Toolkit](https://github.com/reduxjs/redux-toolkit)** | 203.29K | ±0.50% | 4.9190ms | 8.2150ms | 101.65K |
+| 8 | **[Zustand](https://github.com/pmndrs/zustand)** | 161.01K | ±0.41% | 6.2109ms | 8.0250ms | 80.50K |
 
-**Key Insight:** Zen is **54.50x faster** than Zustand in this category.
+**Key Insight:** Solid Signals is **55.17x faster** than Zustand in this category.
 
 ### Array Push {#array-push}
 
 **Performance Comparison:**
 
 ```
-🥇 Valtio               ████████████████████████████████████████ 156.76K
-🥈 MobX                 █████████████████████████████████████ 146.87K
-🥉 Zustand              ███ 12.45K
-   Jotai                ██ 9.31K
-   Preact Signals       ██ 8.36K
-   Zen                  ██ 8.31K
-   Solid Signals        ██ 8.14K
-   Redux Toolkit        █ 4.62K
+🥇 Valtio               ████████████████████████████████████████ 155.50K
+🥈 MobX                 █████████████████████████████████████ 144.59K
+🥉 Preact Signals       ███ 13.27K
+   Zustand              ███ 13.15K
+   Jotai                ██ 9.49K
+   Solid Signals        ██ 8.55K
+   Zen                  ██ 8.29K
+   Redux Toolkit        █ 4.68K
 ```
 
 | Rank | Library | Ops/sec | Variance | Mean | p99 | Samples |
 |------|---------|---------|----------|------|-----|--------|
-| 🥇 | **[Valtio](https://github.com/pmndrs/valtio)** | 156.76K | ±12.72% | 6.3792ms | 8.9470ms | 78.38K |
-| 🥈 | **[MobX](https://github.com/mobxjs/mobx)** | 146.87K | ±6.81% | 6.8089ms | 12.4930ms | 73.44K |
-| 🥉 | **[Zustand](https://github.com/pmndrs/zustand)** | 12.45K | ±7.09% | 80.2930ms | 203.1980ms | 6.27K |
-| 4 | **[Jotai](https://github.com/pmndrs/jotai)** | 9.31K | ±7.42% | 107.4494ms | 211.3930ms | 4.69K |
-| 5 | **[Preact Signals](https://github.com/preactjs/signals)** | 8.36K | ±8.27% | 119.5692ms | 188.2600ms | 4.18K |
-| 6 | **[Zen](https://github.com/sylphxltd/zen)** | 8.31K | ±8.12% | 120.3538ms | 193.6910ms | 4.16K |
-| 7 | **[Solid Signals](https://github.com/solidjs/solid)** | 8.14K | ±8.65% | 122.8517ms | 193.2900ms | 4.08K |
-| 8 | **[Redux Toolkit](https://github.com/reduxjs/redux-toolkit)** | 4.62K | ±1.19% | 216.4764ms | 324.0540ms | 2.31K |
+| 🥇 | **[Valtio](https://github.com/pmndrs/valtio)** | 155.50K | ±11.89% | 6.4308ms | 9.3070ms | 77.75K |
+| 🥈 | **[MobX](https://github.com/mobxjs/mobx)** | 144.59K | ±6.51% | 6.9160ms | 10.9400ms | 72.30K |
+| 🥉 | **[Preact Signals](https://github.com/preactjs/signals)** | 13.27K | ±7.86% | 75.3566ms | 226.8450ms | 6.68K |
+| 4 | **[Zustand](https://github.com/pmndrs/zustand)** | 13.15K | ±7.14% | 76.0474ms | 209.4030ms | 6.58K |
+| 5 | **[Jotai](https://github.com/pmndrs/jotai)** | 9.49K | ±7.93% | 105.3577ms | 204.7030ms | 4.75K |
+| 6 | **[Solid Signals](https://github.com/solidjs/solid)** | 8.55K | ±8.05% | 116.9266ms | 195.8270ms | 4.28K |
+| 7 | **[Zen](https://github.com/sylphxltd/zen)** | 8.29K | ±8.17% | 120.6070ms | 197.2300ms | 4.15K |
+| 8 | **[Redux Toolkit](https://github.com/reduxjs/redux-toolkit)** | 4.68K | ±1.26% | 213.8883ms | 334.7570ms | 2.34K |
 
-**Key Insight:** Valtio is **33.93x faster** than Redux Toolkit in this category.
+**Key Insight:** Valtio is **33.26x faster** than Redux Toolkit in this category.
 
 ### Loading State Toggle {#loading-state-toggle}
 
 **Performance Comparison:**
 
 ```
-🥇 Solid Signals        ████████████████████████████████████████ 9.04M
-🥈 Preact Signals       ██████████████████████████████████████ 8.65M
-🥉 Zen                  █████████████████████████ 5.57M
-   Valtio               ██████████ 2.31M
-   MobX                 █████████ 2.08M
-   Jotai                ███ 580.97K
-   Redux Toolkit        ██ 342.46K
-   Zustand              █ 161.88K
+🥇 Solid Signals        ████████████████████████████████████████ 9.39M
+🥈 Preact Signals       ██████████████████████████████████████ 8.83M
+🥉 Zen                  ███████████████████████ 5.47M
+   Valtio               ██████████ 2.34M
+   MobX                 █████████ 2.03M
+   Jotai                ███ 766.56K
+   Redux Toolkit        █ 341.68K
+   Zustand              █ 167.92K
 ```
 
 | Rank | Library | Ops/sec | Variance | Mean | p99 | Samples |
 |------|---------|---------|----------|------|-----|--------|
-| 🥇 | **[Solid Signals](https://github.com/solidjs/solid)** | 9.04M | ±0.26% | 0.1107ms | 0.2200ms | 4.52M |
-| 🥈 | **[Preact Signals](https://github.com/preactjs/signals)** | 8.65M | ±0.10% | 0.1156ms | 0.2210ms | 4.33M |
-| 🥉 | **[Zen](https://github.com/sylphxltd/zen)** | 5.57M | ±0.10% | 0.1794ms | 0.2810ms | 2.79M |
-| 4 | **[Valtio](https://github.com/pmndrs/valtio)** | 2.31M | ±0.87% | 0.4332ms | 0.7020ms | 1.15M |
-| 5 | **[MobX](https://github.com/mobxjs/mobx)** | 2.08M | ±0.65% | 0.4807ms | 0.6210ms | 1.04M |
-| 6 | **[Jotai](https://github.com/pmndrs/jotai)** | 580.97K | ±5.88% | 1.7213ms | 4.8390ms | 290.49K |
-| 7 | **[Redux Toolkit](https://github.com/reduxjs/redux-toolkit)** | 342.46K | ±1.12% | 2.9200ms | 4.0580ms | 171.23K |
-| 8 | **[Zustand](https://github.com/pmndrs/zustand)** | 161.88K | ±1.55% | 6.1776ms | 7.5240ms | 80.94K |
+| 🥇 | **[Solid Signals](https://github.com/solidjs/solid)** | 9.39M | ±0.09% | 0.1065ms | 0.2100ms | 4.70M |
+| 🥈 | **[Preact Signals](https://github.com/preactjs/signals)** | 8.83M | ±0.09% | 0.1132ms | 0.2200ms | 4.42M |
+| 🥉 | **[Zen](https://github.com/sylphxltd/zen)** | 5.47M | ±0.09% | 0.1828ms | 0.2900ms | 2.74M |
+| 4 | **[Valtio](https://github.com/pmndrs/valtio)** | 2.34M | ±0.56% | 0.4266ms | 0.6910ms | 1.17M |
+| 5 | **[MobX](https://github.com/mobxjs/mobx)** | 2.03M | ±0.69% | 0.4916ms | 0.6210ms | 1.02M |
+| 6 | **[Jotai](https://github.com/pmndrs/jotai)** | 766.56K | ±0.87% | 1.3045ms | 3.1060ms | 383.28K |
+| 7 | **[Redux Toolkit](https://github.com/reduxjs/redux-toolkit)** | 341.68K | ±0.86% | 2.9267ms | 4.0280ms | 170.84K |
+| 8 | **[Zustand](https://github.com/pmndrs/zustand)** | 167.92K | ±0.65% | 5.9553ms | 7.0440ms | 83.96K |
 
-**Key Insight:** Solid Signals is **55.82x faster** than Zustand in this category.
+**Key Insight:** Solid Signals is **55.94x faster** than Zustand in this category.
 
 ### Multiple Subscriptions (10 subscribers) {#multiple-subscriptions-10-subscribers-}
 
 **Performance Comparison:**
 
 ```
-🥇 Solid Signals        ████████████████████████████████████████ 4.27M
-🥈 Zen                  ███████████ 1.15M
-🥉 Preact Signals       ██████ 664.28K
-   Zustand              █ 102.01K
-   Redux Toolkit        █ 92.97K
-   Jotai                █ 51.94K
-   MobX                 █ 45.46K
-   Valtio               █ 10.48
+🥇 Solid Signals        ████████████████████████████████████████ 4.36M
+🥈 Zen                  ███████████ 1.19M
+🥉 Preact Signals       ██████ 638.53K
+   Zustand              █ 108.38K
+   Redux Toolkit        █ 95.37K
+   Jotai                █ 55.04K
+   MobX                 █ 44.96K
+   Valtio               █ 10.63
 ```
 
 | Rank | Library | Ops/sec | Variance | Mean | p99 | Samples |
 |------|---------|---------|----------|------|-----|--------|
-| 🥇 | **[Solid Signals](https://github.com/solidjs/solid)** | 4.27M | ±2.22% | 0.2344ms | 0.3100ms | 2.13M |
-| 🥈 | **[Zen](https://github.com/sylphxltd/zen)** | 1.15M | ±1.81% | 0.8681ms | 1.1930ms | 575.94K |
-| 🥉 | **[Preact Signals](https://github.com/preactjs/signals)** | 664.28K | ±1.76% | 1.5054ms | 1.8540ms | 332.14K |
-| 4 | **[Zustand](https://github.com/pmndrs/zustand)** | 102.01K | ±8.60% | 9.8032ms | 19.0850ms | 51.00K |
-| 5 | **[Redux Toolkit](https://github.com/reduxjs/redux-toolkit)** | 92.97K | ±10.20% | 10.7561ms | 19.0350ms | 46.77K |
-| 6 | **[Jotai](https://github.com/pmndrs/jotai)** | 51.94K | ±4.49% | 19.2542ms | 43.2510ms | 25.97K |
-| 7 | **[MobX](https://github.com/mobxjs/mobx)** | 45.46K | ±12.79% | 21.9964ms | 33.8830ms | 22.73K |
-| 8 | **[Valtio](https://github.com/pmndrs/valtio)** | 10.48 | ±25.71% | 95448.2598ms | 185034.7050ms | 10.00 |
+| 🥇 | **[Solid Signals](https://github.com/solidjs/solid)** | 4.36M | ±2.34% | 0.2292ms | 0.2910ms | 2.18M |
+| 🥈 | **[Zen](https://github.com/sylphxltd/zen)** | 1.19M | ±1.68% | 0.8369ms | 1.1520ms | 597.41K |
+| 🥉 | **[Preact Signals](https://github.com/preactjs/signals)** | 638.53K | ±1.63% | 1.5661ms | 1.9230ms | 319.26K |
+| 4 | **[Zustand](https://github.com/pmndrs/zustand)** | 108.38K | ±7.92% | 9.2266ms | 18.0530ms | 54.19K |
+| 5 | **[Redux Toolkit](https://github.com/reduxjs/redux-toolkit)** | 95.37K | ±9.60% | 10.4858ms | 19.3660ms | 47.68K |
+| 6 | **[Jotai](https://github.com/pmndrs/jotai)** | 55.04K | ±3.60% | 18.1674ms | 40.7270ms | 27.52K |
+| 7 | **[MobX](https://github.com/mobxjs/mobx)** | 44.96K | ±12.01% | 22.2434ms | 34.1440ms | 22.48K |
+| 8 | **[Valtio](https://github.com/pmndrs/valtio)** | 10.63 | ±28.27% | 94087.7354ms | 189184.1520ms | 10.00 |
 
-**Key Insight:** Solid Signals is **407217.84x faster** than Valtio in this category.
+**Key Insight:** Solid Signals is **410522.40x faster** than Valtio in this category.
 
 ### Batch Updates (3 state changes) {#batch-updates-3-state-changes-}
 
 **Performance Comparison:**
 
 ```
-🥇 Solid Signals        ████████████████████████████████████████ 7.87M
-🥈 Preact Signals       █████████████████████████████████ 6.42M
-🥉 Zen                  █████████████████████ 4.06M
-   Valtio               ████ 805.32K
-   MobX                 ████ 729.23K
-   Jotai                █ 232.07K
-   Redux Toolkit        █ 171.52K
-   Zustand              █ 150.64K
+🥇 Solid Signals        ████████████████████████████████████████ 8.17M
+🥈 Preact Signals       ████████████████████████████████ 6.50M
+🥉 Zen                  █████████████████████ 4.25M
+   Valtio               ████ 814.52K
+   MobX                 ███ 697.16K
+   Jotai                █ 242.42K
+   Redux Toolkit        █ 176.73K
+   Zustand              █ 157.98K
 ```
 
 | Rank | Library | Ops/sec | Variance | Mean | p99 | Samples |
 |------|---------|---------|----------|------|-----|--------|
-| 🥇 | **[Solid Signals](https://github.com/solidjs/solid)** | 7.87M | ±0.10% | 0.1270ms | 0.2310ms | 3.94M |
-| 🥈 | **[Preact Signals](https://github.com/preactjs/signals)** | 6.42M | ±0.10% | 0.1557ms | 0.2600ms | 3.21M |
-| 🥉 | **[Zen](https://github.com/sylphxltd/zen)** | 4.06M | ±0.23% | 0.2463ms | 0.3510ms | 2.03M |
-| 4 | **[Valtio](https://github.com/pmndrs/valtio)** | 805.32K | ±1.61% | 1.2417ms | 1.3330ms | 402.66K |
-| 5 | **[MobX](https://github.com/mobxjs/mobx)** | 729.23K | ±1.89% | 1.3713ms | 1.5630ms | 364.61K |
-| 6 | **[Jotai](https://github.com/pmndrs/jotai)** | 232.07K | ±2.71% | 4.3090ms | 8.4560ms | 116.04K |
-| 7 | **[Redux Toolkit](https://github.com/reduxjs/redux-toolkit)** | 171.52K | ±2.18% | 5.8302ms | 8.6360ms | 85.76K |
-| 8 | **[Zustand](https://github.com/pmndrs/zustand)** | 150.64K | ±2.19% | 6.6386ms | 7.8150ms | 75.32K |
+| 🥇 | **[Solid Signals](https://github.com/solidjs/solid)** | 8.17M | ±0.09% | 0.1225ms | 0.2300ms | 4.08M |
+| 🥈 | **[Preact Signals](https://github.com/preactjs/signals)** | 6.50M | ±0.09% | 0.1539ms | 0.2510ms | 3.25M |
+| 🥉 | **[Zen](https://github.com/sylphxltd/zen)** | 4.25M | ±0.22% | 0.2353ms | 0.3510ms | 2.13M |
+| 4 | **[Valtio](https://github.com/pmndrs/valtio)** | 814.52K | ±1.30% | 1.2277ms | 1.3220ms | 407.26K |
+| 5 | **[MobX](https://github.com/mobxjs/mobx)** | 697.16K | ±2.65% | 1.4344ms | 1.5830ms | 348.58K |
+| 6 | **[Jotai](https://github.com/pmndrs/jotai)** | 242.42K | ±1.33% | 4.1252ms | 8.5160ms | 121.21K |
+| 7 | **[Redux Toolkit](https://github.com/reduxjs/redux-toolkit)** | 176.73K | ±1.25% | 5.6582ms | 6.8720ms | 88.37K |
+| 8 | **[Zustand](https://github.com/pmndrs/zustand)** | 157.98K | ±0.92% | 6.3300ms | 7.1030ms | 78.99K |
 
-**Key Insight:** Solid Signals is **52.25x faster** than Zustand in this category.
+**Key Insight:** Solid Signals is **51.69x faster** than Zustand in this category.
 
 ### Array Filter {#array-filter}
 
 **Performance Comparison:**
 
 ```
-🥇 Preact Signals       ████████████████████████████████████████ 8.38K
-🥈 Zustand              ███████████████████████████████████████ 8.16K
-🥉 Jotai                █████████████████████ 4.34K
-   Zen                  █████████████████ 3.48K
-   Solid Signals        ██████████████ 3.01K
-   Redux Toolkit        █ 175.94
-   MobX                 █ 38.84
-   Valtio               █ 5.81
+🥇 Zustand              ████████████████████████████████████████ 8.93K
+🥈 Preact Signals       ████████████████████████████ 6.15K
+🥉 Jotai                ████████████████████ 4.40K
+   Zen                  ████████████████ 3.68K
+   Solid Signals        ███████████████ 3.30K
+   Redux Toolkit        █ 168.28
+   MobX                 █ 45.35
+   Valtio               █ 6.00
 ```
 
 | Rank | Library | Ops/sec | Variance | Mean | p99 | Samples |
 |------|---------|---------|----------|------|-----|--------|
-| 🥇 | **[Preact Signals](https://github.com/preactjs/signals)** | 8.38K | ±3.57% | 119.3771ms | 997.6380ms | 4.19K |
-| 🥈 | **[Zustand](https://github.com/pmndrs/zustand)** | 8.16K | ±2.40% | 122.5537ms | 521.9920ms | 4.08K |
-| 🥉 | **[Jotai](https://github.com/pmndrs/jotai)** | 4.34K | ±1.94% | 230.3267ms | 923.2800ms | 2.17K |
-| 4 | **[Zen](https://github.com/sylphxltd/zen)** | 3.48K | ±6.29% | 287.1544ms | 2750.1810ms | 1.74K |
-| 5 | **[Solid Signals](https://github.com/solidjs/solid)** | 3.01K | ±6.21% | 332.5319ms | 2933.4520ms | 1.50K |
-| 6 | **[Redux Toolkit](https://github.com/reduxjs/redux-toolkit)** | 175.94 | ±2.11% | 5683.6693ms | 7948.0200ms | 88.00 |
-| 7 | **[MobX](https://github.com/mobxjs/mobx)** | 38.84 | ±2.60% | 25745.5911ms | 29188.5310ms | 20.00 |
-| 8 | **[Valtio](https://github.com/pmndrs/valtio)** | 5.81 | ±0.37% | 172046.7968ms | 173602.3990ms | 10.00 |
+| 🥇 | **[Zustand](https://github.com/pmndrs/zustand)** | 8.93K | ±2.16% | 111.9709ms | 474.1090ms | 4.47K |
+| 🥈 | **[Preact Signals](https://github.com/preactjs/signals)** | 6.15K | ±2.74% | 162.6726ms | 699.3200ms | 3.07K |
+| 🥉 | **[Jotai](https://github.com/pmndrs/jotai)** | 4.40K | ±1.76% | 227.3591ms | 788.0270ms | 2.20K |
+| 4 | **[Zen](https://github.com/sylphxltd/zen)** | 3.68K | ±5.58% | 271.6582ms | 2388.9770ms | 1.84K |
+| 5 | **[Solid Signals](https://github.com/solidjs/solid)** | 3.30K | ±4.88% | 303.2147ms | 2220.4810ms | 1.65K |
+| 6 | **[Redux Toolkit](https://github.com/reduxjs/redux-toolkit)** | 168.28 | ±1.53% | 5942.6374ms | 7103.3640ms | 85.00 |
+| 7 | **[MobX](https://github.com/mobxjs/mobx)** | 45.35 | ±3.04% | 22049.5808ms | 25648.9720ms | 23.00 |
+| 8 | **[Valtio](https://github.com/pmndrs/valtio)** | 6.00 | ±0.51% | 166540.6397ms | 168279.6960ms | 10.00 |
 
-**Key Insight:** Preact Signals is **1441.20x faster** than Valtio in this category.
+**Key Insight:** Zustand is **1487.36x faster** than Valtio in this category.
 
 ### Array Remove {#array-remove}
 
 **Performance Comparison:**
 
 ```
-🥇 Zen                  ████████████████████████████████████████ 33.28K
-🥈 Jotai                ███████████████████████████████████████ 32.37K
-🥉 Solid Signals        ██████████████████████████ 21.66K
-   Preact Signals       ████████████████████████ 20.17K
-   Zustand              ████████████████████ 16.55K
-   Redux Toolkit        █ 427.63
-   Valtio               █ 64.72
-   MobX                 █ 62.35
+🥇 Jotai                ████████████████████████████████████████ 33.18K
+🥈 Zen                  ████████████████████████████████████████ 33.14K
+🥉 Solid Signals        ███████████████████████████ 22.33K
+   Zustand              █████████████████████████ 20.51K
+   Preact Signals       █████████████████ 14.36K
+   Redux Toolkit        █ 409.80
+   MobX                 █ 71.41
+   Valtio               █ 71.29
 ```
 
 | Rank | Library | Ops/sec | Variance | Mean | p99 | Samples |
 |------|---------|---------|----------|------|-----|--------|
-| 🥇 | **[Zen](https://github.com/sylphxltd/zen)** | 33.28K | ±0.84% | 30.0451ms | 122.9090ms | 16.64K |
-| 🥈 | **[Jotai](https://github.com/pmndrs/jotai)** | 32.37K | ±0.83% | 30.8904ms | 122.5880ms | 16.19K |
-| 🥉 | **[Solid Signals](https://github.com/solidjs/solid)** | 21.66K | ±3.01% | 46.1687ms | 146.8240ms | 10.83K |
-| 4 | **[Preact Signals](https://github.com/preactjs/signals)** | 20.17K | ±3.66% | 49.5739ms | 229.1170ms | 10.09K |
-| 5 | **[Zustand](https://github.com/pmndrs/zustand)** | 16.55K | ±2.92% | 60.4281ms | 235.0280ms | 8.28K |
-| 6 | **[Redux Toolkit](https://github.com/reduxjs/redux-toolkit)** | 427.63 | ±3.34% | 2338.4809ms | 4196.4540ms | 214.00 |
-| 7 | **[Valtio](https://github.com/pmndrs/valtio)** | 64.72 | ±2.81% | 15451.5771ms | 17606.3640ms | 33.00 |
-| 8 | **[MobX](https://github.com/mobxjs/mobx)** | 62.35 | ±3.07% | 16038.1148ms | 23106.0980ms | 32.00 |
+| 🥇 | **[Jotai](https://github.com/pmndrs/jotai)** | 33.18K | ±1.01% | 30.1371ms | 121.4280ms | 16.59K |
+| 🥈 | **[Zen](https://github.com/sylphxltd/zen)** | 33.14K | ±0.86% | 30.1745ms | 122.5690ms | 16.57K |
+| 🥉 | **[Solid Signals](https://github.com/solidjs/solid)** | 22.33K | ±2.31% | 44.7738ms | 142.4970ms | 11.17K |
+| 4 | **[Zustand](https://github.com/pmndrs/zustand)** | 20.51K | ±2.29% | 48.7624ms | 143.1180ms | 10.25K |
+| 5 | **[Preact Signals](https://github.com/preactjs/signals)** | 14.36K | ±2.72% | 69.6422ms | 189.2040ms | 7.18K |
+| 6 | **[Redux Toolkit](https://github.com/reduxjs/redux-toolkit)** | 409.80 | ±2.76% | 2440.1878ms | 4033.1780ms | 205.00 |
+| 7 | **[MobX](https://github.com/mobxjs/mobx)** | 71.41 | ±4.02% | 14003.9494ms | 21373.5120ms | 36.00 |
+| 8 | **[Valtio](https://github.com/pmndrs/valtio)** | 71.29 | ±1.82% | 14026.4250ms | 16187.8150ms | 36.00 |
 
-**Key Insight:** Zen is **533.80x faster** than MobX in this category.
+**Key Insight:** Jotai is **465.42x faster** than Valtio in this category.
 
 ### Array Update {#array-update}
 
 **Performance Comparison:**
 
 ```
-🥇 Zen                  ████████████████████████████████████████ 33.62K
-🥈 Solid Signals        ████████████ 10.03K
-🥉 Preact Signals       ███████████ 9.64K
-   Zustand              ██████████ 8.41K
-   Jotai                ███████ 5.97K
-   Redux Toolkit        █ 426.74
-   MobX                 █ 65.82
-   Valtio               █ 65.69
+🥇 Zen                  ████████████████████████████████████████ 33.61K
+🥈 Zustand              ████████████ 9.84K
+🥉 Solid Signals        ████████████ 9.73K
+   Preact Signals       █████████ 7.19K
+   Jotai                ███████ 6.15K
+   Redux Toolkit        █ 412.53
+   Valtio               █ 79.59
+   MobX                 █ 70.82
 ```
 
 | Rank | Library | Ops/sec | Variance | Mean | p99 | Samples |
 |------|---------|---------|----------|------|-----|--------|
-| 🥇 | **[Zen](https://github.com/sylphxltd/zen)** | 33.62K | ±0.78% | 29.7478ms | 122.9690ms | 16.81K |
-| 🥈 | **[Solid Signals](https://github.com/solidjs/solid)** | 10.03K | ±3.71% | 99.6904ms | 224.1870ms | 5.02K |
-| 🥉 | **[Preact Signals](https://github.com/preactjs/signals)** | 9.64K | ±3.88% | 103.6918ms | 329.4330ms | 4.82K |
-| 4 | **[Zustand](https://github.com/pmndrs/zustand)** | 8.41K | ±3.46% | 118.9209ms | 201.1650ms | 4.21K |
-| 5 | **[Jotai](https://github.com/pmndrs/jotai)** | 5.97K | ±2.68% | 167.4239ms | 216.3330ms | 2.99K |
-| 6 | **[Redux Toolkit](https://github.com/reduxjs/redux-toolkit)** | 426.74 | ±3.32% | 2343.3212ms | 4148.4770ms | 214.00 |
-| 7 | **[MobX](https://github.com/mobxjs/mobx)** | 65.82 | ±3.13% | 15192.4159ms | 22531.8550ms | 33.00 |
-| 8 | **[Valtio](https://github.com/pmndrs/valtio)** | 65.69 | ±3.62% | 15221.9390ms | 19238.9540ms | 33.00 |
+| 🥇 | **[Zen](https://github.com/sylphxltd/zen)** | 33.61K | ±0.74% | 29.7487ms | 123.3810ms | 16.81K |
+| 🥈 | **[Zustand](https://github.com/pmndrs/zustand)** | 9.84K | ±3.36% | 101.6310ms | 199.4840ms | 4.92K |
+| 🥉 | **[Solid Signals](https://github.com/solidjs/solid)** | 9.73K | ±3.29% | 102.7833ms | 190.5670ms | 4.87K |
+| 4 | **[Preact Signals](https://github.com/preactjs/signals)** | 7.19K | ±2.55% | 139.1248ms | 349.5850ms | 3.59K |
+| 5 | **[Jotai](https://github.com/pmndrs/jotai)** | 6.15K | ±2.07% | 162.5914ms | 198.5210ms | 3.08K |
+| 6 | **[Redux Toolkit](https://github.com/reduxjs/redux-toolkit)** | 412.53 | ±2.46% | 2424.0514ms | 3859.3630ms | 207.00 |
+| 7 | **[Valtio](https://github.com/pmndrs/valtio)** | 79.59 | ±2.28% | 12565.1100ms | 15476.4460ms | 40.00 |
+| 8 | **[MobX](https://github.com/mobxjs/mobx)** | 70.82 | ±4.27% | 14120.3108ms | 20995.6100ms | 36.00 |
 
-**Key Insight:** Zen is **511.70x faster** than Valtio in this category.
+**Key Insight:** Zen is **474.65x faster** than MobX in this category.
 
 ### Deep Nested Update (5 levels) {#deep-nested-update-5-levels-}
 
 **Performance Comparison:**
 
 ```
-🥇 Solid Signals        ████████████████████████████████████████ 7.22M
-🥈 Zen                  ██████████████████████████████████ 6.23M
-🥉 Preact Signals       ██████████████████████████████████ 6.17M
-   Valtio               ██████ 1.13M
-   MobX                 █████ 935.64K
-   Jotai                ████ 633.48K
-   Zustand              █ 160.62K
-   Redux Toolkit        █ 75.16K
+🥇 Solid Signals        ████████████████████████████████████████ 7.68M
+🥈 Preact Signals       ██████████████████████████████████ 6.49M
+🥉 Zen                  ██████████████████████████████████ 6.44M
+   Valtio               ██████ 1.12M
+   MobX                 █████ 932.98K
+   Jotai                ███ 634.29K
+   Zustand              █ 164.16K
+   Redux Toolkit        █ 76.62K
 ```
 
 | Rank | Library | Ops/sec | Variance | Mean | p99 | Samples |
 |------|---------|---------|----------|------|-----|--------|
-| 🥇 | **[Solid Signals](https://github.com/solidjs/solid)** | 7.22M | ±1.72% | 0.1385ms | 0.2210ms | 3.61M |
-| 🥈 | **[Zen](https://github.com/sylphxltd/zen)** | 6.23M | ±1.58% | 0.1606ms | 0.2600ms | 3.11M |
-| 🥉 | **[Preact Signals](https://github.com/preactjs/signals)** | 6.17M | ±3.60% | 0.1620ms | 0.2410ms | 3.09M |
-| 4 | **[Valtio](https://github.com/pmndrs/valtio)** | 1.13M | ±1.67% | 0.8831ms | 0.9620ms | 566.20K |
-| 5 | **[MobX](https://github.com/mobxjs/mobx)** | 935.64K | ±0.85% | 1.0688ms | 1.3120ms | 467.82K |
-| 6 | **[Jotai](https://github.com/pmndrs/jotai)** | 633.48K | ±1.24% | 1.5786ms | 3.2150ms | 316.74K |
-| 7 | **[Zustand](https://github.com/pmndrs/zustand)** | 160.62K | ±2.28% | 6.2260ms | 7.0230ms | 80.31K |
-| 8 | **[Redux Toolkit](https://github.com/reduxjs/redux-toolkit)** | 75.16K | ±2.33% | 13.3051ms | 23.7740ms | 37.58K |
+| 🥇 | **[Solid Signals](https://github.com/solidjs/solid)** | 7.68M | ±1.52% | 0.1302ms | 0.2200ms | 3.84M |
+| 🥈 | **[Preact Signals](https://github.com/preactjs/signals)** | 6.49M | ±2.87% | 0.1540ms | 0.2310ms | 3.25M |
+| 🥉 | **[Zen](https://github.com/sylphxltd/zen)** | 6.44M | ±1.33% | 0.1553ms | 0.2510ms | 3.22M |
+| 4 | **[Valtio](https://github.com/pmndrs/valtio)** | 1.12M | ±0.99% | 0.8892ms | 0.9820ms | 562.30K |
+| 5 | **[MobX](https://github.com/mobxjs/mobx)** | 932.98K | ±1.20% | 1.0718ms | 1.2620ms | 466.49K |
+| 6 | **[Jotai](https://github.com/pmndrs/jotai)** | 634.29K | ±0.55% | 1.5766ms | 3.2860ms | 317.14K |
+| 7 | **[Zustand](https://github.com/pmndrs/zustand)** | 164.16K | ±1.48% | 6.0915ms | 6.7630ms | 82.08K |
+| 8 | **[Redux Toolkit](https://github.com/reduxjs/redux-toolkit)** | 76.62K | ±1.78% | 13.0517ms | 23.1030ms | 38.31K |
 
-**Key Insight:** Solid Signals is **96.07x faster** than Redux Toolkit in this category.
+**Key Insight:** Solid Signals is **100.21x faster** than Redux Toolkit in this category.
 
 ### Large State Update (1000 items) {#large-state-update-1000-items-}
 
 **Performance Comparison:**
 
 ```
-🥇 Solid Signals        ████████████████████████████████████████ 117.05K
-🥈 Preact Signals       ███████████████████████████████████ 101.08K
-🥉 Jotai                ██████████████████████████████ 87.83K
-   Zen                  ██████████████████████████████ 87.68K
-   Zustand              ██████████████████████ 65.69K
-   Valtio               ████████ 23.21K
-   MobX                 █████ 15.63K
-   Redux Toolkit        █ 1.31K
+🥇 Solid Signals        ████████████████████████████████████████ 118.12K
+🥈 Preact Signals       █████████████████████████████████████ 108.78K
+🥉 Jotai                ███████████████████████████████ 90.93K
+   Zen                  ██████████████████████████████ 89.90K
+   Zustand              ██████████████████████ 65.77K
+   Valtio               ████████ 22.80K
+   MobX                 ██████ 16.89K
+   Redux Toolkit        █ 1.27K
 ```
 
 | Rank | Library | Ops/sec | Variance | Mean | p99 | Samples |
 |------|---------|---------|----------|------|-----|--------|
-| 🥇 | **[Solid Signals](https://github.com/solidjs/solid)** | 117.05K | ±1.39% | 8.5436ms | 14.2160ms | 58.52K |
-| 🥈 | **[Preact Signals](https://github.com/preactjs/signals)** | 101.08K | ±1.92% | 9.8934ms | 20.8490ms | 50.54K |
-| 🥉 | **[Jotai](https://github.com/pmndrs/jotai)** | 87.83K | ±1.90% | 11.3861ms | 21.7900ms | 43.91K |
-| 4 | **[Zen](https://github.com/sylphxltd/zen)** | 87.68K | ±1.86% | 11.4054ms | 20.3480ms | 43.84K |
-| 5 | **[Zustand](https://github.com/pmndrs/zustand)** | 65.69K | ±1.83% | 15.2219ms | 25.0470ms | 32.85K |
-| 6 | **[Valtio](https://github.com/pmndrs/valtio)** | 23.21K | ±1.02% | 43.0813ms | 85.5500ms | 11.61K |
-| 7 | **[MobX](https://github.com/mobxjs/mobx)** | 15.63K | ±1.85% | 63.9813ms | 146.7730ms | 7.82K |
-| 8 | **[Redux Toolkit](https://github.com/reduxjs/redux-toolkit)** | 1.31K | ±4.36% | 760.8719ms | 1984.3740ms | 658.00 |
+| 🥇 | **[Solid Signals](https://github.com/solidjs/solid)** | 118.12K | ±1.28% | 8.4658ms | 16.1100ms | 59.06K |
+| 🥈 | **[Preact Signals](https://github.com/preactjs/signals)** | 108.78K | ±1.16% | 9.1929ms | 17.0920ms | 54.39K |
+| 🥉 | **[Jotai](https://github.com/pmndrs/jotai)** | 90.93K | ±1.32% | 10.9976ms | 21.5310ms | 45.47K |
+| 4 | **[Zen](https://github.com/sylphxltd/zen)** | 89.90K | ±1.29% | 11.1233ms | 19.7570ms | 44.95K |
+| 5 | **[Zustand](https://github.com/pmndrs/zustand)** | 65.77K | ±1.56% | 15.2041ms | 25.0970ms | 32.89K |
+| 6 | **[Valtio](https://github.com/pmndrs/valtio)** | 22.80K | ±1.03% | 43.8623ms | 86.1720ms | 11.40K |
+| 7 | **[MobX](https://github.com/mobxjs/mobx)** | 16.89K | ±1.63% | 59.2068ms | 124.0330ms | 8.45K |
+| 8 | **[Redux Toolkit](https://github.com/reduxjs/redux-toolkit)** | 1.27K | ±4.32% | 788.0648ms | 2175.3440ms | 635.00 |
 
-**Key Insight:** Solid Signals is **89.06x faster** than Redux Toolkit in this category.
+**Key Insight:** Solid Signals is **93.09x faster** than Redux Toolkit in this category.
 
 ### Reactive Async State Access {#reactive-async-state-access}
 
 **Performance Comparison:**
 
 ```
-🥇 Zen                  ████████████████████████████████████████ 1.19M
-🥈 Jotai                ████████████████████████ 715.57K
+🥇 Zen                  ████████████████████████████████████████ 1.22M
+🥈 Jotai                ███████████████████████ 695.06K
 ```
 
 | Rank | Library | Ops/sec | Variance | Mean | p99 | Samples |
 |------|---------|---------|----------|------|-----|--------|
-| 🥇 | **[Zen](https://github.com/sylphxltd/zen)** | 1.19M | ±1.57% | 0.8371ms | 1.2120ms | 597.30K |
-| 🥈 | **[Jotai](https://github.com/pmndrs/jotai)** | 715.57K | ±1.78% | 1.3975ms | 1.9840ms | 357.79K |
+| 🥇 | **[Zen](https://github.com/sylphxltd/zen)** | 1.22M | ±1.36% | 0.8193ms | 1.0420ms | 610.26K |
+| 🥈 | **[Jotai](https://github.com/pmndrs/jotai)** | 695.06K | ±1.77% | 1.4387ms | 1.9240ms | 347.53K |
 
 ## 🚀 Running Benchmarks
 
@@ -809,4 +1479,4 @@ This benchmark is automatically updated daily by GitHub Actions. Benchmarks run 
 
 ---
 
-*Last generated: 2025-11-09T13:52:51.596Z*
+*Last generated: 2025-11-09T14:05:09.535Z*
