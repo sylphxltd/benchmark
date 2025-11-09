@@ -4,8 +4,15 @@
   "description": "Professional state management benchmark suite using Vitest Bench",
   "type": "module",
   "scripts": {
-    "benchmark": "vitest bench --run --outputJson=results/latest.json && node ../../scripts/save-dated-result.cjs results",
-    "clean": "rm -rf results && mkdir -p results"
+    "benchmark": "vitest bench --run --outputJson=results/latest.json && node ../../scripts/save-dated-result.cjs results && node ../../scripts/generate-main-readme.cjs .",
+    "benchmark:read": "node ../../scripts/run-group-benchmark.cjs read .",
+    "benchmark:write": "node ../../scripts/run-group-benchmark.cjs write .",
+    "benchmark:creation": "node ../../scripts/run-group-benchmark.cjs creation .",
+    "benchmark:async": "node ../../scripts/run-group-benchmark.cjs async .",
+    "benchmark:complexity": "node ../../scripts/run-group-benchmark.cjs complexity .",
+    "benchmark:memory": "node ../../scripts/run-group-benchmark.cjs memory .",
+    "benchmark:all-groups": "npm run benchmark:read && npm run benchmark:write && npm run benchmark:creation && npm run benchmark:async && npm run benchmark:complexity && npm run benchmark:memory",
+    "clean": "rm -rf results && rm -rf groups/*/results.json && mkdir -p results"
   },
   "dependencies": {
     "@preact/signals": "2.4.0",
