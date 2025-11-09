@@ -343,19 +343,22 @@ export const zustandStoreV2 = create((set, get) => ({
     return get().count - currentCount;
   },
 
-  spliceUser: (index, deleteCount, item) => set(state => {
-    const newUsers = [...state.users];
+  spliceUser: (index, deleteCount, item) => {
+    const newUsers = [...get().users];
     newUsers.splice(index, deleteCount, item);
-    return { users: newUsers };
-  }),
+    set({ users: newUsers });
+    return newUsers.length;
+  },
 
-  sortUsers: (key) => set(state => ({
-    users: [...state.users].sort((a, b) => {
+  sortUsers: (key) => {
+    const sortedUsers = [...get().users].sort((a, b) => {
       if (a[key] < b[key]) return -1;
       if (a[key] > b[key]) return 1;
       return 0;
-    })
-  })),
+    });
+    set({ users: sortedUsers });
+    return sortedUsers.length;
+  },
 
   findUser: (id) => {
     return get().users.find(u => u.id === id);
