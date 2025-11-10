@@ -1,28 +1,154 @@
 {
   "files": [
     {
-      "filepath": "generated/write-single.bench.ts",
+      "filepath": "groups/write/write-x1.bench.ts",
       "groups": [
         {
           "fullName": "Benchmark",
           "benchmarks": [
             {
-              "name": "redux-toolkit - write (Single state mutation operation)",
-              "library": "redux",
-              "hz": 91042.97,
-              "mean": 0.0000033,
-              "p99": 0.0000061,
-              "rme": 18.21,
-              "samples": 45522
+              "name": "Simple Increment - Redux Toolkit",
+              "library": "redux-toolkit",
+              "hz": 764869.42,
+              "mean": 0.000001,
+              "p99": 0.0000012999999999999998,
+              "rme": 0.28,
+              "samples": 382435
             },
             {
-              "name": "zustand - write (Single state mutation operation)",
+              "name": "Simple Increment - Zustand",
               "library": "zustand",
-              "hz": 5367357.26,
+              "hz": 281066.02,
+              "mean": 0.0000025999999999999997,
+              "p99": 0.0000038,
+              "rme": 2.36,
+              "samples": 140534
+            },
+            {
+              "name": "Simple Increment - Jotai",
+              "library": "jotai",
+              "hz": 27766588.11,
+              "mean": 0,
+              "p99": 0,
+              "rme": 0.35,
+              "samples": 13883295
+            },
+            {
+              "name": "Simple Increment - MobX",
+              "library": "mobx",
+              "hz": 2767973.25,
+              "mean": 2.0000000000000002e-7,
+              "p99": 4.0000000000000003e-7,
+              "rme": 0.38,
+              "samples": 1383987
+            },
+            {
+              "name": "Simple Increment - Valtio",
+              "library": "valtio",
+              "hz": 3369223.37,
+              "mean": 2.0000000000000002e-7,
+              "p99": 3e-7,
+              "rme": 0.33,
+              "samples": 1684612
+            },
+            {
+              "name": "Simple Increment - Preact Signals",
+              "library": "preact-signals",
+              "hz": 24941333.5,
+              "mean": 0,
+              "p99": 0,
+              "rme": 0.63,
+              "samples": 12470667
+            },
+            {
+              "name": "Simple Increment - Solid Signals",
+              "library": "solid-signals",
+              "hz": 28449865.78,
+              "mean": 0,
+              "p99": 0,
+              "rme": 1.81,
+              "samples": 14224934
+            },
+            {
+              "name": "Simple Increment - Zen",
+              "library": "zen",
+              "hz": 24120665.04,
+              "mean": 0,
+              "p99": 0,
+              "rme": 0.17,
+              "samples": 12060333
+            },
+            {
+              "name": "Burst Updates - Redux Toolkit",
+              "library": "redux-toolkit",
+              "hz": 75274.23,
+              "mean": 0.000011,
+              "p99": 0.0000133,
+              "rme": 0.55,
+              "samples": 37638
+            },
+            {
+              "name": "Burst Updates - Zustand",
+              "library": "zustand",
+              "hz": 28142.89,
+              "mean": 0.0000336,
+              "p99": 0.000035499999999999996,
+              "rme": 0.27,
+              "samples": 14072
+            },
+            {
+              "name": "Burst Updates - Jotai",
+              "library": "jotai",
+              "hz": 10272479.4,
+              "mean": 0,
+              "p99": 1.0000000000000001e-7,
+              "rme": 0.13,
+              "samples": 5136240
+            },
+            {
+              "name": "Burst Updates - MobX",
+              "library": "mobx",
+              "hz": 296671.09,
+              "mean": 0.0000031,
+              "p99": 0.0000033999999999999996,
+              "rme": 0.36,
+              "samples": 148336
+            },
+            {
+              "name": "Burst Updates - Valtio",
+              "library": "valtio",
+              "hz": 330642.67,
+              "mean": 0.0000027,
+              "p99": 0.000003,
+              "rme": 0.34,
+              "samples": 165322
+            },
+            {
+              "name": "Burst Updates - Preact Signals",
+              "library": "preact-signals",
+              "hz": 9291260.18,
+              "mean": 0,
+              "p99": 1.0000000000000001e-7,
+              "rme": 0.07,
+              "samples": 4645631
+            },
+            {
+              "name": "Burst Updates - Solid Signals",
+              "library": "solid-signals",
+              "hz": 25488574.37,
+              "mean": 0,
+              "p99": 0,
+              "rme": 0.14,
+              "samples": 12744288
+            },
+            {
+              "name": "Burst Updates - Zen",
+              "library": "zen",
+              "hz": 7089524.37,
               "mean": 0,
               "p99": 2.0000000000000002e-7,
-              "rme": 2.68,
-              "samples": 2683679
+              "rme": 0.8,
+              "samples": 3544763
             }
           ]
         }

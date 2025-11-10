@@ -20,18 +20,26 @@ class ResultExtractor {
     return new Promise((resolve, reject) => {
       const { execSync } = require('child_process');
       try {
-        const output = execSync(`npx vitest bench --run ${testFile}`, {
+        // Capture both stdout and stderr
+        const output = execSync(`npx vitest bench --run ${testFile} 2>&1`, {
           encoding: 'utf8',
           cwd: this.basePath,
-          stdio: ['pipe', 'pipe', 'pipe']
+          maxBuffer: 10 * 1024 * 1024 // 10MB buffer
         });
 
         // Parse from regular vitest output
         const fallbackResults = this.parseFromVitestOutput(output, testFile);
         resolve(fallbackResults);
       } catch (error) {
-        console.error(`Error running test: ${error.message}`);
-        reject(error);
+        // Even if vitest exits with error code, try to parse the output
+        if (error.stdout || error.stderr) {
+          const output = (error.stdout || '') + (error.stderr || '');
+          const fallbackResults = this.parseFromVitestOutput(output, testFile);
+          resolve(fallbackResults);
+        } else {
+          console.error(`Error running test: ${error.message}`);
+          reject(error);
+        }
       }
     });
   }
@@ -65,33 +73,20 @@ class ResultExtractor {
     };
 
     let inTable = false;
-    let headerPassed = false;
 
     for (const line of lines) {
-      // Check if we're at the results table
+      // Check if we're at the results table header
       if (line.includes('name') && line.includes('hz')) {
         inTable = true;
-        headerPassed = false;
-        continue;
-      }
-
-      if (inTable && !headerPassed) {
-        headerPassed = true;
-        continue;
-      }
-
-      // Also start processing if we see a bullet line before the header
-      if (!inTable && (line.includes('\u00B7') || line.includes('·'))) {
-        const cleanLine = line.replace(/\x1b\[[0-9;]*m/g, '');
-        const libraryMatch = cleanLine.match(/\u00B7\s+(\w+)\s*-/);
-        if (libraryMatch) {
-          inTable = true;
-          headerPassed = true; // Skip header since we're already at data
-        }
+        continue; // Skip the header line itself
       }
 
       // Parse benchmark result line (look for bullet character)
-      if (inTable && (line.includes('\u00B7') || line.includes('·')) && !line.includes('----')) {
+      if ((line.includes('\u00B7') || line.includes('·')) && !line.includes('----')) {
+        // Start table processing if we haven't yet
+        if (!inTable) {
+          inTable = true;
+        }
         // Clean ANSI codes
         const cleanLine = line.replace(/\x1b\[[0-9;]*m/g, '');
 
@@ -162,7 +157,7 @@ class ResultExtractor {
       }
 
       // End of table
-      if (inTable && line.includes('Summary')) {
+      if (inTable && line.includes('BENCH') && line.includes('Summary')) {
         break;
       }
     }

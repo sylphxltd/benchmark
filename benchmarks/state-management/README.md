@@ -3,7 +3,7 @@
 Comprehensive performance testing for client-side state management libraries.
 
 > ⚡ **Revolutionary auto-discovery architecture** - Zero configuration expansion
-> 📊 **60+ generated benchmarks** - Automated multi-library comparison tests
+> 📊 **8 tested libraries** - Automated multi-library comparison tests
 > 🏗️ **Modular design** - Easy to extend and maintain
 
 ## 📊 Performance Rankings
@@ -13,10 +13,16 @@ Comprehensive performance testing for client-side state management libraries.
 Based on aggregated results across all test categories:
 
 | Rank | Library | Best Category | Peak Performance | Avg Performance |
-|------|---------|--------------|------------------|-----------------|
-| 1 | **Zustand** | Write Operations | ~5.4M ops/sec | ⚡⚡⚡ Excellent |
-| 2 | **Redux Toolkit** | Write Operations | ~91K ops/sec | ○ Fair |
-| 3 | **Jotai** | - | - | ⏳ Pending |
+|------|---------|--------------|------------------|---------------|
+| 1 | **Solid Signals** | write | ~28.4M ops/sec | ⚡⚡⚡⚡ |
+| 2 | **Jotai** | write | ~27.8M ops/sec | ⚡⚡⚡⚡ |
+| 3 | **Preact Signals** | write | ~24.9M ops/sec | ⚡⚡⚡⚡ |
+| 4 | **Zen** | write | ~24.1M ops/sec | ⚡⚡⚡⚡ |
+| 5 | **Valtio** | write | ~3.4M ops/sec | ⚡⚡⚡ |
+| 6 | **MobX** | write | ~2.8M ops/sec | ⚡⚡⚡ |
+| 7 | **Redux Toolkit** | write | ~765K ops/sec | ⚡⚡ |
+| 8 | **Zustand** | write | ~281K ops/sec | ⚡⚡ |
+
 
 ### ✏️ Write Operations Ranking
 
@@ -24,8 +30,14 @@ Based on aggregated results across all test categories:
 
 | Rank | Library | Operations/sec | Performance |
 |------|---------|----------------|-------------|
-| 1 | **Zustand** | ~5.4M ops/sec | ⚡⚡⚡ |
-| 2 | **Redux Toolkit** | ~91K ops/sec | ○ |
+| 1 | **Solid Signals** | ~28.4M ops/sec | ⚡⚡⚡⚡ |
+| 2 | **Jotai** | ~27.8M ops/sec | ⚡⚡⚡⚡ |
+| 3 | **Solid Signals** | ~25.5M ops/sec | ⚡⚡⚡⚡ |
+| 4 | **Preact Signals** | ~24.9M ops/sec | ⚡⚡⚡⚡ |
+| 5 | **Zen** | ~24.1M ops/sec | ⚡⚡⚡⚡ |
+| 6 | **Jotai** | ~10.3M ops/sec | ⚡⚡⚡⚡ |
+| 7 | **Preact Signals** | ~9.3M ops/sec | ⚡⚡⚡ |
+| 8 | **Zen** | ~7.1M ops/sec | ⚡⚡⚡ |
 
 ### 📖 Read Operations Ranking
 
@@ -37,7 +49,6 @@ Based on aggregated results across all test categories:
 
 > Run benchmarks: `npm run benchmark:read`
 
-
 ### 🔄 Async Operations Ranking
 
 [📊 View Detailed Results →](groups/async/)
@@ -47,7 +58,6 @@ Based on aggregated results across all test categories:
 | - | - | ⏳ Pending | - |
 
 > Run benchmarks: `npm run benchmark:async`
-
 
 ### 📝 Form State Ranking
 
@@ -59,7 +69,6 @@ Based on aggregated results across all test categories:
 
 > Run benchmarks: `npm run benchmark:form`
 
-
 ### 🧠 Memory Management Ranking
 
 [📊 View Detailed Results →](groups/memory/)
@@ -69,7 +78,6 @@ Based on aggregated results across all test categories:
 | - | - | ⏳ Pending | - |
 
 > Run benchmarks: `npm run benchmark:memory`
-
 
 ### 💾 Cache Performance Ranking
 
@@ -90,111 +98,64 @@ Explore detailed performance results for each category:
 
 | Category | Description | Status |
 |----------|-------------|--------|
-| [📖 Read Operations](groups/read/) | State access performance across different scales | ⏳ Pending |
 | [✏️ Write Operations](groups/write/) | State mutation and update performance | ✅ Results Available |
-| [📝 Form State](groups/form/) | Complex form state management | ⏳ Pending |
+| [📖 Read Operations](groups/read/) | State access performance across different scales | ⏳ Pending |
 | [🔄 Async Operations](groups/async/) | Promise handling and async patterns | ⏳ Pending |
+| [📝 Form State](groups/form/) | Complex form state management | ⏳ Pending |
 | [🧠 Memory Management](groups/memory/) | Memory usage and allocation patterns | ⏳ Pending |
 | [💾 Cache Performance](groups/cache/) | Memoization and caching efficiency | ⏳ Pending |
 
 > 📊 Click each category to view detailed benchmark results, test methodology, and performance analysis
 
----
 
-## 🚀 Quick Start
-
-### Run All Benchmarks
+## 🎯 Quick Start
 
 ```bash
-# Run all benchmarks and generate results
-npm run benchmark:all-groups
+# Install dependencies
+npm install
+
+# Run all benchmarks
+npm run benchmark
 
 # Run specific category
-npm run benchmark:read
 npm run benchmark:write
-npm run benchmark:form
-npm run benchmark:async
-npm run benchmark:memory
-npm run benchmark:cache
+npm run benchmark:read
 
-# Interactive developer dashboard
-node scripts/dev-dashboard.cjs
+# Generate reports
+npm run extract-results
 ```
 
-### Extract and View Results
+## 📚 Libraries Tested
 
-```bash
-# Extract results from all benchmarks
-node scripts/extract-results.cjs
-
-# Generate updated READMEs with results
-node main-readme-generator.cjs
-node scripts/group-readme-generator.cjs
-```
-
-### Add New Library
-
-```bash
-# 1. Create library directory
-mkdir libraries/your-library
-
-# 2. Add implementation files
-touch libraries/your-library/meta.ts
-touch libraries/your-library/store.ts
-
-# 3. Auto-generate tests
-npx tsx scripts/test-generator.ts state-management
-```
-
----
+- **Solid Signals**
+- **Jotai**
+- **Preact Signals**
+- **Zen**
+- **Valtio**
+- **MobX**
+- **Redux Toolkit**
+- **Zustand**
 
 ## 🏗️ Architecture
 
-This benchmark suite uses a **revolutionary auto-discovery architecture**:
+This benchmark suite features an **auto-discovery architecture** that automatically generates tests for all available libraries:
 
-- **Zero Configuration**: Add libraries without modifying core code
-- **Automatic Discovery**: Libraries and test types are auto-detected
-- **Type Safe**: Full TypeScript support with automatic validation
-- **Modular Design**: Each component can be developed independently
+1. **Zero Configuration**: Add a library to `versions.json` and it's automatically included
+2. **Standardized Interface**: All libraries implement the same test interface
+3. **Automated Generation**: Tests are generated dynamically for all library × test-type combinations
+4. **Modular Results**: Each category has its own detailed README
 
-### Directory Structure
+## 📖 Documentation
 
-```
-benchmarks/state-management/
-├── README.md               # This file - overview and rankings
-├── groups/                 # Test categories with detailed results
-│   ├── read/              # 📖 Read operation benchmarks + results
-│   ├── write/             # ✏️ Write operation benchmarks + results
-│   ├── form/              # 📝 Form state benchmarks + results
-│   ├── async/             # 🔄 Async operation benchmarks + results
-│   ├── memory/            # 🧠 Memory management benchmarks + results
-│   └── cache/             # 💾 Cache performance benchmarks + results
-├── libraries/             # Self-describing library implementations
-├── test-types/            # Test type configurations
-├── generated/             # Auto-generated comparison tests
-└── scripts/               # Automation and generation tools
-    ├── extract-results.cjs       # Extract benchmark results
-    ├── main-readme-generator.cjs # Generate this README
-    └── group-readme-generator.cjs # Generate group READMEs
-```
+- [📝 Test Architecture](docs/architecture.md)
+- [🔧 Adding New Libraries](docs/adding-libraries.md)
+- [📊 Understanding Results](docs/understanding-results.md)
+
+## 🤝 Contributing
+
+We welcome contributions! See our [Contributing Guide](../../CONTRIBUTING.md) for details.
 
 ---
 
-## 📊 Stats
-
-- **3 Libraries Tested**: Redux Toolkit, Zustand, Jotai
-- **6 Test Categories**: Read, Write, Form, Async, Memory, Cache
-- **60+ Generated Tests**: Automatically created comparison benchmarks
-- **Multiple Scales**: Single, Burst, Batch, Heavy, Extreme
-
----
-
-## 📚 Documentation
-
-- **[Architecture](docs/architecture.md)** - Deep dive into the auto-discovery system
-- **[Methodology](docs/methodology.md)** - How benchmarks are measured
-- **[Contributing](docs/contributing.md)** - Add new libraries or test types
-
----
-
-Made with ⚡ by the Benchmark Team | [Report Issues](https://github.com/sylphxltd/benchmark/issues)
+*Last updated: 2025-11-10T14:15:57.012Z*
+*Generated by: main-readme-generator.cjs*
