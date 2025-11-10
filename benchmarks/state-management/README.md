@@ -9,14 +9,14 @@ Comprehensive performance benchmarks for JavaScript/TypeScript state management 
 
 | Rank | Library | Score (ops/sec) | vs Leader |
 |------|---------|-----------------|-----------|
-| 🥇 1 | **Solid Signals** | **2,502,108** | Baseline |
-| 🥈 2 | **Preact Signals** | **2,325,407** | 0.93x |
-| 🥉 3 | **Zen** | **2,279,178** | 0.91x |
-| 4 | **Jotai** | **1,271,186** | 0.51x |
-| 5 | **Valtio** | **257,721** | 0.10x |
-| 6 | **Zustand** | **188,301** | 0.08x |
-| 7 | **Redux Toolkit** | **103,883** | 0.04x |
-| 8 | **MobX** | **41,604** | 0.02x |
+| 🥇 1 | **Solid Signals** | **2.5M** | Baseline |
+| 🥈 2 | **Preact Signals** | **2.3M** | 0.93x |
+| 🥉 3 | **Zen** | **2.3M** | 0.91x |
+|  4 | **Jotai** | **1.3M** | 0.51x |
+|  5 | **Valtio** | **258K** | 0.10x |
+|  6 | **Zustand** | **188K** | 0.08x |
+|  7 | **Redux Toolkit** | **104K** | 0.04x |
+|  8 | **MobX** | **42K** | 0.02x |
 
 > **Note**: Groups 04 (Complexity), 05 (Cache), and 07 (Form) currently have incomplete implementations and are excluded from the Overall Performance Score. These tests require refactoring to use real store implementations rather than placeholder logic.
 
@@ -26,14 +26,14 @@ Comprehensive performance benchmarks for JavaScript/TypeScript state management 
 
 | Library | Version | Bundle Size (gzip) | Overall Score | Read | Write | Creation | Memory |
 |---------|---------|-------------------|---------------|------|-------|----------|--------|
-| 👑 Solid Signals | 1.9.10 | 4.1 KB | 2,502,108 | 39.9M | 33.1M | 32.1M | 923 |
-| Preact Signals | 2.4.0 | 3.1 KB | 2,325,407 | 34.3M | 28.2M | 33.4M | 904 |
-| Zen | 1.2.1 | 5.5 KB | 2,279,178 | 32.2M | 28.2M | 32.2M | 924 |
-| Jotai | 2.15.1 | 4.4 KB | 1,271,186 | 36.3M | 33.9M | 2.3M | 917 |
-| Valtio | 2.2.0 | 3.1 KB | 257,721 | 4.9M | 4.2M | 235K | 898 |
-| Zustand | 5.0.8 | 1.2 KB | 188,301 | 363K | 351K | 10.9M | 907 |
-| Redux Toolkit | 2.10.1 | 14.2 KB | 103,883 | 960K | 784K | 173K | 892 |
-| MobX | 6.15.0 | 18.0 KB | 41,604 | 3.8M | 3.0M | 278 | 925 |
+| 👑 Solid Signals | 1.9.10 | 4.0 KB | 2.5M | 39.9M | 33.1M | 32.1M | 923 |
+| Preact Signals | 2.4.0 | 3.0 KB | 2.3M | 34.3M | 28.2M | 33.4M | 904 |
+| Zen | 1.2.1 | 5.3 KB | 2.3M | 32.2M | 28.2M | 32.2M | 924 |
+| Jotai | 2.15.1 | 4.3 KB | 1.3M | 36.3M | 33.9M | 2.3M | 917 |
+| Valtio | 2.2.0 | 3.1 KB | 258K | 4.9M | 4.2M | 235K | 898 |
+| Zustand | 5.0.8 | 1.2 KB | 188K | 363K | 351K | 10.9M | 907 |
+| Redux Toolkit | 2.10.1 | 13.8 KB | 104K | 960K | 784K | 173K | 892 |
+| MobX | 6.15.0 | 17.6 KB | 42K | 3.8M | 3.0M | 278 | 925 |
 
 ---
 
@@ -41,11 +41,11 @@ Comprehensive performance benchmarks for JavaScript/TypeScript state management 
 
 | Feature | Description | Libraries |
 |---------|-------------|-----------|
-| **Native Computed Values** | Automatic dependency tracking for derived values | Jotai, MobX, Solid Signals, Preact Signals, Zen |
+| **Native Computed Values** | Automatic dependency tracking for derived values using native computed/memo constructs | Jotai, MobX, Solid Signals, Preact Signals, Zen |
 | **Selector Pattern** | Manual derived state using selector functions | Redux Toolkit, Zustand, Valtio |
-| **Reactive Async** | Async computations that automatically recompute | Jotai only |
-| **Native Batching** | Built-in update batching to reduce overhead | Solid Signals, MobX, Valtio |
-| **Middleware System** | Plugin system for extending functionality | Redux Toolkit, Zustand |
+| **Reactive Async** | Async computations that automatically recompute when dependencies change | Jotai |
+| **Native Batching** | Built-in update batching to reduce notification overhead | Solid Signals, MobX, Valtio |
+| **Middleware System** | Plugin system for extending functionality (logging, persistence, etc.) | Redux Toolkit, Zustand |
 
 ---
 
@@ -82,14 +82,14 @@ Libraries participate only if they have native support for the tested capability
 
 | Library | ops/sec | Relative |
 |---------|---------|----------|
-| Solid Signals | 39,913,249 | 1.00x (fastest) |
-| Jotai | 36,293,502 | 0.91x |
-| Preact Signals | 34,347,739 | 0.86x |
-| Zen | 32,186,172 | 0.81x |
-| Valtio | 4,920,752 | 0.12x |
-| MobX | 3,831,724 | 0.10x |
-| Redux Toolkit | 960,312 | 0.02x |
-| Zustand | 363,178 | 0.01x |
+| Solid Signals | 39.9M | 1.00x (fastest) |
+| Jotai | 36.3M | 0.91x |
+| Preact Signals | 34.3M | 0.86x |
+| Zen | 32.2M | 0.81x |
+| Valtio | 4.9M | 0.12x |
+| MobX | 3.8M | 0.10x |
+| Redux Toolkit | 960K | 0.02x |
+| Zustand | 363K | 0.01x |
 
 ---
 
@@ -99,14 +99,14 @@ Libraries participate only if they have native support for the tested capability
 
 | Library | ops/sec | Relative |
 |---------|---------|----------|
-| Jotai | 33,919,541 | 1.00x (fastest) |
-| Solid Signals | 33,108,766 | 0.98x |
-| Zen | 28,233,961 | 0.83x |
-| Preact Signals | 28,203,919 | 0.83x |
-| Valtio | 4,240,840 | 0.13x |
-| MobX | 3,045,725 | 0.09x |
-| Redux Toolkit | 784,475 | 0.02x |
-| Zustand | 350,822 | 0.01x |
+| Jotai | 33.9M | 1.00x (fastest) |
+| Solid Signals | 33.1M | 0.98x |
+| Zen | 28.2M | 0.83x |
+| Preact Signals | 28.2M | 0.83x |
+| Valtio | 4.2M | 0.13x |
+| MobX | 3.0M | 0.09x |
+| Redux Toolkit | 784K | 0.02x |
+| Zustand | 351K | 0.01x |
 
 ---
 
@@ -116,13 +116,13 @@ Libraries participate only if they have native support for the tested capability
 
 | Library | ops/sec | Relative |
 |---------|---------|----------|
-| Preact Signals | 33,384,299 | 1.00x (fastest) |
-| Solid Signals | 32,134,156 | 0.96x |
-| Zen | 32,150,344 | 0.96x |
-| Zustand | 10,875,729 | 0.33x |
-| Jotai | 2,312,931 | 0.07x |
-| Valtio | 235,481 | 0.01x |
-| Redux Toolkit | 173,331 | 0.01x |
+| Preact Signals | 33.4M | 1.00x (fastest) |
+| Zen | 32.2M | 0.96x |
+| Solid Signals | 32.1M | 0.96x |
+| Zustand | 10.9M | 0.33x |
+| Jotai | 2.3M | 0.07x |
+| Valtio | 235K | 0.01x |
+| Redux Toolkit | 173K | 0.01x |
 | MobX | 278 | 0.00x |
 
 > **Note**: MobX's low creation performance is expected due to makeAutoObservable overhead.
@@ -154,10 +154,10 @@ Libraries participate only if they have native support for the tested capability
 
 | Benchmark | ops/sec |
 |-----------|---------|
-| Reactive Async Read | 859 |
-| Async Chain (2 levels) | 440 |
-| Complex Async Object | 878 |
-| Concurrent Async (3 atoms) | 860 |
+| Reactive Async Read | 872 |
+| Async Chain (2 levels) | 433 |
+| Complex Async Object | 863 |
+| Concurrent Async (3 atoms) | 854 |
 
 ---
 
@@ -169,11 +169,6 @@ Libraries participate only if they have native support for the tested capability
 
 | Library | ops/sec | Relative |
 |---------|---------|----------|
-| Solid Signals | 38,631,371 | 1.00x (fastest) |
-| Zen | 36,636,862 | 0.95x |
-| Jotai | 36,429,074 | 0.94x |
-| Preact Signals | 36,096,886 | 0.93x |
-| MobX | 3,893,734 | 0.10x |
 
 ---
 
@@ -185,9 +180,9 @@ Libraries participate only if they have native support for the tested capability
 
 | Library | ops/sec | Relative |
 |---------|---------|----------|
-| Valtio | 5,282,459 | 1.00x (fastest) |
-| Redux Toolkit | 597,077 | 0.11x |
-| Zustand | 365,422 | 0.07x |
+| Valtio | 5.3M | 1.00x (fastest) |
+| Redux Toolkit | 597K | 0.11x |
+| Zustand | 365K | 0.07x |
 
 ---
 
@@ -199,17 +194,14 @@ Libraries participate only if they have native support for the tested capability
 
 | Library | ops/sec | Relative |
 |---------|---------|----------|
-| Solid Signals | 39,849,314 | 1.00x (fastest) |
-| Valtio | 4,819,575 | 0.12x |
-| MobX | 3,262,648 | 0.08x |
+| Solid Signals | 39.8M | 1.00x (fastest) |
+| Valtio | 4.8M | 0.12x |
+| MobX | 3.3M | 0.08x |
 
 **Large Batch** (100 updates)
 
 | Library | ops/sec | Relative |
 |---------|---------|----------|
-| Solid Signals | 27,945,212 | 1.00x (fastest) |
-| MobX | 146,457 | 0.01x |
-| Valtio | 67,668 | 0.00x |
 
 ---
 
