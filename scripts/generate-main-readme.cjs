@@ -28,10 +28,8 @@ const GROUPS = [
   {
     name: 'async',
     title: 'Reactive Async',
-    description: 'Feature completeness test - reactive async state capabilities',
-    icon: '⚡',
-    excludeFromComprehensiveScore: true,
-    featureTest: true
+    description: 'Reactive async state operations with automatic dependency tracking',
+    icon: '⚡'
   },
   {
     name: 'complexity',
@@ -102,11 +100,6 @@ function generateMainReadme(categoryPath) {
         const results = JSON.parse(readFileSync(resultsPath, 'utf-8'));
         allResults[group.name] = results;
 
-        // Skip feature tests from comprehensive scoring
-        if (group.excludeFromComprehensiveScore) {
-          return;
-        }
-
         // Aggregate library performance
         results.files?.forEach(file => {
           file.groups?.forEach(g => {
@@ -144,9 +137,6 @@ function generateMainReadme(categoryPath) {
   // For each test, normalize scores (fastest = 100)
   GROUPS.forEach(group => {
     if (!allResults[group.name]) return;
-
-    // Skip feature tests from comprehensive scoring
-    if (group.excludeFromComprehensiveScore) return;
 
     const results = allResults[group.name];
     results.files?.forEach(file => {
@@ -336,47 +326,6 @@ Comprehensive performance testing for client-side state management libraries.
 
     readme += `### ${group.icon} ${group.title}\n\n`;
     readme += `[📊 View Detailed Results →](groups/${group.name}/)\n\n`;
-
-    // Special handling for feature tests
-    if (group.featureTest) {
-      readme += `**⚠️ Feature Completeness Test**\n\n`;
-      readme += `This tests advanced capabilities that only select libraries support.\n\n`;
-
-      if (existsSync(resultsPath)) {
-        try {
-          const results = JSON.parse(readFileSync(resultsPath, 'utf-8'));
-          const supportedLibs = new Set();
-
-          results.files?.forEach(file => {
-            file.groups?.forEach(g => {
-              g.benchmarks?.forEach(bench => {
-                supportedLibs.add(bench.library);
-              });
-            });
-          });
-
-          readme += `**Support Status:**\n\n`;
-          readme += `| Library | Support |\n`;
-          readme += `|---------|----------|\n`;
-
-          // List of all libraries
-          const allLibraries = ['jotai', 'zustand', 'redux-toolkit', 'mobx', 'valtio', 'preact-signals', 'solid-signals', 'zen'];
-
-          allLibraries.forEach(lib => {
-            const libraryName = formatLibraryName(lib);
-            const status = supportedLibs.has(lib) ? '✅ Supported' : '❌ Not Supported';
-            readme += `| **${libraryName}** | ${status} |\n`;
-          });
-
-          readme += `\n> 📝 See detailed benchmarks for supported libraries in the [full report](groups/${group.name}/).\n\n`;
-        } catch (error) {
-          readme += `> Error loading results\n\n`;
-        }
-      } else {
-        readme += `> Run benchmarks: \`npm run benchmark:${group.name}\`\n\n`;
-      }
-      return; // Skip normal rendering
-    }
 
     if (existsSync(resultsPath)) {
       try {

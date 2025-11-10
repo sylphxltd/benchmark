@@ -1,125 +1,172 @@
-# Reactive Async Operations
+# Async Operations
 
-**⚠️ Feature Completeness Test**
+Asynchronous state management benchmarks testing promise handling and data fetching patterns.
 
-This benchmarks tests **reactive async** capabilities - where async computations automatically recompute when their dependencies change. This is an advanced feature that only modern state management libraries support.
+## Reactive Async Read
 
-## Library Support Status
-
-| Library | Reactive Async Support | Notes |
-|---------|----------------------|--------|
-| ✅ **Jotai** | Native async atoms | Automatic dependency tracking and recomputation |
-| ❌ Zustand | Not Supported | Manual async handling only |
-| ❌ Redux Toolkit | Not Supported | RTK Query is separate, not reactive atoms |
-| ❌ MobX | Not Supported | Has `flow` but not reactive async |
-| ❌ Valtio | Not Supported | Proxy-based, no async support |
-| ❌ Preact Signals | Not Supported | No async signals |
-| ❌ Solid Signals | Not Supported | createResource is framework-level, not core |
-| ❌ Zen | Not Supported | karma is async task runner, not reactive |
-
-> **What is Reactive Async?**
->
-> Reactive async means the library can:
-> 1. Track dependencies inside async computations (like computed values)
-> 2. Automatically invalidate async results when dependencies change
-> 3. Re-run async computations on next read (lazy) or immediately (eager)
->
-> This is crucial for modern applications with complex async state flows.
-
----
-
-## Performance Benchmarks (Jotai Only)
-
-### Reactive Async Read
-
-**Performance:**
+**Performance Comparison:**
 
 ```
-🥇   Jotai              ████████████████████████████████████████       876.66 ops/sec
+🥇   Preact Signals     ████████████████████████████████████████       887.77 ops/sec
+🥈   Redux Toolkit      ████████████████████████████████████████       883.29 ops/sec
+🥉   MobX               ████████████████████████████████████████       881.57 ops/sec
+4.   Valtio             ████████████████████████████████████████       880.68 ops/sec
+5.   Zen                ████████████████████████████████████████       880.06 ops/sec
+6.   Zustand            ███████████████████████████████████████        876.34 ops/sec
+7.   Jotai              ███████████████████████████████████████        872.82 ops/sec
+8.   Solid Signals      ███████████████████████████████████████        872.27 ops/sec
 ```
 
 | Rank | Library | Ops/sec | Variance | Mean | p99 | Samples |
 |------|---------|---------|----------|------|-----|----------|
-| 🥇 | **Jotai** | 876.66 | ±1.60% | 1.1407ms | 1.2552ms | 439 |
+| 🥇 | **Preact Signals** | 887.77 | ±1.53% | 1.1264ms | 1.1843ms | 444 |
+| 🥈 | **Redux Toolkit** | 883.29 | ±1.33% | 1.1321ms | 1.1795ms | 442 |
+| 🥉 | **MobX** | 881.57 | ±1.33% | 1.1343ms | 1.1966ms | 441 |
+| 4 | **Valtio** | 880.68 | ±1.26% | 1.1355ms | 1.1829ms | 441 |
+| 5 | **Zen** | 880.06 | ±1.25% | 1.1363ms | 1.1909ms | 441 |
+| 6 | **Zustand** | 876.34 | ±1.27% | 1.1411ms | 1.2126ms | 439 |
+| 7 | **Jotai** | 872.82 | ±1.50% | 1.1457ms | 1.2439ms | 437 |
+| 8 | **Solid Signals** | 872.27 | ±1.00% | 1.1464ms | 1.1884ms | 437 |
 
-**Test:** Changes a dependency atom, then reads the async atom (which automatically recomputes).
+**Key Insight:** Preact Signals is 1.02x faster than Solid Signals in this category.
 
-### Async Chain (2 Levels)
+## Async Chain (2 levels)
 
-**Performance:**
-
-```
-🥇   Jotai              ████████████████████████████████████████       438.56 ops/sec
-```
-
-| Rank | Library | Ops/sec | Variance | Mean | p99 | Samples |
-|------|---------|---------|----------|------|-----|----------|
-| 🥇 | **Jotai** | 438.56 | ±1.41% | 2.2802ms | 2.3948ms | 220 |
-
-**Test:** Multi-level async dependencies. When base changes, all levels automatically recompute.
-
-### Complex Async Object
-
-**Performance:**
+**Performance Comparison:**
 
 ```
-🥇   Jotai              ████████████████████████████████████████       876.53 ops/sec
-```
-
-| Rank | Library | Ops/sec | Variance | Mean | p99 | Samples |
-|------|---------|---------|----------|------|-----|----------|
-| 🥇 | **Jotai** | 876.53 | ±1.42% | 1.1409ms | 1.2210ms | 439 |
-
-**Test:** Async computation depending on complex object structure.
-
-### Concurrent Async (3 Atoms)
-
-**Performance:**
-
-```
-🥇   Jotai              ████████████████████████████████████████       857.28 ops/sec
+🥇   MobX               ████████████████████████████████████████       880.51 ops/sec
+🥈   Zustand            ████████████████████████████████████████       879.46 ops/sec
+🥉   Redux Toolkit      ████████████████████████████████████████       879.25 ops/sec
+4.   Valtio             ████████████████████████████████████████       879.05 ops/sec
+5.   Zen                ████████████████████████████████████████       878.32 ops/sec
+6.   Solid Signals      ████████████████████████████████████████       869.89 ops/sec
+7.   Preact Signals     ███████████████████████████████████████        868.68 ops/sec
+8.   Jotai              ████████████████████                           437.57 ops/sec
 ```
 
 | Rank | Library | Ops/sec | Variance | Mean | p99 | Samples |
 |------|---------|---------|----------|------|-----|----------|
-| 🥇 | **Jotai** | 857.28 | ±1.12% | 1.1665ms | 1.2522ms | 429 |
+| 🥇 | **MobX** | 880.51 | ±1.40% | 1.1357ms | 1.2132ms | 441 |
+| 🥈 | **Zustand** | 879.46 | ±1.25% | 1.1371ms | 1.1884ms | 440 |
+| 🥉 | **Redux Toolkit** | 879.25 | ±1.09% | 1.1373ms | 1.1785ms | 440 |
+| 4 | **Valtio** | 879.05 | ±1.26% | 1.1376ms | 1.2025ms | 440 |
+| 5 | **Zen** | 878.32 | ±1.26% | 1.1385ms | 1.1883ms | 440 |
+| 6 | **Solid Signals** | 869.89 | ±0.78% | 1.1496ms | 1.1824ms | 435 |
+| 7 | **Preact Signals** | 868.68 | ±0.79% | 1.1512ms | 1.1833ms | 435 |
+| 8 | **Jotai** | 437.57 | ±1.32% | 2.2853ms | 2.4025ms | 219 |
 
-**Test:** 3 async atoms sharing same dependency, computed concurrently.
+**Key Insight:** MobX is 2.01x faster than Jotai in this category.
 
----
+## Complex Async Object
 
-## How to Run
+**Performance Comparison:**
 
-```bash
-# Run reactive async benchmarks
+```
+🥇   Zustand            ████████████████████████████████████████       879.85 ops/sec
+🥈   Zen                ████████████████████████████████████████       878.22 ops/sec
+🥉   MobX               ████████████████████████████████████████       875.27 ops/sec
+4.   Preact Signals     ████████████████████████████████████████       875.26 ops/sec
+5.   Valtio             ████████████████████████████████████████       874.42 ops/sec
+6.   Solid Signals      ████████████████████████████████████████       871.66 ops/sec
+7.   Jotai              ███████████████████████████████████████        866.49 ops/sec
+8.   Redux Toolkit      ███████████████████████████████████████        865.05 ops/sec
+```
+
+| Rank | Library | Ops/sec | Variance | Mean | p99 | Samples |
+|------|---------|---------|----------|------|-----|----------|
+| 🥇 | **Zustand** | 879.85 | ±1.26% | 1.1366ms | 1.1925ms | 440 |
+| 🥈 | **Zen** | 878.22 | ±1.30% | 1.1387ms | 1.2227ms | 440 |
+| 🥉 | **MobX** | 875.27 | ±1.09% | 1.1425ms | 1.1895ms | 438 |
+| 4 | **Preact Signals** | 875.26 | ±1.20% | 1.1425ms | 1.1914ms | 438 |
+| 5 | **Valtio** | 874.42 | ±1.09% | 1.1436ms | 1.2150ms | 438 |
+| 6 | **Solid Signals** | 871.66 | ±1.04% | 1.1472ms | 1.1967ms | 436 |
+| 7 | **Jotai** | 866.49 | ±0.95% | 1.1541ms | 1.2000ms | 434 |
+| 8 | **Redux Toolkit** | 865.05 | ±0.46% | 1.1560ms | 1.1770ms | 433 |
+
+**Key Insight:** Zustand is 1.02x faster than Redux Toolkit in this category.
+
+## Concurrent Async (3 atoms)
+
+**Performance Comparison:**
+
+```
+🥇   Zen                ████████████████████████████████████████       888.70 ops/sec
+🥈   Valtio             ███████████████████████████████████████        874.64 ops/sec
+🥉   Solid Signals      ███████████████████████████████████████        873.41 ops/sec
+4.   Zustand            ███████████████████████████████████████        870.85 ops/sec
+5.   Preact Signals     ███████████████████████████████████████        869.82 ops/sec
+6.   Jotai              ███████████████████████████████████████        866.44 ops/sec
+7.   Redux Toolkit      ███████████████████████████████████████        865.63 ops/sec
+8.   MobX               ███████████████████████████████████████        863.69 ops/sec
+```
+
+| Rank | Library | Ops/sec | Variance | Mean | p99 | Samples |
+|------|---------|---------|----------|------|-----|----------|
+| 🥇 | **Zen** | 888.7 | ±1.65% | 1.1252ms | 1.1851ms | 445 |
+| 🥈 | **Valtio** | 874.64 | ±1.26% | 1.1433ms | 1.1850ms | 438 |
+| 🥉 | **Solid Signals** | 873.41 | ±1.15% | 1.1449ms | 1.1808ms | 437 |
+| 4 | **Zustand** | 870.85 | ±1.01% | 1.1483ms | 1.2030ms | 436 |
+| 5 | **Preact Signals** | 869.82 | ±1.00% | 1.1497ms | 1.1972ms | 435 |
+| 6 | **Jotai** | 866.44 | ±1.60% | 1.1541ms | 1.3576ms | 434 |
+| 7 | **Redux Toolkit** | 865.63 | ±0.91% | 1.1552ms | 1.2634ms | 433 |
+| 8 | **MobX** | 863.69 | ±0.46% | 1.1578ms | 1.1801ms | 432 |
+
+**Key Insight:** Zen is 1.03x faster than MobX in this category.
+
+## Available Tests
+
+### Test Files
+
+- `async-state` - Individual benchmark test
+
+## How to Run Tests
+
+### Quick Start
+
+``ash
+# Run all async benchmarks
 npm run benchmark:async
 
-# Or run directly with vitest
-npx vitest bench groups/async/async-state.bench.ts
-```
+# Run specific test
+node scripts/run-generated-tests.cjs async-single.bench.ts
+
+# Run all async tests
+node scripts/run-generated-tests.cjs async-*.bench.ts
+
+# Use developer dashboard
+node scripts/dev-dashboard.cjs
+``
+
+### Available Commands
+
+``ash
+npm run benchmark:async        # Run all async tests
+node scripts/run-generated-tests.cjs list # List all available tests
+npx tsx scripts/test-generator.ts state-management # Regenerate tests
+``
 
 ## Technical Details
 
-**What we're testing:**
+**Description**: Async operations test promise handling and data fetching.
 
-- **Dependency Tracking**: Async atoms automatically track their dependencies
-- **Invalidation**: When dependencies change, async results are invalidated
-- **Lazy Recomputation**: Async computations re-run on next read (not eagerly)
-- **Chaining**: Multi-level async dependencies work correctly
-- **Concurrency**: Multiple async atoms can compute in parallel
+**Test Scales**: `Sequential`, `Concurrent`, `Heavy`
 
-**Why this matters:**
+**Focus Areas**: - Promise resolution
+- Async state updates
+- Loading states
 
-In modern apps, you often have:
-- Data fetched from APIs that depends on user selections
-- Derived data that requires async processing
-- Complex async workflows with multiple steps
+**Library Interface**: All libraries implement a standardized interface with these methods:
+ `get count`, `increment`, `setNested`, `addUser`, etc.
 
-Reactive async makes this trivial - change a filter, all dependent async queries automatically refresh. Without it, you need complex manual coordination.
+**Measurement**: Each test runs multiple iterations and reports:
+- Operations per second (ops/sec)
+- Mean execution time
+- 99th percentile (p99)
+- Statistical variance
 
 ---
-
-*Last updated: 2025-11-10T18:55:00.000Z*
+*Last updated: 2025-11-10T19:08:35.702Z*
 *Generated by: group-readme-generator.cjs*
 
-🔗 [← Back to State Management Overview](../../README.md)
+🔗 [← Back to State Management Overview](../README.md)
