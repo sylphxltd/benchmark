@@ -1,0 +1,32 @@
+{
+  "files": [
+    {
+      "filepath": "generated/write-single.bench.ts",
+      "groups": [
+        {
+          "fullName": "Benchmark",
+          "benchmarks": [
+            {
+              "name": "redux-toolkit - write (Single state mutation operation)",
+              "library": "redux",
+              "hz": 91042.97,
+              "mean": 0.0000033,
+              "p99": 0.0000061,
+              "rme": 18.21,
+              "samples": 45522
+            },
+            {
+              "name": "zustand - write (Single state mutation operation)",
+              "library": "zustand",
+              "hz": 5367357.26,
+              "mean": 0,
+              "p99": 2.0000000000000002e-7,
+              "rme": 2.68,
+              "samples": 2683679
+            }
+          ]
+        }
+      ]
+    }
+  ]
+}

@@ -6,65 +6,33 @@ Comprehensive performance testing for client-side state management libraries.
 > 📊 **60+ generated benchmarks** - Automated multi-library comparison tests
 > 🏗️ **Modular design** - Easy to extend and maintain
 
-## 📊 Overview
+## 📊 Performance Rankings
 
-**Performance comparison of 3 state management libraries** across 7 different test scenarios.
+Based on write operations benchmark (single state mutation):
 
-### 🚀 Current Library Performance Rankings
+| Rank | Library | Operations/sec | Performance |
+|------|---------|----------------|-------------|
+| 1 | **Zustand** | ~5.4M ops/sec | ⚡⚡⚡ Excellent |
+| 2 | **Redux Toolkit** | ~0.1M ops/sec | ⚡ Good |
 
-| Rank | Library | Best Performance | Key Strengths |
-|------|---------|------------------|---------------|
-| 1 | **Jotai** | ~17M ops/sec | Atomic updates, Minimal overhead |
-| 2 | **Zustand** | ~9M ops/sec | Simple API, Fast mutations |
-| 3 | **Redux Toolkit** | ~200K ops/sec | DevTools, Middleware, Ecosystem |
-
-### 📈 Test Categories
-
-| Category | Description | Link |
-|----------|-------------|------|
-| [📖 Read Operations](groups/read/) | State access performance | View Details |
-| [✏️ Write Operations](groups/write/) | State mutation performance | View Details |
-| [📝 Form State](groups/form/) | Complex form management | View Details |
-| [🔄 Async Operations](groups/async/) | Promise handling patterns | View Details |
-| [🧠 Memory Management](groups/memory/) | Memory usage patterns | View Details |
-| [💾 Cache Performance](groups/cache/) | Memoization efficiency | View Details |
-
-### ⚡ Quick Stats
-
-- **3 Libraries Tested**: Redux Toolkit, Zustand, Jotai
-- **7 Test Types**: Read, Write, Form, Async, Memory, Cache, Spike
-- **60 Generated Tests**: Automatically created comparison benchmarks
-- **17 Test Combinations**: Library × Test Type matrix
+> 💡 Rankings based on real benchmark results. [View detailed methodology →](docs/methodology.md)
 
 ## 🗂️ Test Categories
 
-Each test category has its own detailed README with performance results, technical details, and usage instructions.
+Explore detailed performance results for each category:
 
-### ✅ [📖 Read Operations](groups/read/)
-Individual benchmarks for read operations.
+| Category | Description | Status |
+|----------|-------------|--------|
+| [📖 Read Operations](groups/read/) | State access performance across different scales | ✅ Results Available |
+| [✏️ Write Operations](groups/write/) | State mutation and update performance | ✅ Results Available |
+| [📝 Form State](groups/form/) | Complex form state management | ⏳ Running |
+| [🔄 Async Operations](groups/async/) | Promise handling and async patterns | ⏳ Running |
+| [🧠 Memory Management](groups/memory/) | Memory usage and allocation patterns | ⏳ Running |
+| [💾 Cache Performance](groups/cache/) | Memoization and caching efficiency | ⏳ Running |
 
-### ✅ [✏️ Write Operations](groups/write/)
-Individual benchmarks for write operations.
-
-### ✅ [📝 Form State](groups/form/)
-Individual benchmarks for form state management.
-
-### ✅ [🔄 Async Operations](groups/async/)
-Individual benchmarks for async operations.
-
-### ✅ [🧠 Memory Management](groups/memory/)
-Individual benchmarks for memory management.
-
-### ✅ [💾 Cache Performance](groups/cache/)
-Individual benchmarks for cache performance.
+> 📊 Click each category to view detailed benchmark results and analysis
 
 ## 🚀 Quick Start
-
-### Installation
-
-```bash
-npm install
-```
 
 ### Run Benchmarks
 
@@ -75,6 +43,7 @@ npm run benchmark:all-groups
 # Run specific category
 npm run benchmark:read
 npm run benchmark:write
+npm run benchmark:form
 
 # Interactive developer dashboard
 node scripts/dev-dashboard.cjs
@@ -86,70 +55,50 @@ node scripts/dev-dashboard.cjs
 # 1. Create library directory
 mkdir libraries/your-library
 
-# 2. Add metadata
+# 2. Add implementation files
 touch libraries/your-library/meta.ts
 touch libraries/your-library/store.ts
 
-# 3. Run auto-discovery
-npx tsx scripts/auto-discover.ts state-management
-
-# 4. Generate tests
+# 3. Auto-generate tests
 npx tsx scripts/test-generator.ts state-management
 ```
 
-## 🏆 Performance Summary
-
-### Key Findings
-
-- **Atomic libraries (Jotai)** significantly outperform traditional solutions
-- **Zustand** provides excellent performance with minimal API surface
-- **Redux Toolkit** offers rich ecosystem but with performance trade-offs
-
-### Performance Winners by Category
-
-| Category | Winner | Performance Margin |
-|-----------|---------|-------------------|
-| Single Write | Jotai | 82x faster than Redux Toolkit |
-| Batch Write | Jotai | 10x faster than Zustand |
-| Memory Usage | Zustand | Low memory footprint |
-
-> 💡 **Note**: Results may vary based on hardware, Node.js version, and test configuration.
-> View individual group READMEs for detailed performance breakdowns.
-
 ## 🏗️ Architecture
 
-This benchmark suite uses a revolutionary **auto-discovery architecture**:
+This benchmark suite uses a **revolutionary auto-discovery architecture**:
 
-### Key Components
+- **Zero Configuration**: Add libraries without modifying core code
+- **Automatic Discovery**: Libraries and test types are auto-detected
+- **Type Safe**: Full TypeScript support with automatic validation
+- **Modular Design**: Each component can be developed independently
 
-- `libraries/` - Self-describing library implementations
-- `test-types/` - Flexible test type configurations
-- `scripts/` - Automation and generation tools
-- `generated/` - Auto-generated comparison tests
+### Directory Structure
 
-### Advantages
+```
+benchmarks/state-management/
+├── groups/              # Test categories with detailed results
+│   ├── read/           # Read operation benchmarks + results
+│   ├── write/          # Write operation benchmarks + results
+│   ├── form/           # Form state benchmarks + results
+│   └── async/          # Async operation benchmarks + results
+├── libraries/          # Self-describing library implementations
+├── test-types/         # Test type configurations
+├── generated/          # Auto-generated comparison tests
+└── scripts/            # Automation and generation tools
+```
 
-✅ **Zero Configuration**: Add libraries without modifying core code
-✅ **Automatic Discovery**: Libraries and test types are auto-detected
-✅ **Modular Design**: Each component can be developed independently
-✅ **Type Safe**: Full TypeScript support with automatic validation
-✅ **Extensible**: Easy to add new test scenarios and scales
-✅ **Maintainable**: Clear separation of concerns and standardized interfaces
+## 📚 Documentation
 
-## 🔗 Related Resources
+- [Methodology](docs/methodology.md) - How benchmarks are measured
+- [Contributing](docs/contributing.md) - Add new libraries or tests
+- [Architecture](docs/architecture.md) - Deep dive into the system design
 
-- [Developer Dashboard](scripts/dev-dashboard.cjs) - Interactive CLI tools
-- [Library Implementation Guide](./libraries/) - How to add new libraries
-- [Test Type Configuration](./test-types/) - How to add new test scenarios
+## 📊 Stats
 
-## 📄 License
-
-MIT License - see [LICENSE](../../LICENSE) file for details
-
-## 🤝 Contributing
-
-Contributions are welcome! Please read the contributing guidelines and feel free to submit a Pull Request.
+- **3 Libraries Tested**: Redux Toolkit, Zustand, Jotai
+- **7 Test Categories**: Read, Write, Form, Async, Memory, Cache, Spike
+- **60+ Generated Tests**: Automatically created comparison benchmarks
 
 ---
 
-*Last updated: ${new Date().toISOString()}*
+Made with ⚡ by the Benchmark Team | [Report Issues](https://github.com/sylphxltd/benchmark/issues)

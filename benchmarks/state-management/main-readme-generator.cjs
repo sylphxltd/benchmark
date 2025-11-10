@@ -69,6 +69,55 @@ ${this.generateTestCategoryTable()}
   }
 
   generatePerformanceRankingTable() {
+    // Try to get real performance data from write results
+    try {
+      const resultsPath = join(this.basePath, 'groups', 'write', 'results.json');
+      if (existsSync(resultsPath)) {
+        const results = JSON.parse(require('fs').readFileSync(resultsPath, 'utf8'));
+
+        if (results.files && results.files.length > 0 && results.files[0].groups.length > 0) {
+          const benchmarks = results.files[0].groups[0].benchmarks;
+
+          // Sort by hz (operations per second) descending
+          const sortedBenchmarks = benchmarks.sort((a, b) => (b.hz || 0) - (a.hz || 0));
+
+          const rankings = sortedBenchmarks.map((benchmark, index) => {
+            const library = benchmark.library || 'Unknown';
+            const hz = benchmark.hz ? benchmark.hz.toLocaleString() : 'N/A';
+
+            let strengths = '';
+            switch (library) {
+              case 'jotai':
+                strengths = 'Atomic updates, Minimal overhead';
+                break;
+              case 'zustand':
+                strengths = 'Simple API, Fast mutations';
+                break;
+              case 'redux':
+                strengths = 'DevTools, Middleware, Ecosystem';
+                break;
+              default:
+                strengths = 'State management library';
+            }
+
+            return {
+              rank: index + 1,
+              library: library.charAt(0).toUpperCase() + library.slice(1),
+              performance: `~${(benchmark.hz / 1000000).toFixed(1)}M ops/sec`,
+              strengths: strengths
+            };
+          });
+
+          return rankings.map(rank =>
+            `| ${rank.rank} | **${rank.library}** | ${rank.performance} | ${rank.strengths} |`
+          ).join('\n');
+        }
+      }
+    } catch (error) {
+      console.warn('Could not load real performance data, using fallback:', error.message);
+    }
+
+    // Fallback to static data
     const rankings = [
       {
         rank: 1,
@@ -289,10 +338,10 @@ This benchmark suite uses a revolutionary **auto-discovery architecture**:
 
 ### Key Components
 
-- **📁 `libraries/`** - Self-describing library implementations
-- **🧪 `test-types/`** - Flexible test type configurations
-- **🔧 `scripts/`** - Automation and generation tools
-- **📊 `generated/`** - Auto-generated comparison tests
+- **📁 libraries/** - Self-describing library implementations
+- **🧪 test-types/** - Flexible test type configurations
+- **🔧 scripts/** - Automation and generation tools
+- **📊 generated/** - Auto-generated comparison tests
 
 ### Advantages
 
