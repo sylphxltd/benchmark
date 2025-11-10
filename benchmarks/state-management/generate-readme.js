@@ -405,17 +405,85 @@ function generateDetailedResults() {
 
 **Participating Libraries**: Jotai only
 
-| Benchmark | ops/sec |
-|-----------|---------|
+**Reactive Async Read**
+
 `;
 
-  const asyncBenches = getAllBenchmarks(results['08-async-reactive']);
-  asyncBenches.forEach(b => {
-    const name = b.name.replace(' - Jotai', '');
-    section += `| ${name} | ${formatNumber(b.hz)} |\n`;
+  const asyncReadBenches = extractBenchmarks(results['08-async-reactive'], 'Reactive Async Read -');
+  const maxAsyncRead = Math.max(...asyncReadBenches.map(b => b.hz || 0));
+  asyncReadBenches.sort((a, b) => (b.hz || 0) - (a.hz || 0));
+
+  section += generateBarChart(asyncReadBenches, maxAsyncRead);
+  section += `| Library | ops/sec | Relative |
+|---------|---------|----------|
+`;
+
+  asyncReadBenches.forEach((b, i) => {
+    const lib = b.name.replace('Reactive Async Read - ', '');
+    const rel = ((b.hz || 0) / maxAsyncRead).toFixed(2) + 'x';
+    const note = i === 0 ? ' (fastest)' : '';
+    const crown = i === 0 ? '👑 ' : '';
+    section += `| ${crown}${lib} | ${formatNumber(b.hz)} | ${rel}${note} |\n`;
   });
 
-  section += '\n---\n\n';
+  section += '\n**Async Chain (2 levels)**\n\n';
+
+  const asyncChainBenches = extractBenchmarks(results['08-async-reactive'], 'Async Chain (2 levels) -');
+  const maxAsyncChain = Math.max(...asyncChainBenches.map(b => b.hz || 0));
+  asyncChainBenches.sort((a, b) => (b.hz || 0) - (a.hz || 0));
+
+  section += generateBarChart(asyncChainBenches, maxAsyncChain);
+  section += `| Library | ops/sec | Relative |
+|---------|---------|----------|
+`;
+
+  asyncChainBenches.forEach((b, i) => {
+    const lib = b.name.replace('Async Chain (2 levels) - ', '');
+    const rel = ((b.hz || 0) / maxAsyncChain).toFixed(2) + 'x';
+    const note = i === 0 ? ' (fastest)' : '';
+    const crown = i === 0 ? '👑 ' : '';
+    section += `| ${crown}${lib} | ${formatNumber(b.hz)} | ${rel}${note} |\n`;
+  });
+
+  section += '\n**Complex Async Object**\n\n';
+
+  const asyncComplexBenches = extractBenchmarks(results['08-async-reactive'], 'Complex Async Object -');
+  const maxAsyncComplex = Math.max(...asyncComplexBenches.map(b => b.hz || 0));
+  asyncComplexBenches.sort((a, b) => (b.hz || 0) - (a.hz || 0));
+
+  section += generateBarChart(asyncComplexBenches, maxAsyncComplex);
+  section += `| Library | ops/sec | Relative |
+|---------|---------|----------|
+`;
+
+  asyncComplexBenches.forEach((b, i) => {
+    const lib = b.name.replace('Complex Async Object - ', '');
+    const rel = ((b.hz || 0) / maxAsyncComplex).toFixed(2) + 'x';
+    const note = i === 0 ? ' (fastest)' : '';
+    const crown = i === 0 ? '👑 ' : '';
+    section += `| ${crown}${lib} | ${formatNumber(b.hz)} | ${rel}${note} |\n`;
+  });
+
+  section += '\n**Concurrent Async (3 atoms)**\n\n';
+
+  const asyncConcurrentBenches = extractBenchmarks(results['08-async-reactive'], 'Concurrent Async (3 atoms) -');
+  const maxAsyncConcurrent = Math.max(...asyncConcurrentBenches.map(b => b.hz || 0));
+  asyncConcurrentBenches.sort((a, b) => (b.hz || 0) - (a.hz || 0));
+
+  section += generateBarChart(asyncConcurrentBenches, maxAsyncConcurrent);
+  section += `| Library | ops/sec | Relative |
+|---------|---------|----------|
+`;
+
+  asyncConcurrentBenches.forEach((b, i) => {
+    const lib = b.name.replace('Concurrent Async (3 atoms) - ', '');
+    const rel = ((b.hz || 0) / maxAsyncConcurrent).toFixed(2) + 'x';
+    const note = i === 0 ? ' (fastest)' : '';
+    const crown = i === 0 ? '👑 ' : '';
+    section += `| ${crown}${lib} | ${formatNumber(b.hz)} | ${rel}${note} |\n`;
+  });
+
+  section += '---\n\n';
 
   // 09 - Computed Native
   section += `### 09 - Computed Native (Feature Test)
