@@ -1,0 +1,70 @@
+{
+  "files": [
+    {
+      "filepath": "/Users/kyle/benchmark-state/benchmarks/state-management/groups/07-form/form-state.bench.ts",
+      "groups": [
+        {
+          "fullName": "groups/07-form/form-state.bench.ts > Form State - Form state management",
+          "benchmarks": [
+            {
+              "id": "1407930723_0_0",
+              "name": "Redux Toolkit - Update Multiple Fields",
+              "rank": 1,
+              "rme": 0,
+              "samples": []
+            },
+            {
+              "id": "1407930723_0_1",
+              "name": "Zustand - Update Multiple Fields",
+              "rank": 2,
+              "rme": 0,
+              "samples": []
+            },
+            {
+              "id": "1407930723_0_2",
+              "name": "Jotai - Update Multiple Fields",
+              "rank": 3,
+              "rme": 0,
+              "samples": []
+            },
+            {
+              "id": "1407930723_0_3",
+              "name": "MobX - Update Multiple Fields",
+              "rank": 4,
+              "rme": 0,
+              "samples": []
+            },
+            {
+              "id": "1407930723_0_4",
+              "name": "Valtio - Update Multiple Fields",
+              "rank": 5,
+              "rme": 0,
+              "samples": []
+            },
+            {
+              "id": "1407930723_0_5",
+              "name": "Preact Signals - Update Multiple Fields",
+              "rank": 6,
+              "rme": 0,
+              "samples": []
+            },
+            {
+              "id": "1407930723_0_6",
+              "name": "Solid Signals - Update Multiple Fields",
+              "rank": 7,
+              "rme": 0,
+              "samples": []
+            },
+            {
+              "id": "1407930723_0_7",
+              "name": "Zen - Update Multiple Fields",
+              "rank": 8,
+              "rme": 0,
+              "samples": []
+            }
+          ]
+        }
+      ]
+    }
+  ]
+}

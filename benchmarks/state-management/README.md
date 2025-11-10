@@ -1,269 +1,292 @@
-# State Management Benchmark Suite
+# State Management Benchmarks
 
-Comprehensive performance testing for client-side state management libraries.
+Comprehensive performance benchmarks for JavaScript/TypeScript state management libraries.
 
-> ⚡ **Revolutionary auto-discovery architecture** - Zero configuration expansion
-> 📊 **8 tested libraries** - Automated multi-library comparison tests
-> 🏗️ **Modular design** - Easy to extend and maintain
+## Overall Performance Score
 
-## 📊 Performance Rankings
+**Based on Universal Tests**: Read, Write, Creation, Memory
+**Methodology**: Geometric mean of operations per second across all universal tests
 
-### 🏆 Comprehensive Performance Score
+| Rank | Library | Score (ops/sec) | vs Leader |
+|------|---------|-----------------|-----------|
+| 🥇 1 | **Solid Signals** | **2,502,108** | Baseline |
+| 🥈 2 | **Preact Signals** | **2,325,407** | 0.93x |
+| 🥉 3 | **Zen** | **2,279,178** | 0.91x |
+| 4 | **Jotai** | **1,271,186** | 0.51x |
+| 5 | **Valtio** | **257,721** | 0.10x |
+| 6 | **Zustand** | **188,301** | 0.08x |
+| 7 | **Redux Toolkit** | **103,883** | 0.04x |
+| 8 | **MobX** | **41,604** | 0.02x |
 
-Based on geometric mean across all tests (normalized, fastest = 100):
-
-| Rank | Library | Score | Relative | Tests |
-|------|---------|-------|----------|-------|
-| 🥇 | **Solid Signals** | 97.9/100 | Baseline | 4 |
-| 🥈 | **Jotai** | 85.1/100 | 87.0% | 8 |
-| 🥉 | **Zen** | 60.7/100 | 62.0% | 4 |
-| 4 | **Preact Signals** | 52.4/100 | 53.6% | 4 |
-| 5 | **MobX** | 10.3/100 | 10.6% | 4 |
-| 6 | **Valtio** | 5.6/100 | 5.7% | 4 |
-| 7 | **Redux Toolkit** | 2.7/100 | 2.8% | 4 |
-| 8 | **Zustand** | 1.0/100 | 1.1% | 4 |
-
-> 📊 **Methodology:** Geometric mean prevents extreme values from skewing results. Each test is normalized (fastest = 100) then averaged.
-
-### ⚡ Peak Performance
-
-Highest recorded performance by category:
-
-| Rank | Library | Best Category | Peak Performance | Avg Performance |
-|------|---------|--------------|------------------|---------------|
-| 1 | **Solid Signals** | read | ~31.1M ops/sec | ⚡⚡⚡⚡ |
-| 2 | **Jotai** | read | ~29.5M ops/sec | ⚡⚡⚡⚡ |
-| 3 | **Preact Signals** | read | ~27.5M ops/sec | ⚡⚡⚡⚡ |
-| 4 | **Zen** | read | ~26.0M ops/sec | ⚡⚡⚡⚡ |
-| 5 | **MobX** | read | ~21.6M ops/sec | ⚡⚡⚡⚡ |
-| 6 | **Redux Toolkit** | read | ~5.4M ops/sec | ⚡⚡⚡ |
-| 7 | **Valtio** | read | ~3.9M ops/sec | ⚡⚡⚡ |
-| 8 | **Zustand** | read | ~2.4M ops/sec | ⚡⚡⚡ |
-
-### 🎯 Test Coverage Rankings
-
-Percentage of benchmark tests each library supports:
-
-| Rank | Library | Supported | Coverage |
-|------|---------|-----------|----------|
-| 🥇 | **Jotai** | 8/8 | 100% |
-| 🥈 | **Redux Toolkit** | 4/8 | 50% |
-| 🥉 | **Zustand** | 4/8 | 50% |
-| 4 | **MobX** | 4/8 | 50% |
-| 5 | **Valtio** | 4/8 | 50% |
-| 6 | **Preact Signals** | 4/8 | 50% |
-| 7 | **Solid Signals** | 4/8 | 50% |
-| 8 | **Zen** | 4/8 | 50% |
-
-> 🎯 **Note:** Higher coverage means the library participates in more test categories.
-
-### 📖 Read Operations
-
-[📊 View Detailed Results →](groups/read/)
-
-**Performance Chart:**
-
-```
-🥇   Solid Signals      █████████████████████████████    95.8/100
-🥈   Jotai              █████████████████████████        83.8/100
-🥉   Zen                ███████████████████████          75.9/100
-4.   Preact Signals     ███████████████                  48.7/100
-5.   MobX               ██████████                       31.7/100
-6.   Redux Toolkit      ██                               8.2/100
-7.   Valtio             ██                               8.0/100
-8.   Zustand            █                                3.2/100
-```
-
-| Rank | Library | Score | Relative | Avg Performance |
-|------|---------|-------|----------|----------------|
-| 🥇 | **Solid Signals** | 95.8/100 | Baseline | ~25.4M ops/sec |
-| 🥈 | **Jotai** | 83.8/100 | 87.5% | ~22.7M ops/sec |
-| 🥉 | **Zen** | 75.9/100 | 79.2% | ~20.4M ops/sec |
-| 4 | **Preact Signals** | 48.7/100 | 50.8% | ~16.6M ops/sec |
-| 5 | **MobX** | 31.7/100 | 33.1% | ~12.3M ops/sec |
-| 6 | **Redux Toolkit** | 8.2/100 | 8.5% | ~3.1M ops/sec |
-| 7 | **Valtio** | 8.0/100 | 8.3% | ~2.5M ops/sec |
-| 8 | **Zustand** | 3.2/100 | 3.4% | ~1.4M ops/sec |
-
-### ✏️ Write Operations
-
-[📊 View Detailed Results →](groups/write/)
-
-**Performance Chart:**
-
-```
-🥇   Solid Signals      ██████████████████████████████   100.0/100
-🥈   Jotai              ███████████████████              62.7/100
-🥉   Preact Signals     █████████████████                56.5/100
-4.   Zen                ███████████████                  48.6/100
-5.   Valtio             █                                3.9/100
-6.   MobX               █                                3.4/100
-7.   Redux Toolkit                                       0.9/100
-8.   Zustand                                             0.3/100
-```
-
-| Rank | Library | Score | Relative | Avg Performance |
-|------|---------|-------|----------|----------------|
-| 🥇 | **Solid Signals** | 100.0/100 | Baseline | ~27.0M ops/sec |
-| 🥈 | **Jotai** | 62.7/100 | 62.7% | ~19.0M ops/sec |
-| 🥉 | **Preact Signals** | 56.5/100 | 56.5% | ~17.1M ops/sec |
-| 4 | **Zen** | 48.6/100 | 48.6% | ~15.6M ops/sec |
-| 5 | **Valtio** | 3.9/100 | 3.9% | ~1.8M ops/sec |
-| 6 | **MobX** | 3.4/100 | 3.4% | ~1.5M ops/sec |
-| 7 | **Redux Toolkit** | 0.9/100 | 0.9% | ~420K ops/sec |
-| 8 | **Zustand** | 0.3/100 | 0.3% | ~155K ops/sec |
-
-### 🏗️ Store Creation
-
-[📊 View Detailed Results →](groups/creation/)
-
-| Rank | Library | Score | Performance |
-|------|---------|-------|-------------|
-| - | - | ⏳ Pending | - |
-
-> Run benchmarks: `npm run benchmark:creation`
-
-### ⚡ Reactive Async
-
-[📊 View Detailed Results →](groups/async/)
-
-**Performance Chart:**
-
-```
-🥇   Jotai              ██████████████████████████████   100.0/100
-```
-
-| Rank | Library | Score | Relative | Avg Performance |
-|------|---------|-------|----------|----------------|
-| 🥇 | **Jotai** | 100.0/100 | Baseline | ~755 ops/sec |
-
-### 🔧 Complex Operations
-
-[📊 View Detailed Results →](groups/complexity/)
-
-| Rank | Library | Score | Performance |
-|------|---------|-------|-------------|
-| - | - | ⏳ Pending | - |
-
-> Run benchmarks: `npm run benchmark:complexity`
-
-### 💾 Memory Operations
-
-[📊 View Detailed Results →](groups/memory/)
-
-| Rank | Library | Score | Performance |
-|------|---------|-------|-------------|
-| - | - | ⏳ Pending | - |
-
-> Run benchmarks: `npm run benchmark:memory`
+> **Note**: Groups 04 (Complexity), 05 (Cache), and 07 (Form) currently have incomplete implementations and are excluded from the Overall Performance Score. These tests require refactoring to use real store implementations rather than placeholder logic.
 
 ---
 
-## 🗂️ Test Categories
+## Library Comparison
 
-Explore detailed performance results for each category:
+| Library | Version | Bundle Size (gzip) | Overall Score | Read | Write | Creation | Memory |
+|---------|---------|-------------------|---------------|------|-------|----------|--------|
+| Solid Signals | 1.9.10 | 4.1 KB | 2,502,108 | 39.9M | 33.1M | 32.1M | 923 |
+| Preact Signals | 2.4.0 | 3.1 KB | 2,325,407 | 34.3M | 28.2M | 33.4M | 904 |
+| Zen | 1.2.1 | 5.5 KB | 2,279,178 | 32.2M | 28.2M | 32.2M | 924 |
+| Jotai | 2.15.1 | 4.4 KB | 1,271,186 | 36.3M | 33.9M | 2.3M | 917 |
+| Valtio | 2.2.0 | 3.1 KB | 257,721 | 4.9M | 4.2M | 235K | 898 |
+| Zustand | 5.0.8 | 1.2 KB | 188,301 | 363K | 351K | 10.9M | 907 |
+| Redux Toolkit | 2.10.1 | 14.2 KB | 103,883 | 960K | 784K | 173K | 892 |
+| MobX | 6.15.0 | 18.0 KB | 41,604 | 3.8M | 3.0M | 278 | 925 |
 
-| Category | Description | Status |
-|----------|-------------|--------|
-| [📖 Read Operations](groups/read/) | Performance of state reading operations across different scales | ✅ Results Available |
-| [✏️ Write Operations](groups/write/) | Performance of state writing and update operations | ✅ Results Available |
-| [🏗️ Store Creation](groups/creation/) | Performance of creating new stores and instances | ⏳ Pending |
-| [⚡ Reactive Async](groups/async/) | Reactive async state operations with automatic dependency tracking | ✅ Results Available |
-| [🔧 Complex Operations](groups/complexity/) | Performance with complex nested state structures | ⏳ Pending |
-| [💾 Memory Operations](groups/memory/) | Memory efficiency and large state operations | ⏳ Pending |
+---
 
-> 📊 Click each category to view detailed benchmark results, test methodology, and performance analysis
+## Feature Support Matrix
 
-## 🚀 Quick Start
+| Feature | Description | Libraries |
+|---------|-------------|-----------|
+| **Native Computed Values** | Automatic dependency tracking for derived values | Jotai, MobX, Solid Signals, Preact Signals, Zen |
+| **Selector Pattern** | Manual derived state using selector functions | Redux Toolkit, Zustand, Valtio |
+| **Reactive Async** | Async computations that automatically recompute | Jotai only |
+| **Native Batching** | Built-in update batching to reduce overhead | Solid Signals, MobX, Valtio |
+| **Middleware System** | Plugin system for extending functionality | Redux Toolkit, Zustand |
+
+---
+
+## Test Categories
+
+### Universal Tests (01-06)
+
+All 8 libraries participate equally. Used to calculate Overall Performance Score.
+
+- **01 - Read Operations**: Simple read and high-frequency read patterns
+- **02 - Write Operations**: Simple increments and burst updates
+- **03 - Store Creation**: Instance creation overhead
+- **04 - Complexity**: Deep nested state *(Implementation incomplete)*
+- **05 - Cache Performance**: Repeated access patterns *(Implementation incomplete)*
+- **06 - Memory Allocation**: Large state allocation performance
+- **07 - Form State**: Multi-field updates *(Implementation incomplete)*
+
+### Feature Tests (08-11)
+
+Libraries participate only if they have native support for the tested capability.
+
+- **08 - Reactive Async**: Async atoms/computations (Jotai only)
+- **09 - Computed Native**: Native computed values (5 libraries)
+- **10 - Selectors**: Manual selector pattern (3 libraries)
+- **11 - Batching Native**: Built-in batching (3 libraries)
+
+---
+
+## Detailed Results
+
+### 01 - Read Operations
+
+**Simple Read** (single value access)
+
+| Library | ops/sec | Relative |
+|---------|---------|----------|
+| Solid Signals | 39,913,249 | 1.00x (fastest) |
+| Jotai | 36,293,502 | 0.91x |
+| Preact Signals | 34,347,739 | 0.86x |
+| Zen | 32,186,172 | 0.81x |
+| Valtio | 4,920,752 | 0.12x |
+| MobX | 3,831,724 | 0.10x |
+| Redux Toolkit | 960,312 | 0.02x |
+| Zustand | 363,178 | 0.01x |
+
+---
+
+### 02 - Write Operations
+
+**Simple Increment** (single value update)
+
+| Library | ops/sec | Relative |
+|---------|---------|----------|
+| Jotai | 33,919,541 | 1.00x (fastest) |
+| Solid Signals | 33,108,766 | 0.98x |
+| Zen | 28,233,961 | 0.83x |
+| Preact Signals | 28,203,919 | 0.83x |
+| Valtio | 4,240,840 | 0.13x |
+| MobX | 3,045,725 | 0.09x |
+| Redux Toolkit | 784,475 | 0.02x |
+| Zustand | 350,822 | 0.01x |
+
+---
+
+### 03 - Store Creation
+
+**Store/Instance Creation Overhead**
+
+| Library | ops/sec | Relative |
+|---------|---------|----------|
+| Preact Signals | 33,384,299 | 1.00x (fastest) |
+| Solid Signals | 32,134,156 | 0.96x |
+| Zen | 32,150,344 | 0.96x |
+| Zustand | 10,875,729 | 0.33x |
+| Jotai | 2,312,931 | 0.07x |
+| Valtio | 235,481 | 0.01x |
+| Redux Toolkit | 173,331 | 0.01x |
+| MobX | 278 | 0.00x |
+
+> **Note**: MobX's low creation performance is expected due to makeAutoObservable overhead.
+
+---
+
+### 06 - Memory Allocation
+
+**Large State Allocation** (1000-field objects)
+
+| Library | ops/sec | Relative |
+|---------|---------|----------|
+| MobX | 925 | 1.00x (fastest) |
+| Zen | 924 | 1.00x |
+| Solid Signals | 923 | 1.00x |
+| Jotai | 917 | 0.99x |
+| Zustand | 907 | 0.98x |
+| Preact Signals | 904 | 0.98x |
+| Valtio | 898 | 0.97x |
+| Redux Toolkit | 892 | 0.96x |
+
+> **Note**: All libraries perform similarly for large state allocation, indicating minimal per-field overhead.
+
+---
+
+### 08 - Reactive Async (Feature Test)
+
+**Participating Libraries**: Jotai only
+
+| Benchmark | ops/sec |
+|-----------|---------|
+| Reactive Async Read | 859 |
+| Async Chain (2 levels) | 440 |
+| Complex Async Object | 878 |
+| Concurrent Async (3 atoms) | 860 |
+
+---
+
+### 09 - Computed Native (Feature Test)
+
+**Participating Libraries**: Jotai, MobX, Solid Signals, Preact Signals, Zen
+
+**Simple Computed** (value * 2)
+
+| Library | ops/sec | Relative |
+|---------|---------|----------|
+| Solid Signals | 38,631,371 | 1.00x (fastest) |
+| Zen | 36,636,862 | 0.95x |
+| Jotai | 36,429,074 | 0.94x |
+| Preact Signals | 36,096,886 | 0.93x |
+| MobX | 3,893,734 | 0.10x |
+
+---
+
+### 10 - Selectors (Feature Test)
+
+**Participating Libraries**: Redux Toolkit, Zustand, Valtio
+
+**Simple Selector**
+
+| Library | ops/sec | Relative |
+|---------|---------|----------|
+| Valtio | 5,282,459 | 1.00x (fastest) |
+| Redux Toolkit | 597,077 | 0.11x |
+| Zustand | 365,422 | 0.07x |
+
+---
+
+### 11 - Batching Native (Feature Test)
+
+**Participating Libraries**: Solid Signals, MobX, Valtio
+
+**Batched Updates** (3 fields)
+
+| Library | ops/sec | Relative |
+|---------|---------|----------|
+| Solid Signals | 39,849,314 | 1.00x (fastest) |
+| Valtio | 4,819,575 | 0.12x |
+| MobX | 3,262,648 | 0.08x |
+
+**Large Batch** (100 updates)
+
+| Library | ops/sec | Relative |
+|---------|---------|----------|
+| Solid Signals | 27,945,212 | 1.00x (fastest) |
+| MobX | 146,457 | 0.01x |
+| Valtio | 67,668 | 0.00x |
+
+---
+
+## Methodology
+
+### Universal Test Standards
+
+- **All libraries participate** in tests 01-07 (excluding incomplete tests)
+- Results are **normalized** and combined using **geometric mean**
+- Tests use **actual library APIs**, not synthetic constructs
+- Each benchmark runs for sufficient iterations to achieve statistical significance
+
+### Feature Test Standards
+
+- **Only libraries with native support** participate
+- Tests measure **real-world usage patterns** of the feature
+- No placeholder or workaround implementations
+- Separate rankings for each feature
+
+### Benchmark Environment
+
+- **Runtime**: Node.js v25.0.0
+- **Framework**: Vitest Bench
+- **Hardware**: [System-dependent]
+- **Iterations**: Automatically determined by Vitest for statistical significance
+
+---
+
+## Key Insights
+
+### Performance Tiers
+
+1. **Signal-based (Tier S)**: Solid Signals, Preact Signals, Zen - Exceptional performance across all operations
+2. **Atom-based (Tier A)**: Jotai - Very fast but creation overhead impacts overall score
+3. **Proxy-based (Tier B)**: Valtio - Moderate performance with good ergonomics
+4. **Store-based (Tier C)**: Zustand, Redux Toolkit - Lower raw performance but predictable
+5. **Observable-based (Tier D)**: MobX - High creation cost, moderate runtime performance
+
+### Trade-offs
+
+- **Solid Signals**: Fastest overall, but requires Solid.js ecosystem
+- **Preact Signals**: Excellent balance of speed and bundle size (3.1 KB)
+- **Zen**: Similar performance to Preact, slightly larger bundle (5.5 KB)
+- **Jotai**: Very fast read/write, slower creation, unique async capabilities
+- **Valtio**: Simple API, moderate performance, good for nested mutations
+- **Zustand**: Minimal bundle (1.2 KB), simple API, moderate performance
+- **Redux Toolkit**: Feature-rich, DevTools support, larger bundle (14.2 KB)
+- **MobX**: Automatic tracking, slow creation, largest bundle (18.0 KB)
+
+---
+
+## Running Benchmarks
 
 ```bash
-# Install dependencies
-npm install
-
 # Run all benchmarks
 npm run benchmark
 
-# Run specific category
-npm run benchmark:write
+# Run specific groups
 npm run benchmark:read
-
-# Generate reports
-npm run extract-results
+npm run benchmark:write
+npm run benchmark:creation
 ```
-
-## 📊 Library Coverage
-
-This benchmark tests the following state management libraries:
-
-- 🔄 **Redux Toolkit** - Predictable state container
-- 🎯 **Zustand** - Small, fast and scalable state management
-- ⚛️ **Jotai** - Primitive and flexible state management
-- 🌀 **MobX** - Simple, scalable state management
-- 💨 **Valtio** - Valtio is a proxy state management library
-- ⚡ **Preact Signals** - Signal-based state management
-- 🔥 **Solid Signals** - Solid.js signal library
-- 🧘 **Zen** - Minimal state management library
-
-## 📁 Project Structure
-
-```
-benchmarks/state-management/
-├── groups/                    # Test group directories
-│   ├── read/                 # Read operation tests
-│   ├── write/                # Write operation tests
-│   ├── creation/             # Store creation tests
-│   ├── async/                # Async operation tests
-│   ├── complexity/           # Complex operation tests
-│   └── memory/               # Memory operation tests
-├── src/                      # Shared source code
-│   ├── stores/              # Library implementations
-│   └── benchmark.bench.ts   # Legacy benchmark (deprecated)
-├── results/                  # Aggregated results
-└── README.md                 # This file
-```
-
-## 🧪 Adding New Tests
-
-To add a new test group:
-
-1. Create a new directory in `groups/`
-2. Add benchmark files with the pattern `*.bench.ts`
-3. Use the shared test configuration from `../shared/test-config.ts`
-4. Update the main scripts in `package.json`
-
-Example new test file:
-```typescript
-import { bench, describe } from 'vitest';
-import { LIBRARIES } from '../shared/test-config';
-
-describe('My New Test', () => {
-  LIBRARIES.forEach(library => {
-    bench(`My Test - ${library.name}`, () => {
-      // Your test logic here
-      library.actions.someMethod();
-    });
-  });
-});
-```
-
-## 🔗 Navigation
-
-- [Read Operations](groups/read/) - Read performance tests
-- [Write Operations](groups/write/) - Write performance tests
-- [Store Creation](groups/creation/) - Store creation tests
-- [Async Operations](groups/async/) - Async operation tests
-- [Complex Operations](groups/complexity/) - Complex state tests
-- [Memory Operations](groups/memory/) - Memory efficiency tests
-
-## ℹ️ About
-
-This benchmark suite provides comprehensive performance analysis across multiple dimensions of state management. Each test group focuses on specific aspects to provide clear, actionable insights for library selection and optimization.
-
-The modular structure makes it easy to:
-- Add new test scenarios
-- Maintain existing tests
-- Compare specific aspects of performance
-- Extend to new libraries
 
 ---
-*Last updated: 2025-11-10T19:14:53.221Z*
+
+## Compliance
+
+This benchmark category follows [BENCHMARK_STANDARD.md](../../BENCHMARK_STANDARD.md) v1.0.0:
+
+- ✅ Universal tests (01-03, 06) use real APIs for all libraries
+- ✅ Feature tests (08-11) only include libraries with native support
+- ✅ Overall Performance Score uses geometric mean of universal tests
+- ⚠️ Groups 04, 05, 07 require implementation updates
+- ✅ No placeholder or synthetic implementations in active tests
+
+---
+
+## License
+
+MIT

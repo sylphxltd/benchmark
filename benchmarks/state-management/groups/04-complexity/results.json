@@ -1,0 +1,131 @@
+{
+  "files": [
+    {
+      "filepath": "/Users/kyle/benchmark-state/benchmarks/state-management/groups/04-complexity/nested-state.bench.ts",
+      "groups": [
+        {
+          "fullName": "groups/04-complexity/nested-state.bench.ts > Deep Nested Updates",
+          "benchmarks": [
+            {
+              "id": "2040320493_0_0",
+              "name": "10-Level Nested Update - Redux Toolkit",
+              "rank": 1,
+              "rme": 0,
+              "samples": []
+            },
+            {
+              "id": "2040320493_0_1",
+              "name": "10-Level Nested Update - Zustand",
+              "rank": 2,
+              "rme": 0,
+              "samples": []
+            },
+            {
+              "id": "2040320493_0_2",
+              "name": "10-Level Nested Update - Jotai",
+              "rank": 3,
+              "rme": 0,
+              "samples": []
+            },
+            {
+              "id": "2040320493_0_3",
+              "name": "10-Level Nested Update - MobX",
+              "rank": 4,
+              "rme": 0,
+              "samples": []
+            },
+            {
+              "id": "2040320493_0_4",
+              "name": "10-Level Nested Update - Valtio",
+              "rank": 5,
+              "rme": 0,
+              "samples": []
+            },
+            {
+              "id": "2040320493_0_5",
+              "name": "10-Level Nested Update - Preact Signals",
+              "rank": 6,
+              "rme": 0,
+              "samples": []
+            },
+            {
+              "id": "2040320493_0_6",
+              "name": "10-Level Nested Update - Solid Signals",
+              "rank": 7,
+              "rme": 0,
+              "samples": []
+            },
+            {
+              "id": "2040320493_0_7",
+              "name": "10-Level Nested Update - Zen",
+              "rank": 8,
+              "rme": 0,
+              "samples": []
+            }
+          ]
+        },
+        {
+          "fullName": "groups/04-complexity/nested-state.bench.ts > Deep Read Access",
+          "benchmarks": [
+            {
+              "id": "2040320493_1_0",
+              "name": "Deep Read Access - Redux Toolkit",
+              "rank": 1,
+              "rme": 0,
+              "samples": []
+            },
+            {
+              "id": "2040320493_1_1",
+              "name": "Deep Read Access - Zustand",
+              "rank": 2,
+              "rme": 0,
+              "samples": []
+            },
+            {
+              "id": "2040320493_1_2",
+              "name": "Deep Read Access - Jotai",
+              "rank": 3,
+              "rme": 0,
+              "samples": []
+            },
+            {
+              "id": "2040320493_1_3",
+              "name": "Deep Read Access - MobX",
+              "rank": 4,
+              "rme": 0,
+              "samples": []
+            },
+            {
+              "id": "2040320493_1_4",
+              "name": "Deep Read Access - Valtio",
+              "rank": 5,
+              "rme": 0,
+              "samples": []
+            },
+            {
+              "id": "2040320493_1_5",
+              "name": "Deep Read Access - Preact Signals",
+              "rank": 6,
+              "rme": 0,
+              "samples": []
+            },
+            {
+              "id": "2040320493_1_6",
+              "name": "Deep Read Access - Solid Signals",
+              "rank": 7,
+              "rme": 0,
+              "samples": []
+            },
+            {
+              "id": "2040320493_1_7",
+              "name": "Deep Read Access - Zen",
+              "rank": 8,
+              "rme": 0,
+              "samples": []
+            }
+          ]
+        }
+      ]
+    }
+  ]
+}

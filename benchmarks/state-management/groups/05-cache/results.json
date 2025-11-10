@@ -1,0 +1,70 @@
+{
+  "files": [
+    {
+      "filepath": "/Users/kyle/benchmark-state/benchmarks/state-management/groups/05-cache/cache-performance.bench.ts",
+      "groups": [
+        {
+          "fullName": "groups/05-cache/cache-performance.bench.ts > Cache Performance - Caching patterns and memoization",
+          "benchmarks": [
+            {
+              "id": "-1223645408_0_0",
+              "name": "Redux Toolkit - Repeated Access Pattern",
+              "rank": 1,
+              "rme": 0,
+              "samples": []
+            },
+            {
+              "id": "-1223645408_0_1",
+              "name": "Zustand - Repeated Access Pattern",
+              "rank": 2,
+              "rme": 0,
+              "samples": []
+            },
+            {
+              "id": "-1223645408_0_2",
+              "name": "Jotai - Repeated Access Pattern",
+              "rank": 3,
+              "rme": 0,
+              "samples": []
+            },
+            {
+              "id": "-1223645408_0_3",
+              "name": "MobX - Repeated Access Pattern",
+              "rank": 4,
+              "rme": 0,
+              "samples": []
+            },
+            {
+              "id": "-1223645408_0_4",
+              "name": "Valtio - Repeated Access Pattern",
+              "rank": 5,
+              "rme": 0,
+              "samples": []
+            },
+            {
+              "id": "-1223645408_0_5",
+              "name": "Preact Signals - Repeated Access Pattern",
+              "rank": 6,
+              "rme": 0,
+              "samples": []
+            },
+            {
+              "id": "-1223645408_0_6",
+              "name": "Solid Signals - Repeated Access Pattern",
+              "rank": 7,
+              "rme": 0,
+              "samples": []
+            },
+            {
+              "id": "-1223645408_0_7",
+              "name": "Zen - Repeated Access Pattern",
+              "rank": 8,
+              "rme": 0,
+              "samples": []
+            }
+          ]
+        }
+      ]
+    }
+  ]
+}
