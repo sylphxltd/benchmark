@@ -10,23 +10,23 @@
   <!-- Grid lines -->
   <line x1="60" y1="60" x2="740" y2="60" stroke="#e5e7eb" stroke-width="1"/>
   <text x="50" y="65" text-anchor="end" font-size="12" fill="#6b7280">
-    2.0M
+    1.8M
   </text>
   <line x1="60" y1="116" x2="740" y2="116" stroke="#e5e7eb" stroke-width="1"/>
   <text x="50" y="121" text-anchor="end" font-size="12" fill="#6b7280">
-    1.6M
+    1.5M
   </text>
   <line x1="60" y1="172" x2="740" y2="172" stroke="#e5e7eb" stroke-width="1"/>
   <text x="50" y="177" text-anchor="end" font-size="12" fill="#6b7280">
-    1.2M
+    1.1M
   </text>
   <line x1="60" y1="228" x2="740" y2="228" stroke="#e5e7eb" stroke-width="1"/>
   <text x="50" y="233" text-anchor="end" font-size="12" fill="#6b7280">
-    808K
+    739K
   </text>
   <line x1="60" y1="284" x2="740" y2="284" stroke="#e5e7eb" stroke-width="1"/>
   <text x="50" y="289" text-anchor="end" font-size="12" fill="#6b7280">
-    404K
+    370K
   </text>
   <line x1="60" y1="340" x2="740" y2="340" stroke="#e5e7eb" stroke-width="1"/>
   <text x="50" y="345" text-anchor="end" font-size="12" fill="#6b7280">
@@ -44,21 +44,21 @@
   <text x="740" y="365" text-anchor="middle" font-size="10" fill="#6b7280" transform="rotate(-45, 740, 365)">
     11-10
   </text>
-  <polyline points="60,336.2948326821707 286.66666666666663,336.2579603331316 513.3333333333333,336.3023601247599 740,336.2014087957784" fill="none" stroke="#3b82f6" stroke-width="2"/>
-  <circle cx="60" cy="336.2948326821707" r="4" fill="#3b82f6"/>
-  <circle cx="286.66666666666663" cy="336.2579603331316" r="4" fill="#3b82f6"/>
-  <circle cx="513.3333333333333" cy="336.3023601247599" r="4" fill="#3b82f6"/>
-  <circle cx="740" cy="336.2014087957784" r="4" fill="#3b82f6"/>
-  <polyline points="60,313.68897517154977 286.66666666666663,314.07851773297637 513.3333333333333,316.2019638007099 740,312.857735103464" fill="none" stroke="#ef4444" stroke-width="2"/>
-  <circle cx="60" cy="313.68897517154977" r="4" fill="#ef4444"/>
-  <circle cx="286.66666666666663" cy="314.07851773297637" r="4" fill="#ef4444"/>
-  <circle cx="513.3333333333333" cy="316.2019638007099" r="4" fill="#ef4444"/>
-  <circle cx="740" cy="312.857735103464" r="4" fill="#ef4444"/>
-  <polyline points="60,107.22441326668675 286.66666666666663,120.80864679045081 513.3333333333333,119.58220568994449 740,85.45454545454547" fill="none" stroke="#10b981" stroke-width="2"/>
-  <circle cx="60" cy="107.22441326668675" r="4" fill="#10b981"/>
-  <circle cx="286.66666666666663" cy="120.80864679045081" r="4" fill="#10b981"/>
-  <circle cx="513.3333333333333" cy="119.58220568994449" r="4" fill="#10b981"/>
-  <circle cx="740" cy="85.45454545454547" r="4" fill="#10b981"/>
+  <polyline points="60,335.94831437300013 286.66666666666663,335.9079936117982 513.3333333333333,335.95654580449315 740,335.8988981848345" fill="none" stroke="#3b82f6" stroke-width="2"/>
+  <circle cx="60" cy="335.94831437300013" r="4" fill="#3b82f6"/>
+  <circle cx="286.66666666666663" cy="335.9079936117982" r="4" fill="#3b82f6"/>
+  <circle cx="513.3333333333333" cy="335.95654580449315" r="4" fill="#3b82f6"/>
+  <circle cx="740" cy="335.8988981848345" r="4" fill="#3b82f6"/>
+  <polyline points="60,311.2282895792348 286.66666666666663,311.6542633239675 513.3333333333333,313.9763004074063 740,311.3322470663464" fill="none" stroke="#ef4444" stroke-width="2"/>
+  <circle cx="60" cy="311.2282895792348" r="4" fill="#ef4444"/>
+  <circle cx="286.66666666666663" cy="311.6542633239675" r="4" fill="#ef4444"/>
+  <circle cx="513.3333333333333" cy="313.9763004074063" r="4" fill="#ef4444"/>
+  <circle cx="740" cy="311.3322470663464" r="4" fill="#ef4444"/>
+  <polyline points="60,85.45454545454547 286.66666666666663,100.30921705255832 513.3333333333333,98.96807551884896 740,92.02756799932413" fill="none" stroke="#10b981" stroke-width="2"/>
+  <circle cx="60" cy="85.45454545454547" r="4" fill="#10b981"/>
+  <circle cx="286.66666666666663" cy="100.30921705255832" r="4" fill="#10b981"/>
+  <circle cx="513.3333333333333" cy="98.96807551884896" r="4" fill="#10b981"/>
+  <circle cx="740" cy="92.02756799932413" r="4" fill="#10b981"/>
   <rect x="650" y="42" width="12" height="12" fill="#3b82f6"/>
   <text x="668" y="53" font-size="12" fill="#374151">React Router</text>
   <rect x="650" y="62" width="12" height="12" fill="#ef4444"/>
