@@ -1,47 +1,146 @@
-// Generate standard-compliant README from benchmark results
-import fs from 'fs';
-import path from 'path';
+#!/usr/bin/env node
+/**
+ * Complete README generator for state-management benchmarks
+ * Generates the entire README from scratch based on benchmark results
+ * Compliant with BENCHMARK_STANDARD.md v1.0.0
+ */
 
-// Read metadata
+import fs from 'fs';
+
+// ============================================================================
+// Data Loading
+// ============================================================================
+
 const libraryMetadata = JSON.parse(fs.readFileSync('library-metadata.json', 'utf8'));
 const features = JSON.parse(fs.readFileSync('features.json', 'utf8'));
 const versions = JSON.parse(fs.readFileSync('versions.json', 'utf8'));
-const overallScores = JSON.parse(fs.readFileSync('overall-scores.json', 'utf8'));
 
-// Read result files
+// Load all result files
 const results = {
-  read: JSON.parse(fs.readFileSync('groups/01-read/results.json', 'utf8')),
-  write: JSON.parse(fs.readFileSync('groups/02-write/results.json', 'utf8')),
-  creation: JSON.parse(fs.readFileSync('groups/03-creation/results.json', 'utf8')),
-  memory: JSON.parse(fs.readFileSync('groups/06-memory/results.json', 'utf8')),
-  asyncReactive: JSON.parse(fs.readFileSync('groups/08-async-reactive/results.json', 'utf8')),
-  computedNative: JSON.parse(fs.readFileSync('groups/09-computed-native/results.json', 'utf8')),
-  selectors: JSON.parse(fs.readFileSync('groups/10-selectors/results.json', 'utf8')),
-  batchingNative: JSON.parse(fs.readFileSync('groups/11-batching-native/results.json', 'utf8'))
+  '01-read': loadResults('groups/01-read/results.json'),
+  '02-write': loadResults('groups/02-write/results.json'),
+  '03-creation': loadResults('groups/03-creation/results.json'),
+  '04-complexity': loadResults('groups/04-complexity/results.json'),
+  '05-cache': loadResults('groups/05-cache/results.json'),
+  '06-memory': loadResults('groups/06-memory/results.json'),
+  '07-form': loadResults('groups/07-form/results.json'),
+  '08-async-reactive': loadResults('groups/08-async-reactive/results.json'),
+  '09-computed-native': loadResults('groups/09-computed-native/results.json'),
+  '10-selectors': loadResults('groups/10-selectors/results.json'),
+  '11-batching-native': loadResults('groups/11-batching-native/results.json')
 };
 
-// Helper: Format number
-function formatNumber(num, decimals = 0) {
-  if (num >= 1000000) {
-    return `${(num / 1000000).toFixed(1)}M`;
-  } else if (num >= 1000) {
-    return `${(num / 1000).toFixed(0)}K`;
+function loadResults(path) {
+  try {
+    return JSON.parse(fs.readFileSync(path, 'utf8'));
+  } catch {
+    return null;
   }
+}
+
+// ============================================================================
+// Helper Functions
+// ============================================================================
+
+function formatNumber(num, decimals = 0) {
+  if (num >= 1000000) return `${(num / 1000000).toFixed(1)}M`;
+  if (num >= 1000) return `${(num / 1000).toFixed(0)}K`;
   return num.toFixed(decimals);
 }
 
-// Helper: Extract benchmark by name pattern
-function extractBenchmark(resultGroup, pattern) {
-  const benchmarks = resultGroup.files[0].groups[0].benchmarks;
-  return benchmarks.filter(b => b.name.includes(pattern));
+function extractBenchmarks(result, pattern) {
+  if (!result?.files?.[0]?.groups?.[0]?.benchmarks) return [];
+  return result.files[0].groups[0].benchmarks.filter(b => b.name.includes(pattern));
 }
 
-// Generate README
-let readme = `# State Management Benchmarks
+function getAllBenchmarks(result) {
+  if (!result?.files?.[0]?.groups) return [];
+  const benchmarks = [];
+  result.files[0].groups.forEach(group => {
+    if (group.benchmarks) benchmarks.push(...group.benchmarks);
+  });
+  return benchmarks;
+}
+
+function getLibraryDisplayName(libKey) {
+  return libraryMetadata.libraries[libKey]?.displayName || libKey;
+}
+
+// ============================================================================
+// Calculate Overall Performance Score
+// ============================================================================
+
+function calculateOverallScores() {
+  const scores = {};
+
+  // Extract Simple Read
+  const readBenches = extractBenchmarks(results['01-read'], 'Simple Read -');
+  readBenches.forEach(b => {
+    const lib = b.name.replace('Simple Read - ', '');
+    if (!scores[lib]) scores[lib] = {};
+    scores[lib].read = b.hz || 0;
+  });
+
+  // Extract Simple Increment
+  const writeBenches = extractBenchmarks(results['02-write'], 'Simple Increment -');
+  writeBenches.forEach(b => {
+    const lib = b.name.replace('Simple Increment - ', '');
+    if (!scores[lib]) scores[lib] = {};
+    scores[lib].write = b.hz || 0;
+  });
+
+  // Extract Store Creation
+  const creationBenches = extractBenchmarks(results['03-creation'], 'Store Creation -');
+  creationBenches.forEach(b => {
+    const lib = b.name.replace('Store Creation - ', '');
+    if (!scores[lib]) scores[lib] = {};
+    scores[lib].creation = b.hz || 0;
+  });
+
+  // Extract Large State Allocation
+  const memoryBenches = extractBenchmarks(results['06-memory'], 'Large State Allocation -');
+  memoryBenches.forEach(b => {
+    const lib = b.name.replace('Large State Allocation - ', '');
+    if (!scores[lib]) scores[lib] = {};
+    scores[lib].memory = b.hz || 0;
+  });
+
+  // Calculate geometric mean
+  const overallScores = [];
+  Object.entries(scores).forEach(([lib, data]) => {
+    if (data.read && data.write && data.creation && data.memory) {
+      const values = [data.read, data.write, data.creation, data.memory];
+      const product = values.reduce((a, b) => a * b, 1);
+      const geometricMean = Math.pow(product, 1 / values.length);
+
+      overallScores.push({
+        library: lib,
+        read: data.read,
+        write: data.write,
+        creation: data.creation,
+        memory: data.memory,
+        overall: geometricMean
+      });
+    }
+  });
+
+  return overallScores.sort((a, b) => b.overall - a.overall);
+}
+
+// ============================================================================
+// Generate README Sections
+// ============================================================================
+
+function generateHeader() {
+  return `# State Management Benchmarks
 
 Comprehensive performance benchmarks for JavaScript/TypeScript state management libraries.
 
-## Overall Performance Score
+`;
+}
+
+function generateOverallScore(scores) {
+  let section = `## Overall Performance Score
 
 **Based on Universal Tests**: Read, Write, Creation, Memory
 **Methodology**: Geometric mean of operations per second across all universal tests
@@ -50,58 +149,65 @@ Comprehensive performance benchmarks for JavaScript/TypeScript state management 
 |------|---------|-----------------|-----------|
 `;
 
-// Overall Performance Score table
-overallScores.forEach((entry, index) => {
-  const rank = index + 1;
-  const medal = rank === 1 ? '🥇' : rank === 2 ? '🥈' : rank === 3 ? '🥉' : '';
-  const vsLeader = index === 0 ? 'Baseline' : `${(entry.overall / overallScores[0].overall).toFixed(2)}x`;
+  scores.forEach((entry, index) => {
+    const rank = index + 1;
+    const medal = rank === 1 ? '🥇' : rank === 2 ? '🥈' : rank === 3 ? '🥉' : '';
+    const vsLeader = index === 0 ? 'Baseline' : `${(entry.overall / scores[0].overall).toFixed(2)}x`;
 
-  readme += `| ${medal} ${rank} | **${entry.library}** | **${formatNumber(entry.overall)}** | ${vsLeader} |\n`;
-});
+    section += `| ${medal} ${rank} | **${entry.library}** | **${formatNumber(entry.overall)}** | ${vsLeader} |\n`;
+  });
 
-readme += `
+  section += `
 > **Note**: Groups 04 (Complexity), 05 (Cache), and 07 (Form) currently have incomplete implementations and are excluded from the Overall Performance Score. These tests require refactoring to use real store implementations rather than placeholder logic.
 
 ---
 
-## Library Comparison
+`;
+
+  return section;
+}
+
+function generateLibraryComparison(scores) {
+  let section = `## Library Comparison
 
 | Library | Version | Bundle Size (gzip) | Overall Score | Read | Write | Creation | Memory |
 |---------|---------|-------------------|---------------|------|-------|----------|--------|
 `;
 
-// Library comparison table with crown for winner
-overallScores.forEach((entry, index) => {
-  const libKey = Object.keys(libraryMetadata.libraries).find(key =>
-    libraryMetadata.libraries[key].displayName === entry.library
-  );
-  const version = versions.libraries[libKey]?.current || 'N/A';
-  const size = versions.libraries[libKey]?.size?.gzip || 0;
-  const sizeKB = (size / 1024).toFixed(1);
-  const crown = index === 0 ? '👑 ' : '';
+  scores.forEach((entry, index) => {
+    const libKey = Object.keys(libraryMetadata.libraries).find(key =>
+      libraryMetadata.libraries[key].displayName === entry.library
+    );
+    const version = versions.libraries[libKey]?.current || 'N/A';
+    const size = versions.libraries[libKey]?.size?.gzip || 0;
+    const sizeKB = (size / 1024).toFixed(1);
+    const crown = index === 0 ? '👑 ' : '';
 
-  readme += `| ${crown}${entry.library} | ${version} | ${sizeKB} KB | ${formatNumber(entry.overall)} | ${formatNumber(entry.read)} | ${formatNumber(entry.write)} | ${formatNumber(entry.creation)} | ${formatNumber(entry.memory)} |\n`;
-});
+    section += `| ${crown}${entry.library} | ${version} | ${sizeKB} KB | ${formatNumber(entry.overall)} | ${formatNumber(entry.read)} | ${formatNumber(entry.write)} | ${formatNumber(entry.creation)} | ${formatNumber(entry.memory)} |\n`;
+  });
 
-readme += `
----
+  section += '\n---\n\n';
+  return section;
+}
 
-## Feature Support Matrix
+function generateFeatureMatrix() {
+  let section = `## Feature Support Matrix
 
 | Feature | Description | Libraries |
 |---------|-------------|-----------|
 `;
 
-// Feature support matrix
-Object.entries(features.features).forEach(([key, feature]) => {
-  const libs = feature.supported.map(libKey => libraryMetadata.libraries[libKey]?.displayName || libKey).join(', ');
-  readme += `| **${feature.name}** | ${feature.description} | ${libs} |\n`;
-});
+  Object.entries(features.features).forEach(([key, feature]) => {
+    const libs = feature.supported.map(libKey => getLibraryDisplayName(libKey)).join(', ');
+    section += `| **${feature.name}** | ${feature.description} | ${libs} |\n`;
+  });
 
-readme += `
----
+  section += '\n---\n\n';
+  return section;
+}
 
-## Test Categories
+function generateTestCategories() {
+  return `## Test Categories
 
 ### Universal Tests (01-06)
 
@@ -126,9 +232,16 @@ Libraries participate only if they have native support for the tested capability
 
 ---
 
-## Detailed Results
+`;
+}
 
-### 01 - Read Operations
+function generateDetailedResults() {
+  let section = `## Detailed Results
+
+`;
+
+  // 01 - Read Operations
+  section += `### 01 - Read Operations
 
 **Simple Read** (single value access)
 
@@ -136,20 +249,19 @@ Libraries participate only if they have native support for the tested capability
 |---------|---------|----------|
 `;
 
-// Read operations results
-const readBenchmarks = extractBenchmark(results.read, 'Simple Read -');
-const maxRead = Math.max(...readBenchmarks.map(b => b.hz || 0));
-readBenchmarks.sort((a, b) => (b.hz || 0) - (a.hz || 0)).forEach((bench, index) => {
-  const libName = bench.name.replace('Simple Read - ', '');
-  const relative = ((bench.hz || 0) / maxRead).toFixed(2) + 'x';
-  const note = index === 0 ? ' (fastest)' : '';
-  readme += `| ${libName} | ${formatNumber(bench.hz)} | ${relative}${note} |\n`;
-});
+  const readBenches = extractBenchmarks(results['01-read'], 'Simple Read -');
+  const maxRead = Math.max(...readBenches.map(b => b.hz || 0));
+  readBenches.sort((a, b) => (b.hz || 0) - (a.hz || 0)).forEach((b, i) => {
+    const lib = b.name.replace('Simple Read - ', '');
+    const rel = ((b.hz || 0) / maxRead).toFixed(2) + 'x';
+    const note = i === 0 ? ' (fastest)' : '';
+    section += `| ${lib} | ${formatNumber(b.hz)} | ${rel}${note} |\n`;
+  });
 
-readme += `
----
+  section += '\n---\n\n';
 
-### 02 - Write Operations
+  // 02 - Write Operations
+  section += `### 02 - Write Operations
 
 **Simple Increment** (single value update)
 
@@ -157,20 +269,19 @@ readme += `
 |---------|---------|----------|
 `;
 
-// Write operations results
-const writeBenchmarks = extractBenchmark(results.write, 'Simple Increment -');
-const maxWrite = Math.max(...writeBenchmarks.map(b => b.hz || 0));
-writeBenchmarks.sort((a, b) => (b.hz || 0) - (a.hz || 0)).forEach((bench, index) => {
-  const libName = bench.name.replace('Simple Increment - ', '');
-  const relative = ((bench.hz || 0) / maxWrite).toFixed(2) + 'x';
-  const note = index === 0 ? ' (fastest)' : '';
-  readme += `| ${libName} | ${formatNumber(bench.hz)} | ${relative}${note} |\n`;
-});
+  const writeBenches = extractBenchmarks(results['02-write'], 'Simple Increment -');
+  const maxWrite = Math.max(...writeBenches.map(b => b.hz || 0));
+  writeBenches.sort((a, b) => (b.hz || 0) - (a.hz || 0)).forEach((b, i) => {
+    const lib = b.name.replace('Simple Increment - ', '');
+    const rel = ((b.hz || 0) / maxWrite).toFixed(2) + 'x';
+    const note = i === 0 ? ' (fastest)' : '';
+    section += `| ${lib} | ${formatNumber(b.hz)} | ${rel}${note} |\n`;
+  });
 
-readme += `
----
+  section += '\n---\n\n';
 
-### 03 - Store Creation
+  // 03 - Store Creation
+  section += `### 03 - Store Creation
 
 **Store/Instance Creation Overhead**
 
@@ -178,22 +289,24 @@ readme += `
 |---------|---------|----------|
 `;
 
-// Creation results
-const creationBenchmarks = extractBenchmark(results.creation, 'Store Creation -');
-const maxCreation = Math.max(...creationBenchmarks.map(b => b.hz || 0));
-creationBenchmarks.sort((a, b) => (b.hz || 0) - (a.hz || 0)).forEach((bench, index) => {
-  const libName = bench.name.replace('Store Creation - ', '');
-  const relative = ((bench.hz || 0) / maxCreation).toFixed(2) + 'x';
-  const note = index === 0 ? ' (fastest)' : '';
-  readme += `| ${libName} | ${formatNumber(bench.hz)} | ${relative}${note} |\n`;
-});
+  const creationBenches = extractBenchmarks(results['03-creation'], 'Store Creation -');
+  const maxCreation = Math.max(...creationBenches.map(b => b.hz || 0));
+  creationBenches.sort((a, b) => (b.hz || 0) - (a.hz || 0)).forEach((b, i) => {
+    const lib = b.name.replace('Store Creation - ', '');
+    const rel = ((b.hz || 0) / maxCreation).toFixed(2) + 'x';
+    const note = i === 0 ? ' (fastest)' : '';
+    section += `| ${lib} | ${formatNumber(b.hz)} | ${rel}${note} |\n`;
+  });
 
-readme += `
+  section += `
 > **Note**: MobX's low creation performance is expected due to makeAutoObservable overhead.
 
 ---
 
-### 06 - Memory Allocation
+`;
+
+  // 06 - Memory Allocation
+  section += `### 06 - Memory Allocation
 
 **Large State Allocation** (1000-field objects)
 
@@ -201,22 +314,24 @@ readme += `
 |---------|---------|----------|
 `;
 
-// Memory results
-const memoryBenchmarks = extractBenchmark(results.memory, 'Large State Allocation -');
-const maxMemory = Math.max(...memoryBenchmarks.map(b => b.hz || 0));
-memoryBenchmarks.sort((a, b) => (b.hz || 0) - (a.hz || 0)).forEach((bench, index) => {
-  const libName = bench.name.replace('Large State Allocation - ', '');
-  const relative = ((bench.hz || 0) / maxMemory).toFixed(2) + 'x';
-  const note = index === 0 ? ' (fastest)' : '';
-  readme += `| ${libName} | ${formatNumber(bench.hz)} | ${relative}${note} |\n`;
-});
+  const memoryBenches = extractBenchmarks(results['06-memory'], 'Large State Allocation -');
+  const maxMemory = Math.max(...memoryBenches.map(b => b.hz || 0));
+  memoryBenches.sort((a, b) => (b.hz || 0) - (a.hz || 0)).forEach((b, i) => {
+    const lib = b.name.replace('Large State Allocation - ', '');
+    const rel = ((b.hz || 0) / maxMemory).toFixed(2) + 'x';
+    const note = i === 0 ? ' (fastest)' : '';
+    section += `| ${lib} | ${formatNumber(b.hz)} | ${rel}${note} |\n`;
+  });
 
-readme += `
+  section += `
 > **Note**: All libraries perform similarly for large state allocation, indicating minimal per-field overhead.
 
 ---
 
-### 08 - Reactive Async (Feature Test)
+`;
+
+  // 08 - Reactive Async
+  section += `### 08 - Reactive Async (Feature Test)
 
 **Participating Libraries**: Jotai only
 
@@ -224,19 +339,16 @@ readme += `
 |-----------|---------|
 `;
 
-// Async reactive results
-const asyncBenchmarks = results.asyncReactive.files[0].groups;
-asyncBenchmarks.forEach(group => {
-  group.benchmarks.forEach(bench => {
-    const testName = bench.name.replace(' - Jotai', '');
-    readme += `| ${testName} | ${formatNumber(bench.hz)} |\n`;
+  const asyncBenches = getAllBenchmarks(results['08-async-reactive']);
+  asyncBenches.forEach(b => {
+    const name = b.name.replace(' - Jotai', '');
+    section += `| ${name} | ${formatNumber(b.hz)} |\n`;
   });
-});
 
-readme += `
----
+  section += '\n---\n\n';
 
-### 09 - Computed Native (Feature Test)
+  // 09 - Computed Native
+  section += `### 09 - Computed Native (Feature Test)
 
 **Participating Libraries**: Jotai, MobX, Solid Signals, Preact Signals, Zen
 
@@ -246,20 +358,19 @@ readme += `
 |---------|---------|----------|
 `;
 
-// Computed native results
-const computedBenchmarks = extractBenchmark(results.computedNative, 'Simple Computed -');
-const maxComputed = Math.max(...computedBenchmarks.map(b => b.hz || 0));
-computedBenchmarks.sort((a, b) => (b.hz || 0) - (a.hz || 0)).forEach((bench, index) => {
-  const libName = bench.name.replace('Simple Computed - ', '');
-  const relative = ((bench.hz || 0) / maxComputed).toFixed(2) + 'x';
-  const note = index === 0 ? ' (fastest)' : '';
-  readme += `| ${libName} | ${formatNumber(bench.hz)} | ${relative}${note} |\n`;
-});
+  const computedBenches = extractBenchmarks(results['09-computed-native'], 'Simple Computed -');
+  const maxComputed = Math.max(...computedBenches.map(b => b.hz || 0));
+  computedBenches.sort((a, b) => (b.hz || 0) - (a.hz || 0)).forEach((b, i) => {
+    const lib = b.name.replace('Simple Computed - ', '');
+    const rel = ((b.hz || 0) / maxComputed).toFixed(2) + 'x';
+    const note = i === 0 ? ' (fastest)' : '';
+    section += `| ${lib} | ${formatNumber(b.hz)} | ${rel}${note} |\n`;
+  });
 
-readme += `
----
+  section += '\n---\n\n';
 
-### 10 - Selectors (Feature Test)
+  // 10 - Selectors
+  section += `### 10 - Selectors (Feature Test)
 
 **Participating Libraries**: Redux Toolkit, Zustand, Valtio
 
@@ -269,20 +380,20 @@ readme += `
 |---------|---------|----------|
 `;
 
-// Selectors results
-const selectorBenchmarks = extractBenchmark(results.selectors, 'Selector - ').filter(b => !b.name.includes('Chained') && !b.name.includes('Repeated') && !b.name.includes('Updates'));
-const maxSelector = Math.max(...selectorBenchmarks.map(b => b.hz || 0));
-selectorBenchmarks.sort((a, b) => (b.hz || 0) - (a.hz || 0)).forEach((bench, index) => {
-  const libName = bench.name.replace('Selector - ', '');
-  const relative = ((bench.hz || 0) / maxSelector).toFixed(2) + 'x';
-  const note = index === 0 ? ' (fastest)' : '';
-  readme += `| ${libName} | ${formatNumber(bench.hz)} | ${relative}${note} |\n`;
-});
+  const selectorBenches = extractBenchmarks(results['10-selectors'], 'Selector - ')
+    .filter(b => !b.name.includes('Chained') && !b.name.includes('Repeated') && !b.name.includes('Updates'));
+  const maxSelector = Math.max(...selectorBenches.map(b => b.hz || 0));
+  selectorBenches.sort((a, b) => (b.hz || 0) - (a.hz || 0)).forEach((b, i) => {
+    const lib = b.name.replace('Selector - ', '');
+    const rel = ((b.hz || 0) / maxSelector).toFixed(2) + 'x';
+    const note = i === 0 ? ' (fastest)' : '';
+    section += `| ${lib} | ${formatNumber(b.hz)} | ${rel}${note} |\n`;
+  });
 
-readme += `
----
+  section += '\n---\n\n';
 
-### 11 - Batching Native (Feature Test)
+  // 11 - Batching Native
+  section += `### 11 - Batching Native (Feature Test)
 
 **Participating Libraries**: Solid Signals, MobX, Valtio
 
@@ -292,36 +403,37 @@ readme += `
 |---------|---------|----------|
 `;
 
-// Batching results
-const batchingBenchmarks = extractBenchmark(results.batchingNative, 'Batched Updates -');
-const maxBatching = Math.max(...batchingBenchmarks.map(b => b.hz || 0));
-batchingBenchmarks.sort((a, b) => (b.hz || 0) - (a.hz || 0)).forEach((bench, index) => {
-  const libName = bench.name.replace('Batched Updates - ', '');
-  const relative = ((bench.hz || 0) / maxBatching).toFixed(2) + 'x';
-  const note = index === 0 ? ' (fastest)' : '';
-  readme += `| ${libName} | ${formatNumber(bench.hz)} | ${relative}${note} |\n`;
-});
+  const batchingBenches = extractBenchmarks(results['11-batching-native'], 'Batched Updates -');
+  const maxBatching = Math.max(...batchingBenches.map(b => b.hz || 0));
+  batchingBenches.sort((a, b) => (b.hz || 0) - (a.hz || 0)).forEach((b, i) => {
+    const lib = b.name.replace('Batched Updates - ', '');
+    const rel = ((b.hz || 0) / maxBatching).toFixed(2) + 'x';
+    const note = i === 0 ? ' (fastest)' : '';
+    section += `| ${lib} | ${formatNumber(b.hz)} | ${rel}${note} |\n`;
+  });
 
-readme += `
+  section += `
 **Large Batch** (100 updates)
 
 | Library | ops/sec | Relative |
 |---------|---------|----------|
 `;
 
-const largeBatchBenchmarks = extractBenchmark(results.batchingNative, 'Large Batch -');
-const maxLargeBatch = Math.max(...largeBatchBenchmarks.map(b => b.hz || 0));
-largeBatchBenchmarks.sort((a, b) => (b.hz || 0) - (a.hz || 0)).forEach((bench, index) => {
-  const libName = bench.name.replace('Large Batch - ', '');
-  const relative = ((bench.hz || 0) / maxLargeBatch).toFixed(2) + 'x';
-  const note = index === 0 ? ' (fastest)' : '';
-  readme += `| ${libName} | ${formatNumber(bench.hz)} | ${relative}${note} |\n`;
-});
+  const largeBatchBenches = extractBenchmarks(results['11-batching-native'], 'Large Batch -');
+  const maxLargeBatch = Math.max(...largeBatchBenches.map(b => b.hz || 0));
+  largeBatchBenches.sort((a, b) => (b.hz || 0) - (a.hz || 0)).forEach((b, i) => {
+    const lib = b.name.replace('Large Batch - ', '');
+    const rel = ((b.hz || 0) / maxLargeBatch).toFixed(2) + 'x';
+    const note = i === 0 ? ' (fastest)' : '';
+    section += `| ${lib} | ${formatNumber(b.hz)} | ${rel}${note} |\n`;
+  });
 
-readme += `
----
+  section += '\n---\n\n';
+  return section;
+}
 
-## Methodology
+function generateMethodology() {
+  return `## Methodology
 
 ### Universal Test Standards
 
@@ -346,7 +458,11 @@ readme += `
 
 ---
 
-## Key Insights
+`;
+}
+
+function generateKeyInsights() {
+  return `## Key Insights
 
 ### Performance Tiers
 
@@ -369,7 +485,11 @@ readme += `
 
 ---
 
-## Running Benchmarks
+`;
+}
+
+function generateRunning() {
+  return `## Running Benchmarks
 
 \`\`\`bash
 # Run all benchmarks
@@ -383,7 +503,11 @@ npm run benchmark:creation
 
 ---
 
-## Compliance
+`;
+}
+
+function generateCompliance() {
+  return `## Compliance
 
 This benchmark category follows [BENCHMARK_STANDARD.md](../../BENCHMARK_STANDARD.md) v1.0.0:
 
@@ -399,7 +523,32 @@ This benchmark category follows [BENCHMARK_STANDARD.md](../../BENCHMARK_STANDARD
 
 MIT
 `;
+}
+
+// ============================================================================
+// Main Generation
+// ============================================================================
+
+function generateREADME() {
+  const scores = calculateOverallScores();
+
+  let readme = '';
+  readme += generateHeader();
+  readme += generateOverallScore(scores);
+  readme += generateLibraryComparison(scores);
+  readme += generateFeatureMatrix();
+  readme += generateTestCategories();
+  readme += generateDetailedResults();
+  readme += generateMethodology();
+  readme += generateKeyInsights();
+  readme += generateRunning();
+  readme += generateCompliance();
+
+  return readme;
+}
 
 // Write README
+const readme = generateREADME();
 fs.writeFileSync('README.md', readme);
-console.log('✓ README.md generated successfully');
+
+console.log('✅ README.md generated successfully');
