@@ -20,7 +20,7 @@ Professional performance comparison of CSS-in-JS and utility-first CSS framework
 ## 📋 Benchmark Information
 
 - **Last Updated:** November 10, 2025
-- **Last Run:** 11:03:37 PM UTC
+- **Last Run:** 11:16:25 PM UTC
 - **Environment:** Node.js v20.19.5, linux x64
 - **Test Framework:** Vitest Bench
 - **Iterations:** 3 runs averaged for statistical accuracy
@@ -57,10 +57,10 @@ Based on geometric mean across all supported tests (excludes extreme values):
 
 | Rank | Library | Score | Relative |
 |------|---------|-------|----------|
-| 🥇 | **[Silk](https://github.com/sylphxltd/silk)** | 98.4/100 | Baseline |
-| 🥈 | **[Panda CSS](https://github.com/chakra-ui/panda)** | 95.9/100 | 97.5% |
-| 🥉 | **[Tailwind CSS](https://github.com/tailwindlabs/tailwindcss)** | 95.6/100 | 97.2% |
-| 4 | **[UnoCSS](https://github.com/unocss/unocss)** | 94.8/100 | 96.3% |
+| 🥇 | **[Panda CSS](https://github.com/chakra-ui/panda)** | 99.3/100 | Baseline |
+| 🥈 | **[UnoCSS](https://github.com/unocss/unocss)** | 98.6/100 | 99.3% |
+| 🥉 | **[Tailwind CSS](https://github.com/tailwindlabs/tailwindcss)** | 98.5/100 | 99.2% |
+| 4 | **[Silk](https://github.com/sylphxltd/silk)** | 97.8/100 | 98.5% |
 
 > 📊 **Methodology:** Geometric mean prevents extreme values from skewing results. Each test is normalized (fastest = 100) then averaged.
 
@@ -131,100 +131,100 @@ Comparison of core features and capabilities across CSS frameworks
 **Performance Comparison:**
 
 ```
-🥇 Silk - Apply styles  ████████████████████████████████████████ 302.07K
-🥈 Panda CSS - Apply... ███████████████████████████████████████ 294.55K
-🥉 UnoCSS - Apply st... ██████████████████████████████████████ 289.54K
-   Tailwind CSS - Ap... █████████████████████████████████████ 278.28K
+🥇 Panda CSS - Apply... ████████████████████████████████████████ 306.99K
+🥈 UnoCSS - Apply st... ██████████████████████████████████████ 291.21K
+🥉 Silk - Apply styles  █████████████████████████████████████ 286.97K
+   Tailwind CSS - Ap... █████████████████████████████████████ 285.06K
 ```
 
 | Rank | Library | Ops/sec | Variance | Mean | p99 | Samples |
 |------|---------|---------|----------|------|-----|--------|
-| 🥇 | **[Silk](https://github.com/sylphxltd/silk) - Apply styles** | 302.07K | ±1.02% | 3.3105ms | 6.8640ms | 151.03K |
-| 🥈 | **[Panda CSS](https://github.com/chakra-ui/panda) - Apply styles** | 294.55K | ±0.75% | 3.3951ms | 4.8450ms | 147.27K |
-| 🥉 | **[UnoCSS](https://github.com/unocss/unocss) - Apply styles** | 289.54K | ±0.49% | 3.4537ms | 4.4490ms | 144.77K |
-| 4 | **[Tailwind CSS](https://github.com/tailwindlabs/tailwindcss) - Apply styles** | 278.28K | ±0.57% | 3.5935ms | 4.6490ms | 139.14K |
+| 🥇 | **[Panda CSS](https://github.com/chakra-ui/panda) - Apply styles** | 306.99K | ±0.80% | 3.2575ms | 5.0500ms | 153.49K |
+| 🥈 | **[UnoCSS](https://github.com/unocss/unocss) - Apply styles** | 291.21K | ±0.65% | 3.4340ms | 4.4780ms | 145.60K |
+| 🥉 | **[Silk](https://github.com/sylphxltd/silk) - Apply styles** | 286.97K | ±1.01% | 3.4847ms | 10.4590ms | 143.49K |
+| 4 | **[Tailwind CSS](https://github.com/tailwindlabs/tailwindcss) - Apply styles** | 285.06K | ±0.56% | 3.5080ms | 4.4480ms | 142.53K |
 
-**Key Insight:** Silk - Apply styles is **1.09x faster** than Tailwind CSS - Apply styles in this category.
+**Key Insight:** Panda CSS - Apply styles is **1.08x faster** than Tailwind CSS - Apply styles in this category.
 
 ### Conditional styling (1000 iterations)
 
 **Performance Comparison:**
 
 ```
-🥇 Silk - Conditiona... ████████████████████████████████████████ 2.78M
-🥈 Tailwind CSS - Co... ████████████████████████████████████████ 2.78M
-🥉 Panda CSS - Condi... ████████████████████████████████████████ 2.78M
-   UnoCSS - Conditio... ████████████████████████████████████████ 2.76M
+🥇 Tailwind CSS - Co... ████████████████████████████████████████ 2.61M
+🥈 UnoCSS - Conditio... ████████████████████████████████████████ 2.60M
+🥉 Panda CSS - Condi... ████████████████████████████████████████ 2.60M
+   Silk - Conditiona... ████████████████████████████████████████ 2.58M
 ```
 
 | Rank | Library | Ops/sec | Variance | Mean | p99 | Samples |
 |------|---------|---------|----------|------|-----|--------|
-| 🥇 | **[Silk](https://github.com/sylphxltd/silk) - Conditional styles** | 2.78M | ±0.07% | 0.3593ms | 0.5450ms | 1.39M |
-| 🥈 | **[Tailwind CSS](https://github.com/tailwindlabs/tailwindcss) - Conditional styles** | 2.78M | ±0.07% | 0.3595ms | 0.5150ms | 1.39M |
-| 🥉 | **[Panda CSS](https://github.com/chakra-ui/panda) - Conditional styles** | 2.78M | ±0.07% | 0.3600ms | 0.5120ms | 1.39M |
-| 4 | **[UnoCSS](https://github.com/unocss/unocss) - Conditional styles** | 2.76M | ±0.12% | 0.3630ms | 0.6700ms | 1.38M |
+| 🥇 | **[Tailwind CSS](https://github.com/tailwindlabs/tailwindcss) - Conditional styles** | 2.61M | ±0.09% | 0.3829ms | 0.3810ms | 1.31M |
+| 🥈 | **[UnoCSS](https://github.com/unocss/unocss) - Conditional styles** | 2.60M | ±0.09% | 0.3844ms | 0.6610ms | 1.30M |
+| 🥉 | **[Panda CSS](https://github.com/chakra-ui/panda) - Conditional styles** | 2.60M | ±0.10% | 0.3849ms | 0.6710ms | 1.30M |
+| 4 | **[Silk](https://github.com/sylphxltd/silk) - Conditional styles** | 2.58M | ±0.10% | 0.3877ms | 0.6710ms | 1.29M |
 
-**Key Insight:** Silk - Conditional styles is **1.01x faster** than UnoCSS - Conditional styles in this category.
+**Key Insight:** Tailwind CSS - Conditional styles is **1.01x faster** than Silk - Conditional styles in this category.
 
 ### String concatenation (complex className)
 
 **Performance Comparison:**
 
 ```
-🥇 UnoCSS - Concat 1... ████████████████████████████████████████ 19.05M
-🥈 Panda CSS - Conca... ███████████████████████████████████████ 18.67M
-🥉 Silk - Concat 10 ... ███████████████████████████████████████ 18.59M
-   Tailwind CSS - Co... ██████████████████████████████████████ 17.98M
+🥇 UnoCSS - Concat 1... ████████████████████████████████████████ 17.98M
+🥈 Panda CSS - Conca... ████████████████████████████████████████ 17.98M
+🥉 Silk - Concat 10 ... ████████████████████████████████████████ 17.96M
+   Tailwind CSS - Co... ████████████████████████████████████████ 17.92M
 ```
 
 | Rank | Library | Ops/sec | Variance | Mean | p99 | Samples |
 |------|---------|---------|----------|------|-----|--------|
-| 🥇 | **[UnoCSS](https://github.com/unocss/unocss) - Concat 10 classes** | 19.05M | ±0.26% | 0.0525ms | 0.2140ms | 9.53M |
-| 🥈 | **[Panda CSS](https://github.com/chakra-ui/panda) - Concat 10 classes** | 18.67M | ±0.08% | 0.0536ms | 0.2010ms | 9.33M |
-| 🥉 | **[Silk](https://github.com/sylphxltd/silk) - Concat 10 classes** | 18.59M | ±0.14% | 0.0538ms | 0.1930ms | 9.29M |
-| 4 | **[Tailwind CSS](https://github.com/tailwindlabs/tailwindcss) - Concat 10 classes** | 17.98M | ±0.08% | 0.0556ms | 0.2050ms | 8.99M |
+| 🥇 | **[UnoCSS](https://github.com/unocss/unocss) - Concat 10 classes** | 17.98M | ±0.10% | 0.0556ms | 0.0800ms | 8.99M |
+| 🥈 | **[Panda CSS](https://github.com/chakra-ui/panda) - Concat 10 classes** | 17.98M | ±0.25% | 0.0556ms | 0.0710ms | 8.99M |
+| 🥉 | **[Silk](https://github.com/sylphxltd/silk) - Concat 10 classes** | 17.96M | ±0.10% | 0.0557ms | 0.0800ms | 8.98M |
+| 4 | **[Tailwind CSS](https://github.com/tailwindlabs/tailwindcss) - Concat 10 classes** | 17.92M | ±0.13% | 0.0558ms | 0.0800ms | 8.96M |
 
-**Key Insight:** UnoCSS - Concat 10 classes is **1.06x faster** than Tailwind CSS - Concat 10 classes in this category.
+**Key Insight:** UnoCSS - Concat 10 classes is **1.00x faster** than Tailwind CSS - Concat 10 classes in this category.
 
 ### Theme toggle (dark/light mode)
 
 **Performance Comparison:**
 
 ```
-🥇 Silk - Toggle the... ████████████████████████████████████████ 544.58K
-🥈 Tailwind CSS - To... ██████████████████████████████████████ 516.31K
-🥉 Panda CSS - Toggl... █████████████████████████████████████ 504.45K
-   UnoCSS - Toggle t... ████████████████████████████████ 439.94K
+🥇 Tailwind CSS - To... ████████████████████████████████████████ 516.12K
+🥈 Silk - Toggle the... ████████████████████████████████████████ 515.18K
+🥉 Panda CSS - Toggl... ████████████████████████████████████████ 514.44K
+   UnoCSS - Toggle t... ████████████████████████████████████████ 510.77K
 ```
 
 | Rank | Library | Ops/sec | Variance | Mean | p99 | Samples |
 |------|---------|---------|----------|------|-----|--------|
-| 🥇 | **[Silk](https://github.com/sylphxltd/silk) - Toggle theme 1000x** | 544.58K | ±0.07% | 1.8363ms | 2.2540ms | 272.29K |
-| 🥈 | **[Tailwind CSS](https://github.com/tailwindlabs/tailwindcss) - Toggle theme 1000x** | 516.31K | ±0.08% | 1.9368ms | 2.7650ms | 258.15K |
-| 🥉 | **[Panda CSS](https://github.com/chakra-ui/panda) - Toggle theme 1000x** | 504.45K | ±0.08% | 1.9824ms | 2.5570ms | 252.22K |
-| 4 | **[UnoCSS](https://github.com/unocss/unocss) - Toggle theme 1000x** | 439.94K | ±0.08% | 2.2730ms | 2.7730ms | 219.97K |
+| 🥇 | **[Tailwind CSS](https://github.com/tailwindlabs/tailwindcss) - Toggle theme 1000x** | 516.12K | ±0.08% | 1.9375ms | 1.9240ms | 258.06K |
+| 🥈 | **[Silk](https://github.com/sylphxltd/silk) - Toggle theme 1000x** | 515.18K | ±0.09% | 1.9411ms | 2.0230ms | 257.59K |
+| 🥉 | **[Panda CSS](https://github.com/chakra-ui/panda) - Toggle theme 1000x** | 514.44K | ±0.18% | 1.9439ms | 1.9330ms | 257.22K |
+| 4 | **[UnoCSS](https://github.com/unocss/unocss) - Toggle theme 1000x** | 510.77K | ±0.18% | 1.9578ms | 3.8470ms | 255.39K |
 
-**Key Insight:** Silk - Toggle theme 1000x is **1.24x faster** than UnoCSS - Toggle theme 1000x in this category.
+**Key Insight:** Tailwind CSS - Toggle theme 1000x is **1.01x faster** than UnoCSS - Toggle theme 1000x in this category.
 
 ### Responsive breakpoint matching
 
 **Performance Comparison:**
 
 ```
-🥇 UnoCSS - Match br... ████████████████████████████████████████ 302.47K
-🥈 Tailwind CSS - Ma... ███████████████████████████████████████ 293.86K
-🥉 Silk - Match brea... ██████████████████████████████████████ 286.23K
-   Panda CSS - Match... █████████████████████████████████████ 277.50K
+🥇 Tailwind CSS - Ma... ████████████████████████████████████████ 308.86K
+🥈 UnoCSS - Match br... ████████████████████████████████████████ 308.43K
+🥉 Panda CSS - Match... ███████████████████████████████████████ 300.21K
+   Silk - Match brea... ███████████████████████████████████████ 299.84K
 ```
 
 | Rank | Library | Ops/sec | Variance | Mean | p99 | Samples |
 |------|---------|---------|----------|------|-----|--------|
-| 🥇 | **[UnoCSS](https://github.com/unocss/unocss) - Match breakpoint 1000x** | 302.47K | ±0.41% | 3.3061ms | 4.0010ms | 151.24K |
-| 🥈 | **[Tailwind CSS](https://github.com/tailwindlabs/tailwindcss) - Match breakpoint 1000x** | 293.86K | ±3.59% | 3.4030ms | 4.0600ms | 146.93K |
-| 🥉 | **[Silk](https://github.com/sylphxltd/silk) - Match breakpoint 1000x** | 286.23K | ±0.41% | 3.4937ms | 4.3700ms | 143.12K |
-| 4 | **[Panda CSS](https://github.com/chakra-ui/panda) - Match breakpoint 1000x** | 277.50K | ±0.38% | 3.6036ms | 4.6380ms | 138.75K |
+| 🥇 | **[Tailwind CSS](https://github.com/tailwindlabs/tailwindcss) - Match breakpoint 1000x** | 308.86K | ±0.08% | 3.2378ms | 3.3170ms | 154.43K |
+| 🥈 | **[UnoCSS](https://github.com/unocss/unocss) - Match breakpoint 1000x** | 308.43K | ±0.18% | 3.2422ms | 3.3270ms | 154.22K |
+| 🥉 | **[Panda CSS](https://github.com/chakra-ui/panda) - Match breakpoint 1000x** | 300.21K | ±0.09% | 3.3310ms | 3.4370ms | 150.11K |
+| 4 | **[Silk](https://github.com/sylphxltd/silk) - Match breakpoint 1000x** | 299.84K | ±0.21% | 3.3351ms | 3.6370ms | 149.92K |
 
-**Key Insight:** UnoCSS - Match breakpoint 1000x is **1.09x faster** than Panda CSS - Match breakpoint 1000x in this category.
+**Key Insight:** Tailwind CSS - Match breakpoint 1000x is **1.03x faster** than Silk - Match breakpoint 1000x in this category.
 
 ### Cold Build Time (Small App)
 
@@ -286,4 +286,4 @@ This benchmark is automatically updated daily by GitHub Actions. Benchmarks run 
 
 ---
 
-*Last generated: 2025-11-10T23:16:25.287Z*
+*Last generated: 2025-11-10T23:23:36.776Z*
