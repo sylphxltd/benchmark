@@ -1,36 +1,131 @@
-# State Management Benchmark 🏆
+# State Management Benchmark Suite
 
-Professional performance comparison of JavaScript state management libraries with **organized test groups**.
+Comprehensive performance testing for client-side state management libraries.
 
-## 📑 Test Groups
+> ⚡ **Revolutionary auto-discovery architecture** - Zero configuration expansion
+> 📊 **8 tested libraries** - Automated multi-library comparison tests
+> 🏗️ **Modular design** - Easy to extend and maintain
 
-This benchmark suite is organized into focused test groups for better maintainability and clarity:
+## 📊 Performance Rankings
 
-| Group | Status | Best Performing Library | Details |
-|-------|--------|------------------------|---------|
-| 📖 [Read Operations](groups/read/) | ⚪ Not Run | N/A | No results available |
-| ✏️ [Write Operations](groups/write/) | ✅ Complete | Simple Increment - Solid Signals | Best: Simple Increment - Solid Signals (28.45M ops/sec) |
-| 🏗️ [Store Creation](groups/creation/) | ⚪ Not Run | N/A | No results available |
-| ⚡ [Async Operations](groups/async/) | ✅ Complete | Concurrent Async - Zustand | Best: Concurrent Async - Zustand (0.00M ops/sec) |
-| 🔧 [Complex Operations](groups/complexity/) | ⚪ Not Run | N/A | No results available |
-| 💾 [Memory Operations](groups/memory/) | ⚪ Not Run | N/A | No results available |
+### 🏆 Overall Performance
+
+Based on aggregated results across all test categories:
+
+| Rank | Library | Best Category | Peak Performance | Avg Performance |
+|------|---------|--------------|------------------|---------------|
+| 1 | **Solid Signals** | write | ~28.4M ops/sec | ⚡⚡⚡⚡ |
+| 2 | **Jotai** | write | ~27.8M ops/sec | ⚡⚡⚡⚡ |
+| 3 | **Preact Signals** | write | ~24.9M ops/sec | ⚡⚡⚡⚡ |
+| 4 | **Zen** | write | ~24.1M ops/sec | ⚡⚡⚡⚡ |
+| 5 | **Valtio** | write | ~3.4M ops/sec | ⚡⚡⚡ |
+| 6 | **MobX** | write | ~2.8M ops/sec | ⚡⚡⚡ |
+| 7 | **Redux Toolkit** | write | ~765K ops/sec | ⚡⚡ |
+| 8 | **Zustand** | write | ~281K ops/sec | ⚡⚡ |
+
+### 📖 Read Operations
+
+[📊 View Detailed Results →](groups/read/)
+
+| Rank | Library | Operations/sec | Performance |
+|------|---------|----------------|-------------|
+| - | - | ⏳ Pending | - |
+
+> Run benchmarks: `npm run benchmark:read`
+
+### ✏️ Write Operations
+
+[📊 View Detailed Results →](groups/write/)
+
+| Rank | Library | Operations/sec | Performance |
+|------|---------|----------------|-------------|
+| 1 | **Solid Signals** | ~28.4M ops/sec | ⚡⚡⚡⚡ |
+| 2 | **Jotai** | ~27.8M ops/sec | ⚡⚡⚡⚡ |
+| 3 | **Solid Signals** | ~25.5M ops/sec | ⚡⚡⚡⚡ |
+| 4 | **Preact Signals** | ~24.9M ops/sec | ⚡⚡⚡⚡ |
+| 5 | **Zen** | ~24.1M ops/sec | ⚡⚡⚡⚡ |
+| 6 | **Jotai** | ~10.3M ops/sec | ⚡⚡⚡⚡ |
+| 7 | **Preact Signals** | ~9.3M ops/sec | ⚡⚡⚡ |
+| 8 | **Zen** | ~7.1M ops/sec | ⚡⚡⚡ |
+
+### 🏗️ Store Creation
+
+[📊 View Detailed Results →](groups/creation/)
+
+| Rank | Library | Operations/sec | Performance |
+|------|---------|----------------|-------------|
+| - | - | ⏳ Pending | - |
+
+> Run benchmarks: `npm run benchmark:creation`
+
+### ⚡ Async Operations
+
+[📊 View Detailed Results →](groups/async/)
+
+| Rank | Library | Operations/sec | Performance |
+|------|---------|----------------|-------------|
+| 1 | **Zustand** | ~890 ops/sec | ○ |
+| 2 | **Redux Toolkit** | ~887 ops/sec | ○ |
+| 3 | **Zen** | ~887 ops/sec | ○ |
+| 4 | **Preact Signals** | ~886 ops/sec | ○ |
+| 5 | **Jotai** | ~884 ops/sec | ○ |
+| 6 | **Valtio** | ~883 ops/sec | ○ |
+| 7 | **Preact Signals** | ~882 ops/sec | ○ |
+| 8 | **Solid Signals** | ~882 ops/sec | ○ |
+
+### 🔧 Complex Operations
+
+[📊 View Detailed Results →](groups/complexity/)
+
+| Rank | Library | Operations/sec | Performance |
+|------|---------|----------------|-------------|
+| - | - | ⏳ Pending | - |
+
+> Run benchmarks: `npm run benchmark:complexity`
+
+### 💾 Memory Operations
+
+[📊 View Detailed Results →](groups/memory/)
+
+| Rank | Library | Operations/sec | Performance |
+|------|---------|----------------|-------------|
+| - | - | ⏳ Pending | - |
+
+> Run benchmarks: `npm run benchmark:memory`
+
+---
+
+## 🗂️ Test Categories
+
+Explore detailed performance results for each category:
+
+| Category | Description | Status |
+|----------|-------------|--------|
+| [📖 Read Operations](groups/read/) | Performance of state reading operations across different scales | ⏳ Pending |
+| [✏️ Write Operations](groups/write/) | Performance of state writing and update operations | ✅ Results Available |
+| [🏗️ Store Creation](groups/creation/) | Performance of creating new stores and instances | ⏳ Pending |
+| [⚡ Async Operations](groups/async/) | Performance of asynchronous state operations | ✅ Results Available |
+| [🔧 Complex Operations](groups/complexity/) | Performance with complex nested state structures | ⏳ Pending |
+| [💾 Memory Operations](groups/memory/) | Memory efficiency and large state operations | ⏳ Pending |
+
+> 📊 Click each category to view detailed benchmark results, test methodology, and performance analysis
 
 ## 🚀 Quick Start
 
-**Run all groups:**
 ```bash
-npm run benchmark:all-groups
-``
+# Install dependencies
+npm install
 
-**Run specific group:**
-```bash
-npm run benchmark:read    # Read operations
-npm run benchmark:write   # Write operations
-npm run benchmark:creation # Store creation
-npm run benchmark:async    # Async operations
-npm run benchmark:complexity # Complex operations
-npm run benchmark:memory   # Memory operations
-``
+# Run all benchmarks
+npm run benchmark
+
+# Run specific category
+npm run benchmark:write
+npm run benchmark:read
+
+# Generate reports
+npm run extract-results
+```
 
 ## 📊 Library Coverage
 
@@ -107,4 +202,4 @@ The modular structure makes it easy to:
 - Extend to new libraries
 
 ---
-*Last updated: 2025-11-10T14:39:24.230Z*
+*Last updated: 2025-11-10T15:02:59.762Z*

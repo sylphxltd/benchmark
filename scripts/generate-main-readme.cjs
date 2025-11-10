@@ -89,29 +89,180 @@ function getGroupSummary(groupName, categoryPath) {
 function generateMainReadme(categoryPath) {
   const readmePath = join(categoryPath, 'README.md');
 
-  let readme = `# State Management Benchmark 🏆
+  // Collect all results for comprehensive rankings
+  const allResults = {};
+  const libraryStats = {};
 
-Professional performance comparison of JavaScript state management libraries with **organized test groups**.
+  GROUPS.forEach(group => {
+    const resultsPath = join(categoryPath, 'groups', group.name, 'results.json');
+    if (existsSync(resultsPath)) {
+      try {
+        const results = JSON.parse(readFileSync(resultsPath, 'utf-8'));
+        allResults[group.name] = results;
 
-## 📑 Test Groups
+        // Aggregate library performance
+        results.files?.forEach(file => {
+          file.groups?.forEach(g => {
+            g.benchmarks?.forEach(bench => {
+              if (!libraryStats[bench.library]) {
+                libraryStats[bench.library] = {
+                  totalHz: 0,
+                  count: 0,
+                  maxHz: 0,
+                  categories: new Set()
+                };
+              }
+              libraryStats[bench.library].totalHz += bench.hz;
+              libraryStats[bench.library].count++;
+              libraryStats[bench.library].maxHz = Math.max(libraryStats[bench.library].maxHz, bench.hz);
+              libraryStats[bench.library].categories.add(group.name);
+            });
+          });
+        });
+      } catch (error) {
+        // Skip invalid results
+      }
+    }
+  });
 
-This benchmark suite is organized into focused test groups for better maintainability and clarity:
+  // Calculate overall rankings
+  const overallRanking = Object.entries(libraryStats)
+    .map(([library, stats]) => ({
+      library,
+      avgHz: stats.totalHz / stats.count,
+      maxHz: stats.maxHz,
+      categories: Array.from(stats.categories)
+    }))
+    .sort((a, b) => b.maxHz - a.maxHz);
+
+  const formatHz = (hz) => {
+    if (hz >= 1000000) return `~${(hz / 1000000).toFixed(1)}M ops/sec`;
+    else if (hz >= 1000) return `~${Math.round(hz / 1000)}K ops/sec`;
+    else return `~${Math.round(hz)} ops/sec`;
+  };
+
+  const getPerformanceEmoji = (hz) => {
+    if (hz >= 10000000) return '⚡⚡⚡⚡';
+    else if (hz >= 1000000) return '⚡⚡⚡';
+    else if (hz >= 100000) return '⚡⚡';
+    else if (hz >= 10000) return '⚡';
+    else return '○';
+  };
+
+  const formatLibraryName = (lib) => {
+    const nameMap = {
+      'jotai': 'Jotai',
+      'zustand': 'Zustand',
+      'redux': 'Redux Toolkit',
+      'redux-toolkit': 'Redux Toolkit',
+      'mobx': 'MobX',
+      'valtio': 'Valtio',
+      'preact-signals': 'Preact Signals',
+      'solid-signals': 'Solid Signals',
+      'zen': 'Zen'
+    };
+    return nameMap[lib] || lib;
+  };
+
+  let readme = `# State Management Benchmark Suite
+
+Comprehensive performance testing for client-side state management libraries.
+
+> ⚡ **Revolutionary auto-discovery architecture** - Zero configuration expansion
+> 📊 **${Object.keys(libraryStats).length} tested libraries** - Automated multi-library comparison tests
+> 🏗️ **Modular design** - Easy to extend and maintain
+
+## 📊 Performance Rankings
 
 `;
 
-  // Add group overview table
-  readme += `| Group | Status | Best Performing Library | Details |\n`;
-  readme += '|-------|--------|------------------------|---------|\n';
+  // Overall Performance Table
+  if (overallRanking.length > 0) {
+    readme += `### 🏆 Overall Performance\n\nBased on aggregated results across all test categories:\n\n`;
+    readme += `| Rank | Library | Best Category | Peak Performance | Avg Performance |\n`;
+    readme += `|------|---------|--------------|------------------|---------------|\n`;
 
+    overallRanking.slice(0, 10).forEach((lib, index) => {
+      const libraryName = formatLibraryName(lib.library);
+      const bestCategory = lib.categories[0] || '-';
+      const peakPerf = formatHz(lib.maxHz);
+      const emoji = getPerformanceEmoji(lib.maxHz);
+      readme += `| ${index + 1} | **${libraryName}** | ${bestCategory} | ${peakPerf} | ${emoji} |\n`;
+    });
+    readme += '\n';
+  }
+
+  // Category-specific rankings
   GROUPS.forEach(group => {
-    const summary = getGroupSummary(group.name, categoryPath);
-    readme += `| ${group.icon} [${group.title}](groups/${group.name}/) | ${summary.status} | ${summary.bestLib} | ${summary.details} |\n`;
+    const resultsPath = join(categoryPath, 'groups', group.name, 'results.json');
+
+    readme += `### ${group.icon} ${group.title}\n\n`;
+    readme += `[📊 View Detailed Results →](groups/${group.name}/)\n\n`;
+
+    if (existsSync(resultsPath)) {
+      try {
+        const results = JSON.parse(readFileSync(resultsPath, 'utf-8'));
+        const benchmarks = [];
+
+        results.files?.forEach(file => {
+          file.groups?.forEach(g => {
+            g.benchmarks?.forEach(bench => {
+              benchmarks.push(bench);
+            });
+          });
+        });
+
+        if (benchmarks.length > 0) {
+          benchmarks.sort((a, b) => b.hz - a.hz);
+          const topBenchmarks = benchmarks.slice(0, 8);
+
+          readme += `| Rank | Library | Operations/sec | Performance |\n`;
+          readme += `|------|---------|----------------|-------------|\n`;
+
+          topBenchmarks.forEach((bench, index) => {
+            const libraryName = formatLibraryName(bench.library);
+            const perf = formatHz(bench.hz);
+            const emoji = getPerformanceEmoji(bench.hz);
+            readme += `| ${index + 1} | **${libraryName}** | ${perf} | ${emoji} |\n`;
+          });
+          readme += '\n';
+        } else {
+          readme += `| Rank | Library | Operations/sec | Performance |\n`;
+          readme += `|------|---------|----------------|-------------|\n`;
+          readme += `| - | - | ⏳ Pending | - |\n\n`;
+          readme += `> Run benchmarks: \`npm run benchmark:${group.name}\`\n\n`;
+        }
+      } catch (error) {
+        readme += `| Rank | Library | Operations/sec | Performance |\n`;
+        readme += `|------|---------|----------------|-------------|\n`;
+        readme += `| - | - | ⏳ Pending | - |\n\n`;
+        readme += `> Run benchmarks: \`npm run benchmark:${group.name}\`\n\n`;
+      }
+    } else {
+      readme += `| Rank | Library | Operations/sec | Performance |\n`;
+      readme += `|------|---------|----------------|-------------|\n`;
+      readme += `| - | - | ⏳ Pending | - |\n\n`;
+      readme += `> Run benchmarks: \`npm run benchmark:${group.name}\`\n\n`;
+    }
   });
 
-  readme += `\n## 🚀 Quick Start\n\n`;
-  readme += `**Run all groups:**\n\`\`\`bash\nnpm run benchmark:all-groups\n\`\`\n\n`;
+  readme += `---\n\n`;
 
-  readme += `**Run specific group:**\n\`\`\`bash\nnpm run benchmark:read    # Read operations\nnpm run benchmark:write   # Write operations\nnpm run benchmark:creation # Store creation\nnpm run benchmark:async    # Async operations\nnpm run benchmark:complexity # Complex operations\nnpm run benchmark:memory   # Memory operations\n\`\`\n\n`;
+  // Test Categories Overview
+  readme += `## 🗂️ Test Categories\n\nExplore detailed performance results for each category:\n\n`;
+  readme += `| Category | Description | Status |\n`;
+  readme += `|----------|-------------|--------|\n`;
+
+  GROUPS.forEach(group => {
+    const resultsPath = join(categoryPath, 'groups', group.name, 'results.json');
+    const status = existsSync(resultsPath) ? '✅ Results Available' : '⏳ Pending';
+    readme += `| [${group.icon} ${group.title}](groups/${group.name}/) | ${group.description} | ${status} |\n`;
+  });
+
+  readme += `\n> 📊 Click each category to view detailed benchmark results, test methodology, and performance analysis\n\n`;
+
+  readme += `## 🚀 Quick Start\n\n`;
+  readme += `\`\`\`bash\n# Install dependencies\nnpm install\n\n# Run all benchmarks\nnpm run benchmark\n\n# Run specific category\nnpm run benchmark:write\nnpm run benchmark:read\n\n# Generate reports\nnpm run extract-results\n\`\`\`\n\n`;
 
   readme += `## 📊 Library Coverage\n\n`;
   readme += `This benchmark tests the following state management libraries:\n\n`;
