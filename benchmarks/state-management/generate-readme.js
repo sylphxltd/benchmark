@@ -7,6 +7,7 @@ const __filename = fileURLToPath(import.meta.url);
 const __dirname = dirname(__filename);
 
 // Load configuration files
+const categoryConfig = JSON.parse(readFileSync(join(__dirname, 'category-config.json'), 'utf-8'));
 const groupsConfig = JSON.parse(readFileSync(join(__dirname, 'groups-config.json'), 'utf-8'));
 const libraryMetadata = JSON.parse(readFileSync(join(__dirname, 'library-metadata.json'), 'utf-8'));
 const versions = JSON.parse(readFileSync(join(__dirname, 'versions.json'), 'utf-8'));
@@ -106,9 +107,9 @@ function loadAllResults() {
 
 // Generate README sections
 function generateHeader() {
-  return `# State Management Benchmarks
+  return `# ${categoryConfig.name} Benchmarks
 
-Comprehensive performance benchmarks for JavaScript/TypeScript state management libraries.
+${categoryConfig.description}.
 
 `;
 }
@@ -215,11 +216,22 @@ function generateTestCategories() {
   const universal = Object.entries(groupsConfig.groups).filter(([_, c]) => c.type === 'universal');
   const feature = Object.entries(groupsConfig.groups).filter(([_, c]) => c.type === 'feature');
 
+  // Calculate range dynamically
+  const universalNums = universal.map(([key]) => parseInt(key.match(/\d+/)[0])).sort((a, b) => a - b);
+  const featureNums = feature.map(([key]) => parseInt(key.match(/\d+/)[0])).sort((a, b) => a - b);
+
+  const universalRange = universalNums.length > 0 ?
+    `${String(universalNums[0]).padStart(2, '0')}-${String(universalNums[universalNums.length - 1]).padStart(2, '0')}` : '';
+  const featureRange = featureNums.length > 0 ?
+    `${String(featureNums[0]).padStart(2, '0')}-${String(featureNums[featureNums.length - 1]).padStart(2, '0')}` : '';
+
+  const totalLibs = Object.keys(libraryMetadata.libraries).length;
+
   let section = `## Test Categories
 
-### Universal Tests (01-06)
+### Universal Tests (${universalRange})
 
-All 8 libraries participate equally. Used to calculate Overall Performance Score.
+All ${totalLibs} libraries participate equally. Used to calculate Overall Performance Score.
 
 `;
 
@@ -229,7 +241,7 @@ All 8 libraries participate equally. Used to calculate Overall Performance Score
     section += `- **${num} - ${config.title}**: ${config.description}${status}\n`;
   });
 
-  section += `\n### Feature Tests (08-11)
+  section += `\n### Feature Tests (${featureRange})
 
 Libraries participate only if they have native support for the tested capability.
 
@@ -301,11 +313,13 @@ function generateDetailedResults(results) {
 }
 
 function generateMethodology() {
+  const env = categoryConfig.environment;
+
   return `## Methodology
 
 ### Universal Test Standards
 
-- **All libraries participate** in tests 01-07 (excluding incomplete tests)
+- **All libraries participate** in universal tests (excluding incomplete tests)
 - Results are **normalized** and combined using **geometric mean**
 - Tests use **actual library APIs**, not synthetic constructs
 - Each benchmark runs for sufficient iterations to achieve statistical significance
@@ -319,10 +333,10 @@ function generateMethodology() {
 
 ### Benchmark Environment
 
-- **Runtime**: Node.js v25.0.0
-- **Framework**: Vitest Bench
-- **Hardware**: [System-dependent]
-- **Iterations**: Automatically determined by Vitest for statistical significance
+- **Runtime**: ${env.runtime}
+- **Framework**: ${env.framework}
+- **Hardware**: ${env.hardware}
+- **Iterations**: ${env.iterations}
 
 ---
 
@@ -338,14 +352,8 @@ function generateInsights(scores) {
 
 `;
 
-  // Group by performance tiers (you could make this config-driven too)
-  const tiers = [
-    { name: 'Signal-based (Tier S)', threshold: 2000000, examples: [] },
-    { name: 'Atom-based (Tier A)', threshold: 1000000, examples: [] },
-    { name: 'Proxy-based (Tier B)', threshold: 200000, examples: [] },
-    { name: 'Store-based (Tier C)', threshold: 50000, examples: [] },
-    { name: 'Observable-based (Tier D)', threshold: 0, examples: [] }
-  ];
+  // Use configured performance tiers
+  const tiers = categoryConfig.performanceTiers.map(t => ({ ...t, examples: [] }));
 
   sorted.forEach(entry => {
     for (const tier of tiers) {
@@ -357,7 +365,11 @@ function generateInsights(scores) {
   });
 
   tiers.filter(t => t.examples.length > 0).forEach((tier, idx) => {
-    section += `${idx + 1}. **${tier.name}**: ${tier.examples.join(', ')}\n`;
+    section += `${idx + 1}. **${tier.name}**: ${tier.examples.join(', ')}`;
+    if (tier.description) {
+      section += ` - ${tier.description}`;
+    }
+    section += '\n';
   });
 
   section += `\n### Trade-offs
@@ -379,6 +391,18 @@ function generateInsights(scores) {
 }
 
 function generateFooter() {
+  const universal = Object.entries(groupsConfig.groups).filter(([_, c]) => c.type === 'universal');
+  const feature = Object.entries(groupsConfig.groups).filter(([_, c]) => c.type === 'feature');
+  const incomplete = universal.filter(([_, c]) => c.status === 'incomplete');
+  const complete = universal.filter(([_, c]) => !c.status || c.status !== 'incomplete');
+
+  const universalNums = universal.map(([key]) => parseInt(key.match(/\d+/)[0])).sort((a, b) => a - b);
+  const featureNums = feature.map(([key]) => parseInt(key.match(/\d+/)[0])).sort((a, b) => a - b);
+  const completeNums = complete.map(([key]) => parseInt(key.match(/\d+/)[0])).sort((a, b) => a - b);
+  const incompleteNums = incomplete.map(([key]) => parseInt(key.match(/\d+/)[0])).sort((a, b) => a - b);
+
+  const std = categoryConfig.benchmarkStandard;
+
   return `## Running Benchmarks
 
 \`\`\`bash
@@ -395,13 +419,12 @@ npm run benchmark:creation
 
 ## Compliance
 
-This benchmark category follows [BENCHMARK_STANDARD.md](../../BENCHMARK_STANDARD.md) v1.0.0:
+This benchmark category follows [${std.file}](${std.file}) v${std.version}:
 
-- ✅ Universal tests (01-03, 06) use real APIs for all libraries
-- ✅ Feature tests (08-11) only include libraries with native support
+- ✅ Universal tests (${completeNums.join(', ')}) use real APIs for all libraries
+- ✅ Feature tests (${featureNums.join(', ')}) only include libraries with native support
 - ✅ Overall Performance Score uses geometric mean of universal tests
-- ⚠️ Groups 04, 05, 07 require implementation updates
-- ✅ No placeholder or synthetic implementations in active tests
+${incompleteNums.length > 0 ? `- ⚠️ Groups ${incompleteNums.join(', ')} require implementation updates\n` : ''}- ✅ No placeholder or synthetic implementations in active tests
 
 ---
 

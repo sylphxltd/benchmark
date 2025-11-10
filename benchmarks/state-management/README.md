@@ -51,7 +51,7 @@ Comprehensive performance benchmarks for JavaScript/TypeScript state management 
 
 ## Test Categories
 
-### Universal Tests (01-06)
+### Universal Tests (01-07)
 
 All 8 libraries participate equally. Used to calculate Overall Performance Score.
 
@@ -374,7 +374,7 @@ MobX                 ███ 3.2M
 
 ### Universal Test Standards
 
-- **All libraries participate** in tests 01-07 (excluding incomplete tests)
+- **All libraries participate** in universal tests (excluding incomplete tests)
 - Results are **normalized** and combined using **geometric mean**
 - Tests use **actual library APIs**, not synthetic constructs
 - Each benchmark runs for sufficient iterations to achieve statistical significance
@@ -399,14 +399,22 @@ MobX                 ███ 3.2M
 
 ### Performance Tiers
 
-1. **Signal-based (Tier S)**: Solid Signals, Preact Signals, Zen
-2. **Atom-based (Tier A)**: Jotai
-3. **Proxy-based (Tier B)**: Valtio
-4. **Store-based (Tier C)**: Zustand, Redux Toolkit
-5. **Observable-based (Tier D)**: MobX
+1. **Signal-based (Tier S)**: Solid Signals, Preact Signals, Zen - Exceptional performance across all operations
+2. **Atom-based (Tier A)**: Jotai - Very fast but creation overhead impacts overall score
+3. **Proxy-based (Tier B)**: Valtio - Moderate performance with good ergonomics
+4. **Store-based (Tier C)**: Zustand, Redux Toolkit - Lower raw performance but predictable
+5. **Observable-based (Tier D)**: MobX - High creation cost, moderate runtime performance
 
 ### Trade-offs
 
+- **Solid Signals**: Fastest overall, but requires Solid.js ecosystem
+- **Preact Signals**: Excellent balance of speed and bundle size
+- **Zen**: Similar performance to Preact, slightly larger bundle
+- **Jotai**: Very fast read/write, slower creation, unique async capabilities
+- **Valtio**: Simple API, moderate performance, good for nested mutations
+- **Zustand**: Minimal bundle, simple API, moderate performance
+- **Redux Toolkit**: Feature-rich, DevTools support, larger bundle
+- **MobX**: Automatic tracking, slow creation, largest bundle
 
 ---
 
@@ -426,12 +434,12 @@ npm run benchmark:creation
 
 ## Compliance
 
-This benchmark category follows [BENCHMARK_STANDARD.md](../../BENCHMARK_STANDARD.md) v1.0.0:
+This benchmark category follows [../../BENCHMARK_STANDARD.md](../../BENCHMARK_STANDARD.md) v1.0.0:
 
-- ✅ Universal tests (01-03, 06) use real APIs for all libraries
-- ✅ Feature tests (08-11) only include libraries with native support
+- ✅ Universal tests (1, 2, 3, 6) use real APIs for all libraries
+- ✅ Feature tests (8, 9, 10, 11) only include libraries with native support
 - ✅ Overall Performance Score uses geometric mean of universal tests
-- ⚠️ Groups 04, 05, 07 require implementation updates
+- ⚠️ Groups 4, 5, 7 require implementation updates
 - ✅ No placeholder or synthetic implementations in active tests
 
 ---

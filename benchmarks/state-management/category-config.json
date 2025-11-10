@@ -1,0 +1,41 @@
+{
+  "name": "State Management",
+  "description": "Comprehensive performance benchmarks for JavaScript/TypeScript state management libraries",
+  "performanceTiers": [
+    {
+      "name": "Signal-based (Tier S)",
+      "threshold": 2000000,
+      "description": "Exceptional performance across all operations"
+    },
+    {
+      "name": "Atom-based (Tier A)",
+      "threshold": 1000000,
+      "description": "Very fast but creation overhead impacts overall score"
+    },
+    {
+      "name": "Proxy-based (Tier B)",
+      "threshold": 200000,
+      "description": "Moderate performance with good ergonomics"
+    },
+    {
+      "name": "Store-based (Tier C)",
+      "threshold": 50000,
+      "description": "Lower raw performance but predictable"
+    },
+    {
+      "name": "Observable-based (Tier D)",
+      "threshold": 0,
+      "description": "High creation cost, moderate runtime performance"
+    }
+  ],
+  "benchmarkStandard": {
+    "version": "1.0.0",
+    "file": "../../BENCHMARK_STANDARD.md"
+  },
+  "environment": {
+    "runtime": "Node.js v25.0.0",
+    "framework": "Vitest Bench",
+    "hardware": "[System-dependent]",
+    "iterations": "Automatically determined by Vitest for statistical significance"
+  }
+}
