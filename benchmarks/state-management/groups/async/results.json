@@ -6,53 +6,57 @@
         {
           "fullName": "Reactive Async Read",
           "benchmarks": [
-            { "name": "Reactive Async Read - Jotai", "library": "jotai", "hz": 872.82, "mean": 0.0011457, "p99": 0.0012439, "rme": 1.50, "samples": 437 },
-            { "name": "Reactive Async Read - Zustand", "library": "zustand", "hz": 876.34, "mean": 0.0011411, "p99": 0.0012126, "rme": 1.27, "samples": 439 },
-            { "name": "Reactive Async Read - Redux Toolkit", "library": "redux-toolkit", "hz": 883.29, "mean": 0.0011321, "p99": 0.0011795, "rme": 1.33, "samples": 442 },
-            { "name": "Reactive Async Read - MobX", "library": "mobx", "hz": 881.57, "mean": 0.0011343, "p99": 0.0011966, "rme": 1.33, "samples": 441 },
-            { "name": "Reactive Async Read - Valtio", "library": "valtio", "hz": 880.68, "mean": 0.0011355, "p99": 0.0011829, "rme": 1.26, "samples": 441 },
-            { "name": "Reactive Async Read - Preact Signals", "library": "preact-signals", "hz": 887.77, "mean": 0.0011264, "p99": 0.0011843, "rme": 1.53, "samples": 444 },
-            { "name": "Reactive Async Read - Solid Signals", "library": "solid-signals", "hz": 872.27, "mean": 0.0011464, "p99": 0.0011884, "rme": 1.00, "samples": 437 },
-            { "name": "Reactive Async Read - Zen", "library": "zen", "hz": 880.06, "mean": 0.0011363, "p99": 0.0011909, "rme": 1.25, "samples": 441 }
+            {
+              "name": "Reactive Async Read - Jotai",
+              "library": "jotai",
+              "hz": 872.01,
+              "mean": 0.0011468,
+              "p99": 0.0012682,
+              "rme": 1.48,
+              "samples": 437
+            }
           ]
         },
         {
           "fullName": "Reactive Async Chained",
           "benchmarks": [
-            { "name": "Async Chain (2 levels) - Jotai", "library": "jotai", "hz": 437.57, "mean": 0.0022853, "p99": 0.0024025, "rme": 1.32, "samples": 219 },
-            { "name": "Async Chain (2 levels) - Zustand", "library": "zustand", "hz": 879.46, "mean": 0.0011371, "p99": 0.0011884, "rme": 1.25, "samples": 440 },
-            { "name": "Async Chain (2 levels) - Redux Toolkit", "library": "redux-toolkit", "hz": 879.25, "mean": 0.0011373, "p99": 0.0011785, "rme": 1.09, "samples": 440 },
-            { "name": "Async Chain (2 levels) - MobX", "library": "mobx", "hz": 880.51, "mean": 0.0011357, "p99": 0.0012132, "rme": 1.40, "samples": 441 },
-            { "name": "Async Chain (2 levels) - Valtio", "library": "valtio", "hz": 879.05, "mean": 0.0011376, "p99": 0.0012025, "rme": 1.26, "samples": 440 },
-            { "name": "Async Chain (2 levels) - Preact Signals", "library": "preact-signals", "hz": 868.68, "mean": 0.0011512, "p99": 0.0011833, "rme": 0.79, "samples": 435 },
-            { "name": "Async Chain (2 levels) - Solid Signals", "library": "solid-signals", "hz": 869.89, "mean": 0.0011496, "p99": 0.0011824, "rme": 0.78, "samples": 435 },
-            { "name": "Async Chain (2 levels) - Zen", "library": "zen", "hz": 878.32, "mean": 0.0011385, "p99": 0.0011883, "rme": 1.26, "samples": 440 }
+            {
+              "name": "Async Chain (2 levels) - Jotai",
+              "library": "jotai",
+              "hz": 432.68,
+              "mean": 0.0023112,
+              "p99": 0.0029319,
+              "rme": 2.19,
+              "samples": 217
+            }
           ]
         },
         {
           "fullName": "Reactive Async Complex",
           "benchmarks": [
-            { "name": "Complex Async Object - Jotai", "library": "jotai", "hz": 866.49, "mean": 0.0011541, "p99": 0.0012000, "rme": 0.95, "samples": 434 },
-            { "name": "Complex Async Object - Zustand", "library": "zustand", "hz": 879.85, "mean": 0.0011366, "p99": 0.0011925, "rme": 1.26, "samples": 440 },
-            { "name": "Complex Async Object - Redux Toolkit", "library": "redux-toolkit", "hz": 865.05, "mean": 0.0011560, "p99": 0.0011770, "rme": 0.46, "samples": 433 },
-            { "name": "Complex Async Object - MobX", "library": "mobx", "hz": 875.27, "mean": 0.0011425, "p99": 0.0011895, "rme": 1.09, "samples": 438 },
-            { "name": "Complex Async Object - Valtio", "library": "valtio", "hz": 874.42, "mean": 0.0011436, "p99": 0.0012150, "rme": 1.09, "samples": 438 },
-            { "name": "Complex Async Object - Preact Signals", "library": "preact-signals", "hz": 875.26, "mean": 0.0011425, "p99": 0.0011914, "rme": 1.20, "samples": 438 },
-            { "name": "Complex Async Object - Solid Signals", "library": "solid-signals", "hz": 871.66, "mean": 0.0011472, "p99": 0.0011967, "rme": 1.04, "samples": 436 },
-            { "name": "Complex Async Object - Zen", "library": "zen", "hz": 878.22, "mean": 0.0011387, "p99": 0.0012227, "rme": 1.30, "samples": 440 }
+            {
+              "name": "Complex Async Object - Jotai",
+              "library": "jotai",
+              "hz": 863.49,
+              "mean": 0.0011581,
+              "p99": 0.0012342,
+              "rme": 1.01,
+              "samples": 432
+            }
           ]
         },
         {
           "fullName": "Reactive Async Concurrent",
           "benchmarks": [
-            { "name": "Concurrent Async (3 atoms) - Jotai", "library": "jotai", "hz": 866.44, "mean": 0.0011541, "p99": 0.0013576, "rme": 1.60, "samples": 434 },
-            { "name": "Concurrent Async (3 atoms) - Zustand", "library": "zustand", "hz": 870.85, "mean": 0.0011483, "p99": 0.0012030, "rme": 1.01, "samples": 436 },
-            { "name": "Concurrent Async (3 atoms) - Redux Toolkit", "library": "redux-toolkit", "hz": 865.63, "mean": 0.0011552, "p99": 0.0012634, "rme": 0.91, "samples": 433 },
-            { "name": "Concurrent Async (3 atoms) - MobX", "library": "mobx", "hz": 863.69, "mean": 0.0011578, "p99": 0.0011801, "rme": 0.46, "samples": 432 },
-            { "name": "Concurrent Async (3 atoms) - Valtio", "library": "valtio", "hz": 874.64, "mean": 0.0011433, "p99": 0.0011850, "rme": 1.26, "samples": 438 },
-            { "name": "Concurrent Async (3 atoms) - Preact Signals", "library": "preact-signals", "hz": 869.82, "mean": 0.0011497, "p99": 0.0011972, "rme": 1.00, "samples": 435 },
-            { "name": "Concurrent Async (3 atoms) - Solid Signals", "library": "solid-signals", "hz": 873.41, "mean": 0.0011449, "p99": 0.0011808, "rme": 1.15, "samples": 437 },
-            { "name": "Concurrent Async (3 atoms) - Zen", "library": "zen", "hz": 888.70, "mean": 0.0011252, "p99": 0.0011851, "rme": 1.65, "samples": 445 }
+            {
+              "name": "Concurrent Async (3 atoms) - Jotai",
+              "library": "jotai",
+              "hz": 853.65,
+              "mean": 0.0011714,
+              "p99": 0.0012563,
+              "rme": 0.95,
+              "samples": 427
+            }
           ]
         }
       ]

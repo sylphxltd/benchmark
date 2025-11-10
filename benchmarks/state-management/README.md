@@ -14,14 +14,14 @@ Based on geometric mean across all tests (normalized, fastest = 100):
 
 | Rank | Library | Score | Relative | Tests |
 |------|---------|-------|----------|-------|
-| 🥇 | **Solid Signals** | 98.2/100 | Baseline | 8 |
-| 🥈 | **Zen** | 77.8/100 | 79.2% | 8 |
-| 🥉 | **Jotai** | 77.5/100 | 78.9% | 8 |
-| 4 | **Preact Signals** | 72.1/100 | 73.4% | 8 |
-| 5 | **MobX** | 32.0/100 | 32.6% | 8 |
-| 6 | **Valtio** | 23.5/100 | 24.0% | 8 |
-| 7 | **Redux Toolkit** | 16.3/100 | 16.6% | 8 |
-| 8 | **Zustand** | 10.1/100 | 10.3% | 8 |
+| 🥇 | **Solid Signals** | 97.9/100 | Baseline | 4 |
+| 🥈 | **Jotai** | 85.1/100 | 87.0% | 8 |
+| 🥉 | **Zen** | 60.7/100 | 62.0% | 4 |
+| 4 | **Preact Signals** | 52.4/100 | 53.6% | 4 |
+| 5 | **MobX** | 10.3/100 | 10.6% | 4 |
+| 6 | **Valtio** | 5.6/100 | 5.7% | 4 |
+| 7 | **Redux Toolkit** | 2.7/100 | 2.8% | 4 |
+| 8 | **Zustand** | 1.0/100 | 1.1% | 4 |
 
 > 📊 **Methodology:** Geometric mean prevents extreme values from skewing results. Each test is normalized (fastest = 100) then averaged.
 
@@ -46,14 +46,14 @@ Percentage of benchmark tests each library supports:
 
 | Rank | Library | Supported | Coverage |
 |------|---------|-----------|----------|
-| 🥇 | **Redux Toolkit** | 8/8 | 100% |
-| 🥈 | **Zustand** | 8/8 | 100% |
-| 🥉 | **Jotai** | 8/8 | 100% |
-| 4 | **MobX** | 8/8 | 100% |
-| 5 | **Valtio** | 8/8 | 100% |
-| 6 | **Preact Signals** | 8/8 | 100% |
-| 7 | **Solid Signals** | 8/8 | 100% |
-| 8 | **Zen** | 8/8 | 100% |
+| 🥇 | **Jotai** | 8/8 | 100% |
+| 🥈 | **Redux Toolkit** | 4/8 | 50% |
+| 🥉 | **Zustand** | 4/8 | 50% |
+| 4 | **MobX** | 4/8 | 50% |
+| 5 | **Valtio** | 4/8 | 50% |
+| 6 | **Preact Signals** | 4/8 | 50% |
+| 7 | **Solid Signals** | 4/8 | 50% |
+| 8 | **Zen** | 4/8 | 50% |
 
 > 🎯 **Note:** Higher coverage means the library participates in more test categories.
 
@@ -130,26 +130,12 @@ Percentage of benchmark tests each library supports:
 **Performance Chart:**
 
 ```
-🥇   Zen                ██████████████████████████████   99.7/100
-🥈   Valtio             ██████████████████████████████   99.2/100
-🥉   Zustand            ██████████████████████████████   99.1/100
-4.   Preact Signals     ██████████████████████████████   99.0/100
-5.   MobX               ██████████████████████████████   99.0/100
-6.   Redux Toolkit      ██████████████████████████████   98.8/100
-7.   Solid Signals      ██████████████████████████████   98.6/100
-8.   Jotai              █████████████████████████        82.8/100
+🥇   Jotai              ██████████████████████████████   100.0/100
 ```
 
 | Rank | Library | Score | Relative | Avg Performance |
 |------|---------|-------|----------|----------------|
-| 🥇 | **Zen** | 99.7/100 | Baseline | ~881 ops/sec |
-| 🥈 | **Valtio** | 99.2/100 | 99.5% | ~877 ops/sec |
-| 🥉 | **Zustand** | 99.1/100 | 99.5% | ~877 ops/sec |
-| 4 | **Preact Signals** | 99.0/100 | 99.3% | ~875 ops/sec |
-| 5 | **MobX** | 99.0/100 | 99.3% | ~875 ops/sec |
-| 6 | **Redux Toolkit** | 98.8/100 | 99.1% | ~873 ops/sec |
-| 7 | **Solid Signals** | 98.6/100 | 98.9% | ~872 ops/sec |
-| 8 | **Jotai** | 82.8/100 | 83.0% | ~761 ops/sec |
+| 🥇 | **Jotai** | 100.0/100 | Baseline | ~755 ops/sec |
 
 ### 🔧 Complex Operations
 
@@ -280,4 +266,4 @@ The modular structure makes it easy to:
 - Extend to new libraries
 
 ---
-*Last updated: 2025-11-10T19:07:28.349Z*
+*Last updated: 2025-11-10T19:14:53.221Z*
