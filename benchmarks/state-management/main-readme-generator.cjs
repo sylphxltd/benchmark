@@ -1,29 +1,26 @@
 #!/usr/bin/env node
 /**
  * Main README Generator for State Management
- * Creates overview README with links to individual group READMEs
+ * Creates overview README with category rankings and links to detailed results
  */
 
-const { writeFileSync, readFileSync, existsSync } = require('fs');
+const { writeFileSync, readFileSync, existsSync, readdirSync } = require('fs');
 const { join } = require('path');
 
 class MainReadmeGenerator {
   constructor(basePath) {
     this.basePath = basePath;
     this.groupsPath = join(basePath, 'groups');
-    this.resultsPath = join(basePath, 'results.json');
   }
 
   generate() {
-    const groups = this.discoverGroups();
-    const overallStats = this.getOverallStats();
-
     let readme = this.generateHeader();
-    readme += this.generateOverview(overallStats);
-    readme += this.generateGroupOverview(groups);
-    readme += this.generatePerformanceSummary(overallStats);
+    readme += this.generatePerformanceRankings();
+    readme += this.generateTestCategories();
     readme += this.generateQuickStart();
     readme += this.generateArchitecture();
+    readme += this.generateStats();
+    readme += this.generateDocumentation();
     readme += this.generateFooter();
 
     const readmePath = join(this.basePath, 'README.md');
@@ -43,290 +40,318 @@ Comprehensive performance testing for client-side state management libraries.
 `;
   }
 
-  generateOverview(stats) {
-    return `## 📊 Overview
+  generatePerformanceRankings() {
+    let content = `## 📊 Performance Rankings
 
-**Performance comparison of ${stats.libraryCount} state management libraries** across ${stats.testTypeCount} different test scenarios.
+### 🏆 Overall Performance
 
-### 🚀 Current Library Performance Rankings
+Based on aggregated results across all test categories:
 
-| Rank | Library | Best Performance | Key Strengths |
-|------|---------|------------------|---------------|
-${this.generatePerformanceRankingTable()}
-
-### 📈 Test Categories
-
-${this.generateTestCategoryTable()}
-
-### ⚡ Quick Stats
-
-- **${stats.libraryCount} Libraries Tested**: Redux Toolkit, Zustand, Jotai
-- **${stats.testTypeCount} Test Types**: Read, Write, Form, Async, Memory, Cache, Spike
-- **${stats.totalTests} Generated Tests**: Automatically created comparison benchmarks
-- **${stats.supportedCombinations} Test Combinations**: Library × Test Type matrix
-
+| Rank | Library | Best Category | Peak Performance | Avg Performance |
+|------|---------|--------------|------------------|-----------------|
 `;
-  }
 
-  generatePerformanceRankingTable() {
-    // Try to get real performance data from write results
-    try {
-      const resultsPath = join(this.basePath, 'groups', 'write', 'results.json');
-      if (existsSync(resultsPath)) {
-        const results = JSON.parse(require('fs').readFileSync(resultsPath, 'utf8'));
+    // Load all results and calculate overall ranking
+    const allResults = this.loadAllResults();
+    const overallRanking = this.calculateOverallRanking(allResults);
 
-        if (results.files && results.files.length > 0 && results.files[0].groups.length > 0) {
-          const benchmarks = results.files[0].groups[0].benchmarks;
-
-          // Sort by hz (operations per second) descending
-          const sortedBenchmarks = benchmarks.sort((a, b) => (b.hz || 0) - (a.hz || 0));
-
-          const rankings = sortedBenchmarks.map((benchmark, index) => {
-            const library = benchmark.library || 'Unknown';
-            const hz = benchmark.hz ? benchmark.hz.toLocaleString() : 'N/A';
-
-            let strengths = '';
-            switch (library) {
-              case 'jotai':
-                strengths = 'Atomic updates, Minimal overhead';
-                break;
-              case 'zustand':
-                strengths = 'Simple API, Fast mutations';
-                break;
-              case 'redux':
-                strengths = 'DevTools, Middleware, Ecosystem';
-                break;
-              default:
-                strengths = 'State management library';
-            }
-
-            return {
-              rank: index + 1,
-              library: library.charAt(0).toUpperCase() + library.slice(1),
-              performance: `~${(benchmark.hz / 1000000).toFixed(1)}M ops/sec`,
-              strengths: strengths
-            };
-          });
-
-          return rankings.map(rank =>
-            `| ${rank.rank} | **${rank.library}** | ${rank.performance} | ${rank.strengths} |`
-          ).join('\n');
-        }
-      }
-    } catch (error) {
-      console.warn('Could not load real performance data, using fallback:', error.message);
-    }
-
-    // Fallback to static data
-    const rankings = [
-      {
-        rank: 1,
-        library: 'Jotai',
-        performance: '~17M ops/sec',
-        strengths: 'Atomic updates, Minimal overhead'
-      },
-      {
-        rank: 2,
-        library: 'Zustand',
-        performance: '~9M ops/sec',
-        strengths: 'Simple API, Fast mutations'
-      },
-      {
-        rank: 3,
-        library: 'Redux Toolkit',
-        performance: '~200K ops/sec',
-        strengths: 'DevTools, Middleware, Ecosystem'
-      }
-    ];
-
-    return rankings.map(rank =>
-      `| ${rank.rank} | **${rank.library}** | ${rank.performance} | ${rank.strengths} |`
-    ).join('\n');
-  }
-
-  generateTestCategoryTable() {
-    const categories = [
-      { name: '📖 Read Operations', link: 'groups/read/', description: 'State access performance' },
-      { name: '✏️ Write Operations', link: 'groups/write/', description: 'State mutation performance' },
-      { name: '📝 Form State', link: 'groups/form/', description: 'Complex form management' },
-      { name: '🔄 Async Operations', link: 'groups/async/', description: 'Promise handling patterns' },
-      { name: '🧠 Memory Management', link: 'groups/memory/', description: 'Memory usage patterns' },
-      { name: '💾 Cache Performance', link: 'groups/cache/', description: 'Memoization efficiency' }
-    ];
-
-    return categories.map(cat =>
-      `| [${cat.name}](${cat.link}) | ${cat.description} |`
-    ).join('\n');
-  }
-
-  getOverallStats() {
-    try {
-      const { stdout } = require('child_process').execSync('npx tsx scripts/auto-discover.ts state-management', {
-        encoding: 'utf8',
-        cwd: this.basePath
-      });
-
-      const lines = stdout.split('\n');
-      const libraryCount = parseInt(lines.find(l => l.includes('Libraries:'))?.split(':').pop()?.trim() || '0');
-      const testTypeCount = parseInt(lines.find(l => l.includes('Test Types:'))?.split(':').pop()?.trim() || '0');
-      const supportedCombinations = parseInt(lines.find(l => l.includes('Supported Combinations:'))?.split(':').pop()?.trim() || '0');
-
-      // Count generated tests
-      const generatedTests = this.countGeneratedTests();
-
-      return {
-        libraryCount,
-        testTypeCount,
-        supportedCombinations,
-        totalTests: generatedTests
-      };
-    } catch (error) {
-      return {
-        libraryCount: 3,
-        testTypeCount: 7,
-        supportedCombinations: 17,
-        totalTests: 60
-      };
-    }
-  }
-
-  countGeneratedTests() {
-    try {
-      const { stdout } = require('child_process').execSync('node scripts/run-generated-tests.cjs list', {
-        encoding: 'utf8',
-        cwd: this.basePath
-      });
-
-      return (stdout.match(/- .+\.bench\.ts/g) || []).length;
-    } catch (error) {
-      return 0;
-    }
-  }
-
-  discoverGroups() {
-    const groups = [];
-
-    try {
-      const items = require('fs').readdirSync(this.groupsPath, { withFileTypes: true });
-      items.forEach(item => {
-        if (item.isDirectory() && !item.name.startsWith('.') && item.name !== 'shared') {
-          groups.push({
-            name: item.name,
-            displayName: this.getDisplayName(item.name),
-            hasResults: existsSync(join(this.groupsPath, item.name, 'results.json'))
-          });
-        }
-      });
-    } catch (error) {
-      console.error('Error discovering groups:', error.message);
-    }
-
-    return groups.sort((a, b) => a.name.localeCompare(b.name));
-  }
-
-  getDisplayName(groupName) {
-    const displayNames = {
-      'read': '📖 Read Operations',
-      'write': '✏️ Write Operations',
-      'form': '📝 Form State',
-      'async': '🔄 Async Operations',
-      'memory': '🧠 Memory Management',
-      'cache': '💾 Cache Performance',
-      'spike': '⚡ Performance Spike'
-    };
-    return displayNames[groupName] || groupName.charAt(0).toUpperCase() + groupName.slice(1);
-  }
-
-  generateGroupOverview(groups) {
-    let section = `## 🗂️ Test Categories\n\n`;
-
-    section += `Each test category has its own detailed README with performance results, technical details, and usage instructions.\n\n`;
-
-    groups.forEach(group => {
-      const status = group.hasResults ? '✅' : '⏳';
-      section += `### ${status} [${group.displayName}](groups/${group.name}/)\n`;
-      section += `Individual benchmarks for ${group.displayName.toLowerCase()}.\n\n`;
+    overallRanking.forEach((item, index) => {
+      content += `| ${index + 1} | **${item.library}** | ${item.bestCategory} | ${item.peakPerf} | ${item.avgPerf} |\n`;
     });
 
-    return section;
+    content += '\n';
+
+    // Generate category-specific rankings
+    const categories = [
+      { key: 'write', title: '✏️ Write Operations', metric: 'Operations/sec' },
+      { key: 'read', title: '📖 Read Operations', metric: 'Operations/sec' },
+      { key: 'async', title: '🔄 Async Operations', metric: 'Operations/sec' },
+      { key: 'form', title: '📝 Form State', metric: 'Operations/sec' },
+      { key: 'memory', title: '🧠 Memory Management', metric: 'Memory Usage' },
+      { key: 'cache', title: '💾 Cache Performance', metric: 'Operations/sec' },
+    ];
+
+    categories.forEach(category => {
+      content += this.generateCategoryRanking(category);
+    });
+
+    content += '---\n\n';
+    return content;
   }
 
-  generatePerformanceSummary(stats) {
-    return `## 🏆 Performance Summary
+  generateCategoryRanking(category) {
+    const resultsPath = join(this.groupsPath, category.key, 'results.json');
+    let content = `### ${category.title} Ranking
 
-### Key Findings
+[📊 View Detailed Results →](groups/${category.key}/)
 
-- **Atomic libraries (Jotai)** significantly outperform traditional solutions
-- **Zustand** provides excellent performance with minimal API surface
-- **Redux Toolkit** offers rich ecosystem but with performance trade-offs
+| Rank | Library | ${category.metric} | Performance |
+|------|---------|----------------|-------------|
+`;
 
-### Performance Winners by Category
+    if (existsSync(resultsPath)) {
+      try {
+        const results = JSON.parse(readFileSync(resultsPath, 'utf8'));
 
-| Category | Winner | Performance Margin |
-|-----------|---------|-------------------|
-| Single Write | Jotai | 82x faster than Redux Toolkit |
-| Batch Write | Jotai | 10x faster than Zustand |
-| Memory Usage | Zustand | Low memory footprint |
+        if (results.files && results.files.length > 0 &&
+            results.files[0].groups && results.files[0].groups.length > 0 &&
+            results.files[0].groups[0].benchmarks && results.files[0].groups[0].benchmarks.length > 0) {
 
-> 💡 **Note**: Results may vary based on hardware, Node.js version, and test configuration.
-> View individual group READMEs for detailed performance breakdowns.
+          const benchmarks = results.files[0].groups[0].benchmarks;
+          const sortedBenchmarks = benchmarks.sort((a, b) => (b.hz || 0) - (a.hz || 0));
+
+          sortedBenchmarks.forEach((benchmark, index) => {
+            const library = this.capitalizeLibrary(benchmark.library);
+            const perf = this.formatPerformance(benchmark.hz);
+            const indicator = this.getPerformanceIndicator(benchmark.hz);
+            content += `| ${index + 1} | **${library}** | ${perf} | ${indicator} |\n`;
+          });
+        } else {
+          content += this.generatePendingRanking(category.key);
+        }
+      } catch (error) {
+        console.warn(`Warning: Could not load results for ${category.key}:`, error.message);
+        content += this.generatePendingRanking(category.key);
+      }
+    } else {
+      content += this.generatePendingRanking(category.key);
+    }
+
+    content += '\n';
+    return content;
+  }
+
+  generatePendingRanking(categoryKey) {
+    return `| - | - | ⏳ Pending | - |
+
+> Run benchmarks: \`npm run benchmark:${categoryKey}\`
 
 `;
+  }
+
+  capitalizeLibrary(library) {
+    const map = {
+      'redux': 'Redux Toolkit',
+      'zustand': 'Zustand',
+      'jotai': 'Jotai'
+    };
+    return map[library] || library.charAt(0).toUpperCase() + library.slice(1);
+  }
+
+  formatPerformance(hz) {
+    if (!hz || hz === 0) return '⏳ Pending';
+
+    if (hz >= 1000000) {
+      return `~${(hz / 1000000).toFixed(1)}M ops/sec`;
+    } else if (hz >= 1000) {
+      return `~${(hz / 1000).toFixed(0)}K ops/sec`;
+    } else {
+      return `~${hz.toFixed(0)} ops/sec`;
+    }
+  }
+
+  getPerformanceIndicator(hz) {
+    if (!hz || hz === 0) return '-';
+
+    if (hz >= 5000000) return '⚡⚡⚡';
+    if (hz >= 1000000) return '⚡⚡';
+    if (hz >= 100000) return '⚡';
+    return '○';
+  }
+
+  loadAllResults() {
+    const results = {};
+    const categories = ['write', 'read', 'async', 'form', 'memory', 'cache'];
+
+    categories.forEach(category => {
+      const resultsPath = join(this.groupsPath, category, 'results.json');
+      if (existsSync(resultsPath)) {
+        try {
+          results[category] = JSON.parse(readFileSync(resultsPath, 'utf8'));
+        } catch (error) {
+          console.warn(`Warning: Could not load ${category} results:`, error.message);
+        }
+      }
+    });
+
+    return results;
+  }
+
+  calculateOverallRanking(allResults) {
+    const libraryStats = {};
+
+    // Collect all performance data for each library
+    Object.entries(allResults).forEach(([category, results]) => {
+      if (results.files && results.files.length > 0 &&
+          results.files[0].groups && results.files[0].groups.length > 0) {
+
+        const benchmarks = results.files[0].groups[0].benchmarks;
+        benchmarks.forEach(benchmark => {
+          const lib = benchmark.library;
+          if (!libraryStats[lib]) {
+            libraryStats[lib] = {
+              library: this.capitalizeLibrary(lib),
+              performances: [],
+              bestCategory: '',
+              bestPerf: 0
+            };
+          }
+
+          libraryStats[lib].performances.push(benchmark.hz || 0);
+
+          if (benchmark.hz > libraryStats[lib].bestPerf) {
+            libraryStats[lib].bestPerf = benchmark.hz;
+            libraryStats[lib].bestCategory = category.charAt(0).toUpperCase() + category.slice(1) + ' Operations';
+          }
+        });
+      }
+    });
+
+    // Calculate rankings
+    const rankings = Object.values(libraryStats).map(stats => {
+      const avg = stats.performances.length > 0
+        ? stats.performances.reduce((a, b) => a + b, 0) / stats.performances.length
+        : 0;
+
+      return {
+        library: stats.library,
+        bestCategory: stats.bestCategory || '-',
+        peakPerf: this.formatPerformance(stats.bestPerf),
+        avgPerf: this.getPerformanceIndicator(avg) + ' ' + this.getPerformanceLabel(avg)
+      };
+    });
+
+    // Sort by best performance
+    rankings.sort((a, b) => {
+      const aHz = this.extractHz(a.peakPerf);
+      const bHz = this.extractHz(b.peakPerf);
+      return bHz - aHz;
+    });
+
+    // Add pending libraries
+    const testedLibs = rankings.map(r => r.library);
+    const allLibs = ['Zustand', 'Redux Toolkit', 'Jotai'];
+
+    allLibs.forEach(lib => {
+      if (!testedLibs.includes(lib)) {
+        rankings.push({
+          library: lib,
+          bestCategory: '-',
+          peakPerf: '-',
+          avgPerf: '⏳ Pending'
+        });
+      }
+    });
+
+    return rankings;
+  }
+
+  extractHz(perfString) {
+    if (!perfString || perfString === '-') return 0;
+    const match = perfString.match(/([\d.]+)([MK]?)/);
+    if (!match) return 0;
+
+    const value = parseFloat(match[1]);
+    const unit = match[2];
+
+    if (unit === 'M') return value * 1000000;
+    if (unit === 'K') return value * 1000;
+    return value;
+  }
+
+  getPerformanceLabel(hz) {
+    if (hz >= 5000000) return 'Excellent';
+    if (hz >= 1000000) return 'Very Good';
+    if (hz >= 100000) return 'Good';
+    if (hz > 0) return 'Fair';
+    return '';
+  }
+
+  generateTestCategories() {
+    return `## 🗂️ Test Categories
+
+Explore detailed performance results for each category:
+
+| Category | Description | Status |
+|----------|-------------|--------|
+| [📖 Read Operations](groups/read/) | State access performance across different scales | ${this.getCategoryStatus('read')} |
+| [✏️ Write Operations](groups/write/) | State mutation and update performance | ${this.getCategoryStatus('write')} |
+| [📝 Form State](groups/form/) | Complex form state management | ${this.getCategoryStatus('form')} |
+| [🔄 Async Operations](groups/async/) | Promise handling and async patterns | ${this.getCategoryStatus('async')} |
+| [🧠 Memory Management](groups/memory/) | Memory usage and allocation patterns | ${this.getCategoryStatus('memory')} |
+| [💾 Cache Performance](groups/cache/) | Memoization and caching efficiency | ${this.getCategoryStatus('cache')} |
+
+> 📊 Click each category to view detailed benchmark results, test methodology, and performance analysis
+
+---
+
+`;
+  }
+
+  getCategoryStatus(category) {
+    const resultsPath = join(this.groupsPath, category, 'results.json');
+    if (existsSync(resultsPath)) {
+      try {
+        const results = JSON.parse(readFileSync(resultsPath, 'utf8'));
+        if (results.files && results.files.length > 0 &&
+            results.files[0].groups && results.files[0].groups.length > 0 &&
+            results.files[0].groups[0].benchmarks && results.files[0].groups[0].benchmarks.length > 0) {
+          return '✅ Results Available';
+        }
+      } catch (error) {
+        // Fall through to pending
+      }
+    }
+    return '⏳ Pending';
   }
 
   generateQuickStart() {
     return `## 🚀 Quick Start
 
-### Installation
+### Run All Benchmarks
 
-\`\`\bash
-npm install
-\`\`\`
-
-### Run Benchmarks
-
-\`\`\bash
-# Run all benchmarks
+\`\`\`bash
+# Run all benchmarks and generate results
 npm run benchmark:all-groups
 
 # Run specific category
 npm run benchmark:read
 npm run benchmark:write
 npm run benchmark:form
+npm run benchmark:async
+npm run benchmark:memory
+npm run benchmark:cache
 
 # Interactive developer dashboard
 node scripts/dev-dashboard.cjs
 \`\`\`
 
+### Extract and View Results
+
+\`\`\`bash
+# Extract results from all benchmarks
+node scripts/extract-results.cjs
+
+# Generate updated READMEs with results
+node main-readme-generator.cjs
+node scripts/group-readme-generator.cjs
+\`\`\`
+
 ### Add New Library
 
-\`\`\bash
+\`\`\`bash
 # 1. Create library directory
 mkdir libraries/your-library
 
-# 2. Add metadata
+# 2. Add implementation files
 touch libraries/your-library/meta.ts
 touch libraries/your-library/store.ts
 
-# 3. Run auto-discovery
-npx tsx scripts/auto-discover.ts state-management
-
-# 4. Generate tests
+# 3. Auto-generate tests
 npx tsx scripts/test-generator.ts state-management
-\`\`\n
+\`\`\`
 
-### Add New Test Type
-
-\`\`\bash
-# 1. Create test type directory
-mkdir test-types/your-test-type
-
-# 2. Add configuration
-touch test-types/your-test-type/config.ts
-
-# 3. Generate new tests
-npx tsx scripts/test-generator.ts state-management
-\`\`\n
+---
 
 `;
   }
@@ -334,61 +359,71 @@ npx tsx scripts/test-generator.ts state-management
   generateArchitecture() {
     return `## 🏗️ Architecture
 
-This benchmark suite uses a revolutionary **auto-discovery architecture**:
+This benchmark suite uses a **revolutionary auto-discovery architecture**:
 
-### Key Components
+- **Zero Configuration**: Add libraries without modifying core code
+- **Automatic Discovery**: Libraries and test types are auto-detected
+- **Type Safe**: Full TypeScript support with automatic validation
+- **Modular Design**: Each component can be developed independently
 
-- **📁 libraries/** - Self-describing library implementations
-- **🧪 test-types/** - Flexible test type configurations
-- **🔧 scripts/** - Automation and generation tools
-- **📊 generated/** - Auto-generated comparison tests
+### Directory Structure
 
-### Advantages
+\`\`\`
+benchmarks/state-management/
+├── README.md               # This file - overview and rankings
+├── groups/                 # Test categories with detailed results
+│   ├── read/              # 📖 Read operation benchmarks + results
+│   ├── write/             # ✏️ Write operation benchmarks + results
+│   ├── form/              # 📝 Form state benchmarks + results
+│   ├── async/             # 🔄 Async operation benchmarks + results
+│   ├── memory/            # 🧠 Memory management benchmarks + results
+│   └── cache/             # 💾 Cache performance benchmarks + results
+├── libraries/             # Self-describing library implementations
+├── test-types/            # Test type configurations
+├── generated/             # Auto-generated comparison tests
+└── scripts/               # Automation and generation tools
+    ├── extract-results.cjs       # Extract benchmark results
+    ├── main-readme-generator.cjs # Generate this README
+    └── group-readme-generator.cjs # Generate group READMEs
+\`\`\`
 
-✅ **Zero Configuration**: Add libraries without modifying core code
-✅ **Automatic Discovery**: Libraries and test types are auto-detected
-✅ **Modular Design**: Each component can be developed independently
-✅ **Type Safe**: Full TypeScript support with automatic validation
-✅ **Extensible**: Easy to add new test scenarios and scales
-✅ **Maintainable**: Clear separation of concerns and standardized interfaces
+---
 
-### Workflow
+`;
+  }
 
-1. **Discover** → Auto-scan libraries and test types
-2. **Generate** → Create comparison benchmarks automatically
-3. **Run** → Execute tests with proper isolation
-4. **Analyze** → Generate detailed reports and insights
+  generateStats() {
+    return `## 📊 Stats
+
+- **3 Libraries Tested**: Redux Toolkit, Zustand, Jotai
+- **6 Test Categories**: Read, Write, Form, Async, Memory, Cache
+- **60+ Generated Tests**: Automatically created comparison benchmarks
+- **Multiple Scales**: Single, Burst, Batch, Heavy, Extreme
+
+---
+
+`;
+  }
+
+  generateDocumentation() {
+    return `## 📚 Documentation
+
+- **[Architecture](docs/architecture.md)** - Deep dive into the auto-discovery system
+- **[Methodology](docs/methodology.md)** - How benchmarks are measured
+- **[Contributing](docs/contributing.md)** - Add new libraries or test types
+
+---
 
 `;
   }
 
   generateFooter() {
-    return `## 🔗 Related Resources
-
-- [Developer Dashboard](scripts/dev-dashboard.cjs) - Interactive CLI tools
-- [Library Implementation Guide](./libraries/) - How to add new libraries
-- [Test Type Configuration](./test-types/) - How to add new test scenarios
-
-## 📄 License
-
-MIT License - see [LICENSE](../../LICENSE) file for details
-
-## 🤝 Contributing
-
-Contributions are welcome! Please read the contributing guidelines and feel free to submit a Pull Request.
-
----
-
-*Last updated: ${new Date().toISOString()}*
-*Generated by: main-readme-generator.cjs*
+    return `Made with ⚡ by the Benchmark Team | [Report Issues](https://github.com/sylphxltd/benchmark/issues)
 `;
   }
 }
 
-// Main execution
-if (require.main === module) {
-  const generator = new MainReadmeGenerator(process.cwd());
-  generator.generate();
-}
-
-module.exports = MainReadmeGenerator;
+// Run the generator
+const basePath = process.cwd();
+const generator = new MainReadmeGenerator(basePath);
+generator.generate();

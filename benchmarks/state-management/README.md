@@ -15,7 +15,7 @@ Based on aggregated results across all test categories:
 | Rank | Library | Best Category | Peak Performance | Avg Performance |
 |------|---------|--------------|------------------|-----------------|
 | 1 | **Zustand** | Write Operations | ~5.4M ops/sec | ⚡⚡⚡ Excellent |
-| 2 | **Redux Toolkit** | Write Operations | ~91K ops/sec | ⚡ Good |
+| 2 | **Redux Toolkit** | Write Operations | ~91K ops/sec | ○ Fair |
 | 3 | **Jotai** | - | - | ⏳ Pending |
 
 ### ✏️ Write Operations Ranking
@@ -25,7 +25,7 @@ Based on aggregated results across all test categories:
 | Rank | Library | Operations/sec | Performance |
 |------|---------|----------------|-------------|
 | 1 | **Zustand** | ~5.4M ops/sec | ⚡⚡⚡ |
-| 2 | **Redux Toolkit** | ~91K ops/sec | ⚡ |
+| 2 | **Redux Toolkit** | ~91K ops/sec | ○ |
 
 ### 📖 Read Operations Ranking
 
@@ -37,6 +37,7 @@ Based on aggregated results across all test categories:
 
 > Run benchmarks: `npm run benchmark:read`
 
+
 ### 🔄 Async Operations Ranking
 
 [📊 View Detailed Results →](groups/async/)
@@ -46,6 +47,7 @@ Based on aggregated results across all test categories:
 | - | - | ⏳ Pending | - |
 
 > Run benchmarks: `npm run benchmark:async`
+
 
 ### 📝 Form State Ranking
 
@@ -57,15 +59,17 @@ Based on aggregated results across all test categories:
 
 > Run benchmarks: `npm run benchmark:form`
 
+
 ### 🧠 Memory Management Ranking
 
 [📊 View Detailed Results →](groups/memory/)
 
 | Rank | Library | Memory Usage | Performance |
-|------|---------|--------------|-------------|
+|------|---------|----------------|-------------|
 | - | - | ⏳ Pending | - |
 
 > Run benchmarks: `npm run benchmark:memory`
+
 
 ### 💾 Cache Performance Ranking
 
@@ -76,6 +80,7 @@ Based on aggregated results across all test categories:
 | - | - | ⏳ Pending | - |
 
 > Run benchmarks: `npm run benchmark:cache`
+
 
 ---
 
