@@ -1,38 +1,68 @@
 {
-  "@reduxjs/toolkit": {
-    "github": "https://github.com/reduxjs/redux-toolkit",
-    "displayName": "Redux Toolkit"
-  },
-  "zustand": {
-    "github": "https://github.com/pmndrs/zustand",
-    "displayName": "Zustand"
-  },
-  "jotai": {
-    "github": "https://github.com/pmndrs/jotai",
-    "displayName": "Jotai"
-  },
-  "mobx": {
-    "github": "https://github.com/mobxjs/mobx",
-    "displayName": "MobX"
-  },
-  "valtio": {
-    "github": "https://github.com/pmndrs/valtio",
-    "displayName": "Valtio"
-  },
-  "@preact/signals": {
-    "github": "https://github.com/preactjs/signals",
-    "displayName": "Preact Signals"
-  },
-  "solid-js": {
-    "github": "https://github.com/solidjs/solid",
-    "displayName": "Solid Signals"
-  },
-  "@sylphx/zen": {
-    "github": "https://github.com/sylphxltd/zen",
-    "displayName": "Zen"
-  },
-  "recoil": {
-    "github": "https://github.com/facebookexperimental/Recoil",
-    "displayName": "Recoil"
+  "libraries": {
+    "@reduxjs/toolkit": {
+      "name": "Redux Toolkit",
+      "displayName": "Redux Toolkit",
+      "description": "The official, opinionated, batteries-included toolset for efficient Redux development",
+      "url": "https://github.com/reduxjs/redux-toolkit",
+      "npm": "@reduxjs/toolkit",
+      "color": "#764ABC"
+    },
+    "zustand": {
+      "name": "Zustand",
+      "displayName": "Zustand",
+      "description": "Small, fast and scalable bearbones state management solution",
+      "url": "https://github.com/pmndrs/zustand",
+      "npm": "zustand",
+      "color": "#443E38"
+    },
+    "jotai": {
+      "name": "Jotai",
+      "displayName": "Jotai",
+      "description": "Primitive and flexible state management for React",
+      "url": "https://github.com/pmndrs/jotai",
+      "npm": "jotai",
+      "color": "#000000"
+    },
+    "mobx": {
+      "name": "MobX",
+      "displayName": "MobX",
+      "description": "Simple, scalable state management with transparent reactive programming",
+      "url": "https://github.com/mobxjs/mobx",
+      "npm": "mobx",
+      "color": "#EA6618"
+    },
+    "valtio": {
+      "name": "Valtio",
+      "displayName": "Valtio",
+      "description": "Proxy-based state management library that makes state usage simple",
+      "url": "https://github.com/pmndrs/valtio",
+      "npm": "valtio",
+      "color": "#6B46C1"
+    },
+    "@preact/signals": {
+      "name": "Preact Signals",
+      "displayName": "Preact Signals",
+      "description": "Fast and reactive signals for Preact and React with automatic dependency tracking",
+      "url": "https://github.com/preactjs/signals",
+      "npm": "@preact/signals",
+      "color": "#673AB8"
+    },
+    "solid-js": {
+      "name": "Solid Signals",
+      "displayName": "Solid Signals",
+      "description": "Fine-grained reactivity primitive from Solid.js for building performant UIs",
+      "url": "https://github.com/solidjs/solid",
+      "npm": "solid-js",
+      "color": "#2C4F7C"
+    },
+    "@sylphx/zen": {
+      "name": "Zen",
+      "displayName": "Zen",
+      "description": "Minimal and fast state management with signal-based reactivity",
+      "url": "https://github.com/sylphxltd/zen",
+      "npm": "@sylphx/zen",
+      "color": "#00B8D4"
+    }
   }
 }
