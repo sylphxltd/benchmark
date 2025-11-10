@@ -1,167 +1,493 @@
 # Benchmark Architecture Standard
 
-This document defines the **unified standard** for all benchmark categories in this repository. Every category MUST follow this standard for consistency, maintainability, and comparability.
+**Version:** 1.0.0
+**Status:** Active
+**Last Updated:** 2024-11-10
 
 ---
 
-## 📐 Directory Structure
+## Executive Summary
 
-Every benchmark category MUST follow this structure:
+This document defines the authoritative standard for all benchmark implementations in this repository. Following these standards ensures:
+
+- **Fair Comparison** - Libraries compete only when they have native support for tested features
+- **Reproducibility** - Consistent methodology across all categories
+- **Credibility** - Benchmarks reflect real-world performance, not synthetic constructs
+- **Maintainability** - Clear organization enables long-term evolution
+
+**Core Mandate:** Test capabilities, not implementations. Never use placeholder or fake implementations.
+
+---
+
+## Why This Standard Exists
+
+### The Problem
+
+Without standardization, benchmarks suffer from:
+
+1. **Placeholder Implementations** - Testing string concatenation instead of actual framework APIs
+2. **Unfair Comparisons** - Libraries with different capabilities forced into the same tests
+3. **Misleading Results** - All libraries showing similar performance because tests don't use real APIs
+4. **Inconsistent Structure** - Each category organized differently, reducing clarity
+
+### Real-World Example: The CSS Framework Anti-Pattern
+
+**❌ What NOT to do:**
+
+```typescript
+// This benchmark is MEANINGLESS
+describe('Style Application', () => {
+  bench('Framework A', () => {
+    const styles: string[] = [];
+    for (let i = 0; i < 100; i++) {
+      styles.push(`class-${i}`);  // Just string concatenation!
+    }
+    return styles.join(' ');
+  });
+
+  bench('Framework B', () => {
+    const styles: string[] = [];
+    for (let i = 0; i < 100; i++) {
+      styles.push(`other-${i}`);  // Also just string concatenation!
+    }
+    return styles.join(' ');
+  });
+});
+```
+
+**Why this is wrong:**
+- Not using any actual framework APIs
+- Only measuring JavaScript string operations
+- All frameworks will perform identically
+- Results are meaningless for decision-making
+
+**✅ What TO do:**
+
+```typescript
+// Use real framework APIs
+describe('Style Application', () => {
+  bench('Silk', () => {
+    silk({
+      color: 'red',
+      padding: 4,
+      // ... actual API calls
+    });
+  });
+
+  bench('Panda CSS', () => {
+    css({
+      color: 'red',
+      padding: 4,
+      // ... actual API calls
+    });
+  });
+});
+```
+
+---
+
+## Core Principles
+
+### 1. Test Capabilities, Not Implementations
+
+**Principle:** Only test libraries on features they natively support.
+
+**Rationale:** Libraries have different architectures and capabilities. Forcing all libraries to participate in every test creates unfair comparisons and necessitates fake implementations.
+
+**Example:**
+- ✅ Jotai participates in "Reactive Async" tests (native support)
+- ❌ Redux does NOT participate in "Reactive Async" (no native support)
+- ✅ Redux participates in "Async State Management" (can manage async state manually)
+
+### 2. Universal vs Feature Tests
+
+**Universal Tests:**
+- All libraries participate equally
+- Test fundamental capabilities all libraries share
+- Used to calculate overall performance scores
+- Examples: read, write, creation, subscription
+
+**Feature Tests:**
+- Only libraries with native support participate
+- Grouped by capability, not by library
+- Show performance within architectural approach
+- Examples: native computed, reactive async, batching
+
+### 3. Zero Tolerance for Placeholders
+
+**Principle:** If a library doesn't support a feature, it DOES NOT participate in that test.
+
+**Rationale:** Placeholder implementations (empty functions, fake operations) produce meaningless results that mislead users.
+
+**Rule:** Better to show absence (library not in results) than fake presence (library with placeholder).
+
+### 4. Architectural Fairness
+
+**Principle:** Compare like with like.
+
+**Implementation:**
+- Native computed (automatic dependency tracking) → One test group
+- Selector pattern (manual derived state) → Separate test group
+- These groups don't compete with each other
+
+---
+
+## Directory Structure Standards
+
+### Simple Categories (All Tests Universal)
+
+**Use when:** All libraries can participate in all tests equally.
+
+**Examples:** Immutability libraries, simple router matching.
 
 ```
 benchmarks/[category-name]/
-├── README.md                    # Main category README (auto-generated)
-├── package.json                 # Category dependencies
-├── vitest.config.ts            # Vitest configuration
-│
-├── features.json                # ✨ Feature support matrix
-├── library-metadata.json        # Library metadata (URLs, descriptions)
-├── versions.json                # Tracked library versions (auto-generated)
-│
-├── src/                         # Source code
-│   ├── implementations/         # Library-specific implementations
-│   │   ├── [library-1]/
-│   │   ├── [library-2]/
-│   │   └── ...
-│   └── tests/                   # Shared test utilities (optional)
-│
-├── groups/                      # Test groups (modular structure)
-│   ├── 01-[group-name]/
-│   │   ├── README.md           # Group README (auto-generated)
-│   │   ├── [test-name].bench.ts
-│   │   └── results.json        # Group results (auto-generated)
-│   ├── 02-[group-name]/
-│   └── .../
-│
-├── results/                     # Historical results (auto-generated)
-│   ├── latest.json             # Latest benchmark results
-│   ├── 2025-11-10.json        # Daily snapshots
-│   └── .../
-│
-├── charts/                      # Visual charts (auto-generated)
-│   ├── performance.svg
-│   ├── bundle-size.svg
-│   └── .../
-│
-└── scripts/                     # Category-specific scripts
-    ├── generate-readme.cjs     # README generator
-    └── .../
+├── README.md                    # Main documentation
+├── features.json                # Feature support matrix
+├── library-metadata.json        # Library information
+├── versions.json                # Version tracking + bundle sizes
+├── src/
+│   ├── benchmark.bench.ts       # Main universal tests (all libraries)
+│   ├── benchmark-[feature].bench.ts  # Feature tests (subset of libraries)
+│   └── [implementations]/       # Library-specific code (if needed)
+├── results/                     # Historical benchmark results
+│   ├── latest.json
+│   └── [dated-results]/
+├── charts/                      # Performance visualizations
+└── vitest.config.ts             # Vitest configuration
 ```
+
+### Complex Categories (Multiple Test Groups)
+
+**Use when:** Many distinct test dimensions with feature variations.
+
+**Examples:** State management with 10+ test groups.
+
+```
+benchmarks/[category-name]/
+├── README.md
+├── features.json
+├── library-metadata.json
+├── versions.json
+├── src/
+│   ├── stores/                  # Library implementations
+│   └── [shared-utilities]/
+├── groups/
+│   ├── 01-read/                 # Universal test group
+│   │   ├── read-x1.bench.ts
+│   │   ├── read-x1000.bench.ts
+│   │   ├── results.json
+│   │   └── README.md
+│   ├── 02-write/                # Universal test group
+│   ├── 03-creation/             # Universal test group
+│   ├── 04-subscribers/          # Universal test group
+│   ├── 05-array-ops/            # Universal test group
+│   ├── 06-map-ops/              # Universal test group
+│   ├── 07-computed-native/      # Feature test (5 libraries)
+│   ├── 08-selectors/            # Feature test (3 libraries)
+│   ├── 09-async-reactive/       # Feature test (1 library)
+│   └── 10-batching-native/      # Feature test (3 libraries)
+├── results/
+└── charts/
+```
+
+**Numbering Convention:**
+- `01-06`: Universal tests (all libraries participate)
+- `07-20`: Feature tests (libraries with native support only)
+- Use descriptive names after numbers: `07-computed-native`, not just `07-computed`
 
 ---
 
-## 🧪 Test Organization
+## Test Classification
 
-### **Principle: Universal vs Feature Tests**
+### Universal Tests (01-06 range)
 
-Tests are categorized into two types:
+**Definition:** Tests where all libraries in the category can participate equally.
 
-#### **1. Universal Tests** (All libraries participate equally)
+**Characteristics:**
+- Test fundamental operations
+- All libraries have equivalent capabilities
+- Used for "Overall Performance Score"
+- Must use real library APIs
 
-Tests that measure basic capabilities all libraries have:
-
+**Examples:**
 ```typescript
-// Example: groups/01-read/simple-read.bench.ts
+// ✅ Universal Test - All libraries can read state
 describe('Simple Read', () => {
-  bench('Library A', () => { /* read operation */ })
-  bench('Library B', () => { /* read operation */ })
-  bench('Library C', () => { /* read operation */ })
-})
+  bench('Library A', () => {
+    libraryA.get(store);  // Real API
+  });
+  bench('Library B', () => {
+    libraryB.getState();  // Real API
+  });
+  // All libraries participate
+});
 ```
 
+**Categories of Universal Tests:**
+- Basic CRUD operations (create, read, update, delete)
+- State initialization
+- Subscription/notification
+- Array/object operations (using basic APIs)
+- Performance at scale (10x, 100x, 1000x)
+
+### Feature Tests (07-20 range)
+
+**Definition:** Tests for capabilities only supported by subset of libraries.
+
 **Characteristics:**
-- ✅ All libraries participate
-- ✅ Tests basic functionality
-- ✅ Fair comparison
-- ✅ Used for **Overall Performance Score**
+- Only libraries with native support participate
+- Grouped by capability/architecture
+- Separate performance rankings
+- Show feature completeness
 
 **Examples:**
-- Read operations
-- Write operations
-- Basic array/object operations
-- Store creation
+```typescript
+// ✅ Feature Test - Only libraries with native computed
+describe('Native Computed Values', () => {
+  bench('Jotai', () => {
+    // Native automatic dependency tracking
+    const doubled = atom((get) => get(baseAtom) * 2);
+  });
+  bench('MobX', () => {
+    // Native automatic dependency tracking
+    get doubled() { return this.value * 2; }
+  });
+  // ONLY Jotai, MobX, Solid, Preact Signals, Zen participate
+});
+
+// ✅ Separate Feature Test - Different architecture
+describe('Selector Pattern', () => {
+  bench('Redux', () => {
+    // Manual selector with memoization
+    createSelector([selectValue], (val) => val * 2);
+  });
+  bench('Zustand', () => {
+    // Manual selector
+    (state) => state.value * 2;
+  });
+  // ONLY Redux, Zustand, Valtio participate
+});
+```
+
+**Feature Test Categories:**
+- Architectural features (native computed vs selectors)
+- Advanced capabilities (reactive async, batching)
+- Data structure support (Map/Set, JSON Patches)
+- Optimization features (structural sharing, memoization)
 
 ---
 
-#### **2. Feature Tests** (Libraries grouped by capability)
+## Implementation Standards
 
-Tests for advanced features that only some libraries support:
+### Real Implementation Requirements
+
+**Every benchmark MUST:**
+
+1. **Import actual library code**
+   ```typescript
+   ✅ import { produce } from 'immer';
+   ✅ import { create } from 'mutative';
+   ❌ // No imports = fake test
+   ```
+
+2. **Call real library APIs**
+   ```typescript
+   ✅ produce(obj, draft => { draft.count++ });
+   ❌ obj.count++;  // Not using library!
+   ```
+
+3. **Measure actual library operations**
+   ```typescript
+   ✅ bench('Immer', () => {
+     produce(data, draft => { draft.value = 1; });
+   });
+   ❌ bench('Immer', () => {
+     data.value = 1;  // Not using Immer!
+   });
+   ```
+
+### Validation Criteria
+
+**Ask these questions for every benchmark:**
+
+1. ✅ Does it import the library's package?
+2. ✅ Does it call the library's actual API?
+3. ✅ Would removing the library break this benchmark?
+4. ✅ Does it test the library's unique approach/architecture?
+
+**If any answer is NO → The test is invalid.**
+
+### Code Examples
+
+#### ✅ Correct: Real Implementations
 
 ```typescript
-// Example: groups/08-computed-native/native-computed.bench.ts
-describe('Native Computed', () => {
-  // Only libraries with native computed values
-  bench('Jotai', () => { /* computed atom */ })
-  bench('MobX', () => { /* computed value */ })
-  bench('Solid Signals', () => { /* createMemo */ })
-  // Libraries without native computed DON'T participate
-})
+// Immutability - Real implementations
+describe('Nested Update', () => {
+  bench('Immer', () => {
+    produce(obj, draft => {
+      draft.user.profile.age += 1;
+    });
+  });
 
-// Example: groups/09-selectors/selector-pattern.bench.ts
-describe('Selector Pattern', () => {
-  // Only libraries using selector pattern
-  bench('Redux', () => { /* reselect selector */ })
-  bench('Zustand', () => { /* selector */ })
-  // Others DON'T participate
-})
+  bench('Mutative', () => {
+    create(obj, draft => {
+      draft.user.profile.age += 1;
+    });
+  });
+
+  bench('Native Spread', () => {
+    return {
+      ...obj,
+      user: {
+        ...obj.user,
+        profile: {
+          ...obj.user.profile,
+          age: obj.user.profile.age + 1
+        }
+      }
+    };
+  });
+});
 ```
 
-**Characteristics:**
-- ⚠️ Only libraries with native support participate
-- ⚠️ No fake/placeholder implementations
-- ⚠️ NOT used for Overall Performance Score
-- ✅ Used for **Feature Comparison Matrix**
+#### ❌ Incorrect: Placeholder Implementations
 
-**Examples:**
-- Native computed values vs Selector pattern
-- Reactive async vs Manual async
-- Native batching vs No batching
-- Proxy-based tracking
-- Middleware systems
+```typescript
+// All these are WRONG - just testing JavaScript operations
+describe('Bad Test', () => {
+  bench('Library A', () => {
+    const result = `class-${i}`;  // String concatenation
+  });
+
+  bench('Library B', () => {
+    const result = obj.value + 1;  // Basic arithmetic
+  });
+
+  bench('Library C', () => {
+    const result = [...arr];  // Native spread
+  });
+});
+```
 
 ---
 
-### **Test Group Naming Convention**
+## Features Matrix Standard
 
+### features.json Format
+
+**Purpose:** Define which libraries support which features.
+
+**Structure:**
+```json
+{
+  "features": {
+    "feature-key": {
+      "name": "Human-Readable Feature Name",
+      "description": "What this feature does and why it matters",
+      "supported": ["library-1", "library-2", "library-3"]
+    },
+    "another-feature": {
+      "name": "Another Feature",
+      "description": "Description of this feature",
+      "supported": ["library-1"]
+    }
+  }
+}
 ```
-groups/
-├── 01-[category]/              # Universal test (all libraries)
-├── 02-[category]/              # Universal test
-├── ...
-├── 07-[feature]-native/        # Feature test (subset A)
-├── 08-[feature]-alternative/   # Feature test (subset B)
-├── ...
+
+**Example:**
+```json
+{
+  "features": {
+    "computed-native": {
+      "name": "Native Computed Values",
+      "description": "Automatic dependency tracking for derived values without manual selectors",
+      "supported": ["jotai", "mobx", "solid-js", "@preact/signals", "@sylphx/zen"]
+    },
+    "selectors": {
+      "name": "Selector Pattern",
+      "description": "Manual derived state using selector functions",
+      "supported": ["@reduxjs/toolkit", "zustand", "valtio"]
+    },
+    "async-reactive": {
+      "name": "Reactive Async",
+      "description": "Async computations that automatically recompute when dependencies change",
+      "supported": ["jotai"]
+    }
+  }
+}
 ```
 
 **Rules:**
-- Use 2-digit prefix for ordering
-- Universal tests: `01-06` range
-- Feature tests: `07-20` range
-- Use descriptive names: `computed-native`, `async-reactive`, `batching-native`
+1. Use kebab-case for feature keys
+2. `supported` array uses exact package names (from package.json)
+3. Description should explain WHY this matters, not just WHAT it is
+4. If no library supports a feature, don't include it
 
 ---
 
-## 📊 Results Format
+## library-metadata.json Format
 
-### **results.json Structure**
+**Purpose:** Store library information for display.
 
+**Structure:**
+```json
+{
+  "libraries": {
+    "package-name": {
+      "name": "Official Name",
+      "displayName": "Display Name",
+      "description": "One-line description of the library",
+      "url": "https://github.com/...",
+      "npm": "package-name",
+      "color": "#HEX_COLOR"
+    }
+  }
+}
+```
+
+**Example:**
+```json
+{
+  "libraries": {
+    "jotai": {
+      "name": "Jotai",
+      "displayName": "Jotai",
+      "description": "Primitive and flexible state management for React",
+      "url": "https://github.com/pmndrs/jotai",
+      "npm": "jotai",
+      "color": "#000000"
+    }
+  }
+}
+```
+
+---
+
+## Results Format
+
+### Per-Test Results
+
+**Structure:**
 ```json
 {
   "files": [
     {
-      "filepath": "groups/01-read/simple-read.bench.ts",
+      "filepath": "groups/01-read/read-x1.bench.ts",
       "groups": [
         {
           "fullName": "Simple Read",
           "benchmarks": [
             {
-              "name": "Simple Read - Library A",
-              "library": "library-a",
-              "hz": 1234567.89,
-              "mean": 0.00000081,
-              "p99": 0.00000123,
-              "rme": 0.5,
-              "samples": 1234567
+              "name": "Simple Read - Jotai",
+              "library": "jotai",
+              "hz": 5234567.89,
+              "mean": 0.000191,
+              "p99": 0.000234,
+              "rme": 0.89,
+              "samples": 2617284
             }
           ]
         }
@@ -172,396 +498,314 @@ groups/
 ```
 
 **Required fields:**
-- `name`: Full benchmark name (includes library)
-- `library`: Library identifier (kebab-case)
+- `library`: Package name (lowercase, matches features.json)
 - `hz`: Operations per second
-- `mean`: Mean execution time (seconds)
-- `p99`: 99th percentile (seconds)
-- `rme`: Relative margin of error (%)
+- `mean`: Mean time per operation (seconds)
+- `p99`: 99th percentile
+- `rme`: Relative margin of error (percentage)
 - `samples`: Number of samples collected
 
 ---
 
-## ✨ Feature Support Matrix
+## README Format Standard
 
-### **features.json Structure**
+### Required Sections (in order)
 
-This file defines what features each library supports:
+```markdown
+# [Category Name] Benchmarks
+
+**Last Updated:** YYYY-MM-DD
+**Libraries Tested:** N libraries
+**Total Tests:** N tests across M groups
+
+## 📊 Overall Performance Score
+
+> **Methodology:** Geometric mean across Universal Tests (01-06)
+>
+> These tests measure fundamental operations that all libraries support equally.
+
+| Rank | Library | Score | Relative Performance |
+|------|---------|-------|---------------------|
+| 🥇 1 | Library A | 100.0 | Baseline |
+| 🥈 2 | Library B | 87.3 | 0.87x |
+| 🥉 3 | Library C | 72.1 | 0.72x |
+
+## 🎯 Feature Support Matrix
+
+| Library | Native Computed | Reactive Async | Batching | Middleware |
+|---------|----------------|----------------|----------|------------|
+| Library A | ✅ | ✅ | ✅ | ❌ |
+| Library B | ✅ | ❌ | ✅ | ✅ |
+| Library C | ❌ (use selectors) | ❌ | ❌ | ✅ |
+
+**Legend:**
+- ✅ Native support
+- ❌ Not supported
+- 📝 (alternative) Alternative approach available
+
+## 📦 Bundle Sizes
+
+| Library | Version | Minified | Gzipped |
+|---------|---------|----------|---------|
+| Library A | 1.2.3 | 12.5 KB | 4.8 KB |
+| Library B | 2.0.1 | 8.3 KB | 3.1 KB |
+
+## 🧪 Test Categories
+
+### Universal Tests (All Libraries)
+
+All libraries participate equally in these tests.
+
+- **[01-read](./groups/01-read/)** - State reading performance
+- **[02-write](./groups/02-write/)** - State update performance
+- **[03-creation](./groups/03-creation/)** - Store initialization cost
+- ...
+
+### Feature-Specific Tests
+
+Only libraries with native support participate.
+
+- **[07-computed-native](./groups/07-computed-native/)** - Native computed values (5 libraries)
+- **[08-selectors](./groups/08-selectors/)** - Selector pattern (3 libraries)
+- **[09-async-reactive](./groups/09-async-reactive/)** - Reactive async (1 library)
+- ...
+
+## 📈 Detailed Results
+
+[Link to detailed results by test group]
+
+## 🔬 Methodology
+
+- **Tool:** Vitest Bench
+- **Runs:** 5 iterations minimum
+- **Samples:** Adaptive (until statistically significant)
+- **Environment:** Node.js v20+
+- **Principle:** Test capabilities, not implementations
+
+## 📚 Related Documentation
+
+- [Benchmark Standard](../../BENCHMARK_STANDARD.md)
+- [Contributing Guidelines](../../CONTRIBUTING.md)
+```
+
+### Section Requirements
+
+**Overall Performance Score:**
+- MUST be based only on Universal Tests
+- MUST use geometric mean
+- MUST NOT include feature test results
+- MUST show relative performance (baseline = 100)
+
+**Feature Support Matrix:**
+- MUST match features.json
+- MUST use consistent symbols (✅/❌)
+- MUST explain alternatives in notes
+
+**Bundle Sizes:**
+- MUST include version numbers
+- MUST show both minified and gzipped
+- MUST be kept up to date (automated via versions.json)
+
+---
+
+## Anti-Patterns
+
+### ❌ Anti-Pattern 1: Placeholder Implementations
+
+**Example:**
+```typescript
+// WRONG - Just testing string concatenation
+bench('Framework A', () => {
+  return `class-${i}`;
+});
+```
+
+**Why wrong:** Not using framework API, meaningless results.
+
+**Solution:** Use real framework APIs or exclude the library.
+
+### ❌ Anti-Pattern 2: Mixing Test Types in Overall Score
+
+**Example:**
+```typescript
+// WRONG - Including feature test in overall score
+const overallScore = geometricMean([
+  ...universalTests,
+  reactiveAsyncScore  // Only Jotai supports this!
+]);
+```
+
+**Why wrong:** Unfair to libraries that don't support the feature.
+
+**Solution:** Overall score only from Universal Tests, feature tests separate.
+
+### ❌ Anti-Pattern 3: Forcing Participation
+
+**Example:**
+```typescript
+// WRONG - Zustand doesn't have native computed
+bench('Zustand', () => {
+  // Empty function or fake implementation
+  return store.value * 2;  // Not a computed value!
+});
+```
+
+**Why wrong:** Tests non-existent capability, misleading results.
+
+**Solution:** Zustand doesn't participate in native computed tests.
+
+### ❌ Anti-Pattern 4: Inconsistent Naming
+
+**Example:**
+```
+groups/
+├── read/           # No number
+├── write/          # No number
+├── computed/       # No number
+├── 01-async/       # Has number (inconsistent)
+```
+
+**Why wrong:** Unclear which tests are universal vs feature.
+
+**Solution:** All groups use numbered prefixes, 01-06 for universal.
+
+---
+
+## Migration Guide
+
+### Updating Existing Categories
+
+**Step 1: Audit Current Tests**
+
+Questions to ask:
+1. Do all tests use real library APIs?
+2. Are placeholder implementations present?
+3. Is Universal vs Feature distinction clear?
+4. Does features.json use the new format?
+
+**Step 2: Update features.json**
 
 ```json
+// OLD FORMAT (array-based)
+{
+  "features": [
+    { "id": "feature1", "label": "Feature 1" }
+  ],
+  "libraries": {
+    "lib-a": { "feature1": true }
+  }
+}
+
+// NEW FORMAT (capability-based)
 {
   "features": {
-    "native-computed": {
-      "name": "Native Computed Values",
-      "description": "Automatic dependency tracking for derived values",
-      "supported": ["jotai", "mobx", "solid-signals", "preact-signals", "zen"]
-    },
-    "reactive-async": {
-      "name": "Reactive Async",
-      "description": "Async computations that automatically recompute when dependencies change",
-      "supported": ["jotai"]
-    },
-    "native-batching": {
-      "name": "Native Batching",
-      "description": "Built-in update batching to reduce notification overhead",
-      "supported": ["solid-signals", "mobx", "valtio"]
-    },
-    "middleware": {
-      "name": "Middleware System",
-      "description": "Plugin system for extending functionality",
-      "supported": ["redux-toolkit", "zustand"]
+    "feature1": {
+      "name": "Feature 1",
+      "description": "What it does",
+      "supported": ["lib-a", "lib-b"]
     }
   }
 }
 ```
 
-**Rules:**
-- Feature key must match test group name (e.g., `native-computed` -> `groups/07-computed-native/`)
-- `supported` array contains library identifiers
-- Only libraries in `supported` array should participate in that feature test
+**Step 3: Remove Placeholder Tests**
 
----
+- Identify tests that don't use library APIs
+- Remove them or implement real versions
+- Update results.json to remove invalid data
 
-## 📦 Library Metadata
+**Step 4: Reorganize Test Groups** (if complex category)
 
-### **library-metadata.json Structure**
+- Add numbered prefixes (01-06 for universal)
+- Separate feature tests (07-20)
+- Update package.json scripts
 
-```json
-{
-  "libraries": {
-    "library-a": {
-      "name": "Library A",
-      "displayName": "Library A",
-      "description": "Brief description of the library",
-      "url": "https://github.com/org/library-a",
-      "npm": "library-a",
-      "color": "#FF5733"
-    }
-  }
-}
-```
+**Step 5: Update README**
 
----
+- Add Overall Performance Score section
+- Add Feature Support Matrix
+- Clarify test classification
 
-## 📈 Bundle Size Tracking
+### Creating New Categories
 
-Every category MUST track bundle sizes for comparison:
+**Step 1: Determine Category Type**
 
-### **How to implement:**
+- Simple (all tests universal) → Flat structure
+- Complex (many feature variations) → Groups structure
 
-```typescript
-// scripts/track-bundle-size.ts
-import { bundleSize } from '../shared/bundle-size-tracker'
+**Step 2: Create Required Files**
 
-const libraries = [
-  { name: 'library-a', imports: ['library-a'] },
-  { name: 'library-b', imports: ['library-b'] },
-]
-
-// Auto-generates bundle size data
-await bundleSize(libraries)
-```
-
-### **versions.json Structure** (auto-generated)
-
-```json
-{
-  "library-a": {
-    "version": "1.2.3",
-    "size": {
-      "minified": 12345,
-      "gzipped": 4567
-    },
-    "lastUpdated": "2025-11-10T00:00:00Z"
-  }
-}
-```
-
----
-
-## 📄 README Format
-
-Every category README MUST include these sections in order:
-
-### **1. Header**
-- Category name and emoji
-- Brief description
-- Table of contents
-
-### **2. Benchmark Information**
-```markdown
-## 📋 Benchmark Information
-- Last Updated: [date]
-- Environment: Node.js version, OS
-- Test Framework: Vitest Bench
-- Iterations: 3 runs averaged
-```
-
-### **3. Library Versions**
-Table with:
-- Library name (linked)
-- Version
-- Bundle size (gzipped)
-- Last updated
-- Update status (✅ Latest / ⚠️ Incompatible)
-
-### **4. Bundle Size Comparison**
-- Ranked table by size
-- Visual comparison chart
-- Size insight (smallest vs largest)
-
-### **5. Overall Performance Score**
-**Based ONLY on Universal Tests**
-- Geometric mean across all universal tests
-- Normalized scores (fastest = 100)
-- Relative percentages
-
-```markdown
-## 🚀 Overall Performance Score
-
-Based on **Universal Tests only** (01-06):
-
-| Rank | Library | Score | Relative | Tests |
-|------|---------|-------|----------|-------|
-| 🥇 | Library A | 98.5/100 | Baseline | 12 |
-| 🥈 | Library B | 85.3/100 | 86.6% | 12 |
-```
-
-### **6. Feature Support Matrix**
-```markdown
-## ✨ Feature Support
-
-| Library | Native Computed | Reactive Async | Native Batching |
-|---------|----------------|----------------|-----------------|
-| Library A | ✅ | ✅ | ❌ |
-| Library B | ❌ | ❌ | ✅ |
-```
-
-### **7. Test Categories**
-
-#### **Universal Tests**
-List all universal test groups with:
-- Group name
-- Description
-- Link to detailed results
-- Performance chart
-- Top 3 performers
-
-#### **Feature Tests**
-List all feature test groups with:
-- Group name
-- Participating libraries only
-- Link to detailed results
-- Feature comparison
-
-### **8. Detailed Results**
-Link to each test group's detailed README
-
-### **9. Running Benchmarks**
 ```bash
-npm install
-npm run benchmark
-npm run generate-readme
+mkdir -p benchmarks/[category]/src
+mkdir -p benchmarks/[category]/results
+mkdir -p benchmarks/[category]/charts
+
+touch benchmarks/[category]/README.md
+touch benchmarks/[category]/features.json
+touch benchmarks/[category]/library-metadata.json
+touch benchmarks/[category]/versions.json
+touch benchmarks/[category]/vitest.config.ts
 ```
 
-### **10. About**
-Category-specific notes and context
+**Step 3: Define Feature Matrix**
+
+Create `features.json` listing all capabilities and which libraries support them.
+
+**Step 4: Implement Tests**
+
+- Universal tests first (all libraries)
+- Feature tests second (by capability)
+- NO placeholders
+
+**Step 5: Generate Results & README**
+
+- Run benchmarks
+- Generate README following standard format
+- Include Overall Performance Score and Feature Matrix
 
 ---
 
-## 🎯 Scoring Methodology
+## Validation Checklist
 
-### **Overall Performance Score**
+### Before Committing Benchmarks
 
-**Formula:**
-```
-1. For each universal test:
-   - Normalize: fastest = 100, others = (their_hz / fastest_hz) * 100
+- [ ] All tests use real library APIs (no placeholders)
+- [ ] features.json uses new format
+- [ ] library-metadata.json is complete
+- [ ] versions.json includes bundle sizes
+- [ ] README has all required sections
+- [ ] Overall Performance Score only uses Universal Tests
+- [ ] Feature tests grouped by capability
+- [ ] Test groups numbered correctly (01-06 universal, 07+ feature)
+- [ ] No library forced to participate in unsupported features
+- [ ] Results.json matches actual test participation
 
-2. For each library:
-   - Collect all normalized scores
-   - Calculate geometric mean: (score1 * score2 * ... * scoreN)^(1/N)
+### During Review
 
-3. Rank by geometric mean
-```
-
-**Why geometric mean?**
-- Prevents extreme outliers from skewing results
-- A library must be consistently good, not just excel in one test
-- More representative of overall performance
-
-### **Feature-Specific Scores**
-
-Calculated separately for each feature test group, not included in overall score.
+- [ ] Can I remove the library and the test still compiles? (If yes → placeholder)
+- [ ] Are results meaningful for decision-making? (If no → investigate)
+- [ ] Is the comparison fair? (Same capabilities competing)
+- [ ] Is the documentation clear? (Can user understand what's tested)
 
 ---
 
-## 🔧 Test Implementation Guidelines
+## Conclusion
 
-### **1. Test Naming**
+This standard ensures our benchmarks provide **credible, fair, and actionable** performance data.
 
-```typescript
-// ✅ Good: Includes library name
-bench('Simple Read - Jotai', () => { ... })
-bench('Simple Read - Zustand', () => { ... })
+**Key Takeaways:**
 
-// ❌ Bad: No library name
-bench('Jotai', () => { ... })
-bench('Test 1', () => { ... })
-```
+1. **Test capabilities, not implementations** - Only test what libraries actually support
+2. **Zero tolerance for placeholders** - Absence is better than fake presence
+3. **Universal vs Feature distinction** - Clear separation enables fair comparison
+4. **Consistent structure** - All categories follow the same pattern
 
-### **2. Test Fairness**
-
-```typescript
-// ✅ Good: Each library uses its native approach
-bench('Computed - Jotai', () => {
-  const computed = atom((get) => get(source) * 2)  // Native
-})
-
-bench('Computed - Zustand', () => {
-  const computed = useStore((state) => state.value * 2)  // Native
-})
-
-// ❌ Bad: Forcing one pattern on all libraries
-bench('Computed - Zustand', () => {
-  // Zustand doesn't have native computed, don't fake it!
-  // DON'T participate if not supported
-})
-```
-
-### **3. Scale Tests**
-
-When testing at scale, use these standard sizes:
-
-```typescript
-// Small scale
-const sizes = {
-  tiny: 1,
-  small: 10,
-  medium: 100,
-  large: 1000,
-  xlarge: 10000,
-  xxlarge: 100000,
-}
-
-// Example
-describe('Read - Small Scale', () => {
-  bench('Read 1 value', ...)        // tiny
-  bench('Read 100 values', ...)     // medium
-})
-
-describe('Read - Large Scale', () => {
-  bench('Read 10K values', ...)     // xlarge
-  bench('Read 100K values', ...)    // xxlarge
-})
-```
-
-### **4. Test Data**
-
-```typescript
-// Create standard test data
-const testData = {
-  simpleObject: { count: 0, name: 'test' },
-  nestedObject: { user: { profile: { name: 'John' } } },
-  deepObject: { a: { b: { c: { d: { e: { value: 42 } } } } } },
-  smallArray: Array.from({ length: 100 }, (_, i) => i),
-  largeArray: Array.from({ length: 10000 }, (_, i) => ({ id: i, value: i })),
-}
-```
+By following this standard, we create benchmarks that developers can trust and rely on for making informed library choices.
 
 ---
 
-## 🚫 Anti-Patterns
+**Questions or Concerns?**
 
-### **DON'T: Fake implementations**
+Open an issue in the repository or refer to existing benchmark implementations for examples.
 
-```typescript
-// ❌ BAD: Placeholder for unsupported feature
-bench('Reactive Async - Zustand', async () => {
-  await new Promise(resolve => setTimeout(resolve, 0))
-  // This is not reactive async! Don't do this!
-})
-```
-
-**Instead:** Only libraries with real support participate.
-
-### **DON'T: Mix universal and feature tests**
-
-```typescript
-// ❌ BAD: Mixing in same group
-describe('Read Operations', () => {
-  bench('Simple Read - All Libraries', ...)  // Universal
-  bench('Computed Read - Some Libraries', ...)  // Feature-specific
-})
-```
-
-**Instead:** Separate into different groups.
-
-### **DON'T: Include feature tests in overall score**
-
-```typescript
-// ❌ BAD: Including reactive-async in comprehensive score
-// This is unfair because only Jotai supports it
-comprehensiveScore = geometricMean([
-  ...universalTests,
-  reactiveAsyncScore  // DON'T!
-])
-```
-
-**Instead:** Feature tests have separate rankings.
-
----
-
-## ✅ Checklist for New Categories
-
-When creating a new benchmark category:
-
-- [ ] Follow directory structure exactly
-- [ ] Create `features.json` with feature matrix
-- [ ] Create `library-metadata.json`
-- [ ] Implement bundle size tracking
-- [ ] Separate universal vs feature tests
-- [ ] Number groups with 2-digit prefix
-- [ ] All universal tests include all libraries
-- [ ] Feature tests only include supporting libraries
-- [ ] Generate README with all required sections
-- [ ] Overall score based ONLY on universal tests
-- [ ] Feature comparison matrix shows support
-- [ ] Historical results saved by date
-- [ ] Charts auto-generated
-
----
-
-## 📚 Examples
-
-See existing categories for reference:
-- **Good examples:** `immutability`, `router`, `css-frameworks` (flat structure, features.json, bundle tracking)
-- **Being refactored:** `state-management` (will follow this standard)
-
----
-
-## 🔄 Migration Guide
-
-For existing categories that don't follow this standard:
-
-### **Phase 1: Structure**
-1. Add `features.json`
-2. Add `library-metadata.json`
-3. Reorganize into `groups/` with numbered prefixes
-4. Add bundle size tracking
-
-### **Phase 2: Tests**
-1. Separate universal vs feature tests
-2. Remove placeholder implementations
-3. Ensure consistent naming
-
-### **Phase 3: Results**
-1. Regenerate with new structure
-2. Update README format
-3. Add feature comparison matrix
-
----
-
-**Version:** 1.0.0
-**Last Updated:** 2025-11-10
-**Status:** ✅ Active Standard
+**Standard Compliance:** All new benchmarks MUST follow this standard. Existing benchmarks should be migrated during next major update.
