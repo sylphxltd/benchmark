@@ -1,16 +1,16 @@
 {
-  "lastChecked": "2025-11-10T21:14:11.852Z",
-  "lastBenchmarkRun": "2025-11-10T21:15:17Z",
+  "lastChecked": "2025-11-10T21:17:11.190Z",
+  "lastBenchmarkRun": "2025-11-10T21:18:22Z",
   "testFilesHash": "960380b56b645ae35e80d50a01d191a8164ab6d663b9a863907b303f65b709cb",
   "libraries": {
     "@sylphx/zen-router": {
       "current": "1.0.2",
       "latest": "2.0.0",
-      "lastUpdated": "2025-11-10T21:14:11.227Z",
+      "lastUpdated": "2025-11-10T21:17:10.525Z",
       "size": {
         "gzip": 1612,
         "minified": 3564,
-        "lastChecked": "2025-11-10T21:14:11.779Z"
+        "lastChecked": "2025-11-10T21:17:11.116Z"
       }
     },
     "wouter": {
@@ -26,11 +26,11 @@
     "react-router-dom": {
       "current": "6.30.1",
       "latest": "7.9.5",
-      "lastUpdated": "2025-11-10T21:14:10.342Z",
+      "lastUpdated": "2025-11-10T21:17:10.094Z",
       "size": {
         "gzip": 26970,
         "minified": 87795,
-        "lastChecked": "2025-11-10T21:14:11.819Z"
+        "lastChecked": "2025-11-10T21:17:11.157Z"
       },
       "incompatible": true,
       "incompatibleVersion": "7.9.5",
@@ -39,11 +39,11 @@
     "react": {
       "current": "18.3.1",
       "latest": "19.2.0",
-      "lastUpdated": "2025-11-10T21:14:09.023Z",
+      "lastUpdated": "2025-11-10T21:17:08.802Z",
       "size": {
         "gzip": 2576,
         "minified": 6599,
-        "lastChecked": "2025-11-10T21:14:11.835Z"
+        "lastChecked": "2025-11-10T21:17:11.175Z"
       },
       "incompatible": true,
       "incompatibleVersion": "19.2.0",
@@ -52,11 +52,11 @@
     "react-dom": {
       "current": "18.3.1",
       "latest": "19.2.0",
-      "lastUpdated": "2025-11-10T21:14:09.840Z",
+      "lastUpdated": "2025-11-10T21:17:09.612Z",
       "size": {
         "gzip": 42942,
         "minified": 133258,
-        "lastChecked": "2025-11-10T21:14:11.852Z"
+        "lastChecked": "2025-11-10T21:17:11.190Z"
       }
     }
   }
