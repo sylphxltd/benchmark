@@ -48,6 +48,28 @@ function formatNumber(num, decimals = 0) {
   return num.toFixed(decimals);
 }
 
+function generateBarChart(benchmarks, maxValue) {
+  const maxBarLength = 40;
+  let chart = '\n```\n';
+
+  benchmarks.forEach((b, index) => {
+    const value = b.hz || 0;
+    const percentage = maxValue > 0 ? value / maxValue : 0;
+    const barLength = Math.round(percentage * maxBarLength);
+    const bar = '█'.repeat(barLength);
+    const crown = index === 0 ? '👑 ' : '  ';
+
+    // Extract library name
+    const nameParts = b.name.split(' - ');
+    const libName = nameParts[nameParts.length - 1];
+
+    chart += `${crown}${libName.padEnd(20)} ${bar} ${formatNumber(value)}\n`;
+  });
+
+  chart += '```\n\n';
+  return chart;
+}
+
 function extractBenchmarks(result, pattern) {
   if (!result?.files?.[0]?.groups) return [];
   const benchmarks = [];
@@ -285,10 +307,12 @@ function generateDetailedResults() {
     const lib = b.name.replace('Simple Read - ', '');
     const rel = ((b.hz || 0) / maxRead).toFixed(2) + 'x';
     const note = i === 0 ? ' (fastest)' : '';
-    section += `| ${lib} | ${formatNumber(b.hz)} | ${rel}${note} |\n`;
+    const crown = i === 0 ? '👑 ' : '';
+    section += `| ${crown}${lib} | ${formatNumber(b.hz)} | ${rel}${note} |\n`;
   });
 
-  section += '\n---\n\n';
+  section += generateBarChart(readBenches, maxRead);
+  section += '---\n\n';
 
   // 02 - Write Operations
   section += `### 02 - Write Operations
@@ -305,10 +329,12 @@ function generateDetailedResults() {
     const lib = b.name.replace('Simple Increment - ', '');
     const rel = ((b.hz || 0) / maxWrite).toFixed(2) + 'x';
     const note = i === 0 ? ' (fastest)' : '';
-    section += `| ${lib} | ${formatNumber(b.hz)} | ${rel}${note} |\n`;
+    const crown = i === 0 ? '👑 ' : '';
+    section += `| ${crown}${lib} | ${formatNumber(b.hz)} | ${rel}${note} |\n`;
   });
 
-  section += '\n---\n\n';
+  section += generateBarChart(writeBenches, maxWrite);
+  section += '---\n\n';
 
   // 03 - Store Creation
   section += `### 03 - Store Creation
@@ -325,11 +351,12 @@ function generateDetailedResults() {
     const lib = b.name.replace('Store Creation - ', '');
     const rel = ((b.hz || 0) / maxCreation).toFixed(2) + 'x';
     const note = i === 0 ? ' (fastest)' : '';
-    section += `| ${lib} | ${formatNumber(b.hz)} | ${rel}${note} |\n`;
+    const crown = i === 0 ? '👑 ' : '';
+    section += `| ${crown}${lib} | ${formatNumber(b.hz)} | ${rel}${note} |\n`;
   });
 
-  section += `
-> **Note**: MobX's low creation performance is expected due to makeAutoObservable overhead.
+  section += generateBarChart(creationBenches, maxCreation);
+  section += `> **Note**: MobX's low creation performance is expected due to makeAutoObservable overhead.
 
 ---
 
@@ -350,11 +377,12 @@ function generateDetailedResults() {
     const lib = b.name.replace('Large State Allocation - ', '');
     const rel = ((b.hz || 0) / maxMemory).toFixed(2) + 'x';
     const note = i === 0 ? ' (fastest)' : '';
-    section += `| ${lib} | ${formatNumber(b.hz)} | ${rel}${note} |\n`;
+    const crown = i === 0 ? '👑 ' : '';
+    section += `| ${crown}${lib} | ${formatNumber(b.hz)} | ${rel}${note} |\n`;
   });
 
-  section += `
-> **Note**: All libraries perform similarly for large state allocation, indicating minimal per-field overhead.
+  section += generateBarChart(memoryBenches, maxMemory);
+  section += `> **Note**: All libraries perform similarly for large state allocation, indicating minimal per-field overhead.
 
 ---
 
@@ -394,11 +422,12 @@ function generateDetailedResults() {
     const lib = b.name.replace('Native Computed - ', '');
     const rel = ((b.hz || 0) / maxComputed).toFixed(2) + 'x';
     const note = i === 0 ? ' (fastest)' : '';
-    section += `| ${lib} | ${formatNumber(b.hz)} | ${rel}${note} |\n`;
+    const crown = i === 0 ? '👑 ' : '';
+    section += `| ${crown}${lib} | ${formatNumber(b.hz)} | ${rel}${note} |\n`;
   });
 
-  section += `
-**Chained Computed** (computed from computed, 2 levels)
+  section += generateBarChart(computedBenches, maxComputed);
+  section += `**Chained Computed** (computed from computed, 2 levels)
 
 | Library | ops/sec | Relative |
 |---------|---------|----------|
@@ -410,11 +439,12 @@ function generateDetailedResults() {
     const lib = b.name.replace('Chained Computed - ', '');
     const rel = ((b.hz || 0) / maxChained).toFixed(2) + 'x';
     const note = i === 0 ? ' (fastest)' : '';
-    section += `| ${lib} | ${formatNumber(b.hz)} | ${rel}${note} |\n`;
+    const crown = i === 0 ? '👑 ' : '';
+    section += `| ${crown}${lib} | ${formatNumber(b.hz)} | ${rel}${note} |\n`;
   });
 
-  section += `
-**Computed Update Performance** (triggering computed recalculation)
+  section += generateBarChart(chainedBenches, maxChained);
+  section += `**Computed Update Performance** (triggering computed recalculation)
 
 | Library | ops/sec | Relative |
 |---------|---------|----------|
@@ -426,10 +456,12 @@ function generateDetailedResults() {
     const lib = b.name.replace('Computed Updates - ', '');
     const rel = ((b.hz || 0) / maxUpdate).toFixed(2) + 'x';
     const note = i === 0 ? ' (fastest)' : '';
-    section += `| ${lib} | ${formatNumber(b.hz)} | ${rel}${note} |\n`;
+    const crown = i === 0 ? '👑 ' : '';
+    section += `| ${crown}${lib} | ${formatNumber(b.hz)} | ${rel}${note} |\n`;
   });
 
-  section += '\n---\n\n';
+  section += generateBarChart(updateBenches, maxUpdate);
+  section += '---\n\n';
 
   // 10 - Selectors
   section += `### 10 - Selectors (Feature Test)
@@ -449,10 +481,12 @@ function generateDetailedResults() {
     const lib = b.name.replace('Selector - ', '');
     const rel = ((b.hz || 0) / maxSelector).toFixed(2) + 'x';
     const note = i === 0 ? ' (fastest)' : '';
-    section += `| ${lib} | ${formatNumber(b.hz)} | ${rel}${note} |\n`;
+    const crown = i === 0 ? '👑 ' : '';
+    section += `| ${crown}${lib} | ${formatNumber(b.hz)} | ${rel}${note} |\n`;
   });
 
-  section += '\n---\n\n';
+  section += generateBarChart(selectorBenches, maxSelector);
+  section += '---\n\n';
 
   // 11 - Batching Native
   section += `### 11 - Batching Native (Feature Test)
@@ -471,11 +505,12 @@ function generateDetailedResults() {
     const lib = b.name.replace('Batched Updates - ', '');
     const rel = ((b.hz || 0) / maxBatching).toFixed(2) + 'x';
     const note = i === 0 ? ' (fastest)' : '';
-    section += `| ${lib} | ${formatNumber(b.hz)} | ${rel}${note} |\n`;
+    const crown = i === 0 ? '👑 ' : '';
+    section += `| ${crown}${lib} | ${formatNumber(b.hz)} | ${rel}${note} |\n`;
   });
 
-  section += `
-**Large Batch** (100 updates)
+  section += generateBarChart(batchingBenches, maxBatching);
+  section += `**Large Batch** (100 updates)
 
 | Library | ops/sec | Relative |
 |---------|---------|----------|
@@ -487,11 +522,12 @@ function generateDetailedResults() {
     const lib = b.name.replace('Large Batch - ', '');
     const rel = ((b.hz || 0) / maxLargeBatch).toFixed(2) + 'x';
     const note = i === 0 ? ' (fastest)' : '';
-    section += `| ${lib} | ${formatNumber(b.hz)} | ${rel}${note} |\n`;
+    const crown = i === 0 ? '👑 ' : '';
+    section += `| ${crown}${lib} | ${formatNumber(b.hz)} | ${rel}${note} |\n`;
   });
 
-  section += `
-**Unbatched Updates** (3 fields, no batching)
+  section += generateBarChart(largeBatchBenches, maxLargeBatch);
+  section += `**Unbatched Updates** (3 fields, no batching)
 
 | Library | ops/sec | Relative |
 |---------|---------|----------|
@@ -503,11 +539,12 @@ function generateDetailedResults() {
     const lib = b.name.replace('Unbatched Updates - ', '');
     const rel = ((b.hz || 0) / maxUnbatched).toFixed(2) + 'x';
     const note = i === 0 ? ' (fastest)' : '';
-    section += `| ${lib} | ${formatNumber(b.hz)} | ${rel}${note} |\n`;
+    const crown = i === 0 ? '👑 ' : '';
+    section += `| ${crown}${lib} | ${formatNumber(b.hz)} | ${rel}${note} |\n`;
   });
 
-  section += `
-**Batch with Subscriptions** (3 fields with observers)
+  section += generateBarChart(unbatchedBenches, maxUnbatched);
+  section += `**Batch with Subscriptions** (3 fields with observers)
 
 | Library | ops/sec | Relative |
 |---------|---------|----------|
@@ -519,10 +556,12 @@ function generateDetailedResults() {
     const lib = b.name.replace('Batched with Observers - ', '');
     const rel = ((b.hz || 0) / maxBatchSub).toFixed(2) + 'x';
     const note = i === 0 ? ' (fastest)' : '';
-    section += `| ${lib} | ${formatNumber(b.hz)} | ${rel}${note} |\n`;
+    const crown = i === 0 ? '👑 ' : '';
+    section += `| ${crown}${lib} | ${formatNumber(b.hz)} | ${rel}${note} |\n`;
   });
 
-  section += '\n---\n\n';
+  section += generateBarChart(batchSubBenches, maxBatchSub);
+  section += '---\n\n';
   return section;
 }
 
