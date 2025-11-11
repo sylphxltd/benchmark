@@ -1,158 +1,110 @@
-# State Management Benchmark 🏆
+# State Management Benchmarks
 
-Professional performance comparison of JavaScript state management libraries.
+Comprehensive performance benchmarks for JavaScript/TypeScript state management libraries.
 
 ## 📑 Table of Contents
 
-- [📋 Benchmark Information](#-benchmark-information)
-- [📦 Library Versions](#-library-versions)
-- [📦 Bundle Size Comparison](#-bundle-size-comparison)
-- [🚀 Performance Rankings](#-performance-rankings)
-- [📦 Bundle Size Rankings](#-bundle-size-rankings)
-- [🎯 Feature Coverage Rankings](#-feature-coverage-rankings)
-- [✨ Feature Comparison](#-feature-comparison)
-- [📜 Historical Results](#-historical-results)
-- [📊 Detailed Results](#-detailed-results)
-  - [📑 Test Categories](#-test-categories)
-- [🚀 Running Benchmarks](#-running-benchmarks)
-- [ℹ️ About](#️-about)
+- [Overall Performance Score](#overall-performance-score)
+- [Performance by Group](#performance-by-group)
+- [Feature Support Matrix](#feature-support-matrix)
+- [Test Categories](#test-categories)
+- [Group Results Summary](#group-results-summary)
+- [Methodology](#methodology)
+- [Key Insights](#key-insights)
+- [Running Benchmarks](#running-benchmarks)
 
-## 📋 Benchmark Information
+---
 
-- **Last Updated:** November 10, 2025
-- **Last Run:** 4:38:08 PM UTC
-- **Environment:** Node.js v20.19.5, linux x64
-- **Test Framework:** Vitest Bench
-- **Iterations:** 3 runs averaged for statistical accuracy
+## Overall Performance Score
 
-## 📦 Library Versions
+**Based on Universal Tests**: Read, Write, Creation, Memory
 
-| Library | Version | Size (gzip) | Last Updated | Status |
-|---------|---------|-------------|--------------|--------|
-| **@preact/signals** | `v2.4.0` | 3.04KB | Nov 7, 2025 | ✅ Latest |
-| **@reduxjs/toolkit** | `v2.10.1` | 13.83KB | Dec 6, 2024 | ✅ Latest |
-| **@sylphx/zen** | `v1.2.1` | 5.35KB | Nov 7, 2025 | ✅ Latest |
-| **jotai** | `v2.15.1` | 4.29KB | Dec 6, 2024 | ✅ Latest |
-| **mobx** | `v6.15.0` | 17.56KB | Dec 6, 2024 | ✅ Latest |
-| **recoil** | `v0.7.7` | 23.48KB | Nov 6, 2025 | ✅ Latest |
-| **solid-js** | `v1.9.10` | 3.96KB | Dec 6, 2024 | ✅ Latest |
-| **valtio** | `v2.2.0` | 3.07KB | Nov 6, 2025 | ✅ Latest |
-| **zustand** | `v5.0.8` | 1.17KB | Nov 6, 2025 | ✅ Latest |
+**Methodology**:
+1. Each library's raw performance (ops/sec) is measured for each test
+2. Scores are normalized to an index where the fastest library = 100
+   - Formula: `Index = (Library_Speed / Fastest_Speed) × 100`
+3. The overall score is the geometric mean of all normalized indices
+   - Formula: `Overall = ⁿ√(Index₁ × Index₂ × ... × Indexₙ)`
+4. Geometric mean prevents any single test from dominating the overall score
 
-## 📦 Bundle Size Comparison
+**Last Benchmark Run**: Nov 10, 2025, 4:38 PM
 
-Smaller bundle sizes mean faster initial load times and better user experience.
+| Rank | Library | Version | Overall Score | Bundle (gzip) | Last Updated |
+|:----:|---------|---------|---------------|---------------|--------------|
+| 🥇 1 | [**Solid Signals**](https://github.com/solidjs/solid) | 1.9.10 | 👑 98.4/100 | 4.0 KB | Dec 6 |
+| 🥈 2 | [**Preact Signals**](https://github.com/preactjs/signals) | 2.4.0 | 91.5/100 | 3.0 KB | Nov 7 |
+| 🥉 3 | [**Zen**](https://github.com/SylphxAI/zen) | 1.2.1 | 89.6/100 | 5.3 KB | Nov 7 |
+|  4 | [**Jotai**](https://github.com/pmndrs/jotai) | 2.15.1 | 50.0/100 | 4.3 KB | Dec 6 |
+|  5 | [**Valtio**](https://github.com/pmndrs/valtio) | 2.2.0 | 10.1/100 | 3.1 KB | Nov 6 |
+|  6 | [**Zustand**](https://github.com/pmndrs/zustand) | 5.0.8 | 7.4/100 | 👑 1.2 KB | Nov 6 |
+|  7 | [**Redux Toolkit**](https://github.com/reduxjs/redux-toolkit) | 2.10.1 | 4.1/100 | 13.8 KB | Dec 6 |
+|  8 | [**MobX**](https://github.com/mobxjs/mobx) | 6.15.0 | 1.6/100 | 17.6 KB | Dec 6 |
 
-| Rank | Library | Minified + Gzipped | Minified | Relative to Smallest |
-|------|---------|-------------------|----------|---------------------|
-| 🥇 | **zustand** | 1.17KB | 3.08KB | Baseline |
-| 🥈 | **@preact/signals** | 3.04KB | 8.97KB | 2.59x |
-| 🥉 | **valtio** | 3.07KB | 8.27KB | 2.62x |
-| 4 | **solid-js** | 3.96KB | 11.91KB | 3.38x |
-| 5 | **jotai** | 4.29KB | 11.12KB | 3.66x |
-| 6 | **@sylphx/zen** | 5.35KB | 18.43KB | 4.56x |
-| 7 | **@reduxjs/toolkit** | 13.83KB | 40.60KB | 11.79x |
-| 8 | **mobx** | 17.56KB | 63.65KB | 14.97x |
-| 9 | **recoil** | 23.48KB | 79.39KB | 20.02x |
+> **Note**: Groups 04 (Complexity), 05 (Cache Performance), 07 (Form State) currently have incomplete implementations and are excluded from the Overall Performance Score. These tests require refactoring to use real store implementations rather than placeholder logic.
 
-**Size Insight:** zustand is the most lightweight at 1.17KB (gzip), while recoil is 20.02x larger at 23.48KB (gzip).
+---
 
-## 🚀 Performance Rankings
+## Performance by Group
 
-Based on geometric mean across all supported tests (excludes extreme values):
+See which library wins in each test group:
 
-| Rank | Library | Score | Relative |
-|------|---------|-------|----------|
-| 🥇 | **jotai** | 100.0/100 | Baseline |
-| 🥈 | **Concurrent Async** | 97.6/100 | 97.6% |
-| 🥉 | **Async Loading** | 97.3/100 | 97.3% |
-| 4 | **Large State Allocation** | 68.4/100 | 68.4% |
-| 5 | **Solid Signals** | 67.5/100 | 67.5% |
-| 6 | **Zen** | 64.5/100 | 64.5% |
-| 7 | **Preact Signals** | 62.9/100 | 62.9% |
-| 8 | **Jotai** | 34.2/100 | 34.2% |
-| 9 | **High Frequency Read** | 24.6/100 | 24.6% |
-| 10 | **Simple Increment** | 19.6/100 | 19.6% |
-| 11 | **Simple Read** | 19.3/100 | 19.3% |
-| 12 | **Zustand** | 11.6/100 | 11.6% |
-| 13 | **Valtio** | 8.5/100 | 8.5% |
-| 14 | **MobX** | 8.4/100 | 8.4% |
-| 15 | **zustand** | 5.3/100 | 5.3% |
-| 16 | **Store Creation** | 4.9/100 | 4.9% |
-| 17 | **Burst Updates** | 4.8/100 | 4.8% |
-| 18 | **redux-toolkit** | 0.3/100 | 0.3% |
-| 19 | **Redux Toolkit** | 0.0/100 | 0.0% |
-| 19 | **Deep Read Access** | 0.0/100 | 0.0% |
+| Library | [01](#01---read-operations) | [02](#02---write-operations) | [03](#03---store-creation) | [04](#04---complexity) | [05](#05---cache-performance) | [06](#06---memory-allocation) | [07](#07---form-state) | [08](#08---reactive-async) | [09](#09---computed-native) | [10](#10---selectors) | [11](#11---batching-native) |
+|---------|------|------|------|------|------|------|------|------|------|------|------|
+| [**Solid Signals**](https://github.com/solidjs/solid) | - | - | - | - | - | - | - | - | - | - | - |
+| [**Preact Signals**](https://github.com/preactjs/signals) | - | - | - | - | - | - | - | - | - | - | - |
+| [**Zen**](https://github.com/SylphxAI/zen) | - | - | - | - | - | - | - | - | - | - | - |
+| [**Jotai**](https://github.com/pmndrs/jotai) | - | - | - | - | - | - | - | - | - | - | - |
+| [**Valtio**](https://github.com/pmndrs/valtio) | - | - | - | - | - | - | - | - | - | - | - |
+| [**Zustand**](https://github.com/pmndrs/zustand) | - | - | - | - | - | - | - | - | - | - | - |
+| [**Redux Toolkit**](https://github.com/reduxjs/redux-toolkit) | - | - | - | - | - | - | - | - | - | - | - |
+| [**MobX**](https://github.com/mobxjs/mobx) | - | - | - | - | - | - | - | - | - | - | - |
 
-> 📊 **Methodology:** Geometric mean prevents extreme values from skewing results. Each test is normalized (fastest = 100) then averaged.
+**Legend:** 🥇 1st place | 🥈 2nd place | 🥉 3rd place | - Not applicable
 
-## 📦 Bundle Size Rankings
+---
 
-Smaller is better. Scores use logarithmic scale (like Lighthouse):
+## Feature Support Matrix
 
-| Rank | Library | Size (gzip) | Score | Rating |
-|------|---------|-------------|-------|--------|
-| 🥇 | **zustand** | 1.17KB | 100/100 | Excellent |
-| 🥈 | **jotai** | 4.29KB | 83/100 | Good |
+| Feature | Description | Libraries |
+|---------|-------------|-----------|
+| **Native Computed Values** | Automatic dependency tracking for derived values using native computed/memo constructs | Jotai, MobX, Solid Signals, Preact Signals, Zen |
+| **Selector Pattern** | Manual derived state using selector functions | Redux Toolkit, Zustand, Valtio |
+| **Reactive Async** | Async computations that automatically recompute when dependencies change | Jotai |
+| **Native Batching** | Built-in update batching to reduce notification overhead | Solid Signals, MobX, Valtio |
+| **Middleware System** | Plugin system for extending functionality (logging, persistence, etc.) | Redux Toolkit, Zustand |
 
-> 📦 **Scale:** ≤2KB=100, 5KB=90, 10KB=75, 20KB=50. Logarithmic scoring reflects real-world impact.
+---
 
-## 🎯 Feature Coverage Rankings
+## Test Categories
 
-Percentage of benchmark tests supported:
+### Universal Tests (01, 02, 03, 04, 05, 06, 07)
 
-| Rank | Library | Supported | Coverage |
-|------|---------|-----------|----------|
-| 🥇 | **Jotai** | 36/66 | 55% |
-| 🥇 | **Zen** | 36/66 | 55% |
-| 🥉 | **Zustand** | 35/66 | 53% |
-| 🥉 | **MobX** | 35/66 | 53% |
-| 🥉 | **Valtio** | 35/66 | 53% |
-| 🥉 | **Preact Signals** | 35/66 | 53% |
-| 🥉 | **Solid Signals** | 35/66 | 53% |
-| 8 | **Redux Toolkit** | 34/66 | 52% |
-| 9 | **jotai** | 4/66 | 6% |
-| 9 | **redux-toolkit** | 4/66 | 6% |
-| 9 | **zustand** | 4/66 | 6% |
-| 12 | **Store Creation** | 1/66 | 2% |
-| 12 | **Large State Allocation** | 1/66 | 2% |
-| 12 | **Async Loading** | 1/66 | 2% |
-| 12 | **Concurrent Async** | 1/66 | 2% |
-| 12 | **Simple Read** | 1/66 | 2% |
-| 12 | **High Frequency Read** | 1/66 | 2% |
-| 12 | **Simple Increment** | 1/66 | 2% |
-| 12 | **Burst Updates** | 1/66 | 2% |
+All 8 libraries participate equally. Used to calculate Overall Performance Score.
 
-> 🎯 **Note:** Higher coverage means more features, but evaluate based on your specific needs.
+- **01 - Read Operations**: Simple read and high-frequency read patterns
+- **02 - Write Operations**: Simple increments and burst updates
+- **03 - Store Creation**: Instance creation overhead
+- **04 - Complexity**: Deep nested state *(Implementation incomplete)*
+- **05 - Cache Performance**: Repeated access patterns *(Implementation incomplete)*
+- **06 - Memory Allocation**: Large state allocation performance
+- **07 - Form State**: Multi-field updates *(Implementation incomplete)*
 
-## ✨ Feature Comparison
+### Feature Tests (08, 09, 10, 11)
 
-Compare state management libraries by their supported features
+Libraries participate only if they have native support for the tested capability.
 
-| Feature | **@preact/signals** | **@reduxjs/toolkit** | **@sylphx/zen** | **jotai** | **mobx** | **solid-js** | **valtio** | **zustand** |
-|---------|:---:|:---:|:---:|:---:|:---:|:---:|:---:|:---:|
-| **Native Computed Values**<br/><sub>Automatic dependency tracking for derived values using native computed/memo constructs</sub> | ✅ | ❌ | ✅ | ✅ | ✅ | ✅ | ❌ | ❌ |
-| **Selector Pattern**<br/><sub>Manual derived state using selector functions</sub> | ❌ | ✅ | ❌ | ❌ | ❌ | ❌ | ✅ | ✅ |
-| **Reactive Async**<br/><sub>Async computations that automatically recompute when dependencies change</sub> | ❌ | ❌ | ❌ | ✅ | ❌ | ❌ | ❌ | ❌ |
-| **Native Batching**<br/><sub>Built-in update batching to reduce notification overhead</sub> | ❌ | ❌ | ❌ | ❌ | ✅ | ✅ | ✅ | ❌ |
-| **Middleware System**<br/><sub>Plugin system for extending functionality (logging, persistence, etc.)</sub> | ❌ | ✅ | ❌ | ❌ | ❌ | ❌ | ❌ | ✅ |
+- **08 - Reactive Async**: Async atoms/computations (Jotai only)
+- **09 - Computed Native**: Native computed values (5 libraries)
+- **10 - Selectors**: Manual selector pattern (3 libraries)
+- **11 - Batching Native**: Built-in batching (3 libraries)
 
-> 💡 **Legend:** ✅ = Supported, ❌ = Not supported. Click checkmarks for documentation.
-
-## 📜 Historical Results
-
-| Date | Results |
-|------|---------|
-| 2025-11-10 | [View Results](./results/2025-11-10.json) |
-| 2025-11-09 | [View Results](./results/2025-11-09.json) |
-| 2025-11-07 | [View Results](./results/2025-11-07.json) |
-| 2025-11-06 | [View Results](./results/2025-11-06.json) |
+---
 
 ## Group Results Summary
 
 Click on any group to view detailed benchmark results.
 
-### [Read Operations](groups/01-read/README.md)
+### [01 - Read Operations](groups/01-read/README.md)
 
 Simple read and high-frequency read patterns
 
@@ -160,7 +112,7 @@ Simple read and high-frequency read patterns
 
 ---
 
-### [Write Operations](groups/02-write/README.md)
+### [02 - Write Operations](groups/02-write/README.md)
 
 Simple increments and burst updates
 
@@ -168,7 +120,7 @@ Simple increments and burst updates
 
 ---
 
-### [Store Creation](groups/03-creation/README.md)
+### [03 - Store Creation](groups/03-creation/README.md)
 
 Instance creation overhead
 
@@ -176,15 +128,27 @@ Instance creation overhead
 
 ---
 
-### [Complexity](groups/04-complexity/README.md)
+### [04 - Complexity](groups/04-complexity/README.md)
 
 Deep nested state
+
+⚠️ *Implementation incomplete - excluded from Overall Performance Score*
 
 **[View Detailed Results →](groups/04-complexity/README.md)**
 
 ---
 
-### [Memory Allocation](groups/06-memory/README.md)
+### [05 - Cache Performance](groups/05-cache/README.md)
+
+Repeated access patterns
+
+⚠️ *Implementation incomplete - excluded from Overall Performance Score*
+
+**[View Detailed Results →](groups/05-cache/README.md)**
+
+---
+
+### [06 - Memory Allocation](groups/06-memory/README.md)
 
 Large state allocation performance
 
@@ -192,19 +156,21 @@ Large state allocation performance
 
 ---
 
-### [Form State](groups/07-form/README.md)
+### [07 - Form State](groups/07-form/README.md)
 
 Multi-field updates
 
-*No results available*
+⚠️ *Implementation incomplete - excluded from Overall Performance Score*
 
 **[View Detailed Results →](groups/07-form/README.md)**
 
 ---
 
-### [Reactive Async](groups/08-async-reactive/README.md)
+### [08 - Reactive Async](groups/08-async-reactive/README.md) (Feature Test)
 
 Async atoms/computations
+
+**Participating Libraries**: Jotai
 
 *No results available*
 
@@ -212,24 +178,114 @@ Async atoms/computations
 
 ---
 
-## 🚀 Running Benchmarks
+### [09 - Computed Native](groups/09-computed-native/README.md) (Feature Test)
 
-```bash
-# Install dependencies
-npm install
+Native computed values
 
-# Run benchmarks
-npm run benchmark
-```
+**Participating Libraries**: Jotai, MobX, Solid Signals, Preact Signals, Zen
 
-## ℹ️ About
+*No results available*
 
-This benchmark is automatically updated daily by GitHub Actions. Benchmarks run only when:
-- A library releases a new version
-- Test files are modified
-
-**Methodology:** Each test runs multiple iterations until statistical significance is achieved. Results are averaged over 3 complete runs to ensure accuracy.
+**[View Detailed Results →](groups/09-computed-native/README.md)**
 
 ---
 
-*Last generated: 2025-11-11T08:58:54.683Z*
+### [10 - Selectors](groups/10-selectors/README.md) (Feature Test)
+
+Manual selector pattern
+
+**Participating Libraries**: Redux Toolkit, Zustand, Valtio
+
+*No results available*
+
+**[View Detailed Results →](groups/10-selectors/README.md)**
+
+---
+
+### [11 - Batching Native](groups/11-batching-native/README.md) (Feature Test)
+
+Built-in batching
+
+**Participating Libraries**: Solid Signals, MobX, Valtio
+
+**[View Detailed Results →](groups/11-batching-native/README.md)**
+
+---
+
+## Methodology
+
+### Universal Test Standards
+
+- **All libraries participate** in universal tests (excluding incomplete tests)
+- Results are **normalized** and combined using **geometric mean**
+- Tests use **actual library APIs**, not synthetic constructs
+- Each benchmark runs for sufficient iterations to achieve statistical significance
+
+### Feature Test Standards
+
+- **Only libraries with native support** participate
+- Tests measure **real-world usage patterns** of the feature
+- No placeholder or workaround implementations
+- Separate rankings for each feature
+
+### Benchmark Environment
+
+- **Runtime**: Node.js v25.0.0
+- **Framework**: Vitest Bench
+- **Hardware**: [System-dependent]
+- **Iterations**: Automatically determined by Vitest for statistical significance
+
+---
+
+## Key Insights
+
+### Performance Tiers
+
+1. **Signal-based (Tier S)**: Solid Signals, Preact Signals, Zen - Exceptional performance across all operations
+2. **Atom-based (Tier A)**: Jotai - Very fast but creation overhead impacts overall score
+3. **Proxy-based (Tier B)**: Valtio - Moderate performance with good ergonomics
+4. **Store-based (Tier C)**: Zustand, Redux Toolkit - Lower raw performance but predictable
+5. **Observable-based (Tier D)**: MobX - High creation cost, moderate runtime performance
+
+### Trade-offs
+
+- **Solid Signals**: Fastest overall, but requires Solid.js ecosystem
+- **Preact Signals**: Excellent balance of speed and bundle size
+- **Zen**: Similar performance to Preact, slightly larger bundle
+- **Jotai**: Very fast read/write, slower creation, unique async capabilities
+- **Valtio**: Simple API, moderate performance, good for nested mutations
+- **Zustand**: Minimal bundle, simple API, moderate performance
+- **Redux Toolkit**: Feature-rich, DevTools support, larger bundle
+- **MobX**: Automatic tracking, slow creation, largest bundle
+
+---
+
+## Running Benchmarks
+
+```bash
+# Run all benchmarks
+npm run benchmark
+
+# Run specific groups
+npm run benchmark:read
+npm run benchmark:write
+npm run benchmark:creation
+```
+
+---
+
+## Compliance
+
+This benchmark category follows [../../BENCHMARK_STANDARD.md](../../BENCHMARK_STANDARD.md) v1.0.0:
+
+- ✅ Universal tests (1, 2, 3, 6) use real APIs for all libraries
+- ✅ Feature tests (8, 9, 10, 11) only include libraries with native support
+- ✅ Overall Performance Score uses geometric mean of universal tests
+- ⚠️ Groups 4, 5, 7 require implementation updates
+- ✅ No placeholder or synthetic implementations in active tests
+
+---
+
+## License
+
+MIT
