@@ -116,4 +116,4 @@ npx vitest bench groups/11-batching-native/*.bench.ts
 ```
 
 ---
-*Last generated: 2025-11-11T11:07:42.958Z*
+*Last generated: 2025-11-11T11:24:50.130Z*

@@ -36,7 +36,7 @@ Large state allocation performance.
 | 🥉 3 | [**Zen**](https://github.com/SylphxAI/zen) | 1.9M |
 |  4 | [**Solid Signals**](https://github.com/solidjs/solid) | 1.7M |
 |  5 | [**Preact Signals**](https://github.com/preactjs/signals) | 1.7M |
-|  6 | [**Jotai**](https://github.com/pmndrs/jotai) | 957K |
+|  6 | [**Jotai**](https://github.com/pmndrs/jotai) | 956K |
 |  7 | [**MobX**](https://github.com/mobxjs/mobx) | 885K |
 |  8 | [**Redux Toolkit**](https://github.com/reduxjs/redux-toolkit) | 353K |
 
@@ -49,7 +49,7 @@ Large state allocation performance.
 ```
 🥇   Zustand            ████████████████████████████████████████      596K ops/sec
 🥈   Zen                █████████████████████████████                 429K ops/sec
-🥉   Jotai              █████████████████████████████                 426K ops/sec
+🥉   Jotai              ████████████████████████████                  418K ops/sec
 4.   Solid Signals      ████████████████████████                      365K ops/sec
 5.   Preact Signals     ███████████████████████                       345K ops/sec
 6.   Redux Toolkit      ███                                            44K ops/sec
@@ -60,7 +60,7 @@ Large state allocation performance.
 |:----:|---------|---------|----------|------|-----|---------|
 | 🥇 | [**Zustand**](https://github.com/pmndrs/zustand) | 595,988 | ±0.62% | 1.7000ms | 2.3000ms | 297994 |
 | 🥈 | [**Zen**](https://github.com/SylphxAI/zen) | 429,220 | ±0.64% | 2.3000ms | 8.1000ms | 214611 |
-| 🥉 | [**Jotai**](https://github.com/pmndrs/jotai) | 426,029 | ±0.39% | 2.3000ms | 7.0000ms | 213015 |
+| 🥉 | [**Jotai**](https://github.com/pmndrs/jotai) | 417,652 | ±0.42% | 2.4000ms | 7.9000ms | 208826 |
 | 4 | [**Solid Signals**](https://github.com/solidjs/solid) | 364,516 | ±0.37% | 2.7000ms | 11.1000ms | 182259 |
 | 5 | [**Preact Signals**](https://github.com/preactjs/signals) | 345,059 | ±0.60% | 2.9000ms | 10.1000ms | 172530 |
 | 6 | [**Redux Toolkit**](https://github.com/reduxjs/redux-toolkit) | 44,145 | ±0.21% | 22.7000ms | 29.6000ms | 22073 |
@@ -98,7 +98,7 @@ Large state allocation performance.
 | 4 | [**Solid Signals**](https://github.com/solidjs/solid) | 40,932,526 | ±0.05% | 0.0000ms | 0.0000ms | 20466264 |
 | 5 | [**Preact Signals**](https://github.com/preactjs/signals) | 39,580,507 | ±0.23% | 0.0000ms | 0.0000ms | 19790254 |
 | 6 | [**MobX**](https://github.com/mobxjs/mobx) | 19,846,333 | ±0.15% | 0.1000ms | 0.1000ms | 9923167 |
-| 7 | [**Jotai**](https://github.com/pmndrs/jotai) | 6,300,891 | ±0.57% | 0.2000ms | 0.3000ms | 3150446 |
+| 7 | [**Jotai**](https://github.com/pmndrs/jotai) | 6,296,620 | ±0.16% | 0.2000ms | 0.2000ms | 3148310 |
 
 **Key Insight:** Zustand is 7.32x faster than Jotai in this test.
 
@@ -120,7 +120,7 @@ Large state allocation performance.
 🥉   Zen                ████                                          350K ops/sec
 4.   Preact Signals     ████                                          349K ops/sec
 5.   Solid Signals      ████                                          343K ops/sec
-6.   Jotai              ███                                           326K ops/sec
+6.   Jotai              ███                                           333K ops/sec
 7.   Redux Toolkit                                                     24K ops/sec
 ```
 
@@ -131,7 +131,7 @@ Large state allocation performance.
 | 🥉 | [**Zen**](https://github.com/SylphxAI/zen) | 349,631 | ±0.62% | 2.9000ms | 6.4000ms | 174816 |
 | 4 | [**Preact Signals**](https://github.com/preactjs/signals) | 349,103 | ±0.53% | 2.9000ms | 7.7000ms | 174552 |
 | 5 | [**Solid Signals**](https://github.com/solidjs/solid) | 343,421 | ±2.01% | 2.9000ms | 7.1000ms | 171711 |
-| 6 | [**Jotai**](https://github.com/pmndrs/jotai) | 326,019 | ±0.43% | 3.1000ms | 6.4000ms | 163010 |
+| 6 | [**Jotai**](https://github.com/pmndrs/jotai) | 332,616 | ±0.38% | 3.0000ms | 6.0000ms | 166308 |
 | 7 | [**Redux Toolkit**](https://github.com/reduxjs/redux-toolkit) | 23,610 | ±0.33% | 42.4000ms | 62.9000ms | 11806 |
 
 **Key Insight:** Zustand is 164.15x faster than Redux Toolkit in this test.
@@ -154,4 +154,4 @@ npx vitest bench groups/06-memory/*.bench.ts
 ```
 
 ---
-*Last generated: 2025-11-11T11:07:42.714Z*
+*Last generated: 2025-11-11T11:24:49.874Z*

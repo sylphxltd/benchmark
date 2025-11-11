@@ -113,7 +113,7 @@ Simple read and high-frequency read patterns
 5.   Redux Toolkit      ███████                                       1.5M ops/sec
 6.   Valtio             ███                                           700K ops/sec
 7.   MobX               ██                                            348K ops/sec
-8.   Jotai                                                             54K ops/sec
+8.   Jotai                                                             55K ops/sec
 ```
 
 | Rank | Library | Group Score |
@@ -125,7 +125,7 @@ Simple read and high-frequency read patterns
 |  5 | **Redux Toolkit** | 1.5M |
 |  6 | **Valtio** | 700K |
 |  7 | **MobX** | 348K |
-|  8 | **Jotai** | 54K |
+|  8 | **Jotai** | 55K |
 
 **[View Detailed Results →](groups/01-read/README.md)**
 
@@ -170,7 +170,7 @@ Instance creation overhead
 🥈   Preact Signals     ███████████████████████████████████           8.4M ops/sec
 🥉   Solid Signals      ████████████                                  2.8M ops/sec
 4.   Zustand            █                                             157K ops/sec
-5.   Jotai                                                             16K ops/sec
+5.   Jotai                                                             14K ops/sec
 6.   MobX                                                               7K ops/sec
 7.   Valtio                                                             4K ops/sec
 8.   Redux Toolkit                                                      1K ops/sec
@@ -182,7 +182,7 @@ Instance creation overhead
 | 🥈 2 | **Preact Signals** | 8.4M |
 | 🥉 3 | **Solid Signals** | 2.8M |
 |  4 | **Zustand** | 157K |
-|  5 | **Jotai** | 16K |
+|  5 | **Jotai** | 14K |
 |  6 | **MobX** | 7K |
 |  7 | **Valtio** | 4K |
 |  8 | **Redux Toolkit** | 1K |
@@ -226,7 +226,7 @@ Large state allocation performance
 🥈   Zen                ████████████████                              1.9M ops/sec
 🥉   Solid Signals      ███████████████                               1.7M ops/sec
 4.   Preact Signals     ██████████████                                1.7M ops/sec
-5.   Jotai              ████████                                      957K ops/sec
+5.   Jotai              ████████                                      956K ops/sec
 6.   MobX               ███████                                       885K ops/sec
 7.   Redux Toolkit      ███                                           353K ops/sec
 ```
@@ -237,7 +237,7 @@ Large state allocation performance
 | 🥈 2 | **Zen** | 1.9M |
 | 🥉 3 | **Solid Signals** | 1.7M |
 |  4 | **Preact Signals** | 1.7M |
-|  5 | **Jotai** | 957K |
+|  5 | **Jotai** | 956K |
 |  6 | **MobX** | 885K |
 |  7 | **Redux Toolkit** | 353K |
 
@@ -302,7 +302,7 @@ Native computed values
 🥈   Zen                ██████████████████████                        4.5M ops/sec
 🥉   Preact Signals     █████████████████████                         4.2M ops/sec
 4.   MobX               ███                                           521K ops/sec
-5.   Jotai              █                                             122K ops/sec
+5.   Jotai              █                                             123K ops/sec
 ```
 
 | Rank | Library | Group Score |
@@ -311,7 +311,7 @@ Native computed values
 | 🥈 2 | **Zen** | 4.5M |
 | 🥉 3 | **Preact Signals** | 4.2M |
 |  4 | **MobX** | 521K |
-|  5 | **Jotai** | 122K |
+|  5 | **Jotai** | 123K |
 
 **[View Detailed Results →](groups/09-computed-native/README.md)**
 
