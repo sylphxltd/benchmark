@@ -175,8 +175,8 @@ function generateOverallScore() {
 
 **Last Benchmark Run**: ${new Date(versions.lastBenchmarkRun).toLocaleString('en-US', { dateStyle: 'medium', timeStyle: 'short' })}
 
-| Rank | Library | Overall Score | Bundle (gzip) | Last Updated |
-|------|---------|---------------|---------------|--------------|
+| Rank | Library | Version | Overall Score | Bundle (gzip) | Last Updated |
+|------|---------|---------|---------------|---------------|--------------|
 `;
 
   indexScores.forEach((entry, index) => {
@@ -187,6 +187,7 @@ function generateOverallScore() {
       libraryMetadata.libraries[key].displayName === entry.library
     );
 
+    const version = versions.libraries[libKey]?.current || 'N/A';
     const size = versions.libraries[libKey]?.size?.gzip || 0;
     const sizeKB = (size / 1024).toFixed(1);
     const lastUpdated = versions.libraries[libKey]?.lastUpdated
@@ -200,7 +201,7 @@ function generateOverallScore() {
 
     const libraryLink = githubUrl ? `[**${entry.library}**](${githubUrl})` : `**${entry.library}**`;
 
-    section += `| ${emoji}${rank} | ${libraryLink} | ${scoreCrown}${entry.overallIndex.toFixed(1)}/100 | ${sizeCrown}${sizeKB} KB | ${lastUpdated} |\n`;
+    section += `| ${emoji}${rank} | ${libraryLink} | ${version} | ${scoreCrown}${entry.overallIndex.toFixed(1)}/100 | ${sizeCrown}${sizeKB} KB | ${lastUpdated} |\n`;
   });
 
   const incompleteGroups = Object.entries(groupsConfig.groups)

@@ -29,16 +29,16 @@ Comprehensive performance benchmarks for JavaScript/TypeScript state management 
 
 **Last Benchmark Run**: Nov 10, 2025, 4:38 PM
 
-| Rank | Library | Overall Score | Bundle (gzip) | Last Updated |
-|------|---------|---------------|---------------|--------------|
-| 🥇 1 | [**Solid Signals**](https://github.com/solidjs/solid) | 👑 98.4/100 | 4.0 KB | Dec 6 |
-| 🥈 2 | [**Preact Signals**](https://github.com/preactjs/signals) | 91.5/100 | 3.0 KB | Nov 7 |
-| 🥉 3 | [**Zen**](https://github.com/SylphxAI/zen) | 89.6/100 | 5.3 KB | Nov 7 |
-|  4 | [**Jotai**](https://github.com/pmndrs/jotai) | 50.0/100 | 4.3 KB | Dec 6 |
-|  5 | [**Valtio**](https://github.com/pmndrs/valtio) | 10.1/100 | 3.1 KB | Nov 6 |
-|  6 | [**Zustand**](https://github.com/pmndrs/zustand) | 7.4/100 | 👑 1.2 KB | Nov 6 |
-|  7 | [**Redux Toolkit**](https://github.com/reduxjs/redux-toolkit) | 4.1/100 | 13.8 KB | Dec 6 |
-|  8 | [**MobX**](https://github.com/mobxjs/mobx) | 1.6/100 | 17.6 KB | Dec 6 |
+| Rank | Library | Version | Overall Score | Bundle (gzip) | Last Updated |
+|------|---------|---------|---------------|---------------|--------------|
+| 🥇 1 | [**Solid Signals**](https://github.com/solidjs/solid) | 1.9.10 | 👑 98.4/100 | 4.0 KB | Dec 6 |
+| 🥈 2 | [**Preact Signals**](https://github.com/preactjs/signals) | 2.4.0 | 91.5/100 | 3.0 KB | Nov 7 |
+| 🥉 3 | [**Zen**](https://github.com/SylphxAI/zen) | 1.2.1 | 89.6/100 | 5.3 KB | Nov 7 |
+|  4 | [**Jotai**](https://github.com/pmndrs/jotai) | 2.15.1 | 50.0/100 | 4.3 KB | Dec 6 |
+|  5 | [**Valtio**](https://github.com/pmndrs/valtio) | 2.2.0 | 10.1/100 | 3.1 KB | Nov 6 |
+|  6 | [**Zustand**](https://github.com/pmndrs/zustand) | 5.0.8 | 7.4/100 | 👑 1.2 KB | Nov 6 |
+|  7 | [**Redux Toolkit**](https://github.com/reduxjs/redux-toolkit) | 2.10.1 | 4.1/100 | 13.8 KB | Dec 6 |
+|  8 | [**MobX**](https://github.com/mobxjs/mobx) | 6.15.0 | 1.6/100 | 17.6 KB | Dec 6 |
 
 > **Note**: Groups 04 (Complexity), 05 (Cache Performance), 07 (Form State) currently have incomplete implementations and are excluded from the Overall Performance Score. These tests require refactoring to use real store implementations rather than placeholder logic.
 
