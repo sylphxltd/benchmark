@@ -1,11 +1,11 @@
 /**
  * Zen Library Implementation
  *
- * Zen is a minimal and fast state management library with signal-based reactivity.
- * Uses zen() to create signals, get() to read, and set() to write values.
+ * Zen 3.0 is an ultra-optimized reactive state library with auto-tracking.
+ * Uses zen() to create signals, .value to read/write values.
  */
 
-import { zen, get, set, onNotify } from '@sylphx/zen';
+import { zen, computed, subscribe } from '@sylphx/zen';
 import { category, tests } from '../index';
 
 // ============================================================================
@@ -16,7 +16,7 @@ interface ZenStore {
   counter: ReturnType<typeof zen<number>>;
   nested: ReturnType<typeof zen<{ nested: { value: number } }>>;
   users: ReturnType<typeof zen<Array<{ id: number; name: string }>>>;
-  doubled: ReturnType<typeof zen<number>>;
+  doubled: ReturnType<typeof computed<number>>;
   form: ReturnType<typeof zen<{ name: string; email: string; age: number }>>;
   complexForm: ReturnType<typeof zen<{ profile: { name: string }; tags: string[] }>>;
   largeArray: ReturnType<typeof zen<number[]>>;
@@ -31,7 +31,7 @@ const zenLib = category.registerLibrary<ZenStore>({
   displayName: 'Zen',
   packageName: '@sylphx/zen',
   githubUrl: 'https://github.com/SylphxAI/zen',
-  description: 'Minimal and fast state management with signal-based reactivity',
+  description: 'Ultra-optimized reactive state with auto-tracking',
 
   setup: {
     createStore: () => {
@@ -39,8 +39,8 @@ const zenLib = category.registerLibrary<ZenStore>({
       const nested = zen({ nested: { value: 0 } });
       const users = zen<Array<{ id: number; name: string }>>([]);
 
-      // Computed signal (derived value)
-      const doubled = zen(() => get(counter) * 2);
+      // Computed signal with auto-tracking
+      const doubled = computed(() => counter.value * 2);
 
       const form = zen({ name: '', email: '', age: 0 });
       const complexForm = zen({ profile: { name: '' }, tags: [] as string[] });
@@ -65,86 +65,84 @@ const zenLib = category.registerLibrary<ZenStore>({
 // Implement Tests (using object references!)
 // ============================================================================
 
-// ✅ No strings! IDE autocomplete works!
-// ✅ Type-safe! Wrong test object = compile error!
-// ✅ Refactor-safe! Rename symbol = auto update!
-
 // ========== BASIC READ TESTS ==========
 
 zenLib.implement(tests.singleRead, (ctx) => {
-  const value = get(ctx.store.counter);
+  const value = ctx.store.counter.value;
 });
 
 zenLib.implement(tests.moderateRead, (ctx) => {
   for (let i = 0; i < 100; i++) {
-    const value = get(ctx.store.counter);
+    const value = ctx.store.counter.value;
   }
 });
 
 zenLib.implement(tests.highFrequencyRead, (ctx) => {
   for (let i = 0; i < 1000; i++) {
-    const value = get(ctx.store.counter);
+    const value = ctx.store.counter.value;
   }
 });
 
 // ========== BASIC WRITE TESTS ==========
 
 zenLib.implement(tests.singleWrite, (ctx) => {
-  set(ctx.store.counter, (prev) => prev + 1);
+  ctx.store.counter.value++;
 });
 
 zenLib.implement(tests.batchWrite, (ctx) => {
   for (let i = 0; i < 10; i++) {
-    set(ctx.store.counter, (prev) => prev + 1);
+    ctx.store.counter.value++;
   }
 });
 
 zenLib.implement(tests.burstWrite, (ctx) => {
   for (let i = 0; i < 100; i++) {
-    set(ctx.store.counter, (prev) => prev + 1);
+    ctx.store.counter.value++;
   }
 });
 
 zenLib.implement(tests.heavyWrite, (ctx) => {
   for (let i = 0; i < 1000; i++) {
-    set(ctx.store.counter, (prev) => prev + 1);
+    ctx.store.counter.value++;
   }
 });
 
 // ========== ADVANCED OPERATIONS ==========
 
 zenLib.implement(tests.nestedUpdate, (ctx) => {
-  set(ctx.store.nested, (prev) => ({
+  const prev = ctx.store.nested.value;
+  ctx.store.nested.value = {
     ...prev,
     nested: {
       ...prev.nested,
       value: prev.nested.value + 1,
     },
-  }));
+  };
 });
 
 zenLib.implement(tests.arrayPush, (ctx) => {
-  set(ctx.store.users, (prev) => [
+  const prev = ctx.store.users.value;
+  ctx.store.users.value = [
     ...prev,
     { id: prev.length + 1, name: `User ${prev.length + 1}` },
-  ]);
+  ];
 });
 
 zenLib.implement(tests.arrayUpdate, (ctx) => {
   // First ensure there's at least one user
-  const users = get(ctx.store.users);
-  if (users.length === 0) {
-    set(ctx.store.users, [{ id: 1, name: 'User 1' }]);
+  if (ctx.store.users.value.length === 0) {
+    ctx.store.users.value = [{ id: 1, name: 'User 1' }];
   }
   // Then update the first user
-  set(ctx.store.users, (prev) => [
+  const prev = ctx.store.users.value;
+  ctx.store.users.value = [
     { ...prev[0], name: 'Updated User' },
     ...prev.slice(1),
-  ]);
+  ];
 });
 
 zenLib.implement(tests.computedValue, (ctx) => {
-  const value = get(ctx.store.doubled);
+  const value = ctx.store.doubled.value;
 });
 
 // ========== ASYNC OPERATIONS ==========
@@ -152,26 +150,26 @@ zenLib.implement(tests.computedValue, (ctx) => {
 zenLib.implement(tests.sequentialAsync, async (ctx) => {
   // Sequential: await each operation
   await new Promise((resolve) => setTimeout(resolve, 1));
-  set(ctx.store.counter, (prev) => prev + 1);
+  ctx.store.counter.value++;
 
   await new Promise((resolve) => setTimeout(resolve, 1));
-  set(ctx.store.counter, (prev) => prev + 1);
+  ctx.store.counter.value++;
 
   await new Promise((resolve) => setTimeout(resolve, 1));
-  set(ctx.store.counter, (prev) => prev + 1);
+  ctx.store.counter.value++;
 });
 
 zenLib.implement(tests.concurrentAsync, async (ctx) => {
   // Concurrent: Promise.all
   await Promise.all([
     new Promise((resolve) => setTimeout(resolve, 1)).then(() => {
-      set(ctx.store.counter, (prev) => prev + 1);
+      ctx.store.counter.value++;
     }),
     new Promise((resolve) => setTimeout(resolve, 1)).then(() => {
-      set(ctx.store.counter, (prev) => prev + 1);
+      ctx.store.counter.value++;
     }),
     new Promise((resolve) => setTimeout(resolve, 1)).then(() => {
-      set(ctx.store.counter, (prev) => prev + 1);
+      ctx.store.counter.value++;
     }),
   ]);
 });
@@ -179,41 +177,41 @@ zenLib.implement(tests.concurrentAsync, async (ctx) => {
 // ========== REAL-WORLD SCENARIOS ==========
 
 zenLib.implement(tests.simpleForm, (ctx) => {
-  set(ctx.store.form, (prev) => ({
-    ...prev,
+  ctx.store.form.value = {
+    ...ctx.store.form.value,
     name: 'John Doe',
-  }));
-  set(ctx.store.form, (prev) => ({
-    ...prev,
+  };
+  ctx.store.form.value = {
+    ...ctx.store.form.value,
     email: 'john@example.com',
-  }));
-  set(ctx.store.form, (prev) => ({
-    ...prev,
+  };
+  ctx.store.form.value = {
+    ...ctx.store.form.value,
     age: 30,
-  }));
+  };
 });
 
 zenLib.implement(tests.complexForm, (ctx) => {
   // Update nested object
-  set(ctx.store.complexForm, (prev) => ({
-    ...prev,
+  ctx.store.complexForm.value = {
+    ...ctx.store.complexForm.value,
     profile: {
-      ...prev.profile,
+      ...ctx.store.complexForm.value.profile,
       name: 'John Doe',
     },
-  }));
+  };
   // Update array
-  set(ctx.store.complexForm, (prev) => ({
-    ...prev,
-    tags: [...prev.tags, 'developer', 'react'],
-  }));
+  ctx.store.complexForm.value = {
+    ...ctx.store.complexForm.value,
+    tags: [...ctx.store.complexForm.value.tags, 'developer', 'react'],
+  };
 });
 
 zenLib.implement(tests.cacheInvalidation, (ctx) => {
   // Update source data
-  set(ctx.store.counter, (prev) => prev + 1);
+  ctx.store.counter.value++;
   // Access computed value (should reflect new value)
-  const doubled = get(ctx.store.doubled);
+  const doubled = ctx.store.doubled.value;
 });
 
 zenLib.implement(tests.memoryUsage, (ctx) => {
@@ -221,8 +219,8 @@ zenLib.implement(tests.memoryUsage, (ctx) => {
 
   // Create 100 subscribers
   for (let i = 0; i < 100; i++) {
-    // Subscribe to signal changes using onNotify
-    const unsub = onNotify(ctx.store.counter, () => {
+    // Subscribe to signal changes
+    const unsub = subscribe(ctx.store.counter, () => {
       // Subscriber callback
     });
     unsubscribers.push(unsub);
@@ -236,28 +234,27 @@ zenLib.implement(tests.memoryUsage, (ctx) => {
 
 zenLib.implement(tests.extremeRead, (ctx) => {
   for (let i = 0; i < 10000; i++) {
-    const value = get(ctx.store.counter);
+    const value = ctx.store.counter.value;
   }
 });
 
 zenLib.implement(tests.extremeWrite, (ctx) => {
   for (let i = 0; i < 10000; i++) {
-    set(ctx.store.counter, (prev) => prev + 1);
+    ctx.store.counter.value++;
   }
 });
 
 zenLib.implement(tests.largeArray, (ctx) => {
   // Initialize with 1000 items
   const items = Array.from({ length: 1000 }, (_, i) => i);
-  set(ctx.store.largeArray, items);
+  ctx.store.largeArray.value = items;
 
   // Read the array
-  const array = get(ctx.store.largeArray);
+  const array = ctx.store.largeArray.value;
 
   // Update one item
-  set(ctx.store.largeArray, (prev) => {
-    const newArray = [...prev];
-    newArray[500] = 999;
-    return newArray;
-  });
+  const prev = ctx.store.largeArray.value;
+  const newArray = [...prev];
+  newArray[500] = 999;
+  ctx.store.largeArray.value = newArray;
 });
