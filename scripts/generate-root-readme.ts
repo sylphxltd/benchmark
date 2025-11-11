@@ -15,58 +15,6 @@ interface CategoryInfo {
   libraryCount: number;
 }
 
-interface GroupResult {
-  name: string;
-  description: string;
-  results: Array<{
-    rank: number;
-    library: string;
-    score: string;
-    scoreValue: number;
-  }>;
-}
-
-function parseScore(score: string): number {
-  // Remove crown emoji if present
-  const cleanScore = score.replace('👑 ', '').trim();
-
-  // Parse formats like "28.3M", "993K", "123"
-  if (cleanScore.endsWith('M')) {
-    return parseFloat(cleanScore) * 1000000;
-  } else if (cleanScore.endsWith('K')) {
-    return parseFloat(cleanScore) * 1000;
-  } else {
-    return parseFloat(cleanScore);
-  }
-}
-
-function formatScore(value: number): string {
-  if (value >= 1000000) {
-    return `${(value / 1000000).toFixed(1)}M`;
-  } else if (value >= 1000) {
-    return `${Math.round(value / 1000)}K`;
-  } else {
-    return Math.round(value).toString();
-  }
-}
-
-function generateChart(results: GroupResult['results']): string {
-  if (results.length === 0) return '';
-
-  const maxScore = Math.max(...results.map(r => r.scoreValue));
-  const barMaxLength = 40;
-
-  return '```\n' + results.map((r, idx) => {
-    const emoji = r.rank === 1 ? '🥇' : r.rank === 2 ? '🥈' : r.rank === 3 ? '🥉' : `${r.rank}.`;
-    const percentage = r.scoreValue / maxScore;
-    const barLength = Math.round(percentage * barMaxLength);
-    const bar = '█'.repeat(barLength);
-    const scoreText = formatScore(r.scoreValue) + ' ops/sec';
-
-    return `${emoji.padEnd(4)} ${r.library.padEnd(18)} ${bar.padEnd(barMaxLength + 2)} ${scoreText.padStart(15)}`;
-  }).join('\n') + '\n```';
-}
-
 function getLibraryCount(categoryPath: string): number {
   const metadataPath = join(categoryPath, 'library-metadata.json');
 
@@ -84,73 +32,6 @@ function getLibraryCount(categoryPath: string): number {
 
   // Fallback to counting non-_config entries
   return Object.keys(metadata).filter(key => !key.startsWith('_')).length;
-}
-
-function extractGroupResults(categoryPath: string): GroupResult[] {
-  const readmePath = join(categoryPath, 'README.md');
-
-  if (!existsSync(readmePath)) {
-    return [];
-  }
-
-  const readme = readFileSync(readmePath, 'utf-8');
-  const groupResults: GroupResult[] = [];
-
-  // Find the "Group Results Summary" section
-  const summaryStartIdx = readme.indexOf('## Group Results Summary');
-  if (summaryStartIdx === -1) {
-    return [];
-  }
-
-  // Get content from that section onwards
-  const summarySection = readme.substring(summaryStartIdx);
-
-  // Match pattern: ### [XX - Group Name](link)
-  const headerPattern = /### \[(\d+) - ([^\]]+)\]\([^)]+\)/g;
-
-  let headerMatch;
-  while ((headerMatch = headerPattern.exec(summarySection)) !== null) {
-    const groupNum = headerMatch[1];
-    const groupName = headerMatch[2];
-    const headerEndIdx = headerPattern.lastIndex;
-
-    // Find the description (next non-empty line after header)
-    const afterHeader = summarySection.substring(headerEndIdx);
-    const descMatch = afterHeader.match(/\n\n([^\n]+)\n\n/);
-    const description = descMatch ? descMatch[1] : '';
-
-    // Find the table for this group
-    // Make separator more flexible - match any number of dashes
-    const tableMatch = afterHeader.match(/\| Rank \| Library \| Group Score \|\n\|:?-+:?\|:?-+:?\|:?-+:?\|\n((?:\| [^\n]+ \|\n)+)/);
-
-    if (!tableMatch) {
-      continue;
-    }
-
-    const tableRows = tableMatch[1];
-
-    // Parse table rows
-    const results: Array<{ rank: number; library: string; score: string; scoreValue: number }> = [];
-    const rowPattern = /\|\s*(🥇|🥈|🥉|)\s*(\d+)\s*\|\s*\*?\*?([^*|]+?)\*?\*?\s*\|\s*(👑\s*)?([^|]+?)\s*\|/g;
-
-    let rowMatch;
-    while ((rowMatch = rowPattern.exec(tableRows)) !== null) {
-      const rank = parseInt(rowMatch[2]);
-      const library = rowMatch[3].trim();
-      const score = rowMatch[5].trim();
-      const scoreValue = parseScore(score);
-
-      results.push({ rank, library, score, scoreValue });
-    }
-
-    groupResults.push({
-      name: `${groupNum} - ${groupName}`,
-      description,
-      results
-    });
-  }
-
-  return groupResults;
 }
 
 function generateRootReadme(): string {
@@ -219,37 +100,6 @@ ${categories.map(cat => {
 Each category has its own detailed README with benchmark results, methodology, and insights.
 
 ---
-
-## 📈 Test Group Performance
-
-### 🗃️ State Management
-
-${(() => {
-  const groupResults = extractGroupResults('benchmarks/state-management');
-  if (groupResults.length === 0) {
-    return '*No group results available yet.*';
-  }
-
-  return groupResults.slice(0, 6).map(group => {
-    const topThree = group.results.slice(0, 3);
-    const chart = generateChart(group.results);
-
-    return `**[${group.name}](./benchmarks/state-management/#${group.name.toLowerCase().replace(/\s+/g, '-')})**
-
-${group.description}
-
-${chart}
-
-| Rank | Library | Group Score |
-|:----:|---------|-------------|
-${topThree.map(r => {
-  const emoji = r.rank === 1 ? '🥇' : r.rank === 2 ? '🥈' : r.rank === 3 ? '🥉' : ' ';
-  return `| ${emoji} ${r.rank} | **${r.library}** | ${r.score} |`;
-}).join('\n')}
-
-[View all ${group.results.length} results →](./benchmarks/state-management/#${group.name.toLowerCase().replace(/\s+/g, '-')})`;
-  }).join('\n\n---\n\n');
-})()}
 
 **[View All State Management Results →](./benchmarks/state-management/)**
 

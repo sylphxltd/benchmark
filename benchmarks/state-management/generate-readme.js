@@ -526,6 +526,22 @@ Click on any group to view detailed benchmark results.
       // Find best value for crown
       const maxOverall = Math.max(...groupScores.map(s => s.overall));
 
+      // Generate ASCII bar chart
+      const maxBarLength = 40;
+      section += '```\n';
+      groupScores.forEach((entry, index) => {
+        const rank = index + 1;
+        const emoji = rank === 1 ? '🥇' : rank === 2 ? '🥈' : rank === 3 ? '🥉' : `${rank}.`;
+
+        const percentage = entry.overall / maxOverall;
+        const barLength = Math.round(percentage * maxBarLength);
+        const bar = '█'.repeat(barLength);
+        const scoreText = formatNumber(entry.overall) + ' ops/sec';
+
+        section += `${emoji.padEnd(4)} ${entry.library.padEnd(18)} ${bar.padEnd(maxBarLength + 2)} ${scoreText.padStart(15)}\n`;
+      });
+      section += '```\n\n';
+
       section += `| Rank | Library | Group Score |\n`;
       section += `|:----:|---------|-------------|\n`;
 
