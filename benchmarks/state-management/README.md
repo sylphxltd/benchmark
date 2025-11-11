@@ -97,16 +97,16 @@ Based on geometric mean of normalized scores across all 20 tests.
 
 ## 📈 Library Comparison
 
-| Library | Performance | Description | Best For |
-|---------|-------------|-------------|----------|
-| **[Solid Signals](https://github.com/solidjs/solid)** | ████████ 78/100 | Fine-grained reactivity primitive from Solid.js for building... | Fastest overall, but requires Solid.js ecosystem... |
-| **[Preact Signals](https://github.com/preactjs/signals)** | ███████ 70/100 | Fast and reactive signals for Preact and React with automati... | Excellent balance of speed and bundle size... |
-| **[Zen](https://github.com/SylphxAI/zen)** | ███████ 69/100 | Minimal and fast state management with signal-based reactivi... | Similar performance to Preact, slightly larger bun... |
-| **[Zustand](https://github.com/pmndrs/zustand)** | ████ 39/100 | Small, fast and scalable bearbones state management solution... | Minimal bundle, simple API, moderate performance... |
-| **[Valtio](https://github.com/pmndrs/valtio)** | █ 7/100 | Proxy-based state management library that makes state usage ... | Simple API, moderate performance, good for nested ... |
-| **[MobX](https://github.com/mobxjs/mobx)** | █ 5/100 | Simple, scalable state management with transparent reactive ... | Automatic tracking, slow creation, largest bundle... |
-| **[Jotai](https://github.com/pmndrs/jotai)** |  4/100 | Primitive and flexible state management for React... | Very fast read/write, slower creation, unique asyn... |
-| **[Redux Toolkit](https://github.com/reduxjs/redux-toolkit)** |  2/100 | The official, opinionated, batteries-included toolset for ef... | Feature-rich, DevTools support, larger bundle... |
+| Library | Score | Description | Best For |
+|---------|:-----:|-------------|----------|
+| **[Solid Signals](https://github.com/solidjs/solid)** | **78.2** | Fine-grained reactivity primitive from Solid.js fo... | Fastest overall, but requires Solid.js e... |
+| **[Preact Signals](https://github.com/preactjs/signals)** | **70.0** | Fast and reactive signals for Preact and React wit... | Excellent balance of speed and bundle si... |
+| **[Zen](https://github.com/SylphxAI/zen)** | **68.9** | Minimal and fast state management with signal-base... | Similar performance to Preact, slightly ... |
+| **[Zustand](https://github.com/pmndrs/zustand)** | **38.6** | Small, fast and scalable bearbones state managemen... | Minimal bundle, simple API, moderate per... |
+| **[Valtio](https://github.com/pmndrs/valtio)** | **6.9** | Proxy-based state management library that makes st... | Simple API, moderate performance, good f... |
+| **[MobX](https://github.com/mobxjs/mobx)** | **5.1** | Simple, scalable state management with transparent... | Automatic tracking, slow creation, large... |
+| **[Jotai](https://github.com/pmndrs/jotai)** | **3.7** | Primitive and flexible state management for React... | Very fast read/write, slower creation, u... |
+| **[Redux Toolkit](https://github.com/reduxjs/redux-toolkit)** | **2.3** | The official, opinionated, batteries-included tool... | Feature-rich, DevTools support, larger b... |
 
 ---
 
@@ -724,7 +724,7 @@ See [CONTRIBUTING.md](../../CONTRIBUTING.md) for detailed guidelines.
 
 **Found this useful? Give it a ⭐️!**
 
-*Generated on 2025-11-11T20:50:31.830Z*
+*Generated on 2025-11-11T20:56:05.583Z*
 
 [⬆️ Back to Top](#state-management-benchmarks) • [⬅️ Main README](../../README.md)
 
