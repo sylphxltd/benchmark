@@ -24,7 +24,7 @@
   "dependencies": {
     "@preact/signals": "2.4.0",
     "@reduxjs/toolkit": "^2.10.1",
-    "@sylphx/zen": "^1.2.1",
+    "@sylphx/zen": "^2.0.0",
     "jotai": "^2.15.1",
     "mobx": "^6.15.0",
     "recoil": "^0.7.7",

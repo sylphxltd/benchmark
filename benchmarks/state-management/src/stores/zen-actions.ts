@@ -1,8 +1,9 @@
 /**
- * Zen implementation
+ * Zen 2.0 implementation
+ * Migration from get/set functions to .value syntax
  */
 
-import { zen, get, set } from '@sylphx/zen';
+import { zen, computed, computedAsync } from '@sylphx/zen';
 import { StateActions } from './interface';
 import { largeArray, createDeepNested, createFormState } from './helpers';
 
@@ -14,11 +15,11 @@ const formDataZen = zen(createFormState());
 export const zenActionsV2: StateActions = {
   // Core methods (required)
   increment: () => {
-    set(countZen, get(countZen) + 1);
+    countZen.value = countZen.value + 1;
   },
 
   getCount: () => {
-    return get(countZen);
+    return countZen.value;
   },
 
   // 03-creation methods
@@ -28,13 +29,13 @@ export const zenActionsV2: StateActions = {
 
   // 04-complexity methods
   readNestedState: () => {
-    const state = get(deepNestedZen);
+    const state = deepNestedZen.value;
     return state.level1.level2.level3.level4.level5.level6.level7.level8.level9.level10.value;
   },
 
   updateNestedState: () => {
-    const current = get(deepNestedZen);
-    set(deepNestedZen, {
+    const current = deepNestedZen.value;
+    deepNestedZen.value = {
       ...current,
       level1: {
         ...current.level1,
@@ -66,120 +67,120 @@ export const zenActionsV2: StateActions = {
           }
         }
       }
-    });
+    };
   },
 
   spliceArray: () => {
-    const users = get(usersZen);
+    const users = usersZen.value;
     const newUsers = [...users];
     newUsers.splice(Math.floor(newUsers.length / 2), 1);
-    set(usersZen, newUsers);
+    usersZen.value = newUsers;
   },
 
   mapLargeArray: () => {
-    const users = get(usersZen);
+    const users = usersZen.value;
     return users.map(user => ({ ...user, mapped: true }));
   },
 
   updateMultipleFields: () => {
-    set(countZen, get(countZen) + 1);
-    const users = get(usersZen);
-    set(usersZen, [...users, { id: users.length, name: 'New User', email: 'new@example.com', value: 0 }]);
+    countZen.value = countZen.value + 1;
+    const users = usersZen.value;
+    usersZen.value = [...users, { id: users.length, name: 'New User', email: 'new@example.com', value: 0 }];
   },
 
   // 06-memory methods
   getLargeArray: () => {
-    return get(usersZen);
+    return usersZen.value;
   },
 
   updateLargeArrayItem: () => {
-    const users = get(usersZen);
+    const users = usersZen.value;
     const updated = users.map((user, i) =>
       i === 500 ? { ...user, value: user.value + 1 } : user
     );
-    set(usersZen, updated);
+    usersZen.value = updated;
   },
 
   cloneLargeState: () => {
-    const users = get(usersZen);
+    const users = usersZen.value;
     return JSON.parse(JSON.stringify(users));
   },
 
   filterLargeArray: () => {
-    const users = get(usersZen);
+    const users = usersZen.value;
     return users.filter(user => user.value > 500);
   },
 
   // 07-form methods
   updateFormField: (field, value) => {
-    const formData = get(formDataZen);
+    const formData = formDataZen.value;
     const [section, fieldName] = field.split('.');
 
     if (fieldName) {
-      set(formDataZen, {
+      formDataZen.value = {
         ...formData,
         [section]: {
           ...(formData as any)[section],
           [fieldName]: value
         }
-      });
+      };
     } else {
-      set(formDataZen, {
+      formDataZen.value = {
         ...formData,
         [field]: value
-      });
+      };
     }
   },
 
   updateMultipleFormFields: (fields) => {
-    const formData = get(formDataZen);
-    set(formDataZen, {
+    const formData = formDataZen.value;
+    formDataZen.value = {
       ...formData,
       personal: {
         ...formData.personal,
         ...fields
       }
-    });
+    };
   },
 
   updateNestedFormField: (path, value) => {
-    const formData = get(formDataZen);
+    const formData = formDataZen.value;
     const [section, field] = path.split('.');
-    set(formDataZen, {
+    formDataZen.value = {
       ...formData,
       [section]: {
         ...(formData as any)[section],
         [field]: value
       }
-    });
+    };
   },
 
   resetForm: () => {
-    set(formDataZen, createFormState());
+    formDataZen.value = createFormState();
   },
 
   conditionalFieldUpdate: () => {
-    const formData = get(formDataZen);
+    const formData = formDataZen.value;
     if (formData.preferences.newsletter) {
-      set(formDataZen, {
+      formDataZen.value = {
         ...formData,
         preferences: {
           ...formData.preferences,
           notifications: true
         }
-      });
+      };
     }
   },
 
-  // 08-async-reactive methods (Zen 2.0 has native async reactive support)
+  // 08-async-reactive methods (Zen 2.0 native async reactive support with computeAsync)
   getAsyncValue: async () => {
     await new Promise(resolve => setTimeout(resolve, 10));
-    return get(countZen);
+    return countZen.value;
   },
 
   getChainedAsyncValue: async () => {
     await new Promise(resolve => setTimeout(resolve, 5));
-    const count = get(countZen);
+    const count = countZen.value;
     await new Promise(resolve => setTimeout(resolve, 5));
     return count * 2;
   },
@@ -188,11 +189,11 @@ export const zenActionsV2: StateActions = {
     const [count, userCount] = await Promise.all([
       (async () => {
         await new Promise(resolve => setTimeout(resolve, 10));
-        return get(countZen);
+        return countZen.value;
       })(),
       (async () => {
         await new Promise(resolve => setTimeout(resolve, 10));
-        return get(usersZen).length;
+        return usersZen.value.length;
       })()
     ]);
     return { count, userCount };
