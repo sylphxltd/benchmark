@@ -133,10 +133,14 @@ function generateGroupReadme(groupPath, groupName, categoryPath) {
 
   if (scores.length > 0) {
     readme += `## Group Overall Performance\n\n`;
-    readme += `**Methodology**: Geometric mean across all tests in this group\n`;
+    readme += `**Methodology**:\n`;
+    readme += `- Each library's raw performance (ops/sec) is measured for each test in this group\n`;
+    readme += `- The group score is calculated using geometric mean of all test results\n`;
+    readme += `- Formula: \`Group Score = ⁿ√(Test₁ × Test₂ × ... × Testₙ)\`\n`;
+    readme += `- Geometric mean gives balanced weight to all tests regardless of their magnitude\n`;
 
     if (versions.lastBenchmarkRun) {
-      readme += `**Last Benchmark Run**: ${new Date(versions.lastBenchmarkRun).toLocaleString('en-US', { dateStyle: 'medium', timeStyle: 'short' })}\n`;
+      readme += `\n**Last Benchmark Run**: ${new Date(versions.lastBenchmarkRun).toLocaleString('en-US', { dateStyle: 'medium', timeStyle: 'short' })}\n`;
     }
 
     readme += `\n| Rank | Library | Group Score |\n`;

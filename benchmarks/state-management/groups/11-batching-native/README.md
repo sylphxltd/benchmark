@@ -17,14 +17,19 @@ Built-in batching.
 
 ## Group Overall Performance
 
-**Methodology**: Geometric mean across all tests in this group
+**Methodology**:
+- Each library's raw performance (ops/sec) is measured for each test in this group
+- The group score is calculated using geometric mean of all test results
+- Formula: `Group Score = ⁿ√(Test₁ × Test₂ × ... × Testₙ)`
+- Geometric mean gives balanced weight to all tests regardless of their magnitude
+
 **Last Benchmark Run**: Nov 10, 2025, 4:38 PM
 
-| Rank | Library | Version | Bundle (gzip) | Group Score | Peak Performance | Last Updated |
-|------|---------|---------|---------------|-------------|------------------|--------------|
-| 🥇 1 | [**Solid Signals**](https://github.com/solidjs/solid) | 1.9.10 | 4.0 KB | 👑 37.3M | 42.5M | Dec 6 |
-| 🥈 2 | [**Valtio**](https://github.com/pmndrs/valtio) | 2.2.0 | 👑 3.1 KB | 1.7M | 4.8M | Nov 6 |
-| 🥉 3 | [**MobX**](https://github.com/mobxjs/mobx) | 6.15.0 | 17.6 KB | 1.6M | 3.8M | Dec 6 |
+| Rank | Library | Group Score |
+|------|---------|-------------|
+| 🥇 1 | [**Solid Signals**](https://github.com/solidjs/solid) | 👑 37.3M |
+| 🥈 2 | [**Valtio**](https://github.com/pmndrs/valtio) | 1.7M |
+| 🥉 3 | [**MobX**](https://github.com/mobxjs/mobx) | 1.6M |
 
 ---
 
@@ -120,4 +125,4 @@ npx vitest bench groups/11-batching-native/*.bench.ts
 ```
 
 ---
-*Last generated: 2025-11-11T01:29:45.166Z*
+*Last generated: 2025-11-11T01:42:50.791Z*

@@ -18,7 +18,15 @@ Comprehensive performance benchmarks for JavaScript/TypeScript state management 
 ## Overall Performance Score
 
 **Based on Universal Tests**: Read, Write, Creation, Memory
-**Methodology**: Geometric mean of normalized scores (fastest = 100) across all universal tests
+
+**Methodology**:
+1. Each library's raw performance (ops/sec) is measured for each test
+2. Scores are normalized to an index where the fastest library = 100
+   - Formula: `Index = (Library_Speed / Fastest_Speed) × 100`
+3. The overall score is the geometric mean of all normalized indices
+   - Formula: `Overall = ⁿ√(Index₁ × Index₂ × ... × Indexₙ)`
+4. Geometric mean prevents any single test from dominating the overall score
+
 **Last Benchmark Run**: Nov 10, 2025, 4:38 PM
 
 | Rank | Library | Overall Score | Bundle (gzip) | Last Updated |

@@ -164,7 +164,15 @@ function generateOverallScore() {
   let section = `## Overall Performance Score
 
 **Based on Universal Tests**: ${overallScores.includedTests.join(', ')}
-**Methodology**: Geometric mean of normalized scores (fastest = 100) across all universal tests
+
+**Methodology**:
+1. Each library's raw performance (ops/sec) is measured for each test
+2. Scores are normalized to an index where the fastest library = 100
+   - Formula: \`Index = (Library_Speed / Fastest_Speed) × 100\`
+3. The overall score is the geometric mean of all normalized indices
+   - Formula: \`Overall = ⁿ√(Index₁ × Index₂ × ... × Indexₙ)\`
+4. Geometric mean prevents any single test from dominating the overall score
+
 **Last Benchmark Run**: ${new Date(versions.lastBenchmarkRun).toLocaleString('en-US', { dateStyle: 'medium', timeStyle: 'short' })}
 
 | Rank | Library | Overall Score | Bundle (gzip) | Last Updated |
