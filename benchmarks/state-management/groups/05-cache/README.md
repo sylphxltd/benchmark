@@ -2,6 +2,16 @@
 
 Repeated access patterns.
 
+## 📑 Table of Contents
+
+- [Group Overall Performance](#group-overall-performance)
+- [Detailed Results](#detailed-results)
+  - [groups/05-cache/cache-performance.bench.ts > Cache Performance - Caching patterns and memoization](#groups05-cachecache-performancebenchts-cache-performance---caching-patterns-and-memoization)
+- [Navigation](#-navigation)
+- [Running This Group](#-running-this-group)
+
+---
+
 ## Detailed Results
 
 ### groups/05-cache/cache-performance.bench.ts > Cache Performance - Caching patterns and memoization
@@ -50,4 +60,4 @@ npx vitest bench groups/05-cache/*.bench.ts
 ```
 
 ---
-*Last generated: 2025-11-11T00:33:35.466Z*
+*Last generated: 2025-11-11T01:29:44.877Z*

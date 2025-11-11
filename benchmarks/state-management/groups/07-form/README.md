@@ -2,6 +2,16 @@
 
 Multi-field updates.
 
+## 📑 Table of Contents
+
+- [Group Overall Performance](#group-overall-performance)
+- [Detailed Results](#detailed-results)
+  - [groups/07-form/form-state.bench.ts > Form State - Form state management](#groups07-formform-statebenchts-form-state---form-state-management)
+- [Navigation](#-navigation)
+- [Running This Group](#-running-this-group)
+
+---
+
 ## Detailed Results
 
 ### groups/07-form/form-state.bench.ts > Form State - Form state management
@@ -50,4 +60,4 @@ npx vitest bench groups/07-form/*.bench.ts
 ```
 
 ---
-*Last generated: 2025-11-11T00:33:35.531Z*
+*Last generated: 2025-11-11T01:29:44.947Z*

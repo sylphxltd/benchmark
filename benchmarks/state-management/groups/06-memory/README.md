@@ -2,6 +2,16 @@
 
 Large state allocation performance.
 
+## 📑 Table of Contents
+
+- [Group Overall Performance](#group-overall-performance)
+- [Detailed Results](#detailed-results)
+  - [groups/06-memory/memory-allocation.bench.ts > Memory Allocation](#groups06-memorymemory-allocationbenchts-memory-allocation)
+- [Navigation](#-navigation)
+- [Running This Group](#-running-this-group)
+
+---
+
 ## Group Overall Performance
 
 **Methodology**: Geometric mean across all tests in this group
@@ -9,14 +19,14 @@ Large state allocation performance.
 
 | Rank | Library | Version | Bundle (gzip) | Group Score | Peak Performance | Last Updated |
 |------|---------|---------|---------------|-------------|------------------|--------------|
-| 🥇 1 | **MobX** | 6.15.0 | 17.6 KB | 👑 925 | 925 | Dec 6 |
-| 🥈 2 | **Zen** | 1.2.1 | 5.3 KB | 924 | 924 | Nov 7 |
-| 🥉 3 | **Solid Signals** | 1.9.10 | 4.0 KB | 923 | 923 | Dec 6 |
-|  4 | **Jotai** | 2.15.1 | 4.3 KB | 917 | 917 | Dec 6 |
-|  5 | **Zustand** | 5.0.8 | 👑 1.2 KB | 907 | 907 | Nov 6 |
-|  6 | **Preact Signals** | 2.4.0 | 3.0 KB | 904 | 904 | Nov 7 |
-|  7 | **Valtio** | 2.2.0 | 3.1 KB | 898 | 898 | Nov 6 |
-|  8 | **Redux Toolkit** | 2.10.1 | 13.8 KB | 892 | 892 | Dec 6 |
+| 🥇 1 | [**MobX**](https://github.com/mobxjs/mobx) | 6.15.0 | 17.6 KB | 👑 925 | 925 | Dec 6 |
+| 🥈 2 | [**Zen**](https://github.com/sylphxltd/zen) | 1.2.1 | 5.3 KB | 924 | 924 | Nov 7 |
+| 🥉 3 | [**Solid Signals**](https://github.com/solidjs/solid) | 1.9.10 | 4.0 KB | 923 | 923 | Dec 6 |
+|  4 | [**Jotai**](https://github.com/pmndrs/jotai) | 2.15.1 | 4.3 KB | 917 | 917 | Dec 6 |
+|  5 | [**Zustand**](https://github.com/pmndrs/zustand) | 5.0.8 | 👑 1.2 KB | 907 | 907 | Nov 6 |
+|  6 | [**Preact Signals**](https://github.com/preactjs/signals) | 2.4.0 | 3.0 KB | 904 | 904 | Nov 7 |
+|  7 | [**Valtio**](https://github.com/pmndrs/valtio) | 2.2.0 | 3.1 KB | 898 | 898 | Nov 6 |
+|  8 | [**Redux Toolkit**](https://github.com/reduxjs/redux-toolkit) | 2.10.1 | 13.8 KB | 892 | 892 | Dec 6 |
 
 ---
 
@@ -39,14 +49,14 @@ Large state allocation performance.
 
 | Rank | Library | Ops/sec | Variance | Mean | p99 | Samples |
 |------|---------|---------|----------|------|-----|---------|
-| 🥇 | **MobX** | 924.983 | ±0.62% | 1081.1005ms | 1314.2920ms |  |
-| 🥈 | **Zen** | 923.605 | ±0.61% | 1082.7144ms | 1319.2920ms |  |
-| 🥉 | **Solid Signals** | 922.99 | ±0.61% | 1083.4349ms | 1309.5830ms |  |
-| 4 | **Jotai** | 917.053 | ±0.66% | 1090.4491ms | 1352.5830ms |  |
-| 5 | **Zustand** | 907.287 | ±0.91% | 1102.1868ms | 1454.3750ms |  |
-| 6 | **Preact Signals** | 904.161 | ±0.99% | 1105.9978ms | 1481.6250ms |  |
-| 7 | **Valtio** | 897.765 | ±1.10% | 1113.8775ms | 1465.3750ms |  |
-| 8 | **Redux Toolkit** | 891.893 | ±1.32% | 1121.2112ms | 1705.4590ms |  |
+| 🥇 | [**MobX**](https://github.com/mobxjs/mobx) | 924.983 | ±0.62% | 1081.1005ms | 1314.2920ms |  |
+| 🥈 | [**Zen**](https://github.com/sylphxltd/zen) | 923.605 | ±0.61% | 1082.7144ms | 1319.2920ms |  |
+| 🥉 | [**Solid Signals**](https://github.com/solidjs/solid) | 922.99 | ±0.61% | 1083.4349ms | 1309.5830ms |  |
+| 4 | [**Jotai**](https://github.com/pmndrs/jotai) | 917.053 | ±0.66% | 1090.4491ms | 1352.5830ms |  |
+| 5 | [**Zustand**](https://github.com/pmndrs/zustand) | 907.287 | ±0.91% | 1102.1868ms | 1454.3750ms |  |
+| 6 | [**Preact Signals**](https://github.com/preactjs/signals) | 904.161 | ±0.99% | 1105.9978ms | 1481.6250ms |  |
+| 7 | [**Valtio**](https://github.com/pmndrs/valtio) | 897.765 | ±1.10% | 1113.8775ms | 1465.3750ms |  |
+| 8 | [**Redux Toolkit**](https://github.com/reduxjs/redux-toolkit) | 891.893 | ±1.32% | 1121.2112ms | 1705.4590ms |  |
 
 **Key Insight:** MobX is 1.04x faster than Redux Toolkit in this category.
 
@@ -68,4 +78,4 @@ npx vitest bench groups/06-memory/*.bench.ts
 ```
 
 ---
-*Last generated: 2025-11-11T00:33:35.504Z*
+*Last generated: 2025-11-11T01:29:44.918Z*

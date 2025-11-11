@@ -109,6 +109,25 @@ function generateGroupReadme(groupPath, groupName, categoryPath) {
   let readme = `# ${groupTitle}\n\n`;
   readme += `${groupDescription}.\n\n`;
 
+  // Generate table of contents
+  readme += `## 📑 Table of Contents\n\n`;
+  readme += `- [Group Overall Performance](#group-overall-performance)\n`;
+  readme += `- [Detailed Results](#detailed-results)\n`;
+
+  // Add links to each benchmark if there are multiple
+  if (results.files && results.files.length > 0) {
+    results.files.forEach(file => {
+      file.groups?.forEach(group => {
+        const anchor = group.fullName.toLowerCase().replace(/[^\w\s-]/g, '').replace(/\s+/g, '-');
+        readme += `  - [${group.fullName}](#${anchor})\n`;
+      });
+    });
+  }
+
+  readme += `- [Navigation](#-navigation)\n`;
+  readme += `- [Running This Group](#-running-this-group)\n\n`;
+  readme += `---\n\n`;
+
   // Generate group overall score
   const scores = calculateGroupOverall(results, libraryMetadata);
 
@@ -145,11 +164,13 @@ function generateGroupReadme(groupPath, groupName, categoryPath) {
       const lastUpdated = versions.libraries?.[libKey]?.lastUpdated
         ? new Date(versions.libraries[libKey].lastUpdated).toLocaleDateString('en-US', { month: 'short', day: 'numeric' })
         : 'N/A';
+      const githubUrl = libraryMetadata.libraries?.[libKey]?.url || '';
 
       const sizeCrown = size === minSize ? '👑 ' : '';
       const overallCrown = entry.overall === maxOverall ? '👑 ' : '';
+      const libraryLink = githubUrl ? `[**${entry.library}**](${githubUrl})` : `**${entry.library}**`;
 
-      readme += `| ${emoji}${rank} | **${entry.library}** | ${version} | ${sizeCrown}${sizeKB} KB | ${overallCrown}${formatNumber(entry.overall)} | ${formatNumber(entry.max)} | ${lastUpdated} |\n`;
+      readme += `| ${emoji}${rank} | ${libraryLink} | ${version} | ${sizeCrown}${sizeKB} KB | ${overallCrown}${formatNumber(entry.overall)} | ${formatNumber(entry.max)} | ${lastUpdated} |\n`;
     });
 
     readme += `\n---\n\n`;
@@ -196,7 +217,14 @@ function generateGroupReadme(groupPath, groupName, categoryPath) {
             const p99 = bench.p99 ? `${(bench.p99 * 1000).toFixed(4)}ms` : 'N/A';
             const samples = bench.samples || 'N/A';
 
-            readme += `| ${emoji} | **${libName}** | ${opsPerSec} | ${variance} | ${mean} | ${p99} | ${samples} |\n`;
+            // Add GitHub link to library name
+            const libKey = Object.keys(libraryMetadata.libraries).find(key =>
+              libraryMetadata.libraries[key].displayName === libName
+            );
+            const githubUrl = libraryMetadata.libraries?.[libKey]?.url || '';
+            const libraryLink = githubUrl ? `[**${libName}**](${githubUrl})` : `**${libName}**`;
+
+            readme += `| ${emoji} | ${libraryLink} | ${opsPerSec} | ${variance} | ${mean} | ${p99} | ${samples} |\n`;
           });
 
           // Key insight
