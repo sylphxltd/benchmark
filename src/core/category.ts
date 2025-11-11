@@ -2,6 +2,8 @@
  * Category class - top-level container for benchmarks
  */
 
+import { mkdirSync, writeFileSync } from 'fs';
+import { join, dirname } from 'path';
 import type { CategoryConfig, GroupConfig, LibraryConfig, RunOptions, CategoryResults } from './types';
 import { Group } from './group';
 import { Library } from './library';
@@ -162,6 +164,56 @@ export class Category {
 
     // Run benchmarks
     return await this.runner.run(options);
+  }
+
+  /**
+   * Save benchmark results to files
+   */
+  async saveResults(results: CategoryResults): Promise<void> {
+    const baseDir = process.cwd();
+    const resultsDir = join(baseDir, 'results');
+
+    // Ensure results directory exists
+    mkdirSync(resultsDir, { recursive: true });
+
+    // Group results by library
+    const resultsByLibrary = new Map<string, any[]>();
+
+    for (const result of results.results) {
+      if (!resultsByLibrary.has(result.library)) {
+        resultsByLibrary.set(result.library, []);
+      }
+      resultsByLibrary.get(result.library)!.push(result);
+    }
+
+    // Save per-library result files
+    for (const [libraryId, libResults] of resultsByLibrary) {
+      const library = this.getLibrary(libraryId);
+      if (!library) continue;
+
+      const libraryFile = join(resultsDir, `${libraryId}-benchmark.json`);
+
+      const libraryData = {
+        library: library.displayName,
+        libraryId: libraryId,
+        version: library.packageName, // TODO: Get actual version
+        timestamp: results.timestamp,
+        results: libResults.map((r) => ({
+          test: r.test,
+          group: r.group,
+          opsPerSecond: r.result.opsPerSecond,
+          meanTime: r.result.meanTime,
+          variance: r.result.variance,
+          p99: r.result.p99,
+          samples: r.result.samples,
+        })),
+      };
+
+      writeFileSync(libraryFile, JSON.stringify(libraryData, null, 2));
+      console.log(`  ✓ Saved ${libraryId}-benchmark.json`);
+    }
+
+    console.log(`\n✓ Saved results for ${resultsByLibrary.size} libraries`);
   }
 
   toString(): string {

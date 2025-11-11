@@ -1,428 +1,188 @@
 {
   "library": "Valtio",
-  "libraryKey": "valtio",
-  "version": "2.2.0",
-  "lastRun": "2025-11-11T13:06:38.859Z",
-  "groups": {
-    "01-read": {
-      "files": [
-        {
-          "filepath": "groups/01-read/runner.bench.ts",
-          "groups": [
-            {
-              "fullName": "01-read - Valtio",
-              "benchmarks": [
-                {
-                  "id": "Simple Read - Valtio",
-                  "name": "Simple Read",
-                  "hz": 2976368.02,
-                  "min": 0.0001,
-                  "max": 2.612,
-                  "mean": 0.0003,
-                  "p75": 0.0005,
-                  "p99": 0.0005,
-                  "p995": 0.0005,
-                  "p999": 0.0032,
-                  "rme": 2.41,
-                  "samples": 1488185
-                },
-                {
-                  "id": "High Frequency Read (x10) - Valtio",
-                  "name": "High Frequency Read (x10)",
-                  "hz": 7034431.28,
-                  "min": 0,
-                  "max": 10.1816,
-                  "mean": 0.0001,
-                  "p75": 0.0002,
-                  "p99": 0.0002,
-                  "p995": 0.0002,
-                  "p999": 0.0003,
-                  "rme": 4.31,
-                  "samples": 3517216
-                },
-                {
-                  "id": "High Frequency Read (x100) - Valtio",
-                  "name": "High Frequency Read (x100)",
-                  "hz": 947545.58,
-                  "min": 0.0007,
-                  "max": 8.9588,
-                  "mean": 0.0011,
-                  "p75": 0.0015,
-                  "p99": 0.0015,
-                  "p995": 0.0015,
-                  "p999": 0.0115,
-                  "rme": 3.72,
-                  "samples": 473773
-                },
-                {
-                  "id": "High Frequency Read (x1000) - Valtio",
-                  "name": "High Frequency Read (x1000)",
-                  "hz": 92618.25,
-                  "min": 0.0068,
-                  "max": 2.4068,
-                  "mean": 0.0108,
-                  "p75": 0.0143,
-                  "p99": 0.0224,
-                  "p995": 0.0418,
-                  "p999": 0.1909,
-                  "rme": 2.02,
-                  "samples": 46310
-                },
-                {
-                  "id": "High Frequency Read (x10000) - Valtio",
-                  "name": "High Frequency Read (x10000)",
-                  "hz": 9306.98,
-                  "min": 0.0689,
-                  "max": 6.6141,
-                  "mean": 0.1074,
-                  "p75": 0.143,
-                  "p99": 0.3424,
-                  "p995": 0.5723,
-                  "p999": 1.2042,
-                  "rme": 3.35,
-                  "samples": 4666
-                }
-              ]
-            }
-          ]
-        }
-      ]
+  "libraryId": "valtio",
+  "version": "valtio",
+  "timestamp": "2025-11-11T20:12:29.770Z",
+  "results": [
+    {
+      "test": "Single Read",
+      "group": "01-basic-read",
+      "opsPerSecond": 95597.43232944648,
+      "meanTime": 0.010460531999999901,
+      "variance": 0.002529439906377001,
+      "p99": 0.07416700000000276,
+      "samples": 1000
     },
-    "02-write": {
-      "files": [
-        {
-          "filepath": "groups/02-write/runner.bench.ts",
-          "groups": [
-            {
-              "fullName": "02-write - Valtio",
-              "benchmarks": [
-                {
-                  "id": "Single Update - Valtio",
-                  "name": "Single Update",
-                  "hz": 3103165.33,
-                  "min": 0.0001,
-                  "max": 5.0116,
-                  "mean": 0.0003,
-                  "p75": 0.0005,
-                  "p99": 0.0005,
-                  "p995": 0.0005,
-                  "p999": 0.0019,
-                  "rme": 2.82,
-                  "samples": 1551583
-                },
-                {
-                  "id": "Batch Update (x10) - Valtio",
-                  "name": "Batch Update (x10)",
-                  "hz": 362365.88,
-                  "min": 0.0015,
-                  "max": 5.469,
-                  "mean": 0.0028,
-                  "p75": 0.0023,
-                  "p99": 0.0044,
-                  "p995": 0.0056,
-                  "p999": 0.0577,
-                  "rme": 4.14,
-                  "samples": 181183
-                },
-                {
-                  "id": "Batch Update (x100) - Valtio",
-                  "name": "Batch Update (x100)",
-                  "hz": 33689.28,
-                  "min": 0.0148,
-                  "max": 3.8612,
-                  "mean": 0.0297,
-                  "p75": 0.0405,
-                  "p99": 0.1222,
-                  "p995": 0.2058,
-                  "p999": 0.8144,
-                  "rme": 3.63,
-                  "samples": 16845
-                },
-                {
-                  "id": "Batch Update (x1000) - Valtio",
-                  "name": "Batch Update (x1000)",
-                  "hz": 2735.69,
-                  "min": 0.1492,
-                  "max": 11.1333,
-                  "mean": 0.3655,
-                  "p75": 0.412,
-                  "p99": 2.1287,
-                  "p995": 5.4172,
-                  "p999": 6.9547,
-                  "rme": 8.31,
-                  "samples": 1368
-                },
-                {
-                  "id": "Batch Update (x10000) - Valtio",
-                  "name": "Batch Update (x10000)",
-                  "hz": 284.55,
-                  "min": 1.5272,
-                  "max": 13.4257,
-                  "mean": 3.5144,
-                  "p75": 4.4997,
-                  "p99": 13.3272,
-                  "p995": 13.4257,
-                  "p999": 13.4257,
-                  "rme": 11.24,
-                  "samples": 143
-                }
-              ]
-            }
-          ]
-        }
-      ]
+    {
+      "test": "Moderate Read (100x)",
+      "group": "01-basic-read",
+      "opsPerSecond": 157667.35562045922,
+      "meanTime": 0.006342466999999828,
+      "variance": 0.0009727310358749234,
+      "p99": 0.023416999999994914,
+      "samples": 1000
     },
-    "03-creation": {
-      "files": [
-        {
-          "filepath": "groups/03-creation/runner.bench.ts",
-          "groups": [
-            {
-              "fullName": "03-creation - Valtio",
-              "benchmarks": [
-                {
-                  "id": "Store Creation (x1) - Valtio",
-                  "name": "Store Creation (x1)",
-                  "hz": 361487.66,
-                  "min": 0.0004,
-                  "max": 156.37,
-                  "mean": 0.0028,
-                  "p75": 0.0012,
-                  "p99": 0.0032,
-                  "p995": 0.0051,
-                  "p999": 0.0278,
-                  "rme": 63.51,
-                  "samples": 183109
-                },
-                {
-                  "id": "Store Creation (x10) - Valtio",
-                  "name": "Store Creation (x10)",
-                  "hz": 21939.86,
-                  "min": 0.0051,
-                  "max": 302.48,
-                  "mean": 0.0456,
-                  "p75": 0.0142,
-                  "p99": 0.066,
-                  "p995": 0.1189,
-                  "p999": 0.6437,
-                  "rme": 119.46,
-                  "samples": 10970
-                },
-                {
-                  "id": "Store Creation (x100) - Valtio",
-                  "name": "Store Creation (x100)",
-                  "hz": 3733.46,
-                  "min": 0.0581,
-                  "max": 68.5621,
-                  "mean": 0.2678,
-                  "p75": 0.1738,
-                  "p99": 1.3134,
-                  "p995": 2.9608,
-                  "p999": 41.8557,
-                  "rme": 36.34,
-                  "samples": 1867
-                },
-                {
-                  "id": "Store Creation (x1000) - Valtio",
-                  "name": "Store Creation (x1000)",
-                  "hz": 485.94,
-                  "min": 0.6793,
-                  "max": 31.4398,
-                  "mean": 2.0579,
-                  "p75": 1.4777,
-                  "p99": 25.391,
-                  "p995": 27.2793,
-                  "p999": 31.4398,
-                  "rme": 25.02,
-                  "samples": 243
-                },
-                {
-                  "id": "Store Creation (x10000) - Valtio",
-                  "name": "Store Creation (x10000)",
-                  "hz": 6.4165,
-                  "min": 8.6325,
-                  "max": 2825.62,
-                  "mean": 155.85,
-                  "p75": 36.8323,
-                  "p99": 2825.62,
-                  "p995": 2825.62,
-                  "p999": 2825.62,
-                  "rme": 178.71,
-                  "samples": 21
-                }
-              ]
-            }
-          ]
-        }
-      ]
+    {
+      "test": "High-Frequency Read (1000x)",
+      "group": "01-basic-read",
+      "opsPerSecond": 166686.47457607844,
+      "meanTime": 0.005999286999999413,
+      "variance": 0.00005987696413661786,
+      "p99": 0.008958000000006905,
+      "samples": 1000
     },
-    "07-form": {
-      "files": [
-        {
-          "filepath": "groups/07-form/runner.bench.ts",
-          "groups": [
-            {
-              "fullName": "07-form - Valtio",
-              "benchmarks": [
-                {
-                  "id": "Single Field Update - Valtio",
-                  "name": "Single Field Update",
-                  "hz": 9289271.93,
-                  "min": 0,
-                  "max": 0.7015,
-                  "mean": 0.0001,
-                  "p75": 0.0001,
-                  "p99": 0.0002,
-                  "p995": 0.0002,
-                  "p999": 0.0002,
-                  "rme": 0.85,
-                  "samples": 4644636
-                },
-                {
-                  "id": "Multiple Fields Update (3 fields) - Valtio",
-                  "name": "Multiple Fields Update (3 fields)",
-                  "hz": 1572483.84,
-                  "min": 0.0003,
-                  "max": 3.397,
-                  "mean": 0.0006,
-                  "p75": 0.0006,
-                  "p99": 0.001,
-                  "p995": 0.0011,
-                  "p999": 0.0031,
-                  "rme": 2.26,
-                  "samples": 786243
-                },
-                {
-                  "id": "Nested Field Update - Valtio",
-                  "name": "Nested Field Update",
-                  "hz": 7626049.1,
-                  "min": 0,
-                  "max": 7.0033,
-                  "mean": 0.0001,
-                  "p75": 0.0001,
-                  "p99": 0.0002,
-                  "p995": 0.0002,
-                  "p999": 0.0003,
-                  "rme": 4.95,
-                  "samples": 3813025
-                },
-                {
-                  "id": "Full Form Reset - Valtio",
-                  "name": "Full Form Reset",
-                  "hz": 65185.06,
-                  "min": 0.0058,
-                  "max": 84.029,
-                  "mean": 0.0153,
-                  "p75": 0.0101,
-                  "p99": 0.028,
-                  "p995": 0.0478,
-                  "p999": 0.1556,
-                  "rme": 36.13,
-                  "samples": 32593
-                },
-                {
-                  "id": "Conditional Field Update - Valtio",
-                  "name": "Conditional Field Update",
-                  "hz": 16290173.38,
-                  "min": 0,
-                  "max": 20.9313,
-                  "mean": 0.0001,
-                  "p75": 0.0001,
-                  "p99": 0.0001,
-                  "p995": 0.0001,
-                  "p999": 0.0001,
-                  "rme": 8.37,
-                  "samples": 8145087
-                }
-              ]
-            }
-          ]
-        }
-      ]
+    {
+      "test": "Single Write",
+      "group": "02-basic-write",
+      "opsPerSecond": 188894.37102329457,
+      "meanTime": 0.005293964000000187,
+      "variance": 0.000037392833446694726,
+      "p99": 0.012875000000008185,
+      "samples": 1000
     },
-    "08-async-reactive": {
-      "files": [
-        {
-          "filepath": "groups/08-async-reactive/runner.bench.ts",
-          "groups": [
-            {
-              "fullName": "08-async-reactive - Valtio",
-              "benchmarks": [
-                {
-                  "id": "Async Computed Read - Valtio",
-                  "name": "Async Computed Read",
-                  "hz": 89.7542,
-                  "min": 9.8518,
-                  "max": 12.9577,
-                  "mean": 11.1415,
-                  "p75": 11.2194,
-                  "p99": 12.9577,
-                  "p995": 12.9577,
-                  "p999": 12.9577,
-                  "rme": 1.37,
-                  "samples": 45
-                },
-                {
-                  "id": "Async Computed with Dependency Update - Valtio",
-                  "name": "Async Computed with Dependency Update",
-                  "hz": 91.5266,
-                  "min": 10.1988,
-                  "max": 13.1021,
-                  "mean": 10.9258,
-                  "p75": 11.1254,
-                  "p99": 13.1021,
-                  "p995": 13.1021,
-                  "p999": 13.1021,
-                  "rme": 1.26,
-                  "samples": 46
-                },
-                {
-                  "id": "Chained Async Computed - Valtio",
-                  "name": "Chained Async Computed",
-                  "hz": 88.7895,
-                  "min": 10.5664,
-                  "max": 12.0772,
-                  "mean": 11.2626,
-                  "p75": 11.4351,
-                  "p99": 12.0772,
-                  "p995": 12.0772,
-                  "p999": 12.0772,
-                  "rme": 0.8,
-                  "samples": 45
-                },
-                {
-                  "id": "Complex Async Dependencies - Valtio",
-                  "name": "Complex Async Dependencies",
-                  "hz": 91.8055,
-                  "min": 10.1701,
-                  "max": 11.1984,
-                  "mean": 10.8926,
-                  "p75": 11.1188,
-                  "p99": 11.1984,
-                  "p995": 11.1984,
-                  "p999": 11.1984,
-                  "rme": 0.83,
-                  "samples": 46
-                },
-                {
-                  "id": "Concurrent Async Reads - Valtio",
-                  "name": "Concurrent Async Reads",
-                  "hz": 90.646,
-                  "min": 9.6635,
-                  "max": 11.8225,
-                  "mean": 11.0319,
-                  "p75": 11.466,
-                  "p99": 11.8225,
-                  "p995": 11.8225,
-                  "p999": 11.8225,
-                  "rme": 1.49,
-                  "samples": 46
-                }
-              ]
-            }
-          ]
-        }
-      ]
+    {
+      "test": "Batch Write (10x)",
+      "group": "02-basic-write",
+      "opsPerSecond": 150878.76318043302,
+      "meanTime": 0.006627837999998178,
+      "variance": 0.00006343489650975553,
+      "p99": 0.02512500000000273,
+      "samples": 1000
+    },
+    {
+      "test": "Burst Write (100x)",
+      "group": "02-basic-write",
+      "opsPerSecond": 46373.66947565294,
+      "meanTime": 0.021563961000002792,
+      "variance": 0.0021983894374972704,
+      "p99": 0.0569590000000062,
+      "samples": 1000
+    },
+    {
+      "test": "Heavy Write (1000x)",
+      "group": "02-basic-write",
+      "opsPerSecond": 8610.959493642029,
+      "meanTime": 0.11613107699999728,
+      "variance": 0.0022108798320328534,
+      "p99": 0.1737909999992553,
+      "samples": 1000
+    },
+    {
+      "test": "Nested Object Update",
+      "group": "03-advanced-operations",
+      "opsPerSecond": 163821.28212072165,
+      "meanTime": 0.006104213000012351,
+      "variance": 0.000636471796533732,
+      "p99": 0.010916999999608379,
+      "samples": 1000
+    },
+    {
+      "test": "Array Push",
+      "group": "03-advanced-operations",
+      "opsPerSecond": 119894.35868274572,
+      "meanTime": 0.008340675999995256,
+      "variance": 0.0004912717137430145,
+      "p99": 0.028959000000213564,
+      "samples": 1000
+    },
+    {
+      "test": "Array Update",
+      "group": "03-advanced-operations",
+      "opsPerSecond": 120700.57024988637,
+      "meanTime": 0.008284964999997101,
+      "variance": 0.0012937054575587754,
+      "p99": 0.01379099999940081,
+      "samples": 1000
+    },
+    {
+      "test": "Computed Value Access",
+      "group": "03-advanced-operations",
+      "opsPerSecond": 172398.63391357535,
+      "meanTime": 0.005800509999988207,
+      "variance": 0.0005980006314418924,
+      "p99": 0.010375000000749424,
+      "samples": 1000
+    },
+    {
+      "test": "Sequential Async (3 ops)",
+      "group": "04-async-operations",
+      "opsPerSecond": 291.3088897547151,
+      "meanTime": 3.4327822979999327,
+      "variance": 0.00949344952350935,
+      "p99": 4.036000000000058,
+      "samples": 1000
+    },
+    {
+      "test": "Concurrent Async (3 ops)",
+      "group": "04-async-operations",
+      "opsPerSecond": 856.9455172807591,
+      "meanTime": 1.1669353299999494,
+      "variance": 0.0071483220675399575,
+      "p99": 1.648124999999709,
+      "samples": 1000
+    },
+    {
+      "test": "Simple Form (3 fields)",
+      "group": "05-real-world",
+      "opsPerSecond": 149766.46914411752,
+      "meanTime": 0.006677062000024307,
+      "variance": 0.0007680066396026705,
+      "p99": 0.017082999998820014,
+      "samples": 1000
+    },
+    {
+      "test": "Complex Form (nested + array)",
+      "group": "05-real-world",
+      "opsPerSecond": 183501.01962288286,
+      "meanTime": 0.005449561000015819,
+      "variance": 0.0000333069933196553,
+      "p99": 0.008667000001878478,
+      "samples": 1000
+    },
+    {
+      "test": "Cache Invalidation",
+      "group": "05-real-world",
+      "opsPerSecond": 190485.51519779713,
+      "meanTime": 0.0052497429999421,
+      "variance": 0.000037866698969885965,
+      "p99": 0.0098329999964335,
+      "samples": 1000
+    },
+    {
+      "test": "Memory Management",
+      "group": "05-real-world",
+      "opsPerSecond": 56264.99145526981,
+      "meanTime": 0.01777304100001493,
+      "variance": 0.0021639993408151485,
+      "p99": 0.04983399999764515,
+      "samples": 1000
+    },
+    {
+      "test": "Extreme Read (10000x)",
+      "group": "06-performance-stress",
+      "opsPerSecond": 33960.73989035874,
+      "meanTime": 0.029445766000048026,
+      "variance": 0.0011635990140676565,
+      "p99": 0.0415419999990263,
+      "samples": 1000
+    },
+    {
+      "test": "Extreme Write (10000x)",
+      "group": "06-performance-stress",
+      "opsPerSecond": 870.7586549739697,
+      "meanTime": 1.1484238420000474,
+      "variance": 0.04450271733414036,
+      "p99": 1.9413750000094296,
+      "samples": 1000
+    },
+    {
+      "test": "Large Array (1000 items)",
+      "group": "06-performance-stress",
+      "opsPerSecond": 5007.544115586125,
+      "meanTime": 0.19969869000004836,
+      "variance": 0.00428016776282866,
+      "p99": 0.3334999999933643,
+      "samples": 1000
     }
-  }
+  ]
 }

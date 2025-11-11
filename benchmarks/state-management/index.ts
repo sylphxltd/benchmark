@@ -233,6 +233,11 @@ async function main() {
   console.log('Results summary:');
   console.log(`  Total tests run: ${results.results.length}`);
   console.log(`  Timestamp: ${results.timestamp}`);
+
+  // Save results
+  console.log('\n📝 Saving results...\n');
+  await category.saveResults(results);
+  console.log('✅ Results saved\n');
 }
 
 // Run if executed directly

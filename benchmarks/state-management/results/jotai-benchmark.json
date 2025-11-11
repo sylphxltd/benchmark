@@ -1,568 +1,188 @@
 {
   "library": "Jotai",
-  "libraryKey": "jotai",
-  "version": "2.15.1",
-  "lastRun": "2025-11-11T13:06:27.781Z",
-  "groups": {
-    "01-read": {
-      "files": [
-        {
-          "filepath": "groups/01-read/runner.bench.ts",
-          "groups": [
-            {
-              "fullName": "01-read - Jotai",
-              "benchmarks": [
-                {
-                  "id": "Simple Read - Jotai",
-                  "name": "Simple Read",
-                  "hz": 789029.09,
-                  "min": 0.0006,
-                  "max": 5.5756,
-                  "mean": 0.0013,
-                  "p75": 0.0017,
-                  "p99": 0.0029,
-                  "p995": 0.0045,
-                  "p999": 0.0423,
-                  "rme": 3.61,
-                  "samples": 394516
-                },
-                {
-                  "id": "High Frequency Read (x10) - Jotai",
-                  "name": "High Frequency Read (x10)",
-                  "hz": 429839.53,
-                  "min": 0.0013,
-                  "max": 2.996,
-                  "mean": 0.0023,
-                  "p75": 0.0032,
-                  "p99": 0.0039,
-                  "p995": 0.0063,
-                  "p999": 0.0789,
-                  "rme": 2.61,
-                  "samples": 214920
-                },
-                {
-                  "id": "High Frequency Read (x100) - Jotai",
-                  "name": "High Frequency Read (x100)",
-                  "hz": 45073.36,
-                  "min": 0.0128,
-                  "max": 8.8813,
-                  "mean": 0.0222,
-                  "p75": 0.0317,
-                  "p99": 0.0768,
-                  "p995": 0.1331,
-                  "p999": 0.4641,
-                  "rme": 4.13,
-                  "samples": 22538
-                },
-                {
-                  "id": "High Frequency Read (x1000) - Jotai",
-                  "name": "High Frequency Read (x1000)",
-                  "hz": 4319.93,
-                  "min": 0.1271,
-                  "max": 5.675,
-                  "mean": 0.2315,
-                  "p75": 0.3192,
-                  "p99": 0.8481,
-                  "p995": 1.1283,
-                  "p999": 3.0115,
-                  "rme": 4.05,
-                  "samples": 2160
-                },
-                {
-                  "id": "High Frequency Read (x10000) - Jotai",
-                  "name": "High Frequency Read (x10000)",
-                  "hz": 410.17,
-                  "min": 1.2864,
-                  "max": 8.2356,
-                  "mean": 2.438,
-                  "p75": 3.2483,
-                  "p99": 5.5317,
-                  "p995": 6.7387,
-                  "p999": 8.2356,
-                  "rme": 6.48,
-                  "samples": 206
-                }
-              ]
-            }
-          ]
-        }
-      ]
+  "libraryId": "jotai",
+  "version": "jotai",
+  "timestamp": "2025-11-11T20:12:29.770Z",
+  "results": [
+    {
+      "test": "Single Read",
+      "group": "01-basic-read",
+      "opsPerSecond": 204227.3426101511,
+      "meanTime": 0.004896504000000121,
+      "variance": 0.000014319369173985005,
+      "p99": 0.020749999999999602,
+      "samples": 1000
     },
-    "02-write": {
-      "files": [
-        {
-          "filepath": "groups/02-write/runner.bench.ts",
-          "groups": [
-            {
-              "fullName": "02-write - Jotai",
-              "benchmarks": [
-                {
-                  "id": "Single Update - Jotai",
-                  "name": "Single Update",
-                  "hz": 970338.31,
-                  "min": 0.0005,
-                  "max": 5.88,
-                  "mean": 0.001,
-                  "p75": 0.0013,
-                  "p99": 0.0022,
-                  "p995": 0.0035,
-                  "p999": 0.0213,
-                  "rme": 4.4,
-                  "samples": 487752
-                },
-                {
-                  "id": "Batch Update (x10) - Jotai",
-                  "name": "Batch Update (x10)",
-                  "hz": 99755.54,
-                  "min": 0.0052,
-                  "max": 13.0493,
-                  "mean": 0.01,
-                  "p75": 0.0083,
-                  "p99": 0.0353,
-                  "p995": 0.0639,
-                  "p999": 0.2947,
-                  "rme": 6.32,
-                  "samples": 49879
-                },
-                {
-                  "id": "Batch Update (x100) - Jotai",
-                  "name": "Batch Update (x100)",
-                  "hz": 10819.59,
-                  "min": 0.0535,
-                  "max": 2.406,
-                  "mean": 0.0924,
-                  "p75": 0.1306,
-                  "p99": 0.3264,
-                  "p995": 0.4662,
-                  "p999": 1.1649,
-                  "rme": 2.37,
-                  "samples": 5410
-                },
-                {
-                  "id": "Batch Update (x1000) - Jotai",
-                  "name": "Batch Update (x1000)",
-                  "hz": 986.45,
-                  "min": 0.5476,
-                  "max": 5.3892,
-                  "mean": 1.0137,
-                  "p75": 1.33,
-                  "p99": 2.5565,
-                  "p995": 2.7763,
-                  "p999": 5.3892,
-                  "rme": 4.47,
-                  "samples": 494
-                },
-                {
-                  "id": "Batch Update (x10000) - Jotai",
-                  "name": "Batch Update (x10000)",
-                  "hz": 113.22,
-                  "min": 6.3148,
-                  "max": 14.5742,
-                  "mean": 8.8321,
-                  "p75": 10.7767,
-                  "p99": 14.5742,
-                  "p995": 14.5742,
-                  "p999": 14.5742,
-                  "rme": 7.38,
-                  "samples": 57
-                }
-              ]
-            }
-          ]
-        }
-      ]
+    {
+      "test": "Moderate Read (100x)",
+      "group": "01-basic-read",
+      "opsPerSecond": 42579.93349951122,
+      "meanTime": 0.02348524100000013,
+      "variance": 0.001339254399012935,
+      "p99": 0.07562500000000227,
+      "samples": 1000
     },
-    "03-creation": {
-      "files": [
-        {
-          "filepath": "groups/03-creation/runner.bench.ts",
-          "groups": [
-            {
-              "fullName": "03-creation - Jotai",
-              "benchmarks": [
-                {
-                  "id": "Store Creation (x1) - Jotai",
-                  "name": "Store Creation (x1)",
-                  "hz": 525328.64,
-                  "min": 0.0002,
-                  "max": 34.4581,
-                  "mean": 0.0019,
-                  "p75": 0.0007,
-                  "p99": 0.0019,
-                  "p995": 0.0029,
-                  "p999": 0.0259,
-                  "rme": 35.74,
-                  "samples": 266365
-                },
-                {
-                  "id": "Store Creation (x10) - Jotai",
-                  "name": "Store Creation (x10)",
-                  "hz": 56886.67,
-                  "min": 0.002,
-                  "max": 33.8263,
-                  "mean": 0.0176,
-                  "p75": 0.007,
-                  "p99": 0.0176,
-                  "p995": 0.0497,
-                  "p999": 0.4978,
-                  "rme": 37.09,
-                  "samples": 28456
-                },
-                {
-                  "id": "Store Creation (x100) - Jotai",
-                  "name": "Store Creation (x100)",
-                  "hz": 4357.39,
-                  "min": 0.0224,
-                  "max": 88.3233,
-                  "mean": 0.2295,
-                  "p75": 0.0787,
-                  "p99": 1.188,
-                  "p995": 4.3934,
-                  "p999": 35.8047,
-                  "rme": 47.93,
-                  "samples": 2179
-                },
-                {
-                  "id": "Store Creation (x1000) - Jotai",
-                  "name": "Store Creation (x1000)",
-                  "hz": 489.8,
-                  "min": 0.2503,
-                  "max": 51.5135,
-                  "mean": 2.0416,
-                  "p75": 0.9396,
-                  "p99": 39.3193,
-                  "p995": 41.7652,
-                  "p999": 51.5135,
-                  "rme": 39.87,
-                  "samples": 245
-                },
-                {
-                  "id": "Store Creation (x10000) - Jotai",
-                  "name": "Store Creation (x10000)",
-                  "hz": 55.8888,
-                  "min": 3.18,
-                  "max": 48.8565,
-                  "mean": 17.8927,
-                  "p75": 31.1751,
-                  "p99": 48.8565,
-                  "p995": 48.8565,
-                  "p999": 48.8565,
-                  "rme": 34.29,
-                  "samples": 28
-                }
-              ]
-            }
-          ]
-        }
-      ]
+    {
+      "test": "High-Frequency Read (1000x)",
+      "group": "01-basic-read",
+      "opsPerSecond": 6462.4359407805805,
+      "meanTime": 0.15474041200000083,
+      "variance": 0.0021257015607122377,
+      "p99": 0.4632080000000087,
+      "samples": 1000
     },
-    "04-complexity": {
-      "files": [
-        {
-          "filepath": "groups/04-complexity/runner.bench.ts",
-          "groups": [
-            {
-              "fullName": "04-complexity - Jotai",
-              "benchmarks": [
-                {
-                  "id": "Deep Nested Read (10 levels) - Jotai",
-                  "name": "Deep Nested Read (10 levels)",
-                  "hz": 3358130.95,
-                  "min": 0.0001,
-                  "max": 12.5017,
-                  "mean": 0.0003,
-                  "p75": 0.0004,
-                  "p99": 0.0004,
-                  "p995": 0.0005,
-                  "p999": 0.0017,
-                  "rme": 7.68,
-                  "samples": 1679066
-                },
-                {
-                  "id": "Deep Nested Write (10 levels) - Jotai",
-                  "name": "Deep Nested Write (10 levels)",
-                  "hz": 711399.64,
-                  "min": 0.0005,
-                  "max": 7.3634,
-                  "mean": 0.0014,
-                  "p75": 0.0015,
-                  "p99": 0.0033,
-                  "p995": 0.0064,
-                  "p999": 0.059,
-                  "rme": 5.04,
-                  "samples": 355700
-                },
-                {
-                  "id": "Array Splice (middle) - Jotai",
-                  "name": "Array Splice (middle)",
-                  "hz": 932086.61,
-                  "min": 0.0005,
-                  "max": 3.126,
-                  "mean": 0.0011,
-                  "p75": 0.0015,
-                  "p99": 0.0019,
-                  "p995": 0.0025,
-                  "p999": 0.0118,
-                  "rme": 2.37,
-                  "samples": 466082
-                },
-                {
-                  "id": "Large Array Map (1000 items) - Jotai",
-                  "name": "Large Array Map (1000 items)",
-                  "hz": 4052055.85,
-                  "min": 0.0001,
-                  "max": 5.4766,
-                  "mean": 0.0002,
-                  "p75": 0.0003,
-                  "p99": 0.0004,
-                  "p995": 0.0004,
-                  "p999": 0.0008,
-                  "rme": 2.78,
-                  "samples": 2027618
-                },
-                {
-                  "id": "Multi-field Update (unrelated) - Jotai",
-                  "name": "Multi-field Update (unrelated)",
-                  "hz": 16728.6,
-                  "min": 0.0177,
-                  "max": 10.1722,
-                  "mean": 0.0598,
-                  "p75": 0.0505,
-                  "p99": 0.1619,
-                  "p995": 0.6735,
-                  "p999": 4.1057,
-                  "rme": 9.47,
-                  "samples": 8365
-                }
-              ]
-            }
-          ]
-        }
-      ]
+    {
+      "test": "Single Write",
+      "group": "02-basic-write",
+      "opsPerSecond": 202657.2006839045,
+      "meanTime": 0.004934441000000561,
+      "variance": 0.0000018185671005182854,
+      "p99": 0.009749999999996817,
+      "samples": 1000
     },
-    "06-memory": {
-      "files": [
-        {
-          "filepath": "groups/06-memory/runner.bench.ts",
-          "groups": [
-            {
-              "fullName": "06-memory - Jotai",
-              "benchmarks": [
-                {
-                  "id": "Large State Read (1000 items) - Jotai",
-                  "name": "Large State Read (1000 items)",
-                  "hz": 3299904.25,
-                  "min": 0.0001,
-                  "max": 3.1962,
-                  "mean": 0.0003,
-                  "p75": 0.0004,
-                  "p99": 0.0004,
-                  "p995": 0.0005,
-                  "p999": 0.0018,
-                  "rme": 2.66,
-                  "samples": 1649953
-                },
-                {
-                  "id": "Large State Update (1000 items) - Jotai",
-                  "name": "Large State Update (1000 items)",
-                  "hz": 87259.89,
-                  "min": 0.0027,
-                  "max": 6.5502,
-                  "mean": 0.0115,
-                  "p75": 0.0148,
-                  "p99": 0.0402,
-                  "p995": 0.0802,
-                  "p999": 0.3907,
-                  "rme": 4.69,
-                  "samples": 43630
-                },
-                {
-                  "id": "Large State Filter - Jotai",
-                  "name": "Large State Filter",
-                  "hz": 125427.94,
-                  "min": 0.0023,
-                  "max": 6.6933,
-                  "mean": 0.008,
-                  "p75": 0.007,
-                  "p99": 0.0278,
-                  "p995": 0.0477,
-                  "p999": 0.2107,
-                  "rme": 4.64,
-                  "samples": 62714
-                }
-              ]
-            }
-          ]
-        }
-      ]
+    {
+      "test": "Batch Write (10x)",
+      "group": "02-basic-write",
+      "opsPerSecond": 63656.22785160959,
+      "meanTime": 0.015709382000000403,
+      "variance": 0.0002514176555541081,
+      "p99": 0.03620899999998528,
+      "samples": 1000
     },
-    "07-form": {
-      "files": [
-        {
-          "filepath": "groups/07-form/runner.bench.ts",
-          "groups": [
-            {
-              "fullName": "07-form - Jotai",
-              "benchmarks": [
-                {
-                  "id": "Single Field Update - Jotai",
-                  "name": "Single Field Update",
-                  "hz": 905029.05,
-                  "min": 0.0006,
-                  "max": 3.7349,
-                  "mean": 0.0011,
-                  "p75": 0.001,
-                  "p99": 0.0023,
-                  "p995": 0.0035,
-                  "p999": 0.02,
-                  "rme": 2.69,
-                  "samples": 452515
-                },
-                {
-                  "id": "Multiple Fields Update (3 fields) - Jotai",
-                  "name": "Multiple Fields Update (3 fields)",
-                  "hz": 799941.75,
-                  "min": 0.0006,
-                  "max": 5.2628,
-                  "mean": 0.0013,
-                  "p75": 0.0015,
-                  "p99": 0.0023,
-                  "p995": 0.0035,
-                  "p999": 0.0217,
-                  "rme": 3.17,
-                  "samples": 399971
-                },
-                {
-                  "id": "Nested Field Update - Jotai",
-                  "name": "Nested Field Update",
-                  "hz": 877143.78,
-                  "min": 0.0006,
-                  "max": 3.9945,
-                  "mean": 0.0011,
-                  "p75": 0.0015,
-                  "p99": 0.002,
-                  "p995": 0.0029,
-                  "p999": 0.0147,
-                  "rme": 2.25,
-                  "samples": 438572
-                },
-                {
-                  "id": "Full Form Reset - Jotai",
-                  "name": "Full Form Reset",
-                  "hz": 1228277.86,
-                  "min": 0.0004,
-                  "max": 5.402,
-                  "mean": 0.0008,
-                  "p75": 0.0011,
-                  "p99": 0.0012,
-                  "p995": 0.0017,
-                  "p999": 0.0064,
-                  "rme": 3.07,
-                  "samples": 614139
-                },
-                {
-                  "id": "Conditional Field Update - Jotai",
-                  "name": "Conditional Field Update",
-                  "hz": 3717798.22,
-                  "min": 0.0001,
-                  "max": 4.9307,
-                  "mean": 0.0003,
-                  "p75": 0.0003,
-                  "p99": 0.0004,
-                  "p995": 0.0004,
-                  "p999": 0.0009,
-                  "rme": 3.34,
-                  "samples": 1858900
-                }
-              ]
-            }
-          ]
-        }
-      ]
+    {
+      "test": "Burst Write (100x)",
+      "group": "02-basic-write",
+      "opsPerSecond": 10080.89057813259,
+      "meanTime": 0.09919758499999932,
+      "variance": 0.0014289132324448335,
+      "p99": 0.1335830000000442,
+      "samples": 1000
     },
-    "08-async-reactive": {
-      "files": [
-        {
-          "filepath": "groups/08-async-reactive/runner.bench.ts",
-          "groups": [
-            {
-              "fullName": "08-async-reactive - Jotai",
-              "benchmarks": [
-                {
-                  "id": "Async Computed Read - Jotai",
-                  "name": "Async Computed Read",
-                  "hz": 89.0831,
-                  "min": 9.9734,
-                  "max": 13.6791,
-                  "mean": 11.2255,
-                  "p75": 11.3957,
-                  "p99": 13.6791,
-                  "p995": 13.6791,
-                  "p999": 13.6791,
-                  "rme": 2.26,
-                  "samples": 45
-                },
-                {
-                  "id": "Async Computed with Dependency Update - Jotai",
-                  "name": "Async Computed with Dependency Update",
-                  "hz": 88.3305,
-                  "min": 10.1421,
-                  "max": 15.9193,
-                  "mean": 11.3211,
-                  "p75": 11.3331,
-                  "p99": 15.9193,
-                  "p995": 15.9193,
-                  "p999": 15.9193,
-                  "rme": 2.56,
-                  "samples": 45
-                },
-                {
-                  "id": "Chained Async Computed - Jotai",
-                  "name": "Chained Async Computed",
-                  "hz": 85.6667,
-                  "min": 10.8812,
-                  "max": 14.0762,
-                  "mean": 11.6732,
-                  "p75": 11.8757,
-                  "p99": 14.0762,
-                  "p995": 14.0762,
-                  "p999": 14.0762,
-                  "rme": 1.66,
-                  "samples": 43
-                },
-                {
-                  "id": "Complex Async Dependencies - Jotai",
-                  "name": "Complex Async Dependencies",
-                  "hz": 87.7025,
-                  "min": 10.1461,
-                  "max": 14.1659,
-                  "mean": 11.4022,
-                  "p75": 11.4124,
-                  "p99": 14.1659,
-                  "p995": 14.1659,
-                  "p999": 14.1659,
-                  "rme": 2.28,
-                  "samples": 44
-                },
-                {
-                  "id": "Concurrent Async Reads - Jotai",
-                  "name": "Concurrent Async Reads",
-                  "hz": 86.6571,
-                  "min": 10.0642,
-                  "max": 15.3715,
-                  "mean": 11.5397,
-                  "p75": 11.9362,
-                  "p99": 15.3715,
-                  "p995": 15.3715,
-                  "p999": 15.3715,
-                  "rme": 2.69,
-                  "samples": 44
-                }
-              ]
-            }
-          ]
-        }
-      ]
+    {
+      "test": "Heavy Write (1000x)",
+      "group": "02-basic-write",
+      "opsPerSecond": 1056.4111712514975,
+      "meanTime": 0.9466011219999985,
+      "variance": 0.0334385166012762,
+      "p99": 1.5931249999998727,
+      "samples": 1000
+    },
+    {
+      "test": "Nested Object Update",
+      "group": "03-advanced-operations",
+      "opsPerSecond": 184247.7734587671,
+      "meanTime": 0.005427473999970971,
+      "variance": 0.00035358624583881553,
+      "p99": 0.009957999999642198,
+      "samples": 1000
+    },
+    {
+      "test": "Array Push",
+      "group": "03-advanced-operations",
+      "opsPerSecond": 215785.81100426143,
+      "meanTime": 0.0046342249999943306,
+      "variance": 0.000004276051474415166,
+      "p99": 0.010709000000133528,
+      "samples": 1000
+    },
+    {
+      "test": "Array Update",
+      "group": "03-advanced-operations",
+      "opsPerSecond": 119119.00536590151,
+      "meanTime": 0.008394965999995292,
+      "variance": 0.0014789201054358839,
+      "p99": 0.0343750000001819,
+      "samples": 1000
+    },
+    {
+      "test": "Computed Value Access",
+      "group": "03-advanced-operations",
+      "opsPerSecond": 248793.97122429658,
+      "meanTime": 0.004019390000003113,
+      "variance": 0.0000012781838879444447,
+      "p99": 0.009082999999918684,
+      "samples": 1000
+    },
+    {
+      "test": "Sequential Async (3 ops)",
+      "group": "04-async-operations",
+      "opsPerSecond": 279.794281903356,
+      "meanTime": 3.574054455999965,
+      "variance": 0.09782994716804604,
+      "p99": 4.793042000001151,
+      "samples": 1000
+    },
+    {
+      "test": "Concurrent Async (3 ops)",
+      "group": "04-async-operations",
+      "opsPerSecond": 825.159922821244,
+      "meanTime": 1.2118862929999958,
+      "variance": 0.05411964358257941,
+      "p99": 2.1941249999945285,
+      "samples": 1000
+    },
+    {
+      "test": "Simple Form (3 fields)",
+      "group": "05-real-world",
+      "opsPerSecond": 137917.3188415901,
+      "meanTime": 0.007250721000084013,
+      "variance": 0.000002047108389240017,
+      "p99": 0.012374999998428393,
+      "samples": 1000
+    },
+    {
+      "test": "Complex Form (nested + array)",
+      "group": "05-real-world",
+      "opsPerSecond": 181809.98384276358,
+      "meanTime": 0.005500247999938437,
+      "variance": 0.0000013722957522293317,
+      "p99": 0.010708000001613982,
+      "samples": 1000
+    },
+    {
+      "test": "Cache Invalidation",
+      "group": "05-real-world",
+      "opsPerSecond": 139482.3086221366,
+      "meanTime": 0.007169367999988026,
+      "variance": 0.0034475237246689794,
+      "p99": 0.011374999994586688,
+      "samples": 1000
+    },
+    {
+      "test": "Memory Management",
+      "group": "05-real-world",
+      "opsPerSecond": 14619.304039565617,
+      "meanTime": 0.06840270899993629,
+      "variance": 0.002787111719602991,
+      "p99": 0.14279099999839673,
+      "samples": 1000
+    },
+    {
+      "test": "Extreme Read (10000x)",
+      "group": "06-performance-stress",
+      "opsPerSecond": 570.9548436695725,
+      "meanTime": 1.751451995000025,
+      "variance": 0.10322834787750702,
+      "p99": 3.0024170000033337,
+      "samples": 1000
+    },
+    {
+      "test": "Extreme Write (10000x)",
+      "group": "06-performance-stress",
+      "opsPerSecond": 87.97716072367757,
+      "meanTime": 11.366586415999976,
+      "variance": 2.710485717887455,
+      "p99": 18.22579200000473,
+      "samples": 1000
+    },
+    {
+      "test": "Large Array (1000 items)",
+      "group": "06-performance-stress",
+      "opsPerSecond": 81506.9593499489,
+      "meanTime": 0.012268890999926953,
+      "variance": 0.00029718255394038597,
+      "p99": 0.022708000004058704,
+      "samples": 1000
     }
-  }
+  ]
 }

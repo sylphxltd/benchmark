@@ -1,0 +1,188 @@
+{
+  "library": "Redux Toolkit",
+  "libraryId": "redux-toolkit",
+  "version": "@reduxjs/toolkit",
+  "timestamp": "2025-11-11T20:12:29.770Z",
+  "results": [
+    {
+      "test": "Single Read",
+      "group": "01-basic-read",
+      "opsPerSecond": 68388.05791319755,
+      "meanTime": 0.014622435999999638,
+      "variance": 0.0002851904335439114,
+      "p99": 0.07841699999999463,
+      "samples": 1000
+    },
+    {
+      "test": "Moderate Read (100x)",
+      "group": "01-basic-read",
+      "opsPerSecond": 115620.0890367225,
+      "meanTime": 0.008649015999999676,
+      "variance": 0.00017333732655573915,
+      "p99": 0.01650000000000773,
+      "samples": 1000
+    },
+    {
+      "test": "High-Frequency Read (1000x)",
+      "group": "01-basic-read",
+      "opsPerSecond": 96799.94857987117,
+      "meanTime": 0.01033058399999959,
+      "variance": 0.00009444802628096124,
+      "p99": 0.053208000000040556,
+      "samples": 1000
+    },
+    {
+      "test": "Single Write",
+      "group": "02-basic-write",
+      "opsPerSecond": 58670.23788493574,
+      "meanTime": 0.01704441699999927,
+      "variance": 0.00041031623619114805,
+      "p99": 0.04416699999995899,
+      "samples": 1000
+    },
+    {
+      "test": "Batch Write (10x)",
+      "group": "02-basic-write",
+      "opsPerSecond": 22173.50555229009,
+      "meanTime": 0.0450988680000001,
+      "variance": 0.0011974876966726208,
+      "p99": 0.07599999999996498,
+      "samples": 1000
+    },
+    {
+      "test": "Burst Write (100x)",
+      "group": "02-basic-write",
+      "opsPerSecond": 2761.5807156565343,
+      "meanTime": 0.3621114509999978,
+      "variance": 0.01598542356787286,
+      "p99": 0.9293330000000424,
+      "samples": 1000
+    },
+    {
+      "test": "Heavy Write (1000x)",
+      "group": "02-basic-write",
+      "opsPerSecond": 313.0403815565309,
+      "meanTime": 3.194476045000007,
+      "variance": 0.2209932706821869,
+      "p99": 4.963624999999865,
+      "samples": 1000
+    },
+    {
+      "test": "Nested Object Update",
+      "group": "03-advanced-operations",
+      "opsPerSecond": 65538.64607513414,
+      "meanTime": 0.015258172999997441,
+      "variance": 0.00037672371171713047,
+      "p99": 0.023667000000386906,
+      "samples": 1000
+    },
+    {
+      "test": "Array Push",
+      "group": "03-advanced-operations",
+      "opsPerSecond": 48251.88487543827,
+      "meanTime": 0.02072457900000154,
+      "variance": 0.0041006620072995105,
+      "p99": 0.04512499999964348,
+      "samples": 1000
+    },
+    {
+      "test": "Array Update",
+      "group": "03-advanced-operations",
+      "opsPerSecond": 42434.34102588717,
+      "meanTime": 0.02356581899999219,
+      "variance": 0.0006884459503115353,
+      "p99": 0.06254100000023755,
+      "samples": 1000
+    },
+    {
+      "test": "Computed Value Access",
+      "group": "03-advanced-operations",
+      "opsPerSecond": 111946.91924890113,
+      "meanTime": 0.008932804999989457,
+      "variance": 0.0004725448284479631,
+      "p99": 0.0184159999998883,
+      "samples": 1000
+    },
+    {
+      "test": "Sequential Async (3 ops)",
+      "group": "04-async-operations",
+      "opsPerSecond": 279.098665473462,
+      "meanTime": 3.5829623129999693,
+      "variance": 0.07383784632270456,
+      "p99": 4.429707999999664,
+      "samples": 1000
+    },
+    {
+      "test": "Concurrent Async (3 ops)",
+      "group": "04-async-operations",
+      "opsPerSecond": 826.2845846101895,
+      "meanTime": 1.2102367860000232,
+      "variance": 0.017365324901199748,
+      "p99": 1.8372499999968568,
+      "samples": 1000
+    },
+    {
+      "test": "Simple Form (3 fields)",
+      "group": "05-real-world",
+      "opsPerSecond": 41599.211811354406,
+      "meanTime": 0.024038917000034417,
+      "variance": 0.001317881546770827,
+      "p99": 0.09629100000165636,
+      "samples": 1000
+    },
+    {
+      "test": "Complex Form (nested + array)",
+      "group": "05-real-world",
+      "opsPerSecond": 47008.67799001262,
+      "meanTime": 0.021272667999990516,
+      "variance": 0.00044734782119719007,
+      "p99": 0.03204100000584731,
+      "samples": 1000
+    },
+    {
+      "test": "Cache Invalidation",
+      "group": "05-real-world",
+      "opsPerSecond": 70036.96691173695,
+      "meanTime": 0.01427817400002823,
+      "variance": 0.0003715013147382004,
+      "p99": 0.021957999997539446,
+      "samples": 1000
+    },
+    {
+      "test": "Memory Management",
+      "group": "05-real-world",
+      "opsPerSecond": 46915.02511380735,
+      "meanTime": 0.02131513300001825,
+      "variance": 0.001205416898065062,
+      "p99": 0.04158299999835435,
+      "samples": 1000
+    },
+    {
+      "test": "Extreme Read (10000x)",
+      "group": "06-performance-stress",
+      "opsPerSecond": 51096.35141901374,
+      "meanTime": 0.019570869000010135,
+      "variance": 0.0003230718340537561,
+      "p99": 0.030708999998751096,
+      "samples": 1000
+    },
+    {
+      "test": "Extreme Write (10000x)",
+      "group": "06-performance-stress",
+      "opsPerSecond": 25.96587501877995,
+      "meanTime": 38.51208554600009,
+      "variance": 18.381474796906875,
+      "p99": 55.5734999999986,
+      "samples": 1000
+    },
+    {
+      "test": "Large Array (1000 items)",
+      "group": "06-performance-stress",
+      "opsPerSecond": 1264.2464199535123,
+      "meanTime": 0.7909850360001582,
+      "variance": 0.01570316360108553,
+      "p99": 1.449040999999852,
+      "samples": 1000
+    }
+  ]
+}
