@@ -192,4 +192,4 @@ npx vitest bench groups/01-read/*.bench.ts
 ```
 
 ---
-*Last generated: 2025-11-11T18:22:33.960Z*
+*Last generated: 2025-11-11T20:02:29.553Z*

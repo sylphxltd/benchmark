@@ -31,4 +31,4 @@ npx vitest bench groups/02-write/*.bench.ts
 ```
 
 ---
-*Last generated: 2025-11-11T18:22:33.992Z*
+*Last generated: 2025-11-11T20:02:29.593Z*

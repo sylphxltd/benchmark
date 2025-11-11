@@ -192,4 +192,4 @@ npx vitest bench groups/08-async-reactive/*.bench.ts
 ```
 
 ---
-*Last generated: 2025-11-11T18:22:34.221Z*
+*Last generated: 2025-11-11T20:02:29.872Z*
