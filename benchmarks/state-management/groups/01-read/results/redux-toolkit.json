@@ -1,0 +1,42 @@
+{
+  "files": [
+    {
+      "filepath": "groups/01-read/tests/redux-toolkit.bench.ts",
+      "groups": [
+        {
+          "fullName": "01-read - Redux Toolkit",
+          "benchmarks": [
+            {
+              "id": "Simple Read - Redux Toolkit",
+              "name": "Simple Read",
+              "hz": 950871.19,
+              "min": 0.0009,
+              "max": 0.3637,
+              "mean": 0.0011,
+              "p75": 0.001,
+              "p99": 0.0016,
+              "p995": 0.0019,
+              "p999": 0.003,
+              "rme": 0.3,
+              "samples": 475436
+            },
+            {
+              "id": "High Frequency Read - Redux Toolkit",
+              "name": "High Frequency Read",
+              "hz": 6507009.06,
+              "min": 0.0001,
+              "max": 0.1049,
+              "mean": 0.0002,
+              "p75": 0.0002,
+              "p99": 0.0002,
+              "p995": 0.0002,
+              "p999": 0.0003,
+              "rme": 0.05,
+              "samples": 3253505
+            }
+          ]
+        }
+      ]
+    }
+  ]
+}

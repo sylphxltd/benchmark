@@ -1,0 +1,42 @@
+{
+  "files": [
+    {
+      "filepath": "groups/02-write/tests/valtio.bench.ts",
+      "groups": [
+        {
+          "fullName": "02-write - Valtio",
+          "benchmarks": [
+            {
+              "id": "Simple Increment - Valtio",
+              "name": "Simple Increment",
+              "hz": 5070716.01,
+              "min": 0.0001,
+              "max": 0.1654,
+              "mean": 0.0002,
+              "p75": 0.0002,
+              "p99": 0.0003,
+              "p995": 0.0003,
+              "p999": 0.0009,
+              "rme": 0.16,
+              "samples": 2535359
+            },
+            {
+              "id": "Burst Updates - Valtio",
+              "name": "Burst Updates",
+              "hz": 576258.13,
+              "min": 0.0016,
+              "max": 2.1498,
+              "mean": 0.0017,
+              "p75": 0.0017,
+              "p99": 0.0022,
+              "p995": 0.0023,
+              "p999": 0.0029,
+              "rme": 0.86,
+              "samples": 288130
+            }
+          ]
+        }
+      ]
+    }
+  ]
+}

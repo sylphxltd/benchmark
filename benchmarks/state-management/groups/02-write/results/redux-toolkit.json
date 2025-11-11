@@ -1,0 +1,42 @@
+{
+  "files": [
+    {
+      "filepath": "groups/02-write/tests/redux-toolkit.bench.ts",
+      "groups": [
+        {
+          "fullName": "02-write - Redux Toolkit",
+          "benchmarks": [
+            {
+              "id": "Simple Increment - Redux Toolkit",
+              "name": "Simple Increment",
+              "hz": 951114.44,
+              "min": 0.0009,
+              "max": 0.1842,
+              "mean": 0.0011,
+              "p75": 0.001,
+              "p99": 0.0015,
+              "p995": 0.002,
+              "p999": 0.0075,
+              "rme": 0.3,
+              "samples": 475559
+            },
+            {
+              "id": "Burst Updates - Redux Toolkit",
+              "name": "Burst Updates",
+              "hz": 96370.8,
+              "min": 0.0094,
+              "max": 3.9193,
+              "mean": 0.0104,
+              "p75": 0.01,
+              "p99": 0.0205,
+              "p995": 0.0219,
+              "p999": 0.0468,
+              "rme": 1.56,
+              "samples": 48186
+            }
+          ]
+        }
+      ]
+    }
+  ]
+}

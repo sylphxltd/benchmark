@@ -1,0 +1,28 @@
+{
+  "files": [
+    {
+      "filepath": "groups/06-memory/tests/zen.bench.ts",
+      "groups": [
+        {
+          "fullName": "06-memory - Zen",
+          "benchmarks": [
+            {
+              "id": "Large State Allocation - Zen",
+              "name": "Large State Allocation",
+              "hz": 868.67,
+              "min": 1.038,
+              "max": 3.8028,
+              "mean": 1.1512,
+              "p75": 1.1201,
+              "p99": 1.9029,
+              "p995": 1.9278,
+              "p999": 3.8028,
+              "rme": 1.65,
+              "samples": 435
+            }
+          ]
+        }
+      ]
+    }
+  ]
+}

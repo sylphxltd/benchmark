@@ -1,0 +1,28 @@
+{
+  "files": [
+    {
+      "filepath": "groups/03-creation/tests/zen.bench.ts",
+      "groups": [
+        {
+          "fullName": "03-creation - Zen",
+          "benchmarks": [
+            {
+              "id": "Store Creation - Zen",
+              "name": "Store Creation",
+              "hz": 40368887.27,
+              "min": 0,
+              "max": 0.0173,
+              "mean": 0,
+              "p75": 0,
+              "p99": 0,
+              "p995": 0,
+              "p999": 0,
+              "rme": 0.04,
+              "samples": 20184444
+            }
+          ]
+        }
+      ]
+    }
+  ]
+}

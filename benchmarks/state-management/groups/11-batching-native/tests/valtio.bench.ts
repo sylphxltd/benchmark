@@ -1,10 +1,24 @@
 /**
  * 11-batching-native - Valtio
- * Auto-generated per-library test file
+ * Manually created per-library test file
  */
 
 import { bench, describe } from 'vitest';
-import { LIBRARIES } from '../../shared/test-config';
+import { proxy } from 'valtio';
+
+// ============================================================================
+// VALTIO - automatic batching
+// ============================================================================
+
+const valtioBatchStore = proxy({
+  count: 0,
+  name: '',
+  active: false
+});
+
+// ============================================================================
+// BENCHMARKS
+// ============================================================================
 
 describe('11-batching-native - Valtio', () => {
   bench('Batched Updates', () => {

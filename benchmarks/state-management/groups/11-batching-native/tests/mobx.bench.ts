@@ -1,10 +1,44 @@
 /**
  * 11-batching-native - MobX
- * Auto-generated per-library test file
+ * Manually created per-library test file
  */
 
 import { bench, describe } from 'vitest';
-import { LIBRARIES } from '../../shared/test-config';
+import { makeAutoObservable, runInAction } from 'mobx';
+
+// ============================================================================
+// MOBX - runInAction/transaction
+// ============================================================================
+
+class MobXBatchStore {
+  count = 0;
+  name = '';
+  active = false;
+
+  constructor() {
+    makeAutoObservable(this);
+  }
+
+  batchUpdate(count: number, name: string, active: boolean) {
+    runInAction(() => {
+      this.count = count;
+      this.name = name;
+      this.active = active;
+    });
+  }
+
+  unbatchedUpdate(count: number, name: string, active: boolean) {
+    this.count = count;
+    this.name = name;
+    this.active = active;
+  }
+}
+
+const mobxBatchStore = new MobXBatchStore();
+
+// ============================================================================
+// BENCHMARKS
+// ============================================================================
 
 describe('11-batching-native - MobX', () => {
   bench('Batched Updates', () => {
@@ -21,6 +55,7 @@ describe('11-batching-native - MobX', () => {
         mobxBatchStore.count = i;
       }
     });
+  });
 
   bench('Batched with Observers', () => {
     mobxBatchStore.batchUpdate(Math.random(), 'test', true);

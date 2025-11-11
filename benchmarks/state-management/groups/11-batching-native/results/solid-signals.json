@@ -1,0 +1,70 @@
+{
+  "files": [
+    {
+      "filepath": "groups/11-batching-native/tests/solid-signals.bench.ts",
+      "groups": [
+        {
+          "fullName": "11-batching-native - Solid Signals",
+          "benchmarks": [
+            {
+              "id": "Batched Updates - Solid Signals",
+              "name": "Batched Updates",
+              "hz": 41556588.84,
+              "min": 0,
+              "max": 3.8359,
+              "mean": 0,
+              "p75": 0,
+              "p99": 0.0001,
+              "p995": 0.0001,
+              "p999": 0.0001,
+              "rme": 1.51,
+              "samples": 20778296
+            },
+            {
+              "id": "Unbatched Updates - Solid Signals",
+              "name": "Unbatched Updates",
+              "hz": 43009351.74,
+              "min": 0,
+              "max": 0.1036,
+              "mean": 0,
+              "p75": 0,
+              "p99": 0.0001,
+              "p995": 0.0001,
+              "p999": 0.0001,
+              "rme": 0.06,
+              "samples": 21504676
+            },
+            {
+              "id": "Large Batch - Solid Signals",
+              "name": "Large Batch",
+              "hz": 27681016.67,
+              "min": 0,
+              "max": 0.1162,
+              "mean": 0,
+              "p75": 0,
+              "p99": 0,
+              "p995": 0.0001,
+              "p999": 0.0001,
+              "rme": 0.05,
+              "samples": 13840509
+            },
+            {
+              "id": "Batched with Observers - Solid Signals",
+              "name": "Batched with Observers",
+              "hz": 41482070.76,
+              "min": 0,
+              "max": 0.5681,
+              "mean": 0,
+              "p75": 0,
+              "p99": 0.0001,
+              "p995": 0.0001,
+              "p999": 0.0001,
+              "rme": 0.23,
+              "samples": 20741037
+            }
+          ]
+        }
+      ]
+    }
+  ]
+}

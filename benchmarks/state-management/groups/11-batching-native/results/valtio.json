@@ -1,0 +1,70 @@
+{
+  "files": [
+    {
+      "filepath": "groups/11-batching-native/tests/valtio.bench.ts",
+      "groups": [
+        {
+          "fullName": "11-batching-native - Valtio",
+          "benchmarks": [
+            {
+              "id": "Batched Updates - Valtio",
+              "name": "Batched Updates",
+              "hz": 4795323.83,
+              "min": 0.0001,
+              "max": 0.1588,
+              "mean": 0.0002,
+              "p75": 0.0002,
+              "p99": 0.0003,
+              "p995": 0.0003,
+              "p999": 0.001,
+              "rme": 0.15,
+              "samples": 2397662
+            },
+            {
+              "id": "Unbatched Updates - Valtio",
+              "name": "Unbatched Updates",
+              "hz": 4869432.79,
+              "min": 0.0001,
+              "max": 0.1726,
+              "mean": 0.0002,
+              "p75": 0.0002,
+              "p99": 0.0003,
+              "p995": 0.0003,
+              "p999": 0.0004,
+              "rme": 0.12,
+              "samples": 2434717
+            },
+            {
+              "id": "Large Batch - Valtio",
+              "name": "Large Batch",
+              "hz": 67554.7,
+              "min": 0.0139,
+              "max": 0.2018,
+              "mean": 0.0148,
+              "p75": 0.0148,
+              "p99": 0.0174,
+              "p995": 0.0183,
+              "p999": 0.0459,
+              "rme": 0.24,
+              "samples": 33778
+            },
+            {
+              "id": "Batched with Observers - Valtio",
+              "name": "Batched with Observers",
+              "hz": 4782912.47,
+              "min": 0.0001,
+              "max": 0.2489,
+              "mean": 0.0002,
+              "p75": 0.0002,
+              "p99": 0.0003,
+              "p995": 0.0003,
+              "p999": 0.0004,
+              "rme": 0.19,
+              "samples": 2391457
+            }
+          ]
+        }
+      ]
+    }
+  ]
+}

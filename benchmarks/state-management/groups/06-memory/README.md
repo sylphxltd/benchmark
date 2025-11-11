@@ -6,7 +6,14 @@ Large state allocation performance.
 
 - [Group Overall Performance](#group-overall-performance)
 - [Detailed Results](#detailed-results)
-  - [groups/06-memory/memory-allocation.bench.ts > Memory Allocation](#groups06-memorymemory-allocationbenchts-memory-allocation)
+  - [06-memory - Jotai](#06-memory---jotai)
+  - [06-memory - MobX](#06-memory---mobx)
+  - [06-memory - Preact Signals](#06-memory---preact-signals)
+  - [06-memory - Redux Toolkit](#06-memory---redux-toolkit)
+  - [06-memory - Solid Signals](#06-memory---solid-signals)
+  - [06-memory - Valtio](#06-memory---valtio)
+  - [06-memory - Zen](#06-memory---zen)
+  - [06-memory - Zustand](#06-memory---zustand)
 - [Navigation](#-navigation)
 - [Running This Group](#-running-this-group)
 
@@ -24,46 +31,114 @@ Large state allocation performance.
 
 | Rank | Library | Group Score |
 |:----:|---------|-------------|
-| 🥇 1 | [**MobX**](https://github.com/mobxjs/mobx) | 👑 925 |
-| 🥈 2 | [**Zen**](https://github.com/SylphxAI/zen) | 924 |
-| 🥉 3 | [**Solid Signals**](https://github.com/solidjs/solid) | 923 |
-|  4 | [**Jotai**](https://github.com/pmndrs/jotai) | 917 |
-|  5 | [**Zustand**](https://github.com/pmndrs/zustand) | 907 |
-|  6 | [**Preact Signals**](https://github.com/preactjs/signals) | 904 |
-|  7 | [**Valtio**](https://github.com/pmndrs/valtio) | 898 |
-|  8 | [**Redux Toolkit**](https://github.com/reduxjs/redux-toolkit) | 892 |
+| 🥇 1 | [**Zustand**](https://github.com/pmndrs/zustand) | 👑 900 |
+| 🥈 2 | [**Redux Toolkit**](https://github.com/reduxjs/redux-toolkit) | 898 |
+| 🥉 3 | [**Jotai**](https://github.com/pmndrs/jotai) | 892 |
+|  4 | [**Valtio**](https://github.com/pmndrs/valtio) | 892 |
+|  5 | [**Preact Signals**](https://github.com/preactjs/signals) | 888 |
+|  6 | [**Solid Signals**](https://github.com/solidjs/solid) | 885 |
+|  7 | [**MobX**](https://github.com/mobxjs/mobx) | 884 |
+|  8 | [**Zen**](https://github.com/SylphxAI/zen) | 869 |
 
 ---
 
 ## Detailed Results
 
-### groups/06-memory/memory-allocation.bench.ts > Memory Allocation
+### 06-memory - Jotai
 
 **Performance Comparison:**
 
 ```
-🥇   MobX               ████████████████████████████████████████       925 ops/sec
-🥈   Zen                ████████████████████████████████████████       924 ops/sec
-🥉   Solid Signals      ████████████████████████████████████████       923 ops/sec
-4.   Jotai              ████████████████████████████████████████       917 ops/sec
-5.   Zustand            ███████████████████████████████████████        907 ops/sec
-6.   Preact Signals     ███████████████████████████████████████        904 ops/sec
-7.   Valtio             ███████████████████████████████████████        898 ops/sec
-8.   Redux Toolkit      ███████████████████████████████████████        892 ops/sec
+🥇   Jotai              ████████████████████████████████████████       892 ops/sec
 ```
 
 | Rank | Library | Ops/sec | Avg Variance | Avg Mean | Max p99 | Total Samples |
 |:----:|---------|---------|--------------|----------|---------|---------------|
-| 🥇 | [**MobX**](https://github.com/mobxjs/mobx) | 925 | ±0.62% | 1081.1005ms | 1314.2920ms | 0 |
-| 🥈 | [**Zen**](https://github.com/SylphxAI/zen) | 924 | ±0.61% | 1082.7144ms | 1319.2920ms | 0 |
-| 🥉 | [**Solid Signals**](https://github.com/solidjs/solid) | 923 | ±0.61% | 1083.4349ms | 1309.5830ms | 0 |
-| 4 | [**Jotai**](https://github.com/pmndrs/jotai) | 917 | ±0.66% | 1090.4491ms | 1352.5830ms | 0 |
-| 5 | [**Zustand**](https://github.com/pmndrs/zustand) | 907 | ±0.91% | 1102.1868ms | 1454.3750ms | 0 |
-| 6 | [**Preact Signals**](https://github.com/preactjs/signals) | 904 | ±0.99% | 1105.9978ms | 1481.6250ms | 0 |
-| 7 | [**Valtio**](https://github.com/pmndrs/valtio) | 898 | ±1.10% | 1113.8775ms | 1465.3750ms | 0 |
-| 8 | [**Redux Toolkit**](https://github.com/reduxjs/redux-toolkit) | 892 | ±1.32% | 1121.2112ms | 1705.4590ms | 0 |
+| 🥇 | [**Jotai**](https://github.com/pmndrs/jotai) | 892 | ±2.05% | 1120.5000ms | 1640.5000ms | 447 |
 
-**Key Insight:** MobX is 1.04x faster than Redux Toolkit in this test.
+### 06-memory - MobX
+
+**Performance Comparison:**
+
+```
+🥇   MobX               ████████████████████████████████████████       884 ops/sec
+```
+
+| Rank | Library | Ops/sec | Avg Variance | Avg Mean | Max p99 | Total Samples |
+|:----:|---------|---------|--------------|----------|---------|---------------|
+| 🥇 | [**MobX**](https://github.com/mobxjs/mobx) | 884 | ±1.96% | 1130.7000ms | 1911.1000ms | 443 |
+
+### 06-memory - Preact Signals
+
+**Performance Comparison:**
+
+```
+🥇   Preact Signals     ████████████████████████████████████████       888 ops/sec
+```
+
+| Rank | Library | Ops/sec | Avg Variance | Avg Mean | Max p99 | Total Samples |
+|:----:|---------|---------|--------------|----------|---------|---------------|
+| 🥇 | [**Preact Signals**](https://github.com/preactjs/signals) | 888 | ±1.67% | 1126.7000ms | 1859.8000ms | 444 |
+
+### 06-memory - Redux Toolkit
+
+**Performance Comparison:**
+
+```
+🥇   Redux Toolkit      ████████████████████████████████████████       898 ops/sec
+```
+
+| Rank | Library | Ops/sec | Avg Variance | Avg Mean | Max p99 | Total Samples |
+|:----:|---------|---------|--------------|----------|---------|---------------|
+| 🥇 | [**Redux Toolkit**](https://github.com/reduxjs/redux-toolkit) | 898 | ±1.38% | 1113.2000ms | 1699.5000ms | 450 |
+
+### 06-memory - Solid Signals
+
+**Performance Comparison:**
+
+```
+🥇   Solid Signals      ████████████████████████████████████████       885 ops/sec
+```
+
+| Rank | Library | Ops/sec | Avg Variance | Avg Mean | Max p99 | Total Samples |
+|:----:|---------|---------|--------------|----------|---------|---------------|
+| 🥇 | [**Solid Signals**](https://github.com/solidjs/solid) | 885 | ±2.21% | 1130.2000ms | 1905.3000ms | 443 |
+
+### 06-memory - Valtio
+
+**Performance Comparison:**
+
+```
+🥇   Valtio             ████████████████████████████████████████       892 ops/sec
+```
+
+| Rank | Library | Ops/sec | Avg Variance | Avg Mean | Max p99 | Total Samples |
+|:----:|---------|---------|--------------|----------|---------|---------------|
+| 🥇 | [**Valtio**](https://github.com/pmndrs/valtio) | 892 | ±1.56% | 1121.3000ms | 1751.5000ms | 446 |
+
+### 06-memory - Zen
+
+**Performance Comparison:**
+
+```
+🥇   Zen                ████████████████████████████████████████       869 ops/sec
+```
+
+| Rank | Library | Ops/sec | Avg Variance | Avg Mean | Max p99 | Total Samples |
+|:----:|---------|---------|--------------|----------|---------|---------------|
+| 🥇 | [**Zen**](https://github.com/SylphxAI/zen) | 869 | ±1.65% | 1151.2000ms | 1902.9000ms | 435 |
+
+### 06-memory - Zustand
+
+**Performance Comparison:**
+
+```
+🥇   Zustand            ████████████████████████████████████████       900 ops/sec
+```
+
+| Rank | Library | Ops/sec | Avg Variance | Avg Mean | Max p99 | Total Samples |
+|:----:|---------|---------|--------------|----------|---------|---------------|
+| 🥇 | [**Zustand**](https://github.com/pmndrs/zustand) | 900 | ±1.24% | 1111.5000ms | 1570.5000ms | 450 |
 
 ---
 
@@ -83,4 +158,4 @@ npx vitest bench groups/06-memory/*.bench.ts
 ```
 
 ---
-*Last generated: 2025-11-11T04:05:19.487Z*
+*Last generated: 2025-11-11T04:55:50.253Z*

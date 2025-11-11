@@ -1,0 +1,42 @@
+{
+  "files": [
+    {
+      "filepath": "groups/01-read/tests/zustand.bench.ts",
+      "groups": [
+        {
+          "fullName": "01-read - Zustand",
+          "benchmarks": [
+            {
+              "id": "Simple Read - Zustand",
+              "name": "Simple Read",
+              "hz": 376396.8,
+              "min": 0.0023,
+              "max": 0.2034,
+              "mean": 0.0027,
+              "p75": 0.0027,
+              "p99": 0.0033,
+              "p995": 0.0035,
+              "p999": 0.005,
+              "rme": 0.17,
+              "samples": 188199
+            },
+            {
+              "id": "High Frequency Read - Zustand",
+              "name": "High Frequency Read",
+              "hz": 3245544.49,
+              "min": 0.0002,
+              "max": 0.0202,
+              "mean": 0.0003,
+              "p75": 0.0003,
+              "p99": 0.0004,
+              "p995": 0.0004,
+              "p999": 0.0005,
+              "rme": 0.02,
+              "samples": 1622773
+            }
+          ]
+        }
+      ]
+    }
+  ]
+}

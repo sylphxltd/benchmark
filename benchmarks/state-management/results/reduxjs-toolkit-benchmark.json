@@ -1,0 +1,148 @@
+{
+  "library": "Redux Toolkit",
+  "libraryKey": "@reduxjs/toolkit",
+  "version": "2.10.1",
+  "lastRun": "2025-11-11T04:53:39.748Z",
+  "groups": {
+    "01-read": {
+      "files": [
+        {
+          "filepath": "groups/01-read/tests/redux-toolkit.bench.ts",
+          "groups": [
+            {
+              "fullName": "01-read - Redux Toolkit",
+              "benchmarks": [
+                {
+                  "id": "Simple Read - Redux Toolkit",
+                  "name": "Simple Read",
+                  "hz": 950871.19,
+                  "min": 0.0009,
+                  "max": 0.3637,
+                  "mean": 0.0011,
+                  "p75": 0.001,
+                  "p99": 0.0016,
+                  "p995": 0.0019,
+                  "p999": 0.003,
+                  "rme": 0.3,
+                  "samples": 475436
+                },
+                {
+                  "id": "High Frequency Read - Redux Toolkit",
+                  "name": "High Frequency Read",
+                  "hz": 6507009.06,
+                  "min": 0.0001,
+                  "max": 0.1049,
+                  "mean": 0.0002,
+                  "p75": 0.0002,
+                  "p99": 0.0002,
+                  "p995": 0.0002,
+                  "p999": 0.0003,
+                  "rme": 0.05,
+                  "samples": 3253505
+                }
+              ]
+            }
+          ]
+        }
+      ]
+    },
+    "02-write": {
+      "files": [
+        {
+          "filepath": "groups/02-write/tests/redux-toolkit.bench.ts",
+          "groups": [
+            {
+              "fullName": "02-write - Redux Toolkit",
+              "benchmarks": [
+                {
+                  "id": "Simple Increment - Redux Toolkit",
+                  "name": "Simple Increment",
+                  "hz": 951114.44,
+                  "min": 0.0009,
+                  "max": 0.1842,
+                  "mean": 0.0011,
+                  "p75": 0.001,
+                  "p99": 0.0015,
+                  "p995": 0.002,
+                  "p999": 0.0075,
+                  "rme": 0.3,
+                  "samples": 475559
+                },
+                {
+                  "id": "Burst Updates - Redux Toolkit",
+                  "name": "Burst Updates",
+                  "hz": 96370.8,
+                  "min": 0.0094,
+                  "max": 3.9193,
+                  "mean": 0.0104,
+                  "p75": 0.01,
+                  "p99": 0.0205,
+                  "p995": 0.0219,
+                  "p999": 0.0468,
+                  "rme": 1.56,
+                  "samples": 48186
+                }
+              ]
+            }
+          ]
+        }
+      ]
+    },
+    "03-creation": {
+      "files": [
+        {
+          "filepath": "groups/03-creation/tests/redux-toolkit.bench.ts",
+          "groups": [
+            {
+              "fullName": "03-creation - Redux Toolkit",
+              "benchmarks": [
+                {
+                  "id": "Store Creation - Redux Toolkit",
+                  "name": "Store Creation",
+                  "hz": 260270.4,
+                  "min": 0.0033,
+                  "max": 1.3949,
+                  "mean": 0.0038,
+                  "p75": 0.0038,
+                  "p99": 0.0049,
+                  "p995": 0.0054,
+                  "p999": 0.0185,
+                  "rme": 0.63,
+                  "samples": 130136
+                }
+              ]
+            }
+          ]
+        }
+      ]
+    },
+    "06-memory": {
+      "files": [
+        {
+          "filepath": "groups/06-memory/tests/redux-toolkit.bench.ts",
+          "groups": [
+            {
+              "fullName": "06-memory - Redux Toolkit",
+              "benchmarks": [
+                {
+                  "id": "Large State Allocation - Redux Toolkit",
+                  "name": "Large State Allocation",
+                  "hz": 898.28,
+                  "min": 1.0284,
+                  "max": 3.403,
+                  "mean": 1.1132,
+                  "p75": 1.0896,
+                  "p99": 1.6995,
+                  "p995": 1.8923,
+                  "p999": 3.403,
+                  "rme": 1.38,
+                  "samples": 450
+                }
+              ]
+            }
+          ]
+        }
+      ]
+    }
+  }
+}

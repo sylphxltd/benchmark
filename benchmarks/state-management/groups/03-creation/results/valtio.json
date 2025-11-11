@@ -1,0 +1,28 @@
+{
+  "files": [
+    {
+      "filepath": "groups/03-creation/tests/valtio.bench.ts",
+      "groups": [
+        {
+          "fullName": "03-creation - Valtio",
+          "benchmarks": [
+            {
+              "id": "Store Creation - Valtio",
+              "name": "Store Creation",
+              "hz": 639683.94,
+              "min": 0.0002,
+              "max": 110.73,
+              "mean": 0.0016,
+              "p75": 0.0005,
+              "p99": 0.001,
+              "p995": 0.0012,
+              "p999": 0.002,
+              "rme": 61.45,
+              "samples": 323942
+            }
+          ]
+        }
+      ]
+    }
+  ]
+}

@@ -1,0 +1,28 @@
+{
+  "files": [
+    {
+      "filepath": "groups/06-memory/tests/redux-toolkit.bench.ts",
+      "groups": [
+        {
+          "fullName": "06-memory - Redux Toolkit",
+          "benchmarks": [
+            {
+              "id": "Large State Allocation - Redux Toolkit",
+              "name": "Large State Allocation",
+              "hz": 898.28,
+              "min": 1.0284,
+              "max": 3.403,
+              "mean": 1.1132,
+              "p75": 1.0896,
+              "p99": 1.6995,
+              "p995": 1.8923,
+              "p999": 3.403,
+              "rme": 1.38,
+              "samples": 450
+            }
+          ]
+        }
+      ]
+    }
+  ]
+}

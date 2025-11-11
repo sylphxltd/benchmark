@@ -1,0 +1,28 @@
+{
+  "files": [
+    {
+      "filepath": "groups/03-creation/tests/redux-toolkit.bench.ts",
+      "groups": [
+        {
+          "fullName": "03-creation - Redux Toolkit",
+          "benchmarks": [
+            {
+              "id": "Store Creation - Redux Toolkit",
+              "name": "Store Creation",
+              "hz": 260270.4,
+              "min": 0.0033,
+              "max": 1.3949,
+              "mean": 0.0038,
+              "p75": 0.0038,
+              "p99": 0.0049,
+              "p995": 0.0054,
+              "p999": 0.0185,
+              "rme": 0.63,
+              "samples": 130136
+            }
+          ]
+        }
+      ]
+    }
+  ]
+}

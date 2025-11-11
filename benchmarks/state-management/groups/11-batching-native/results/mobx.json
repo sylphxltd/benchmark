@@ -1,0 +1,70 @@
+{
+  "files": [
+    {
+      "filepath": "groups/11-batching-native/tests/mobx.bench.ts",
+      "groups": [
+        {
+          "fullName": "11-batching-native - MobX",
+          "benchmarks": [
+            {
+              "id": "Batched Updates - MobX",
+              "name": "Batched Updates",
+              "hz": 3301370.04,
+              "min": 0.0002,
+              "max": 0.948,
+              "mean": 0.0003,
+              "p75": 0.0003,
+              "p99": 0.0004,
+              "p995": 0.0004,
+              "p999": 0.0011,
+              "rme": 0.4,
+              "samples": 1650686
+            },
+            {
+              "id": "Unbatched Updates - MobX",
+              "name": "Unbatched Updates",
+              "hz": 3824649.68,
+              "min": 0.0002,
+              "max": 4.6732,
+              "mean": 0.0003,
+              "p75": 0.0003,
+              "p99": 0.0003,
+              "p995": 0.0004,
+              "p999": 0.0005,
+              "rme": 1.83,
+              "samples": 1912325
+            },
+            {
+              "id": "Large Batch - MobX",
+              "name": "Large Batch",
+              "hz": 153639.94,
+              "min": 0.0062,
+              "max": 0.0295,
+              "mean": 0.0065,
+              "p75": 0.0065,
+              "p99": 0.0076,
+              "p995": 0.0081,
+              "p999": 0.0084,
+              "rme": 0.03,
+              "samples": 76820
+            },
+            {
+              "id": "Batched with Observers - MobX",
+              "name": "Batched with Observers",
+              "hz": 3306212.41,
+              "min": 0.0002,
+              "max": 0.2076,
+              "mean": 0.0003,
+              "p75": 0.0003,
+              "p99": 0.0004,
+              "p995": 0.0004,
+              "p999": 0.0006,
+              "rme": 0.18,
+              "samples": 1653107
+            }
+          ]
+        }
+      ]
+    }
+  ]
+}

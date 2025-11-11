@@ -1,0 +1,218 @@
+{
+  "library": "MobX",
+  "libraryKey": "mobx",
+  "version": "6.15.0",
+  "lastRun": "2025-11-11T04:53:02.579Z",
+  "groups": {
+    "01-read": {
+      "files": [
+        {
+          "filepath": "groups/01-read/tests/mobx.bench.ts",
+          "groups": [
+            {
+              "fullName": "01-read - MobX",
+              "benchmarks": [
+                {
+                  "id": "Simple Read - MobX",
+                  "name": "Simple Read",
+                  "hz": 3848893.41,
+                  "min": 0.0002,
+                  "max": 1.4186,
+                  "mean": 0.0003,
+                  "p75": 0.0003,
+                  "p99": 0.0003,
+                  "p995": 0.0004,
+                  "p999": 0.0011,
+                  "rme": 0.63,
+                  "samples": 1924447
+                },
+                {
+                  "id": "High Frequency Read - MobX",
+                  "name": "High Frequency Read",
+                  "hz": 26483123.83,
+                  "min": 0,
+                  "max": 0.0141,
+                  "mean": 0,
+                  "p75": 0,
+                  "p99": 0,
+                  "p995": 0,
+                  "p999": 0.0001,
+                  "rme": 0.02,
+                  "samples": 13241563
+                }
+              ]
+            }
+          ]
+        }
+      ]
+    },
+    "02-write": {
+      "files": [
+        {
+          "filepath": "groups/02-write/tests/mobx.bench.ts",
+          "groups": [
+            {
+              "fullName": "02-write - MobX",
+              "benchmarks": [
+                {
+                  "id": "Simple Increment - MobX",
+                  "name": "Simple Increment",
+                  "hz": 3628966.41,
+                  "min": 0.0002,
+                  "max": 1.5834,
+                  "mean": 0.0003,
+                  "p75": 0.0003,
+                  "p99": 0.0004,
+                  "p995": 0.0005,
+                  "p999": 0.0012,
+                  "rme": 0.65,
+                  "samples": 1814484
+                },
+                {
+                  "id": "Burst Updates - MobX",
+                  "name": "Burst Updates",
+                  "hz": 408984.41,
+                  "min": 0.0023,
+                  "max": 1.6836,
+                  "mean": 0.0024,
+                  "p75": 0.0024,
+                  "p99": 0.003,
+                  "p995": 0.003,
+                  "p999": 0.0037,
+                  "rme": 0.68,
+                  "samples": 204493
+                }
+              ]
+            }
+          ]
+        }
+      ]
+    },
+    "03-creation": {
+      "files": [
+        {
+          "filepath": "groups/03-creation/tests/mobx.bench.ts",
+          "groups": [
+            {
+              "fullName": "03-creation - MobX",
+              "benchmarks": [
+                {
+                  "id": "Store Creation - MobX",
+                  "name": "Store Creation",
+                  "hz": 399.41,
+                  "min": 1.9935,
+                  "max": 8.0045,
+                  "mean": 2.5037,
+                  "p75": 2.0885,
+                  "p99": 7.8674,
+                  "p995": 7.957,
+                  "p999": 8.0045,
+                  "rme": 7.37,
+                  "samples": 200
+                }
+              ]
+            }
+          ]
+        }
+      ]
+    },
+    "06-memory": {
+      "files": [
+        {
+          "filepath": "groups/06-memory/tests/mobx.bench.ts",
+          "groups": [
+            {
+              "fullName": "06-memory - MobX",
+              "benchmarks": [
+                {
+                  "id": "Large State Allocation - MobX",
+                  "name": "Large State Allocation",
+                  "hz": 884.45,
+                  "min": 1.0308,
+                  "max": 4.7014,
+                  "mean": 1.1307,
+                  "p75": 1.0945,
+                  "p99": 1.9111,
+                  "p995": 2.019,
+                  "p999": 4.7014,
+                  "rme": 1.96,
+                  "samples": 443
+                }
+              ]
+            }
+          ]
+        }
+      ]
+    },
+    "11-batching-native": {
+      "files": [
+        {
+          "filepath": "groups/11-batching-native/tests/mobx.bench.ts",
+          "groups": [
+            {
+              "fullName": "11-batching-native - MobX",
+              "benchmarks": [
+                {
+                  "id": "Batched Updates - MobX",
+                  "name": "Batched Updates",
+                  "hz": 3301370.04,
+                  "min": 0.0002,
+                  "max": 0.948,
+                  "mean": 0.0003,
+                  "p75": 0.0003,
+                  "p99": 0.0004,
+                  "p995": 0.0004,
+                  "p999": 0.0011,
+                  "rme": 0.4,
+                  "samples": 1650686
+                },
+                {
+                  "id": "Unbatched Updates - MobX",
+                  "name": "Unbatched Updates",
+                  "hz": 3824649.68,
+                  "min": 0.0002,
+                  "max": 4.6732,
+                  "mean": 0.0003,
+                  "p75": 0.0003,
+                  "p99": 0.0003,
+                  "p995": 0.0004,
+                  "p999": 0.0005,
+                  "rme": 1.83,
+                  "samples": 1912325
+                },
+                {
+                  "id": "Large Batch - MobX",
+                  "name": "Large Batch",
+                  "hz": 153639.94,
+                  "min": 0.0062,
+                  "max": 0.0295,
+                  "mean": 0.0065,
+                  "p75": 0.0065,
+                  "p99": 0.0076,
+                  "p995": 0.0081,
+                  "p999": 0.0084,
+                  "rme": 0.03,
+                  "samples": 76820
+                },
+                {
+                  "id": "Batched with Observers - MobX",
+                  "name": "Batched with Observers",
+                  "hz": 3306212.41,
+                  "min": 0.0002,
+                  "max": 0.2076,
+                  "mean": 0.0003,
+                  "p75": 0.0003,
+                  "p99": 0.0004,
+                  "p995": 0.0004,
+                  "p999": 0.0006,
+                  "rme": 0.18,
+                  "samples": 1653107
+                }
+              ]
+            }
+          ]
+        }
+      ]
+    }
+  }
+}

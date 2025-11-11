@@ -1,0 +1,28 @@
+{
+  "files": [
+    {
+      "filepath": "groups/06-memory/tests/mobx.bench.ts",
+      "groups": [
+        {
+          "fullName": "06-memory - MobX",
+          "benchmarks": [
+            {
+              "id": "Large State Allocation - MobX",
+              "name": "Large State Allocation",
+              "hz": 884.45,
+              "min": 1.0308,
+              "max": 4.7014,
+              "mean": 1.1307,
+              "p75": 1.0945,
+              "p99": 1.9111,
+              "p995": 2.019,
+              "p999": 4.7014,
+              "rme": 1.96,
+              "samples": 443
+            }
+          ]
+        }
+      ]
+    }
+  ]
+}

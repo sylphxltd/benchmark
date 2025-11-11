@@ -1,0 +1,218 @@
+{
+  "library": "Solid Signals",
+  "libraryKey": "solid-js",
+  "version": "1.9.10",
+  "lastRun": "2025-11-11T04:55:11.846Z",
+  "groups": {
+    "01-read": {
+      "files": [
+        {
+          "filepath": "groups/01-read/tests/solid-signals.bench.ts",
+          "groups": [
+            {
+              "fullName": "01-read - Solid Signals",
+              "benchmarks": [
+                {
+                  "id": "Simple Read - Solid Signals",
+                  "name": "Simple Read",
+                  "hz": 39633390.83,
+                  "min": 0,
+                  "max": 0.1301,
+                  "mean": 0,
+                  "p75": 0,
+                  "p99": 0,
+                  "p995": 0,
+                  "p999": 0.0001,
+                  "rme": 0.08,
+                  "samples": 19816697
+                },
+                {
+                  "id": "High Frequency Read - Solid Signals",
+                  "name": "High Frequency Read",
+                  "hz": 25020205.3,
+                  "min": 0,
+                  "max": 0.1892,
+                  "mean": 0,
+                  "p75": 0,
+                  "p99": 0.0001,
+                  "p995": 0.0001,
+                  "p999": 0.0001,
+                  "rme": 0.12,
+                  "samples": 12510103
+                }
+              ]
+            }
+          ]
+        }
+      ]
+    },
+    "02-write": {
+      "files": [
+        {
+          "filepath": "groups/02-write/tests/solid-signals.bench.ts",
+          "groups": [
+            {
+              "fullName": "02-write - Solid Signals",
+              "benchmarks": [
+                {
+                  "id": "Simple Increment - Solid Signals",
+                  "name": "Simple Increment",
+                  "hz": 40015677.12,
+                  "min": 0,
+                  "max": 0.0392,
+                  "mean": 0,
+                  "p75": 0,
+                  "p99": 0,
+                  "p995": 0,
+                  "p999": 0.0001,
+                  "rme": 0.06,
+                  "samples": 20007840
+                },
+                {
+                  "id": "Burst Updates - Solid Signals",
+                  "name": "Burst Updates",
+                  "hz": 36486929.05,
+                  "min": 0,
+                  "max": 0.0432,
+                  "mean": 0,
+                  "p75": 0,
+                  "p99": 0,
+                  "p995": 0,
+                  "p999": 0.0001,
+                  "rme": 0.06,
+                  "samples": 18243465
+                }
+              ]
+            }
+          ]
+        }
+      ]
+    },
+    "03-creation": {
+      "files": [
+        {
+          "filepath": "groups/03-creation/tests/solid-signals.bench.ts",
+          "groups": [
+            {
+              "fullName": "03-creation - Solid Signals",
+              "benchmarks": [
+                {
+                  "id": "Store Creation - Solid Signals",
+                  "name": "Store Creation",
+                  "hz": 38643031.68,
+                  "min": 0,
+                  "max": 1.0973,
+                  "mean": 0,
+                  "p75": 0,
+                  "p99": 0,
+                  "p995": 0,
+                  "p999": 0.0001,
+                  "rme": 0.46,
+                  "samples": 19321517
+                }
+              ]
+            }
+          ]
+        }
+      ]
+    },
+    "06-memory": {
+      "files": [
+        {
+          "filepath": "groups/06-memory/tests/solid-signals.bench.ts",
+          "groups": [
+            {
+              "fullName": "06-memory - Solid Signals",
+              "benchmarks": [
+                {
+                  "id": "Large State Allocation - Solid Signals",
+                  "name": "Large State Allocation",
+                  "hz": 884.78,
+                  "min": 1.0302,
+                  "max": 5.28,
+                  "mean": 1.1302,
+                  "p75": 1.0885,
+                  "p99": 1.9053,
+                  "p995": 2.7309,
+                  "p999": 5.28,
+                  "rme": 2.21,
+                  "samples": 443
+                }
+              ]
+            }
+          ]
+        }
+      ]
+    },
+    "11-batching-native": {
+      "files": [
+        {
+          "filepath": "groups/11-batching-native/tests/solid-signals.bench.ts",
+          "groups": [
+            {
+              "fullName": "11-batching-native - Solid Signals",
+              "benchmarks": [
+                {
+                  "id": "Batched Updates - Solid Signals",
+                  "name": "Batched Updates",
+                  "hz": 41556588.84,
+                  "min": 0,
+                  "max": 3.8359,
+                  "mean": 0,
+                  "p75": 0,
+                  "p99": 0.0001,
+                  "p995": 0.0001,
+                  "p999": 0.0001,
+                  "rme": 1.51,
+                  "samples": 20778296
+                },
+                {
+                  "id": "Unbatched Updates - Solid Signals",
+                  "name": "Unbatched Updates",
+                  "hz": 43009351.74,
+                  "min": 0,
+                  "max": 0.1036,
+                  "mean": 0,
+                  "p75": 0,
+                  "p99": 0.0001,
+                  "p995": 0.0001,
+                  "p999": 0.0001,
+                  "rme": 0.06,
+                  "samples": 21504676
+                },
+                {
+                  "id": "Large Batch - Solid Signals",
+                  "name": "Large Batch",
+                  "hz": 27681016.67,
+                  "min": 0,
+                  "max": 0.1162,
+                  "mean": 0,
+                  "p75": 0,
+                  "p99": 0,
+                  "p995": 0.0001,
+                  "p999": 0.0001,
+                  "rme": 0.05,
+                  "samples": 13840509
+                },
+                {
+                  "id": "Batched with Observers - Solid Signals",
+                  "name": "Batched with Observers",
+                  "hz": 41482070.76,
+                  "min": 0,
+                  "max": 0.5681,
+                  "mean": 0,
+                  "p75": 0,
+                  "p99": 0.0001,
+                  "p995": 0.0001,
+                  "p999": 0.0001,
+                  "rme": 0.23,
+                  "samples": 20741037
+                }
+              ]
+            }
+          ]
+        }
+      ]
+    }
+  }
+}

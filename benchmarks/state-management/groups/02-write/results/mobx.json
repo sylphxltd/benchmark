@@ -1,0 +1,42 @@
+{
+  "files": [
+    {
+      "filepath": "groups/02-write/tests/mobx.bench.ts",
+      "groups": [
+        {
+          "fullName": "02-write - MobX",
+          "benchmarks": [
+            {
+              "id": "Simple Increment - MobX",
+              "name": "Simple Increment",
+              "hz": 3628966.41,
+              "min": 0.0002,
+              "max": 1.5834,
+              "mean": 0.0003,
+              "p75": 0.0003,
+              "p99": 0.0004,
+              "p995": 0.0005,
+              "p999": 0.0012,
+              "rme": 0.65,
+              "samples": 1814484
+            },
+            {
+              "id": "Burst Updates - MobX",
+              "name": "Burst Updates",
+              "hz": 408984.41,
+              "min": 0.0023,
+              "max": 1.6836,
+              "mean": 0.0024,
+              "p75": 0.0024,
+              "p99": 0.003,
+              "p995": 0.003,
+              "p999": 0.0037,
+              "rme": 0.68,
+              "samples": 204493
+            }
+          ]
+        }
+      ]
+    }
+  ]
+}

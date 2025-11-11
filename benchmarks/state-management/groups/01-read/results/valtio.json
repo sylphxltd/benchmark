@@ -1,0 +1,42 @@
+{
+  "files": [
+    {
+      "filepath": "groups/01-read/tests/valtio.bench.ts",
+      "groups": [
+        {
+          "fullName": "01-read - Valtio",
+          "benchmarks": [
+            {
+              "id": "Simple Read - Valtio",
+              "name": "Simple Read",
+              "hz": 4885532.42,
+              "min": 0.0001,
+              "max": 0.1591,
+              "mean": 0.0002,
+              "p75": 0.0002,
+              "p99": 0.0003,
+              "p995": 0.0003,
+              "p999": 0.001,
+              "rme": 0.14,
+              "samples": 2442767
+            },
+            {
+              "id": "High Frequency Read - Valtio",
+              "name": "High Frequency Read",
+              "hz": 1280244.28,
+              "min": 0.0007,
+              "max": 0.0439,
+              "mean": 0.0008,
+              "p75": 0.0008,
+              "p99": 0.001,
+              "p995": 0.001,
+              "p999": 0.001,
+              "rme": 0.03,
+              "samples": 640123
+            }
+          ]
+        }
+      ]
+    }
+  ]
+}

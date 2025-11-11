@@ -1,0 +1,28 @@
+{
+  "files": [
+    {
+      "filepath": "groups/06-memory/tests/valtio.bench.ts",
+      "groups": [
+        {
+          "fullName": "06-memory - Valtio",
+          "benchmarks": [
+            {
+              "id": "Large State Allocation - Valtio",
+              "name": "Large State Allocation",
+              "hz": 891.85,
+              "min": 1.0287,
+              "max": 3.7695,
+              "mean": 1.1213,
+              "p75": 1.096,
+              "p99": 1.7515,
+              "p995": 1.9279,
+              "p999": 3.7695,
+              "rme": 1.56,
+              "samples": 446
+            }
+          ]
+        }
+      ]
+    }
+  ]
+}

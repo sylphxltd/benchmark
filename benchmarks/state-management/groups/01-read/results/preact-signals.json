@@ -1,0 +1,42 @@
+{
+  "files": [
+    {
+      "filepath": "groups/01-read/tests/preact-signals.bench.ts",
+      "groups": [
+        {
+          "fullName": "01-read - Preact Signals",
+          "benchmarks": [
+            {
+              "id": "Simple Read - Preact Signals",
+              "name": "Simple Read",
+              "hz": 33823773.8,
+              "min": 0,
+              "max": 2.1204,
+              "mean": 0,
+              "p75": 0,
+              "p99": 0,
+              "p995": 0.0001,
+              "p999": 0.0001,
+              "rme": 1.01,
+              "samples": 16911887
+            },
+            {
+              "id": "High Frequency Read - Preact Signals",
+              "name": "High Frequency Read",
+              "hz": 7318540.84,
+              "min": 0.0001,
+              "max": 0.1293,
+              "mean": 0.0001,
+              "p75": 0.0001,
+              "p99": 0.0002,
+              "p995": 0.0002,
+              "p999": 0.0003,
+              "rme": 0.13,
+              "samples": 3659271
+            }
+          ]
+        }
+      ]
+    }
+  ]
+}

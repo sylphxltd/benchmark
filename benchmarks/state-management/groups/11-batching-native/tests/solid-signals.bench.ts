@@ -1,10 +1,22 @@
 /**
  * 11-batching-native - Solid Signals
- * Auto-generated per-library test file
+ * Manually created per-library test file
  */
 
 import { bench, describe } from 'vitest';
-import { LIBRARIES } from '../../shared/test-config';
+import { createSignal, batch } from 'solid-js';
+
+// ============================================================================
+// SOLID SIGNALS - batch()
+// ============================================================================
+
+const [solidCount, setSolidCount] = createSignal(0);
+const [solidName, setSolidName] = createSignal('');
+const [solidActive, setSolidActive] = createSignal(false);
+
+// ============================================================================
+// BENCHMARKS
+// ============================================================================
 
 describe('11-batching-native - Solid Signals', () => {
   bench('Batched Updates', () => {
@@ -13,6 +25,7 @@ describe('11-batching-native - Solid Signals', () => {
       setSolidName('test');
       setSolidActive(true);
     });
+  });
 
   bench('Unbatched Updates', () => {
     setSolidCount(Math.random());
@@ -26,12 +39,14 @@ describe('11-batching-native - Solid Signals', () => {
         setSolidCount(i);
       }
     });
+  });
 
   bench('Batched with Observers', () => {
-    solidSubscriptionCount = 0;
+    let solidSubscriptionCount = 0;
     batch(() => {
       setSolidCount(Math.random());
       setSolidName('test');
       setSolidActive(true);
     });
+  });
 });

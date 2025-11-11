@@ -1,0 +1,148 @@
+{
+  "library": "Preact Signals",
+  "libraryKey": "@preact/signals",
+  "version": "2.4.0",
+  "lastRun": "2025-11-11T04:54:25.847Z",
+  "groups": {
+    "01-read": {
+      "files": [
+        {
+          "filepath": "groups/01-read/tests/preact-signals.bench.ts",
+          "groups": [
+            {
+              "fullName": "01-read - Preact Signals",
+              "benchmarks": [
+                {
+                  "id": "Simple Read - Preact Signals",
+                  "name": "Simple Read",
+                  "hz": 33823773.8,
+                  "min": 0,
+                  "max": 2.1204,
+                  "mean": 0,
+                  "p75": 0,
+                  "p99": 0,
+                  "p995": 0.0001,
+                  "p999": 0.0001,
+                  "rme": 1.01,
+                  "samples": 16911887
+                },
+                {
+                  "id": "High Frequency Read - Preact Signals",
+                  "name": "High Frequency Read",
+                  "hz": 7318540.84,
+                  "min": 0.0001,
+                  "max": 0.1293,
+                  "mean": 0.0001,
+                  "p75": 0.0001,
+                  "p99": 0.0002,
+                  "p995": 0.0002,
+                  "p999": 0.0003,
+                  "rme": 0.13,
+                  "samples": 3659271
+                }
+              ]
+            }
+          ]
+        }
+      ]
+    },
+    "02-write": {
+      "files": [
+        {
+          "filepath": "groups/02-write/tests/preact-signals.bench.ts",
+          "groups": [
+            {
+              "fullName": "02-write - Preact Signals",
+              "benchmarks": [
+                {
+                  "id": "Simple Increment - Preact Signals",
+                  "name": "Simple Increment",
+                  "hz": 36334501.71,
+                  "min": 0,
+                  "max": 0.207,
+                  "mean": 0,
+                  "p75": 0,
+                  "p99": 0,
+                  "p995": 0,
+                  "p999": 0.0001,
+                  "rme": 0.12,
+                  "samples": 18167251
+                },
+                {
+                  "id": "Burst Updates - Preact Signals",
+                  "name": "Burst Updates",
+                  "hz": 13360719.94,
+                  "min": 0,
+                  "max": 0.0645,
+                  "mean": 0.0001,
+                  "p75": 0.0001,
+                  "p99": 0.0001,
+                  "p995": 0.0001,
+                  "p999": 0.0002,
+                  "rme": 0.06,
+                  "samples": 6680361
+                }
+              ]
+            }
+          ]
+        }
+      ]
+    },
+    "03-creation": {
+      "files": [
+        {
+          "filepath": "groups/03-creation/tests/preact-signals.bench.ts",
+          "groups": [
+            {
+              "fullName": "03-creation - Preact Signals",
+              "benchmarks": [
+                {
+                  "id": "Store Creation - Preact Signals",
+                  "name": "Store Creation",
+                  "hz": 40097069.59,
+                  "min": 0,
+                  "max": 0.0491,
+                  "mean": 0,
+                  "p75": 0,
+                  "p99": 0,
+                  "p995": 0,
+                  "p999": 0.0001,
+                  "rme": 0.06,
+                  "samples": 20048536
+                }
+              ]
+            }
+          ]
+        }
+      ]
+    },
+    "06-memory": {
+      "files": [
+        {
+          "filepath": "groups/06-memory/tests/preact-signals.bench.ts",
+          "groups": [
+            {
+              "fullName": "06-memory - Preact Signals",
+              "benchmarks": [
+                {
+                  "id": "Large State Allocation - Preact Signals",
+                  "name": "Large State Allocation",
+                  "hz": 887.52,
+                  "min": 1.0293,
+                  "max": 3.9671,
+                  "mean": 1.1267,
+                  "p75": 1.103,
+                  "p99": 1.8598,
+                  "p995": 1.9603,
+                  "p999": 3.9671,
+                  "rme": 1.67,
+                  "samples": 444
+                }
+              ]
+            }
+          ]
+        }
+      ]
+    }
+  }
+}

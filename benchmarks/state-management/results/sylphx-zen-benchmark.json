@@ -1,0 +1,148 @@
+{
+  "library": "Zen",
+  "libraryKey": "@sylphx/zen",
+  "version": "1.2.1",
+  "lastRun": "2025-11-11T04:55:37.100Z",
+  "groups": {
+    "01-read": {
+      "files": [
+        {
+          "filepath": "groups/01-read/tests/zen.bench.ts",
+          "groups": [
+            {
+              "fullName": "01-read - Zen",
+              "benchmarks": [
+                {
+                  "id": "Simple Read - Zen",
+                  "name": "Simple Read",
+                  "hz": 31505127.18,
+                  "min": 0,
+                  "max": 0.1366,
+                  "mean": 0,
+                  "p75": 0,
+                  "p99": 0,
+                  "p995": 0,
+                  "p999": 0.0001,
+                  "rme": 0.08,
+                  "samples": 15752564
+                },
+                {
+                  "id": "High Frequency Read - Zen",
+                  "name": "High Frequency Read",
+                  "hz": 18040773.93,
+                  "min": 0,
+                  "max": 0.344,
+                  "mean": 0.0001,
+                  "p75": 0.0001,
+                  "p99": 0.0001,
+                  "p995": 0.0001,
+                  "p999": 0.0001,
+                  "rme": 0.17,
+                  "samples": 9020387
+                }
+              ]
+            }
+          ]
+        }
+      ]
+    },
+    "02-write": {
+      "files": [
+        {
+          "filepath": "groups/02-write/tests/zen.bench.ts",
+          "groups": [
+            {
+              "fullName": "02-write - Zen",
+              "benchmarks": [
+                {
+                  "id": "Simple Increment - Zen",
+                  "name": "Simple Increment",
+                  "hz": 34466746.69,
+                  "min": 0,
+                  "max": 0.4941,
+                  "mean": 0,
+                  "p75": 0,
+                  "p99": 0,
+                  "p995": 0,
+                  "p999": 0.0001,
+                  "rme": 0.26,
+                  "samples": 17233374
+                },
+                {
+                  "id": "Burst Updates - Zen",
+                  "name": "Burst Updates",
+                  "hz": 12998805.79,
+                  "min": 0,
+                  "max": 0.0385,
+                  "mean": 0.0001,
+                  "p75": 0.0001,
+                  "p99": 0.0001,
+                  "p995": 0.0001,
+                  "p999": 0.0002,
+                  "rme": 0.03,
+                  "samples": 6499403
+                }
+              ]
+            }
+          ]
+        }
+      ]
+    },
+    "03-creation": {
+      "files": [
+        {
+          "filepath": "groups/03-creation/tests/zen.bench.ts",
+          "groups": [
+            {
+              "fullName": "03-creation - Zen",
+              "benchmarks": [
+                {
+                  "id": "Store Creation - Zen",
+                  "name": "Store Creation",
+                  "hz": 40368887.27,
+                  "min": 0,
+                  "max": 0.0173,
+                  "mean": 0,
+                  "p75": 0,
+                  "p99": 0,
+                  "p995": 0,
+                  "p999": 0,
+                  "rme": 0.04,
+                  "samples": 20184444
+                }
+              ]
+            }
+          ]
+        }
+      ]
+    },
+    "06-memory": {
+      "files": [
+        {
+          "filepath": "groups/06-memory/tests/zen.bench.ts",
+          "groups": [
+            {
+              "fullName": "06-memory - Zen",
+              "benchmarks": [
+                {
+                  "id": "Large State Allocation - Zen",
+                  "name": "Large State Allocation",
+                  "hz": 868.67,
+                  "min": 1.038,
+                  "max": 3.8028,
+                  "mean": 1.1512,
+                  "p75": 1.1201,
+                  "p99": 1.9029,
+                  "p995": 1.9278,
+                  "p999": 3.8028,
+                  "rme": 1.65,
+                  "samples": 435
+                }
+              ]
+            }
+          ]
+        }
+      ]
+    }
+  }
+}

@@ -1,0 +1,28 @@
+{
+  "files": [
+    {
+      "filepath": "groups/03-creation/tests/zustand.bench.ts",
+      "groups": [
+        {
+          "fullName": "03-creation - Zustand",
+          "benchmarks": [
+            {
+              "id": "Store Creation - Zustand",
+              "name": "Store Creation",
+              "hz": 12785973.44,
+              "min": 0,
+              "max": 3.0498,
+              "mean": 0.0001,
+              "p75": 0.0001,
+              "p99": 0.0002,
+              "p995": 0.0002,
+              "p999": 0.0005,
+              "rme": 1.22,
+              "samples": 6392987
+            }
+          ]
+        }
+      ]
+    }
+  ]
+}

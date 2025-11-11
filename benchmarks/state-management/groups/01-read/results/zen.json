@@ -1,0 +1,42 @@
+{
+  "files": [
+    {
+      "filepath": "groups/01-read/tests/zen.bench.ts",
+      "groups": [
+        {
+          "fullName": "01-read - Zen",
+          "benchmarks": [
+            {
+              "id": "Simple Read - Zen",
+              "name": "Simple Read",
+              "hz": 31505127.18,
+              "min": 0,
+              "max": 0.1366,
+              "mean": 0,
+              "p75": 0,
+              "p99": 0,
+              "p995": 0,
+              "p999": 0.0001,
+              "rme": 0.08,
+              "samples": 15752564
+            },
+            {
+              "id": "High Frequency Read - Zen",
+              "name": "High Frequency Read",
+              "hz": 18040773.93,
+              "min": 0,
+              "max": 0.344,
+              "mean": 0.0001,
+              "p75": 0.0001,
+              "p99": 0.0001,
+              "p995": 0.0001,
+              "p999": 0.0001,
+              "rme": 0.17,
+              "samples": 9020387
+            }
+          ]
+        }
+      ]
+    }
+  ]
+}

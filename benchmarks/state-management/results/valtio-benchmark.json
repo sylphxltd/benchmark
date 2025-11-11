@@ -1,0 +1,218 @@
+{
+  "library": "Valtio",
+  "libraryKey": "valtio",
+  "version": "2.2.0",
+  "lastRun": "2025-11-11T04:53:59.428Z",
+  "groups": {
+    "01-read": {
+      "files": [
+        {
+          "filepath": "groups/01-read/tests/valtio.bench.ts",
+          "groups": [
+            {
+              "fullName": "01-read - Valtio",
+              "benchmarks": [
+                {
+                  "id": "Simple Read - Valtio",
+                  "name": "Simple Read",
+                  "hz": 4885532.42,
+                  "min": 0.0001,
+                  "max": 0.1591,
+                  "mean": 0.0002,
+                  "p75": 0.0002,
+                  "p99": 0.0003,
+                  "p995": 0.0003,
+                  "p999": 0.001,
+                  "rme": 0.14,
+                  "samples": 2442767
+                },
+                {
+                  "id": "High Frequency Read - Valtio",
+                  "name": "High Frequency Read",
+                  "hz": 1280244.28,
+                  "min": 0.0007,
+                  "max": 0.0439,
+                  "mean": 0.0008,
+                  "p75": 0.0008,
+                  "p99": 0.001,
+                  "p995": 0.001,
+                  "p999": 0.001,
+                  "rme": 0.03,
+                  "samples": 640123
+                }
+              ]
+            }
+          ]
+        }
+      ]
+    },
+    "02-write": {
+      "files": [
+        {
+          "filepath": "groups/02-write/tests/valtio.bench.ts",
+          "groups": [
+            {
+              "fullName": "02-write - Valtio",
+              "benchmarks": [
+                {
+                  "id": "Simple Increment - Valtio",
+                  "name": "Simple Increment",
+                  "hz": 5070716.01,
+                  "min": 0.0001,
+                  "max": 0.1654,
+                  "mean": 0.0002,
+                  "p75": 0.0002,
+                  "p99": 0.0003,
+                  "p995": 0.0003,
+                  "p999": 0.0009,
+                  "rme": 0.16,
+                  "samples": 2535359
+                },
+                {
+                  "id": "Burst Updates - Valtio",
+                  "name": "Burst Updates",
+                  "hz": 576258.13,
+                  "min": 0.0016,
+                  "max": 2.1498,
+                  "mean": 0.0017,
+                  "p75": 0.0017,
+                  "p99": 0.0022,
+                  "p995": 0.0023,
+                  "p999": 0.0029,
+                  "rme": 0.86,
+                  "samples": 288130
+                }
+              ]
+            }
+          ]
+        }
+      ]
+    },
+    "03-creation": {
+      "files": [
+        {
+          "filepath": "groups/03-creation/tests/valtio.bench.ts",
+          "groups": [
+            {
+              "fullName": "03-creation - Valtio",
+              "benchmarks": [
+                {
+                  "id": "Store Creation - Valtio",
+                  "name": "Store Creation",
+                  "hz": 639683.94,
+                  "min": 0.0002,
+                  "max": 110.73,
+                  "mean": 0.0016,
+                  "p75": 0.0005,
+                  "p99": 0.001,
+                  "p995": 0.0012,
+                  "p999": 0.002,
+                  "rme": 61.45,
+                  "samples": 323942
+                }
+              ]
+            }
+          ]
+        }
+      ]
+    },
+    "06-memory": {
+      "files": [
+        {
+          "filepath": "groups/06-memory/tests/valtio.bench.ts",
+          "groups": [
+            {
+              "fullName": "06-memory - Valtio",
+              "benchmarks": [
+                {
+                  "id": "Large State Allocation - Valtio",
+                  "name": "Large State Allocation",
+                  "hz": 891.85,
+                  "min": 1.0287,
+                  "max": 3.7695,
+                  "mean": 1.1213,
+                  "p75": 1.096,
+                  "p99": 1.7515,
+                  "p995": 1.9279,
+                  "p999": 3.7695,
+                  "rme": 1.56,
+                  "samples": 446
+                }
+              ]
+            }
+          ]
+        }
+      ]
+    },
+    "11-batching-native": {
+      "files": [
+        {
+          "filepath": "groups/11-batching-native/tests/valtio.bench.ts",
+          "groups": [
+            {
+              "fullName": "11-batching-native - Valtio",
+              "benchmarks": [
+                {
+                  "id": "Batched Updates - Valtio",
+                  "name": "Batched Updates",
+                  "hz": 4795323.83,
+                  "min": 0.0001,
+                  "max": 0.1588,
+                  "mean": 0.0002,
+                  "p75": 0.0002,
+                  "p99": 0.0003,
+                  "p995": 0.0003,
+                  "p999": 0.001,
+                  "rme": 0.15,
+                  "samples": 2397662
+                },
+                {
+                  "id": "Unbatched Updates - Valtio",
+                  "name": "Unbatched Updates",
+                  "hz": 4869432.79,
+                  "min": 0.0001,
+                  "max": 0.1726,
+                  "mean": 0.0002,
+                  "p75": 0.0002,
+                  "p99": 0.0003,
+                  "p995": 0.0003,
+                  "p999": 0.0004,
+                  "rme": 0.12,
+                  "samples": 2434717
+                },
+                {
+                  "id": "Large Batch - Valtio",
+                  "name": "Large Batch",
+                  "hz": 67554.7,
+                  "min": 0.0139,
+                  "max": 0.2018,
+                  "mean": 0.0148,
+                  "p75": 0.0148,
+                  "p99": 0.0174,
+                  "p995": 0.0183,
+                  "p999": 0.0459,
+                  "rme": 0.24,
+                  "samples": 33778
+                },
+                {
+                  "id": "Batched with Observers - Valtio",
+                  "name": "Batched with Observers",
+                  "hz": 4782912.47,
+                  "min": 0.0001,
+                  "max": 0.2489,
+                  "mean": 0.0002,
+                  "p75": 0.0002,
+                  "p99": 0.0003,
+                  "p995": 0.0003,
+                  "p999": 0.0004,
+                  "rme": 0.19,
+                  "samples": 2391457
+                }
+              ]
+            }
+          ]
+        }
+      ]
+    }
+  }
+}

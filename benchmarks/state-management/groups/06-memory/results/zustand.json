@@ -1,0 +1,28 @@
+{
+  "files": [
+    {
+      "filepath": "groups/06-memory/tests/zustand.bench.ts",
+      "groups": [
+        {
+          "fullName": "06-memory - Zustand",
+          "benchmarks": [
+            {
+              "id": "Large State Allocation - Zustand",
+              "name": "Large State Allocation",
+              "hz": 899.69,
+              "min": 1.0384,
+              "max": 3.1587,
+              "mean": 1.1115,
+              "p75": 1.082,
+              "p99": 1.5705,
+              "p995": 1.7752,
+              "p999": 3.1587,
+              "rme": 1.24,
+              "samples": 450
+            }
+          ]
+        }
+      ]
+    }
+  ]
+}

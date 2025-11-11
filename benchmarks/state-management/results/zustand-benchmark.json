@@ -1,0 +1,148 @@
+{
+  "library": "Zustand",
+  "libraryKey": "zustand",
+  "version": "5.0.8",
+  "lastRun": "2025-11-11T04:51:24.074Z",
+  "groups": {
+    "01-read": {
+      "files": [
+        {
+          "filepath": "groups/01-read/tests/zustand.bench.ts",
+          "groups": [
+            {
+              "fullName": "01-read - Zustand",
+              "benchmarks": [
+                {
+                  "id": "Simple Read - Zustand",
+                  "name": "Simple Read",
+                  "hz": 376396.8,
+                  "min": 0.0023,
+                  "max": 0.2034,
+                  "mean": 0.0027,
+                  "p75": 0.0027,
+                  "p99": 0.0033,
+                  "p995": 0.0035,
+                  "p999": 0.005,
+                  "rme": 0.17,
+                  "samples": 188199
+                },
+                {
+                  "id": "High Frequency Read - Zustand",
+                  "name": "High Frequency Read",
+                  "hz": 3245544.49,
+                  "min": 0.0002,
+                  "max": 0.0202,
+                  "mean": 0.0003,
+                  "p75": 0.0003,
+                  "p99": 0.0004,
+                  "p995": 0.0004,
+                  "p999": 0.0005,
+                  "rme": 0.02,
+                  "samples": 1622773
+                }
+              ]
+            }
+          ]
+        }
+      ]
+    },
+    "02-write": {
+      "files": [
+        {
+          "filepath": "groups/02-write/tests/zustand.bench.ts",
+          "groups": [
+            {
+              "fullName": "02-write - Zustand",
+              "benchmarks": [
+                {
+                  "id": "Simple Increment - Zustand",
+                  "name": "Simple Increment",
+                  "hz": 365483.88,
+                  "min": 0.0025,
+                  "max": 0.0778,
+                  "mean": 0.0027,
+                  "p75": 0.0027,
+                  "p99": 0.0033,
+                  "p995": 0.0034,
+                  "p999": 0.0037,
+                  "rme": 0.09,
+                  "samples": 182742
+                },
+                {
+                  "id": "Burst Updates - Zustand",
+                  "name": "Burst Updates",
+                  "hz": 35209.87,
+                  "min": 0.0247,
+                  "max": 3.1037,
+                  "mean": 0.0284,
+                  "p75": 0.0278,
+                  "p99": 0.0428,
+                  "p995": 0.0441,
+                  "p999": 0.0612,
+                  "rme": 1.22,
+                  "samples": 17605
+                }
+              ]
+            }
+          ]
+        }
+      ]
+    },
+    "03-creation": {
+      "files": [
+        {
+          "filepath": "groups/03-creation/tests/zustand.bench.ts",
+          "groups": [
+            {
+              "fullName": "03-creation - Zustand",
+              "benchmarks": [
+                {
+                  "id": "Store Creation - Zustand",
+                  "name": "Store Creation",
+                  "hz": 12785973.44,
+                  "min": 0,
+                  "max": 3.0498,
+                  "mean": 0.0001,
+                  "p75": 0.0001,
+                  "p99": 0.0002,
+                  "p995": 0.0002,
+                  "p999": 0.0005,
+                  "rme": 1.22,
+                  "samples": 6392987
+                }
+              ]
+            }
+          ]
+        }
+      ]
+    },
+    "06-memory": {
+      "files": [
+        {
+          "filepath": "groups/06-memory/tests/zustand.bench.ts",
+          "groups": [
+            {
+              "fullName": "06-memory - Zustand",
+              "benchmarks": [
+                {
+                  "id": "Large State Allocation - Zustand",
+                  "name": "Large State Allocation",
+                  "hz": 899.69,
+                  "min": 1.0384,
+                  "max": 3.1587,
+                  "mean": 1.1115,
+                  "p75": 1.082,
+                  "p99": 1.5705,
+                  "p995": 1.7752,
+                  "p999": 3.1587,
+                  "rme": 1.24,
+                  "samples": 450
+                }
+              ]
+            }
+          ]
+        }
+      ]
+    }
+  }
+}

@@ -1,0 +1,28 @@
+{
+  "files": [
+    {
+      "filepath": "groups/06-memory/tests/preact-signals.bench.ts",
+      "groups": [
+        {
+          "fullName": "06-memory - Preact Signals",
+          "benchmarks": [
+            {
+              "id": "Large State Allocation - Preact Signals",
+              "name": "Large State Allocation",
+              "hz": 887.52,
+              "min": 1.0293,
+              "max": 3.9671,
+              "mean": 1.1267,
+              "p75": 1.103,
+              "p99": 1.8598,
+              "p995": 1.9603,
+              "p999": 3.9671,
+              "rme": 1.67,
+              "samples": 444
+            }
+          ]
+        }
+      ]
+    }
+  ]
+}

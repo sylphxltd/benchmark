@@ -6,7 +6,14 @@ Instance creation overhead.
 
 - [Group Overall Performance](#group-overall-performance)
 - [Detailed Results](#detailed-results)
-  - [groups/03-creation/store-creation.bench.ts > Store Creation](#groups03-creationstore-creationbenchts-store-creation)
+  - [03-creation - Jotai](#03-creation---jotai)
+  - [03-creation - MobX](#03-creation---mobx)
+  - [03-creation - Preact Signals](#03-creation---preact-signals)
+  - [03-creation - Redux Toolkit](#03-creation---redux-toolkit)
+  - [03-creation - Solid Signals](#03-creation---solid-signals)
+  - [03-creation - Valtio](#03-creation---valtio)
+  - [03-creation - Zen](#03-creation---zen)
+  - [03-creation - Zustand](#03-creation---zustand)
 - [Navigation](#-navigation)
 - [Running This Group](#-running-this-group)
 
@@ -24,46 +31,114 @@ Instance creation overhead.
 
 | Rank | Library | Group Score |
 |:----:|---------|-------------|
-| 🥇 1 | [**Preact Signals**](https://github.com/preactjs/signals) | 👑 33.4M |
-| 🥈 2 | [**Zen**](https://github.com/SylphxAI/zen) | 32.2M |
-| 🥉 3 | [**Solid Signals**](https://github.com/solidjs/solid) | 32.1M |
-|  4 | [**Zustand**](https://github.com/pmndrs/zustand) | 10.9M |
-|  5 | [**Jotai**](https://github.com/pmndrs/jotai) | 2.3M |
-|  6 | [**Valtio**](https://github.com/pmndrs/valtio) | 235K |
-|  7 | [**Redux Toolkit**](https://github.com/reduxjs/redux-toolkit) | 173K |
-|  8 | [**MobX**](https://github.com/mobxjs/mobx) | 278 |
+| 🥇 1 | [**Zen**](https://github.com/SylphxAI/zen) | 👑 40.4M |
+| 🥈 2 | [**Preact Signals**](https://github.com/preactjs/signals) | 40.1M |
+| 🥉 3 | [**Solid Signals**](https://github.com/solidjs/solid) | 38.6M |
+|  4 | [**Zustand**](https://github.com/pmndrs/zustand) | 12.8M |
+|  5 | [**Jotai**](https://github.com/pmndrs/jotai) | 2.4M |
+|  6 | [**Valtio**](https://github.com/pmndrs/valtio) | 640K |
+|  7 | [**Redux Toolkit**](https://github.com/reduxjs/redux-toolkit) | 260K |
+|  8 | [**MobX**](https://github.com/mobxjs/mobx) | 399 |
 
 ---
 
 ## Detailed Results
 
-### groups/03-creation/store-creation.bench.ts > Store Creation
+### 03-creation - Jotai
 
 **Performance Comparison:**
 
 ```
-🥇   Preact Signals     ████████████████████████████████████████     33.4M ops/sec
-🥈   Zen                ███████████████████████████████████████      32.2M ops/sec
-🥉   Solid Signals      ███████████████████████████████████████      32.1M ops/sec
-4.   Zustand            █████████████                                10.9M ops/sec
-5.   Jotai              ███                                           2.3M ops/sec
-6.   Valtio                                                           235K ops/sec
-7.   Redux Toolkit                                                    173K ops/sec
-8.   MobX                                                              278 ops/sec
+🥇   Jotai              ████████████████████████████████████████      2.4M ops/sec
 ```
 
 | Rank | Library | Ops/sec | Avg Variance | Avg Mean | Max p99 | Total Samples |
 |:----:|---------|---------|--------------|----------|---------|---------------|
-| 🥇 | [**Preact Signals**](https://github.com/preactjs/signals) | 33,384,299 | ±0.77% | 0.0300ms | 0.0420ms | 0 |
-| 🥈 | [**Zen**](https://github.com/SylphxAI/zen) | 32,150,344 | ±1.88% | 0.0311ms | 0.0830ms | 0 |
-| 🥉 | [**Solid Signals**](https://github.com/solidjs/solid) | 32,134,156 | ±0.07% | 0.0311ms | 0.0420ms | 0 |
-| 4 | [**Zustand**](https://github.com/pmndrs/zustand) | 10,875,729 | ±0.35% | 0.0919ms | 0.1670ms | 0 |
-| 5 | [**Jotai**](https://github.com/pmndrs/jotai) | 2,312,931 | ±1.77% | 0.4324ms | 1.0420ms | 0 |
-| 6 | [**Valtio**](https://github.com/pmndrs/valtio) | 235,481 | ±116.34% | 4.2466ms | 2.5420ms | 0 |
-| 7 | [**Redux Toolkit**](https://github.com/reduxjs/redux-toolkit) | 173,331 | ±1.03% | 5.7693ms | 22.4580ms | 0 |
-| 8 | [**MobX**](https://github.com/mobxjs/mobx) | 278 | ±11.12% | 3603.0229ms | 10863.3750ms | 0 |
+| 🥇 | [**Jotai**](https://github.com/pmndrs/jotai) | 2,399,742 | ±2.06% | 0.4000ms | 1.0000ms | 1199871 |
 
-**Key Insight:** Preact Signals is 120284.40x faster than MobX in this test.
+### 03-creation - MobX
+
+**Performance Comparison:**
+
+```
+🥇   MobX               ████████████████████████████████████████       399 ops/sec
+```
+
+| Rank | Library | Ops/sec | Avg Variance | Avg Mean | Max p99 | Total Samples |
+|:----:|---------|---------|--------------|----------|---------|---------------|
+| 🥇 | [**MobX**](https://github.com/mobxjs/mobx) | 399 | ±7.37% | 2503.7000ms | 7867.4000ms | 200 |
+
+### 03-creation - Preact Signals
+
+**Performance Comparison:**
+
+```
+🥇   Preact Signals     ████████████████████████████████████████     40.1M ops/sec
+```
+
+| Rank | Library | Ops/sec | Avg Variance | Avg Mean | Max p99 | Total Samples |
+|:----:|---------|---------|--------------|----------|---------|---------------|
+| 🥇 | [**Preact Signals**](https://github.com/preactjs/signals) | 40,097,070 | ±0.06% | N/A | N/A | 20048536 |
+
+### 03-creation - Redux Toolkit
+
+**Performance Comparison:**
+
+```
+🥇   Redux Toolkit      ████████████████████████████████████████      260K ops/sec
+```
+
+| Rank | Library | Ops/sec | Avg Variance | Avg Mean | Max p99 | Total Samples |
+|:----:|---------|---------|--------------|----------|---------|---------------|
+| 🥇 | [**Redux Toolkit**](https://github.com/reduxjs/redux-toolkit) | 260,270 | ±0.63% | 3.8000ms | 4.9000ms | 130136 |
+
+### 03-creation - Solid Signals
+
+**Performance Comparison:**
+
+```
+🥇   Solid Signals      ████████████████████████████████████████     38.6M ops/sec
+```
+
+| Rank | Library | Ops/sec | Avg Variance | Avg Mean | Max p99 | Total Samples |
+|:----:|---------|---------|--------------|----------|---------|---------------|
+| 🥇 | [**Solid Signals**](https://github.com/solidjs/solid) | 38,643,032 | ±0.46% | N/A | N/A | 19321517 |
+
+### 03-creation - Valtio
+
+**Performance Comparison:**
+
+```
+🥇   Valtio             ████████████████████████████████████████      640K ops/sec
+```
+
+| Rank | Library | Ops/sec | Avg Variance | Avg Mean | Max p99 | Total Samples |
+|:----:|---------|---------|--------------|----------|---------|---------------|
+| 🥇 | [**Valtio**](https://github.com/pmndrs/valtio) | 639,684 | ±61.45% | 1.6000ms | 1.0000ms | 323942 |
+
+### 03-creation - Zen
+
+**Performance Comparison:**
+
+```
+🥇   Zen                ████████████████████████████████████████     40.4M ops/sec
+```
+
+| Rank | Library | Ops/sec | Avg Variance | Avg Mean | Max p99 | Total Samples |
+|:----:|---------|---------|--------------|----------|---------|---------------|
+| 🥇 | [**Zen**](https://github.com/SylphxAI/zen) | 40,368,887 | ±0.04% | N/A | N/A | 20184444 |
+
+### 03-creation - Zustand
+
+**Performance Comparison:**
+
+```
+🥇   Zustand            ████████████████████████████████████████     12.8M ops/sec
+```
+
+| Rank | Library | Ops/sec | Avg Variance | Avg Mean | Max p99 | Total Samples |
+|:----:|---------|---------|--------------|----------|---------|---------------|
+| 🥇 | [**Zustand**](https://github.com/pmndrs/zustand) | 12,785,973 | ±1.22% | 0.1000ms | 0.2000ms | 6392987 |
 
 ---
 
@@ -83,4 +158,4 @@ npx vitest bench groups/03-creation/*.bench.ts
 ```
 
 ---
-*Last generated: 2025-11-11T04:05:19.373Z*
+*Last generated: 2025-11-11T04:55:50.156Z*
