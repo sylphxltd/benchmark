@@ -1,7 +1,7 @@
 {
   "files": [
     {
-      "filepath": "groups/06-memory/tests/mobx.bench.ts",
+      "filepath": "groups/06-memory/runner.bench.ts",
       "groups": [
         {
           "fullName": "06-memory - MobX",
@@ -9,44 +9,44 @@
             {
               "id": "Large State Read (1000 items) - MobX",
               "name": "Large State Read (1000 items)",
-              "hz": 31620342.92,
+              "hz": 15781667.94,
               "min": 0,
-              "max": 0.0183,
-              "mean": 0,
-              "p75": 0,
-              "p99": 0,
-              "p995": 0,
+              "max": 4.7443,
+              "mean": 0.0001,
+              "p75": 0.0001,
+              "p99": 0.0001,
+              "p995": 0.0001,
               "p999": 0.0001,
-              "rme": 0.03,
-              "samples": 15810172
+              "rme": 3.14,
+              "samples": 7890834
             },
             {
               "id": "Large State Update (1000 items) - MobX",
               "name": "Large State Update (1000 items)",
-              "hz": 3330716.07,
-              "min": 0.0002,
-              "max": 0.0296,
-              "mean": 0.0003,
-              "p75": 0.0003,
-              "p99": 0.0004,
-              "p995": 0.0004,
-              "p999": 0.0004,
-              "rme": 0.03,
-              "samples": 1665359
+              "hz": 1816947.72,
+              "min": 0.0003,
+              "max": 3.909,
+              "mean": 0.0006,
+              "p75": 0.0008,
+              "p99": 0.0009,
+              "p995": 0.0009,
+              "p999": 0.0014,
+              "rme": 1.73,
+              "samples": 908474
             },
             {
               "id": "Large State Filter - MobX",
               "name": "Large State Filter",
-              "hz": 17340.06,
-              "min": 0.0527,
-              "max": 0.353,
-              "mean": 0.0577,
-              "p75": 0.0592,
-              "p99": 0.0648,
-              "p995": 0.0667,
-              "p999": 0.0776,
-              "rme": 0.15,
-              "samples": 8671
+              "hz": 9608.98,
+              "min": 0.0597,
+              "max": 5.9501,
+              "mean": 0.1041,
+              "p75": 0.1168,
+              "p99": 0.3896,
+              "p995": 0.6231,
+              "p999": 1.8841,
+              "rme": 4.39,
+              "samples": 4805
             }
           ]
         }

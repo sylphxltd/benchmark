@@ -1,7 +1,7 @@
 {
   "files": [
     {
-      "filepath": "groups/02-write/tests/preact-signals.bench.ts",
+      "filepath": "groups/02-write/runner.bench.ts",
       "groups": [
         {
           "fullName": "02-write - Preact Signals",
@@ -9,72 +9,72 @@
             {
               "id": "Single Update - Preact Signals",
               "name": "Single Update",
-              "hz": 46911689.25,
+              "hz": 26143430.12,
               "min": 0,
-              "max": 0.0122,
+              "max": 3.4598,
               "mean": 0,
-              "p75": 0,
-              "p99": 0,
-              "p995": 0,
-              "p999": 0,
-              "rme": 0.04,
-              "samples": 23455845
-            },
-            {
-              "id": "Batch Update (x10) - Preact Signals",
-              "name": "Batch Update (x10)",
-              "hz": 19903965.56,
-              "min": 0,
-              "max": 0.0703,
-              "mean": 0.0001,
               "p75": 0,
               "p99": 0.0001,
               "p995": 0.0001,
               "p999": 0.0001,
-              "rme": 0.09,
-              "samples": 9951983
+              "rme": 3.43,
+              "samples": 13071716
+            },
+            {
+              "id": "Batch Update (x10) - Preact Signals",
+              "name": "Batch Update (x10)",
+              "hz": 11170754.99,
+              "min": 0,
+              "max": 6.1885,
+              "mean": 0.0001,
+              "p75": 0.0001,
+              "p99": 0.0001,
+              "p995": 0.0001,
+              "p999": 0.0002,
+              "rme": 4.6,
+              "samples": 5585378
             },
             {
               "id": "Batch Update (x100) - Preact Signals",
               "name": "Batch Update (x100)",
-              "hz": 2930001.54,
+              "hz": 1776935.47,
               "min": 0.0003,
-              "max": 0.0128,
-              "mean": 0.0003,
-              "p75": 0.0003,
-              "p99": 0.0004,
-              "p995": 0.0005,
-              "p999": 0.0005,
-              "rme": 0.02,
-              "samples": 1465001
+              "max": 7.638,
+              "mean": 0.0006,
+              "p75": 0.0007,
+              "p99": 0.0007,
+              "p995": 0.0007,
+              "p999": 0.0011,
+              "rme": 3.95,
+              "samples": 888468
             },
             {
               "id": "Batch Update (x1000) - Preact Signals",
               "name": "Batch Update (x1000)",
-              "hz": 305293.6,
-              "min": 0.0032,
-              "max": 0.0217,
-              "mean": 0.0033,
-              "p75": 0.0033,
-              "p99": 0.0041,
-              "p995": 0.0041,
-              "p999": 0.0042,
-              "rme": 0.02,
-              "samples": 152647
+              "hz": 181611.11,
+              "min": 0.0034,
+              "max": 2.9173,
+              "mean": 0.0055,
+              "p75": 0.0062,
+              "p99": 0.0063,
+              "p995": 0.0132,
+              "p999": 0.0841,
+              "rme": 1.98,
+              "samples": 90806
             },
             {
               "id": "Batch Update (x10000) - Preact Signals",
               "name": "Batch Update (x10000)",
-              "hz": 29674.17,
-              "min": 0.0333,
-              "max": 0.0495,
-              "mean": 0.0337,
-              "p75": 0.0339,
-              "p99": 0.0367,
-              "p995": 0.038,
-              "p999": 0.0405,
-              "rme": 0.03,
-              "samples": 14838
+              "hz": 17390.59,
+              "min": 0.0343,
+              "max": 7.6572,
+              "mean": 0.0575,
+              "p75": 0.0622,
+              "p99": 0.1879,
+              "p995": 0.3767,
+              "p999": 1.4098,
+              "rme": 5.05,
+              "samples": 8696
             }
           ]
         }

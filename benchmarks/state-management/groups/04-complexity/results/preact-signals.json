@@ -1,7 +1,7 @@
 {
   "files": [
     {
-      "filepath": "groups/04-complexity/tests/preact-signals.bench.ts",
+      "filepath": "groups/04-complexity/runner.bench.ts",
       "groups": [
         {
           "fullName": "04-complexity - Preact Signals",
@@ -9,72 +9,72 @@
             {
               "id": "Deep Nested Read (10 levels) - Preact Signals",
               "name": "Deep Nested Read (10 levels)",
-              "hz": 45498148.91,
+              "hz": 34758509.22,
               "min": 0,
-              "max": 0.028,
+              "max": 0.5925,
               "mean": 0,
               "p75": 0,
               "p99": 0,
-              "p995": 0,
-              "p999": 0,
-              "rme": 0.05,
-              "samples": 22749076
+              "p995": 0.0001,
+              "p999": 0.0001,
+              "rme": 0.26,
+              "samples": 17379256
             },
             {
               "id": "Deep Nested Write (10 levels) - Preact Signals",
               "name": "Deep Nested Write (10 levels)",
-              "hz": 13811777.73,
+              "hz": 9870258.42,
               "min": 0,
-              "max": 0.3831,
+              "max": 0.934,
               "mean": 0.0001,
               "p75": 0.0001,
-              "p99": 0.0001,
-              "p995": 0.0001,
-              "p999": 0.0003,
-              "rme": 0.2,
-              "samples": 6905890
+              "p99": 0.0002,
+              "p995": 0.0002,
+              "p999": 0.0005,
+              "rme": 0.81,
+              "samples": 4935130
             },
             {
               "id": "Array Splice (middle) - Preact Signals",
               "name": "Array Splice (middle)",
-              "hz": 27569995.17,
+              "hz": 20266995.11,
               "min": 0,
-              "max": 0.0571,
+              "max": 0.9498,
               "mean": 0,
               "p75": 0,
               "p99": 0.0001,
               "p995": 0.0001,
-              "p999": 0.0001,
-              "rme": 0.04,
-              "samples": 13784998
+              "p999": 0.0002,
+              "rme": 0.65,
+              "samples": 10133498
             },
             {
               "id": "Large Array Map (1000 items) - Preact Signals",
               "name": "Large Array Map (1000 items)",
-              "hz": 41256898.95,
+              "hz": 32889228,
               "min": 0,
-              "max": 16.8106,
+              "max": 3.3993,
               "mean": 0,
               "p75": 0,
               "p99": 0,
-              "p995": 0,
-              "p999": 0,
-              "rme": 6.59,
-              "samples": 20628451
+              "p995": 0.0001,
+              "p999": 0.0001,
+              "rme": 1.35,
+              "samples": 16444614
             },
             {
               "id": "Multi-field Update (unrelated) - Preact Signals",
               "name": "Multi-field Update (unrelated)",
-              "hz": 14667.6,
-              "min": 0.0147,
-              "max": 20.1982,
-              "mean": 0.0682,
-              "p75": 0.0669,
-              "p99": 0.1155,
-              "p995": 0.1229,
-              "p999": 5.8005,
-              "rme": 16,
-              "samples": 7334
+              "hz": 16710.92,
+              "min": 0.0157,
+              "max": 10.9538,
+              "mean": 0.0598,
+              "p75": 0.0578,
+              "p99": 0.1009,
+              "p995": 0.1143,
+              "p999": 5.2212,
+              "rme": 12.35,
+              "samples": 8356
             }
           ]
         }

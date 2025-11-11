@@ -1,0 +1,84 @@
+{
+  "files": [
+    {
+      "filepath": "groups/08-async-reactive/runner.bench.ts",
+      "groups": [
+        {
+          "fullName": "08-async-reactive - Preact Signals",
+          "benchmarks": [
+            {
+              "id": "Async Computed Read - Preact Signals",
+              "name": "Async Computed Read",
+              "hz": 91.6396,
+              "min": 10.0293,
+              "max": 11.1073,
+              "mean": 10.9123,
+              "p75": 11.0599,
+              "p99": 11.1073,
+              "p995": 11.1073,
+              "p999": 11.1073,
+              "rme": 0.9,
+              "samples": 46
+            },
+            {
+              "id": "Async Computed with Dependency Update - Preact Signals",
+              "name": "Async Computed with Dependency Update",
+              "hz": 90.8312,
+              "min": 10.0643,
+              "max": 11.1842,
+              "mean": 11.0094,
+              "p75": 11.0593,
+              "p99": 11.1842,
+              "p995": 11.1842,
+              "p999": 11.1842,
+              "rme": 0.5,
+              "samples": 46
+            },
+            {
+              "id": "Chained Async Computed - Preact Signals",
+              "name": "Chained Async Computed",
+              "hz": 88.3378,
+              "min": 10.8521,
+              "max": 11.5908,
+              "mean": 11.3202,
+              "p75": 11.373,
+              "p99": 11.5908,
+              "p995": 11.5908,
+              "p999": 11.5908,
+              "rme": 0.36,
+              "samples": 45
+            },
+            {
+              "id": "Complex Async Dependencies - Preact Signals",
+              "name": "Complex Async Dependencies",
+              "hz": 90.3176,
+              "min": 10.1309,
+              "max": 11.3588,
+              "mean": 11.072,
+              "p75": 11.2233,
+              "p99": 11.3588,
+              "p995": 11.3588,
+              "p999": 11.3588,
+              "rme": 0.79,
+              "samples": 46
+            },
+            {
+              "id": "Concurrent Async Reads - Preact Signals",
+              "name": "Concurrent Async Reads",
+              "hz": 89.856,
+              "min": 10.1461,
+              "max": 11.822,
+              "mean": 11.1289,
+              "p75": 11.4855,
+              "p99": 11.822,
+              "p995": 11.822,
+              "p999": 11.822,
+              "rme": 1.36,
+              "samples": 45
+            }
+          ]
+        }
+      ]
+    }
+  ]
+}

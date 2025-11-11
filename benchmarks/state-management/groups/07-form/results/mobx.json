@@ -1,7 +1,7 @@
 {
   "files": [
     {
-      "filepath": "groups/07-form/tests/mobx.bench.ts",
+      "filepath": "groups/07-form/runner.bench.ts",
       "groups": [
         {
           "fullName": "07-form - MobX",
@@ -9,72 +9,72 @@
             {
               "id": "Single Field Update - MobX",
               "name": "Single Field Update",
-              "hz": 8093134.92,
-              "min": 0,
-              "max": 0.0463,
-              "mean": 0.0001,
-              "p75": 0.0001,
-              "p99": 0.0002,
-              "p995": 0.0002,
-              "p999": 0.0002,
-              "rme": 0.05,
-              "samples": 4046568
+              "hz": 4844167.99,
+              "min": 0.0001,
+              "max": 2.6327,
+              "mean": 0.0002,
+              "p75": 0.0002,
+              "p99": 0.0003,
+              "p995": 0.0003,
+              "p999": 0.0005,
+              "rme": 1.91,
+              "samples": 2422084
             },
             {
               "id": "Multiple Fields Update (3 fields) - MobX",
               "name": "Multiple Fields Update (3 fields)",
-              "hz": 1284809.81,
+              "hz": 908807.51,
               "min": 0.0007,
-              "max": 0.2021,
-              "mean": 0.0008,
-              "p75": 0.0008,
-              "p99": 0.001,
-              "p995": 0.0018,
-              "p999": 0.0019,
-              "rme": 0.18,
-              "samples": 642405
+              "max": 3.0033,
+              "mean": 0.0011,
+              "p75": 0.0011,
+              "p99": 0.0019,
+              "p995": 0.0019,
+              "p999": 0.0075,
+              "rme": 1.53,
+              "samples": 454404
             },
             {
               "id": "Nested Field Update - MobX",
               "name": "Nested Field Update",
-              "hz": 5710464.53,
+              "hz": 3363505.6,
               "min": 0.0001,
-              "max": 0.0187,
-              "mean": 0.0002,
-              "p75": 0.0002,
-              "p99": 0.0002,
-              "p995": 0.0003,
-              "p999": 0.0003,
-              "rme": 0.02,
-              "samples": 2855233
+              "max": 3.9968,
+              "mean": 0.0003,
+              "p75": 0.0003,
+              "p99": 0.0005,
+              "p995": 0.0005,
+              "p999": 0.0006,
+              "rme": 2.02,
+              "samples": 1681753
             },
             {
               "id": "Full Form Reset - MobX",
               "name": "Full Form Reset",
-              "hz": 134501.18,
-              "min": 0.007,
-              "max": 0.2211,
-              "mean": 0.0074,
-              "p75": 0.0074,
-              "p99": 0.0089,
-              "p995": 0.0092,
-              "p999": 0.0109,
-              "rme": 0.29,
-              "samples": 67251
+              "hz": 63561.46,
+              "min": 0.0084,
+              "max": 5.2542,
+              "mean": 0.0157,
+              "p75": 0.0199,
+              "p99": 0.0622,
+              "p995": 0.1073,
+              "p999": 0.3533,
+              "rme": 3.23,
+              "samples": 31781
             },
             {
               "id": "Conditional Field Update - MobX",
               "name": "Conditional Field Update",
-              "hz": 8991475.59,
+              "hz": 5308305.18,
               "min": 0,
-              "max": 0.0289,
-              "mean": 0.0001,
-              "p75": 0.0001,
-              "p99": 0.0002,
+              "max": 4.9489,
+              "mean": 0.0002,
+              "p75": 0.0003,
+              "p99": 0.0003,
               "p995": 0.0003,
-              "p999": 0.0003,
-              "rme": 0.04,
-              "samples": 4495738
+              "p999": 0.0004,
+              "rme": 2.44,
+              "samples": 2654153
             }
           ]
         }

@@ -2,7 +2,7 @@
   "library": "Jotai",
   "libraryKey": "jotai",
   "version": "2.15.1",
-  "lastRun": "2025-11-11T11:29:10.343Z",
+  "lastRun": "2025-11-11T13:06:27.781Z",
   "groups": {
     "01-read": {
       "files": [
@@ -15,72 +15,72 @@
                 {
                   "id": "Simple Read - Jotai",
                   "name": "Simple Read",
-                  "hz": 1381060.3,
+                  "hz": 789029.09,
                   "min": 0.0006,
-                  "max": 2.8538,
-                  "mean": 0.0007,
-                  "p75": 0.0007,
-                  "p99": 0.0015,
-                  "p995": 0.0017,
-                  "p999": 0.0051,
-                  "rme": 1.21,
-                  "samples": 690531
+                  "max": 5.5756,
+                  "mean": 0.0013,
+                  "p75": 0.0017,
+                  "p99": 0.0029,
+                  "p995": 0.0045,
+                  "p999": 0.0423,
+                  "rme": 3.61,
+                  "samples": 394516
                 },
                 {
                   "id": "High Frequency Read (x10) - Jotai",
                   "name": "High Frequency Read (x10)",
-                  "hz": 757682.74,
-                  "min": 0.0012,
-                  "max": 0.2371,
-                  "mean": 0.0013,
-                  "p75": 0.0013,
-                  "p99": 0.0017,
-                  "p995": 0.0017,
-                  "p999": 0.0021,
-                  "rme": 0.2,
-                  "samples": 378842
+                  "hz": 429839.53,
+                  "min": 0.0013,
+                  "max": 2.996,
+                  "mean": 0.0023,
+                  "p75": 0.0032,
+                  "p99": 0.0039,
+                  "p995": 0.0063,
+                  "p999": 0.0789,
+                  "rme": 2.61,
+                  "samples": 214920
                 },
                 {
                   "id": "High Frequency Read (x100) - Jotai",
                   "name": "High Frequency Read (x100)",
-                  "hz": 77489.76,
-                  "min": 0.0123,
-                  "max": 0.1792,
-                  "mean": 0.0129,
-                  "p75": 0.0129,
-                  "p99": 0.0154,
-                  "p995": 0.0159,
-                  "p999": 0.022,
-                  "rme": 0.24,
-                  "samples": 38745
+                  "hz": 45073.36,
+                  "min": 0.0128,
+                  "max": 8.8813,
+                  "mean": 0.0222,
+                  "p75": 0.0317,
+                  "p99": 0.0768,
+                  "p995": 0.1331,
+                  "p999": 0.4641,
+                  "rme": 4.13,
+                  "samples": 22538
                 },
                 {
                   "id": "High Frequency Read (x1000) - Jotai",
                   "name": "High Frequency Read (x1000)",
-                  "hz": 7760.06,
-                  "min": 0.1246,
-                  "max": 0.6281,
-                  "mean": 0.1289,
-                  "p75": 0.1279,
-                  "p99": 0.1624,
-                  "p995": 0.2376,
-                  "p999": 0.4396,
-                  "rme": 0.45,
-                  "samples": 3881
+                  "hz": 4319.93,
+                  "min": 0.1271,
+                  "max": 5.675,
+                  "mean": 0.2315,
+                  "p75": 0.3192,
+                  "p99": 0.8481,
+                  "p995": 1.1283,
+                  "p999": 3.0115,
+                  "rme": 4.05,
+                  "samples": 2160
                 },
                 {
                   "id": "High Frequency Read (x10000) - Jotai",
                   "name": "High Frequency Read (x10000)",
-                  "hz": 776.11,
-                  "min": 1.2564,
-                  "max": 1.5505,
-                  "mean": 1.2885,
-                  "p75": 1.291,
-                  "p99": 1.4528,
-                  "p995": 1.5055,
-                  "p999": 1.5505,
-                  "rme": 0.28,
-                  "samples": 389
+                  "hz": 410.17,
+                  "min": 1.2864,
+                  "max": 8.2356,
+                  "mean": 2.438,
+                  "p75": 3.2483,
+                  "p99": 5.5317,
+                  "p995": 6.7387,
+                  "p999": 8.2356,
+                  "rme": 6.48,
+                  "samples": 206
                 }
               ]
             }
@@ -91,7 +91,7 @@
     "02-write": {
       "files": [
         {
-          "filepath": "groups/02-write/tests/jotai.bench.ts",
+          "filepath": "groups/02-write/runner.bench.ts",
           "groups": [
             {
               "fullName": "02-write - Jotai",
@@ -99,72 +99,72 @@
                 {
                   "id": "Single Update - Jotai",
                   "name": "Single Update",
-                  "hz": 1710656.32,
+                  "hz": 970338.31,
                   "min": 0.0005,
-                  "max": 3.3575,
-                  "mean": 0.0006,
-                  "p75": 0.0005,
-                  "p99": 0.0013,
-                  "p995": 0.0015,
-                  "p999": 0.0052,
-                  "rme": 1.49,
-                  "samples": 855329
+                  "max": 5.88,
+                  "mean": 0.001,
+                  "p75": 0.0013,
+                  "p99": 0.0022,
+                  "p995": 0.0035,
+                  "p999": 0.0213,
+                  "rme": 4.4,
+                  "samples": 487752
                 },
                 {
                   "id": "Batch Update (x10) - Jotai",
                   "name": "Batch Update (x10)",
-                  "hz": 168105.29,
-                  "min": 0.005,
-                  "max": 8.346,
-                  "mean": 0.0059,
-                  "p75": 0.0055,
-                  "p99": 0.0144,
-                  "p995": 0.0189,
-                  "p999": 0.0292,
-                  "rme": 3.34,
-                  "samples": 84053
+                  "hz": 99755.54,
+                  "min": 0.0052,
+                  "max": 13.0493,
+                  "mean": 0.01,
+                  "p75": 0.0083,
+                  "p99": 0.0353,
+                  "p995": 0.0639,
+                  "p999": 0.2947,
+                  "rme": 6.32,
+                  "samples": 49879
                 },
                 {
                   "id": "Batch Update (x100) - Jotai",
                   "name": "Batch Update (x100)",
-                  "hz": 18257.28,
-                  "min": 0.051,
-                  "max": 1.0476,
-                  "mean": 0.0548,
-                  "p75": 0.0543,
-                  "p99": 0.0769,
-                  "p995": 0.1091,
-                  "p999": 0.1965,
-                  "rme": 0.71,
-                  "samples": 9129
+                  "hz": 10819.59,
+                  "min": 0.0535,
+                  "max": 2.406,
+                  "mean": 0.0924,
+                  "p75": 0.1306,
+                  "p99": 0.3264,
+                  "p995": 0.4662,
+                  "p999": 1.1649,
+                  "rme": 2.37,
+                  "samples": 5410
                 },
                 {
                   "id": "Batch Update (x1000) - Jotai",
                   "name": "Batch Update (x1000)",
-                  "hz": 1803.62,
-                  "min": 0.518,
-                  "max": 5.3408,
-                  "mean": 0.5544,
-                  "p75": 0.5412,
-                  "p99": 0.8479,
-                  "p995": 0.9013,
-                  "p999": 5.3408,
-                  "rme": 2.11,
-                  "samples": 902
+                  "hz": 986.45,
+                  "min": 0.5476,
+                  "max": 5.3892,
+                  "mean": 1.0137,
+                  "p75": 1.33,
+                  "p99": 2.5565,
+                  "p995": 2.7763,
+                  "p999": 5.3892,
+                  "rme": 4.47,
+                  "samples": 494
                 },
                 {
                   "id": "Batch Update (x10000) - Jotai",
                   "name": "Batch Update (x10000)",
-                  "hz": 184.69,
-                  "min": 5.1933,
-                  "max": 7.2102,
-                  "mean": 5.4145,
-                  "p75": 5.4173,
-                  "p99": 7.2102,
-                  "p995": 7.2102,
-                  "p999": 7.2102,
-                  "rme": 1.1,
-                  "samples": 93
+                  "hz": 113.22,
+                  "min": 6.3148,
+                  "max": 14.5742,
+                  "mean": 8.8321,
+                  "p75": 10.7767,
+                  "p99": 14.5742,
+                  "p995": 14.5742,
+                  "p999": 14.5742,
+                  "rme": 7.38,
+                  "samples": 57
                 }
               ]
             }
@@ -175,7 +175,7 @@
     "03-creation": {
       "files": [
         {
-          "filepath": "groups/03-creation/tests/jotai.bench.ts",
+          "filepath": "groups/03-creation/runner.bench.ts",
           "groups": [
             {
               "fullName": "03-creation - Jotai",
@@ -183,72 +183,72 @@
                 {
                   "id": "Store Creation (x1) - Jotai",
                   "name": "Store Creation (x1)",
-                  "hz": 1397114.33,
-                  "min": 0.0001,
-                  "max": 10.9959,
-                  "mean": 0.0007,
-                  "p75": 0.0003,
-                  "p99": 0.0007,
-                  "p995": 0.0008,
-                  "p999": 0.0025,
-                  "rme": 20.75,
-                  "samples": 699487
+                  "hz": 525328.64,
+                  "min": 0.0002,
+                  "max": 34.4581,
+                  "mean": 0.0019,
+                  "p75": 0.0007,
+                  "p99": 0.0019,
+                  "p995": 0.0029,
+                  "p999": 0.0259,
+                  "rme": 35.74,
+                  "samples": 266365
                 },
                 {
                   "id": "Store Creation (x10) - Jotai",
                   "name": "Store Creation (x10)",
-                  "hz": 152509.53,
-                  "min": 0.0018,
-                  "max": 12.8514,
-                  "mean": 0.0066,
-                  "p75": 0.0025,
-                  "p99": 0.0039,
-                  "p995": 0.0048,
-                  "p999": 0.0393,
-                  "rme": 21.32,
-                  "samples": 76255
+                  "hz": 56886.67,
+                  "min": 0.002,
+                  "max": 33.8263,
+                  "mean": 0.0176,
+                  "p75": 0.007,
+                  "p99": 0.0176,
+                  "p995": 0.0497,
+                  "p999": 0.4978,
+                  "rme": 37.09,
+                  "samples": 28456
                 },
                 {
                   "id": "Store Creation (x100) - Jotai",
                   "name": "Store Creation (x100)",
-                  "hz": 15781.78,
-                  "min": 0.0188,
-                  "max": 9.8586,
-                  "mean": 0.0634,
-                  "p75": 0.0235,
-                  "p99": 0.0588,
-                  "p995": 0.1053,
-                  "p999": 9.4017,
-                  "rme": 20.86,
-                  "samples": 7891
+                  "hz": 4357.39,
+                  "min": 0.0224,
+                  "max": 88.3233,
+                  "mean": 0.2295,
+                  "p75": 0.0787,
+                  "p99": 1.188,
+                  "p995": 4.3934,
+                  "p999": 35.8047,
+                  "rme": 47.93,
+                  "samples": 2179
                 },
                 {
                   "id": "Store Creation (x1000) - Jotai",
                   "name": "Store Creation (x1000)",
-                  "hz": 1575.27,
-                  "min": 0.2138,
-                  "max": 10.6652,
-                  "mean": 0.6348,
-                  "p75": 0.2524,
-                  "p99": 9.7395,
-                  "p995": 9.9796,
-                  "p999": 10.6652,
-                  "rme": 20.39,
-                  "samples": 788
+                  "hz": 489.8,
+                  "min": 0.2503,
+                  "max": 51.5135,
+                  "mean": 2.0416,
+                  "p75": 0.9396,
+                  "p99": 39.3193,
+                  "p995": 41.7652,
+                  "p999": 51.5135,
+                  "rme": 39.87,
+                  "samples": 245
                 },
                 {
                   "id": "Store Creation (x10000) - Jotai",
                   "name": "Store Creation (x10000)",
-                  "hz": 159.66,
-                  "min": 2.1957,
-                  "max": 12.0373,
-                  "mean": 6.2634,
-                  "p75": 11.133,
-                  "p99": 12.0373,
-                  "p995": 12.0373,
-                  "p999": 12.0373,
-                  "rme": 15.73,
-                  "samples": 80
+                  "hz": 55.8888,
+                  "min": 3.18,
+                  "max": 48.8565,
+                  "mean": 17.8927,
+                  "p75": 31.1751,
+                  "p99": 48.8565,
+                  "p995": 48.8565,
+                  "p999": 48.8565,
+                  "rme": 34.29,
+                  "samples": 28
                 }
               ]
             }
@@ -259,7 +259,7 @@
     "04-complexity": {
       "files": [
         {
-          "filepath": "groups/04-complexity/tests/jotai.bench.ts",
+          "filepath": "groups/04-complexity/runner.bench.ts",
           "groups": [
             {
               "fullName": "04-complexity - Jotai",
@@ -267,72 +267,72 @@
                 {
                   "id": "Deep Nested Read (10 levels) - Jotai",
                   "name": "Deep Nested Read (10 levels)",
-                  "hz": 6464998.9,
+                  "hz": 3358130.95,
                   "min": 0.0001,
-                  "max": 1.5557,
-                  "mean": 0.0002,
-                  "p75": 0.0002,
-                  "p99": 0.0002,
-                  "p995": 0.0002,
-                  "p999": 0.0009,
-                  "rme": 0.63,
-                  "samples": 3232500
+                  "max": 12.5017,
+                  "mean": 0.0003,
+                  "p75": 0.0004,
+                  "p99": 0.0004,
+                  "p995": 0.0005,
+                  "p999": 0.0017,
+                  "rme": 7.68,
+                  "samples": 1679066
                 },
                 {
                   "id": "Deep Nested Write (10 levels) - Jotai",
                   "name": "Deep Nested Write (10 levels)",
-                  "hz": 1493299.18,
+                  "hz": 711399.64,
                   "min": 0.0005,
-                  "max": 0.4243,
-                  "mean": 0.0007,
-                  "p75": 0.0006,
-                  "p99": 0.0015,
-                  "p995": 0.0017,
-                  "p999": 0.0116,
-                  "rme": 0.48,
-                  "samples": 746756
+                  "max": 7.3634,
+                  "mean": 0.0014,
+                  "p75": 0.0015,
+                  "p99": 0.0033,
+                  "p995": 0.0064,
+                  "p999": 0.059,
+                  "rme": 5.04,
+                  "samples": 355700
                 },
                 {
                   "id": "Array Splice (middle) - Jotai",
                   "name": "Array Splice (middle)",
-                  "hz": 1624831.2,
+                  "hz": 932086.61,
                   "min": 0.0005,
-                  "max": 3.2353,
-                  "mean": 0.0006,
-                  "p75": 0.0006,
-                  "p99": 0.0013,
-                  "p995": 0.0015,
-                  "p999": 0.0023,
-                  "rme": 1.43,
-                  "samples": 812416
+                  "max": 3.126,
+                  "mean": 0.0011,
+                  "p75": 0.0015,
+                  "p99": 0.0019,
+                  "p995": 0.0025,
+                  "p999": 0.0118,
+                  "rme": 2.37,
+                  "samples": 466082
                 },
                 {
                   "id": "Large Array Map (1000 items) - Jotai",
                   "name": "Large Array Map (1000 items)",
-                  "hz": 6252419.05,
+                  "hz": 4052055.85,
                   "min": 0.0001,
-                  "max": 0.1788,
+                  "max": 5.4766,
                   "mean": 0.0002,
-                  "p75": 0.0002,
-                  "p99": 0.0002,
-                  "p995": 0.0003,
-                  "p999": 0.0006,
-                  "rme": 0.23,
-                  "samples": 3126210
+                  "p75": 0.0003,
+                  "p99": 0.0004,
+                  "p995": 0.0004,
+                  "p999": 0.0008,
+                  "rme": 2.78,
+                  "samples": 2027618
                 },
                 {
                   "id": "Multi-field Update (unrelated) - Jotai",
                   "name": "Multi-field Update (unrelated)",
-                  "hz": 18331.11,
-                  "min": 0.0161,
-                  "max": 4.184,
-                  "mean": 0.0546,
-                  "p75": 0.0536,
-                  "p99": 0.0807,
-                  "p995": 0.0952,
-                  "p999": 3.051,
-                  "rme": 6.92,
-                  "samples": 9166
+                  "hz": 16728.6,
+                  "min": 0.0177,
+                  "max": 10.1722,
+                  "mean": 0.0598,
+                  "p75": 0.0505,
+                  "p99": 0.1619,
+                  "p995": 0.6735,
+                  "p999": 4.1057,
+                  "rme": 9.47,
+                  "samples": 8365
                 }
               ]
             }
@@ -343,7 +343,7 @@
     "06-memory": {
       "files": [
         {
-          "filepath": "groups/06-memory/tests/jotai.bench.ts",
+          "filepath": "groups/06-memory/runner.bench.ts",
           "groups": [
             {
               "fullName": "06-memory - Jotai",
@@ -351,44 +351,44 @@
                 {
                   "id": "Large State Read (1000 items) - Jotai",
                   "name": "Large State Read (1000 items)",
-                  "hz": 6462219.06,
+                  "hz": 3299904.25,
                   "min": 0.0001,
-                  "max": 0.1938,
-                  "mean": 0.0002,
-                  "p75": 0.0002,
-                  "p99": 0.0002,
-                  "p995": 0.0003,
-                  "p999": 0.0009,
-                  "rme": 0.17,
-                  "samples": 3231110
+                  "max": 3.1962,
+                  "mean": 0.0003,
+                  "p75": 0.0004,
+                  "p99": 0.0004,
+                  "p995": 0.0005,
+                  "p999": 0.0018,
+                  "rme": 2.66,
+                  "samples": 1649953
                 },
                 {
                   "id": "Large State Update (1000 items) - Jotai",
                   "name": "Large State Update (1000 items)",
-                  "hz": 328019.86,
-                  "min": 0.0024,
-                  "max": 0.2574,
-                  "mean": 0.003,
-                  "p75": 0.0026,
-                  "p99": 0.0062,
-                  "p995": 0.0068,
-                  "p999": 0.018,
-                  "rme": 0.41,
-                  "samples": 164010
+                  "hz": 87259.89,
+                  "min": 0.0027,
+                  "max": 6.5502,
+                  "mean": 0.0115,
+                  "p75": 0.0148,
+                  "p99": 0.0402,
+                  "p995": 0.0802,
+                  "p999": 0.3907,
+                  "rme": 4.69,
+                  "samples": 43630
                 },
                 {
                   "id": "Large State Filter - Jotai",
                   "name": "Large State Filter",
-                  "hz": 422732.3,
-                  "min": 0.002,
-                  "max": 0.2638,
-                  "mean": 0.0024,
-                  "p75": 0.0022,
-                  "p99": 0.0079,
-                  "p995": 0.008,
-                  "p999": 0.0087,
-                  "rme": 0.39,
-                  "samples": 211367
+                  "hz": 125427.94,
+                  "min": 0.0023,
+                  "max": 6.6933,
+                  "mean": 0.008,
+                  "p75": 0.007,
+                  "p99": 0.0278,
+                  "p995": 0.0477,
+                  "p999": 0.2107,
+                  "rme": 4.64,
+                  "samples": 62714
                 }
               ]
             }
@@ -399,7 +399,7 @@
     "07-form": {
       "files": [
         {
-          "filepath": "groups/07-form/tests/jotai.bench.ts",
+          "filepath": "groups/07-form/runner.bench.ts",
           "groups": [
             {
               "fullName": "07-form - Jotai",
@@ -407,72 +407,72 @@
                 {
                   "id": "Single Field Update - Jotai",
                   "name": "Single Field Update",
-                  "hz": 1539228.33,
-                  "min": 0.0005,
-                  "max": 3.117,
-                  "mean": 0.0006,
-                  "p75": 0.0006,
-                  "p99": 0.0013,
-                  "p995": 0.0016,
-                  "p999": 0.0059,
-                  "rme": 1.34,
-                  "samples": 769615
+                  "hz": 905029.05,
+                  "min": 0.0006,
+                  "max": 3.7349,
+                  "mean": 0.0011,
+                  "p75": 0.001,
+                  "p99": 0.0023,
+                  "p995": 0.0035,
+                  "p999": 0.02,
+                  "rme": 2.69,
+                  "samples": 452515
                 },
                 {
                   "id": "Multiple Fields Update (3 fields) - Jotai",
                   "name": "Multiple Fields Update (3 fields)",
-                  "hz": 1558064.17,
-                  "min": 0.0005,
-                  "max": 1.3158,
-                  "mean": 0.0006,
-                  "p75": 0.0006,
-                  "p99": 0.001,
-                  "p995": 0.0013,
-                  "p999": 0.0021,
-                  "rme": 0.69,
-                  "samples": 779033
+                  "hz": 799941.75,
+                  "min": 0.0006,
+                  "max": 5.2628,
+                  "mean": 0.0013,
+                  "p75": 0.0015,
+                  "p99": 0.0023,
+                  "p995": 0.0035,
+                  "p999": 0.0217,
+                  "rme": 3.17,
+                  "samples": 399971
                 },
                 {
                   "id": "Nested Field Update - Jotai",
                   "name": "Nested Field Update",
-                  "hz": 1439893.54,
-                  "min": 0.0005,
-                  "max": 6.8432,
-                  "mean": 0.0007,
-                  "p75": 0.0006,
-                  "p99": 0.0014,
-                  "p995": 0.0017,
-                  "p999": 0.0083,
-                  "rme": 2.8,
-                  "samples": 719947
+                  "hz": 877143.78,
+                  "min": 0.0006,
+                  "max": 3.9945,
+                  "mean": 0.0011,
+                  "p75": 0.0015,
+                  "p99": 0.002,
+                  "p995": 0.0029,
+                  "p999": 0.0147,
+                  "rme": 2.25,
+                  "samples": 438572
                 },
                 {
                   "id": "Full Form Reset - Jotai",
                   "name": "Full Form Reset",
-                  "hz": 2183045.13,
+                  "hz": 1228277.86,
                   "min": 0.0004,
-                  "max": 1.4988,
-                  "mean": 0.0005,
-                  "p75": 0.0005,
-                  "p99": 0.0007,
-                  "p995": 0.0008,
-                  "p999": 0.0018,
-                  "rme": 0.88,
-                  "samples": 1091523
+                  "max": 5.402,
+                  "mean": 0.0008,
+                  "p75": 0.0011,
+                  "p99": 0.0012,
+                  "p995": 0.0017,
+                  "p999": 0.0064,
+                  "rme": 3.07,
+                  "samples": 614139
                 },
                 {
                   "id": "Conditional Field Update - Jotai",
                   "name": "Conditional Field Update",
-                  "hz": 6335058.89,
+                  "hz": 3717798.22,
                   "min": 0.0001,
-                  "max": 2.9736,
-                  "mean": 0.0002,
-                  "p75": 0.0002,
-                  "p99": 0.0002,
-                  "p995": 0.0002,
-                  "p999": 0.0005,
-                  "rme": 1.18,
-                  "samples": 3167530
+                  "max": 4.9307,
+                  "mean": 0.0003,
+                  "p75": 0.0003,
+                  "p99": 0.0004,
+                  "p995": 0.0004,
+                  "p999": 0.0009,
+                  "rme": 3.34,
+                  "samples": 1858900
                 }
               ]
             }
@@ -483,136 +483,80 @@
     "08-async-reactive": {
       "files": [
         {
-          "filepath": "groups/08-async-reactive/tests/jotai.bench.ts",
+          "filepath": "groups/08-async-reactive/runner.bench.ts",
           "groups": [
             {
               "fullName": "08-async-reactive - Jotai",
               "benchmarks": [
                 {
-                  "id": "Async Atom Read - Jotai",
-                  "name": "Async Atom Read",
-                  "hz": 2348945.49,
-                  "min": 0.0003,
-                  "max": 0.1133,
-                  "mean": 0.0004,
-                  "p75": 0.0004,
-                  "p99": 0.0006,
-                  "p995": 0.0009,
-                  "p999": 0.0014,
-                  "rme": 0.17,
-                  "samples": 1174473
+                  "id": "Async Computed Read - Jotai",
+                  "name": "Async Computed Read",
+                  "hz": 89.0831,
+                  "min": 9.9734,
+                  "max": 13.6791,
+                  "mean": 11.2255,
+                  "p75": 11.3957,
+                  "p99": 13.6791,
+                  "p995": 13.6791,
+                  "p999": 13.6791,
+                  "rme": 2.26,
+                  "samples": 45
                 },
                 {
-                  "id": "Async Atom with Dependency Update - Jotai",
-                  "name": "Async Atom with Dependency Update",
-                  "hz": 864.72,
-                  "min": 0.0206,
-                  "max": 1.2659,
-                  "mean": 1.1564,
-                  "p75": 1.1833,
-                  "p99": 1.234,
-                  "p995": 1.2494,
-                  "p999": 1.2659,
-                  "rme": 1.07,
-                  "samples": 433
+                  "id": "Async Computed with Dependency Update - Jotai",
+                  "name": "Async Computed with Dependency Update",
+                  "hz": 88.3305,
+                  "min": 10.1421,
+                  "max": 15.9193,
+                  "mean": 11.3211,
+                  "p75": 11.3331,
+                  "p99": 15.9193,
+                  "p995": 15.9193,
+                  "p999": 15.9193,
+                  "rme": 2.56,
+                  "samples": 45
                 },
                 {
-                  "id": "Chained Async Atoms - Jotai",
-                  "name": "Chained Async Atoms",
-                  "hz": 428.45,
-                  "min": 1.1815,
-                  "max": 2.6095,
-                  "mean": 2.334,
-                  "p75": 2.3541,
-                  "p99": 2.5994,
-                  "p995": 2.6071,
-                  "p999": 2.6095,
-                  "rme": 0.82,
-                  "samples": 215
+                  "id": "Chained Async Computed - Jotai",
+                  "name": "Chained Async Computed",
+                  "hz": 85.6667,
+                  "min": 10.8812,
+                  "max": 14.0762,
+                  "mean": 11.6732,
+                  "p75": 11.8757,
+                  "p99": 14.0762,
+                  "p995": 14.0762,
+                  "p999": 14.0762,
+                  "rme": 1.66,
+                  "samples": 43
                 },
                 {
                   "id": "Complex Async Dependencies - Jotai",
                   "name": "Complex Async Dependencies",
-                  "hz": 431.3,
-                  "min": 1.1627,
-                  "max": 2.7265,
-                  "mean": 2.3186,
-                  "p75": 2.3576,
-                  "p99": 2.6254,
-                  "p995": 2.6507,
-                  "p999": 2.7265,
-                  "rme": 1.23,
-                  "samples": 216
+                  "hz": 87.7025,
+                  "min": 10.1461,
+                  "max": 14.1659,
+                  "mean": 11.4022,
+                  "p75": 11.4124,
+                  "p99": 14.1659,
+                  "p995": 14.1659,
+                  "p999": 14.1659,
+                  "rme": 2.28,
+                  "samples": 44
                 },
                 {
                   "id": "Concurrent Async Reads - Jotai",
                   "name": "Concurrent Async Reads",
-                  "hz": 548761.55,
-                  "min": 0.0016,
-                  "max": 0.2671,
-                  "mean": 0.0018,
-                  "p75": 0.0018,
-                  "p99": 0.0029,
-                  "p995": 0.0042,
-                  "p999": 0.0061,
-                  "rme": 0.35,
-                  "samples": 274381
-                }
-              ]
-            }
-          ]
-        }
-      ]
-    },
-    "09-computed-native": {
-      "files": [
-        {
-          "filepath": "groups/09-computed-native/tests/jotai.bench.ts",
-          "groups": [
-            {
-              "fullName": "09-computed-native - Jotai",
-              "benchmarks": [
-                {
-                  "id": "Native Computed - Jotai",
-                  "name": "Native Computed",
-                  "hz": 778055.54,
-                  "min": 0.001,
-                  "max": 3.0128,
-                  "mean": 0.0013,
-                  "p75": 0.0011,
-                  "p99": 0.0021,
-                  "p995": 0.0025,
-                  "p999": 0.0092,
-                  "rme": 3.87,
-                  "samples": 389028
-                },
-                {
-                  "id": "Chained Computed - Jotai",
-                  "name": "Chained Computed",
-                  "hz": 329888.56,
-                  "min": 0.0025,
-                  "max": 2.4626,
-                  "mean": 0.003,
-                  "p75": 0.0028,
-                  "p99": 0.0035,
-                  "p995": 0.0038,
-                  "p999": 0.0055,
-                  "rme": 3.6,
-                  "samples": 164945
-                },
-                {
-                  "id": "Computed Updates - Jotai",
-                  "name": "Computed Updates",
-                  "hz": 8105.19,
-                  "min": 0.1065,
-                  "max": 3.0967,
-                  "mean": 0.1234,
-                  "p75": 0.1113,
-                  "p99": 0.1569,
-                  "p995": 1.5825,
-                  "p999": 2.562,
-                  "rme": 4.05,
-                  "samples": 4053
+                  "hz": 86.6571,
+                  "min": 10.0642,
+                  "max": 15.3715,
+                  "mean": 11.5397,
+                  "p75": 11.9362,
+                  "p99": 15.3715,
+                  "p995": 15.3715,
+                  "p999": 15.3715,
+                  "rme": 2.69,
+                  "samples": 44
                 }
               ]
             }

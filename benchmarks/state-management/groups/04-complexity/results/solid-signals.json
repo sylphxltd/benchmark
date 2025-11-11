@@ -1,7 +1,7 @@
 {
   "files": [
     {
-      "filepath": "groups/04-complexity/tests/solid-signals.bench.ts",
+      "filepath": "groups/04-complexity/runner.bench.ts",
       "groups": [
         {
           "fullName": "04-complexity - Solid Signals",
@@ -9,72 +9,72 @@
             {
               "id": "Deep Nested Read (10 levels) - Solid Signals",
               "name": "Deep Nested Read (10 levels)",
-              "hz": 45051422.2,
+              "hz": 32153627.23,
               "min": 0,
-              "max": 0.0918,
-              "mean": 0,
-              "p75": 0,
-              "p99": 0,
-              "p995": 0,
-              "p999": 0,
-              "rme": 0.06,
-              "samples": 22525712
-            },
-            {
-              "id": "Deep Nested Write (10 levels) - Solid Signals",
-              "name": "Deep Nested Write (10 levels)",
-              "hz": 13133069.15,
-              "min": 0,
-              "max": 8.7061,
-              "mean": 0.0001,
-              "p75": 0.0001,
-              "p99": 0.0001,
-              "p995": 0.0002,
-              "p999": 0.0002,
-              "rme": 3.39,
-              "samples": 6618661
-            },
-            {
-              "id": "Array Splice (middle) - Solid Signals",
-              "name": "Array Splice (middle)",
-              "hz": 27301377.84,
-              "min": 0,
-              "max": 0.1619,
+              "max": 3.3215,
               "mean": 0,
               "p75": 0,
               "p99": 0.0001,
               "p995": 0.0001,
               "p999": 0.0001,
-              "rme": 0.07,
-              "samples": 13650689
+              "rme": 1.37,
+              "samples": 16076815
+            },
+            {
+              "id": "Deep Nested Write (10 levels) - Solid Signals",
+              "name": "Deep Nested Write (10 levels)",
+              "hz": 10652095.25,
+              "min": 0,
+              "max": 0.3145,
+              "mean": 0.0001,
+              "p75": 0.0001,
+              "p99": 0.0002,
+              "p995": 0.0002,
+              "p999": 0.0002,
+              "rme": 0.21,
+              "samples": 5326048
+            },
+            {
+              "id": "Array Splice (middle) - Solid Signals",
+              "name": "Array Splice (middle)",
+              "hz": 20811989.83,
+              "min": 0,
+              "max": 0.1465,
+              "mean": 0,
+              "p75": 0,
+              "p99": 0.0001,
+              "p995": 0.0001,
+              "p999": 0.0001,
+              "rme": 0.12,
+              "samples": 10405995
             },
             {
               "id": "Large Array Map (1000 items) - Solid Signals",
               "name": "Large Array Map (1000 items)",
-              "hz": 41690589.5,
+              "hz": 30016007.82,
               "min": 0,
-              "max": 2.0876,
+              "max": 3.4372,
               "mean": 0,
               "p75": 0,
-              "p99": 0,
-              "p995": 0,
+              "p99": 0.0001,
+              "p995": 0.0001,
               "p999": 0.0001,
-              "rme": 0.82,
-              "samples": 20845296
+              "rme": 1.93,
+              "samples": 15008004
             },
             {
               "id": "Multi-field Update (unrelated) - Solid Signals",
               "name": "Multi-field Update (unrelated)",
-              "hz": 17203.22,
-              "min": 0.0151,
-              "max": 16.3374,
-              "mean": 0.0581,
-              "p75": 0.0562,
-              "p99": 0.089,
-              "p995": 0.0957,
-              "p999": 4.1457,
-              "rme": 14.74,
-              "samples": 8602
+              "hz": 14462.18,
+              "min": 0.017,
+              "max": 12.064,
+              "mean": 0.0691,
+              "p75": 0.0655,
+              "p99": 0.1398,
+              "p995": 0.1575,
+              "p999": 6.316,
+              "rme": 13.35,
+              "samples": 7232
             }
           ]
         }

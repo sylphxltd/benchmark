@@ -1,7 +1,7 @@
 {
   "files": [
     {
-      "filepath": "groups/07-form/tests/valtio.bench.ts",
+      "filepath": "groups/07-form/runner.bench.ts",
       "groups": [
         {
           "fullName": "07-form - Valtio",
@@ -9,72 +9,72 @@
             {
               "id": "Single Field Update - Valtio",
               "name": "Single Field Update",
-              "hz": 16376962.4,
+              "hz": 9289271.93,
               "min": 0,
-              "max": 0.1228,
+              "max": 0.7015,
               "mean": 0.0001,
               "p75": 0.0001,
-              "p99": 0.0001,
-              "p995": 0.0001,
+              "p99": 0.0002,
+              "p995": 0.0002,
               "p999": 0.0002,
-              "rme": 0.06,
-              "samples": 8188482
+              "rme": 0.85,
+              "samples": 4644636
             },
             {
               "id": "Multiple Fields Update (3 fields) - Valtio",
               "name": "Multiple Fields Update (3 fields)",
-              "hz": 2548381.67,
+              "hz": 1572483.84,
               "min": 0.0003,
-              "max": 0.2366,
-              "mean": 0.0004,
-              "p75": 0.0004,
-              "p99": 0.0005,
-              "p995": 0.0005,
-              "p999": 0.0007,
-              "rme": 0.23,
-              "samples": 1274191
+              "max": 3.397,
+              "mean": 0.0006,
+              "p75": 0.0006,
+              "p99": 0.001,
+              "p995": 0.0011,
+              "p999": 0.0031,
+              "rme": 2.26,
+              "samples": 786243
             },
             {
               "id": "Nested Field Update - Valtio",
               "name": "Nested Field Update",
-              "hz": 13746696.16,
+              "hz": 7626049.1,
               "min": 0,
-              "max": 0.0141,
+              "max": 7.0033,
               "mean": 0.0001,
               "p75": 0.0001,
-              "p99": 0.0001,
-              "p995": 0.0001,
-              "p999": 0.0002,
-              "rme": 0.02,
-              "samples": 6873349
+              "p99": 0.0002,
+              "p995": 0.0002,
+              "p999": 0.0003,
+              "rme": 4.95,
+              "samples": 3813025
             },
             {
               "id": "Full Form Reset - Valtio",
               "name": "Full Form Reset",
-              "hz": 97321.29,
-              "min": 0.0047,
-              "max": 156.03,
-              "mean": 0.0103,
-              "p75": 0.0059,
-              "p99": 0.0152,
-              "p995": 0.0241,
-              "p999": 0.0387,
-              "rme": 52.94,
-              "samples": 57481
+              "hz": 65185.06,
+              "min": 0.0058,
+              "max": 84.029,
+              "mean": 0.0153,
+              "p75": 0.0101,
+              "p99": 0.028,
+              "p995": 0.0478,
+              "p999": 0.1556,
+              "rme": 36.13,
+              "samples": 32593
             },
             {
               "id": "Conditional Field Update - Valtio",
               "name": "Conditional Field Update",
-              "hz": 26316781.68,
+              "hz": 16290173.38,
               "min": 0,
-              "max": 0.0135,
-              "mean": 0,
-              "p75": 0,
-              "p99": 0,
-              "p995": 0,
+              "max": 20.9313,
+              "mean": 0.0001,
+              "p75": 0.0001,
+              "p99": 0.0001,
+              "p995": 0.0001,
               "p999": 0.0001,
-              "rme": 0.02,
-              "samples": 13158391
+              "rme": 8.37,
+              "samples": 8145087
             }
           ]
         }

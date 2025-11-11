@@ -2,7 +2,7 @@
   "library": "Preact Signals",
   "libraryKey": "@preact/signals",
   "version": "2.4.0",
-  "lastRun": "2025-11-11T11:31:08.974Z",
+  "lastRun": "2025-11-11T13:07:18.083Z",
   "groups": {
     "01-read": {
       "files": [
@@ -15,72 +15,72 @@
                 {
                   "id": "Simple Read - Preact Signals",
                   "name": "Simple Read",
-                  "hz": 46422062.47,
+                  "hz": 30009636.38,
                   "min": 0,
-                  "max": 0.0704,
+                  "max": 3.7767,
                   "mean": 0,
                   "p75": 0,
-                  "p99": 0,
-                  "p995": 0,
-                  "p999": 0,
-                  "rme": 0.06,
-                  "samples": 23211033
+                  "p99": 0.0001,
+                  "p995": 0.0001,
+                  "p999": 0.0001,
+                  "rme": 2.1,
+                  "samples": 15004819
                 },
                 {
                   "id": "High Frequency Read (x10) - Preact Signals",
                   "name": "High Frequency Read (x10)",
-                  "hz": 36089737.4,
+                  "hz": 21617479.1,
                   "min": 0,
-                  "max": 0.0323,
+                  "max": 3.4878,
                   "mean": 0,
                   "p75": 0,
-                  "p99": 0,
-                  "p995": 0,
+                  "p99": 0.0001,
+                  "p995": 0.0001,
                   "p999": 0.0001,
-                  "rme": 0.04,
-                  "samples": 18044870
+                  "rme": 1.78,
+                  "samples": 10808741
                 },
                 {
                   "id": "High Frequency Read (x100) - Preact Signals",
                   "name": "High Frequency Read (x100)",
-                  "hz": 8324951.3,
+                  "hz": 3274609.36,
                   "min": 0,
-                  "max": 0.0257,
-                  "mean": 0.0001,
-                  "p75": 0.0001,
-                  "p99": 0.0002,
-                  "p995": 0.0002,
-                  "p999": 0.0002,
-                  "rme": 0.03,
-                  "samples": 4162476
+                  "max": 10.3373,
+                  "mean": 0.0003,
+                  "p75": 0.0003,
+                  "p99": 0.0003,
+                  "p995": 0.0003,
+                  "p999": 0.0005,
+                  "rme": 10.48,
+                  "samples": 1637305
                 },
                 {
                   "id": "High Frequency Read (x1000) - Preact Signals",
                   "name": "High Frequency Read (x1000)",
-                  "hz": 920881.12,
+                  "hz": 347103.99,
                   "min": 0.001,
-                  "max": 0.0314,
-                  "mean": 0.0011,
-                  "p75": 0.0011,
-                  "p99": 0.0013,
-                  "p995": 0.0014,
-                  "p999": 0.0014,
-                  "rme": 0.02,
-                  "samples": 460441
+                  "max": 12.83,
+                  "mean": 0.0029,
+                  "p75": 0.0022,
+                  "p99": 0.0025,
+                  "p995": 0.0093,
+                  "p999": 0.145,
+                  "rme": 12.09,
+                  "samples": 173552
                 },
                 {
                   "id": "High Frequency Read (x10000) - Preact Signals",
                   "name": "High Frequency Read (x10000)",
-                  "hz": 88774.52,
-                  "min": 0.0111,
-                  "max": 0.0303,
-                  "mean": 0.0113,
-                  "p75": 0.0113,
-                  "p99": 0.0128,
-                  "p995": 0.0135,
-                  "p999": 0.0141,
-                  "rme": 0.03,
-                  "samples": 44388
+                  "hz": 51521.9,
+                  "min": 0.0114,
+                  "max": 4.7038,
+                  "mean": 0.0194,
+                  "p75": 0.0232,
+                  "p99": 0.05,
+                  "p995": 0.096,
+                  "p999": 0.4328,
+                  "rme": 4.42,
+                  "samples": 25761
                 }
               ]
             }
@@ -91,7 +91,7 @@
     "02-write": {
       "files": [
         {
-          "filepath": "groups/02-write/tests/preact-signals.bench.ts",
+          "filepath": "groups/02-write/runner.bench.ts",
           "groups": [
             {
               "fullName": "02-write - Preact Signals",
@@ -99,72 +99,72 @@
                 {
                   "id": "Single Update - Preact Signals",
                   "name": "Single Update",
-                  "hz": 46911689.25,
+                  "hz": 26143430.12,
                   "min": 0,
-                  "max": 0.0122,
+                  "max": 3.4598,
                   "mean": 0,
-                  "p75": 0,
-                  "p99": 0,
-                  "p995": 0,
-                  "p999": 0,
-                  "rme": 0.04,
-                  "samples": 23455845
-                },
-                {
-                  "id": "Batch Update (x10) - Preact Signals",
-                  "name": "Batch Update (x10)",
-                  "hz": 19903965.56,
-                  "min": 0,
-                  "max": 0.0703,
-                  "mean": 0.0001,
                   "p75": 0,
                   "p99": 0.0001,
                   "p995": 0.0001,
                   "p999": 0.0001,
-                  "rme": 0.09,
-                  "samples": 9951983
+                  "rme": 3.43,
+                  "samples": 13071716
+                },
+                {
+                  "id": "Batch Update (x10) - Preact Signals",
+                  "name": "Batch Update (x10)",
+                  "hz": 11170754.99,
+                  "min": 0,
+                  "max": 6.1885,
+                  "mean": 0.0001,
+                  "p75": 0.0001,
+                  "p99": 0.0001,
+                  "p995": 0.0001,
+                  "p999": 0.0002,
+                  "rme": 4.6,
+                  "samples": 5585378
                 },
                 {
                   "id": "Batch Update (x100) - Preact Signals",
                   "name": "Batch Update (x100)",
-                  "hz": 2930001.54,
+                  "hz": 1776935.47,
                   "min": 0.0003,
-                  "max": 0.0128,
-                  "mean": 0.0003,
-                  "p75": 0.0003,
-                  "p99": 0.0004,
-                  "p995": 0.0005,
-                  "p999": 0.0005,
-                  "rme": 0.02,
-                  "samples": 1465001
+                  "max": 7.638,
+                  "mean": 0.0006,
+                  "p75": 0.0007,
+                  "p99": 0.0007,
+                  "p995": 0.0007,
+                  "p999": 0.0011,
+                  "rme": 3.95,
+                  "samples": 888468
                 },
                 {
                   "id": "Batch Update (x1000) - Preact Signals",
                   "name": "Batch Update (x1000)",
-                  "hz": 305293.6,
-                  "min": 0.0032,
-                  "max": 0.0217,
-                  "mean": 0.0033,
-                  "p75": 0.0033,
-                  "p99": 0.0041,
-                  "p995": 0.0041,
-                  "p999": 0.0042,
-                  "rme": 0.02,
-                  "samples": 152647
+                  "hz": 181611.11,
+                  "min": 0.0034,
+                  "max": 2.9173,
+                  "mean": 0.0055,
+                  "p75": 0.0062,
+                  "p99": 0.0063,
+                  "p995": 0.0132,
+                  "p999": 0.0841,
+                  "rme": 1.98,
+                  "samples": 90806
                 },
                 {
                   "id": "Batch Update (x10000) - Preact Signals",
                   "name": "Batch Update (x10000)",
-                  "hz": 29674.17,
-                  "min": 0.0333,
-                  "max": 0.0495,
-                  "mean": 0.0337,
-                  "p75": 0.0339,
-                  "p99": 0.0367,
-                  "p995": 0.038,
-                  "p999": 0.0405,
-                  "rme": 0.03,
-                  "samples": 14838
+                  "hz": 17390.59,
+                  "min": 0.0343,
+                  "max": 7.6572,
+                  "mean": 0.0575,
+                  "p75": 0.0622,
+                  "p99": 0.1879,
+                  "p995": 0.3767,
+                  "p999": 1.4098,
+                  "rme": 5.05,
+                  "samples": 8696
                 }
               ]
             }
@@ -175,7 +175,7 @@
     "03-creation": {
       "files": [
         {
-          "filepath": "groups/03-creation/tests/preact-signals.bench.ts",
+          "filepath": "groups/03-creation/runner.bench.ts",
           "groups": [
             {
               "fullName": "03-creation - Preact Signals",
@@ -183,72 +183,72 @@
                 {
                   "id": "Store Creation (x1) - Preact Signals",
                   "name": "Store Creation (x1)",
-                  "hz": 48236102.33,
+                  "hz": 30694432.28,
                   "min": 0,
-                  "max": 0.0926,
-                  "mean": 0,
-                  "p75": 0,
-                  "p99": 0,
-                  "p995": 0,
-                  "p999": 0,
-                  "rme": 0.07,
-                  "samples": 24118053
-                },
-                {
-                  "id": "Store Creation (x10) - Preact Signals",
-                  "name": "Store Creation (x10)",
-                  "hz": 45429889.45,
-                  "min": 0,
-                  "max": 0.0143,
-                  "mean": 0,
-                  "p75": 0,
-                  "p99": 0,
-                  "p995": 0,
-                  "p999": 0,
-                  "rme": 0.04,
-                  "samples": 22714945
-                },
-                {
-                  "id": "Store Creation (x100) - Preact Signals",
-                  "name": "Store Creation (x100)",
-                  "hz": 24289716.45,
-                  "min": 0,
-                  "max": 0.0987,
+                  "max": 1.343,
                   "mean": 0,
                   "p75": 0,
                   "p99": 0.0001,
                   "p995": 0.0001,
                   "p999": 0.0001,
-                  "rme": 0.05,
-                  "samples": 12144859
+                  "rme": 0.92,
+                  "samples": 15347217
+                },
+                {
+                  "id": "Store Creation (x10) - Preact Signals",
+                  "name": "Store Creation (x10)",
+                  "hz": 27289050.36,
+                  "min": 0,
+                  "max": 1.6439,
+                  "mean": 0,
+                  "p75": 0,
+                  "p99": 0.0001,
+                  "p995": 0.0001,
+                  "p999": 0.0001,
+                  "rme": 1.54,
+                  "samples": 13644526
+                },
+                {
+                  "id": "Store Creation (x100) - Preact Signals",
+                  "name": "Store Creation (x100)",
+                  "hz": 16494285.11,
+                  "min": 0,
+                  "max": 1.8649,
+                  "mean": 0.0001,
+                  "p75": 0.0001,
+                  "p99": 0.0001,
+                  "p995": 0.0001,
+                  "p999": 0.0001,
+                  "rme": 0.89,
+                  "samples": 8247143
                 },
                 {
                   "id": "Store Creation (x1000) - Preact Signals",
                   "name": "Store Creation (x1000)",
-                  "hz": 3608958.61,
+                  "hz": 2644669.21,
                   "min": 0.0002,
-                  "max": 0.0132,
-                  "mean": 0.0003,
-                  "p75": 0.0003,
-                  "p99": 0.0003,
-                  "p995": 0.0004,
-                  "p999": 0.0004,
-                  "rme": 0.02,
-                  "samples": 1804480
+                  "max": 0.8177,
+                  "mean": 0.0004,
+                  "p75": 0.0004,
+                  "p99": 0.0005,
+                  "p995": 0.0005,
+                  "p999": 0.0005,
+                  "rme": 0.71,
+                  "samples": 1322335
                 },
                 {
                   "id": "Store Creation (x10000) - Preact Signals",
                   "name": "Store Creation (x10000)",
-                  "hz": 394134.79,
+                  "hz": 289158.84,
                   "min": 0.0025,
-                  "max": 0.0181,
-                  "mean": 0.0025,
-                  "p75": 0.0025,
-                  "p99": 0.0032,
-                  "p995": 0.0032,
-                  "p999": 0.0032,
-                  "rme": 0.02,
-                  "samples": 197068
+                  "max": 1.2302,
+                  "mean": 0.0035,
+                  "p75": 0.0037,
+                  "p99": 0.0072,
+                  "p995": 0.0077,
+                  "p999": 0.0282,
+                  "rme": 0.85,
+                  "samples": 144580
                 }
               ]
             }
@@ -259,7 +259,7 @@
     "04-complexity": {
       "files": [
         {
-          "filepath": "groups/04-complexity/tests/preact-signals.bench.ts",
+          "filepath": "groups/04-complexity/runner.bench.ts",
           "groups": [
             {
               "fullName": "04-complexity - Preact Signals",
@@ -267,72 +267,72 @@
                 {
                   "id": "Deep Nested Read (10 levels) - Preact Signals",
                   "name": "Deep Nested Read (10 levels)",
-                  "hz": 45498148.91,
+                  "hz": 34758509.22,
                   "min": 0,
-                  "max": 0.028,
+                  "max": 0.5925,
                   "mean": 0,
                   "p75": 0,
                   "p99": 0,
-                  "p995": 0,
-                  "p999": 0,
-                  "rme": 0.05,
-                  "samples": 22749076
+                  "p995": 0.0001,
+                  "p999": 0.0001,
+                  "rme": 0.26,
+                  "samples": 17379256
                 },
                 {
                   "id": "Deep Nested Write (10 levels) - Preact Signals",
                   "name": "Deep Nested Write (10 levels)",
-                  "hz": 13811777.73,
+                  "hz": 9870258.42,
                   "min": 0,
-                  "max": 0.3831,
+                  "max": 0.934,
                   "mean": 0.0001,
                   "p75": 0.0001,
-                  "p99": 0.0001,
-                  "p995": 0.0001,
-                  "p999": 0.0003,
-                  "rme": 0.2,
-                  "samples": 6905890
+                  "p99": 0.0002,
+                  "p995": 0.0002,
+                  "p999": 0.0005,
+                  "rme": 0.81,
+                  "samples": 4935130
                 },
                 {
                   "id": "Array Splice (middle) - Preact Signals",
                   "name": "Array Splice (middle)",
-                  "hz": 27569995.17,
+                  "hz": 20266995.11,
                   "min": 0,
-                  "max": 0.0571,
+                  "max": 0.9498,
                   "mean": 0,
                   "p75": 0,
                   "p99": 0.0001,
                   "p995": 0.0001,
-                  "p999": 0.0001,
-                  "rme": 0.04,
-                  "samples": 13784998
+                  "p999": 0.0002,
+                  "rme": 0.65,
+                  "samples": 10133498
                 },
                 {
                   "id": "Large Array Map (1000 items) - Preact Signals",
                   "name": "Large Array Map (1000 items)",
-                  "hz": 41256898.95,
+                  "hz": 32889228,
                   "min": 0,
-                  "max": 16.8106,
+                  "max": 3.3993,
                   "mean": 0,
                   "p75": 0,
                   "p99": 0,
-                  "p995": 0,
-                  "p999": 0,
-                  "rme": 6.59,
-                  "samples": 20628451
+                  "p995": 0.0001,
+                  "p999": 0.0001,
+                  "rme": 1.35,
+                  "samples": 16444614
                 },
                 {
                   "id": "Multi-field Update (unrelated) - Preact Signals",
                   "name": "Multi-field Update (unrelated)",
-                  "hz": 14667.6,
-                  "min": 0.0147,
-                  "max": 20.1982,
-                  "mean": 0.0682,
-                  "p75": 0.0669,
-                  "p99": 0.1155,
-                  "p995": 0.1229,
-                  "p999": 5.8005,
-                  "rme": 16,
-                  "samples": 7334
+                  "hz": 16710.92,
+                  "min": 0.0157,
+                  "max": 10.9538,
+                  "mean": 0.0598,
+                  "p75": 0.0578,
+                  "p99": 0.1009,
+                  "p995": 0.1143,
+                  "p999": 5.2212,
+                  "rme": 12.35,
+                  "samples": 8356
                 }
               ]
             }
@@ -343,7 +343,7 @@
     "06-memory": {
       "files": [
         {
-          "filepath": "groups/06-memory/tests/preact-signals.bench.ts",
+          "filepath": "groups/06-memory/runner.bench.ts",
           "groups": [
             {
               "fullName": "06-memory - Preact Signals",
@@ -351,44 +351,44 @@
                 {
                   "id": "Large State Read (1000 items) - Preact Signals",
                   "name": "Large State Read (1000 items)",
-                  "hz": 47141539.74,
+                  "hz": 39289572.59,
                   "min": 0,
-                  "max": 0.0113,
+                  "max": 0.0938,
                   "mean": 0,
                   "p75": 0,
                   "p99": 0,
                   "p995": 0,
-                  "p999": 0,
-                  "rme": 0.04,
-                  "samples": 23570771
+                  "p999": 0.0001,
+                  "rme": 0.08,
+                  "samples": 19644787
                 },
                 {
                   "id": "Large State Update (1000 items) - Preact Signals",
                   "name": "Large State Update (1000 items)",
-                  "hz": 433144.74,
-                  "min": 0.0017,
-                  "max": 0.4715,
-                  "mean": 0.0023,
-                  "p75": 0.002,
-                  "p99": 0.0053,
-                  "p995": 0.0056,
-                  "p999": 0.0135,
-                  "rme": 0.64,
-                  "samples": 216573
+                  "hz": 320184.16,
+                  "min": 0.0018,
+                  "max": 0.8756,
+                  "mean": 0.0031,
+                  "p75": 0.0033,
+                  "p99": 0.0085,
+                  "p995": 0.0091,
+                  "p999": 0.014,
+                  "rme": 0.68,
+                  "samples": 160093
                 },
                 {
                   "id": "Large State Filter - Preact Signals",
                   "name": "Large State Filter",
-                  "hz": 399322.78,
+                  "hz": 367473.14,
                   "min": 0.0018,
-                  "max": 0.4136,
-                  "mean": 0.0025,
-                  "p75": 0.0024,
-                  "p99": 0.0083,
-                  "p995": 0.0086,
-                  "p999": 0.0093,
-                  "rme": 0.64,
-                  "samples": 199662
+                  "max": 0.3477,
+                  "mean": 0.0027,
+                  "p75": 0.0027,
+                  "p99": 0.0093,
+                  "p995": 0.01,
+                  "p999": 0.0134,
+                  "rme": 0.61,
+                  "samples": 183737
                 }
               ]
             }
@@ -399,7 +399,7 @@
     "07-form": {
       "files": [
         {
-          "filepath": "groups/07-form/tests/preact-signals.bench.ts",
+          "filepath": "groups/07-form/runner.bench.ts",
           "groups": [
             {
               "fullName": "07-form - Preact Signals",
@@ -407,72 +407,72 @@
                 {
                   "id": "Single Field Update - Preact Signals",
                   "name": "Single Field Update",
-                  "hz": 18103254.81,
+                  "hz": 16799165.23,
                   "min": 0,
-                  "max": 0.1188,
+                  "max": 0.4737,
                   "mean": 0.0001,
                   "p75": 0.0001,
                   "p99": 0.0001,
                   "p995": 0.0001,
                   "p999": 0.0002,
-                  "rme": 0.1,
-                  "samples": 9051628
+                  "rme": 0.26,
+                  "samples": 8399583
                 },
                 {
                   "id": "Multiple Fields Update (3 fields) - Preact Signals",
                   "name": "Multiple Fields Update (3 fields)",
-                  "hz": 17213447.59,
+                  "hz": 14189737.72,
                   "min": 0,
-                  "max": 0.3003,
+                  "max": 0.2468,
                   "mean": 0.0001,
                   "p75": 0.0001,
                   "p99": 0.0001,
-                  "p995": 0.0001,
-                  "p999": 0.0002,
-                  "rme": 0.43,
-                  "samples": 8606725
+                  "p995": 0.0002,
+                  "p999": 0.0003,
+                  "rme": 0.48,
+                  "samples": 7094869
                 },
                 {
                   "id": "Nested Field Update - Preact Signals",
                   "name": "Nested Field Update",
-                  "hz": 15417293.05,
+                  "hz": 13900793.17,
                   "min": 0,
-                  "max": 0.4077,
+                  "max": 0.4928,
                   "mean": 0.0001,
                   "p75": 0.0001,
                   "p99": 0.0001,
-                  "p995": 0.0001,
-                  "p999": 0.0003,
-                  "rme": 0.47,
-                  "samples": 7708864
+                  "p995": 0.0002,
+                  "p999": 0.0004,
+                  "rme": 0.67,
+                  "samples": 6950397
                 },
                 {
                   "id": "Full Form Reset - Preact Signals",
                   "name": "Full Form Reset",
-                  "hz": 28369135.83,
+                  "hz": 25424665.59,
                   "min": 0,
-                  "max": 0.2855,
+                  "max": 0.2921,
                   "mean": 0,
                   "p75": 0,
-                  "p99": 0,
+                  "p99": 0.0001,
                   "p995": 0.0001,
                   "p999": 0.0003,
-                  "rme": 0.48,
-                  "samples": 14184568
+                  "rme": 0.54,
+                  "samples": 12712333
                 },
                 {
                   "id": "Conditional Field Update - Preact Signals",
                   "name": "Conditional Field Update",
-                  "hz": 44465457.95,
+                  "hz": 38387317.24,
                   "min": 0,
-                  "max": 0.058,
+                  "max": 0.2264,
                   "mean": 0,
                   "p75": 0,
                   "p99": 0,
                   "p995": 0,
                   "p999": 0.0001,
-                  "rme": 0.06,
-                  "samples": 22232730
+                  "rme": 0.12,
+                  "samples": 19193660
                 }
               ]
             }
@@ -480,55 +480,83 @@
         }
       ]
     },
-    "09-computed-native": {
+    "08-async-reactive": {
       "files": [
         {
-          "filepath": "groups/09-computed-native/tests/preact-signals.bench.ts",
+          "filepath": "groups/08-async-reactive/runner.bench.ts",
           "groups": [
             {
-              "fullName": "09-computed-native - Preact Signals",
+              "fullName": "08-async-reactive - Preact Signals",
               "benchmarks": [
                 {
-                  "id": "Native Computed - Preact Signals",
-                  "name": "Native Computed",
-                  "hz": 20495073.39,
-                  "min": 0,
-                  "max": 0.8152,
-                  "mean": 0,
-                  "p75": 0,
-                  "p99": 0.0001,
-                  "p995": 0.0001,
-                  "p999": 0.0001,
-                  "rme": 0.37,
-                  "samples": 10247537
+                  "id": "Async Computed Read - Preact Signals",
+                  "name": "Async Computed Read",
+                  "hz": 91.6396,
+                  "min": 10.0293,
+                  "max": 11.1073,
+                  "mean": 10.9123,
+                  "p75": 11.0599,
+                  "p99": 11.1073,
+                  "p995": 11.1073,
+                  "p999": 11.1073,
+                  "rme": 0.9,
+                  "samples": 46
                 },
                 {
-                  "id": "Chained Computed - Preact Signals",
-                  "name": "Chained Computed",
-                  "hz": 10647386.1,
-                  "min": 0,
-                  "max": 0.0292,
-                  "mean": 0.0001,
-                  "p75": 0.0001,
-                  "p99": 0.0002,
-                  "p995": 0.0002,
-                  "p999": 0.0002,
-                  "rme": 0.03,
-                  "samples": 5323694
+                  "id": "Async Computed with Dependency Update - Preact Signals",
+                  "name": "Async Computed with Dependency Update",
+                  "hz": 90.8312,
+                  "min": 10.0643,
+                  "max": 11.1842,
+                  "mean": 11.0094,
+                  "p75": 11.0593,
+                  "p99": 11.1842,
+                  "p995": 11.1842,
+                  "p999": 11.1842,
+                  "rme": 0.5,
+                  "samples": 46
                 },
                 {
-                  "id": "Computed Updates - Preact Signals",
-                  "name": "Computed Updates",
-                  "hz": 381797.94,
-                  "min": 0.0023,
-                  "max": 0.0592,
-                  "mean": 0.0026,
-                  "p75": 0.0028,
-                  "p99": 0.0035,
-                  "p995": 0.0035,
-                  "p999": 0.0037,
-                  "rme": 0.07,
-                  "samples": 190899
+                  "id": "Chained Async Computed - Preact Signals",
+                  "name": "Chained Async Computed",
+                  "hz": 88.3378,
+                  "min": 10.8521,
+                  "max": 11.5908,
+                  "mean": 11.3202,
+                  "p75": 11.373,
+                  "p99": 11.5908,
+                  "p995": 11.5908,
+                  "p999": 11.5908,
+                  "rme": 0.36,
+                  "samples": 45
+                },
+                {
+                  "id": "Complex Async Dependencies - Preact Signals",
+                  "name": "Complex Async Dependencies",
+                  "hz": 90.3176,
+                  "min": 10.1309,
+                  "max": 11.3588,
+                  "mean": 11.072,
+                  "p75": 11.2233,
+                  "p99": 11.3588,
+                  "p995": 11.3588,
+                  "p999": 11.3588,
+                  "rme": 0.79,
+                  "samples": 46
+                },
+                {
+                  "id": "Concurrent Async Reads - Preact Signals",
+                  "name": "Concurrent Async Reads",
+                  "hz": 89.856,
+                  "min": 10.1461,
+                  "max": 11.822,
+                  "mean": 11.1289,
+                  "p75": 11.4855,
+                  "p99": 11.822,
+                  "p995": 11.822,
+                  "p999": 11.822,
+                  "rme": 1.36,
+                  "samples": 45
                 }
               ]
             }

@@ -1,7 +1,7 @@
 {
   "files": [
     {
-      "filepath": "groups/06-memory/tests/zustand.bench.ts",
+      "filepath": "groups/06-memory/runner.bench.ts",
       "groups": [
         {
           "fullName": "06-memory - Zustand",
@@ -9,44 +9,44 @@
             {
               "id": "Large State Read (1000 items) - Zustand",
               "name": "Large State Read (1000 items)",
-              "hz": 47459027.05,
+              "hz": 32942639.67,
               "min": 0,
-              "max": 0.1017,
+              "max": 4.0027,
               "mean": 0,
               "p75": 0,
               "p99": 0,
-              "p995": 0,
-              "p999": 0,
-              "rme": 0.08,
-              "samples": 23729514
+              "p995": 0.0001,
+              "p999": 0.0001,
+              "rme": 1.64,
+              "samples": 16471320
             },
             {
               "id": "Large State Update (1000 items) - Zustand",
               "name": "Large State Update (1000 items)",
-              "hz": 3840850.2,
+              "hz": 2141278.5,
               "min": 0.0001,
-              "max": 0.3255,
-              "mean": 0.0003,
-              "p75": 0.0003,
-              "p99": 0.0008,
-              "p995": 0.0009,
-              "p999": 0.0015,
-              "rme": 0.71,
-              "samples": 1920426
+              "max": 2.2574,
+              "mean": 0.0005,
+              "p75": 0.0005,
+              "p99": 0.0016,
+              "p995": 0.0019,
+              "p999": 0.004,
+              "rme": 1.85,
+              "samples": 1070640
             },
             {
               "id": "Large State Filter - Zustand",
               "name": "Large State Filter",
-              "hz": 611732.84,
+              "hz": 443095.86,
               "min": 0.0015,
-              "max": 0.4368,
-              "mean": 0.0016,
-              "p75": 0.0016,
-              "p99": 0.0023,
-              "p995": 0.0025,
-              "p999": 0.0037,
-              "rme": 0.68,
-              "samples": 305867
+              "max": 0.3966,
+              "mean": 0.0023,
+              "p75": 0.0024,
+              "p99": 0.0077,
+              "p995": 0.0093,
+              "p999": 0.01,
+              "rme": 0.7,
+              "samples": 221548
             }
           ]
         }
