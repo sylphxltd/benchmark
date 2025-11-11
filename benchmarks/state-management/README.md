@@ -51,7 +51,7 @@ Comprehensive performance benchmarks for JavaScript/TypeScript state management 
 
 ## Test Categories
 
-### Universal Tests (01-07)
+### Universal Tests (01, 02, 03, 04, 05, 06, 07)
 
 All 8 libraries participate equally. Used to calculate Overall Performance Score.
 
@@ -63,7 +63,7 @@ All 8 libraries participate equally. Used to calculate Overall Performance Score
 - **06 - Memory Allocation**: Large state allocation performance
 - **07 - Form State**: Multi-field updates *(Implementation incomplete)*
 
-### Feature Tests (08-11)
+### Feature Tests (08, 09, 10, 11)
 
 Libraries participate only if they have native support for the tested capability.
 

@@ -216,20 +216,19 @@ function generateTestCategories() {
   const universal = Object.entries(groupsConfig.groups).filter(([_, c]) => c.type === 'universal');
   const feature = Object.entries(groupsConfig.groups).filter(([_, c]) => c.type === 'feature');
 
-  // Calculate range dynamically
+  // List all test numbers explicitly (no assumption of continuity)
   const universalNums = universal.map(([key]) => parseInt(key.match(/\d+/)[0])).sort((a, b) => a - b);
   const featureNums = feature.map(([key]) => parseInt(key.match(/\d+/)[0])).sort((a, b) => a - b);
 
-  const universalRange = universalNums.length > 0 ?
-    `${String(universalNums[0]).padStart(2, '0')}-${String(universalNums[universalNums.length - 1]).padStart(2, '0')}` : '';
-  const featureRange = featureNums.length > 0 ?
-    `${String(featureNums[0]).padStart(2, '0')}-${String(featureNums[featureNums.length - 1]).padStart(2, '0')}` : '';
+  // Format as comma-separated list
+  const universalList = universalNums.map(n => String(n).padStart(2, '0')).join(', ');
+  const featureList = featureNums.map(n => String(n).padStart(2, '0')).join(', ');
 
   const totalLibs = Object.keys(libraryMetadata.libraries).length;
 
   let section = `## Test Categories
 
-### Universal Tests (${universalRange})
+### Universal Tests (${universalList})
 
 All ${totalLibs} libraries participate equally. Used to calculate Overall Performance Score.
 
@@ -241,7 +240,7 @@ All ${totalLibs} libraries participate equally. Used to calculate Overall Perfor
     section += `- **${num} - ${config.title}**: ${config.description}${status}\n`;
   });
 
-  section += `\n### Feature Tests (${featureRange})
+  section += `\n### Feature Tests (${featureList})
 
 Libraries participate only if they have native support for the tested capability.
 
