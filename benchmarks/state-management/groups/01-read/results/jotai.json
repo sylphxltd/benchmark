@@ -1,7 +1,7 @@
 {
   "files": [
     {
-      "filepath": "groups/01-read/tests/jotai.bench.ts",
+      "filepath": "groups/01-read/runner.bench.ts",
       "groups": [
         {
           "fullName": "01-read - Jotai",
@@ -9,72 +9,72 @@
             {
               "id": "Simple Read - Jotai",
               "name": "Simple Read",
-              "hz": 1366401.13,
+              "hz": 1378143.87,
               "min": 0.0006,
-              "max": 2.897,
+              "max": 2.4411,
               "mean": 0.0007,
               "p75": 0.0007,
               "p99": 0.0015,
               "p995": 0.0017,
-              "p999": 0.0052,
-              "rme": 1.21,
-              "samples": 683201
+              "p999": 0.0046,
+              "rme": 1.14,
+              "samples": 689072
             },
             {
               "id": "High Frequency Read (x10) - Jotai",
               "name": "High Frequency Read (x10)",
-              "hz": 755043.19,
+              "hz": 756253.63,
               "min": 0.0012,
-              "max": 0.2479,
+              "max": 0.1357,
               "mean": 0.0013,
               "p75": 0.0013,
               "p99": 0.0017,
-              "p995": 0.0018,
-              "p999": 0.0024,
-              "rme": 0.23,
-              "samples": 377522
+              "p995": 0.0017,
+              "p999": 0.002,
+              "rme": 0.16,
+              "samples": 378127
             },
             {
               "id": "High Frequency Read (x100) - Jotai",
               "name": "High Frequency Read (x100)",
-              "hz": 76409.93,
-              "min": 0.0123,
-              "max": 0.2611,
-              "mean": 0.0131,
-              "p75": 0.013,
-              "p99": 0.0155,
-              "p995": 0.0166,
-              "p999": 0.0432,
-              "rme": 0.28,
-              "samples": 38205
+              "hz": 77658.95,
+              "min": 0.0124,
+              "max": 0.1673,
+              "mean": 0.0129,
+              "p75": 0.0129,
+              "p99": 0.0144,
+              "p995": 0.0152,
+              "p999": 0.0185,
+              "rme": 0.17,
+              "samples": 38830
             },
             {
               "id": "High Frequency Read (x1000) - Jotai",
               "name": "High Frequency Read (x1000)",
-              "hz": 7772.3,
-              "min": 0.1215,
-              "max": 0.31,
-              "mean": 0.1287,
-              "p75": 0.1299,
-              "p99": 0.1625,
-              "p995": 0.2262,
-              "p999": 0.2962,
-              "rme": 0.28,
-              "samples": 3887
+              "hz": 7783.34,
+              "min": 0.1248,
+              "max": 0.2892,
+              "mean": 0.1285,
+              "p75": 0.1286,
+              "p99": 0.1392,
+              "p995": 0.1935,
+              "p999": 0.2493,
+              "rme": 0.19,
+              "samples": 3892
             },
             {
               "id": "High Frequency Read (x10000) - Jotai",
               "name": "High Frequency Read (x10000)",
-              "hz": 768.72,
-              "min": 1.2517,
-              "max": 1.7564,
-              "mean": 1.3009,
-              "p75": 1.3077,
-              "p99": 1.5246,
-              "p995": 1.5868,
-              "p999": 1.7564,
-              "rme": 0.43,
-              "samples": 385
+              "hz": 776.7,
+              "min": 1.2554,
+              "max": 1.4744,
+              "mean": 1.2875,
+              "p75": 1.2948,
+              "p99": 1.4122,
+              "p995": 1.4424,
+              "p999": 1.4744,
+              "rme": 0.25,
+              "samples": 389
             }
           ]
         }

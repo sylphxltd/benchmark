@@ -104,17 +104,27 @@ async function benchmarkSingleLibrary(libraryKey: string, categoryPath: string) 
     console.log(`📝 Running benchmarks for ${groups.length} groups...\n`);
 
     for (const groupDir of groups) {
-      const groupTestPath = join(groupsPath, groupDir, 'tests', `${testFileLibraryName}.bench.ts`);
+      // Check for IoC/DI runner pattern first (preferred)
+      const runnerPath = join(groupsPath, groupDir, 'runner.bench.ts');
+      const perLibraryPath = join(groupsPath, groupDir, 'tests', `${testFileLibraryName}.bench.ts`);
 
-      if (!existsSync(groupTestPath)) {
+      let testPath: string;
+      let benchCmd: string;
+
+      if (existsSync(runnerPath)) {
+        // New IoC/DI pattern: single runner with env var filter
+        testPath = `groups/${groupDir}/runner.bench.ts`;
+        benchCmd = `BENCH_LIBRARY="${displayName}" npx vitest bench --run "${testPath}"`;
+      } else if (existsSync(perLibraryPath)) {
+        // Legacy pattern: per-library test files
+        testPath = `groups/${groupDir}/tests/${testFileLibraryName}.bench.ts`;
+        benchCmd = `npx vitest bench --run "${testPath}"`;
+      } else {
+        // No test file found for this library in this group
         continue;
       }
 
       console.log(`  Running ${groupDir}...`);
-
-      // Run benchmark for this specific group/library test file
-      const testPath = `groups/${groupDir}/tests/${testFileLibraryName}.bench.ts`;
-      const benchCmd = `npx vitest bench --run "${testPath}"`;
 
       try {
         const output = execSync(benchCmd, {
