@@ -51,7 +51,7 @@ See which library wins in each test group:
 | [**Solid Signals**](https://github.com/solidjs/solid) | 🥈 | 🥇 | 🥉 | 🥈 | 🥉 | 🥈 | - | 🥇 | - | 🥇 |
 | [**Preact Signals**](https://github.com/preactjs/signals) | 4 | 🥉 | 🥈 | 🥉 | 4 | 🥉 | - | 🥉 | - | - |
 | [**Zen**](https://github.com/SylphxAI/zen) | 🥇 | 🥈 | 🥇 | 🥇 | 🥈 | 🥇 | - | 🥈 | - | - |
-| [**Jotai**](https://github.com/pmndrs/jotai) | 8 | 7 | 5 | 6 | 5 | 6 | 8 | 5 | - | - |
+| [**Jotai**](https://github.com/pmndrs/jotai) | 8 | 7 | 5 | 6 | 5 | 6 | 🥇 | 5 | - | - |
 | [**Valtio**](https://github.com/pmndrs/valtio) | 6 | 6 | 7 | - | - | 5 | - | - | 🥇 | 🥈 |
 | [**Zustand**](https://github.com/pmndrs/zustand) | 🥉 | 4 | 4 | 4 | 🥇 | 4 | - | - | 🥉 | - |
 | [**Redux Toolkit**](https://github.com/reduxjs/redux-toolkit) | 5 | 8 | 8 | - | 7 | - | - | - | 🥈 | - |
@@ -280,26 +280,12 @@ Native async atoms that auto-recompute when dependencies change
 **Participating Libraries**: Jotai
 
 ```
-🥇   Zustand            ████████████████████████████████████████      704K ops/sec
-🥈   Solid Signals      █████████████████████████████████████         647K ops/sec
-🥉   Redux Toolkit      ████████████████████████████████████          636K ops/sec
-4.   Valtio             ███████████████████████████████████           613K ops/sec
-5.   MobX               ██████████████████████████████████            592K ops/sec
-6.   Preact Signals     █████████████████████████████████             577K ops/sec
-7.   Zen                ████████████████████████████████              570K ops/sec
-8.   Jotai              █                                              12K ops/sec
+🥇   Jotai              ████████████████████████████████████████       12K ops/sec
 ```
 
 | Rank | Library | Group Score |
 |:----:|---------|-------------|
-| 🥇 1 | **Zustand** | 👑 704K |
-| 🥈 2 | **Solid Signals** | 647K |
-| 🥉 3 | **Redux Toolkit** | 636K |
-|  4 | **Valtio** | 613K |
-|  5 | **MobX** | 592K |
-|  6 | **Preact Signals** | 577K |
-|  7 | **Zen** | 570K |
-|  8 | **Jotai** | 12K |
+| 🥇 1 | **Jotai** | 👑 12K |
 
 **[View Detailed Results →](groups/08-async-reactive/README.md)**
 
