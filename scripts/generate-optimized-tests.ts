@@ -1,9 +1,9 @@
 #!/usr/bin/env node
 /**
- * Generate optimized per-library test files
- * - No LIBRARIES.find() lookup overhead
- * - Test names from constants
- * - Store initialized outside bench
+ * Generate optimized per-library test files from group registries
+ * - Reads test definitions from each group's test-registry.ts
+ * - Ensures all libraries use identical test logic
+ * - Store initialized outside bench for accurate measurement
  */
 
 import { readFileSync, writeFileSync, existsSync, mkdirSync } from 'fs';
@@ -30,104 +30,38 @@ const LIBRARY_STORE_MAP: Record<string, string> = {
   '@sylphx/zen': 'zenActionsV2',
 };
 
-const GROUP_TESTS: Record<string, { testName: string; code: string }[]> = {
-  '01-read': [
-    {
-      testName: 'TEST_NAMES.READ.SIMPLE_READ',
-      code: `    store.increment();
-    return store.getCount();`
-    },
-    {
-      testName: 'TEST_NAMES.READ.HIGH_FREQ_READ_X10',
-      code: `    for (let i = 0; i < ITERATIONS.X10; i++) {
-      store.getCount();
-    }`
-    },
-    {
-      testName: 'TEST_NAMES.READ.HIGH_FREQ_READ_X100',
-      code: `    for (let i = 0; i < ITERATIONS.X100; i++) {
-      store.getCount();
-    }`
-    },
-    {
-      testName: 'TEST_NAMES.READ.HIGH_FREQ_READ_X1000',
-      code: `    for (let i = 0; i < ITERATIONS.X1000; i++) {
-      store.getCount();
-    }`
-    },
-    {
-      testName: 'TEST_NAMES.READ.HIGH_FREQ_READ_X10000',
-      code: `    for (let i = 0; i < ITERATIONS.X10000; i++) {
-      store.getCount();
-    }`
-    }
-  ],
-  '02-write': [
-    {
-      testName: 'TEST_NAMES.WRITE.SINGLE_UPDATE',
-      code: `    store.increment();`
-    },
-    {
-      testName: 'TEST_NAMES.WRITE.BATCH_UPDATE_X10',
-      code: `    for (let i = 0; i < ITERATIONS.X10; i++) {
-      store.increment();
-    }`
-    },
-    {
-      testName: 'TEST_NAMES.WRITE.BATCH_UPDATE_X100',
-      code: `    for (let i = 0; i < ITERATIONS.X100; i++) {
-      store.increment();
-    }`
-    },
-    {
-      testName: 'TEST_NAMES.WRITE.BATCH_UPDATE_X1000',
-      code: `    for (let i = 0; i < ITERATIONS.X1000; i++) {
-      store.increment();
-    }`
-    },
-    {
-      testName: 'TEST_NAMES.WRITE.BATCH_UPDATE_X10000',
-      code: `    for (let i = 0; i < ITERATIONS.X10000; i++) {
-      store.increment();
-    }`
-    }
-  ],
-  '03-creation': [
-    {
-      testName: 'TEST_NAMES.CREATION.STORE_CREATION',
-      code: `    // Store creation is handled by setup`
-    }
-  ],
-  '06-memory': [
-    {
-      testName: 'TEST_NAMES.MEMORY.LARGE_STATE_READ',
-      code: `    return store.getCount();`
-    },
-    {
-      testName: 'TEST_NAMES.MEMORY.LARGE_STATE_UPDATE',
-      code: `    store.increment();`
-    }
-  ],
-};
+// Map group names to their registry paths (relative to category path)
+const GROUP_REGISTRIES = [
+  '01-read',
+  '02-write',
+  '03-creation',
+  '06-memory',
+];
 
 function generateTestFile(
   groupName: string,
   libraryKey: string,
   displayName: string,
   storeVarName: string,
-  tests: { testName: string; code: string }[]
+  tests: Record<string, any>
 ): string {
-  const testCases = tests.map(test => `  bench(${test.testName}, () => {
-${test.code}
-  });`).join('\n\n');
+  const testCases = Object.entries(tests).map(([testKey, testDef]) => {
+    // Code is already a string, just indent it properly
+    const indentedBody = testDef.code.split('\n').map(line => `    ${line}`).join('\n');
+
+    return `  bench(TESTS.${testKey}.name, () => {
+${indentedBody}
+  });`;
+  }).join('\n\n');
 
   return `/**
  * ${groupName} - ${displayName}
- * Optimized per-library test file
+ * Auto-generated from test registry
  */
 
 import { bench, describe } from 'vitest';
-import { ${storeVarName}, TEST_NAMES, ITERATIONS } from '../../shared/test-config';
+import { ${storeVarName} } from '../../shared/test-config';
+import { TESTS } from '../test-registry';
 
 // Store initialized outside bench for accurate performance measurement
 const store = ${storeVarName};
@@ -148,19 +82,26 @@ async function generateAllTests(categoryPath: string) {
 
   const metadata: LibraryMetadata = JSON.parse(readFileSync(metadataPath, 'utf-8'));
 
-  console.log(`📝 Generating optimized test files...\n`);
+  console.log(`📝 Generating optimized test files from registries...\n`);
 
   let totalGenerated = 0;
 
-  for (const groupName of Object.keys(GROUP_TESTS)) {
+  for (const groupName of GROUP_REGISTRIES) {
     const groupPath = join(categoryPath, 'groups', groupName);
     const testsPath = join(groupPath, 'tests');
+    const registryPath = join(groupPath, 'test-registry.ts');
+
+    if (!existsSync(registryPath)) {
+      console.log(`  ⚠️  No registry found for ${groupName}, skipping`);
+      continue;
+    }
+
+    // Dynamically import the registry
+    const { TESTS } = await import(registryPath);
 
     if (!existsSync(testsPath)) {
       mkdirSync(testsPath, { recursive: true });
     }
-
-    const tests = GROUP_TESTS[groupName];
 
     console.log(`📂 ${groupName}:`);
 
@@ -181,7 +122,7 @@ async function generateAllTests(categoryPath: string) {
         libraryKey,
         libInfo.displayName,
         storeVarName,
-        tests
+        TESTS
       );
 
       writeFileSync(testFilePath, content);
@@ -192,7 +133,7 @@ async function generateAllTests(categoryPath: string) {
     console.log('');
   }
 
-  console.log(`✅ Generated ${totalGenerated} optimized test files`);
+  console.log(`✅ Generated ${totalGenerated} optimized test files from registries`);
 }
 
 // Main execution

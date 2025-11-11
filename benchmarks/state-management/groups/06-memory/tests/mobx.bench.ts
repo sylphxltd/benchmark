@@ -1,20 +1,21 @@
 /**
  * 06-memory - MobX
- * Optimized per-library test file
+ * Auto-generated from test registry
  */
 
 import { bench, describe } from 'vitest';
-import { mobxActionsV2, TEST_NAMES, ITERATIONS } from '../../shared/test-config';
+import { mobxActionsV2 } from '../../shared/test-config';
+import { TESTS } from '../test-registry';
 
 // Store initialized outside bench for accurate performance measurement
 const store = mobxActionsV2;
 
 describe('06-memory - MobX', () => {
-  bench(TEST_NAMES.MEMORY.LARGE_STATE_READ, () => {
+  bench(TESTS.LARGE_STATE_READ.name, () => {
     return store.getCount();
   });
 
-  bench(TEST_NAMES.MEMORY.LARGE_STATE_UPDATE, () => {
+  bench(TESTS.LARGE_STATE_UPDATE.name, () => {
     store.increment();
   });
 });
