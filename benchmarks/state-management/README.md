@@ -1,8 +1,77 @@
+<div align="center">
+
 # State Management Benchmarks
 
-Comprehensive performance benchmarks for React state management libraries.
+Comprehensive performance benchmarks for React state-management libraries.
 
-> **Latest Update**: Nov 11, 2025
+[![CI Status](https://img.shields.io/github/actions/workflow/status/SylphxAI/benchmark/benchmarks-per-library.yml?branch=main&label=Benchmarks&style=flat-square)](https://github.com/SylphxAI/benchmark/actions)
+[![Last Updated](https://img.shields.io/badge/Updated-Nov%2011,%202025-blue?style=flat-square)](https://github.com/SylphxAI/benchmark)
+[![Libraries](https://img.shields.io/badge/Libraries-8-green?style=flat-square)](#-libraries-tested)
+[![Tests](https://img.shields.io/badge/Tests-20-orange?style=flat-square)](#-test-coverage)
+
+[⬅️ Back to Main](../../README.md) • [📊 All Categories](../../README.md#-benchmark-categories) • [🔬 Methodology](#-methodology) • [🚀 Run Locally](#-run-locally)
+
+</div>
+
+---
+
+## 📑 Table of Contents
+
+- [🎯 Quick Recommendations](#-quick-recommendations)
+- [📊 Overall Performance Rankings](#-overall-performance-rankings)
+- [📈 Library Comparison](#-library-comparison)
+- [📊 Performance by Test Group](#-performance-by-test-group)
+- [🔬 Methodology](#-methodology)
+- [🚀 Run Locally](#-run-locally)
+- [🚀 Libraries Tested](#-libraries-tested)
+
+---
+
+## 🎯 Quick Recommendations
+
+**TL;DR** - Choose based on your needs:
+
+- **⚡ Maximum Performance**: Solid Signals - Fastest overall with 78.2/100 score
+- **⚖️ Best Balance**: Preact Signals - Great performance (70.0/100) with good ecosystem
+- **🎯 Popular Choice**: Zustand - Widely used, good performance, minimal API
+
+<details>
+<summary><b>📊 Detailed Performance Insights</b> (click to expand)</summary>
+
+### When to Choose Each Library
+
+
+**Solid Signals** (Score: 78.2/100)
+- Fine-grained reactivity primitive from Solid.js for building performant UIs
+- **Best for**: Fastest overall, but requires Solid.js ecosystem
+- [GitHub](https://github.com/solidjs/solid) • [npm](https://www.npmjs.com/package/solid-js)
+
+
+**Preact Signals** (Score: 70.0/100)
+- Fast and reactive signals for Preact and React with automatic dependency tracking
+- **Best for**: Excellent balance of speed and bundle size
+- [GitHub](https://github.com/preactjs/signals) • [npm](https://www.npmjs.com/package/@preact/signals)
+
+
+**Zen** (Score: 68.9/100)
+- Minimal and fast state management with signal-based reactivity
+- **Best for**: Similar performance to Preact, slightly larger bundle
+- [GitHub](https://github.com/SylphxAI/zen) • [npm](https://www.npmjs.com/package/@sylphx/zen)
+
+
+**Zustand** (Score: 38.6/100)
+- Small, fast and scalable bearbones state management solution
+- **Best for**: Minimal bundle, simple API, moderate performance
+- [GitHub](https://github.com/pmndrs/zustand) • [npm](https://www.npmjs.com/package/zustand)
+
+
+**Valtio** (Score: 6.9/100)
+- Proxy-based state management library that makes state usage simple
+- **Best for**: Simple API, moderate performance, good for nested mutations
+- [GitHub](https://github.com/pmndrs/valtio) • [npm](https://www.npmjs.com/package/valtio)
+
+
+</details>
 
 ---
 
@@ -10,20 +79,41 @@ Comprehensive performance benchmarks for React state management libraries.
 
 Based on geometric mean of normalized scores across all 20 tests.
 
-| Rank | Library | Overall Score | Relative Performance |
-|:----:|---------|--------------|---------------------|
-| 🥇 1 | **Solid Signals** | 78.2/100 | 100% of fastest |
-| 🥈 2 | **Preact Signals** | 70.0/100 | 89% of fastest |
-| 🥉 3 | **Zen** | 68.9/100 | 88% of fastest |
-|  4 | **Zustand** | 38.6/100 | 49% of fastest |
-|  5 | **Valtio** | 6.9/100 | 9% of fastest |
-|  6 | **MobX** | 5.1/100 | 7% of fastest |
-|  7 | **Jotai** | 3.7/100 | 5% of fastest |
-|  8 | **Redux Toolkit** | 2.3/100 | 3% of fastest |
+| Rank | Library | Overall Score | Relative Performance | Links |
+|:----:|---------|--------------|---------------------|:-----:|
+| 🥇 1 | **[Solid Signals](https://github.com/solidjs/solid)** | 78.2/100 | 100% of fastest | [📦](https://www.npmjs.com/package/solid-js) [📊](https://bundlephobia.com/package/solid-js) |
+| 🥈 2 | **[Preact Signals](https://github.com/preactjs/signals)** | 70.0/100 | 89% of fastest | [📦](https://www.npmjs.com/package/@preact/signals) [📊](https://bundlephobia.com/package/@preact/signals) |
+| 🥉 3 | **[Zen](https://github.com/SylphxAI/zen)** | 68.9/100 | 88% of fastest | [📦](https://www.npmjs.com/package/@sylphx/zen) [📊](https://bundlephobia.com/package/@sylphx/zen) |
+|  4 | **[Zustand](https://github.com/pmndrs/zustand)** | 38.6/100 | 49% of fastest | [📦](https://www.npmjs.com/package/zustand) [📊](https://bundlephobia.com/package/zustand) |
+|  5 | **[Valtio](https://github.com/pmndrs/valtio)** | 6.9/100 | 9% of fastest | [📦](https://www.npmjs.com/package/valtio) [📊](https://bundlephobia.com/package/valtio) |
+|  6 | **[MobX](https://github.com/mobxjs/mobx)** | 5.1/100 | 7% of fastest | [📦](https://www.npmjs.com/package/mobx) [📊](https://bundlephobia.com/package/mobx) |
+|  7 | **[Jotai](https://github.com/pmndrs/jotai)** | 3.7/100 | 5% of fastest | [📦](https://www.npmjs.com/package/jotai) [📊](https://bundlephobia.com/package/jotai) |
+|  8 | **[Redux Toolkit](https://github.com/reduxjs/redux-toolkit)** | 2.3/100 | 3% of fastest | [📦](https://www.npmjs.com/package/@reduxjs/toolkit) [📊](https://bundlephobia.com/package/@reduxjs/toolkit) |
+
+
+*📦 = npm package • 📊 = bundle size*
 
 ---
 
-## 📈 Performance by Test Group
+## 📈 Library Comparison
+
+| Library | Performance | Description | Best For |
+|---------|-------------|-------------|----------|
+| **[Solid Signals](https://github.com/solidjs/solid)** | ████████ 78/100 | Fine-grained reactivity primitive from Solid.js for building... | Fastest overall, but requires Solid.js ecosystem... |
+| **[Preact Signals](https://github.com/preactjs/signals)** | ███████ 70/100 | Fast and reactive signals for Preact and React with automati... | Excellent balance of speed and bundle size... |
+| **[Zen](https://github.com/SylphxAI/zen)** | ███████ 69/100 | Minimal and fast state management with signal-based reactivi... | Similar performance to Preact, slightly larger bun... |
+| **[Zustand](https://github.com/pmndrs/zustand)** | ████ 39/100 | Small, fast and scalable bearbones state management solution... | Minimal bundle, simple API, moderate performance... |
+| **[Valtio](https://github.com/pmndrs/valtio)** | █ 7/100 | Proxy-based state management library that makes state usage ... | Simple API, moderate performance, good for nested ... |
+| **[MobX](https://github.com/mobxjs/mobx)** | █ 5/100 | Simple, scalable state management with transparent reactive ... | Automatic tracking, slow creation, largest bundle... |
+| **[Jotai](https://github.com/pmndrs/jotai)** |  4/100 | Primitive and flexible state management for React... | Very fast read/write, slower creation, unique asyn... |
+| **[Redux Toolkit](https://github.com/reduxjs/redux-toolkit)** |  2/100 | The official, opinionated, batteries-included toolset for ef... | Feature-rich, DevTools support, larger bundle... |
+
+---
+
+## 📊 Performance by Test Group
+
+<details open>
+<summary><b>Click to expand/collapse detailed test results</b></summary>
 
 ### Basic Read Operations
 
@@ -517,15 +607,71 @@ Based on geometric mean of normalized scores across all 20 tests.
 | Valtio | 5K | 0.200ms | 0.333ms | 1000 |
 | Redux Toolkit | 1K | 0.791ms | 1.449ms | 1000 |
 
+
+</details>
+
 ---
 
 ## 🔬 Methodology
 
-- **Warmup**: 100 iterations
+<details>
+<summary><b>How We Test</b> (click to expand)</summary>
+
+### Test Environment
+- **Runtime**: Bun (latest stable)
+- **Warmup**: 100 iterations to stabilize JIT
 - **Measurement**: 1000 iterations per test
-- **Metrics**: Operations per second, mean time, variance, P99 latency
-- **Environment**: Bun runtime
-- **Scoring**: Geometric mean of normalized performance indices
+- **Execution**: Isolated process per library
+
+### Metrics Collected
+- **Operations/Second**: Higher is better
+- **Mean Time**: Average execution time
+- **P99 Latency**: 99th percentile (worst 1% excluded)
+- **Variance**: Consistency indicator
+
+### Scoring System
+Overall scores use **geometric mean** of normalized performance across all tests:
+- Each test result normalized to best performer (100%)
+- Geometric mean prevents single test from dominating
+- Score of 50 = half the speed of the fastest library on average
+
+### Reproducibility
+All tests are deterministic and reproducible:
+1. Same versions locked in package.json
+2. Same test scenarios for all libraries
+3. Multiple runs to ensure consistency
+4. Automated via GitHub Actions
+
+</details>
+
+---
+
+## 🚀 Run Locally
+
+```bash
+# Clone the repository
+git clone https://github.com/SylphxAI/benchmark.git
+cd benchmark
+
+# Install root dependencies
+npm install
+
+# Navigate to this category
+cd benchmarks/state-management
+
+# Install category dependencies
+npm install
+
+# Run benchmarks
+npm run benchmark
+
+# Generate README
+npx tsx ../../scripts/generate-simple-readme.ts .
+```
+
+**View Test Code**: [./groups/](./groups/) contains all test implementations
+
+---
 
 ## 📦 Test Coverage
 
@@ -541,15 +687,45 @@ Based on geometric mean of normalized scores across all 20 tests.
 
 ## 🚀 Libraries Tested
 
-- **Solid Signals** (`solid-js`)
-- **Preact Signals** (`@preact/signals`)
-- **Zen** (`@sylphx/zen`)
-- **Zustand** (`zustand`)
-- **Valtio** (`valtio`)
-- **MobX** (`mobx`)
-- **Jotai** (`jotai`)
-- **Redux Toolkit** (`@reduxjs/toolkit`)
+- **[Solid Signals](https://github.com/solidjs/solid)** (`solid-js`) - [📦 npm](https://www.npmjs.com/package/solid-js) • [📊 bundle size](https://bundlephobia.com/package/solid-js)
+- **[Preact Signals](https://github.com/preactjs/signals)** (`@preact/signals`) - [📦 npm](https://www.npmjs.com/package/@preact/signals) • [📊 bundle size](https://bundlephobia.com/package/@preact/signals)
+- **[Zen](https://github.com/SylphxAI/zen)** (`@sylphx/zen`) - [📦 npm](https://www.npmjs.com/package/@sylphx/zen) • [📊 bundle size](https://bundlephobia.com/package/@sylphx/zen)
+- **[Zustand](https://github.com/pmndrs/zustand)** (`zustand`) - [📦 npm](https://www.npmjs.com/package/zustand) • [📊 bundle size](https://bundlephobia.com/package/zustand)
+- **[Valtio](https://github.com/pmndrs/valtio)** (`valtio`) - [📦 npm](https://www.npmjs.com/package/valtio) • [📊 bundle size](https://bundlephobia.com/package/valtio)
+- **[MobX](https://github.com/mobxjs/mobx)** (`mobx`) - [📦 npm](https://www.npmjs.com/package/mobx) • [📊 bundle size](https://bundlephobia.com/package/mobx)
+- **[Jotai](https://github.com/pmndrs/jotai)** (`jotai`) - [📦 npm](https://www.npmjs.com/package/jotai) • [📊 bundle size](https://bundlephobia.com/package/jotai)
+- **[Redux Toolkit](https://github.com/reduxjs/redux-toolkit)** (`@reduxjs/toolkit`) - [📦 npm](https://www.npmjs.com/package/@reduxjs/toolkit) • [📊 bundle size](https://bundlephobia.com/package/@reduxjs/toolkit)
 
 ---
 
-*Generated on 2025-11-11T20:43:57.696Z*
+## 🤝 Contributing
+
+Want to add a library or improve tests?
+
+- **Add a Library**: Update `package.json` and `library-metadata.json`, then implement tests
+- **Improve Tests**: Edit files in `./groups/` directory
+- **Report Issues**: [Open an issue](https://github.com/SylphxAI/benchmark/issues)
+- **Suggest Features**: [Start a discussion](https://github.com/SylphxAI/benchmark/discussions)
+
+See [CONTRIBUTING.md](../../CONTRIBUTING.md) for detailed guidelines.
+
+---
+
+## 📚 Related
+
+- [📊 All Benchmark Categories](../../README.md#-benchmark-categories)
+- [🏗️ Architecture Documentation](../../ARCHITECTURE.md)
+- [⚙️ GitHub Actions Workflow](../../.github/workflows/benchmarks-per-library.yml)
+- [🔄 CI/CD Results](https://github.com/SylphxAI/benchmark/actions)
+
+---
+
+<div align="center">
+
+**Found this useful? Give it a ⭐️!**
+
+*Generated on 2025-11-11T20:50:31.830Z*
+
+[⬆️ Back to Top](#state-management-benchmarks) • [⬅️ Main README](../../README.md)
+
+</div>
