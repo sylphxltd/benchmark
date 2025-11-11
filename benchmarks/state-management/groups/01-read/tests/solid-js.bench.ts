@@ -1,15 +1,15 @@
 /**
- * 01-read - Zustand
+ * 01-read - Solid Signals
  * Optimized per-library test file
  */
 
 import { bench, describe } from 'vitest';
-import { zustandActionsV2, TEST_NAMES, ITERATIONS } from '../../shared/test-config';
+import { solidActionsV2, TEST_NAMES, ITERATIONS } from '../../shared/test-config';
 
 // Store initialized outside bench for accurate performance measurement
-const store = zustandActionsV2;
+const store = solidActionsV2;
 
-describe('01-read - Zustand', () => {
+describe('01-read - Solid Signals', () => {
   bench(TEST_NAMES.SIMPLE_READ, () => {
     store.increment();
     return store.getCount();

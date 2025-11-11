@@ -1,15 +1,15 @@
 /**
- * 06-memory - Valtio
+ * 06-memory - Redux Toolkit
  * Optimized per-library test file
  */
 
 import { bench, describe } from 'vitest';
-import { valtioActionsV2, TEST_NAMES, ITERATIONS } from '../../shared/test-config';
+import { reduxActionsV2, TEST_NAMES, ITERATIONS } from '../../shared/test-config';
 
 // Store initialized outside bench for accurate performance measurement
-const store = valtioActionsV2;
+const store = reduxActionsV2;
 
-describe('06-memory - Valtio', () => {
+describe('06-memory - Redux Toolkit', () => {
   bench(TEST_NAMES.LARGE_STATE_READ, () => {
     return store.getCount();
   });

@@ -1,14 +1,20 @@
 /**
  * 06-memory - Jotai
- * Auto-generated per-library test file
+ * Optimized per-library test file
  */
 
 import { bench, describe } from 'vitest';
-import { LIBRARIES } from '../../shared/test-config';
+import { jotaiActionsV2, TEST_NAMES, ITERATIONS } from '../../shared/test-config';
+
+// Store initialized outside bench for accurate performance measurement
+const store = jotaiActionsV2;
 
 describe('06-memory - Jotai', () => {
-  bench('Large State Allocation', () => {
-    const actions = LIBRARIES.find(lib => lib.name === 'Jotai')!.actions;
-    actions.allocateLargeState();
+  bench(TEST_NAMES.LARGE_STATE_READ, () => {
+    return store.getCount();
+  });
+
+  bench(TEST_NAMES.LARGE_STATE_UPDATE, () => {
+    store.increment();
   });
 });

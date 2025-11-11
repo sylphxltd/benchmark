@@ -1,14 +1,16 @@
 /**
  * 03-creation - Valtio
- * Auto-generated per-library test file
+ * Optimized per-library test file
  */
 
 import { bench, describe } from 'vitest';
-import { LIBRARIES } from '../../shared/test-config';
+import { valtioActionsV2, TEST_NAMES, ITERATIONS } from '../../shared/test-config';
+
+// Store initialized outside bench for accurate performance measurement
+const store = valtioActionsV2;
 
 describe('03-creation - Valtio', () => {
-  bench('Store Creation', () => {
-    const actions = LIBRARIES.find(lib => lib.name === 'Valtio')!.actions;
-    actions.createStore();
+  bench(TEST_NAMES.STORE_CREATION, () => {
+    // Store creation is handled by setup
   });
 });

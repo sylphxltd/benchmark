@@ -1,15 +1,15 @@
 /**
- * 03-creation - MobX
+ * 03-creation - Redux Toolkit
  * Optimized per-library test file
  */
 
 import { bench, describe } from 'vitest';
-import { mobxActionsV2, TEST_NAMES, ITERATIONS } from '../../shared/test-config';
+import { reduxActionsV2, TEST_NAMES, ITERATIONS } from '../../shared/test-config';
 
 // Store initialized outside bench for accurate performance measurement
-const store = mobxActionsV2;
+const store = reduxActionsV2;
 
-describe('03-creation - MobX', () => {
+describe('03-creation - Redux Toolkit', () => {
   bench(TEST_NAMES.STORE_CREATION, () => {
     // Store creation is handled by setup
   });

@@ -1,15 +1,15 @@
 /**
- * 01-read - Zustand
+ * 01-read - Zen
  * Optimized per-library test file
  */
 
 import { bench, describe } from 'vitest';
-import { zustandActionsV2, TEST_NAMES, ITERATIONS } from '../../shared/test-config';
+import { zenActionsV2, TEST_NAMES, ITERATIONS } from '../../shared/test-config';
 
 // Store initialized outside bench for accurate performance measurement
-const store = zustandActionsV2;
+const store = zenActionsV2;
 
-describe('01-read - Zustand', () => {
+describe('01-read - Zen', () => {
   bench(TEST_NAMES.SIMPLE_READ, () => {
     store.increment();
     return store.getCount();

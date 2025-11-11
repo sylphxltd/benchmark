@@ -1,15 +1,15 @@
 /**
- * 03-creation - MobX
+ * 03-creation - Solid Signals
  * Optimized per-library test file
  */
 
 import { bench, describe } from 'vitest';
-import { mobxActionsV2, TEST_NAMES, ITERATIONS } from '../../shared/test-config';
+import { solidActionsV2, TEST_NAMES, ITERATIONS } from '../../shared/test-config';
 
 // Store initialized outside bench for accurate performance measurement
-const store = mobxActionsV2;
+const store = solidActionsV2;
 
-describe('03-creation - MobX', () => {
+describe('03-creation - Solid Signals', () => {
   bench(TEST_NAMES.STORE_CREATION, () => {
     // Store creation is handled by setup
   });

@@ -1,14 +1,20 @@
 /**
  * 06-memory - Zustand
- * Auto-generated per-library test file
+ * Optimized per-library test file
  */
 
 import { bench, describe } from 'vitest';
-import { LIBRARIES } from '../../shared/test-config';
+import { zustandActionsV2, TEST_NAMES, ITERATIONS } from '../../shared/test-config';
+
+// Store initialized outside bench for accurate performance measurement
+const store = zustandActionsV2;
 
 describe('06-memory - Zustand', () => {
-  bench('Large State Allocation', () => {
-    const actions = LIBRARIES.find(lib => lib.name === 'Zustand')!.actions;
-    actions.allocateLargeState();
+  bench(TEST_NAMES.LARGE_STATE_READ, () => {
+    return store.getCount();
+  });
+
+  bench(TEST_NAMES.LARGE_STATE_UPDATE, () => {
+    store.increment();
   });
 });

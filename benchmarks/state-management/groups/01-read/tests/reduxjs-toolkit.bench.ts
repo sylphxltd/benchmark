@@ -1,15 +1,15 @@
 /**
- * 01-read - Zustand
+ * 01-read - Redux Toolkit
  * Optimized per-library test file
  */
 
 import { bench, describe } from 'vitest';
-import { zustandActionsV2, TEST_NAMES, ITERATIONS } from '../../shared/test-config';
+import { reduxActionsV2, TEST_NAMES, ITERATIONS } from '../../shared/test-config';
 
 // Store initialized outside bench for accurate performance measurement
-const store = zustandActionsV2;
+const store = reduxActionsV2;
 
-describe('01-read - Zustand', () => {
+describe('01-read - Redux Toolkit', () => {
   bench(TEST_NAMES.SIMPLE_READ, () => {
     store.increment();
     return store.getCount();

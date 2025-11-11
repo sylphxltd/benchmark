@@ -1,15 +1,15 @@
 /**
- * 02-write - Jotai
+ * 02-write - Solid Signals
  * Optimized per-library test file
  */
 
 import { bench, describe } from 'vitest';
-import { jotaiActionsV2, TEST_NAMES, ITERATIONS } from '../../shared/test-config';
+import { solidActionsV2, TEST_NAMES, ITERATIONS } from '../../shared/test-config';
 
 // Store initialized outside bench for accurate performance measurement
-const store = jotaiActionsV2;
+const store = solidActionsV2;
 
-describe('02-write - Jotai', () => {
+describe('02-write - Solid Signals', () => {
   bench(TEST_NAMES.SINGLE_UPDATE, () => {
     store.increment();
   });

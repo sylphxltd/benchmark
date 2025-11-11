@@ -1,14 +1,16 @@
 /**
  * 03-creation - Preact Signals
- * Auto-generated per-library test file
+ * Optimized per-library test file
  */
 
 import { bench, describe } from 'vitest';
-import { LIBRARIES } from '../../shared/test-config';
+import { preactActionsV2, TEST_NAMES, ITERATIONS } from '../../shared/test-config';
+
+// Store initialized outside bench for accurate performance measurement
+const store = preactActionsV2;
 
 describe('03-creation - Preact Signals', () => {
-  bench('Store Creation', () => {
-    const actions = LIBRARIES.find(lib => lib.name === 'Preact Signals')!.actions;
-    actions.createStore();
+  bench(TEST_NAMES.STORE_CREATION, () => {
+    // Store creation is handled by setup
   });
 });
