@@ -249,6 +249,50 @@ Libraries participate only if they have native support for the tested capability
   return section + '\n---\n\n';
 }
 
+function calculateGroupOverall(resultsData) {
+  const allBenches = getAllBenchmarks(resultsData);
+  if (allBenches.length === 0) return [];
+
+  // Get valid library display names
+  const validLibraries = new Set(
+    Object.values(libraryMetadata.libraries || {}).map(lib => lib.displayName)
+  );
+
+  // Group by library (extract from benchmark name)
+  const libraryScores = {};
+
+  allBenches.forEach(bench => {
+    const nameParts = bench.name.split(' - ');
+    const libName = nameParts[nameParts.length - 1];
+
+    // Only include valid libraries
+    if (!validLibraries.has(libName)) return;
+
+    if (!libraryScores[libName]) {
+      libraryScores[libName] = [];
+    }
+    libraryScores[libName].push(bench.hz || 0);
+  });
+
+  // Calculate geometric mean for each library
+  const scores = Object.entries(libraryScores).map(([library, values]) => {
+    // Filter out zeros
+    const validValues = values.filter(v => v > 0);
+    if (validValues.length === 0) return { library, overall: 0, max: 0 };
+
+    // Geometric mean
+    const product = validValues.reduce((acc, val) => acc * val, 1);
+    const overall = Math.pow(product, 1 / validValues.length);
+
+    // Also get max (for peak performance)
+    const max = Math.max(...validValues);
+
+    return { library, overall, max };
+  });
+
+  return scores.sort((a, b) => b.overall - a.overall);
+}
+
 function generateGroupSummaries(results) {
   let section = `## Group Results Summary
 
@@ -281,17 +325,40 @@ Click on any group to view detailed benchmark results.
       return;
     }
 
-    // Get all benchmarks and find overall winner
-    const allBenches = getAllBenchmarks(resultsData);
-    if (allBenches.length > 0) {
-      const sorted = allBenches.sort((a, b) => (b.hz || 0) - (a.hz || 0));
-      const winner = sorted[0];
+    // Calculate group overall scores
+    const groupScores = calculateGroupOverall(resultsData);
 
-      // Extract library name from benchmark name
-      const nameParts = winner.name.split(' - ');
-      const winnerLib = nameParts[nameParts.length - 1];
+    if (groupScores.length > 0) {
+      // Find best values for crown
+      const maxOverall = Math.max(...groupScores.map(s => s.overall));
+      const maxPeak = Math.max(...groupScores.map(s => s.max));
 
-      section += `**Top Performer**: 👑 **${winnerLib}** - ${formatNumber(winner.hz)} ops/sec\n\n`;
+      section += `| Rank | Library | Version | Bundle (gzip) | Group Score | Peak Performance | Last Updated |\n`;
+      section += `|------|---------|---------|---------------|-------------|------------------|--------------|\n`;
+
+      groupScores.forEach((entry, index) => {
+        const rank = index + 1;
+        const emoji = rank === 1 ? '🥇 ' : rank === 2 ? '🥈 ' : rank === 3 ? '🥉 ' : ' ';
+
+        // Find library key
+        const libKey = Object.keys(libraryMetadata.libraries).find(key =>
+          libraryMetadata.libraries[key].displayName === entry.library
+        );
+
+        const version = versions.libraries[libKey]?.current || 'N/A';
+        const size = versions.libraries[libKey]?.size?.gzip || 0;
+        const sizeKB = (size / 1024).toFixed(1);
+        const lastUpdated = versions.libraries[libKey]?.lastUpdated
+          ? new Date(versions.libraries[libKey].lastUpdated).toLocaleDateString('en-US', { month: 'short', day: 'numeric' })
+          : 'N/A';
+
+        const overallCrown = entry.overall === maxOverall ? '👑 ' : '';
+        const peakCrown = entry.max === maxPeak ? '👑 ' : '';
+
+        section += `| ${emoji}${rank} | **${entry.library}** | ${version} | ${sizeKB} KB | ${overallCrown}${formatNumber(entry.overall)} | ${peakCrown}${formatNumber(entry.max)} | ${lastUpdated} |\n`;
+      });
+
+      section += `\n`;
     }
 
     section += `**[View Detailed Results →](${groupPath})**\n\n`;

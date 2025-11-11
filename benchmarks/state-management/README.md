@@ -68,7 +68,16 @@ Click on any group to view detailed benchmark results.
 
 Simple read and high-frequency read patterns
 
-**Top Performer**: 👑 **Solid Signals** - 39.9M ops/sec
+| Rank | Library | Version | Bundle (gzip) | Group Score | Peak Performance | Last Updated |
+|------|---------|---------|---------------|-------------|------------------|--------------|
+| 🥇 1 | **Solid Signals** | 1.9.10 | 4.0 KB | 👑 28.3M | 👑 39.9M | Dec 6 |
+| 🥈 2 | **Jotai** | 2.15.1 | 4.3 KB | 24.6M | 36.3M | Dec 6 |
+| 🥉 3 | **Zen** | 1.2.1 | 5.3 KB | 22.6M | 32.2M | Nov 7 |
+|  4 | **Preact Signals** | 2.4.0 | 3.0 KB | 14.7M | 34.3M | Nov 7 |
+|  5 | **MobX** | 6.15.0 | 17.6 KB | 9.8M | 25.2M | Dec 6 |
+|  6 | **Redux Toolkit** | 2.10.1 | 13.8 KB | 2.5M | 6.6M | Dec 6 |
+|  7 | **Valtio** | 2.2.0 | 3.1 KB | 2.5M | 4.9M | Nov 6 |
+|  8 | **Zustand** | 5.0.8 | 1.2 KB | 993K | 2.7M | Nov 6 |
 
 **[View Detailed Results →](groups/01-read/README.md)**
 
@@ -78,7 +87,16 @@ Simple read and high-frequency read patterns
 
 Simple increments and burst updates
 
-**Top Performer**: 👑 **Jotai** - 33.9M ops/sec
+| Rank | Library | Version | Bundle (gzip) | Group Score | Peak Performance | Last Updated |
+|------|---------|---------|---------------|-------------|------------------|--------------|
+| 🥇 1 | **Solid Signals** | 1.9.10 | 4.0 KB | 👑 31.2M | 33.1M | Dec 6 |
+| 🥈 2 | **Jotai** | 2.15.1 | 4.3 KB | 20.3M | 👑 33.9M | Dec 6 |
+| 🥉 3 | **Preact Signals** | 2.4.0 | 3.0 KB | 18.4M | 28.2M | Nov 7 |
+|  4 | **Zen** | 1.2.1 | 5.3 KB | 16.8M | 28.2M | Nov 7 |
+|  5 | **Valtio** | 2.2.0 | 3.1 KB | 1.5M | 4.2M | Nov 6 |
+|  6 | **MobX** | 6.15.0 | 17.6 KB | 1.1M | 3.0M | Dec 6 |
+|  7 | **Redux Toolkit** | 2.10.1 | 13.8 KB | 242K | 784K | Dec 6 |
+|  8 | **Zustand** | 5.0.8 | 1.2 KB | 105K | 351K | Nov 6 |
 
 **[View Detailed Results →](groups/02-write/README.md)**
 
@@ -88,7 +106,16 @@ Simple increments and burst updates
 
 Instance creation overhead
 
-**Top Performer**: 👑 **Preact Signals** - 33.4M ops/sec
+| Rank | Library | Version | Bundle (gzip) | Group Score | Peak Performance | Last Updated |
+|------|---------|---------|---------------|-------------|------------------|--------------|
+| 🥇 1 | **Preact Signals** | 2.4.0 | 3.0 KB | 👑 33.4M | 👑 33.4M | Nov 7 |
+| 🥈 2 | **Zen** | 1.2.1 | 5.3 KB | 32.2M | 32.2M | Nov 7 |
+| 🥉 3 | **Solid Signals** | 1.9.10 | 4.0 KB | 32.1M | 32.1M | Dec 6 |
+|  4 | **Zustand** | 5.0.8 | 1.2 KB | 10.9M | 10.9M | Nov 6 |
+|  5 | **Jotai** | 2.15.1 | 4.3 KB | 2.3M | 2.3M | Dec 6 |
+|  6 | **Valtio** | 2.2.0 | 3.1 KB | 235K | 235K | Nov 6 |
+|  7 | **Redux Toolkit** | 2.10.1 | 13.8 KB | 173K | 173K | Dec 6 |
+|  8 | **MobX** | 6.15.0 | 17.6 KB | 278 | 278 | Dec 6 |
 
 **[View Detailed Results →](groups/03-creation/README.md)**
 
@@ -118,7 +145,16 @@ Repeated access patterns
 
 Large state allocation performance
 
-**Top Performer**: 👑 **MobX** - 925 ops/sec
+| Rank | Library | Version | Bundle (gzip) | Group Score | Peak Performance | Last Updated |
+|------|---------|---------|---------------|-------------|------------------|--------------|
+| 🥇 1 | **MobX** | 6.15.0 | 17.6 KB | 👑 925 | 👑 925 | Dec 6 |
+| 🥈 2 | **Zen** | 1.2.1 | 5.3 KB | 924 | 924 | Nov 7 |
+| 🥉 3 | **Solid Signals** | 1.9.10 | 4.0 KB | 923 | 923 | Dec 6 |
+|  4 | **Jotai** | 2.15.1 | 4.3 KB | 917 | 917 | Dec 6 |
+|  5 | **Zustand** | 5.0.8 | 1.2 KB | 907 | 907 | Nov 6 |
+|  6 | **Preact Signals** | 2.4.0 | 3.0 KB | 904 | 904 | Nov 7 |
+|  7 | **Valtio** | 2.2.0 | 3.1 KB | 898 | 898 | Nov 6 |
+|  8 | **Redux Toolkit** | 2.10.1 | 13.8 KB | 892 | 892 | Dec 6 |
 
 **[View Detailed Results →](groups/06-memory/README.md)**
 
@@ -140,7 +176,9 @@ Async atoms/computations
 
 **Participating Libraries**: Jotai
 
-**Top Performer**: 👑 **Jotai** - 872 ops/sec
+| Rank | Library | Version | Bundle (gzip) | Group Score | Peak Performance | Last Updated |
+|------|---------|---------|---------------|-------------|------------------|--------------|
+| 🥇 1 | **Jotai** | 2.15.1 | 4.3 KB | 👑 726 | 👑 872 | Dec 6 |
 
 **[View Detailed Results →](groups/08-async-reactive/README.md)**
 
@@ -152,7 +190,13 @@ Native computed values
 
 **Participating Libraries**: Jotai, MobX, Solid Signals, Preact Signals, Zen
 
-**Top Performer**: 👑 **Solid Signals** - 38.5M ops/sec
+| Rank | Library | Version | Bundle (gzip) | Group Score | Peak Performance | Last Updated |
+|------|---------|---------|---------------|-------------|------------------|--------------|
+| 🥇 1 | **Solid Signals** | 1.9.10 | 4.0 KB | 👑 30.8M | 👑 38.5M | Dec 6 |
+| 🥈 2 | **Zen** | 1.2.1 | 5.3 KB | 7.0M | 33.6M | Nov 7 |
+| 🥉 3 | **Preact Signals** | 2.4.0 | 3.0 KB | 5.1M | 22.1M | Nov 7 |
+|  4 | **MobX** | 6.15.0 | 17.6 KB | 702K | 4.0M | Dec 6 |
+|  5 | **Jotai** | 2.15.1 | 4.3 KB | 109K | 640K | Dec 6 |
 
 **[View Detailed Results →](groups/09-computed-native/README.md)**
 
@@ -164,7 +208,11 @@ Manual selector pattern
 
 **Participating Libraries**: Redux Toolkit, Zustand, Valtio
 
-**Top Performer**: 👑 **Valtio** - 5.3M ops/sec
+| Rank | Library | Version | Bundle (gzip) | Group Score | Peak Performance | Last Updated |
+|------|---------|---------|---------------|-------------|------------------|--------------|
+| 🥇 1 | **Valtio** | 2.2.0 | 3.1 KB | 👑 913K | 👑 5.3M | Nov 6 |
+| 🥈 2 | **Redux Toolkit** | 2.10.1 | 13.8 KB | 166K | 597K | Dec 6 |
+| 🥉 3 | **Zustand** | 5.0.8 | 1.2 KB | 137K | 705K | Nov 6 |
 
 **[View Detailed Results →](groups/10-selectors/README.md)**
 
@@ -176,7 +224,11 @@ Built-in batching
 
 **Participating Libraries**: Solid Signals, MobX, Valtio
 
-**Top Performer**: 👑 **Solid Signals** - 42.5M ops/sec
+| Rank | Library | Version | Bundle (gzip) | Group Score | Peak Performance | Last Updated |
+|------|---------|---------|---------------|-------------|------------------|--------------|
+| 🥇 1 | **Solid Signals** | 1.9.10 | 4.0 KB | 👑 37.3M | 👑 42.5M | Dec 6 |
+| 🥈 2 | **Valtio** | 2.2.0 | 3.1 KB | 1.7M | 4.8M | Nov 6 |
+| 🥉 3 | **MobX** | 6.15.0 | 17.6 KB | 1.6M | 3.8M | Dec 6 |
 
 **[View Detailed Results →](groups/11-batching-native/README.md)**
 
