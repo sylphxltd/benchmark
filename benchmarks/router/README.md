@@ -20,7 +20,7 @@ Performance comparison of JavaScript routing libraries and frameworks.
 ## 📋 Benchmark Information
 
 - **Last Updated:** November 11, 2025
-- **Last Run:** 1:27:39 AM UTC
+- **Last Run:** 1:34:13 AM UTC
 - **Environment:** Node.js v20.19.5, linux x64
 - **Test Framework:** Vitest Bench
 - **Iterations:** 3 runs averaged for statistical accuracy
@@ -56,8 +56,8 @@ Based on geometric mean across all supported tests (excludes extreme values):
 | Rank | Library | Score | Relative |
 |------|---------|-------|----------|
 | 🥇 | **[Zen Router](https://github.com/SylphxAI/zen-router)** | 100.0/100 | Baseline |
-| 🥈 | **[Wouter](https://github.com/molefrog/wouter)** | 12.4/100 | 12.4% |
-| 🥉 | **[React Router](https://github.com/remix-run/react-router)** | 1.6/100 | 1.6% |
+| 🥈 | **[Wouter](https://github.com/molefrog/wouter)** | 13.3/100 | 13.3% |
+| 🥉 | **[React Router](https://github.com/remix-run/react-router)** | 1.7/100 | 1.7% |
 
 > 📊 **Methodology:** Geometric mean prevents extreme values from skewing results. Each test is normalized (fastest = 100) then averaged.
 
@@ -129,162 +129,162 @@ Comparison of core features and capabilities across React router libraries
 **Performance Comparison:**
 
 ```
-🥇 Zen Router           ████████████████████████████████████████ 7.64M
-🥈 Wouter               █████████ 1.78M
-🥉 React Router         █ 33.77K
+🥇 Zen Router           ████████████████████████████████████████ 7.18M
+🥈 Wouter               ████████ 1.52M
+🥉 React Router         █ 29.42K
 ```
 
 | Rank | Library | Ops/sec | Variance | Mean | p99 | Samples |
 |------|---------|---------|----------|------|-----|--------|
-| 🥇 | **[Zen Router](https://github.com/SylphxAI/zen-router)** | 7.64M | ±0.43% | 0.1308ms | 0.2420ms | 3.82M |
-| 🥈 | **[Wouter](https://github.com/molefrog/wouter)** | 1.78M | ±0.49% | 0.5610ms | 0.9610ms | 891.27K |
-| 🥉 | **[React Router](https://github.com/remix-run/react-router)** | 33.77K | ±0.49% | 29.6083ms | 52.4270ms | 16.89K |
+| 🥇 | **[Zen Router](https://github.com/SylphxAI/zen-router)** | 7.18M | ±0.39% | 0.1393ms | 0.2310ms | 3.59M |
+| 🥈 | **[Wouter](https://github.com/molefrog/wouter)** | 1.52M | ±0.60% | 0.6563ms | 1.1820ms | 761.84K |
+| 🥉 | **[React Router](https://github.com/remix-run/react-router)** | 29.42K | ±0.69% | 33.9847ms | 71.4740ms | 14.71K |
 
-**Key Insight:** Zen Router is **226.32x faster** than React Router in this category.
+**Key Insight:** Zen Router is **243.97x faster** than React Router in this category.
 
 ### Simple Route Matching
 
 **Performance Comparison:**
 
 ```
-🥇 Zen Router           ████████████████████████████████████████ 6.40M
-🥈 Wouter               █████ 858.90K
-🥉 React Router         █ 37.50K
+🥇 Zen Router           ████████████████████████████████████████ 5.90M
+🥈 Wouter               ██████ 926.52K
+🥉 React Router         █ 35.57K
 ```
 
 | Rank | Library | Ops/sec | Variance | Mean | p99 | Samples |
 |------|---------|---------|----------|------|-----|--------|
-| 🥇 | **[Zen Router](https://github.com/SylphxAI/zen-router)** | 6.40M | ±0.47% | 0.1562ms | 0.2730ms | 3.20M |
-| 🥈 | **[Wouter](https://github.com/molefrog/wouter)** | 858.90K | ±0.33% | 1.1643ms | 1.8140ms | 429.45K |
-| 🥉 | **[React Router](https://github.com/remix-run/react-router)** | 37.50K | ±0.58% | 26.6698ms | 36.7410ms | 18.75K |
+| 🥇 | **[Zen Router](https://github.com/SylphxAI/zen-router)** | 5.90M | ±0.41% | 0.1696ms | 0.2110ms | 2.95M |
+| 🥈 | **[Wouter](https://github.com/molefrog/wouter)** | 926.52K | ±0.42% | 1.0793ms | 1.2720ms | 463.26K |
+| 🥉 | **[React Router](https://github.com/remix-run/react-router)** | 35.57K | ±0.59% | 28.1133ms | 40.8660ms | 17.79K |
 
-**Key Insight:** Zen Router is **170.70x faster** than React Router in this category.
+**Key Insight:** Zen Router is **165.80x faster** than React Router in this category.
 
 ### Dynamic Route Matching (1 param)
 
 **Performance Comparison:**
 
 ```
-🥇 Zen Router           ████████████████████████████████████████ 2.46M
-🥈 Wouter               █████ 310.56K
-🥉 React Router         █ 40.63K
+🥇 Zen Router           ████████████████████████████████████████ 2.32M
+🥈 Wouter               █████ 312.91K
+🥉 React Router         █ 39.17K
 ```
 
 | Rank | Library | Ops/sec | Variance | Mean | p99 | Samples |
 |------|---------|---------|----------|------|-----|--------|
-| 🥇 | **[Zen Router](https://github.com/SylphxAI/zen-router)** | 2.46M | ±0.63% | 0.4065ms | 0.7420ms | 1.23M |
-| 🥈 | **[Wouter](https://github.com/molefrog/wouter)** | 310.56K | ±0.51% | 3.2200ms | 5.3110ms | 155.28K |
-| 🥉 | **[React Router](https://github.com/remix-run/react-router)** | 40.63K | ±0.76% | 24.6120ms | 44.5820ms | 20.32K |
+| 🥇 | **[Zen Router](https://github.com/SylphxAI/zen-router)** | 2.32M | ±0.34% | 0.4303ms | 0.4610ms | 1.16M |
+| 🥈 | **[Wouter](https://github.com/molefrog/wouter)** | 312.91K | ±0.30% | 3.1958ms | 5.3000ms | 156.46K |
+| 🥉 | **[React Router](https://github.com/remix-run/react-router)** | 39.17K | ±0.48% | 25.5298ms | 46.6970ms | 19.59K |
 
-**Key Insight:** Zen Router is **60.54x faster** than React Router in this category.
+**Key Insight:** Zen Router is **59.33x faster** than React Router in this category.
 
 ### Nested Dynamic Routes (2 params)
 
 **Performance Comparison:**
 
 ```
-🥇 Zen Router           ████████████████████████████████████████ 1.66M
-🥈 Wouter               █████ 188.50K
-🥉 React Router         █ 54.81K
+🥇 Zen Router           ████████████████████████████████████████ 1.54M
+🥈 Wouter               █████ 190.24K
+🥉 React Router         █ 55.97K
 ```
 
 | Rank | Library | Ops/sec | Variance | Mean | p99 | Samples |
 |------|---------|---------|----------|------|-----|--------|
-| 🥇 | **[Zen Router](https://github.com/SylphxAI/zen-router)** | 1.66M | ±0.17% | 0.6011ms | 1.1170ms | 831.78K |
-| 🥈 | **[Wouter](https://github.com/molefrog/wouter)** | 188.50K | ±0.74% | 5.3049ms | 9.0550ms | 94.25K |
-| 🥉 | **[React Router](https://github.com/remix-run/react-router)** | 54.81K | ±0.75% | 18.2433ms | 32.7010ms | 27.41K |
+| 🥇 | **[Zen Router](https://github.com/SylphxAI/zen-router)** | 1.54M | ±0.13% | 0.6496ms | 0.7110ms | 769.71K |
+| 🥈 | **[Wouter](https://github.com/molefrog/wouter)** | 190.24K | ±0.35% | 5.2564ms | 6.0620ms | 95.12K |
+| 🥉 | **[React Router](https://github.com/remix-run/react-router)** | 55.97K | ±0.53% | 17.8671ms | 30.0570ms | 27.98K |
 
-**Key Insight:** Zen Router is **30.35x faster** than React Router in this category.
+**Key Insight:** Zen Router is **27.51x faster** than React Router in this category.
 
 ### Wildcard Route Matching
 
 **Performance Comparison:**
 
 ```
-🥇 Zen Router           ████████████████████████████████████████ 1.91M
-🥈 Wouter               ████ 197.76K
-🥉 React Router         █ 27.51K
+🥇 Zen Router           ████████████████████████████████████████ 1.64M
+🥈 Wouter               █████ 187.58K
+🥉 React Router         █ 26.66K
 ```
 
 | Rank | Library | Ops/sec | Variance | Mean | p99 | Samples |
 |------|---------|---------|----------|------|-----|--------|
-| 🥇 | **[Zen Router](https://github.com/SylphxAI/zen-router)** | 1.91M | ±0.08% | 0.5244ms | 0.8010ms | 953.41K |
-| 🥈 | **[Wouter](https://github.com/molefrog/wouter)** | 197.76K | ±0.27% | 5.0566ms | 6.0220ms | 98.88K |
-| 🥉 | **[React Router](https://github.com/remix-run/react-router)** | 27.51K | ±0.87% | 36.3531ms | 69.9560ms | 13.75K |
+| 🥇 | **[Zen Router](https://github.com/SylphxAI/zen-router)** | 1.64M | ±0.14% | 0.6080ms | 0.6920ms | 822.40K |
+| 🥈 | **[Wouter](https://github.com/molefrog/wouter)** | 187.58K | ±0.58% | 5.3311ms | 6.4620ms | 93.79K |
+| 🥉 | **[React Router](https://github.com/remix-run/react-router)** | 26.66K | ±0.71% | 37.5037ms | 59.4510ms | 13.34K |
 
-**Key Insight:** Zen Router is **69.32x faster** than React Router in this category.
+**Key Insight:** Zen Router is **61.69x faster** than React Router in this category.
 
 ### Optional Parameter Route (with param)
 
 **Performance Comparison:**
 
 ```
-🥇 Zen Router           ████████████████████████████████████████ 1.33M
-🥈 Wouter               █████ 154.53K
-🥉 React Router         █ 43.47K
+🥇 Zen Router           ████████████████████████████████████████ 1.13M
+🥈 Wouter               █████ 149.65K
+🥉 React Router         █ 41.63K
 ```
 
 | Rank | Library | Ops/sec | Variance | Mean | p99 | Samples |
 |------|---------|---------|----------|------|-----|--------|
-| 🥇 | **[Zen Router](https://github.com/SylphxAI/zen-router)** | 1.33M | ±0.11% | 0.7536ms | 1.0920ms | 663.51K |
-| 🥈 | **[Wouter](https://github.com/molefrog/wouter)** | 154.53K | ±0.27% | 6.4714ms | 8.9080ms | 77.26K |
-| 🥉 | **[React Router](https://github.com/remix-run/react-router)** | 43.47K | ±0.62% | 23.0019ms | 35.2840ms | 21.74K |
+| 🥇 | **[Zen Router](https://github.com/SylphxAI/zen-router)** | 1.13M | ±0.25% | 0.8846ms | 0.9620ms | 565.24K |
+| 🥈 | **[Wouter](https://github.com/molefrog/wouter)** | 149.65K | ±0.27% | 6.6821ms | 9.6280ms | 74.83K |
+| 🥉 | **[React Router](https://github.com/remix-run/react-router)** | 41.63K | ±0.48% | 24.0217ms | 36.9800ms | 20.82K |
 
-**Key Insight:** Zen Router is **30.52x faster** than React Router in this category.
+**Key Insight:** Zen Router is **27.16x faster** than React Router in this category.
 
 ### Optional Parameter Route (without param)
 
 **Performance Comparison:**
 
 ```
-🥇 Zen Router           ████████████████████████████████████████ 1.55M
-🥈 Wouter               ████ 154.55K
-🥉 React Router         █ 37.46K
+🥇 Zen Router           ████████████████████████████████████████ 1.40M
+🥈 Wouter               ████ 148.71K
+🥉 React Router         █ 34.99K
 ```
 
 | Rank | Library | Ops/sec | Variance | Mean | p99 | Samples |
 |------|---------|---------|----------|------|-----|--------|
-| 🥇 | **[Zen Router](https://github.com/SylphxAI/zen-router)** | 1.55M | ±0.10% | 0.6437ms | 0.9560ms | 776.74K |
-| 🥈 | **[Wouter](https://github.com/molefrog/wouter)** | 154.55K | ±0.36% | 6.4706ms | 9.1330ms | 77.27K |
-| 🥉 | **[React Router](https://github.com/remix-run/react-router)** | 37.46K | ±0.53% | 26.6957ms | 39.0390ms | 18.73K |
+| 🥇 | **[Zen Router](https://github.com/SylphxAI/zen-router)** | 1.40M | ±0.13% | 0.7121ms | 0.7710ms | 702.14K |
+| 🥈 | **[Wouter](https://github.com/molefrog/wouter)** | 148.71K | ±0.34% | 6.7244ms | 11.9320ms | 74.36K |
+| 🥉 | **[React Router](https://github.com/remix-run/react-router)** | 34.99K | ±0.71% | 28.5784ms | 50.2830ms | 17.50K |
 
-**Key Insight:** Zen Router is **41.47x faster** than React Router in this category.
+**Key Insight:** Zen Router is **40.13x faster** than React Router in this category.
 
 ### Mixed Route Matching (realistic usage)
 
 **Performance Comparison:**
 
 ```
-🥇 Zen Router           ████████████████████████████████████████ 371.46K
-🥈 Wouter               ████ 40.49K
-🥉 React Router         █ 5.75K
+🥇 Zen Router           ████████████████████████████████████████ 358.17K
+🥈 Wouter               ████ 38.86K
+🥉 React Router         █ 5.34K
 ```
 
 | Rank | Library | Ops/sec | Variance | Mean | p99 | Samples |
 |------|---------|---------|----------|------|-----|--------|
-| 🥇 | **[Zen Router](https://github.com/SylphxAI/zen-router)** | 371.46K | ±0.31% | 2.6921ms | 3.6070ms | 185.73K |
-| 🥈 | **[Wouter](https://github.com/molefrog/wouter)** | 40.49K | ±0.45% | 24.6997ms | 33.5420ms | 20.24K |
-| 🥉 | **[React Router](https://github.com/remix-run/react-router)** | 5.75K | ±0.59% | 173.7977ms | 356.3520ms | 2.88K |
+| 🥇 | **[Zen Router](https://github.com/SylphxAI/zen-router)** | 358.17K | ±0.25% | 2.7920ms | 3.2060ms | 179.09K |
+| 🥈 | **[Wouter](https://github.com/molefrog/wouter)** | 38.86K | ±0.42% | 25.7363ms | 37.5600ms | 19.43K |
+| 🥉 | **[React Router](https://github.com/remix-run/react-router)** | 5.34K | ±0.93% | 187.2504ms | 379.7070ms | 2.67K |
 
-**Key Insight:** Zen Router is **64.56x faster** than React Router in this category.
+**Key Insight:** Zen Router is **67.07x faster** than React Router in this category.
 
 ### Sequential Route Matching (worst case)
 
 **Performance Comparison:**
 
 ```
-🥇 Zen Router           ████████████████████████████████████████ 1.30M
-🥈 Wouter               █████ 154.81K
-🥉 React Router         █ 44.15K
+🥇 Zen Router           ████████████████████████████████████████ 1.11M
+🥈 Wouter               █████ 149.93K
+🥉 React Router         ██ 41.90K
 ```
 
 | Rank | Library | Ops/sec | Variance | Mean | p99 | Samples |
 |------|---------|---------|----------|------|-----|--------|
-| 🥇 | **[Zen Router](https://github.com/SylphxAI/zen-router)** | 1.30M | ±0.22% | 0.7673ms | 1.2930ms | 651.62K |
-| 🥈 | **[Wouter](https://github.com/molefrog/wouter)** | 154.81K | ±0.29% | 6.4594ms | 9.8590ms | 77.41K |
-| 🥉 | **[React Router](https://github.com/remix-run/react-router)** | 44.15K | ±0.56% | 22.6521ms | 32.5530ms | 22.07K |
+| 🥇 | **[Zen Router](https://github.com/SylphxAI/zen-router)** | 1.11M | ±0.10% | 0.8976ms | 0.9820ms | 557.05K |
+| 🥈 | **[Wouter](https://github.com/molefrog/wouter)** | 149.93K | ±0.21% | 6.6699ms | 9.6880ms | 74.96K |
+| 🥉 | **[React Router](https://github.com/remix-run/react-router)** | 41.90K | ±0.42% | 23.8660ms | 36.1680ms | 20.95K |
 
-**Key Insight:** Zen Router is **29.52x faster** than React Router in this category.
+**Key Insight:** Zen Router is **26.59x faster** than React Router in this category.
 
 ## 🚀 Running Benchmarks
 
@@ -306,4 +306,4 @@ This benchmark is automatically updated daily by GitHub Actions. Benchmarks run 
 
 ---
 
-*Last generated: 2025-11-11T01:34:13.352Z*
+*Last generated: 2025-11-11T01:37:46.696Z*
