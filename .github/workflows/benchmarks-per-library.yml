@@ -14,6 +14,11 @@ on:
         description: 'Category to benchmark (e.g., state-management)'
         required: false
         type: string
+  push:
+    paths:
+      - 'benchmarks/**'
+      - 'scripts/**'
+      - '.github/workflows/benchmarks-per-library.yml'
 
 jobs:
   # ============================================================================
