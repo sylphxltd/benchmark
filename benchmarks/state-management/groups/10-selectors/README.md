@@ -116,4 +116,4 @@ npx vitest bench groups/10-selectors/*.bench.ts
 ```
 
 ---
-*Last generated: 2025-11-11T17:41:16.164Z*
+*Last generated: 2025-11-11T17:52:10.583Z*

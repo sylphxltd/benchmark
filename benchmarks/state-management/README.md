@@ -47,16 +47,16 @@ Comprehensive performance benchmarks for JavaScript/TypeScript state management 
 
 See which library wins in each test group:
 
-| Library | [01](#01---read-operations) | [02](#02---write-operations) | [03](#03---store-creation) | [04](#04---complexity) | [06](#06---memory-allocation) | [07](#07---form-state) | [08](#08---reactive-async) | [09](#09---computed-native) | [10](#10---selectors) | [11](#11---batching-native) | [12](#12---shopping-cart) | [13](#13---todo-list) | [14](#14---data-table) |
-|---------|------|------|------|------|------|------|------|------|------|------|------|------|------|
-| [**Zen**](https://github.com/SylphxAI/zen) | 🥇 | 🥇 | 🥉 | 🥇 | 🥈 | 🥇 | - | - | - | - | - | - | - |
-| [**Solid Signals**](https://github.com/solidjs/solid) | 🥈 | 🥈 | 🥈 | 🥉 | 4 | 🥈 | - | - | - | - | - | - | - |
-| [**Preact Signals**](https://github.com/preactjs/signals) | 4 | 🥉 | 🥇 | 🥈 | 🥉 | 🥉 | - | - | - | - | - | - | - |
-| [**Zustand**](https://github.com/pmndrs/zustand) | 🥉 | 4 | 4 | 4 | 🥇 | 4 | - | - | - | - | - | - | - |
-| [**MobX**](https://github.com/mobxjs/mobx) | 7 | 5 | 6 | 5 | 5 | 6 | - | - | - | - | - | - | - |
-| [**Valtio**](https://github.com/pmndrs/valtio) | 6 | 6 | 7 | - | - | 5 | - | - | - | - | - | - | - |
-| [**Jotai**](https://github.com/pmndrs/jotai) | 8 | 7 | 5 | 6 | 6 | 7 | 8 | - | - | - | - | - | - |
-| [**Redux Toolkit**](https://github.com/reduxjs/redux-toolkit) | 5 | 8 | 8 | - | 7 | - | - | - | - | - | - | - | - |
+| Library | [01](#01---read-operations) | [02](#02---write-operations) | [03](#03---store-creation) | [04](#04---complexity) | [06](#06---memory-allocation) | [07](#07---form-state) | [08](#08---reactive-async) | [09](#09---computed-native) | [10](#10---selectors) | [11](#11---batching-native) | [15](#15---real-world-patterns) |
+|---------|------|------|------|------|------|------|------|------|------|------|------|
+| [**Zen**](https://github.com/SylphxAI/zen) | 🥇 | 🥇 | 🥉 | 🥇 | 🥈 | 🥇 | - | - | - | - | - |
+| [**Solid Signals**](https://github.com/solidjs/solid) | 🥈 | 🥈 | 🥈 | 🥉 | 4 | 🥈 | - | - | - | - | - |
+| [**Preact Signals**](https://github.com/preactjs/signals) | 4 | 🥉 | 🥇 | 🥈 | 🥉 | 🥉 | - | - | - | - | - |
+| [**Zustand**](https://github.com/pmndrs/zustand) | 🥉 | 4 | 4 | 4 | 🥇 | 4 | - | - | - | - | - |
+| [**MobX**](https://github.com/mobxjs/mobx) | 7 | 5 | 6 | 5 | 5 | 6 | - | - | - | - | - |
+| [**Valtio**](https://github.com/pmndrs/valtio) | 6 | 6 | 7 | - | - | 5 | - | - | - | - | - |
+| [**Jotai**](https://github.com/pmndrs/jotai) | 8 | 7 | 5 | 6 | 6 | 7 | 8 | - | - | - | - |
+| [**Redux Toolkit**](https://github.com/reduxjs/redux-toolkit) | 5 | 8 | 8 | - | 7 | - | - | - | - | - | - |
 
 **Legend:** 🥇 1st place | 🥈 2nd place | 🥉 3rd place | - Not applicable
 
@@ -76,7 +76,7 @@ See which library wins in each test group:
 
 ## Test Categories
 
-### Universal Tests (01, 02, 03, 04, 06, 07, 12, 13, 14)
+### Universal Tests (01, 02, 03, 04, 06, 07, 15)
 
 All 8 libraries participate equally. Used to calculate Overall Performance Score.
 
@@ -86,9 +86,7 @@ All 8 libraries participate equally. Used to calculate Overall Performance Score
 - **04 - Complexity**: Deep nested state
 - **06 - Memory Allocation**: Large state allocation performance
 - **07 - Form State**: Multi-field updates
-- **12 - Shopping Cart**: Real-world e-commerce shopping cart operations
-- **13 - Todo List**: Real-world task management operations
-- **14 - Data Table**: Real-world data grid / table operations
+- **15 - Real-World Patterns**: Complex patterns beyond basic operations: optimistic updates, undo/redo, derived state chains, debouncing, etc.
 
 ### Feature Tests (08, 09, 10, 11)
 
@@ -345,33 +343,13 @@ Built-in batching
 
 ---
 
-### [12 - Shopping Cart](groups/12-shopping-cart/README.md)
+### [15 - Real-World Patterns](groups/15-real-world-patterns/README.md)
 
-Real-world e-commerce shopping cart operations
-
-*No results available*
-
-**[View Detailed Results →](groups/12-shopping-cart/README.md)**
-
----
-
-### [13 - Todo List](groups/13-todo-list/README.md)
-
-Real-world task management operations
+Complex patterns beyond basic operations: optimistic updates, undo/redo, derived state chains, debouncing, etc.
 
 *No results available*
 
-**[View Detailed Results →](groups/13-todo-list/README.md)**
-
----
-
-### [14 - Data Table](groups/14-data-table/README.md)
-
-Real-world data grid / table operations
-
-*No results available*
-
-**[View Detailed Results →](groups/14-data-table/README.md)**
+**[View Detailed Results →](groups/15-real-world-patterns/README.md)**
 
 ---
 
@@ -437,7 +415,7 @@ npm run benchmark:creation
 
 This benchmark category follows [../../BENCHMARK_STANDARD.md](../../BENCHMARK_STANDARD.md) v1.0.0:
 
-- ✅ Universal tests (1, 2, 3, 4, 6, 7, 12, 13, 14) use real APIs for all libraries
+- ✅ Universal tests (1, 2, 3, 4, 6, 7, 15) use real APIs for all libraries
 - ✅ Feature tests (8, 9, 10, 11) only include libraries with native support
 - ✅ Overall Performance Score uses geometric mean of universal tests
 - ✅ No placeholder or synthetic implementations in active tests
