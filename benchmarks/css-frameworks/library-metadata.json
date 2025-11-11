@@ -1,18 +1,20 @@
 {
-  "@sylphx/silk": {
-    "github": "https://github.com/SylphxAI/silk",
-    "displayName": "Silk"
-  },
-  "tailwindcss": {
-    "github": "https://github.com/tailwindlabs/tailwindcss",
-    "displayName": "Tailwind CSS"
-  },
-  "@pandacss/dev": {
-    "github": "https://github.com/chakra-ui/panda",
-    "displayName": "Panda CSS"
-  },
-  "unocss": {
-    "github": "https://github.com/unocss/unocss",
-    "displayName": "UnoCSS"
+  "libraries": {
+    "@sylphx/silk": {
+      "github": "https://github.com/SylphxAI/silk",
+      "displayName": "Silk"
+    },
+    "tailwindcss": {
+      "github": "https://github.com/tailwindlabs/tailwindcss",
+      "displayName": "Tailwind CSS"
+    },
+    "@pandacss/dev": {
+      "github": "https://github.com/chakra-ui/panda",
+      "displayName": "Panda CSS"
+    },
+    "unocss": {
+      "github": "https://github.com/unocss/unocss",
+      "displayName": "UnoCSS"
+    }
   }
 }

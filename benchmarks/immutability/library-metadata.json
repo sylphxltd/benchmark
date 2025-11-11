@@ -3,28 +3,30 @@
     "excludeFromCharts": ["Native Spread", "Native Map", "Native Filter"],
     "excludeFromComparison": []
   },
-  "immer": {
-    "github": "https://github.com/immerjs/immer",
-    "displayName": "Immer"
-  },
-  "mutative": {
-    "github": "https://github.com/unadlib/mutative",
-    "displayName": "Mutative"
-  },
-  "immutable": {
-    "github": "https://github.com/immutable-js/immutable-js",
-    "displayName": "Immutable.js"
-  },
-  "immutability-helper": {
-    "github": "https://github.com/kolodny/immutability-helper",
-    "displayName": "Immutability Helper"
-  },
-  "seamless-immutable": {
-    "github": "https://github.com/rtfeldman/seamless-immutable",
-    "displayName": "Seamless Immutable"
-  },
-  "@sylphx/craft": {
-    "github": "https://github.com/SylphxAI/craft",
-    "displayName": "Craft"
+  "libraries": {
+    "immer": {
+      "github": "https://github.com/immerjs/immer",
+      "displayName": "Immer"
+    },
+    "mutative": {
+      "github": "https://github.com/unadlib/mutative",
+      "displayName": "Mutative"
+    },
+    "immutable": {
+      "github": "https://github.com/immutable-js/immutable-js",
+      "displayName": "Immutable.js"
+    },
+    "immutability-helper": {
+      "github": "https://github.com/kolodny/immutability-helper",
+      "displayName": "Immutability Helper"
+    },
+    "seamless-immutable": {
+      "github": "https://github.com/rtfeldman/seamless-immutable",
+      "displayName": "Seamless Immutable"
+    },
+    "@sylphx/craft": {
+      "github": "https://github.com/SylphxAI/craft",
+      "displayName": "Craft"
+    }
   }
 }
