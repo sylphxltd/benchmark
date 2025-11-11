@@ -35,6 +35,12 @@ jobs:
         working-directory: benchmarks/state-management
         run: npm ci
 
+      - name: Check versions and bundle sizes
+        run: |
+          echo "🔍 Checking library versions and bundle sizes..."
+          npx tsx scripts/check-versions.ts benchmarks/state-management
+          echo "✓ Version check complete"
+
       - name: Generate category README
         run: |
           echo "📝 Generating category README..."
@@ -55,11 +61,11 @@ jobs:
           git config --local user.email "github-actions[bot]@users.noreply.github.com"
           git config --local user.name "github-actions[bot]"
 
-          # Add all changes
+          # Add all changes (including versions.json updates)
           git add benchmarks/ README.md
 
           # Create commit message
-          COMMIT_MSG="chore: auto-update README"
+          COMMIT_MSG="chore: auto-update README and versions"
 
           git commit -m "$COMMIT_MSG" || echo "No changes to commit"
           git push || echo "Nothing to push"

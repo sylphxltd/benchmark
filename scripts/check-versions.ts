@@ -4,7 +4,7 @@
  * Checks if any library has a new version OR if test files have been updated
  */
 
-import { readFileSync, writeFileSync, readdirSync } from 'fs';
+import { readFileSync, writeFileSync, readdirSync, existsSync } from 'fs';
 import { execSync } from 'child_process';
 import { createHash } from 'crypto';
 import { join } from 'path';
@@ -54,7 +54,17 @@ async function fetchPackageSize(packageName: string, version: string): Promise<{
 }
 
 function getTestFilesHash(benchmarkDir: string): string {
-  const testDir = join(benchmarkDir, 'src');
+  // Check for new framework structure first (libraries/), fallback to old (src/)
+  const librariesDir = join(benchmarkDir, 'libraries');
+  const oldSrcDir = join(benchmarkDir, 'src');
+
+  const testDir = existsSync(librariesDir) ? librariesDir : oldSrcDir;
+
+  if (!existsSync(testDir)) {
+    // If neither exists, return a default hash
+    return createHash('sha256').update('no-tests').digest('hex');
+  }
+
   const files = readdirSync(testDir, { recursive: true, withFileTypes: true });
 
   // Get all .ts and .js files

@@ -43,6 +43,7 @@ interface MetadataFile {
 const categoryPath = process.argv[2] || 'benchmarks/state-management';
 const resultsPath = join(categoryPath, 'results');
 const metadataPath = join(categoryPath, 'library-metadata.json');
+const versionsPath = join(categoryPath, 'versions.json');
 
 console.log(`📝 Generating README for: ${categoryPath}\n`);
 
@@ -53,6 +54,28 @@ try {
   console.log(`✓ Loaded metadata for ${Object.keys(metadata.libraries).length} libraries`);
 } catch (e) {
   console.warn('⚠️  No library-metadata.json found, skipping enhanced features');
+}
+
+// Load versions data (includes bundle sizes)
+interface VersionsFile {
+  libraries: {
+    [key: string]: {
+      current: string;
+      latest: string;
+      size?: {
+        gzip: number;
+        minified: number;
+      };
+    };
+  };
+}
+
+let versions: VersionsFile = { libraries: {} };
+try {
+  versions = JSON.parse(readFileSync(versionsPath, 'utf-8'));
+  console.log(`✓ Loaded version data with bundle sizes`);
+} catch (e) {
+  console.warn('⚠️  No versions.json found, bundle sizes will not be displayed');
 }
 
 // Load all library results
@@ -248,19 +271,26 @@ readme += `
 
 ## 📈 Library Comparison
 
-| Library | Score | Description | Best For |
-|---------|:-----:|-------------|----------|
+| Library | Score | Bundle Size (gzip) | Description | Best For |
+|---------|:-----:|:------------------:|-------------|----------|
 `;
 
 sortedLibs.forEach(lib => {
   const score = overallScores.get(lib.libraryId) || 0;
   const meta = metadata.libraries[lib.version] || metadata.libraries[lib.libraryId];
 
+  // Get bundle size from versions
+  const versionKey = lib.version || lib.libraryId;
+  const versionData = versions.libraries[versionKey];
+  const bundleSize = versionData?.size
+    ? `**${(versionData.size.gzip / 1024).toFixed(2)} KB**`
+    : 'N/A';
+
   // Truncate to consistent lengths
   const description = (meta?.description || 'State management solution').substring(0, 50);
   const tradeoff = (meta?.tradeoff || 'General purpose').substring(0, 40);
 
-  readme += `| **[${lib.library}](${meta?.url || '#'})** | **${score.toFixed(1)}** | ${description}... | ${tradeoff}... |\n`;
+  readme += `| **[${lib.library}](${meta?.url || '#'})** | **${score.toFixed(1)}** | ${bundleSize} | ${description}... | ${tradeoff}... |\n`;
 });
 
 readme += `\n---\n\n## 📊 Performance by Test Group\n\n<details open>\n<summary><b>Click to expand/collapse detailed test results</b></summary>\n\n`;
@@ -393,7 +423,12 @@ npx tsx ../../scripts/generate-simple-readme.ts .
 
 ${sortedLibs.map(lib => {
   const meta = metadata.libraries[lib.version] || metadata.libraries[lib.libraryId];
-  return `- **[${lib.library}](${meta?.url || '#'})** (\`${lib.version}\`) - [📦 npm](https://www.npmjs.com/package/${meta?.npm || lib.libraryId}) • [📊 bundle size](https://bundlephobia.com/package/${meta?.npm || lib.libraryId})`;
+  const versionKey = lib.version || lib.libraryId;
+  const versionData = versions.libraries[versionKey];
+  const sizeInfo = versionData?.size
+    ? ` (${(versionData.size.gzip / 1024).toFixed(2)} KB gzip)`
+    : '';
+  return `- **[${lib.library}](${meta?.url || '#'})** (\`${lib.version}\`)${sizeInfo} - [📦 npm](https://www.npmjs.com/package/${meta?.npm || lib.libraryId}) • [📊 bundle size](https://bundlephobia.com/package/${meta?.npm || lib.libraryId})`;
 }).join('\n')}
 
 ---
