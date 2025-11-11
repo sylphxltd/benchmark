@@ -39,9 +39,16 @@ function calculateGroupOverall(resultsData, libraryMetadata) {
 
   allBenches.forEach(bench => {
     const nameParts = bench.name.split(' - ');
-    const libName = nameParts[nameParts.length - 1];
 
-    // Only include valid libraries
+    // Try last part first (e.g., "Simple Read - Redux Toolkit")
+    let libName = nameParts[nameParts.length - 1].trim();
+
+    // If not a valid library, try first part (e.g., "Redux Toolkit - Simple Read")
+    if (!validLibraries.has(libName) && nameParts.length > 1) {
+      libName = nameParts[0].trim();
+    }
+
+    // Skip if still not valid
     if (!validLibraries.has(libName)) return;
 
     if (!libraryScores[libName]) {
@@ -175,57 +182,109 @@ function generateGroupReadme(groupPath, groupName, categoryPath) {
         readme += `### ${group.fullName}\n\n`;
 
         if (group.benchmarks && group.benchmarks.length > 0) {
-          const sorted = [...group.benchmarks].sort((a, b) => (b.hz || 0) - (a.hz || 0));
-          const maxHz = sorted[0]?.hz || 1;
+          // Group benchmarks by library
+          const libraryBenchmarks = {};
 
-          // Performance comparison chart
-          readme += '**Performance Comparison:**\n\n```\n';
-          sorted.forEach((bench, idx) => {
+          // Get valid library names for validation
+          const validLibraries = new Set(
+            Object.values(libraryMetadata.libraries || {}).map(lib => lib.displayName)
+          );
+
+          group.benchmarks.forEach(bench => {
             const nameParts = bench.name.split(' - ');
-            const libName = nameParts[nameParts.length - 1];
+
+            // Try last part first (e.g., "Simple Read - Redux Toolkit")
+            let libName = nameParts[nameParts.length - 1].trim();
+
+            // If not a valid library, try first part (e.g., "Redux Toolkit - Simple Read")
+            if (!validLibraries.has(libName) && nameParts.length > 1) {
+              libName = nameParts[0].trim();
+            }
+
+            // Skip if still not valid
+            if (!validLibraries.has(libName)) {
+              return;
+            }
+
+            if (!libraryBenchmarks[libName]) {
+              libraryBenchmarks[libName] = [];
+            }
+            libraryBenchmarks[libName].push(bench);
+          });
+
+          // Calculate aggregated scores per library (geometric mean)
+          const libraryScores = Object.entries(libraryBenchmarks).map(([libName, benches]) => {
+            const validHzValues = benches.map(b => b.hz || 0).filter(v => v > 0);
+
+            if (validHzValues.length === 0) {
+              return { library: libName, overall: 0, benches };
+            }
+
+            // Geometric mean for overall score
+            const product = validHzValues.reduce((acc, val) => acc * val, 1);
+            const overall = Math.pow(product, 1 / validHzValues.length);
+
+            // Calculate average stats
+            const avgRme = benches.reduce((sum, b) => sum + (b.rme || 0), 0) / benches.length;
+            const avgMean = benches.reduce((sum, b) => sum + (b.mean || 0), 0) / benches.length;
+            const maxP99 = Math.max(...benches.map(b => b.p99 || 0));
+            const totalSamples = benches.reduce((sum, b) => sum + (b.samples || 0), 0);
+
+            return {
+              library: libName,
+              overall,
+              avgRme,
+              avgMean,
+              maxP99,
+              totalSamples,
+              benches
+            };
+          }).sort((a, b) => b.overall - a.overall);
+
+          const maxHz = libraryScores[0]?.overall || 1;
+
+          // Performance comparison chart (aggregated by library)
+          readme += '**Performance Comparison:**\n\n```\n';
+          libraryScores.forEach((score, idx) => {
             const emoji = idx === 0 ? '🥇 ' : idx === 1 ? '🥈 ' : idx === 2 ? '🥉 ' : `${idx + 1}. `;
-            const percentage = (bench.hz || 0) / maxHz;
+            const percentage = score.overall / maxHz;
             const barLength = Math.round(percentage * 40);
             const bar = '█'.repeat(barLength);
-            const opsText = formatNumber(bench.hz) + ' ops/sec';
+            const opsText = formatNumber(score.overall) + ' ops/sec';
 
-            readme += `${emoji.padEnd(4)} ${libName.padEnd(18)} ${bar.padEnd(42)} ${opsText.padStart(15)}\n`;
+            readme += `${emoji.padEnd(4)} ${score.library.padEnd(18)} ${bar.padEnd(42)} ${opsText.padStart(15)}\n`;
           });
           readme += '```\n\n';
 
-          // Detailed table
-          readme += '| Rank | Library | Ops/sec | Variance | Mean | p99 | Samples |\n';
-          readme += '|:----:|---------|---------|----------|------|-----|---------|\n';
+          // Detailed table (aggregated by library)
+          readme += '| Rank | Library | Ops/sec | Avg Variance | Avg Mean | Max p99 | Total Samples |\n';
+          readme += '|:----:|---------|---------|--------------|----------|---------|---------------|\n';
 
-          sorted.forEach((bench, idx) => {
-            const nameParts = bench.name.split(' - ');
-            const libName = nameParts[nameParts.length - 1];
+          libraryScores.forEach((score, idx) => {
             const emoji = idx === 0 ? '🥇' : idx === 1 ? '🥈' : idx === 2 ? '🥉' : idx + 1;
-            const opsPerSec = bench.hz ? bench.hz.toLocaleString('en-US', { maximumFractionDigits: 3 }) : 'N/A';
-            const variance = bench.rme ? `±${bench.rme.toFixed(2)}%` : 'N/A';
-            const mean = bench.mean ? `${(bench.mean * 1000).toFixed(4)}ms` : 'N/A';
-            const p99 = bench.p99 ? `${(bench.p99 * 1000).toFixed(4)}ms` : 'N/A';
-            const samples = bench.samples || 'N/A';
+            const opsPerSec = score.overall ? score.overall.toLocaleString('en-US', { maximumFractionDigits: 0 }) : 'N/A';
+            const variance = score.avgRme ? `±${score.avgRme.toFixed(2)}%` : 'N/A';
+            const mean = score.avgMean ? `${(score.avgMean * 1000).toFixed(4)}ms` : 'N/A';
+            const p99 = score.maxP99 ? `${(score.maxP99 * 1000).toFixed(4)}ms` : 'N/A';
+            const samples = score.totalSamples || 'N/A';
 
             // Add GitHub link to library name
             const libKey = Object.keys(libraryMetadata.libraries).find(key =>
-              libraryMetadata.libraries[key].displayName === libName
+              libraryMetadata.libraries[key].displayName === score.library
             );
             const githubUrl = libraryMetadata.libraries?.[libKey]?.url || '';
-            const libraryLink = githubUrl ? `[**${libName}**](${githubUrl})` : `**${libName}**`;
+            const libraryLink = githubUrl ? `[**${score.library}**](${githubUrl})` : `**${score.library}**`;
 
             readme += `| ${emoji} | ${libraryLink} | ${opsPerSec} | ${variance} | ${mean} | ${p99} | ${samples} |\n`;
           });
 
           // Key insight
-          if (sorted.length >= 2) {
-            const fastest = sorted[0];
-            const slowest = sorted[sorted.length - 1];
-            const fastestName = fastest.name.split(' - ').pop();
-            const slowestName = slowest.name.split(' - ').pop();
-            const ratio = ((fastest.hz || 0) / (slowest.hz || 1)).toFixed(2);
+          if (libraryScores.length >= 2) {
+            const fastest = libraryScores[0];
+            const slowest = libraryScores[libraryScores.length - 1];
+            const ratio = ((fastest.overall || 0) / (slowest.overall || 1)).toFixed(2);
 
-            readme += `\n**Key Insight:** ${fastestName} is ${ratio}x faster than ${slowestName} in this category.\n`;
+            readme += `\n**Key Insight:** ${fastest.library} is ${ratio}x faster than ${slowest.library} in this test.\n`;
           }
 
           readme += '\n';

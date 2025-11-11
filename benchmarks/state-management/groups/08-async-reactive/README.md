@@ -17,12 +17,17 @@ Async atoms/computations.
 
 ## Group Overall Performance
 
-**Methodology**: Geometric mean across all tests in this group
+**Methodology**:
+- Each library's raw performance (ops/sec) is measured for each test in this group
+- The group score is calculated using geometric mean of all test results
+- Formula: `Group Score = ⁿ√(Test₁ × Test₂ × ... × Testₙ)`
+- Geometric mean gives balanced weight to all tests regardless of their magnitude
+
 **Last Benchmark Run**: Nov 10, 2025, 4:38 PM
 
-| Rank | Library | Version | Bundle (gzip) | Group Score | Peak Performance | Last Updated |
-|------|---------|---------|---------------|-------------|------------------|--------------|
-| 🥇 1 | [**Jotai**](https://github.com/pmndrs/jotai) | 2.15.1 | 👑 4.3 KB | 👑 726 | 872 | Dec 6 |
+| Rank | Library | Group Score |
+|:----:|---------|-------------|
+| 🥇 1 | [**Jotai**](https://github.com/pmndrs/jotai) | 👑 726 |
 
 ---
 
@@ -36,9 +41,9 @@ Async atoms/computations.
 🥇   Jotai              ████████████████████████████████████████       872 ops/sec
 ```
 
-| Rank | Library | Ops/sec | Variance | Mean | p99 | Samples |
-|------|---------|---------|----------|------|-----|---------|
-| 🥇 | [**Jotai**](https://github.com/pmndrs/jotai) | 872.01 | ±1.48% | 1.1468ms | 1.2682ms | 437 |
+| Rank | Library | Ops/sec | Avg Variance | Avg Mean | Max p99 | Total Samples |
+|:----:|---------|---------|--------------|----------|---------|---------------|
+| 🥇 | [**Jotai**](https://github.com/pmndrs/jotai) | 872 | ±1.48% | 1.1468ms | 1.2682ms | 437 |
 
 ### Reactive Async Chained
 
@@ -48,9 +53,9 @@ Async atoms/computations.
 🥇   Jotai              ████████████████████████████████████████       433 ops/sec
 ```
 
-| Rank | Library | Ops/sec | Variance | Mean | p99 | Samples |
-|------|---------|---------|----------|------|-----|---------|
-| 🥇 | [**Jotai**](https://github.com/pmndrs/jotai) | 432.68 | ±2.19% | 2.3112ms | 2.9319ms | 217 |
+| Rank | Library | Ops/sec | Avg Variance | Avg Mean | Max p99 | Total Samples |
+|:----:|---------|---------|--------------|----------|---------|---------------|
+| 🥇 | [**Jotai**](https://github.com/pmndrs/jotai) | 433 | ±2.19% | 2.3112ms | 2.9319ms | 217 |
 
 ### Reactive Async Complex
 
@@ -60,9 +65,9 @@ Async atoms/computations.
 🥇   Jotai              ████████████████████████████████████████       863 ops/sec
 ```
 
-| Rank | Library | Ops/sec | Variance | Mean | p99 | Samples |
-|------|---------|---------|----------|------|-----|---------|
-| 🥇 | [**Jotai**](https://github.com/pmndrs/jotai) | 863.49 | ±1.01% | 1.1581ms | 1.2342ms | 432 |
+| Rank | Library | Ops/sec | Avg Variance | Avg Mean | Max p99 | Total Samples |
+|:----:|---------|---------|--------------|----------|---------|---------------|
+| 🥇 | [**Jotai**](https://github.com/pmndrs/jotai) | 863 | ±1.01% | 1.1581ms | 1.2342ms | 432 |
 
 ### Reactive Async Concurrent
 
@@ -72,9 +77,9 @@ Async atoms/computations.
 🥇   Jotai              ████████████████████████████████████████       854 ops/sec
 ```
 
-| Rank | Library | Ops/sec | Variance | Mean | p99 | Samples |
-|------|---------|---------|----------|------|-----|---------|
-| 🥇 | [**Jotai**](https://github.com/pmndrs/jotai) | 853.65 | ±0.95% | 1.1714ms | 1.2563ms | 427 |
+| Rank | Library | Ops/sec | Avg Variance | Avg Mean | Max p99 | Total Samples |
+|:----:|---------|---------|--------------|----------|---------|---------------|
+| 🥇 | [**Jotai**](https://github.com/pmndrs/jotai) | 854 | ±0.95% | 1.1714ms | 1.2563ms | 427 |
 
 ---
 
@@ -94,4 +99,4 @@ npx vitest bench groups/08-async-reactive/*.bench.ts
 ```
 
 ---
-*Last generated: 2025-11-11T01:29:44.987Z*
+*Last generated: 2025-11-11T04:05:19.563Z*

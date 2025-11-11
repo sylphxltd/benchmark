@@ -15,19 +15,24 @@ Deep nested state.
 
 ## Group Overall Performance
 
-**Methodology**: Geometric mean across all tests in this group
+**Methodology**:
+- Each library's raw performance (ops/sec) is measured for each test in this group
+- The group score is calculated using geometric mean of all test results
+- Formula: `Group Score = ⁿ√(Test₁ × Test₂ × ... × Testₙ)`
+- Geometric mean gives balanced weight to all tests regardless of their magnitude
+
 **Last Benchmark Run**: Nov 10, 2025, 4:38 PM
 
-| Rank | Library | Version | Bundle (gzip) | Group Score | Peak Performance | Last Updated |
-|------|---------|---------|---------------|-------------|------------------|--------------|
-| 🥇 1 | [**Redux Toolkit**](https://github.com/reduxjs/redux-toolkit) | 2.10.1 | 13.8 KB | 👑 0 | 0 | Dec 6 |
-| 🥈 2 | [**Zustand**](https://github.com/pmndrs/zustand) | 5.0.8 | 👑 1.2 KB | 👑 0 | 0 | Nov 6 |
-| 🥉 3 | [**Jotai**](https://github.com/pmndrs/jotai) | 2.15.1 | 4.3 KB | 👑 0 | 0 | Dec 6 |
-|  4 | [**MobX**](https://github.com/mobxjs/mobx) | 6.15.0 | 17.6 KB | 👑 0 | 0 | Dec 6 |
-|  5 | [**Valtio**](https://github.com/pmndrs/valtio) | 2.2.0 | 3.1 KB | 👑 0 | 0 | Nov 6 |
-|  6 | [**Preact Signals**](https://github.com/preactjs/signals) | 2.4.0 | 3.0 KB | 👑 0 | 0 | Nov 7 |
-|  7 | [**Solid Signals**](https://github.com/solidjs/solid) | 1.9.10 | 4.0 KB | 👑 0 | 0 | Dec 6 |
-|  8 | [**Zen**](https://github.com/SylphxAI/zen) | 1.2.1 | 5.3 KB | 👑 0 | 0 | Nov 7 |
+| Rank | Library | Group Score |
+|:----:|---------|-------------|
+| 🥇 1 | [**Redux Toolkit**](https://github.com/reduxjs/redux-toolkit) | 👑 0 |
+| 🥈 2 | [**Zustand**](https://github.com/pmndrs/zustand) | 👑 0 |
+| 🥉 3 | [**Jotai**](https://github.com/pmndrs/jotai) | 👑 0 |
+|  4 | [**MobX**](https://github.com/mobxjs/mobx) | 👑 0 |
+|  5 | [**Valtio**](https://github.com/pmndrs/valtio) | 👑 0 |
+|  6 | [**Preact Signals**](https://github.com/preactjs/signals) | 👑 0 |
+|  7 | [**Solid Signals**](https://github.com/solidjs/solid) | 👑 0 |
+|  8 | [**Zen**](https://github.com/SylphxAI/zen) | 👑 0 |
 
 ---
 
@@ -48,18 +53,18 @@ Deep nested state.
 8.   Zen                                                                 0 ops/sec
 ```
 
-| Rank | Library | Ops/sec | Variance | Mean | p99 | Samples |
-|------|---------|---------|----------|------|-----|---------|
-| 🥇 | [**Redux Toolkit**](https://github.com/reduxjs/redux-toolkit) | N/A | N/A | N/A | N/A |  |
-| 🥈 | [**Zustand**](https://github.com/pmndrs/zustand) | N/A | N/A | N/A | N/A |  |
-| 🥉 | [**Jotai**](https://github.com/pmndrs/jotai) | N/A | N/A | N/A | N/A |  |
-| 4 | [**MobX**](https://github.com/mobxjs/mobx) | N/A | N/A | N/A | N/A |  |
-| 5 | [**Valtio**](https://github.com/pmndrs/valtio) | N/A | N/A | N/A | N/A |  |
-| 6 | [**Preact Signals**](https://github.com/preactjs/signals) | N/A | N/A | N/A | N/A |  |
-| 7 | [**Solid Signals**](https://github.com/solidjs/solid) | N/A | N/A | N/A | N/A |  |
-| 8 | [**Zen**](https://github.com/SylphxAI/zen) | N/A | N/A | N/A | N/A |  |
+| Rank | Library | Ops/sec | Avg Variance | Avg Mean | Max p99 | Total Samples |
+|:----:|---------|---------|--------------|----------|---------|---------------|
+| 🥇 | [**Redux Toolkit**](https://github.com/reduxjs/redux-toolkit) | N/A | N/A | N/A | N/A | N/A |
+| 🥈 | [**Zustand**](https://github.com/pmndrs/zustand) | N/A | N/A | N/A | N/A | N/A |
+| 🥉 | [**Jotai**](https://github.com/pmndrs/jotai) | N/A | N/A | N/A | N/A | N/A |
+| 4 | [**MobX**](https://github.com/mobxjs/mobx) | N/A | N/A | N/A | N/A | N/A |
+| 5 | [**Valtio**](https://github.com/pmndrs/valtio) | N/A | N/A | N/A | N/A | N/A |
+| 6 | [**Preact Signals**](https://github.com/preactjs/signals) | N/A | N/A | N/A | N/A | N/A |
+| 7 | [**Solid Signals**](https://github.com/solidjs/solid) | N/A | N/A | N/A | N/A | N/A |
+| 8 | [**Zen**](https://github.com/SylphxAI/zen) | N/A | N/A | N/A | N/A | N/A |
 
-**Key Insight:** Redux Toolkit is 0.00x faster than Zen in this category.
+**Key Insight:** Redux Toolkit is 0.00x faster than Zen in this test.
 
 ### groups/04-complexity/nested-state.bench.ts > Deep Read Access
 
@@ -76,18 +81,18 @@ Deep nested state.
 8.   Zen                                                                 0 ops/sec
 ```
 
-| Rank | Library | Ops/sec | Variance | Mean | p99 | Samples |
-|------|---------|---------|----------|------|-----|---------|
-| 🥇 | [**Redux Toolkit**](https://github.com/reduxjs/redux-toolkit) | N/A | N/A | N/A | N/A |  |
-| 🥈 | [**Zustand**](https://github.com/pmndrs/zustand) | N/A | N/A | N/A | N/A |  |
-| 🥉 | [**Jotai**](https://github.com/pmndrs/jotai) | N/A | N/A | N/A | N/A |  |
-| 4 | [**MobX**](https://github.com/mobxjs/mobx) | N/A | N/A | N/A | N/A |  |
-| 5 | [**Valtio**](https://github.com/pmndrs/valtio) | N/A | N/A | N/A | N/A |  |
-| 6 | [**Preact Signals**](https://github.com/preactjs/signals) | N/A | N/A | N/A | N/A |  |
-| 7 | [**Solid Signals**](https://github.com/solidjs/solid) | N/A | N/A | N/A | N/A |  |
-| 8 | [**Zen**](https://github.com/SylphxAI/zen) | N/A | N/A | N/A | N/A |  |
+| Rank | Library | Ops/sec | Avg Variance | Avg Mean | Max p99 | Total Samples |
+|:----:|---------|---------|--------------|----------|---------|---------------|
+| 🥇 | [**Redux Toolkit**](https://github.com/reduxjs/redux-toolkit) | N/A | N/A | N/A | N/A | N/A |
+| 🥈 | [**Zustand**](https://github.com/pmndrs/zustand) | N/A | N/A | N/A | N/A | N/A |
+| 🥉 | [**Jotai**](https://github.com/pmndrs/jotai) | N/A | N/A | N/A | N/A | N/A |
+| 4 | [**MobX**](https://github.com/mobxjs/mobx) | N/A | N/A | N/A | N/A | N/A |
+| 5 | [**Valtio**](https://github.com/pmndrs/valtio) | N/A | N/A | N/A | N/A | N/A |
+| 6 | [**Preact Signals**](https://github.com/preactjs/signals) | N/A | N/A | N/A | N/A | N/A |
+| 7 | [**Solid Signals**](https://github.com/solidjs/solid) | N/A | N/A | N/A | N/A | N/A |
+| 8 | [**Zen**](https://github.com/SylphxAI/zen) | N/A | N/A | N/A | N/A | N/A |
 
-**Key Insight:** Redux Toolkit is 0.00x faster than Zen in this category.
+**Key Insight:** Redux Toolkit is 0.00x faster than Zen in this test.
 
 ---
 
@@ -107,4 +112,4 @@ npx vitest bench groups/04-complexity/*.bench.ts
 ```
 
 ---
-*Last generated: 2025-11-11T01:29:44.849Z*
+*Last generated: 2025-11-11T04:05:19.411Z*
