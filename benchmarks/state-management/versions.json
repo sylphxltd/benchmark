@@ -1,5 +1,5 @@
 {
-  "lastChecked": "2025-11-12T20:09:05.227Z",
+  "lastChecked": "2025-11-12T21:07:59.449Z",
   "lastBenchmarkRun": "2025-11-10T16:38:08Z",
   "testFilesHash": "8c14d64010e59e9bfc37fb46c355126ba8aa41a2819006706d28dcaf156a0764",
   "libraries": {
@@ -16,11 +16,11 @@
     "@preact/signals": {
       "current": "2.4.0",
       "latest": "2.5.0",
-      "lastUpdated": "2025-11-12T20:09:01.701Z",
+      "lastUpdated": "2025-11-12T21:07:55.214Z",
       "size": {
         "gzip": 3108,
         "minified": 9207,
-        "lastChecked": "2025-11-12T20:09:05.226Z"
+        "lastChecked": "2025-11-12T21:07:59.448Z"
       }
     },
     "solid-js": {
