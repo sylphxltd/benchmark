@@ -4,12 +4,12 @@
   "packageName": "immer",
   "test": "JSON Patches - Apply",
   "group": "06-patches",
-  "timestamp": "2025-11-13T17:18:23.221Z",
+  "timestamp": "2025-11-13T17:23:53.744Z",
   "result": {
-    "opsPerSecond": 165305.1789954437,
-    "meanTime": 0.0061544670000075715,
-    "variance": 0.0000015292331438858198,
-    "p99": 0.00943861000061588,
+    "opsPerSecond": 161406.20569709069,
+    "meanTime": 0.006305654999963736,
+    "variance": 0.0000014430134272671102,
+    "p99": 0.009250810001758506,
     "samples": 1000
   }
 }

@@ -4,12 +4,12 @@
   "packageName": "zod",
   "test": "Validate Array",
   "group": "03-object-validation",
-  "timestamp": "2025-11-13T17:18:23.341Z",
+  "timestamp": "2025-11-13T17:23:52.316Z",
   "result": {
-    "opsPerSecond": 17432.48955823154,
-    "meanTime": 0.06014856399999553,
-    "variance": 0.0012552560497513156,
-    "p99": 0.12698711999955775,
+    "opsPerSecond": 19245.795807741342,
+    "meanTime": 0.054758355999996636,
+    "variance": 0.0016475339805570451,
+    "p99": 0.08609261000068727,
     "samples": 1000
   }
 }

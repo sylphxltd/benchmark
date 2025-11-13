@@ -4,12 +4,12 @@
   "packageName": "joi",
   "test": "Create Complex Schema",
   "group": "01-schema-creation",
-  "timestamp": "2025-11-13T17:18:23.341Z",
+  "timestamp": "2025-11-13T17:23:52.316Z",
   "result": {
-    "opsPerSecond": 9794.288532936956,
-    "meanTime": 0.11463421599999128,
-    "variance": 0.0036581339930129475,
-    "p99": 0.20442592999982478,
+    "opsPerSecond": 11776.764677126572,
+    "meanTime": 0.08932520699999805,
+    "variance": 0.001699455062944962,
+    "p99": 0.19000279999975644,
     "samples": 1000
   }
 }

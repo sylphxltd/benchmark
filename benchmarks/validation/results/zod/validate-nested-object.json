@@ -4,12 +4,12 @@
   "packageName": "zod",
   "test": "Validate Nested Object",
   "group": "03-object-validation",
-  "timestamp": "2025-11-13T17:18:23.341Z",
+  "timestamp": "2025-11-13T17:23:52.316Z",
   "result": {
-    "opsPerSecond": 5144.557155054221,
-    "meanTime": 0.20207334899998933,
-    "variance": 0.006747033326953971,
-    "p99": 0.2862632299998768,
+    "opsPerSecond": 4895.090973005151,
+    "meanTime": 0.2137519110000094,
+    "variance": 0.00805328196300832,
+    "p99": 0.3177375699999901,
     "samples": 1000
   }
 }

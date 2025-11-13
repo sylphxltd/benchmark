@@ -4,12 +4,12 @@
   "packageName": "zod",
   "test": "Validate Email",
   "group": "02-primitive-validation",
-  "timestamp": "2025-11-13T17:18:23.341Z",
+  "timestamp": "2025-11-13T17:23:52.316Z",
   "result": {
-    "opsPerSecond": 51204.06195137091,
-    "meanTime": 0.020460814999998547,
-    "variance": 0.0004678596026480113,
-    "p99": 0.03556380999981228,
+    "opsPerSecond": 45448.61599663577,
+    "meanTime": 0.023121519999975134,
+    "variance": 0.0007012784467288749,
+    "p99": 0.039055409999518814,
     "samples": 1000
   }
 }
