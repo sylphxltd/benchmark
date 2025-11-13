@@ -63,9 +63,8 @@ export async function measurePerformance<TStore>(
   });
 
   // Add benchmark task
-  bench.add('test', async () => {
-    await fn(ctx);
-  });
+  // Let tinybench handle both sync and async functions naturally
+  bench.add('test', () => fn(ctx));
 
   // Run benchmark
   await bench.run();
