@@ -1,0 +1,15 @@
+{
+  "library": "Jotai",
+  "libraryId": "jotai",
+  "packageName": "jotai",
+  "test": "Concurrent Updates (50x)",
+  "group": "04-async-operations",
+  "timestamp": "2025-11-13T03:08:00.569Z",
+  "result": {
+    "opsPerSecond": 15019.187913710883,
+    "meanTime": 0.0665814960000007,
+    "variance": 0.0011334252993348394,
+    "p99": 0.10020800000074814,
+    "samples": 1000
+  }
+}

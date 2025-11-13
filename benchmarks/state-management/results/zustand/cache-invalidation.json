@@ -1,0 +1,15 @@
+{
+  "library": "Zustand",
+  "libraryId": "zustand",
+  "packageName": "zustand",
+  "test": "Cache Invalidation",
+  "group": "05-real-world",
+  "timestamp": "2025-11-13T03:08:00.569Z",
+  "result": {
+    "opsPerSecond": 1535784.5478544976,
+    "meanTime": 0.0006511330000012095,
+    "variance": 7.07462233106232e-8,
+    "p99": 0.0016249999998763087,
+    "samples": 1000
+  }
+}

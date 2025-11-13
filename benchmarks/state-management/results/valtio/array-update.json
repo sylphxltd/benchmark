@@ -1,0 +1,15 @@
+{
+  "library": "Valtio",
+  "libraryId": "valtio",
+  "packageName": "valtio",
+  "test": "Array Update",
+  "group": "03-advanced-operations",
+  "timestamp": "2025-11-13T03:08:00.569Z",
+  "result": {
+    "opsPerSecond": 124870.58724501464,
+    "meanTime": 0.008008291000008284,
+    "variance": 0.0004636572525952262,
+    "p99": 0.01724999999987631,
+    "samples": 1000
+  }
+}

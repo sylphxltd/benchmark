@@ -1,0 +1,15 @@
+{
+  "library": "Valtio",
+  "libraryId": "valtio",
+  "packageName": "valtio",
+  "test": "Burst Write (100x)",
+  "group": "02-basic-write",
+  "timestamp": "2025-11-13T03:08:00.569Z",
+  "result": {
+    "opsPerSecond": 54419.76665239283,
+    "meanTime": 0.018375676000000455,
+    "variance": 0.0010118950906409583,
+    "p99": 0.02633400000001984,
+    "samples": 1000
+  }
+}

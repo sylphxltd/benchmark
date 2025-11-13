@@ -1,0 +1,15 @@
+{
+  "library": "Zustand",
+  "libraryId": "zustand",
+  "packageName": "zustand",
+  "test": "Memory Management",
+  "group": "05-real-world",
+  "timestamp": "2025-11-13T03:08:00.569Z",
+  "result": {
+    "opsPerSecond": 149534.2754988376,
+    "meanTime": 0.0066874300000054065,
+    "variance": 0.0006499181029664783,
+    "p99": 0.012582999999722233,
+    "samples": 1000
+  }
+}

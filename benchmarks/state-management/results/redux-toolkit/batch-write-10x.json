@@ -1,0 +1,15 @@
+{
+  "library": "Redux Toolkit",
+  "libraryId": "redux-toolkit",
+  "packageName": "@reduxjs/toolkit",
+  "test": "Batch Write (10x)",
+  "group": "02-basic-write",
+  "timestamp": "2025-11-13T03:08:00.569Z",
+  "result": {
+    "opsPerSecond": 21532.29217236174,
+    "meanTime": 0.04644187399999953,
+    "variance": 0.0010139117426421224,
+    "p99": 0.07541700000001583,
+    "samples": 1000
+  }
+}

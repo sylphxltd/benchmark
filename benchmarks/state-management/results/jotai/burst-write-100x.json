@@ -1,0 +1,15 @@
+{
+  "library": "Jotai",
+  "libraryId": "jotai",
+  "packageName": "jotai",
+  "test": "Burst Write (100x)",
+  "group": "02-basic-write",
+  "timestamp": "2025-11-13T03:08:00.569Z",
+  "result": {
+    "opsPerSecond": 9853.788889234025,
+    "meanTime": 0.1014838060000019,
+    "variance": 0.0012527779220042501,
+    "p99": 0.150333000000046,
+    "samples": 1000
+  }
+}

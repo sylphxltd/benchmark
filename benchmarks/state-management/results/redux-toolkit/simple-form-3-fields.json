@@ -1,0 +1,15 @@
+{
+  "library": "Redux Toolkit",
+  "libraryId": "redux-toolkit",
+  "packageName": "@reduxjs/toolkit",
+  "test": "Simple Form (3 fields)",
+  "group": "05-real-world",
+  "timestamp": "2025-11-13T03:08:00.569Z",
+  "result": {
+    "opsPerSecond": 45210.797604371204,
+    "meanTime": 0.022118609999999535,
+    "variance": 0.000803421846056598,
+    "p99": 0.030584000000089873,
+    "samples": 1000
+  }
+}

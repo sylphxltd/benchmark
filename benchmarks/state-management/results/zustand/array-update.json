@@ -1,0 +1,15 @@
+{
+  "library": "Zustand",
+  "libraryId": "zustand",
+  "packageName": "zustand",
+  "test": "Array Update",
+  "group": "03-advanced-operations",
+  "timestamp": "2025-11-13T03:08:00.569Z",
+  "result": {
+    "opsPerSecond": 1641499.7398014886,
+    "meanTime": 0.0006091990000077203,
+    "variance": 1.2888313538662476e-7,
+    "p99": 0.0015830000002097222,
+    "samples": 1000
+  }
+}

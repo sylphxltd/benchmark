@@ -1,0 +1,15 @@
+{
+  "library": "MobX",
+  "libraryId": "mobx",
+  "packageName": "mobx",
+  "test": "High-Frequency Read (1000x)",
+  "group": "01-basic-read",
+  "timestamp": "2025-11-13T03:08:00.569Z",
+  "result": {
+    "opsPerSecond": 57700.091656595316,
+    "meanTime": 0.017330995000000085,
+    "variance": 0.0011465614624589849,
+    "p99": 0.02949999999998454,
+    "samples": 1000
+  }
+}

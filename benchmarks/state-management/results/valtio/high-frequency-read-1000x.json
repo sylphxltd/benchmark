@@ -1,0 +1,15 @@
+{
+  "library": "Valtio",
+  "libraryId": "valtio",
+  "packageName": "valtio",
+  "test": "High-Frequency Read (1000x)",
+  "group": "01-basic-read",
+  "timestamp": "2025-11-13T03:08:00.569Z",
+  "result": {
+    "opsPerSecond": 141840.87326319813,
+    "meanTime": 0.007050153999999793,
+    "variance": 0.00004616902138428386,
+    "p99": 0.013833999999974367,
+    "samples": 1000
+  }
+}

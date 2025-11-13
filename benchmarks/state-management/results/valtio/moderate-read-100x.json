@@ -1,0 +1,15 @@
+{
+  "library": "Valtio",
+  "libraryId": "valtio",
+  "packageName": "valtio",
+  "test": "Moderate Read (100x)",
+  "group": "01-basic-read",
+  "timestamp": "2025-11-13T03:08:00.569Z",
+  "result": {
+    "opsPerSecond": 160673.13043957713,
+    "meanTime": 0.006223816000000454,
+    "variance": 0.0005925595277201548,
+    "p99": 0.012249999999994543,
+    "samples": 1000
+  }
+}

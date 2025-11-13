@@ -1,0 +1,15 @@
+{
+  "library": "Jotai",
+  "libraryId": "jotai",
+  "packageName": "jotai",
+  "test": "Computed Value Access",
+  "group": "03-advanced-operations",
+  "timestamp": "2025-11-13T03:08:00.569Z",
+  "result": {
+    "opsPerSecond": 211705.22418694553,
+    "meanTime": 0.004723548999985724,
+    "variance": 0.00005052725057363193,
+    "p99": 0.013290999999298947,
+    "samples": 1000
+  }
+}

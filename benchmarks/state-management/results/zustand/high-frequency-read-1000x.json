@@ -1,0 +1,15 @@
+{
+  "library": "Zustand",
+  "libraryId": "zustand",
+  "packageName": "zustand",
+  "test": "High-Frequency Read (1000x)",
+  "group": "01-basic-read",
+  "timestamp": "2025-11-13T03:08:00.569Z",
+  "result": {
+    "opsPerSecond": 973479.4980349791,
+    "meanTime": 0.0010272430000000555,
+    "variance": 2.6775704795138486e-7,
+    "p99": 0.002333000000021457,
+    "samples": 1000
+  }
+}

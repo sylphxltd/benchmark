@@ -1,0 +1,15 @@
+{
+  "library": "Valtio",
+  "libraryId": "valtio",
+  "packageName": "valtio",
+  "test": "Concurrent Updates (50x)",
+  "group": "04-async-operations",
+  "timestamp": "2025-11-13T03:08:00.569Z",
+  "result": {
+    "opsPerSecond": 49616.95709121658,
+    "meanTime": 0.020154400000015813,
+    "variance": 0.0013998833109810985,
+    "p99": 0.02733299999999872,
+    "samples": 1000
+  }
+}

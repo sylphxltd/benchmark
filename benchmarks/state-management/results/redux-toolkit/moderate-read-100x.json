@@ -1,0 +1,15 @@
+{
+  "library": "Redux Toolkit",
+  "libraryId": "redux-toolkit",
+  "packageName": "@reduxjs/toolkit",
+  "test": "Moderate Read (100x)",
+  "group": "01-basic-read",
+  "timestamp": "2025-11-13T03:08:00.569Z",
+  "result": {
+    "opsPerSecond": 105161.66028808884,
+    "meanTime": 0.009509168999999758,
+    "variance": 0.00042369549422241324,
+    "p99": 0.01762500000000955,
+    "samples": 1000
+  }
+}

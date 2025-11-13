@@ -1,0 +1,15 @@
+{
+  "library": "Redux Toolkit",
+  "libraryId": "redux-toolkit",
+  "packageName": "@reduxjs/toolkit",
+  "test": "Concurrent Updates (50x)",
+  "group": "04-async-operations",
+  "timestamp": "2025-11-13T03:08:00.569Z",
+  "result": {
+    "opsPerSecond": 5250.391264407264,
+    "meanTime": 0.19046199600000546,
+    "variance": 0.0036296479319303113,
+    "p99": 0.6348330000000715,
+    "samples": 1000
+  }
+}

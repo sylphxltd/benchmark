@@ -1,0 +1,15 @@
+{
+  "library": "Jotai",
+  "libraryId": "jotai",
+  "packageName": "jotai",
+  "test": "Complex Form (nested + array)",
+  "group": "05-real-world",
+  "timestamp": "2025-11-13T03:08:00.569Z",
+  "result": {
+    "opsPerSecond": 148527.98371195424,
+    "meanTime": 0.006732737999994242,
+    "variance": 0.000002121801977369257,
+    "p99": 0.013332999999875028,
+    "samples": 1000
+  }
+}

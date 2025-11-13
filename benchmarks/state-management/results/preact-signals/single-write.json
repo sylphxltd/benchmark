@@ -1,0 +1,15 @@
+{
+  "library": "Preact Signals",
+  "libraryId": "preact-signals",
+  "packageName": "@preact/signals",
+  "test": "Single Write",
+  "group": "02-basic-write",
+  "timestamp": "2025-11-13T03:08:00.569Z",
+  "result": {
+    "opsPerSecond": 1686064.8426794568,
+    "meanTime": 0.000593097000000796,
+    "variance": 2.3777887959152325e-7,
+    "p99": 0.002957999999978256,
+    "samples": 1000
+  }
+}

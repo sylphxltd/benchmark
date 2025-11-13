@@ -1,0 +1,15 @@
+{
+  "library": "Redux Toolkit",
+  "libraryId": "redux-toolkit",
+  "packageName": "@reduxjs/toolkit",
+  "test": "Nested Object Update",
+  "group": "03-advanced-operations",
+  "timestamp": "2025-11-13T03:08:00.569Z",
+  "result": {
+    "opsPerSecond": 67208.25769048427,
+    "meanTime": 0.014879123999990043,
+    "variance": 0.00021786351347293035,
+    "p99": 0.022582999999940512,
+    "samples": 1000
+  }
+}

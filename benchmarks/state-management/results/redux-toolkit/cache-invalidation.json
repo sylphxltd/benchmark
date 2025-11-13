@@ -1,0 +1,15 @@
+{
+  "library": "Redux Toolkit",
+  "libraryId": "redux-toolkit",
+  "packageName": "@reduxjs/toolkit",
+  "test": "Cache Invalidation",
+  "group": "05-real-world",
+  "timestamp": "2025-11-13T03:08:00.569Z",
+  "result": {
+    "opsPerSecond": 64202.530735341235,
+    "meanTime": 0.01557571000000371,
+    "variance": 0.0003127338770153395,
+    "p99": 0.023874999999861757,
+    "samples": 1000
+  }
+}

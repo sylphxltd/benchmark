@@ -1,0 +1,15 @@
+{
+  "library": "Zustand",
+  "libraryId": "zustand",
+  "packageName": "zustand",
+  "test": "Async Throughput (20 ops)",
+  "group": "04-async-operations",
+  "timestamp": "2025-11-13T03:08:00.569Z",
+  "result": {
+    "opsPerSecond": 288529.00986048096,
+    "meanTime": 0.0034658560000034415,
+    "variance": 1.7780858127581475e-7,
+    "p99": 0.005292000000736152,
+    "samples": 1000
+  }
+}

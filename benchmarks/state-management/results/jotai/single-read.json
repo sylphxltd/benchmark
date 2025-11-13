@@ -1,0 +1,15 @@
+{
+  "library": "Jotai",
+  "libraryId": "jotai",
+  "packageName": "jotai",
+  "test": "Single Read",
+  "group": "01-basic-read",
+  "timestamp": "2025-11-13T03:08:00.569Z",
+  "result": {
+    "opsPerSecond": 260821.82348361984,
+    "meanTime": 0.003834034999999922,
+    "variance": 0.000002100573579774952,
+    "p99": 0.009208000000000993,
+    "samples": 1000
+  }
+}

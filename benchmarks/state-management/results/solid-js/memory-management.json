@@ -1,0 +1,15 @@
+{
+  "library": "Solid Signals",
+  "libraryId": "solid-js",
+  "packageName": "solid-js",
+  "test": "Memory Management",
+  "group": "05-real-world",
+  "timestamp": "2025-11-13T03:08:00.569Z",
+  "result": {
+    "opsPerSecond": 1221144.3588317335,
+    "meanTime": 0.0008189039999797387,
+    "variance": 4.1768850279617444e-7,
+    "p99": 0.0035410000000410946,
+    "samples": 1000
+  }
+}

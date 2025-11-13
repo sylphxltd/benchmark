@@ -1,0 +1,15 @@
+{
+  "library": "Zustand",
+  "libraryId": "zustand",
+  "packageName": "zustand",
+  "test": "Single Read",
+  "group": "01-basic-read",
+  "timestamp": "2025-11-13T03:08:00.569Z",
+  "result": {
+    "opsPerSecond": 1837046.6168947949,
+    "meanTime": 0.0005443520000000461,
+    "variance": 7.843927840961872e-7,
+    "p99": 0.0037920000000042364,
+    "samples": 1000
+  }
+}

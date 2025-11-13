@@ -1,0 +1,15 @@
+{
+  "library": "MobX",
+  "libraryId": "mobx",
+  "packageName": "mobx",
+  "test": "Concurrent Updates (50x)",
+  "group": "04-async-operations",
+  "timestamp": "2025-11-13T03:08:00.569Z",
+  "result": {
+    "opsPerSecond": 49331.0706815002,
+    "meanTime": 0.020271200000023783,
+    "variance": 0.00044264196692175254,
+    "p99": 0.03162499999962165,
+    "samples": 1000
+  }
+}

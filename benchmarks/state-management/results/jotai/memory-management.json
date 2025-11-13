@@ -1,0 +1,15 @@
+{
+  "library": "Jotai",
+  "libraryId": "jotai",
+  "packageName": "jotai",
+  "test": "Memory Management",
+  "group": "05-real-world",
+  "timestamp": "2025-11-13T03:08:00.569Z",
+  "result": {
+    "opsPerSecond": 13886.800854080288,
+    "meanTime": 0.07201082600001246,
+    "variance": 0.002000466323357141,
+    "p99": 0.09612499999911961,
+    "samples": 1000
+  }
+}

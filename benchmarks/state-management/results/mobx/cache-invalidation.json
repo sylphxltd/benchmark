@@ -1,0 +1,15 @@
+{
+  "library": "MobX",
+  "libraryId": "mobx",
+  "packageName": "mobx",
+  "test": "Cache Invalidation",
+  "group": "05-real-world",
+  "timestamp": "2025-11-13T03:08:00.569Z",
+  "result": {
+    "opsPerSecond": 91451.29733743708,
+    "meanTime": 0.01093478199997753,
+    "variance": 0.0011402244575993829,
+    "p99": 0.01900000000023283,
+    "samples": 1000
+  }
+}

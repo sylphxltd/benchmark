@@ -1,0 +1,15 @@
+{
+  "library": "MobX",
+  "libraryId": "mobx",
+  "packageName": "mobx",
+  "test": "Array Update",
+  "group": "03-advanced-operations",
+  "timestamp": "2025-11-13T03:08:00.569Z",
+  "result": {
+    "opsPerSecond": 82326.5618089768,
+    "meanTime": 0.012146747999999206,
+    "variance": 0.0014575624307590644,
+    "p99": 0.018332999999984168,
+    "samples": 1000
+  }
+}

@@ -1,0 +1,15 @@
+{
+  "library": "Solid Signals",
+  "libraryId": "solid-js",
+  "packageName": "solid-js",
+  "test": "Computed Value Access",
+  "group": "03-advanced-operations",
+  "timestamp": "2025-11-13T03:08:00.569Z",
+  "result": {
+    "opsPerSecond": 885353.7696599718,
+    "meanTime": 0.001129491999999118,
+    "variance": 0.0004441653879506396,
+    "p99": 0.002082999999402091,
+    "samples": 1000
+  }
+}

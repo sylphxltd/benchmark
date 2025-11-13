@@ -1,0 +1,15 @@
+{
+  "library": "Redux Toolkit",
+  "libraryId": "redux-toolkit",
+  "packageName": "@reduxjs/toolkit",
+  "test": "Complex Form (nested + array)",
+  "group": "05-real-world",
+  "timestamp": "2025-11-13T03:08:00.569Z",
+  "result": {
+    "opsPerSecond": 41843.30819218451,
+    "meanTime": 0.02389868400000887,
+    "variance": 0.0008304495033214691,
+    "p99": 0.03316699999959383,
+    "samples": 1000
+  }
+}

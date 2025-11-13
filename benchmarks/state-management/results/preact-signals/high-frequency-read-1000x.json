@@ -1,0 +1,15 @@
+{
+  "library": "Preact Signals",
+  "libraryId": "preact-signals",
+  "packageName": "@preact/signals",
+  "test": "High-Frequency Read (1000x)",
+  "group": "01-basic-read",
+  "timestamp": "2025-11-13T03:08:00.569Z",
+  "result": {
+    "opsPerSecond": 812624.9410847834,
+    "meanTime": 0.0012305799999998612,
+    "variance": 0.0000015039991335979287,
+    "p99": 0.0035839999999893735,
+    "samples": 1000
+  }
+}

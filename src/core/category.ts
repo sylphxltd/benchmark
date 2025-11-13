@@ -173,8 +173,13 @@ export class Category {
     const baseDir = process.cwd();
     const resultsDir = join(baseDir, 'results');
 
-    // Ensure results directory exists
-    mkdirSync(resultsDir, { recursive: true });
+    // Helper function to slugify test names for filenames
+    const slugify = (str: string): string => {
+      return str
+        .toLowerCase()
+        .replace(/[^a-z0-9]+/g, '-')
+        .replace(/^-+|-+$/g, '');
+    };
 
     // Group results by library
     const resultsByLibrary = new Map<string, any[]>();
@@ -186,34 +191,46 @@ export class Category {
       resultsByLibrary.get(result.library)!.push(result);
     }
 
-    // Save per-library result files
+    let totalFiles = 0;
+
+    // Save per-test files organized by library folders
     for (const [libraryId, libResults] of resultsByLibrary) {
       const library = this.getLibrary(libraryId);
       if (!library) continue;
 
-      const libraryFile = join(resultsDir, `${libraryId}-benchmark.json`);
+      // Create library directory
+      const libraryDir = join(resultsDir, libraryId);
+      mkdirSync(libraryDir, { recursive: true });
 
-      const libraryData = {
-        library: library.displayName,
-        libraryId: libraryId,
-        version: library.packageName, // TODO: Get actual version
-        timestamp: results.timestamp,
-        results: libResults.map((r) => ({
-          test: r.test,
-          group: r.group,
-          opsPerSecond: r.result.opsPerSecond,
-          meanTime: r.result.meanTime,
-          variance: r.result.variance,
-          p99: r.result.p99,
-          samples: r.result.samples,
-        })),
-      };
+      // Save each test result as a separate file
+      for (const result of libResults) {
+        const testSlug = slugify(result.test);
+        const testFile = join(libraryDir, `${testSlug}.json`);
 
-      writeFileSync(libraryFile, JSON.stringify(libraryData, null, 2));
-      console.log(`  ✓ Saved ${libraryId}-benchmark.json`);
+        const testData = {
+          library: library.displayName,
+          libraryId: libraryId,
+          packageName: library.packageName,
+          test: result.test,
+          group: result.group,
+          timestamp: results.timestamp,
+          result: {
+            opsPerSecond: result.result.opsPerSecond,
+            meanTime: result.result.meanTime,
+            variance: result.result.variance,
+            p99: result.result.p99,
+            samples: result.result.samples,
+          },
+        };
+
+        writeFileSync(testFile, JSON.stringify(testData, null, 2));
+        totalFiles++;
+      }
+
+      console.log(`  ✓ Saved ${libResults.length} test results for ${libraryId}`);
     }
 
-    console.log(`\n✓ Saved results for ${resultsByLibrary.size} libraries`);
+    console.log(`\n✓ Saved ${totalFiles} test result files for ${resultsByLibrary.size} libraries`);
   }
 
   toString(): string {

@@ -1,0 +1,15 @@
+{
+  "library": "Redux Toolkit",
+  "libraryId": "redux-toolkit",
+  "packageName": "@reduxjs/toolkit",
+  "test": "Array Update",
+  "group": "03-advanced-operations",
+  "timestamp": "2025-11-13T03:08:00.569Z",
+  "result": {
+    "opsPerSecond": 40547.53608638093,
+    "meanTime": 0.024662411000008433,
+    "variance": 0.0004046123146483386,
+    "p99": 0.046459000000140804,
+    "samples": 1000
+  }
+}

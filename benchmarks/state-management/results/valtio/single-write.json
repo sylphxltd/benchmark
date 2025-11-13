@@ -1,0 +1,15 @@
+{
+  "library": "Valtio",
+  "libraryId": "valtio",
+  "packageName": "valtio",
+  "test": "Single Write",
+  "group": "02-basic-write",
+  "timestamp": "2025-11-13T03:08:00.569Z",
+  "result": {
+    "opsPerSecond": 160579.11251137836,
+    "meanTime": 0.006227459999999326,
+    "variance": 0.0007057246780023964,
+    "p99": 0.014375000000029559,
+    "samples": 1000
+  }
+}

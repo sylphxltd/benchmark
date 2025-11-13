@@ -1,0 +1,15 @@
+{
+  "library": "Solid Signals",
+  "libraryId": "solid-js",
+  "packageName": "solid-js",
+  "test": "Heavy Write (1000x)",
+  "group": "02-basic-write",
+  "timestamp": "2025-11-13T03:08:00.569Z",
+  "result": {
+    "opsPerSecond": 233212.21845465174,
+    "meanTime": 0.004287939999998116,
+    "variance": 0.00020870401625857935,
+    "p99": 0.012749999999869033,
+    "samples": 1000
+  }
+}

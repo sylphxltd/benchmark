@@ -1,0 +1,15 @@
+{
+  "library": "Preact Signals",
+  "libraryId": "preact-signals",
+  "packageName": "@preact/signals",
+  "test": "Memory Management",
+  "group": "05-real-world",
+  "timestamp": "2025-11-13T03:08:00.569Z",
+  "result": {
+    "opsPerSecond": 117138.84162323055,
+    "meanTime": 0.008536878000009893,
+    "variance": 0.0005061196140356751,
+    "p99": 0.015167000000474218,
+    "samples": 1000
+  }
+}

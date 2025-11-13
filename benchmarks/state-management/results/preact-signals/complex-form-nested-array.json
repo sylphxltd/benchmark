@@ -1,0 +1,15 @@
+{
+  "library": "Preact Signals",
+  "libraryId": "preact-signals",
+  "packageName": "@preact/signals",
+  "test": "Complex Form (nested + array)",
+  "group": "05-real-world",
+  "timestamp": "2025-11-13T03:08:00.569Z",
+  "result": {
+    "opsPerSecond": 2252074.723887846,
+    "meanTime": 0.0004440349999904356,
+    "variance": 2.553326077844946e-7,
+    "p99": 0.0017090000001189765,
+    "samples": 1000
+  }
+}

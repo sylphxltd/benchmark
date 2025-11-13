@@ -1,0 +1,15 @@
+{
+  "library": "Solid Signals",
+  "libraryId": "solid-js",
+  "packageName": "solid-js",
+  "test": "Concurrent Updates (50x)",
+  "group": "04-async-operations",
+  "timestamp": "2025-11-13T03:08:00.569Z",
+  "result": {
+    "opsPerSecond": 141581.43346352456,
+    "meanTime": 0.007063073000017539,
+    "variance": 0.000014841508241624189,
+    "p99": 0.02041700000063429,
+    "samples": 1000
+  }
+}

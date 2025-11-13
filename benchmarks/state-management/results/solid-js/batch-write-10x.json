@@ -1,0 +1,15 @@
+{
+  "library": "Solid Signals",
+  "libraryId": "solid-js",
+  "packageName": "solid-js",
+  "test": "Batch Write (10x)",
+  "group": "02-basic-write",
+  "timestamp": "2025-11-13T03:08:00.569Z",
+  "result": {
+    "opsPerSecond": 1841576.5368421345,
+    "meanTime": 0.0005430129999998599,
+    "variance": 0.0000015516990168318123,
+    "p99": 0.0014170000000035543,
+    "samples": 1000
+  }
+}

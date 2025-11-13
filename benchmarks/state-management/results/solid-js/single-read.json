@@ -1,0 +1,15 @@
+{
+  "library": "Solid Signals",
+  "libraryId": "solid-js",
+  "packageName": "solid-js",
+  "test": "Single Read",
+  "group": "01-basic-read",
+  "timestamp": "2025-11-13T03:08:00.569Z",
+  "result": {
+    "opsPerSecond": 1233479.0894457332,
+    "meanTime": 0.0008107150000000019,
+    "variance": 4.5536659377485696e-7,
+    "p99": 0.0031250000000042633,
+    "samples": 1000
+  }
+}

@@ -1,0 +1,15 @@
+{
+  "library": "Solid Signals",
+  "libraryId": "solid-js",
+  "packageName": "solid-js",
+  "test": "Simple Form (3 fields)",
+  "group": "05-real-world",
+  "timestamp": "2025-11-13T03:08:00.569Z",
+  "result": {
+    "opsPerSecond": 2329449.364746563,
+    "meanTime": 0.0004292860000023211,
+    "variance": 4.3845975818947544e-7,
+    "p99": 0.002207999999882304,
+    "samples": 1000
+  }
+}

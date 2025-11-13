@@ -1,0 +1,15 @@
+{
+  "library": "MobX",
+  "libraryId": "mobx",
+  "packageName": "mobx",
+  "test": "Moderate Read (100x)",
+  "group": "01-basic-read",
+  "timestamp": "2025-11-13T03:08:00.569Z",
+  "result": {
+    "opsPerSecond": 101424.10601496675,
+    "meanTime": 0.009859589,
+    "variance": 0.000004122871544077545,
+    "p99": 0.020666000000005624,
+    "samples": 1000
+  }
+}

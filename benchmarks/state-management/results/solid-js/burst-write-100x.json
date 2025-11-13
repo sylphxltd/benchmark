@@ -1,0 +1,15 @@
+{
+  "library": "Solid Signals",
+  "libraryId": "solid-js",
+  "packageName": "solid-js",
+  "test": "Burst Write (100x)",
+  "group": "02-basic-write",
+  "timestamp": "2025-11-13T03:08:00.569Z",
+  "result": {
+    "opsPerSecond": 716291.3300098083,
+    "meanTime": 0.00139607999999987,
+    "variance": 0.00022475432398964292,
+    "p99": 0.0027499999999918145,
+    "samples": 1000
+  }
+}

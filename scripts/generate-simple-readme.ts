@@ -78,21 +78,69 @@ try {
   console.warn('⚠️  No versions.json found, bundle sizes will not be displayed');
 }
 
-// Load all library results
-const resultFiles = readdirSync(resultsPath)
-  .filter(f => f.endsWith('-benchmark.json'))
+// Load all library results from new folder structure
+// results/zen/*.json, results/solid-js/*.json, etc.
+const libraryDirs = readdirSync(resultsPath, { withFileTypes: true })
+  .filter(dirent => dirent.isDirectory())
+  .map(dirent => dirent.name)
   .sort();
 
-if (resultFiles.length === 0) {
+if (libraryDirs.length === 0) {
   console.error('❌ No benchmark results found');
   process.exit(1);
 }
 
-const libraries: LibraryBenchmark[] = resultFiles.map(file =>
-  JSON.parse(readFileSync(join(resultsPath, file), 'utf-8'))
-);
+// Load results for each library
+const libraries: LibraryBenchmark[] = [];
 
-console.log(`📊 Loaded ${libraries.length} libraries\n`);
+for (const libraryId of libraryDirs) {
+  const libraryDir = join(resultsPath, libraryId);
+  const testFiles = readdirSync(libraryDir)
+    .filter(f => f.endsWith('.json'))
+    .sort();
+
+  if (testFiles.length === 0) {
+    console.warn(`⚠️  No test results found for ${libraryId}`);
+    continue;
+  }
+
+  // Load all test results for this library
+  const testResults: BenchmarkResult[] = [];
+  let libraryName = '';
+  let packageName = '';
+  let timestamp = '';
+
+  for (const testFile of testFiles) {
+    const testData = JSON.parse(readFileSync(join(libraryDir, testFile), 'utf-8'));
+
+    // Capture library metadata from first test file
+    if (!libraryName) {
+      libraryName = testData.library;
+      packageName = testData.packageName;
+      timestamp = testData.timestamp;
+    }
+
+    testResults.push({
+      test: testData.test,
+      group: testData.group,
+      opsPerSecond: testData.result.opsPerSecond,
+      meanTime: testData.result.meanTime,
+      variance: testData.result.variance,
+      p99: testData.result.p99,
+      samples: testData.result.samples,
+    });
+  }
+
+  libraries.push({
+    library: libraryName,
+    libraryId: libraryId,
+    version: packageName,
+    timestamp: timestamp,
+    results: testResults,
+  });
+}
+
+console.log(`📊 Loaded ${libraries.length} libraries with ${libraries.reduce((sum, lib) => sum + lib.results.length, 0)} test results\n`);
 
 // Group results by group and test
 const groupedByGroup = new Map<string, Map<string, Map<string, BenchmarkResult>>>();

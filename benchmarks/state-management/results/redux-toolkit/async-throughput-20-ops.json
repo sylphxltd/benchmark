@@ -1,0 +1,15 @@
+{
+  "library": "Redux Toolkit",
+  "libraryId": "redux-toolkit",
+  "packageName": "@reduxjs/toolkit",
+  "test": "Async Throughput (20 ops)",
+  "group": "04-async-operations",
+  "timestamp": "2025-11-13T03:08:00.569Z",
+  "result": {
+    "opsPerSecond": 11146.385457927201,
+    "meanTime": 0.08971518199999173,
+    "variance": 0.002041073586192835,
+    "p99": 0.13562499999989086,
+    "samples": 1000
+  }
+}

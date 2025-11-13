@@ -1,0 +1,15 @@
+{
+  "library": "Valtio",
+  "libraryId": "valtio",
+  "packageName": "valtio",
+  "test": "Cache Invalidation",
+  "group": "05-real-world",
+  "timestamp": "2025-11-13T03:08:00.569Z",
+  "result": {
+    "opsPerSecond": 155123.96964718102,
+    "meanTime": 0.006446457000000919,
+    "variance": 0.0007057941285558132,
+    "p99": 0.011457999999947788,
+    "samples": 1000
+  }
+}

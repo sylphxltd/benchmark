@@ -1,0 +1,15 @@
+{
+  "library": "Valtio",
+  "libraryId": "valtio",
+  "packageName": "valtio",
+  "test": "Heavy Write (1000x)",
+  "group": "02-basic-write",
+  "timestamp": "2025-11-13T03:08:00.569Z",
+  "result": {
+    "opsPerSecond": 9110.582814732605,
+    "meanTime": 0.10976246200000651,
+    "variance": 0.0016350743139505958,
+    "p99": 0.1647499999999127,
+    "samples": 1000
+  }
+}

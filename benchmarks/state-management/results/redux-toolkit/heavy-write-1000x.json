@@ -1,0 +1,15 @@
+{
+  "library": "Redux Toolkit",
+  "libraryId": "redux-toolkit",
+  "packageName": "@reduxjs/toolkit",
+  "test": "Heavy Write (1000x)",
+  "group": "02-basic-write",
+  "timestamp": "2025-11-13T03:08:00.569Z",
+  "result": {
+    "opsPerSecond": 323.7307350433467,
+    "meanTime": 3.088986901000001,
+    "variance": 0.09401733925424947,
+    "p99": 3.9385409999995318,
+    "samples": 1000
+  }
+}

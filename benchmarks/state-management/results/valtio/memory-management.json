@@ -1,0 +1,15 @@
+{
+  "library": "Valtio",
+  "libraryId": "valtio",
+  "packageName": "valtio",
+  "test": "Memory Management",
+  "group": "05-real-world",
+  "timestamp": "2025-11-13T03:08:00.569Z",
+  "result": {
+    "opsPerSecond": 59855.01439570829,
+    "meanTime": 0.016707038000005923,
+    "variance": 0.0011367499247349156,
+    "p99": 0.03404199999931734,
+    "samples": 1000
+  }
+}

@@ -1,0 +1,15 @@
+{
+  "library": "Zen",
+  "libraryId": "zen",
+  "packageName": "@sylphx/zen",
+  "test": "Complex Form (nested + array)",
+  "group": "05-real-world",
+  "timestamp": "2025-11-13T03:08:00.569Z",
+  "result": {
+    "opsPerSecond": 2206151.633161155,
+    "meanTime": 0.0004532780000108687,
+    "variance": 2.580825947239865e-7,
+    "p99": 0.001540999999633641,
+    "samples": 1000
+  }
+}

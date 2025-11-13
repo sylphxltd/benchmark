@@ -1,0 +1,15 @@
+{
+  "library": "MobX",
+  "libraryId": "mobx",
+  "packageName": "mobx",
+  "test": "Nested Object Update",
+  "group": "03-advanced-operations",
+  "timestamp": "2025-11-13T03:08:00.569Z",
+  "result": {
+    "opsPerSecond": 120576.10781998705,
+    "meanTime": 0.00829351700000916,
+    "variance": 0.0000023971250937380577,
+    "p99": 0.014708999999129446,
+    "samples": 1000
+  }
+}

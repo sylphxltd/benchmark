@@ -1,0 +1,15 @@
+{
+  "library": "Zustand",
+  "libraryId": "zustand",
+  "packageName": "zustand",
+  "test": "Concurrent Updates (50x)",
+  "group": "04-async-operations",
+  "timestamp": "2025-11-13T03:08:00.569Z",
+  "result": {
+    "opsPerSecond": 90951.15168266483,
+    "meanTime": 0.010994912999992267,
+    "variance": 0.000002138891137463268,
+    "p99": 0.016000000000531145,
+    "samples": 1000
+  }
+}

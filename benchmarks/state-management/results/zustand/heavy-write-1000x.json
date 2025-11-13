@@ -1,0 +1,15 @@
+{
+  "library": "Zustand",
+  "libraryId": "zustand",
+  "packageName": "zustand",
+  "test": "Heavy Write (1000x)",
+  "group": "02-basic-write",
+  "timestamp": "2025-11-13T03:08:00.569Z",
+  "result": {
+    "opsPerSecond": 11935.46760022937,
+    "meanTime": 0.0837838980000065,
+    "variance": 0.0008871048690334675,
+    "p99": 0.1898750000000291,
+    "samples": 1000
+  }
+}

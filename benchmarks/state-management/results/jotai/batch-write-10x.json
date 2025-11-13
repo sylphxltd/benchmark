@@ -1,0 +1,15 @@
+{
+  "library": "Jotai",
+  "libraryId": "jotai",
+  "packageName": "jotai",
+  "test": "Batch Write (10x)",
+  "group": "02-basic-write",
+  "timestamp": "2025-11-13T03:08:00.569Z",
+  "result": {
+    "opsPerSecond": 61366.30356634038,
+    "meanTime": 0.01629558799999978,
+    "variance": 0.0002999458352462551,
+    "p99": 0.027040999999996984,
+    "samples": 1000
+  }
+}

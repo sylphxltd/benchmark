@@ -1,0 +1,15 @@
+{
+  "library": "MobX",
+  "libraryId": "mobx",
+  "packageName": "mobx",
+  "test": "Computed Value Access",
+  "group": "03-advanced-operations",
+  "timestamp": "2025-11-13T03:08:00.569Z",
+  "result": {
+    "opsPerSecond": 91128.34570892897,
+    "meanTime": 0.01097353399999247,
+    "variance": 0.0023862978923901022,
+    "p99": 0.020332999999482126,
+    "samples": 1000
+  }
+}

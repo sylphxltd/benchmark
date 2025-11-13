@@ -1,0 +1,15 @@
+{
+  "library": "Zen",
+  "libraryId": "zen",
+  "packageName": "@sylphx/zen",
+  "test": "Single Read",
+  "group": "01-basic-read",
+  "timestamp": "2025-11-13T03:08:00.569Z",
+  "result": {
+    "opsPerSecond": 1362009.9998774983,
+    "meanTime": 0.0007342089999999573,
+    "variance": 5.139612053188471e-7,
+    "p99": 0.0033330000000049154,
+    "samples": 1000
+  }
+}

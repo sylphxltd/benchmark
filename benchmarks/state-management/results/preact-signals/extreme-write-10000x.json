@@ -1,0 +1,15 @@
+{
+  "library": "Preact Signals",
+  "libraryId": "preact-signals",
+  "packageName": "@preact/signals",
+  "test": "Extreme Write (10000x)",
+  "group": "06-performance-stress",
+  "timestamp": "2025-11-13T03:08:00.569Z",
+  "result": {
+    "opsPerSecond": 25749.644905956735,
+    "meanTime": 0.03883548700000392,
+    "variance": 0.00032649198364432684,
+    "p99": 0.0465409999997064,
+    "samples": 1000
+  }
+}

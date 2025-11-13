@@ -1,0 +1,15 @@
+{
+  "library": "MobX",
+  "libraryId": "mobx",
+  "packageName": "mobx",
+  "test": "Extreme Write (10000x)",
+  "group": "06-performance-stress",
+  "timestamp": "2025-11-13T03:08:00.569Z",
+  "result": {
+    "opsPerSecond": 1581.7775155548175,
+    "meanTime": 0.6322001610000407,
+    "variance": 0.0036721693345300537,
+    "p99": 0.9123749999998836,
+    "samples": 1000
+  }
+}

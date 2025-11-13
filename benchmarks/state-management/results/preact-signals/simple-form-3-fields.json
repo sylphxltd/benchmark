@@ -1,0 +1,15 @@
+{
+  "library": "Preact Signals",
+  "libraryId": "preact-signals",
+  "packageName": "@preact/signals",
+  "test": "Simple Form (3 fields)",
+  "group": "05-real-world",
+  "timestamp": "2025-11-13T03:08:00.569Z",
+  "result": {
+    "opsPerSecond": 2558932.208871119,
+    "meanTime": 0.00039078799998424073,
+    "variance": 5.507818705652343e-8,
+    "p99": 0.001291000000492204,
+    "samples": 1000
+  }
+}

@@ -1,0 +1,15 @@
+{
+  "library": "Zustand",
+  "libraryId": "zustand",
+  "packageName": "zustand",
+  "test": "Complex Form (nested + array)",
+  "group": "05-real-world",
+  "timestamp": "2025-11-13T03:08:00.569Z",
+  "result": {
+    "opsPerSecond": 1713898.862799582,
+    "meanTime": 0.0005834650000097099,
+    "variance": 8.98717687694514e-8,
+    "p99": 0.0024159999993571546,
+    "samples": 1000
+  }
+}

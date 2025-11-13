@@ -1,0 +1,15 @@
+{
+  "library": "Valtio",
+  "libraryId": "valtio",
+  "packageName": "valtio",
+  "test": "Nested Object Update",
+  "group": "03-advanced-operations",
+  "timestamp": "2025-11-13T03:08:00.569Z",
+  "result": {
+    "opsPerSecond": 174176.7319045398,
+    "meanTime": 0.005741295000000719,
+    "variance": 0.0008706977865012286,
+    "p99": 0.007582999999613094,
+    "samples": 1000
+  }
+}

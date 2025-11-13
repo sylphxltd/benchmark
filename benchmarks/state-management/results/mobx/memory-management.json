@@ -1,0 +1,15 @@
+{
+  "library": "MobX",
+  "libraryId": "mobx",
+  "packageName": "mobx",
+  "test": "Memory Management",
+  "group": "05-real-world",
+  "timestamp": "2025-11-13T03:08:00.569Z",
+  "result": {
+    "opsPerSecond": 15878.53025974189,
+    "meanTime": 0.06297812099998827,
+    "variance": 0.002761952137226475,
+    "p99": 0.11337499999990541,
+    "samples": 1000
+  }
+}

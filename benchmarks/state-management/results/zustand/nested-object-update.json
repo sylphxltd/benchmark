@@ -1,0 +1,15 @@
+{
+  "library": "Zustand",
+  "libraryId": "zustand",
+  "packageName": "zustand",
+  "test": "Nested Object Update",
+  "group": "03-advanced-operations",
+  "timestamp": "2025-11-13T03:08:00.569Z",
+  "result": {
+    "opsPerSecond": 2211405.98976505,
+    "meanTime": 0.00045220100001006357,
+    "variance": 7.9920936593735e-8,
+    "p99": 0.0013330000001587905,
+    "samples": 1000
+  }
+}

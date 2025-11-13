@@ -1,0 +1,15 @@
+{
+  "library": "Solid Signals",
+  "libraryId": "solid-js",
+  "packageName": "solid-js",
+  "test": "Complex Form (nested + array)",
+  "group": "05-real-world",
+  "timestamp": "2025-11-13T03:08:00.569Z",
+  "result": {
+    "opsPerSecond": 1119036.3754077572,
+    "meanTime": 0.0008936259999909453,
+    "variance": 0.00022805620199466036,
+    "p99": 0.001833999999689695,
+    "samples": 1000
+  }
+}

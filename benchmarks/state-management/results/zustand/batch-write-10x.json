@@ -1,0 +1,15 @@
+{
+  "library": "Zustand",
+  "libraryId": "zustand",
+  "packageName": "zustand",
+  "test": "Batch Write (10x)",
+  "group": "02-basic-write",
+  "timestamp": "2025-11-13T03:08:00.569Z",
+  "result": {
+    "opsPerSecond": 732014.5846582919,
+    "meanTime": 0.0013660930000005465,
+    "variance": 8.889252635101771e-8,
+    "p99": 0.002250000000003638,
+    "samples": 1000
+  }
+}
