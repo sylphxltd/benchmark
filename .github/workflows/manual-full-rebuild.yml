@@ -122,18 +122,20 @@ jobs:
           # Add all changes
           git add benchmarks/ README.md
 
-          # Create detailed commit message
-          COMMIT_MSG="chore: manual full rebuild of all benchmarks
+          # Create detailed commit message using heredoc
+          cat > /tmp/commit_msg.txt <<EOF
+          chore: manual full rebuild of all benchmarks
 
-Triggered by: @${{ github.actor }}
-Reason: ${{ github.event.inputs.reason || 'Manual trigger' }}
+          Triggered by: @${{ github.actor }}
+          Reason: ${{ github.event.inputs.reason || 'Manual trigger' }}
 
-Categories rebuilt:
-$(echo '${{ steps.categories.outputs.categories }}' | jq -r '.[]' | sed 's/^/  - /')
+          Categories rebuilt:
+          $(echo '${{ steps.categories.outputs.categories }}' | jq -r '.[]' | sed 's/^/  - /')
 
-All benchmark results, library versions, bundle sizes, and READMEs updated."
+          All benchmark results, library versions, bundle sizes, and READMEs updated.
+          EOF
 
-          git commit -m "$COMMIT_MSG" || echo "No changes to commit"
+          git commit -F /tmp/commit_msg.txt || echo "No changes to commit"
           git push || echo "Nothing to push"
 
       - name: Create summary
