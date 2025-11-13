@@ -4,12 +4,12 @@
   "packageName": "mobx",
   "test": "Concurrent Updates (50x)",
   "group": "04-async-operations",
-  "timestamp": "2025-11-13T21:07:44.415Z",
+  "timestamp": "2025-11-13T21:14:51.973Z",
   "result": {
-    "opsPerSecond": 101779.1918752366,
-    "meanTime": 0.009825191000001496,
-    "variance": 0.00018507447562404823,
-    "p99": 0.020875000000046384,
+    "opsPerSecond": 95436.91305103464,
+    "meanTime": 0.010478126000002249,
+    "variance": 0.0001818715817979333,
+    "p99": 0.018083000000046923,
     "samples": 1000
   }
 }

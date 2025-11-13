@@ -4,12 +4,12 @@
   "packageName": "valtio",
   "test": "High-Frequency Read (1000x)",
   "group": "01-basic-read",
-  "timestamp": "2025-11-13T21:07:44.415Z",
+  "timestamp": "2025-11-13T21:14:51.973Z",
   "result": {
-    "opsPerSecond": 26485155.070613436,
-    "meanTime": 0.00003775699999995652,
-    "variance": 1.0295533484487723e-8,
-    "p99": 0.00016700000000469117,
+    "opsPerSecond": 23643456.673415687,
+    "meanTime": 0.000042294999999910486,
+    "variance": 9.657225200217246e-9,
+    "p99": 0.00016699999999758575,
     "samples": 1000
   }
 }

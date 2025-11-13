@@ -284,14 +284,14 @@ solidJs.implement(tests.largeArray, (ctx) => {
 
 solidJs.implement(tests.diamondPattern, (ctx) => {
   ctx.store.setCounter((prev) => prev + 1);
-  const result = ctx.store.getDoubled();
+  const result = ctx.store.doubled();
 });
 
 solidJs.implement(tests.deepDiamondPattern, (ctx) => {
   for (let i = 0; i < 5; i++) {
     ctx.store.setCounter((prev) => prev + 1);
   }
-  const result = ctx.store.getDoubled();
+  const result = ctx.store.doubled();
 });
 
 solidJs.implement(tests.deepChain, (ctx) => {
@@ -332,6 +332,6 @@ solidJs.implement(tests.repeatedDiamonds, (ctx) => {
   for (let i = 0; i < 5; i++) {
     ctx.store.setCounter((prev) => prev + 1);
     const a = ctx.store.getCounter();
-    const b = ctx.store.getDoubled();
+    const b = ctx.store.doubled();
   }
 });

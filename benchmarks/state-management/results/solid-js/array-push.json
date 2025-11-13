@@ -4,12 +4,12 @@
   "packageName": "solid-js",
   "test": "Array Push",
   "group": "03-advanced-operations",
-  "timestamp": "2025-11-13T21:07:44.415Z",
+  "timestamp": "2025-11-13T21:14:51.973Z",
   "result": {
-    "opsPerSecond": 941030.3341130255,
-    "meanTime": 0.0010626649999997682,
-    "variance": 2.547138526273945e-7,
-    "p99": 0.0025419999999911624,
+    "opsPerSecond": 998536.1460099558,
+    "meanTime": 0.0010014659999999936,
+    "variance": 5.128621509950197e-7,
+    "p99": 0.0024590000000017653,
     "samples": 1000
   }
 }

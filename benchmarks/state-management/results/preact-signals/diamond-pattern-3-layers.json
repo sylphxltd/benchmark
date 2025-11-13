@@ -4,12 +4,12 @@
   "packageName": "@preact/signals",
   "test": "Diamond Pattern (3 layers)",
   "group": "07-reactivity-patterns",
-  "timestamp": "2025-11-13T21:08:42.068Z",
+  "timestamp": "2025-11-13T21:14:51.973Z",
   "result": {
-    "opsPerSecond": 0,
-    "meanTime": 0,
-    "variance": 0,
-    "p99": 0,
+    "opsPerSecond": 4862181.466187514,
+    "meanTime": 0.00020566900000630993,
+    "variance": 6.306891435102422e-8,
+    "p99": 0.00045899999986431794,
     "samples": 1000
   }
 }

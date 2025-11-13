@@ -4,12 +4,12 @@
   "packageName": "zustand",
   "test": "Concurrent Updates (50x)",
   "group": "04-async-operations",
-  "timestamp": "2025-11-13T21:07:44.415Z",
+  "timestamp": "2025-11-13T21:14:51.973Z",
   "result": {
-    "opsPerSecond": 102549.1566818629,
-    "meanTime": 0.00975142100000187,
-    "variance": 0.00000412949795770718,
-    "p99": 0.01416699999992943,
+    "opsPerSecond": 93040.21942603526,
+    "meanTime": 0.010748040000002106,
+    "variance": 0.000001518771063463036,
+    "p99": 0.014665999999920132,
     "samples": 1000
   }
 }

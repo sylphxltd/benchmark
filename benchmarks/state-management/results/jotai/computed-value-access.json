@@ -4,12 +4,12 @@
   "packageName": "jotai",
   "test": "Computed Value Access",
   "group": "03-advanced-operations",
-  "timestamp": "2025-11-13T21:07:44.415Z",
+  "timestamp": "2025-11-13T21:14:51.973Z",
   "result": {
-    "opsPerSecond": 1214239.139541181,
-    "meanTime": 0.000823561000000268,
-    "variance": 0.0000013894084767584242,
-    "p99": 0.0012499999999704414,
+    "opsPerSecond": 1918461.5473190905,
+    "meanTime": 0.0005212509999991539,
+    "variance": 9.30492868867634e-7,
+    "p99": 0.0019159999999942556,
     "samples": 1000
   }
 }

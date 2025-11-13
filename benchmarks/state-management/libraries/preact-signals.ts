@@ -255,55 +255,55 @@ preactSignals.implement(tests.largeArray, (ctx) => {
 // ========== REACTIVITY PATTERNS ==========
 
 preactSignals.implement(tests.diamondPattern, (ctx) => {
-  ctx.store.counter.value++;
-  const result = ctx.store.doubled.value;
+  ctx.store.counterSignal.value++;
+  const result = ctx.store.doubledSignal.value;
 });
 
 preactSignals.implement(tests.deepDiamondPattern, (ctx) => {
   for (let i = 0; i < 5; i++) {
-    ctx.store.counter.value++;
+    ctx.store.counterSignal.value++;
   }
-  const result = ctx.store.doubled.value;
+  const result = ctx.store.doubledSignal.value;
 });
 
 preactSignals.implement(tests.deepChain, (ctx) => {
   for (let i = 0; i < 10; i++) {
-    ctx.store.counter.value *= 2;
+    ctx.store.counterSignal.value *= 2;
   }
-  const result = ctx.store.counter.value;
+  const result = ctx.store.counterSignal.value;
 });
 
 preactSignals.implement(tests.veryDeepChain, (ctx) => {
   for (let i = 0; i < 100; i++) {
-    ctx.store.counter.value *= 1.01;
+    ctx.store.counterSignal.value *= 1.01;
   }
-  const result = ctx.store.counter.value;
+  const result = ctx.store.counterSignal.value;
 });
 
 preactSignals.implement(tests.wideFanout, (ctx) => {
-  ctx.store.counter.value++;
+  ctx.store.counterSignal.value++;
   for (let i = 0; i < 100; i++) {
-    const v = ctx.store.counter.value;
+    const v = ctx.store.counterSignal.value;
   }
 });
 
 preactSignals.implement(tests.massiveFanout, (ctx) => {
-  ctx.store.counter.value++;
+  ctx.store.counterSignal.value++;
   for (let i = 0; i < 1000; i++) {
-    const v = ctx.store.counter.value;
+    const v = ctx.store.counterSignal.value;
   }
 });
 
 preactSignals.implement(tests.dynamicDependencies, (ctx) => {
-  const toggle = ctx.store.counter.value % 2 === 0;
-  ctx.store.counter.value += toggle ? 1 : 2;
-  const result = ctx.store.counter.value;
+  const toggle = ctx.store.counterSignal.value % 2 === 0;
+  ctx.store.counterSignal.value += toggle ? 1 : 2;
+  const result = ctx.store.counterSignal.value;
 });
 
 preactSignals.implement(tests.repeatedDiamonds, (ctx) => {
   for (let i = 0; i < 5; i++) {
-    ctx.store.counter.value++;
-    const a = ctx.store.counter.value;
-    const b = ctx.store.doubled.value;
+    ctx.store.counterSignal.value++;
+    const a = ctx.store.counterSignal.value;
+    const b = ctx.store.doubledSignal.value;
   }
 });

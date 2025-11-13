@@ -4,12 +4,12 @@
   "packageName": "@sylphx/zen",
   "test": "Concurrent Updates (50x)",
   "group": "04-async-operations",
-  "timestamp": "2025-11-13T21:08:42.068Z",
+  "timestamp": "2025-11-13T21:14:51.973Z",
   "result": {
-    "opsPerSecond": 108029.21220557563,
-    "meanTime": 0.009467369000012694,
-    "variance": 0.000006610464397124925,
-    "p99": 0.015197409998836465,
+    "opsPerSecond": 148289.97927503407,
+    "meanTime": 0.00674354399999811,
+    "variance": 0.00000550218155761462,
+    "p99": 0.016541999999958534,
     "samples": 1000
   }
 }

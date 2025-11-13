@@ -4,12 +4,12 @@
   "packageName": "solid-js",
   "test": "Burst Write (100x)",
   "group": "02-basic-write",
-  "timestamp": "2025-11-13T21:07:44.415Z",
+  "timestamp": "2025-11-13T21:14:51.973Z",
   "result": {
-    "opsPerSecond": 6405001.024808516,
-    "meanTime": 0.00015612799999979642,
-    "variance": 6.409884921084372e-7,
-    "p99": 0.0017080000000078144,
+    "opsPerSecond": 20855057.35134584,
+    "meanTime": 0.00004795000000014227,
+    "variance": 2.6428349849823572e-8,
+    "p99": 0.0004160000000013042,
     "samples": 1000
   }
 }

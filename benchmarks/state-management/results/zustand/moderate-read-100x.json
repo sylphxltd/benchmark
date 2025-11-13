@@ -4,12 +4,12 @@
   "packageName": "zustand",
   "test": "Moderate Read (100x)",
   "group": "01-basic-read",
-  "timestamp": "2025-11-13T21:07:44.415Z",
+  "timestamp": "2025-11-13T21:14:51.973Z",
   "result": {
-    "opsPerSecond": 3761873.4129594597,
-    "meanTime": 0.00026582500000001374,
-    "variance": 7.148973216967617e-7,
-    "p99": 0.001624999999997101,
+    "opsPerSecond": 8852769.588992914,
+    "meanTime": 0.00011295899999965541,
+    "variance": 2.6117210400323207e-9,
+    "p99": 0.0002080000000006521,
     "samples": 1000
   }
 }
