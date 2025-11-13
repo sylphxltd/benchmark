@@ -4,12 +4,12 @@
   "packageName": "wouter",
   "test": "Simple Route Matching",
   "group": "01-basic-routes",
-  "timestamp": "2025-11-13T21:48:37.332Z",
+  "timestamp": "2025-11-13T22:05:52.918Z",
   "result": {
-    "opsPerSecond": 1300750.9565064216,
-    "meanTime": 0.000807506999992711,
-    "variance": 2.0057509103677658e-7,
-    "p99": 0.0013431000000218764,
+    "opsPerSecond": 1285430.8157819775,
+    "meanTime": 0.0008094150000006266,
+    "variance": 9.967825903619188e-8,
+    "p99": 0.0013528100002213243,
     "samples": 1000
   }
 }

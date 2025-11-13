@@ -4,12 +4,12 @@
   "packageName": "@sylphx/zen",
   "test": "Memory Management",
   "group": "05-real-world",
-  "timestamp": "2025-11-13T21:48:38.623Z",
+  "timestamp": "2025-11-13T22:05:46.613Z",
   "result": {
-    "opsPerSecond": 147907.29698906557,
-    "meanTime": 0.006865115999986301,
-    "variance": 0.0000014529337885224995,
-    "p99": 0.009518600002520543,
+    "opsPerSecond": 148774.88492350458,
+    "meanTime": 0.007230787000084092,
+    "variance": 0.00014701457354638725,
+    "p99": 0.0119342699989647,
     "samples": 1000
   }
 }

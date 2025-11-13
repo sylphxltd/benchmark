@@ -4,12 +4,12 @@
   "packageName": "mutative",
   "test": "Map - Large (100 items)",
   "group": "07-map-set",
-  "timestamp": "2025-11-13T21:48:34.501Z",
+  "timestamp": "2025-11-13T22:05:46.465Z",
   "result": {
-    "opsPerSecond": 60409.04867270564,
-    "meanTime": 0.018262979999963135,
-    "variance": 0.0006267357391443289,
-    "p99": 0.03202376000128423,
+    "opsPerSecond": 63477.941454251275,
+    "meanTime": 0.017285278000024846,
+    "variance": 0.0006113737771259788,
+    "p99": 0.030535549999513,
     "samples": 1000
   }
 }

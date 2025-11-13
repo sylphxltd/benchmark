@@ -4,12 +4,12 @@
   "packageName": "native",
   "test": "Large Array Update (1000 items)",
   "group": "05-large-scale",
-  "timestamp": "2025-11-13T21:48:34.501Z",
+  "timestamp": "2025-11-13T22:05:46.465Z",
   "result": {
-    "opsPerSecond": 110839.41256193197,
-    "meanTime": 0.01010906699998668,
-    "variance": 0.0004136268608249608,
-    "p99": 0.018219320000061993,
+    "opsPerSecond": 126763.8254935219,
+    "meanTime": 0.00893099199999051,
+    "variance": 0.00043802851184367105,
+    "p99": 0.01704440000310569,
     "samples": 1000
   }
 }
