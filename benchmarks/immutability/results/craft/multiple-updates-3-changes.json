@@ -4,12 +4,12 @@
   "packageName": "@sylphx/craft",
   "test": "Multiple Updates (3 changes)",
   "group": "04-deep-operations",
-  "timestamp": "2025-11-13T23:48:37.182Z",
+  "timestamp": "2025-11-13T23:51:41.936Z",
   "result": {
-    "opsPerSecond": 693897.9997695959,
-    "meanTime": 0.0014411340000000622,
-    "variance": 4.268481942387226e-7,
-    "p99": 0.0037090000000148393,
+    "opsPerSecond": 371610.86746783025,
+    "meanTime": 0.0027549999999901048,
+    "variance": 4.915941801964123e-7,
+    "p99": 0.004838420000742189,
     "samples": 1000
   }
 }
