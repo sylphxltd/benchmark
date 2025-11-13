@@ -1,0 +1,15 @@
+{
+  "library": "SolidJS Router",
+  "libraryId": "solidjs-router",
+  "packageName": "@solidjs/router",
+  "test": "Simple Route Matching",
+  "group": "01-basic-routes",
+  "timestamp": "2025-11-13T11:49:57.154Z",
+  "result": {
+    "opsPerSecond": 2455029.9881909927,
+    "meanTime": 0.00040732700000005196,
+    "variance": 6.879232607102035e-8,
+    "p99": 0.0017079999999936035,
+    "samples": 1000
+  }
+}

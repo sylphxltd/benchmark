@@ -1,0 +1,15 @@
+{
+  "library": "SolidJS Router",
+  "libraryId": "solidjs-router",
+  "packageName": "@solidjs/router",
+  "test": "Nested Dynamic Routes (2 params)",
+  "group": "02-dynamic-routes",
+  "timestamp": "2025-11-13T11:49:57.154Z",
+  "result": {
+    "opsPerSecond": 1682884.0593849747,
+    "meanTime": 0.0005942180000002253,
+    "variance": 2.3774362047580772e-7,
+    "p99": 0.0025420000000053733,
+    "samples": 1000
+  }
+}

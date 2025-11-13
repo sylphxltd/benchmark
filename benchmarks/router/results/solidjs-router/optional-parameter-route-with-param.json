@@ -1,0 +1,15 @@
+{
+  "library": "SolidJS Router",
+  "libraryId": "solidjs-router",
+  "packageName": "@solidjs/router",
+  "test": "Optional Parameter Route (with param)",
+  "group": "03-advanced-routes",
+  "timestamp": "2025-11-13T11:49:57.154Z",
+  "result": {
+    "opsPerSecond": 2227568.3863485386,
+    "meanTime": 0.00044892000000018584,
+    "variance": 1.5607753960025178e-7,
+    "p99": 0.0013329999999882602,
+    "samples": 1000
+  }
+}

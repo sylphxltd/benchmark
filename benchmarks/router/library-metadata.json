@@ -15,6 +15,10 @@
     "@sylphx/zen-router": {
       "github": "https://github.com/SylphxAI/zen-router",
       "displayName": "Zen Router"
+    },
+    "@solidjs/router": {
+      "github": "https://github.com/solidjs/solid-router",
+      "displayName": "SolidJS Router"
     }
   }
 }
