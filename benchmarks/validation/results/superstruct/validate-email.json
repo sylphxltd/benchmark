@@ -4,12 +4,12 @@
   "packageName": "superstruct",
   "test": "Validate Email",
   "group": "02-primitive-validation",
-  "timestamp": "2025-11-13T16:12:03.529Z",
+  "timestamp": "2025-11-13T16:55:43.707Z",
   "result": {
-    "opsPerSecond": 454859.92815941875,
-    "meanTime": 0.00214214300000026,
-    "variance": 0.0000023298916585535677,
-    "p99": 0.00686299999995299,
+    "opsPerSecond": 619940.3710885397,
+    "meanTime": 0.0017408999999979642,
+    "variance": 0.0000011314626446501417,
+    "p99": 0.004478420000086762,
     "samples": 1000
   }
 }

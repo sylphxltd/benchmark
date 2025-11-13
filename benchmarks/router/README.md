@@ -31,8 +31,8 @@ Comprehensive performance benchmarks for React router libraries.
 
 **TL;DR** - Choose based on your needs:
 
-- **⚡ Maximum Performance**: SolidJS Router - Fastest overall with 96.5/100 score
-- **⚖️ Best Balance**: Zen Router - Great performance (92.6/100) with good ecosystem
+- **⚡ Maximum Performance**: SolidJS Router - Fastest overall with 99.5/100 score
+- **⚖️ Best Balance**: Zen Router - Great performance (99.4/100) with good ecosystem
 - **🎯 Popular Choice**: Wouter - Widely used, good performance, minimal API
 
 <details>
@@ -41,25 +41,25 @@ Comprehensive performance benchmarks for React router libraries.
 ### When to Choose Each Library
 
 
-**SolidJS Router** (Score: 96.5/100)
+**SolidJS Router** (Score: 99.5/100)
 - Universal router for Solid with nested routing and data APIs
 - **Best for**: General purpose state management
 - [GitHub](https://github.com/solidjs/solid-router) • [npm](https://www.npmjs.com/package/@solidjs/router)
 
 
-**Zen Router** (Score: 92.6/100)
+**Zen Router** (Score: 99.4/100)
 - Tiny and fast router with regex-based matching
 - **Best for**: General purpose state management
 - [GitHub](https://github.com/SylphxAI/zen-router) • [npm](https://www.npmjs.com/package/@sylphx/zen-router)
 
 
-**Wouter** (Score: 16.9/100)
+**Wouter** (Score: 18.5/100)
 - Minimalist-friendly ~2.1KB routing for React and Preact
 - **Best for**: General purpose state management
 - [GitHub](https://github.com/molefrog/wouter) • [npm](https://www.npmjs.com/package/wouter)
 
 
-**React Router** (Score: 2.7/100)
+**React Router** (Score: 2.9/100)
 - Declarative routing for React
 - **Best for**: General purpose state management
 - [GitHub](https://github.com/remix-run/react-router) • [npm](https://www.npmjs.com/package/react-router-dom)
@@ -75,10 +75,10 @@ Based on geometric mean of normalized scores across all 9 tests.
 
 | Rank | Library | Overall Score | Relative Performance | Links |
 |:----:|---------|--------------|---------------------|:-----:|
-| 🥇 1 | **[SolidJS Router](https://github.com/solidjs/solid-router)** | 96.5/100 | 100% of fastest | [📦](https://www.npmjs.com/package/@solidjs/router) [📊](https://bundlephobia.com/package/@solidjs/router) |
-| 🥈 2 | **[Zen Router](https://github.com/SylphxAI/zen-router)** | 92.6/100 | 96% of fastest | [📦](https://www.npmjs.com/package/@sylphx/zen-router) [📊](https://bundlephobia.com/package/@sylphx/zen-router) |
-| 🥉 3 | **[Wouter](https://github.com/molefrog/wouter)** | 16.9/100 | 18% of fastest | [📦](https://www.npmjs.com/package/wouter) [📊](https://bundlephobia.com/package/wouter) |
-|  4 | **[React Router](https://github.com/remix-run/react-router)** | 2.7/100 | 3% of fastest | [📦](https://www.npmjs.com/package/react-router-dom) [📊](https://bundlephobia.com/package/react-router-dom) |
+| 🥇 1 | **[SolidJS Router](https://github.com/solidjs/solid-router)** | 99.5/100 | 100% of fastest | [📦](https://www.npmjs.com/package/@solidjs/router) [📊](https://bundlephobia.com/package/@solidjs/router) |
+| 🥈 2 | **[Zen Router](https://github.com/SylphxAI/zen-router)** | 99.4/100 | 100% of fastest | [📦](https://www.npmjs.com/package/@sylphx/zen-router) [📊](https://bundlephobia.com/package/@sylphx/zen-router) |
+| 🥉 3 | **[Wouter](https://github.com/molefrog/wouter)** | 18.5/100 | 19% of fastest | [📦](https://www.npmjs.com/package/wouter) [📊](https://bundlephobia.com/package/wouter) |
+|  4 | **[React Router](https://github.com/remix-run/react-router)** | 2.9/100 | 3% of fastest | [📦](https://www.npmjs.com/package/react-router-dom) [📊](https://bundlephobia.com/package/react-router-dom) |
 
 
 *📦 = npm package • 📊 = bundle size*
@@ -89,10 +89,10 @@ Based on geometric mean of normalized scores across all 9 tests.
 
 | Library | Score | Bundle Size (gzip) | Description | Best For |
 |---------|:-----:|:------------------:|-------------|----------|
-| **[SolidJS Router](https://github.com/solidjs/solid-router)** | **96.5** | **9.23 KB** | Universal router for Solid with nested routing and... | General purpose... |
-| **[Zen Router](https://github.com/SylphxAI/zen-router)** | **92.6** | **1.57 KB** | Tiny and fast router with regex-based matching... | General purpose... |
-| **[Wouter](https://github.com/molefrog/wouter)** | **16.9** | **2.49 KB** | Minimalist-friendly ~2.1KB routing for React and P... | General purpose... |
-| **[React Router](https://github.com/remix-run/react-router)** | **2.7** | **26.34 KB** | Declarative routing for React... | General purpose... |
+| **[SolidJS Router](https://github.com/solidjs/solid-router)** | **99.5** | **9.23 KB** | Universal router for Solid with nested routing and... | General purpose... |
+| **[Zen Router](https://github.com/SylphxAI/zen-router)** | **99.4** | **1.57 KB** | Tiny and fast router with regex-based matching... | General purpose... |
+| **[Wouter](https://github.com/molefrog/wouter)** | **18.5** | **2.49 KB** | Minimalist-friendly ~2.1KB routing for React and P... | General purpose... |
+| **[React Router](https://github.com/remix-run/react-router)** | **2.9** | **26.34 KB** | Declarative routing for React... | General purpose... |
 
 ---
 
@@ -106,152 +106,152 @@ Based on geometric mean of normalized scores across all 9 tests.
 #### Simple Route Matching
 
 ```
-🥇 Zen Router         ████████████████████████████████████████   1.4M ops/sec
-🥈 SolidJS Router     ██████████████████████████████████         1.1M ops/sec
-🥉 Wouter             ██████████                                 355K ops/sec
- React Router       █                                          35K ops/sec
+🥇 Zen Router         ████████████████████████████████████████   2.5M ops/sec
+🥈 SolidJS Router     ████████████████████████████████████████   2.5M ops/sec
+🥉 Wouter             █████████████                              853K ops/sec
+ React Router       █                                          47K ops/sec
 ```
 
 | Library | ops/sec | Mean Time | P99 | Samples |
 |---------|---------|-----------|-----|----------|
-| Zen Router | 1.4M | 0.001ms | 0.002ms | 1000 |
-| SolidJS Router | 1.1M | 0.001ms | 0.002ms | 1000 |
-| Wouter | 355K | 0.003ms | 0.008ms | 1000 |
-| React Router | 35K | 0.029ms | 0.068ms | 1000 |
+| Zen Router | 2.5M | 0.000ms | 0.001ms | 1000 |
+| SolidJS Router | 2.5M | 0.000ms | 0.001ms | 1000 |
+| Wouter | 853K | 0.001ms | 0.002ms | 1000 |
+| React Router | 47K | 0.023ms | 0.041ms | 1000 |
 
 #### Static Route Matching
 
 ```
-🥇 SolidJS Router     ████████████████████████████████████████   1.7M ops/sec
-🥈 Zen Router         ███████████████████████████████████████    1.7M ops/sec
-🥉 Wouter             ███████████                                494K ops/sec
- React Router       █                                          22K ops/sec
+🥇 SolidJS Router     ████████████████████████████████████████   2.6M ops/sec
+🥈 Zen Router         ███████████████████████████████████████    2.5M ops/sec
+🥉 Wouter             ██████████████████                         1.2M ops/sec
+ React Router       █                                          45K ops/sec
 ```
 
 | Library | ops/sec | Mean Time | P99 | Samples |
 |---------|---------|-----------|-----|----------|
-| SolidJS Router | 1.7M | 0.001ms | 0.003ms | 1000 |
-| Zen Router | 1.7M | 0.001ms | 0.004ms | 1000 |
-| Wouter | 494K | 0.002ms | 0.009ms | 1000 |
-| React Router | 22K | 0.044ms | 0.100ms | 1000 |
+| SolidJS Router | 2.6M | 0.000ms | 0.001ms | 1000 |
+| Zen Router | 2.5M | 0.000ms | 0.001ms | 1000 |
+| Wouter | 1.2M | 0.001ms | 0.002ms | 1000 |
+| React Router | 45K | 0.023ms | 0.048ms | 1000 |
 
 ### 02-dynamic-routes
 
 #### Dynamic Route Matching (1 param)
 
 ```
-🥇 SolidJS Router     ████████████████████████████████████████   994K ops/sec
-🥈 Zen Router         █████████████████████████████████████      916K ops/sec
-🥉 Wouter             ███████                                    167K ops/sec
- React Router       █                                          33K ops/sec
+🥇 SolidJS Router     ████████████████████████████████████████   1.6M ops/sec
+🥈 Zen Router         ████████████████████████████████████████   1.6M ops/sec
+🥉 Wouter             ███████                                    282K ops/sec
+ React Router       █                                          52K ops/sec
 ```
 
 | Library | ops/sec | Mean Time | P99 | Samples |
 |---------|---------|-----------|-----|----------|
-| SolidJS Router | 994K | 0.001ms | 0.004ms | 1000 |
-| Zen Router | 916K | 0.001ms | 0.006ms | 1000 |
-| Wouter | 167K | 0.006ms | 0.023ms | 1000 |
-| React Router | 33K | 0.030ms | 0.065ms | 1000 |
+| SolidJS Router | 1.6M | 0.001ms | 0.002ms | 1000 |
+| Zen Router | 1.6M | 0.001ms | 0.002ms | 1000 |
+| Wouter | 282K | 0.004ms | 0.008ms | 1000 |
+| React Router | 52K | 0.020ms | 0.041ms | 1000 |
 
 #### Nested Dynamic Routes (2 params)
 
 ```
-🥇 Zen Router         ████████████████████████████████████████   857K ops/sec
-🥈 SolidJS Router     ██████████████████████████████████████     817K ops/sec
-🥉 Wouter             █████████                                  196K ops/sec
- React Router       ██                                         46K ops/sec
+🥇 Zen Router         ████████████████████████████████████████   1.3M ops/sec
+🥈 SolidJS Router     ████████████████████████████████████████   1.3M ops/sec
+🥉 Wouter             ██████                                     196K ops/sec
+ React Router       ██                                         68K ops/sec
 ```
 
 | Library | ops/sec | Mean Time | P99 | Samples |
 |---------|---------|-----------|-----|----------|
-| Zen Router | 857K | 0.001ms | 0.006ms | 1000 |
-| SolidJS Router | 817K | 0.001ms | 0.006ms | 1000 |
-| Wouter | 196K | 0.005ms | 0.019ms | 1000 |
-| React Router | 46K | 0.022ms | 0.057ms | 1000 |
+| Zen Router | 1.3M | 0.001ms | 0.001ms | 1000 |
+| SolidJS Router | 1.3M | 0.001ms | 0.002ms | 1000 |
+| Wouter | 196K | 0.006ms | 0.011ms | 1000 |
+| React Router | 68K | 0.015ms | 0.036ms | 1000 |
 
 ### 03-advanced-routes
 
 #### Optional Parameter Route (with param)
 
 ```
-🥇 Zen Router         ████████████████████████████████████████   1.1M ops/sec
-🥈 SolidJS Router     ████████████████████████████████████████   1.1M ops/sec
-🥉 Wouter             ██████                                     164K ops/sec
- React Router       █                                          33K ops/sec
+🥇 SolidJS Router     ████████████████████████████████████████   1.1M ops/sec
+🥈 Zen Router         ████████████████████████████████████████   1.1M ops/sec
+🥉 Wouter             ███████                                    193K ops/sec
+ React Router       ██                                         52K ops/sec
 ```
 
 | Library | ops/sec | Mean Time | P99 | Samples |
 |---------|---------|-----------|-----|----------|
+| SolidJS Router | 1.1M | 0.001ms | 0.002ms | 1000 |
 | Zen Router | 1.1M | 0.001ms | 0.002ms | 1000 |
-| SolidJS Router | 1.1M | 0.001ms | 0.003ms | 1000 |
-| Wouter | 164K | 0.006ms | 0.016ms | 1000 |
-| React Router | 33K | 0.031ms | 0.069ms | 1000 |
+| Wouter | 193K | 0.005ms | 0.009ms | 1000 |
+| React Router | 52K | 0.021ms | 0.045ms | 1000 |
 
 #### Optional Parameter Route (without param)
 
 ```
-🥇 Zen Router         ████████████████████████████████████████   1.2M ops/sec
-🥈 SolidJS Router     █████████████████████████████████████      1.1M ops/sec
-🥉 Wouter             █████                                      144K ops/sec
- React Router       █                                          37K ops/sec
+🥇 SolidJS Router     ████████████████████████████████████████   1.3M ops/sec
+🥈 Zen Router         ████████████████████████████████████████   1.3M ops/sec
+🥉 Wouter             █████                                      155K ops/sec
+ React Router       █                                          46K ops/sec
 ```
 
 | Library | ops/sec | Mean Time | P99 | Samples |
 |---------|---------|-----------|-----|----------|
-| Zen Router | 1.2M | 0.001ms | 0.005ms | 1000 |
-| SolidJS Router | 1.1M | 0.001ms | 0.006ms | 1000 |
-| Wouter | 144K | 0.007ms | 0.023ms | 1000 |
-| React Router | 37K | 0.027ms | 0.065ms | 1000 |
+| SolidJS Router | 1.3M | 0.001ms | 0.001ms | 1000 |
+| Zen Router | 1.3M | 0.001ms | 0.001ms | 1000 |
+| Wouter | 155K | 0.007ms | 0.011ms | 1000 |
+| React Router | 46K | 0.022ms | 0.037ms | 1000 |
 
 #### Wildcard Route Matching
 
 ```
-🥇 SolidJS Router     ████████████████████████████████████████   1.4M ops/sec
-🥈 Zen Router         ███████████████████████████████████████    1.4M ops/sec
-🥉 Wouter             █████                                      168K ops/sec
- React Router       █                                          22K ops/sec
+🥇 SolidJS Router     ████████████████████████████████████████   1.5M ops/sec
+🥈 Zen Router         ████████████████████████████████████████   1.5M ops/sec
+🥉 Wouter             ███████                                    244K ops/sec
+ React Router       █                                          36K ops/sec
 ```
 
 | Library | ops/sec | Mean Time | P99 | Samples |
 |---------|---------|-----------|-----|----------|
-| SolidJS Router | 1.4M | 0.001ms | 0.002ms | 1000 |
-| Zen Router | 1.4M | 0.001ms | 0.003ms | 1000 |
-| Wouter | 168K | 0.006ms | 0.022ms | 1000 |
-| React Router | 22K | 0.045ms | 0.091ms | 1000 |
+| SolidJS Router | 1.5M | 0.001ms | 0.001ms | 1000 |
+| Zen Router | 1.5M | 0.001ms | 0.001ms | 1000 |
+| Wouter | 244K | 0.004ms | 0.008ms | 1000 |
+| React Router | 36K | 0.029ms | 0.045ms | 1000 |
 
 ### 04-real-world
 
 #### Mixed Route Matching (realistic usage)
 
 ```
-🥇 SolidJS Router     ████████████████████████████████████████   360K ops/sec
-🥈 Zen Router         ███████████████████████                    205K ops/sec
-🥉 Wouter             ████                                       39K ops/sec
+🥇 Zen Router         ████████████████████████████████████████   464K ops/sec
+🥈 SolidJS Router     ███████████████████████████████████████    453K ops/sec
+🥉 Wouter             █████                                      52K ops/sec
  React Router       █                                          7K ops/sec
 ```
 
 | Library | ops/sec | Mean Time | P99 | Samples |
 |---------|---------|-----------|-----|----------|
-| SolidJS Router | 360K | 0.003ms | 0.015ms | 1000 |
-| Zen Router | 205K | 0.005ms | 0.022ms | 1000 |
-| Wouter | 39K | 0.026ms | 0.063ms | 1000 |
-| React Router | 7K | 0.142ms | 0.264ms | 1000 |
+| Zen Router | 464K | 0.002ms | 0.004ms | 1000 |
+| SolidJS Router | 453K | 0.002ms | 0.005ms | 1000 |
+| Wouter | 52K | 0.019ms | 0.030ms | 1000 |
+| React Router | 7K | 0.147ms | 0.190ms | 1000 |
 
 #### Sequential Route Matching (worst case)
 
 ```
 🥇 Zen Router         ████████████████████████████████████████   1.1M ops/sec
-🥈 SolidJS Router     ████████████████████████████████████████   1.0M ops/sec
-🥉 Wouter             ███████                                    179K ops/sec
- React Router       ██                                         49K ops/sec
+🥈 SolidJS Router     ████████████████████████████████████████   1.1M ops/sec
+🥉 Wouter             ███████                                    195K ops/sec
+ React Router       ██                                         53K ops/sec
 ```
 
 | Library | ops/sec | Mean Time | P99 | Samples |
 |---------|---------|-----------|-----|----------|
-| Zen Router | 1.1M | 0.001ms | 0.003ms | 1000 |
-| SolidJS Router | 1.0M | 0.001ms | 0.003ms | 1000 |
-| Wouter | 179K | 0.006ms | 0.014ms | 1000 |
-| React Router | 49K | 0.020ms | 0.047ms | 1000 |
+| Zen Router | 1.1M | 0.001ms | 0.001ms | 1000 |
+| SolidJS Router | 1.1M | 0.001ms | 0.002ms | 1000 |
+| Wouter | 195K | 0.005ms | 0.010ms | 1000 |
+| React Router | 53K | 0.019ms | 0.033ms | 1000 |
 
 
 </details>
@@ -366,7 +366,7 @@ See [CONTRIBUTING.md](../../CONTRIBUTING.md) for detailed guidelines.
 
 **Found this useful? Give it a ⭐️!**
 
-*Generated on 2025-11-13T16:13:41.683Z*
+*Generated on 2025-11-13T16:56:57.520Z*
 
 [⬆️ Back to Top](#router-benchmarks) • [⬅️ Main README](../../README.md)
 

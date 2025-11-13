@@ -4,12 +4,12 @@
   "packageName": "@sylphx/zen-router",
   "test": "Dynamic Route Matching (1 param)",
   "group": "02-dynamic-routes",
-  "timestamp": "2025-11-13T16:12:10.815Z",
+  "timestamp": "2025-11-13T16:55:47.706Z",
   "result": {
-    "opsPerSecond": 915969.0036089524,
-    "meanTime": 0.001019259000001682,
-    "variance": 0.000001286569855920599,
-    "p99": 0.0055110000000127,
+    "opsPerSecond": 1565721.8150152382,
+    "meanTime": 0.000730922000001101,
+    "variance": 0.0000013215896315652015,
+    "p99": 0.0016040000001612488,
     "samples": 1000
   }
 }

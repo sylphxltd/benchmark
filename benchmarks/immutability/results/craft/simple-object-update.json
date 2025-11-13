@@ -4,12 +4,12 @@
   "packageName": "@sylphx/craft",
   "test": "Simple Object Update",
   "group": "01-simple-updates",
-  "timestamp": "2025-11-13T16:12:01.683Z",
+  "timestamp": "2025-11-13T16:55:45.452Z",
   "result": {
-    "opsPerSecond": 221349.80884230512,
-    "meanTime": 0.004366974999999982,
-    "variance": 0.000022008200548375107,
-    "p99": 0.026529000000010683,
+    "opsPerSecond": 1215778.0954586922,
+    "meanTime": 0.000854585000003226,
+    "variance": 2.2758290968883636e-7,
+    "p99": 0.0013531899998815787,
     "samples": 1000
   }
 }

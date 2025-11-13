@@ -4,12 +4,12 @@
   "packageName": "joi",
   "test": "Validate Nested Object",
   "group": "03-object-validation",
-  "timestamp": "2025-11-13T16:12:03.529Z",
+  "timestamp": "2025-11-13T16:55:43.707Z",
   "result": {
-    "opsPerSecond": 10222.898964503152,
-    "meanTime": 0.09762734799999771,
-    "variance": 0.0039283016970739024,
-    "p99": 0.19795999999996639,
+    "opsPerSecond": 11193.441330588894,
+    "meanTime": 0.09164301100004195,
+    "variance": 0.0015901022759687593,
+    "p99": 0.1284743099993284,
     "samples": 1000
   }
 }
