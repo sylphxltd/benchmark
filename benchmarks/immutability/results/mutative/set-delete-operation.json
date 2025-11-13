@@ -4,12 +4,12 @@
   "packageName": "mutative",
   "test": "Set - Delete Operation",
   "group": "07-map-set",
-  "timestamp": "2025-11-13T19:04:23.322Z",
+  "timestamp": "2025-11-13T20:04:46.019Z",
   "result": {
-    "opsPerSecond": 236345.73079556334,
-    "meanTime": 0.00436685799996485,
-    "variance": 0.0000016748973872911341,
-    "p99": 0.008587900000275112,
+    "opsPerSecond": 248023.07139160627,
+    "meanTime": 0.004137415999961377,
+    "variance": 0.0000013395808295635345,
+    "p99": 0.00713428999948519,
     "samples": 1000
   }
 }

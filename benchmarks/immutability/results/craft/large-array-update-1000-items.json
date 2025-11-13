@@ -4,12 +4,12 @@
   "packageName": "@sylphx/craft",
   "test": "Large Array Update (1000 items)",
   "group": "05-large-scale",
-  "timestamp": "2025-11-13T19:04:23.322Z",
+  "timestamp": "2025-11-13T20:04:46.019Z",
   "result": {
-    "opsPerSecond": 6556.927351403368,
-    "meanTime": 0.1558997529999906,
-    "variance": 0.0020833025777716022,
-    "p99": 0.2150673600006484,
+    "opsPerSecond": 6260.509145878385,
+    "meanTime": 0.16548906700003135,
+    "variance": 0.00519472656838085,
+    "p99": 0.22853687999999234,
     "samples": 1000
   }
 }
