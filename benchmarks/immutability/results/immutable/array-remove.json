@@ -1,0 +1,15 @@
+{
+  "library": "Immutable.js",
+  "libraryId": "immutable",
+  "packageName": "immutable",
+  "test": "Array Remove",
+  "group": "03-array-operations",
+  "timestamp": "2025-11-13T11:32:34.886Z",
+  "result": {
+    "opsPerSecond": 139485.460454068,
+    "meanTime": 0.0071692059999995195,
+    "variance": 0.00001910066965156524,
+    "p99": 0.02809199999995826,
+    "samples": 1000
+  }
+}

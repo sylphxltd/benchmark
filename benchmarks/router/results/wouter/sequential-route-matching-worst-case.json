@@ -1,0 +1,15 @@
+{
+  "library": "Wouter",
+  "libraryId": "wouter",
+  "packageName": "wouter",
+  "test": "Sequential Route Matching (worst case)",
+  "group": "04-real-world",
+  "timestamp": "2025-11-13T11:32:35.913Z",
+  "result": {
+    "opsPerSecond": 79374.59801728539,
+    "meanTime": 0.012598488999997584,
+    "variance": 0.00003233095832785327,
+    "p99": 0.03768999999999778,
+    "samples": 1000
+  }
+}

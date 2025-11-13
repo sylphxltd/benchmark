@@ -1,0 +1,15 @@
+{
+  "library": "Mutative",
+  "libraryId": "mutative",
+  "packageName": "mutative",
+  "test": "Set - Add Operation",
+  "group": "07-map-set",
+  "timestamp": "2025-11-13T11:32:34.886Z",
+  "result": {
+    "opsPerSecond": 87065.3989131075,
+    "meanTime": 0.011485619000011866,
+    "variance": 0.0015405969849745776,
+    "p99": 0.037369000000580854,
+    "samples": 1000
+  }
+}

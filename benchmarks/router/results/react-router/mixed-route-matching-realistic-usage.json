@@ -1,0 +1,15 @@
+{
+  "library": "React Router",
+  "libraryId": "react-router",
+  "packageName": "react-router-dom",
+  "test": "Mixed Route Matching (realistic usage)",
+  "group": "04-real-world",
+  "timestamp": "2025-11-13T11:32:35.913Z",
+  "result": {
+    "opsPerSecond": 6888.162085231785,
+    "meanTime": 0.14517660700000068,
+    "variance": 0.0014391858153125258,
+    "p99": 0.18908199999998487,
+    "samples": 1000
+  }
+}

@@ -1,0 +1,15 @@
+{
+  "library": "Tailwind CSS",
+  "libraryId": "tailwind",
+  "packageName": "tailwindcss",
+  "test": "Apply 100 inline styles",
+  "group": "01-style-application",
+  "timestamp": "2025-11-13T11:32:46.900Z",
+  "result": {
+    "opsPerSecond": 92973.93206190251,
+    "meanTime": 0.01075570299999999,
+    "variance": 0.000053839819732789796,
+    "p99": 0.023969000000001017,
+    "samples": 1000
+  }
+}

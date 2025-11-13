@@ -1,0 +1,15 @@
+{
+  "library": "Native Spread",
+  "libraryId": "native-spread",
+  "packageName": "native",
+  "test": "Array Remove",
+  "group": "03-array-operations",
+  "timestamp": "2025-11-13T11:32:34.886Z",
+  "result": {
+    "opsPerSecond": 906232.9798107592,
+    "meanTime": 0.0011034690000013257,
+    "variance": 0.0000011925980230389681,
+    "p99": 0.002544999999997799,
+    "samples": 1000
+  }
+}

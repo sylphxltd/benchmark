@@ -1,0 +1,15 @@
+{
+  "library": "Silk",
+  "libraryId": "silk",
+  "packageName": "@sylphx/silk",
+  "test": "String concatenation (complex className)",
+  "group": "01-style-application",
+  "timestamp": "2025-11-13T11:32:46.900Z",
+  "result": {
+    "opsPerSecond": 616338.5177674725,
+    "meanTime": 0.0016224850000000686,
+    "variance": 0.0000016887966557745471,
+    "p99": 0.006887000000006083,
+    "samples": 1000
+  }
+}

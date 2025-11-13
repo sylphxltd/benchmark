@@ -1,0 +1,15 @@
+{
+  "library": "Immutable.js",
+  "libraryId": "immutable",
+  "packageName": "immutable",
+  "test": "Array Push",
+  "group": "03-array-operations",
+  "timestamp": "2025-11-13T11:32:34.886Z",
+  "result": {
+    "opsPerSecond": 242203.11831672196,
+    "meanTime": 0.004128765999999757,
+    "variance": 0.000012513324239239668,
+    "p99": 0.020508000000006632,
+    "samples": 1000
+  }
+}

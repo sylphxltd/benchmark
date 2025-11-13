@@ -1,0 +1,15 @@
+{
+  "library": "Mutative",
+  "libraryId": "mutative",
+  "packageName": "mutative",
+  "test": "Simple Object Update",
+  "group": "01-simple-updates",
+  "timestamp": "2025-11-13T11:32:34.886Z",
+  "result": {
+    "opsPerSecond": 110239.04675855189,
+    "meanTime": 0.0090711960000001,
+    "variance": 0.00003497250722358372,
+    "p99": 0.03159899999999993,
+    "samples": 1000
+  }
+}

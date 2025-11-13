@@ -1,0 +1,15 @@
+{
+  "library": "Craft",
+  "libraryId": "craft",
+  "packageName": "@sylphx/craft",
+  "test": "Map - Large (100 items)",
+  "group": "07-map-set",
+  "timestamp": "2025-11-13T11:32:34.886Z",
+  "result": {
+    "opsPerSecond": 58270.063213028116,
+    "meanTime": 0.017161471000024905,
+    "variance": 0.00036543583700502166,
+    "p99": 0.03358300000036252,
+    "samples": 1000
+  }
+}

@@ -1,0 +1,15 @@
+{
+  "library": "Wouter",
+  "libraryId": "wouter",
+  "packageName": "wouter",
+  "test": "Wildcard Route Matching",
+  "group": "03-advanced-routes",
+  "timestamp": "2025-11-13T11:32:35.913Z",
+  "result": {
+    "opsPerSecond": 162921.08379664738,
+    "meanTime": 0.006137941000000751,
+    "variance": 0.0000050689139875198325,
+    "p99": 0.017713000000014745,
+    "samples": 1000
+  }
+}

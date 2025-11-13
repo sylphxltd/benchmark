@@ -1,0 +1,15 @@
+{
+  "library": "Native Spread",
+  "libraryId": "native-spread",
+  "packageName": "native",
+  "test": "Deep Nested Update (5 levels)",
+  "group": "04-deep-operations",
+  "timestamp": "2025-11-13T11:32:34.886Z",
+  "result": {
+    "opsPerSecond": 1165914.263329151,
+    "meanTime": 0.0008576959999996916,
+    "variance": 7.795871115824784e-7,
+    "p99": 0.0027760000000398577,
+    "samples": 1000
+  }
+}

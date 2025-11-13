@@ -1,0 +1,15 @@
+{
+  "library": "Wouter",
+  "libraryId": "wouter",
+  "packageName": "wouter",
+  "test": "Nested Dynamic Routes (2 params)",
+  "group": "02-dynamic-routes",
+  "timestamp": "2025-11-13T11:32:35.913Z",
+  "result": {
+    "opsPerSecond": 201531.11247391795,
+    "meanTime": 0.004962012999999786,
+    "variance": 0.0000038879157588307355,
+    "p99": 0.011690999999984797,
+    "samples": 1000
+  }
+}

@@ -1,0 +1,15 @@
+{
+  "library": "Tailwind CSS",
+  "libraryId": "tailwind",
+  "packageName": "tailwindcss",
+  "test": "Responsive breakpoint matching",
+  "group": "02-dynamic-updates",
+  "timestamp": "2025-11-13T11:32:46.900Z",
+  "result": {
+    "opsPerSecond": 370913.13993183686,
+    "meanTime": 0.0026960489999997604,
+    "variance": 0.00002284316235259933,
+    "p99": 0.03111300000000483,
+    "samples": 1000
+  }
+}

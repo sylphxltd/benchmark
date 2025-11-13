@@ -1,0 +1,15 @@
+{
+  "library": "Native Spread",
+  "libraryId": "native-spread",
+  "packageName": "native",
+  "test": "Nested Object Update",
+  "group": "02-nested-updates",
+  "timestamp": "2025-11-13T11:32:34.886Z",
+  "result": {
+    "opsPerSecond": 1026186.2199608197,
+    "meanTime": 0.0009744820000001369,
+    "variance": 6.466174176765328e-7,
+    "p99": 0.002293999999977814,
+    "samples": 1000
+  }
+}

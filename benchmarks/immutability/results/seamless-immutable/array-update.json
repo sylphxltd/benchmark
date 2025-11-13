@@ -1,0 +1,15 @@
+{
+  "library": "Seamless Immutable",
+  "libraryId": "seamless-immutable",
+  "packageName": "seamless-immutable",
+  "test": "Array Update",
+  "group": "03-array-operations",
+  "timestamp": "2025-11-13T11:32:34.886Z",
+  "result": {
+    "opsPerSecond": 37181.63365612996,
+    "meanTime": 0.026894999000000495,
+    "variance": 0.0013257393484390556,
+    "p99": 0.062415999999984706,
+    "samples": 1000
+  }
+}

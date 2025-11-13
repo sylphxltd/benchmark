@@ -1,0 +1,15 @@
+{
+  "library": "Zen Router",
+  "libraryId": "zen-router",
+  "packageName": "@sylphx/zen-router",
+  "test": "Dynamic Route Matching (1 param)",
+  "group": "02-dynamic-routes",
+  "timestamp": "2025-11-13T11:32:35.913Z",
+  "result": {
+    "opsPerSecond": 447972.476570959,
+    "meanTime": 0.002232280000000401,
+    "variance": 0.000003157716845595379,
+    "p99": 0.008605999999986125,
+    "samples": 1000
+  }
+}

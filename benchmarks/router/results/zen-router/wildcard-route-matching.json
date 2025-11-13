@@ -1,0 +1,15 @@
+{
+  "library": "Zen Router",
+  "libraryId": "zen-router",
+  "packageName": "@sylphx/zen-router",
+  "test": "Wildcard Route Matching",
+  "group": "03-advanced-routes",
+  "timestamp": "2025-11-13T11:32:35.913Z",
+  "result": {
+    "opsPerSecond": 1064266.8159477543,
+    "meanTime": 0.0009396140000000627,
+    "variance": 6.579500510037714e-7,
+    "p99": 0.002916000000027452,
+    "samples": 1000
+  }
+}

@@ -1,0 +1,15 @@
+{
+  "library": "Craft",
+  "libraryId": "craft",
+  "packageName": "@sylphx/craft",
+  "test": "Array Remove",
+  "group": "03-array-operations",
+  "timestamp": "2025-11-13T11:32:34.886Z",
+  "result": {
+    "opsPerSecond": 228313.1085970645,
+    "meanTime": 0.004379950000001258,
+    "variance": 0.00000390250404550107,
+    "p99": 0.011601000000041495,
+    "samples": 1000
+  }
+}

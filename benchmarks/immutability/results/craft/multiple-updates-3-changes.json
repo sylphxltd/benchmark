@@ -1,0 +1,15 @@
+{
+  "library": "Craft",
+  "libraryId": "craft",
+  "packageName": "@sylphx/craft",
+  "test": "Multiple Updates (3 changes)",
+  "group": "04-deep-operations",
+  "timestamp": "2025-11-13T11:32:34.886Z",
+  "result": {
+    "opsPerSecond": 191977.6384446201,
+    "meanTime": 0.005208940000001462,
+    "variance": 0.000008872020126399224,
+    "p99": 0.01884600000005321,
+    "samples": 1000
+  }
+}

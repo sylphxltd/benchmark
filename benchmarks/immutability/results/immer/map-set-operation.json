@@ -1,0 +1,15 @@
+{
+  "library": "Immer",
+  "libraryId": "immer",
+  "packageName": "immer",
+  "test": "Map - Set Operation",
+  "group": "07-map-set",
+  "timestamp": "2025-11-13T11:32:34.886Z",
+  "result": {
+    "opsPerSecond": 89796.99593137823,
+    "meanTime": 0.011136229999990064,
+    "variance": 0.0006104629072563678,
+    "p99": 0.03941399999985151,
+    "samples": 1000
+  }
+}

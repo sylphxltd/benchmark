@@ -1,0 +1,15 @@
+{
+  "library": "Immer",
+  "libraryId": "immer",
+  "packageName": "immer",
+  "test": "Large Array Update (1000 items)",
+  "group": "05-large-scale",
+  "timestamp": "2025-11-13T11:32:34.886Z",
+  "result": {
+    "opsPerSecond": 1572.99075956173,
+    "meanTime": 0.6357316430000022,
+    "variance": 0.04106734921872692,
+    "p99": 1.3595400000000382,
+    "samples": 1000
+  }
+}

@@ -1,0 +1,15 @@
+{
+  "library": "Immer",
+  "libraryId": "immer",
+  "packageName": "immer",
+  "test": "Map - Update Nested Value",
+  "group": "07-map-set",
+  "timestamp": "2025-11-13T11:32:34.886Z",
+  "result": {
+    "opsPerSecond": 80651.73700852055,
+    "meanTime": 0.012398989000005713,
+    "variance": 0.00005450834706695157,
+    "p99": 0.041828000000350585,
+    "samples": 1000
+  }
+}

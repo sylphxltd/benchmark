@@ -1,0 +1,15 @@
+{
+  "library": "Wouter",
+  "libraryId": "wouter",
+  "packageName": "wouter",
+  "test": "Simple Route Matching",
+  "group": "01-basic-routes",
+  "timestamp": "2025-11-13T11:32:35.913Z",
+  "result": {
+    "opsPerSecond": 216300.72549421483,
+    "meanTime": 0.004623193000001038,
+    "variance": 0.000007702533607747427,
+    "p99": 0.0181739999999877,
+    "samples": 1000
+  }
+}

@@ -1,0 +1,15 @@
+{
+  "library": "Immer",
+  "libraryId": "immer",
+  "packageName": "immer",
+  "test": "Multiple Updates (3 changes)",
+  "group": "04-deep-operations",
+  "timestamp": "2025-11-13T11:32:34.886Z",
+  "result": {
+    "opsPerSecond": 77040.51630089397,
+    "meanTime": 0.012980182999998873,
+    "variance": 0.00003233613565949798,
+    "p99": 0.037040999999931046,
+    "samples": 1000
+  }
+}

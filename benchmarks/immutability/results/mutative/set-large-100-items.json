@@ -1,0 +1,15 @@
+{
+  "library": "Mutative",
+  "libraryId": "mutative",
+  "packageName": "mutative",
+  "test": "Set - Large (100 items)",
+  "group": "07-map-set",
+  "timestamp": "2025-11-13T11:32:34.886Z",
+  "result": {
+    "opsPerSecond": 28146.517484870354,
+    "meanTime": 0.03552837399999953,
+    "variance": 0.0012272967193860196,
+    "p99": 0.0680160000001706,
+    "samples": 1000
+  }
+}

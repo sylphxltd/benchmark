@@ -1,0 +1,15 @@
+{
+  "library": "Craft",
+  "libraryId": "craft",
+  "packageName": "@sylphx/craft",
+  "test": "Nested Object Update",
+  "group": "02-nested-updates",
+  "timestamp": "2025-11-13T11:32:34.886Z",
+  "result": {
+    "opsPerSecond": 156693.4669949728,
+    "meanTime": 0.006381886999999068,
+    "variance": 0.000021935516132238324,
+    "p99": 0.02827300000001287,
+    "samples": 1000
+  }
+}

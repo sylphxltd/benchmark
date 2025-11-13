@@ -1,0 +1,15 @@
+{
+  "library": "Immer",
+  "libraryId": "immer",
+  "packageName": "immer",
+  "test": "Array Remove",
+  "group": "03-array-operations",
+  "timestamp": "2025-11-13T11:32:34.886Z",
+  "result": {
+    "opsPerSecond": 98592.35747537241,
+    "meanTime": 0.010142774000000883,
+    "variance": 0.00002452156608091395,
+    "p99": 0.03562600000003613,
+    "samples": 1000
+  }
+}

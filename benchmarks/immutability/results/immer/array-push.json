@@ -1,0 +1,15 @@
+{
+  "library": "Immer",
+  "libraryId": "immer",
+  "packageName": "immer",
+  "test": "Array Push",
+  "group": "03-array-operations",
+  "timestamp": "2025-11-13T11:32:34.886Z",
+  "result": {
+    "opsPerSecond": 100531.79307903376,
+    "meanTime": 0.009947101999999574,
+    "variance": 0.00003440602149559644,
+    "p99": 0.03613699999999653,
+    "samples": 1000
+  }
+}

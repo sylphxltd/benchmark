@@ -1,0 +1,15 @@
+{
+  "library": "Native Spread",
+  "libraryId": "native-spread",
+  "packageName": "native",
+  "test": "Large Array Update (1000 items)",
+  "group": "05-large-scale",
+  "timestamp": "2025-11-13T11:32:34.886Z",
+  "result": {
+    "opsPerSecond": 32828.093652239346,
+    "meanTime": 0.030461714000008213,
+    "variance": 0.0007536551237984157,
+    "p99": 0.07438899999942805,
+    "samples": 1000
+  }
+}

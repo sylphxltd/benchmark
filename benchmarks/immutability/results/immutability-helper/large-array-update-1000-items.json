@@ -1,0 +1,15 @@
+{
+  "library": "Immutability Helper",
+  "libraryId": "immutability-helper",
+  "packageName": "immutability-helper",
+  "test": "Large Array Update (1000 items)",
+  "group": "05-large-scale",
+  "timestamp": "2025-11-13T11:32:34.886Z",
+  "result": {
+    "opsPerSecond": 10076.16837656187,
+    "meanTime": 0.09924407400000336,
+    "variance": 0.0019183283408224887,
+    "p99": 0.17042700000001787,
+    "samples": 1000
+  }
+}

@@ -1,0 +1,15 @@
+{
+  "library": "Silk",
+  "libraryId": "silk",
+  "packageName": "@sylphx/silk",
+  "test": "Conditional styling (1000 iterations)",
+  "group": "01-style-application",
+  "timestamp": "2025-11-13T11:32:46.900Z",
+  "result": {
+    "opsPerSecond": 706385.7982547061,
+    "meanTime": 0.0014156570000001948,
+    "variance": 0.0000012307796733509802,
+    "p99": 0.005024000000005913,
+    "samples": 1000
+  }
+}

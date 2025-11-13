@@ -1,0 +1,15 @@
+{
+  "library": "Immutability Helper",
+  "libraryId": "immutability-helper",
+  "packageName": "immutability-helper",
+  "test": "Multiple Updates (3 changes)",
+  "group": "04-deep-operations",
+  "timestamp": "2025-11-13T11:32:34.886Z",
+  "result": {
+    "opsPerSecond": 123275.33187875553,
+    "meanTime": 0.008111923000000729,
+    "variance": 0.000012411176453082416,
+    "p99": 0.0282839999999851,
+    "samples": 1000
+  }
+}

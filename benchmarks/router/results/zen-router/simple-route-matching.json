@@ -1,0 +1,15 @@
+{
+  "library": "Zen Router",
+  "libraryId": "zen-router",
+  "packageName": "@sylphx/zen-router",
+  "test": "Simple Route Matching",
+  "group": "01-basic-routes",
+  "timestamp": "2025-11-13T11:32:35.913Z",
+  "result": {
+    "opsPerSecond": 545571.0000638689,
+    "meanTime": 0.001832942000001708,
+    "variance": 0.000002265341070633258,
+    "p99": 0.005239000000017313,
+    "samples": 1000
+  }
+}

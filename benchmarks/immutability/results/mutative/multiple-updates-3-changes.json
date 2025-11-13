@@ -1,0 +1,15 @@
+{
+  "library": "Mutative",
+  "libraryId": "mutative",
+  "packageName": "mutative",
+  "test": "Multiple Updates (3 changes)",
+  "group": "04-deep-operations",
+  "timestamp": "2025-11-13T11:32:34.886Z",
+  "result": {
+    "opsPerSecond": 68251.81973001036,
+    "meanTime": 0.014651624000001561,
+    "variance": 0.000048231086374664094,
+    "p99": 0.04370399999993424,
+    "samples": 1000
+  }
+}

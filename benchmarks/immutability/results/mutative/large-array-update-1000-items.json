@@ -1,0 +1,15 @@
+{
+  "library": "Mutative",
+  "libraryId": "mutative",
+  "packageName": "mutative",
+  "test": "Large Array Update (1000 items)",
+  "group": "05-large-scale",
+  "timestamp": "2025-11-13T11:32:34.886Z",
+  "result": {
+    "opsPerSecond": 34248.715887202314,
+    "meanTime": 0.02919817500000545,
+    "variance": 0.0010487634385444146,
+    "p99": 0.09896900000012465,
+    "samples": 1000
+  }
+}

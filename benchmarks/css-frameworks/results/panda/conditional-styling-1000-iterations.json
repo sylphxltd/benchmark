@@ -1,0 +1,15 @@
+{
+  "library": "Panda CSS",
+  "libraryId": "panda",
+  "packageName": "@pandacss/dev",
+  "test": "Conditional styling (1000 iterations)",
+  "group": "01-style-application",
+  "timestamp": "2025-11-13T11:32:46.900Z",
+  "result": {
+    "opsPerSecond": 419766.2909198801,
+    "meanTime": 0.0023822779999999283,
+    "variance": 0.0000024920830987149586,
+    "p99": 0.008968999999993343,
+    "samples": 1000
+  }
+}

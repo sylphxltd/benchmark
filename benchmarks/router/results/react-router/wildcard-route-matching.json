@@ -1,0 +1,15 @@
+{
+  "library": "React Router",
+  "libraryId": "react-router",
+  "packageName": "react-router-dom",
+  "test": "Wildcard Route Matching",
+  "group": "03-advanced-routes",
+  "timestamp": "2025-11-13T11:32:35.913Z",
+  "result": {
+    "opsPerSecond": 30557.333058642376,
+    "meanTime": 0.03272536900000097,
+    "variance": 0.0006487211018388476,
+    "p99": 0.06434999999999036,
+    "samples": 1000
+  }
+}

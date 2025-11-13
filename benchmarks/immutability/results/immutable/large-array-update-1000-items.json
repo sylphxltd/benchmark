@@ -1,0 +1,15 @@
+{
+  "library": "Immutable.js",
+  "libraryId": "immutable",
+  "packageName": "immutable",
+  "test": "Large Array Update (1000 items)",
+  "group": "05-large-scale",
+  "timestamp": "2025-11-13T11:32:34.886Z",
+  "result": {
+    "opsPerSecond": 1090.822798495801,
+    "meanTime": 0.9167391820000078,
+    "variance": 0.03691752224095823,
+    "p99": 1.8225179999999455,
+    "samples": 1000
+  }
+}

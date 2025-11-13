@@ -1,0 +1,15 @@
+{
+  "library": "UnoCSS",
+  "libraryId": "unocss",
+  "packageName": "unocss",
+  "test": "String concatenation (complex className)",
+  "group": "01-style-application",
+  "timestamp": "2025-11-13T11:32:46.900Z",
+  "result": {
+    "opsPerSecond": 777197.6429148911,
+    "meanTime": 0.0012866740000001614,
+    "variance": 8.466805177239575e-7,
+    "p99": 0.004138000000011743,
+    "samples": 1000
+  }
+}

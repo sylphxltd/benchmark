@@ -1,0 +1,15 @@
+{
+  "library": "Native Spread",
+  "libraryId": "native-spread",
+  "packageName": "native",
+  "test": "Multiple Updates (3 changes)",
+  "group": "04-deep-operations",
+  "timestamp": "2025-11-13T11:32:34.886Z",
+  "result": {
+    "opsPerSecond": 1752415.2663407626,
+    "meanTime": 0.0005706410000000233,
+    "variance": 1.837949721195263e-7,
+    "p99": 0.001422000000047774,
+    "samples": 1000
+  }
+}

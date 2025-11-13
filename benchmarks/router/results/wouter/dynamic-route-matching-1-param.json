@@ -1,0 +1,15 @@
+{
+  "library": "Wouter",
+  "libraryId": "wouter",
+  "packageName": "wouter",
+  "test": "Dynamic Route Matching (1 param)",
+  "group": "02-dynamic-routes",
+  "timestamp": "2025-11-13T11:32:35.913Z",
+  "result": {
+    "opsPerSecond": 147388.38830064953,
+    "meanTime": 0.006784794999997928,
+    "variance": 0.000011087255756970875,
+    "p99": 0.020717999999988024,
+    "samples": 1000
+  }
+}

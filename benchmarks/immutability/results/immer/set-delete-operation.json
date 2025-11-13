@@ -1,0 +1,15 @@
+{
+  "library": "Immer",
+  "libraryId": "immer",
+  "packageName": "immer",
+  "test": "Set - Delete Operation",
+  "group": "07-map-set",
+  "timestamp": "2025-11-13T11:32:34.886Z",
+  "result": {
+    "opsPerSecond": 147439.3254001331,
+    "meanTime": 0.006782451000003675,
+    "variance": 0.000013756004515577221,
+    "p99": 0.027079999999841675,
+    "samples": 1000
+  }
+}

@@ -1,0 +1,15 @@
+{
+  "library": "Immer",
+  "libraryId": "immer",
+  "packageName": "immer",
+  "test": "Map - Large (100 items)",
+  "group": "07-map-set",
+  "timestamp": "2025-11-13T11:32:34.886Z",
+  "result": {
+    "opsPerSecond": 10089.969534044318,
+    "meanTime": 0.0991083269999899,
+    "variance": 0.004155521968385068,
+    "p99": 0.2105409999994663,
+    "samples": 1000
+  }
+}

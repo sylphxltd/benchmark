@@ -1,0 +1,15 @@
+{
+  "library": "Seamless Immutable",
+  "libraryId": "seamless-immutable",
+  "packageName": "seamless-immutable",
+  "test": "Simple Object Update",
+  "group": "01-simple-updates",
+  "timestamp": "2025-11-13T11:32:34.886Z",
+  "result": {
+    "opsPerSecond": 111019.40907921286,
+    "meanTime": 0.009007433999999905,
+    "variance": 0.000024134023137646814,
+    "p99": 0.03149899999999661,
+    "samples": 1000
+  }
+}

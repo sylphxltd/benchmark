@@ -1,0 +1,15 @@
+{
+  "library": "Seamless Immutable",
+  "libraryId": "seamless-immutable",
+  "packageName": "seamless-immutable",
+  "test": "Large Array Update (1000 items)",
+  "group": "05-large-scale",
+  "timestamp": "2025-11-13T11:32:34.886Z",
+  "result": {
+    "opsPerSecond": 458.50305366426534,
+    "meanTime": 2.181010556000006,
+    "variance": 0.14427580119738187,
+    "p99": 3.7141759999994974,
+    "samples": 1000
+  }
+}

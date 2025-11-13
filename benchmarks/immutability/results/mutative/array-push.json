@@ -1,0 +1,15 @@
+{
+  "library": "Mutative",
+  "libraryId": "mutative",
+  "packageName": "mutative",
+  "test": "Array Push",
+  "group": "03-array-operations",
+  "timestamp": "2025-11-13T11:32:34.886Z",
+  "result": {
+    "opsPerSecond": 96022.83038814976,
+    "meanTime": 0.010414190000000361,
+    "variance": 0.0000382699006718884,
+    "p99": 0.03932299999996758,
+    "samples": 1000
+  }
+}

@@ -1,0 +1,15 @@
+{
+  "library": "Craft",
+  "libraryId": "craft",
+  "packageName": "@sylphx/craft",
+  "test": "Large Array Update (1000 items)",
+  "group": "05-large-scale",
+  "timestamp": "2025-11-13T11:32:34.886Z",
+  "result": {
+    "opsPerSecond": 5093.820092397036,
+    "meanTime": 0.19631631700000277,
+    "variance": 0.006854791504048463,
+    "p99": 0.4141230000000178,
+    "samples": 1000
+  }
+}

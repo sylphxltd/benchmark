@@ -1,0 +1,15 @@
+{
+  "library": "Mutative",
+  "libraryId": "mutative",
+  "packageName": "mutative",
+  "test": "Set - Delete Operation",
+  "group": "07-map-set",
+  "timestamp": "2025-11-13T11:32:34.886Z",
+  "result": {
+    "opsPerSecond": 94931.0971110437,
+    "meanTime": 0.010533956000005673,
+    "variance": 0.000033371209898088266,
+    "p99": 0.0411870000007184,
+    "samples": 1000
+  }
+}
