@@ -9,6 +9,8 @@
  * This allows comparison and validation of the hybrid system.
  */
 
+// Top-level await support
+const fs = await import('fs/promises');
 import { readFileSync, readdirSync } from 'fs';
 import { join } from 'path';
 import {
@@ -17,6 +19,7 @@ import {
 } from './calculate-test-weights';
 import {
   calculateHybridWeights,
+  loadCategoryWeights,
   type HybridTestWeight,
 } from './calculate-hybrid-weights';
 
@@ -44,6 +47,7 @@ interface LibraryBenchmark {
 
 const categoryPath = process.argv[2] || 'benchmarks/state-management';
 const resultsPath = join(categoryPath, 'results');
+const benchmarkDir = categoryPath;
 
 console.log(`\n📊 Dual Ranking Comparison: ${categoryPath}\n`);
 
@@ -96,8 +100,9 @@ console.log(`✓ Loaded ${libraries.length} libraries\n`);
 // 1. Pure Variance-Based Weights
 const varianceWeights = calculateTestWeights(libraries);
 
-// 2. Hybrid Weights
-const hybridWeights = calculateHybridWeights(libraries);
+// 2. Hybrid Weights (load category-specific config)
+const categoryWeights = await loadCategoryWeights(benchmarkDir);
+const hybridWeights = calculateHybridWeights(libraries, categoryWeights);
 
 // ========================================
 // Calculate Overall Scores
