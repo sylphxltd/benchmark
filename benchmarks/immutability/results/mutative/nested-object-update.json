@@ -4,12 +4,12 @@
   "packageName": "mutative",
   "test": "Nested Object Update",
   "group": "02-nested-updates",
-  "timestamp": "2025-11-13T20:06:05.265Z",
+  "timestamp": "2025-11-13T21:03:14.023Z",
   "result": {
-    "opsPerSecond": 517369.75586283806,
-    "meanTime": 0.0020309399999987364,
-    "variance": 6.753423547525818e-7,
-    "p99": 0.005340600000158701,
+    "opsPerSecond": 534714.6514756497,
+    "meanTime": 0.0019546340000019882,
+    "variance": 5.510526727281975e-7,
+    "p99": 0.004860210000124424,
     "samples": 1000
   }
 }

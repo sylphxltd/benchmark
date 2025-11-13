@@ -4,12 +4,12 @@
   "packageName": "@sylphx/zen-router",
   "test": "Optional Parameter Route (without param)",
   "group": "03-advanced-routes",
-  "timestamp": "2025-11-13T20:06:10.990Z",
+  "timestamp": "2025-11-13T21:03:09.541Z",
   "result": {
-    "opsPerSecond": 2150670.9506924683,
-    "meanTime": 0.0004801100000477163,
-    "variance": 1.1074195586139317e-7,
-    "p99": 0.000842189999475522,
+    "opsPerSecond": 2121191.852508607,
+    "meanTime": 0.0004968299999600276,
+    "variance": 2.0724587299209521e-7,
+    "p99": 0.0008810099999391241,
     "samples": 1000
   }
 }
