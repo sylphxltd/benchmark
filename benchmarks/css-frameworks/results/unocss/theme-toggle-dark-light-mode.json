@@ -4,12 +4,12 @@
   "packageName": "unocss",
   "test": "Theme toggle (dark/light mode)",
   "group": "02-dynamic-updates",
-  "timestamp": "2025-11-13T12:05:59.533Z",
+  "timestamp": "2025-11-13T12:08:59.349Z",
   "result": {
-    "opsPerSecond": 577910.7486198456,
-    "meanTime": 0.0017303709999998773,
-    "variance": 0.000002433513321358379,
-    "p99": 0.005380000000002383,
+    "opsPerSecond": 485267.7561898376,
+    "meanTime": 0.00206071799999998,
+    "variance": 0.000003291655206475964,
+    "p99": 0.007001999999999953,
     "samples": 1000
   }
 }

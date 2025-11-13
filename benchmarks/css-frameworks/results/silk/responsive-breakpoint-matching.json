@@ -4,12 +4,12 @@
   "packageName": "@sylphx/silk",
   "test": "Responsive breakpoint matching",
   "group": "02-dynamic-updates",
-  "timestamp": "2025-11-13T12:05:59.533Z",
+  "timestamp": "2025-11-13T12:08:59.349Z",
   "result": {
-    "opsPerSecond": 381367.0177022838,
-    "meanTime": 0.0026221460000000717,
-    "variance": 0.000014822936052685361,
-    "p99": 0.017642999999992526,
+    "opsPerSecond": 420130.8203347953,
+    "meanTime": 0.00238021100000023,
+    "variance": 0.000008253413510478704,
+    "p99": 0.016100000000008663,
     "samples": 1000
   }
 }

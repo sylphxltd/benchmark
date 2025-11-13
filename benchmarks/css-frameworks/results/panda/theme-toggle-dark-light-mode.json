@@ -4,12 +4,12 @@
   "packageName": "@pandacss/dev",
   "test": "Theme toggle (dark/light mode)",
   "group": "02-dynamic-updates",
-  "timestamp": "2025-11-13T12:05:59.533Z",
+  "timestamp": "2025-11-13T12:08:59.349Z",
   "result": {
-    "opsPerSecond": 686048.4501136782,
-    "meanTime": 0.001457622999999927,
-    "variance": 8.930219868709647e-7,
-    "p99": 0.0030459999999976617,
+    "opsPerSecond": 548939.3120143372,
+    "meanTime": 0.0018216950000000765,
+    "variance": 0.0000031834350719751134,
+    "p99": 0.006241000000002828,
     "samples": 1000
   }
 }

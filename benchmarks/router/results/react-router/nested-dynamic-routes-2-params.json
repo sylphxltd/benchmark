@@ -4,12 +4,12 @@
   "packageName": "react-router-dom",
   "test": "Nested Dynamic Routes (2 params)",
   "group": "02-dynamic-routes",
-  "timestamp": "2025-11-13T12:05:54.613Z",
+  "timestamp": "2025-11-13T12:08:44.852Z",
   "result": {
-    "opsPerSecond": 43194.72879174321,
-    "meanTime": 0.023150973000000703,
-    "variance": 0.00012794731688828674,
-    "p99": 0.06430199999999786,
+    "opsPerSecond": 44805.54327012553,
+    "meanTime": 0.022318666999999494,
+    "variance": 0.00010085853396012507,
+    "p99": 0.059431000000017775,
     "samples": 1000
   }
 }

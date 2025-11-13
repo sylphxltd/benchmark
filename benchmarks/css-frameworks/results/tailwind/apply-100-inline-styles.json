@@ -4,12 +4,12 @@
   "packageName": "tailwindcss",
   "test": "Apply 100 inline styles",
   "group": "01-style-application",
-  "timestamp": "2025-11-13T12:05:59.533Z",
+  "timestamp": "2025-11-13T12:08:59.349Z",
   "result": {
-    "opsPerSecond": 112963.2566674307,
-    "meanTime": 0.008852435999999969,
-    "variance": 0.000031083372513905885,
-    "p99": 0.022892999999996277,
+    "opsPerSecond": 89004.08786875223,
+    "meanTime": 0.011235438999999936,
+    "variance": 0.000022407120162279863,
+    "p99": 0.029806000000000665,
     "samples": 1000
   }
 }

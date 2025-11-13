@@ -4,12 +4,12 @@
   "packageName": "tailwindcss",
   "test": "Conditional styling (1000 iterations)",
   "group": "01-style-application",
-  "timestamp": "2025-11-13T12:05:59.533Z",
+  "timestamp": "2025-11-13T12:08:59.349Z",
   "result": {
-    "opsPerSecond": 498520.14295562485,
-    "meanTime": 0.0020059370000000457,
-    "variance": 0.0000042944343210312845,
-    "p99": 0.008656000000001995,
+    "opsPerSecond": 413127.54073435947,
+    "meanTime": 0.002420560000000094,
+    "variance": 0.0000028763093144010316,
+    "p99": 0.009146999999998684,
     "samples": 1000
   }
 }
