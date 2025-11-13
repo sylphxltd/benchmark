@@ -4,12 +4,12 @@
   "packageName": "immutable",
   "test": "Simple Object Update",
   "group": "01-simple-updates",
-  "timestamp": "2025-11-13T22:17:07.850Z",
+  "timestamp": "2025-11-13T23:00:08.362Z",
   "result": {
-    "opsPerSecond": 2825057.0357737537,
-    "meanTime": 0.00038531100000022887,
-    "variance": 1.5834082710611058e-7,
-    "p99": 0.0008710099999620979,
+    "opsPerSecond": 2902498.527946732,
+    "meanTime": 0.0003707149999986541,
+    "variance": 1.3201009987458906e-7,
+    "p99": 0.0008210099998609621,
     "samples": 1000
   }
 }

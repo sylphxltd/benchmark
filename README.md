@@ -31,38 +31,17 @@ Each category has its own detailed README with benchmark results, methodology, a
 
 ---
 
-## 🔬 Methodology
-
-Our benchmarks follow **professional-grade methodology** (88/100 credibility rating, Tier 2):
-
-- **Weighted Geometric Mean**: Following [krausest/js-framework-benchmark](https://github.com/krausest/js-framework-benchmark) standards
-- **Variance-Based Weighting**: Stable tests weighted higher, outliers weighted lower
-- **Automated Execution**: GitHub Actions with isolated process per library
-- **Reproducible**: All code open source, all calculations documented
-- **Transparent**: Raw data published, methodology peer-reviewed
-
-> 📖 **[Read the Methodology Analysis →](./BENCHMARK_METHODOLOGY_ANALYSIS.md)**
->
-> Comprehensive analysis of our scoring system, comparison with authoritative benchmarks (krausest, milomg), and credibility assessment.
-
-### Key Documents
-
-- **[⚡ Quick Reference](./QUICK_REFERENCE.md)** - 5-minute guide to methodology (START HERE!)
-- **[📊 Executive Summary](./EXECUTIVE_SUMMARY.md)** - Overview of methodology improvements and results
-- **[🔬 Full Methodology Analysis](./BENCHMARK_METHODOLOGY_ANALYSIS.md)** - Deep dive with credibility assessment
-- **[⚖️ Weighted Scoring](./WEIGHTED_SCORING_COMPARISON.md)** - Before/after comparison of scoring system
-- **[📈 Ranking Analysis](./RANKING_ANALYSIS.md)** - Why Solid Signals overtook Zen
-- **[🏗️ Architecture](./ARCHITECTURE.md)** - System design and cost optimization
-
----
-
 ## 🔬 How It Works
 
 - **Automated**: Runs hourly via GitHub Actions for per-library checks
 - **Smart Execution**: Only benchmarks libraries with new versions (75-85% cost reduction)
 - **Independent Results**: Each library tested and stored separately
-- **Comprehensive**: 28 tests across 7 categories for state management
-- **Professional Tools**: Tinybench (Vitest's benchmark engine)
+- **Comprehensive**: Multiple real-world test scenarios per category
+- **Transparent**: Open source, reproducible locally
+
+> 📖 **[Read the Architecture Documentation →](./ARCHITECTURE.md)**
+>
+> Learn about the per-library benchmark system, cost optimization strategies, and how to add new libraries.
 
 ---
 

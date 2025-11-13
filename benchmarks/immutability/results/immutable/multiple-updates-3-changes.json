@@ -4,12 +4,12 @@
   "packageName": "immutable",
   "test": "Multiple Updates (3 changes)",
   "group": "04-deep-operations",
-  "timestamp": "2025-11-13T22:17:07.850Z",
+  "timestamp": "2025-11-13T23:00:08.362Z",
   "result": {
-    "opsPerSecond": 259101.912413147,
-    "meanTime": 0.003950119999994058,
-    "variance": 8.453122740361638e-7,
-    "p99": 0.005861910001440264,
+    "opsPerSecond": 256882.11168990767,
+    "meanTime": 0.003959641000004922,
+    "variance": 5.579992754367006e-7,
+    "p99": 0.005360809999183402,
     "samples": 1000
   }
 }

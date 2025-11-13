@@ -4,12 +4,12 @@
   "packageName": "immutable",
   "test": "Deep Nested Update (5 levels)",
   "group": "04-deep-operations",
-  "timestamp": "2025-11-13T22:17:07.850Z",
+  "timestamp": "2025-11-13T23:00:08.362Z",
   "result": {
-    "opsPerSecond": 321315.32824880217,
-    "meanTime": 0.0032269199999536797,
-    "variance": 7.898105241358553e-7,
-    "p99": 0.005610410000153933,
+    "opsPerSecond": 340294.4807185272,
+    "meanTime": 0.0030261419999769714,
+    "variance": 6.257484703069817e-7,
+    "p99": 0.004769399999222514,
     "samples": 1000
   }
 }
