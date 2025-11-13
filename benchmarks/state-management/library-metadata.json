@@ -9,9 +9,10 @@
       "color": "#764ABC",
       "tradeoff": "Feature-rich, DevTools support, larger bundle",
       "bundleSize": {
-        "minified": 82628,
-        "gzipped": 18671,
-        "measuredAt": "2025-11-13T13:19:46.317Z"
+        "minified": 41575,
+        "gzipped": 14162,
+        "measuredAt": "2025-11-13T16:03:14.148Z",
+        "source": "bundlephobia"
       }
     },
     "zustand": {
@@ -23,9 +24,10 @@
       "color": "#443E38",
       "tradeoff": "Minimal bundle, simple API, moderate performance",
       "bundleSize": {
-        "minified": 546,
-        "gzipped": 244,
-        "measuredAt": "2025-11-13T13:19:46.318Z"
+        "minified": 1285,
+        "gzipped": 603,
+        "measuredAt": "2025-11-13T16:03:14.163Z",
+        "source": "bundlephobia"
       }
     },
     "jotai": {
@@ -37,9 +39,10 @@
       "color": "#000000",
       "tradeoff": "Very fast read/write, slower creation, unique async capabilities",
       "bundleSize": {
-        "minified": 542,
-        "gzipped": 242,
-        "measuredAt": "2025-11-13T13:19:46.318Z"
+        "minified": 11389,
+        "gzipped": 4397,
+        "measuredAt": "2025-11-13T16:03:14.178Z",
+        "source": "bundlephobia"
       }
     },
     "mobx": {
@@ -51,9 +54,10 @@
       "color": "#EA6618",
       "tradeoff": "Automatic tracking, slow creation, largest bundle",
       "bundleSize": {
-        "minified": 210431,
-        "gzipped": 47919,
-        "measuredAt": "2025-11-13T13:19:46.320Z"
+        "minified": 65182,
+        "gzipped": 17984,
+        "measuredAt": "2025-11-13T16:03:14.195Z",
+        "source": "bundlephobia"
       }
     },
     "valtio": {
@@ -65,9 +69,10 @@
       "color": "#6B46C1",
       "tradeoff": "Simple API, moderate performance, good for nested mutations",
       "bundleSize": {
-        "minified": 544,
-        "gzipped": 243,
-        "measuredAt": "2025-11-13T13:19:46.320Z"
+        "minified": 6991,
+        "gzipped": 2727,
+        "measuredAt": "2025-11-13T16:03:14.210Z",
+        "source": "bundlephobia"
       }
     },
     "@preact/signals": {
@@ -79,9 +84,10 @@
       "color": "#673AB8",
       "tradeoff": "Excellent balance of speed and bundle size",
       "bundleSize": {
-        "minified": 4349,
-        "gzipped": 1671,
-        "measuredAt": "2025-11-13T13:19:46.320Z"
+        "minified": 9207,
+        "gzipped": 3108,
+        "measuredAt": "2025-11-13T16:03:14.229Z",
+        "source": "bundlephobia"
       }
     },
     "solid-js": {
@@ -93,9 +99,10 @@
       "color": "#2C4F7C",
       "tradeoff": "Fastest overall, but requires Solid.js ecosystem",
       "bundleSize": {
-        "minified": 20472,
-        "gzipped": 5291,
-        "measuredAt": "2025-11-13T13:19:46.321Z"
+        "minified": 12200,
+        "gzipped": 4058,
+        "measuredAt": "2025-11-13T16:03:14.250Z",
+        "source": "bundlephobia"
       }
     },
     "@sylphx/zen": {
@@ -107,9 +114,10 @@
       "color": "#00B8D4",
       "tradeoff": "Similar performance to Preact, slightly larger bundle",
       "bundleSize": {
-        "minified": 4823,
-        "gzipped": 1718,
-        "measuredAt": "2025-11-13T13:19:46.321Z"
+        "minified": 4924,
+        "gzipped": 1697,
+        "measuredAt": "2025-11-13T16:03:14.265Z",
+        "source": "bundlephobia"
       }
     }
   }

@@ -2,19 +2,43 @@
   "libraries": {
     "@sylphx/silk": {
       "github": "https://github.com/SylphxAI/silk",
-      "displayName": "Silk"
+      "displayName": "Silk",
+      "bundleSize": {
+        "minified": 30902,
+        "gzipped": 9683,
+        "measuredAt": "2025-11-13T16:03:15.211Z",
+        "source": "bundlephobia"
+      }
     },
     "tailwindcss": {
       "github": "https://github.com/tailwindlabs/tailwindcss",
-      "displayName": "Tailwind CSS"
+      "displayName": "Tailwind CSS",
+      "bundleSize": {
+        "minified": 2175915,
+        "gzipped": 539025,
+        "measuredAt": "2025-11-13T16:03:15.377Z",
+        "source": "bundlephobia"
+      }
     },
     "@pandacss/dev": {
       "github": "https://github.com/chakra-ui/panda",
-      "displayName": "Panda CSS"
+      "displayName": "Panda CSS",
+      "bundleSize": {
+        "minified": 25350,
+        "gzipped": 8210,
+        "measuredAt": "2025-11-13T16:03:15.953Z",
+        "source": "bundlephobia"
+      }
     },
     "unocss": {
       "github": "https://github.com/unocss/unocss",
-      "displayName": "UnoCSS"
+      "displayName": "UnoCSS",
+      "bundleSize": {
+        "minified": 986,
+        "gzipped": 289,
+        "measuredAt": "2025-11-13T16:03:25.200Z",
+        "source": "local"
+      }
     }
   }
 }

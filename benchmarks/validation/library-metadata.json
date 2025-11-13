@@ -6,7 +6,13 @@
       "npm": "zod",
       "url": "https://github.com/colinhacks/zod",
       "description": "TypeScript-first schema declaration and validation library with static type inference",
-      "color": "#FF7979"
+      "color": "#FF7979",
+      "bundleSize": {
+        "minified": 275455,
+        "gzipped": 54149,
+        "measuredAt": "2025-11-13T16:03:25.567Z",
+        "source": "bundlephobia"
+      }
     },
     "yup": {
       "name": "Yup",
@@ -14,7 +20,13 @@
       "npm": "yup",
       "url": "https://github.com/jquense/yup",
       "description": "Dead simple Object schema validation",
-      "color": "#BB8FCE"
+      "color": "#BB8FCE",
+      "bundleSize": {
+        "minified": 45144,
+        "gzipped": 13648,
+        "measuredAt": "2025-11-13T16:03:25.827Z",
+        "source": "bundlephobia"
+      }
     },
     "joi": {
       "name": "Joi",
@@ -22,7 +34,13 @@
       "npm": "joi",
       "url": "git://github.com/hapijs/joi",
       "description": "Object schema validation",
-      "color": "#EA8685"
+      "color": "#EA8685",
+      "bundleSize": {
+        "minified": 171850,
+        "gzipped": 53902,
+        "measuredAt": "2025-11-13T16:03:26.102Z",
+        "source": "bundlephobia"
+      }
     },
     "superstruct": {
       "name": "Superstruct",
@@ -30,7 +48,13 @@
       "npm": "superstruct",
       "url": "git://github.com/ianstormtaylor/superstruct",
       "description": "A simple and composable way to validate data in JavaScript (and TypeScript).",
-      "color": "#5A29E4"
+      "color": "#5A29E4",
+      "bundleSize": {
+        "minified": 11979,
+        "gzipped": 3523,
+        "measuredAt": "2025-11-13T16:03:26.399Z",
+        "source": "bundlephobia"
+      }
     }
   }
 }

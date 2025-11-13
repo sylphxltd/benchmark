@@ -2,10 +2,9 @@
  * Measure bundle sizes for all libraries across all categories
  *
  * This script:
- * 1. Finds the main entry point for each package
- * 2. Measures the file size (minified is assumed from dist)
- * 3. Calculates gzipped size
- * 4. Updates library-metadata.json files with bundle size data
+ * 1. Fetches actual bundle sizes from Bundlephobia API
+ * 2. Falls back to local file measurement if API fails
+ * 3. Updates library-metadata.json files with bundle size data
  */
 
 import { readFileSync, writeFileSync, existsSync, statSync } from 'fs';
@@ -21,6 +20,7 @@ interface BundleSizeData {
   minified: number;
   gzipped: number;
   measuredAt: string;
+  source?: 'bundlephobia' | 'local';
 }
 
 interface LibraryMetadata {
@@ -30,6 +30,31 @@ interface LibraryMetadata {
     bundleSize?: BundleSizeData;
     [key: string]: any;
   }>;
+}
+
+/**
+ * Fetch bundle size from Bundlephobia API
+ */
+async function fetchFromBundlephobia(packageName: string, version?: string): Promise<BundleSizeData | null> {
+  try {
+    const packageSpec = version ? `${packageName}@${version}` : packageName;
+    const response = await fetch(`https://bundlephobia.com/api/size?package=${encodeURIComponent(packageSpec)}`);
+
+    if (!response.ok) {
+      return null;
+    }
+
+    const data = await response.json();
+
+    return {
+      minified: data.size,
+      gzipped: data.gzip,
+      measuredAt: new Date().toISOString(),
+      source: 'bundlephobia',
+    };
+  } catch (error) {
+    return null;
+  }
 }
 
 /**
@@ -71,9 +96,9 @@ function findPackageEntry(packageName: string, categoryPath: string): string | n
 }
 
 /**
- * Measure bundle size for a package
+ * Measure bundle size locally from file
  */
-function measureBundleSize(packageName: string, categoryPath: string): BundleSizeData | null {
+function measureBundleSizeLocal(packageName: string, categoryPath: string): BundleSizeData | null {
   const entryPath = findPackageEntry(packageName, categoryPath);
 
   if (!entryPath) {
@@ -86,12 +111,11 @@ function measureBundleSize(packageName: string, categoryPath: string): BundleSiz
     const minified = content.length;
     const gzipped = gzipSync(content).length;
 
-    console.log(`  ✓ ${packageName}: ${(gzipped / 1024).toFixed(2)} KB (gzipped)`);
-
     return {
       minified,
       gzipped,
       measuredAt: new Date().toISOString(),
+      source: 'local',
     };
   } catch (error) {
     console.error(`  ❌ Error measuring ${packageName}:`, error);
@@ -100,9 +124,49 @@ function measureBundleSize(packageName: string, categoryPath: string): BundleSiz
 }
 
 /**
+ * Get package version from node_modules
+ */
+function getPackageVersion(packageName: string, categoryPath: string): string | undefined {
+  try {
+    const packageJsonPath = join(categoryPath, 'node_modules', packageName, 'package.json');
+    if (existsSync(packageJsonPath)) {
+      const packageJson = JSON.parse(readFileSync(packageJsonPath, 'utf-8'));
+      return packageJson.version;
+    }
+  } catch (error) {
+    // Ignore
+  }
+  return undefined;
+}
+
+/**
+ * Measure bundle size with Bundlephobia API first, fallback to local
+ */
+async function measureBundleSize(packageName: string, categoryPath: string): Promise<BundleSizeData | null> {
+  // Try Bundlephobia API first
+  const version = getPackageVersion(packageName, categoryPath);
+  const bundlephobiaData = await fetchFromBundlephobia(packageName, version);
+
+  if (bundlephobiaData) {
+    console.log(`  ✓ ${packageName}: ${(bundlephobiaData.gzipped / 1024).toFixed(2)} KB (gzipped) [bundlephobia]`);
+    return bundlephobiaData;
+  }
+
+  // Fallback to local measurement
+  console.log(`  ⚠️  Bundlephobia failed for ${packageName}, using local measurement`);
+  const localData = measureBundleSizeLocal(packageName, categoryPath);
+
+  if (localData) {
+    console.log(`  ✓ ${packageName}: ${(localData.gzipped / 1024).toFixed(2)} KB (gzipped) [local]`);
+  }
+
+  return localData;
+}
+
+/**
  * Update library metadata with bundle sizes
  */
-function updateCategoryBundleSizes(categoryName: string, categoryPath: string) {
+async function updateCategoryBundleSizes(categoryName: string, categoryPath: string) {
   console.log(`\n📦 ${categoryName}`);
 
   const metadataPath = join(categoryPath, 'library-metadata.json');
@@ -116,7 +180,9 @@ function updateCategoryBundleSizes(categoryName: string, categoryPath: string) {
   let updatedCount = 0;
 
   for (const [key, library] of Object.entries(metadata.libraries)) {
-    const bundleSize = measureBundleSize(library.npm, categoryPath);
+    // Use library.npm if available, otherwise use the key (e.g., "tailwindcss", "@sylphx/silk")
+    const packageName = library.npm || key;
+    const bundleSize = await measureBundleSize(packageName, categoryPath);
 
     if (bundleSize) {
       library.bundleSize = bundleSize;
@@ -135,16 +201,19 @@ function updateCategoryBundleSizes(categoryName: string, categoryPath: string) {
  */
 async function main() {
   console.log('📊 Measuring bundle sizes for all categories\n');
+  console.log('Using Bundlephobia API for accurate bundle sizes...\n');
 
   const categories = [
     { name: 'State Management', path: join(rootDir, 'benchmarks/state-management') },
     { name: 'Immutability', path: join(rootDir, 'benchmarks/immutability') },
     { name: 'Router', path: join(rootDir, 'benchmarks/router') },
+    { name: 'CSS Frameworks', path: join(rootDir, 'benchmarks/css-frameworks') },
+    { name: 'Validation', path: join(rootDir, 'benchmarks/validation') },
   ];
 
   for (const category of categories) {
     if (existsSync(category.path)) {
-      updateCategoryBundleSizes(category.name, category.path);
+      await updateCategoryBundleSizes(category.name, category.path);
     } else {
       console.log(`\n⚠️  Category not found: ${category.name}`);
     }

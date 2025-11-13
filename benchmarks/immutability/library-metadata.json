@@ -16,9 +16,10 @@
       "description": "Create the next immutable state by mutating the current one",
       "color": "#00E7C3",
       "bundleSize": {
-        "minified": 39108,
-        "gzipped": 9433,
-        "measuredAt": "2025-11-13T13:19:46.321Z"
+        "minified": 14936,
+        "gzipped": 5014,
+        "measuredAt": "2025-11-13T16:03:14.279Z",
+        "source": "bundlephobia"
       }
     },
     "mutative": {
@@ -29,9 +30,10 @@
       "description": "Efficient immutable updates, 2-6x faster than Immer",
       "color": "#7C3AED",
       "bundleSize": {
-        "minified": 63639,
-        "gzipped": 12453,
-        "measuredAt": "2025-11-13T13:19:46.322Z"
+        "minified": 22794,
+        "gzipped": 7330,
+        "measuredAt": "2025-11-13T16:03:14.293Z",
+        "source": "bundlephobia"
       }
     },
     "immutable": {
@@ -42,9 +44,10 @@
       "description": "Immutable persistent data collections for Javascript",
       "color": "#FC4349",
       "bundleSize": {
-        "minified": 179381,
-        "gzipped": 37123,
-        "measuredAt": "2025-11-13T13:19:46.324Z"
+        "minified": 67280,
+        "gzipped": 17998,
+        "measuredAt": "2025-11-13T16:03:14.309Z",
+        "source": "bundlephobia"
       }
     },
     "immutability-helper": {
@@ -55,9 +58,10 @@
       "description": "Mutate a copy of data without changing the original source",
       "color": "#F7B731",
       "bundleSize": {
-        "minified": 10839,
-        "gzipped": 2455,
-        "measuredAt": "2025-11-13T13:19:46.324Z"
+        "minified": 4793,
+        "gzipped": 1693,
+        "measuredAt": "2025-11-13T16:03:14.323Z",
+        "source": "bundlephobia"
       }
     },
     "seamless-immutable": {
@@ -68,9 +72,10 @@
       "description": "Immutable data structures for JavaScript which are backwards-compatible with normal JS Arrays and Objects",
       "color": "#5F27CD",
       "bundleSize": {
-        "minified": 24230,
-        "gzipped": 6134,
-        "measuredAt": "2025-11-13T13:19:46.324Z"
+        "minified": 7734,
+        "gzipped": 2779,
+        "measuredAt": "2025-11-13T16:03:14.339Z",
+        "source": "bundlephobia"
       }
     },
     "@sylphx/craft": {
@@ -81,9 +86,10 @@
       "description": "Performant immutable updates with structural sharing",
       "color": "#00D2D3",
       "bundleSize": {
-        "minified": 9401,
-        "gzipped": 2912,
-        "measuredAt": "2025-11-13T13:19:46.325Z"
+        "minified": 9788,
+        "gzipped": 2825,
+        "measuredAt": "2025-11-13T16:03:14.354Z",
+        "source": "bundlephobia"
       }
     }
   }
