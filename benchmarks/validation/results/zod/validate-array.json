@@ -1,0 +1,15 @@
+{
+  "library": "Zod",
+  "libraryId": "zod",
+  "packageName": "zod",
+  "test": "Validate Array",
+  "group": "03-object-validation",
+  "timestamp": "2025-11-13T15:43:37.050Z",
+  "result": {
+    "opsPerSecond": 15397.701535819082,
+    "meanTime": 0.06486464899999418,
+    "variance": 0.0016239395899056812,
+    "p99": 0.130572999999913,
+    "samples": 1000
+  }
+}

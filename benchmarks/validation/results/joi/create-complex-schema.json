@@ -1,0 +1,15 @@
+{
+  "library": "Joi",
+  "libraryId": "joi",
+  "packageName": "joi",
+  "test": "Create Complex Schema",
+  "group": "01-schema-creation",
+  "timestamp": "2025-11-13T15:43:37.050Z",
+  "result": {
+    "opsPerSecond": 8448.548155862734,
+    "meanTime": 0.11811688300000231,
+    "variance": 0.004426161402169324,
+    "p99": 0.29889700000001085,
+    "samples": 1000
+  }
+}

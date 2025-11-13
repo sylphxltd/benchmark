@@ -1,0 +1,15 @@
+{
+  "library": "Superstruct",
+  "libraryId": "superstruct",
+  "packageName": "superstruct",
+  "test": "Multiple Validation Errors",
+  "group": "04-error-handling",
+  "timestamp": "2025-11-13T15:43:37.050Z",
+  "result": {
+    "opsPerSecond": 161937.18327111643,
+    "meanTime": 0.0061200639999951815,
+    "variance": 0.00000908402146995645,
+    "p99": 0.02436600000010003,
+    "samples": 1000
+  }
+}

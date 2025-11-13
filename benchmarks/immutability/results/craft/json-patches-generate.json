@@ -4,12 +4,12 @@
   "packageName": "@sylphx/craft",
   "test": "JSON Patches - Generate",
   "group": "06-patches",
-  "timestamp": "2025-11-13T12:08:48.011Z",
+  "timestamp": "2025-11-13T15:43:29.418Z",
   "result": {
-    "opsPerSecond": 138328.00724390004,
-    "meanTime": 0.00722919400000319,
-    "variance": 0.000013430070340446204,
-    "p99": 0.02819900000031339,
+    "opsPerSecond": 118263.74162589337,
+    "meanTime": 0.008391491000004862,
+    "variance": 0.000011316393036021048,
+    "p99": 0.024548999999751686,
     "samples": 1000
   }
 }

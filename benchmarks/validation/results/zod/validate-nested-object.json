@@ -1,0 +1,15 @@
+{
+  "library": "Zod",
+  "libraryId": "zod",
+  "packageName": "zod",
+  "test": "Validate Nested Object",
+  "group": "03-object-validation",
+  "timestamp": "2025-11-13T15:43:37.050Z",
+  "result": {
+    "opsPerSecond": 5392.511705875671,
+    "meanTime": 0.18513598800000092,
+    "variance": 0.0059028439522348436,
+    "p99": 0.3041359999999713,
+    "samples": 1000
+  }
+}

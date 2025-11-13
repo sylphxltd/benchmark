@@ -4,12 +4,12 @@
   "packageName": "immer",
   "test": "Array Remove",
   "group": "03-array-operations",
-  "timestamp": "2025-11-13T12:08:48.011Z",
+  "timestamp": "2025-11-13T15:43:29.418Z",
   "result": {
-    "opsPerSecond": 84923.7859975043,
-    "meanTime": 0.011775263999998628,
-    "variance": 0.00003276207392828704,
-    "p99": 0.03803999999996677,
+    "opsPerSecond": 90013.90264726404,
+    "meanTime": 0.011051511000000175,
+    "variance": 0.0013076836089618374,
+    "p99": 0.025875000000013415,
     "samples": 1000
   }
 }

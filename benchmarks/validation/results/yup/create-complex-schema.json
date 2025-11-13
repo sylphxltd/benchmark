@@ -1,0 +1,15 @@
+{
+  "library": "Yup",
+  "libraryId": "yup",
+  "packageName": "yup",
+  "test": "Create Complex Schema",
+  "group": "01-schema-creation",
+  "timestamp": "2025-11-13T15:43:37.050Z",
+  "result": {
+    "opsPerSecond": 15459.842741552053,
+    "meanTime": 0.06452932799999979,
+    "variance": 0.0010370308205164085,
+    "p99": 0.11361199999998917,
+    "samples": 1000
+  }
+}

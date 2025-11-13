@@ -1,0 +1,15 @@
+{
+  "library": "Zod",
+  "libraryId": "zod",
+  "packageName": "zod",
+  "test": "Multiple Validation Errors",
+  "group": "04-error-handling",
+  "timestamp": "2025-11-13T15:43:37.050Z",
+  "result": {
+    "opsPerSecond": 7652.738501479168,
+    "meanTime": 0.13054752899998995,
+    "variance": 0.004258433295118844,
+    "p99": 0.2639009999998052,
+    "samples": 1000
+  }
+}

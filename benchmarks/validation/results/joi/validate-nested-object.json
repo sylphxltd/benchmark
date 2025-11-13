@@ -1,0 +1,15 @@
+{
+  "library": "Joi",
+  "libraryId": "joi",
+  "packageName": "joi",
+  "test": "Validate Nested Object",
+  "group": "03-object-validation",
+  "timestamp": "2025-11-13T15:43:37.050Z",
+  "result": {
+    "opsPerSecond": 8749.736195453703,
+    "meanTime": 0.11400438699999518,
+    "variance": 0.004074885545118934,
+    "p99": 0.2273529999999937,
+    "samples": 1000
+  }
+}

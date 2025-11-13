@@ -1,0 +1,15 @@
+{
+  "library": "Joi",
+  "libraryId": "joi",
+  "packageName": "joi",
+  "test": "Create Simple Schema",
+  "group": "01-schema-creation",
+  "timestamp": "2025-11-13T15:43:37.050Z",
+  "result": {
+    "opsPerSecond": 28030.448130342484,
+    "meanTime": 0.03554617499999986,
+    "variance": 0.0011038800374483634,
+    "p99": 0.09806299999999624,
+    "samples": 1000
+  }
+}

@@ -1,0 +1,15 @@
+{
+  "library": "Zod",
+  "libraryId": "zod",
+  "packageName": "zod",
+  "test": "Create Simple Schema",
+  "group": "01-schema-creation",
+  "timestamp": "2025-11-13T15:43:37.050Z",
+  "result": {
+    "opsPerSecond": 37377.06868993227,
+    "meanTime": 0.026585129000000093,
+    "variance": 0.0001529089277363523,
+    "p99": 0.08028000000001612,
+    "samples": 1000
+  }
+}

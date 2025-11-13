@@ -1,0 +1,15 @@
+{
+  "library": "Zod",
+  "libraryId": "zod",
+  "packageName": "zod",
+  "test": "Validate String",
+  "group": "02-primitive-validation",
+  "timestamp": "2025-11-13T15:43:37.050Z",
+  "result": {
+    "opsPerSecond": 36763.647575880444,
+    "meanTime": 0.02712001500000133,
+    "variance": 0.0007994167971026804,
+    "p99": 0.06446999999991476,
+    "samples": 1000
+  }
+}

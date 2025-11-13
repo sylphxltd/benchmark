@@ -1,0 +1,15 @@
+{
+  "library": "Zod",
+  "libraryId": "zod",
+  "packageName": "zod",
+  "test": "Validate Email",
+  "group": "02-primitive-validation",
+  "timestamp": "2025-11-13T15:43:37.050Z",
+  "result": {
+    "opsPerSecond": 27856.033112577985,
+    "meanTime": 0.03581941399999994,
+    "variance": 0.0013596066290265938,
+    "p99": 0.07228399999996782,
+    "samples": 1000
+  }
+}

@@ -1,0 +1,15 @@
+{
+  "library": "Superstruct",
+  "libraryId": "superstruct",
+  "packageName": "superstruct",
+  "test": "Validate Nested Object",
+  "group": "03-object-validation",
+  "timestamp": "2025-11-13T15:43:37.050Z",
+  "result": {
+    "opsPerSecond": 36640.044865002106,
+    "meanTime": 0.027221311999997624,
+    "variance": 0.009431290069091637,
+    "p99": 0.057125999999925625,
+    "samples": 1000
+  }
+}

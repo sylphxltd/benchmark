@@ -1,0 +1,15 @@
+{
+  "library": "Yup",
+  "libraryId": "yup",
+  "packageName": "yup",
+  "test": "Catch Validation Errors",
+  "group": "04-error-handling",
+  "timestamp": "2025-11-13T15:43:37.050Z",
+  "result": {
+    "opsPerSecond": 22240.408451328512,
+    "meanTime": 0.04486326399999916,
+    "variance": 0.001867058573830389,
+    "p99": 0.10651899999993475,
+    "samples": 1000
+  }
+}

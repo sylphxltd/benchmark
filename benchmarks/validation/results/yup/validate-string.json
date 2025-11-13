@@ -1,0 +1,15 @@
+{
+  "library": "Yup",
+  "libraryId": "yup",
+  "packageName": "yup",
+  "test": "Validate String",
+  "group": "02-primitive-validation",
+  "timestamp": "2025-11-13T15:43:37.050Z",
+  "result": {
+    "opsPerSecond": 65315.24205632736,
+    "meanTime": 0.015210097000001838,
+    "variance": 0.0008171155636676408,
+    "p99": 0.0390420000001086,
+    "samples": 1000
+  }
+}

@@ -4,12 +4,12 @@
   "packageName": "react-router-dom",
   "test": "Dynamic Route Matching (1 param)",
   "group": "02-dynamic-routes",
-  "timestamp": "2025-11-13T12:08:44.852Z",
+  "timestamp": "2025-11-13T15:43:35.639Z",
   "result": {
-    "opsPerSecond": 33244.28961175212,
-    "meanTime": 0.030080353999999206,
-    "variance": 0.0015915525577986358,
-    "p99": 0.07272599999998874,
+    "opsPerSecond": 35414.113161548936,
+    "meanTime": 0.02812684699999977,
+    "variance": 0.0004487953488955765,
+    "p99": 0.06714499999998225,
     "samples": 1000
   }
 }

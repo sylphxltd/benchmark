@@ -1,0 +1,15 @@
+{
+  "library": "Superstruct",
+  "libraryId": "superstruct",
+  "packageName": "superstruct",
+  "test": "Create Simple Schema",
+  "group": "01-schema-creation",
+  "timestamp": "2025-11-13T15:43:37.050Z",
+  "result": {
+    "opsPerSecond": 906532.0164444913,
+    "meanTime": 0.0010316760000000044,
+    "variance": 0.0000015439283650246673,
+    "p99": 0.004649000000000569,
+    "samples": 1000
+  }
+}

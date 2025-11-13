@@ -1,0 +1,15 @@
+{
+  "library": "Yup",
+  "libraryId": "yup",
+  "packageName": "yup",
+  "test": "Validate Nested Object",
+  "group": "03-object-validation",
+  "timestamp": "2025-11-13T15:43:37.050Z",
+  "result": {
+    "opsPerSecond": 13112.051210217434,
+    "meanTime": 0.07609118700000772,
+    "variance": 0.002663957210123596,
+    "p99": 0.18008499999996275,
+    "samples": 1000
+  }
+}

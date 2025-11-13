@@ -1,0 +1,15 @@
+{
+  "library": "Yup",
+  "libraryId": "yup",
+  "packageName": "yup",
+  "test": "Validate Array",
+  "group": "03-object-validation",
+  "timestamp": "2025-11-13T15:43:37.050Z",
+  "result": {
+    "opsPerSecond": 12384.913347529471,
+    "meanTime": 0.08064793300000042,
+    "variance": 0.002338135449468732,
+    "p99": 0.16115999999988162,
+    "samples": 1000
+  }
+}

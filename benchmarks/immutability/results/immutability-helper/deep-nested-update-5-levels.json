@@ -4,12 +4,12 @@
   "packageName": "immutability-helper",
   "test": "Deep Nested Update (5 levels)",
   "group": "04-deep-operations",
-  "timestamp": "2025-11-13T12:08:48.011Z",
+  "timestamp": "2025-11-13T15:43:29.418Z",
   "result": {
-    "opsPerSecond": 184949.85362136364,
-    "meanTime": 0.005406871000002184,
-    "variance": 0.00013311121678234508,
-    "p99": 0.023924999999962893,
+    "opsPerSecond": 222526.9357729415,
+    "meanTime": 0.00443644199999892,
+    "variance": 0.000004674944756638073,
+    "p99": 0.013008000000013453,
     "samples": 1000
   }
 }

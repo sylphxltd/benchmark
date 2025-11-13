@@ -1,0 +1,15 @@
+{
+  "library": "Joi",
+  "libraryId": "joi",
+  "packageName": "joi",
+  "test": "Validate Array",
+  "group": "03-object-validation",
+  "timestamp": "2025-11-13T15:43:37.050Z",
+  "result": {
+    "opsPerSecond": 12147.297005942715,
+    "meanTime": 0.0822014940000015,
+    "variance": 0.0020257799908019332,
+    "p99": 0.19141700000000128,
+    "samples": 1000
+  }
+}

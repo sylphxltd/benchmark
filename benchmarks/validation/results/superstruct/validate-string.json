@@ -1,0 +1,15 @@
+{
+  "library": "Superstruct",
+  "libraryId": "superstruct",
+  "packageName": "superstruct",
+  "test": "Validate String",
+  "group": "02-primitive-validation",
+  "timestamp": "2025-11-13T15:43:37.050Z",
+  "result": {
+    "opsPerSecond": 305787.76738846354,
+    "meanTime": 0.003213873999998782,
+    "variance": 0.000007995868838112648,
+    "p99": 0.017713000000071588,
+    "samples": 1000
+  }
+}
