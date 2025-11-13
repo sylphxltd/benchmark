@@ -815,7 +815,11 @@ Based on **weighted geometric mean** of normalized scores across all 28 tests.
 
 ### Test Environment
 - **Runtime**: Bun (latest stable)
-- **Warmup**: 100 iterations to stabilize JIT
+- **Platform**: GitHub Actions (Ubuntu latest)
+- **CPU**: 2-core (Intel Xeon or AMD EPYC equivalent)
+- **RAM**: ~7GB available
+- **Node.js**: 20.x
+- **Warmup**: 100ms + 5 iterations to stabilize JIT
 - **Measurement**: 1000 iterations per test
 - **Execution**: Isolated process per library
 
@@ -928,7 +932,7 @@ See [CONTRIBUTING.md](../../CONTRIBUTING.md) for detailed guidelines.
 
 **Found this useful? Give it a ⭐️!**
 
-*Generated on 2025-11-13T22:14:43.488Z*
+*Generated on 2025-11-13T22:16:19.783Z*
 
 [⬆️ Back to Top](#.-benchmarks) • [⬅️ Main README](../../README.md)
 

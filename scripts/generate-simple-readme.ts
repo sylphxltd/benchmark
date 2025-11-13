@@ -538,7 +538,11 @@ readme += `
 
 ### Test Environment
 - **Runtime**: Bun (latest stable)
-- **Warmup**: 100 iterations to stabilize JIT
+- **Platform**: GitHub Actions (Ubuntu latest)
+- **CPU**: 2-core (Intel Xeon or AMD EPYC equivalent)
+- **RAM**: ~7GB available
+- **Node.js**: 20.x
+- **Warmup**: 100ms + 5 iterations to stabilize JIT
 - **Measurement**: 1000 iterations per test
 - **Execution**: Isolated process per library
 
