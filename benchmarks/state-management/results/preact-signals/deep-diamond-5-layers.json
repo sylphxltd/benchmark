@@ -4,12 +4,12 @@
   "packageName": "@preact/signals",
   "test": "Deep Diamond (5 layers)",
   "group": "07-reactivity-patterns",
-  "timestamp": "2025-11-13T21:42:19.940Z",
+  "timestamp": "2025-11-13T21:48:38.623Z",
   "result": {
-    "opsPerSecond": 5524230.676789461,
-    "meanTime": 0.00018298999999024091,
-    "variance": 5.394994013304991e-10,
-    "p99": 0.0003099999994446989,
+    "opsPerSecond": 8924759.482301345,
+    "meanTime": 0.00011298100002750288,
+    "variance": 2.479525950932997e-10,
+    "p99": 0.00014000000373926014,
     "samples": 1000
   }
 }

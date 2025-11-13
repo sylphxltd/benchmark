@@ -4,12 +4,12 @@
   "packageName": "immutable",
   "test": "Array Remove",
   "group": "03-array-operations",
-  "timestamp": "2025-11-13T21:42:17.997Z",
+  "timestamp": "2025-11-13T21:48:34.501Z",
   "result": {
-    "opsPerSecond": 1091349.7593753652,
-    "meanTime": 0.0014723909999993338,
-    "variance": 0.00023985636332902107,
-    "p99": 0.0020441000007485853,
+    "opsPerSecond": 1104926.5555875413,
+    "meanTime": 0.0009412879999690631,
+    "variance": 6.292389494520163e-8,
+    "p99": 0.001734999999825959,
     "samples": 1000
   }
 }

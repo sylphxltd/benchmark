@@ -4,12 +4,12 @@
   "packageName": "@sylphx/craft",
   "test": "Set - Add Operation",
   "group": "07-map-set",
-  "timestamp": "2025-11-13T21:42:17.997Z",
+  "timestamp": "2025-11-13T21:48:34.501Z",
   "result": {
-    "opsPerSecond": 1040559.6958670178,
-    "meanTime": 0.001059704000083002,
-    "variance": 4.945802746475084e-7,
-    "p99": 0.0028449999990698416,
+    "opsPerSecond": 1283885.443299523,
+    "meanTime": 0.0008316440000380681,
+    "variance": 3.2792633753893535e-7,
+    "p99": 0.001711110000796907,
     "samples": 1000
   }
 }

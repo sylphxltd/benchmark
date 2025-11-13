@@ -4,12 +4,12 @@
   "packageName": "@preact/signals",
   "test": "Dynamic Dependencies",
   "group": "07-reactivity-patterns",
-  "timestamp": "2025-11-13T21:42:19.940Z",
+  "timestamp": "2025-11-13T21:48:38.623Z",
   "result": {
-    "opsPerSecond": 15607975.22398824,
-    "meanTime": 0.00006501099996603443,
-    "variance": 9.109197131930821e-11,
-    "p99": 0.00009000000136438757,
+    "opsPerSecond": 18228352.895847138,
+    "meanTime": 0.00006922600014513591,
+    "variance": 1.5669046530877713e-7,
+    "p99": 0.00008099999831756577,
     "samples": 1000
   }
 }

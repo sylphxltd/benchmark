@@ -4,12 +4,12 @@
   "packageName": "@sylphx/craft",
   "test": "Set - Large (100 items)",
   "group": "07-map-set",
-  "timestamp": "2025-11-13T21:42:17.997Z",
+  "timestamp": "2025-11-13T21:48:34.501Z",
   "result": {
-    "opsPerSecond": 146054.9828523407,
-    "meanTime": 0.0082170859998987,
-    "variance": 0.0008112236240318876,
-    "p99": 0.012853250001244279,
+    "opsPerSecond": 160856.5064264433,
+    "meanTime": 0.00694575700002315,
+    "variance": 0.0003816578504395446,
+    "p99": 0.0103381200019794,
     "samples": 1000
   }
 }
