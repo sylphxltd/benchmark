@@ -4,12 +4,12 @@
   "packageName": "immutability-helper",
   "test": "Array Push",
   "group": "03-array-operations",
-  "timestamp": "2025-11-13T23:51:41.936Z",
+  "timestamp": "2025-11-13T23:57:52.010Z",
   "result": {
-    "opsPerSecond": 3350280.415450699,
-    "meanTime": 0.00034849200000462585,
-    "variance": 2.5176285881542365e-7,
-    "p99": 0.0009720999998171463,
+    "opsPerSecond": 4244856.090523237,
+    "meanTime": 0.00024478600003385506,
+    "variance": 9.341029231109472e-9,
+    "p99": 0.0005811000002358922,
     "samples": 1000
   }
 }

@@ -4,12 +4,12 @@
   "packageName": "@preact/signals",
   "test": "Extreme Read (10000x)",
   "group": "06-performance-stress",
-  "timestamp": "2025-11-13T23:51:43.370Z",
+  "timestamp": "2025-11-13T23:57:50.657Z",
   "result": {
-    "opsPerSecond": 19830005.543970652,
-    "meanTime": 0.00005082900002162205,
-    "variance": 4.452027924965567e-11,
-    "p99": 0.000060999998822808266,
+    "opsPerSecond": 20431565.96315083,
+    "meanTime": 0.0000495149999660498,
+    "variance": 6.431408896223266e-11,
+    "p99": 0.00006000000212225132,
     "samples": 1000
   }
 }

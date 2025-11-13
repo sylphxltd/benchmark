@@ -4,12 +4,12 @@
   "packageName": "@sylphx/zen",
   "test": "Array Push",
   "group": "03-advanced-operations",
-  "timestamp": "2025-11-13T23:51:43.370Z",
+  "timestamp": "2025-11-13T23:57:50.657Z",
   "result": {
-    "opsPerSecond": 28738.897127123364,
-    "meanTime": 0.03851785300001575,
-    "variance": 0.0010122256975044427,
-    "p99": 0.11277154999756019,
+    "opsPerSecond": 26364.629292902984,
+    "meanTime": 0.04467373700002281,
+    "variance": 0.0018067670764978269,
+    "p99": 0.16338879000038986,
     "samples": 1000
   }
 }

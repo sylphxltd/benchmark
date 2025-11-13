@@ -4,12 +4,12 @@
   "packageName": "native",
   "test": "Multiple Updates (3 changes)",
   "group": "04-deep-operations",
-  "timestamp": "2025-11-13T23:51:41.936Z",
+  "timestamp": "2025-11-13T23:57:52.010Z",
   "result": {
-    "opsPerSecond": 6266029.771036603,
-    "meanTime": 0.00016505899994808716,
-    "variance": 2.9528884090189397e-9,
-    "p99": 0.00048099999916303206,
+    "opsPerSecond": 6172325.72671999,
+    "meanTime": 0.00017256299997097814,
+    "variance": 6.004862901001541e-9,
+    "p99": 0.0006321899993417899,
     "samples": 1000
   }
 }
