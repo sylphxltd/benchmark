@@ -4,12 +4,12 @@
   "packageName": "seamless-immutable",
   "test": "Multiple Updates (3 changes)",
   "group": "04-deep-operations",
-  "timestamp": "2025-11-13T21:40:07.020Z",
+  "timestamp": "2025-11-13T21:42:17.997Z",
   "result": {
-    "opsPerSecond": 37776.51822190479,
-    "meanTime": 0.02712622600000759,
-    "variance": 0.00029587268963865773,
-    "p99": 0.03698960000016086,
+    "opsPerSecond": 37515.97420390848,
+    "meanTime": 0.02740222899998116,
+    "variance": 0.00041942653232041803,
+    "p99": 0.03641989999970974,
     "samples": 1000
   }
 }

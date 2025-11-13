@@ -4,12 +4,12 @@
   "packageName": "immer",
   "test": "Nested Object Update",
   "group": "02-nested-updates",
-  "timestamp": "2025-11-13T21:40:07.020Z",
+  "timestamp": "2025-11-13T21:42:17.997Z",
   "result": {
-    "opsPerSecond": 325544.36535660195,
-    "meanTime": 0.003655853999995088,
-    "variance": 0.0002654329871300124,
-    "p99": 0.005292010000057415,
+    "opsPerSecond": 325426.4062680003,
+    "meanTime": 0.003748799000003146,
+    "variance": 0.0002885227325069886,
+    "p99": 0.0061455099998465774,
     "samples": 1000
   }
 }

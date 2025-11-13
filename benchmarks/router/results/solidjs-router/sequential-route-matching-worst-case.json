@@ -4,12 +4,12 @@
   "packageName": "@solidjs/router",
   "test": "Sequential Route Matching (worst case)",
   "group": "04-real-world",
-  "timestamp": "2025-11-13T21:40:10.827Z",
+  "timestamp": "2025-11-13T21:42:23.951Z",
   "result": {
-    "opsPerSecond": 1750532.9417426968,
-    "meanTime": 0.0005983130000531674,
-    "variance": 1.966524895297526e-7,
-    "p99": 0.0010626000011689023,
+    "opsPerSecond": 1684860.481748255,
+    "meanTime": 0.0006325890000280196,
+    "variance": 3.201009690547239e-7,
+    "p99": 0.0011837900003047244,
     "samples": 1000
   }
 }

@@ -4,12 +4,12 @@
   "packageName": "immer",
   "test": "Set - Add Operation",
   "group": "07-map-set",
-  "timestamp": "2025-11-13T21:40:07.020Z",
+  "timestamp": "2025-11-13T21:42:17.997Z",
   "result": {
-    "opsPerSecond": 265407.136095199,
-    "meanTime": 0.0038423559999973805,
-    "variance": 6.639149042346176e-7,
-    "p99": 0.006664809999783754,
+    "opsPerSecond": 220660.91582082317,
+    "meanTime": 0.005068328000001202,
+    "variance": 0.000006747877110788788,
+    "p99": 0.013817199998775322,
     "samples": 1000
   }
 }

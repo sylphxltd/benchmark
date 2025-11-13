@@ -4,12 +4,12 @@
   "packageName": "mutative",
   "test": "Map - Set Operation",
   "group": "07-map-set",
-  "timestamp": "2025-11-13T21:40:07.020Z",
+  "timestamp": "2025-11-13T21:42:17.997Z",
   "result": {
-    "opsPerSecond": 216208.40545041178,
-    "meanTime": 0.005352327999993576,
-    "variance": 0.00026388947424618226,
-    "p99": 0.01224431000104232,
+    "opsPerSecond": 274127.6713289474,
+    "meanTime": 0.003742887999971572,
+    "variance": 8.169946761174641e-7,
+    "p99": 0.0071951099976649835,
     "samples": 1000
   }
 }

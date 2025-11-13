@@ -4,12 +4,12 @@
   "packageName": "@preact/signals",
   "test": "Complex Form (nested + array)",
   "group": "05-real-world",
-  "timestamp": "2025-11-13T21:39:31.879Z",
+  "timestamp": "2025-11-13T21:42:19.940Z",
   "result": {
-    "opsPerSecond": 609296.5245116351,
-    "meanTime": 0.00164123700000016,
-    "variance": 5.545821129408621e-7,
-    "p99": 0.003500000000030923,
+    "opsPerSecond": 20182.609850739886,
+    "meanTime": 0.05219849100001011,
+    "variance": 0.0007350901776446377,
+    "p99": 0.16764214000082572,
     "samples": 1000
   }
 }
