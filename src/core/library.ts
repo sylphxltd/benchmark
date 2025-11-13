@@ -1,14 +1,20 @@
 /**
  * Library class - represents a library being benchmarked
+ * Supports both legacy TestFunction and new multi-metric TestImplementation
  */
 
-import type { LibraryConfig, TestFunction, TestContext } from './types';
+import type {
+  LibraryConfig,
+  TestFunction,
+  TestContext,
+  TestImplementation as TestImplementationType,
+} from './types';
 import type { Category } from './category';
 import type { Test } from './test';
 
-interface TestImplementation<TStore = any> {
+interface StoredTestImplementation<TStore = any> {
   test: Test;
-  fn: TestFunction<TStore>;
+  implementation: TestImplementationType<TStore>;
 }
 
 export class Library<TStore = any> {
@@ -21,7 +27,7 @@ export class Library<TStore = any> {
   public readonly setup: LibraryConfig<TStore>['setup'];
   public readonly features: string[];
 
-  private implementations: Map<string, TestImplementation<TStore>> = new Map();
+  private implementations: Map<string, StoredTestImplementation<TStore>> = new Map();
 
   constructor(category: Category, config: LibraryConfig<TStore>) {
     this.category = category;
@@ -36,9 +42,12 @@ export class Library<TStore = any> {
 
   /**
    * Implement a test for this library
-   * Uses object reference instead of strings for type safety
+   * Supports both legacy TestFunction and new TestImplementation types
+   *
+   * @param test - Test to implement
+   * @param implementation - Either a plain function (legacy) or TestImplementation object (new)
    */
-  implement(test: Test, fn: TestFunction<TStore>): void {
+  implement(test: Test, implementation: TestFunction<TStore> | TestImplementationType<TStore>): void {
     // Validate test belongs to same category
     if (test.group.category.id !== this.category.id) {
       throw new Error(
@@ -51,22 +60,49 @@ export class Library<TStore = any> {
       console.warn(`  ⚠️  Test '${test.name}' already implemented for '${this.id}', overwriting`);
     }
 
-    this.implementations.set(test.id, { test, fn });
+    // Store implementation (supports both old and new types)
+    this.implementations.set(test.id, {
+      test,
+      implementation: implementation as TestImplementationType<TStore>,
+    });
     console.log(`  ✓ Implemented: ${this.id}.${test.name}`);
   }
 
   /**
-   * Get implementation for a specific test
+   * Get implementation for a specific test (legacy - returns just function)
+   * @deprecated Use getTestImplementation() for new code
    */
   getImplementation(test: Test): TestFunction<TStore> | undefined {
-    return this.implementations.get(test.id)?.fn;
+    const stored = this.implementations.get(test.id);
+    if (!stored) return undefined;
+
+    // If it's a plain function, return it
+    if (typeof stored.implementation === 'function') {
+      return stored.implementation;
+    }
+
+    // If it's a performance test object, return the run function
+    if ('type' in stored.implementation && stored.implementation.type === 'performance') {
+      return stored.implementation.run;
+    }
+
+    // For other types (size, memory, build, custom), return undefined
+    // These need to be handled by the new runner
+    return undefined;
+  }
+
+  /**
+   * Get full test implementation (new API)
+   */
+  getTestImplementation(test: Test): TestImplementationType<TStore> | undefined {
+    return this.implementations.get(test.id)?.implementation;
   }
 
   /**
    * Get all implemented tests
    */
   getImplementedTests(): Test[] {
-    return Array.from(this.implementations.values()).map((impl) => impl.test);
+    return Array.from(this.implementations.values()).map((stored) => stored.test);
   }
 
   /**
@@ -78,12 +114,27 @@ export class Library<TStore = any> {
 
   /**
    * Execute a test with this library
+   * @deprecated Use runner.runTest() for new code. This is kept for backward compatibility.
    */
   async execute(test: Test): Promise<void> {
-    const fn = this.getImplementation(test);
-    if (!fn) {
+    const implementation = this.getTestImplementation(test);
+    if (!implementation) {
       throw new Error(`Test '${test.name}' not implemented for library '${this.id}'`);
     }
+
+    // Only support function-based tests in this legacy method
+    if (typeof implementation !== 'function' &&
+        (!('type' in implementation) || implementation.type !== 'performance')) {
+      throw new Error(
+        `Test '${test.name}' uses new implementation type '${(implementation as any).type}' ` +
+        `which must be executed via runner.runTest()`
+      );
+    }
+
+    // Get the actual function to execute
+    const fn = typeof implementation === 'function'
+      ? implementation
+      : implementation.run;
 
     // Initialize if needed
     if (this.setup.init) {

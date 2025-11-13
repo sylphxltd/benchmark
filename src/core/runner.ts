@@ -1,9 +1,22 @@
 /**
  * Benchmark runner - executes tests and collects results
+ * Supports both legacy BenchmarkResult and new multi-metric TestResult
  */
 
-import type { BenchmarkResult, RunOptions, CategoryResults, LibraryTestResult } from './types';
+import type {
+  BenchmarkResult,
+  RunOptions,
+  CategoryResults,
+  LibraryTestResult,
+  TestResult,
+  TestImplementation,
+  BuildTestConfig,
+  SpeedMetric,
+  SizeMetric,
+  TestContext,
+} from './types';
 import type { Category } from './category';
+import { measurePerformance as measurePerformanceMetric } from './metrics';
 
 export class BenchmarkRunner {
   private category: Category;
@@ -61,10 +74,16 @@ export class BenchmarkRunner {
             const result = await this.measurePerformance(library, test);
 
             results.push({
-              library: library.id,
+              library: library.displayName,
+              libraryId: library.id,
+              packageName: library.packageName,
               test: test.name,
               group: group.id,
+              timestamp,
               result,
+              // Backward compat fields
+              opsPerSecond: result.opsPerSecond,
+              meanTime: result.meanTime,
             });
 
             console.log(
@@ -87,48 +106,221 @@ export class BenchmarkRunner {
 
   /**
    * Measure performance of a library on a specific test
+   *
+   * @deprecated This method uses old architecture. New code should use runTestWithMetrics.
+   * Kept for backward compatibility.
    */
   private async measurePerformance(
     library: any,
     test: any
   ): Promise<BenchmarkResult> {
-    const iterations = 1000;
-    const warmupIterations = 100;
-    const times: number[] = [];
+    // Create test context
+    const ctx = await this.createContext(library);
 
-    // Warmup
-    for (let i = 0; i < warmupIterations; i++) {
-      await library.execute(test);
+    try {
+      // Get implementation function
+      const fn = library.getImplementation(test);
+      if (!fn) {
+        throw new Error(`Test '${test.name}' not implemented for library '${library.id}'`);
+      }
+
+      // Use new measurement utility
+      const metric = await measurePerformanceMetric(fn, ctx, {
+        warmupIterations: 100,
+        benchmarkIterations: 1000,
+      });
+
+      // Convert SpeedMetric to BenchmarkResult for backward compatibility
+      return {
+        name: test.name,
+        opsPerSecond: metric.opsPerSecond,
+        meanTime: metric.meanTime,
+        variance: metric.variance,
+        p99: metric.p99,
+        samples: metric.samples,
+      };
+    } finally {
+      await this.cleanupContext(ctx);
+    }
+  }
+
+  /**
+   * Create test context for a library
+   */
+  private async createContext(library: any): Promise<TestContext<any>> {
+    // Initialize if needed
+    if (library.setup.init) {
+      await library.setup.init();
     }
 
-    // Actual measurements
-    for (let i = 0; i < iterations; i++) {
-      const start = performance.now();
-      await library.execute(test);
-      const end = performance.now();
-      times.push(end - start);
-    }
+    // Create store
+    const store = await library.setup.createStore();
 
-    // Calculate statistics
-    const meanTime = times.reduce((a, b) => a + b, 0) / times.length;
-    const opsPerSecond = 1000 / meanTime;
-
-    // Calculate variance
-    const variance =
-      times.reduce((sum, time) => sum + Math.pow(time - meanTime, 2), 0) / times.length;
-
-    // Calculate P99
-    const sortedTimes = [...times].sort((a, b) => a - b);
-    const p99Index = Math.floor(times.length * 0.99);
-    const p99 = sortedTimes[p99Index];
-
+    // Create context
     return {
-      name: test.name,
-      opsPerSecond,
-      meanTime,
-      variance,
-      p99,
-      samples: iterations,
+      library: {
+        id: library.id,
+        displayName: library.displayName,
+        packageName: library.packageName,
+        githubUrl: library.githubUrl,
+      },
+      store,
+      cleanup: library.setup.cleanup ? () => library.setup.cleanup(store) : undefined,
     };
+  }
+
+  /**
+   * Cleanup test context
+   */
+  private async cleanupContext(ctx: TestContext<any>): Promise<void> {
+    if (ctx.cleanup) {
+      await ctx.cleanup();
+    }
+  }
+
+  /**
+   * Run a test with new multi-metric support
+   *
+   * This method handles TestImplementation types and returns TestResult.
+   * Will be used in Phase 1.4 after library.ts is updated.
+   *
+   * @internal - Not yet used, will be used after Phase 1.4
+   */
+  // eslint-disable-next-line @typescript-eslint/no-unused-vars
+  private async runTestWithMetrics(
+    library: any,
+    test: any,
+    implementation: TestImplementation
+  ): Promise<TestResult> {
+    const ctx = await this.createContext(library);
+
+    try {
+      let result: TestResult;
+
+      // Determine test type and run appropriate measurement
+      if (typeof implementation === 'function') {
+        // Backward compat: Simple function = performance test
+        const metric = await measurePerformanceMetric(implementation, ctx);
+        result = {
+          testName: test.name,
+          testDescription: test.description,
+          groupId: test.group.id,
+          metrics: { primary: metric },
+          timestamp: new Date().toISOString(),
+        };
+      } else {
+        // New: Multi-metric implementation
+        switch (implementation.type) {
+          case 'performance': {
+            const metric = await measurePerformanceMetric(implementation.run, ctx);
+            result = {
+              testName: test.name,
+              testDescription: test.description,
+              groupId: test.group.id,
+              metrics: { primary: metric },
+              timestamp: new Date().toISOString(),
+            };
+            break;
+          }
+
+          case 'size': {
+            const metric = await implementation.measure();
+            result = {
+              testName: test.name,
+              testDescription: test.description,
+              groupId: test.group.id,
+              metrics: { primary: metric },
+              timestamp: new Date().toISOString(),
+            };
+            break;
+          }
+
+          case 'memory': {
+            const metric = await implementation.measure();
+            result = {
+              testName: test.name,
+              testDescription: test.description,
+              groupId: test.group.id,
+              metrics: { primary: metric },
+              timestamp: new Date().toISOString(),
+            };
+            break;
+          }
+
+          case 'build': {
+            // Run build and collect metrics
+            const { time, size } = await this.runBuildTest(implementation.config);
+            result = {
+              testName: test.name,
+              testDescription: test.description,
+              groupId: test.group.id,
+              metrics: {
+                primary: time,
+                secondary: size ? [size] : undefined,
+              },
+              timestamp: new Date().toISOString(),
+            };
+            break;
+          }
+
+          case 'custom': {
+            const metric = await implementation.measure(ctx);
+            result = {
+              testName: test.name,
+              testDescription: test.description,
+              groupId: test.group.id,
+              metrics: { primary: metric },
+              timestamp: new Date().toISOString(),
+            };
+            break;
+          }
+
+          default:
+            throw new Error(`Unknown test type: ${(implementation as any).type}`);
+        }
+      }
+
+      return result;
+    } finally {
+      await this.cleanupContext(ctx);
+    }
+  }
+
+  /**
+   * Run build test
+   */
+  private async runBuildTest(config: BuildTestConfig): Promise<{
+    time: SpeedMetric;
+    size?: SizeMetric;
+  }> {
+    if (config.prepareBuild) {
+      await config.prepareBuild();
+    }
+
+    const buildResult = await config.build();
+
+    const time: SpeedMetric = {
+      type: 'speed',
+      value: buildResult.buildTime,
+      unit: 'ms',
+      opsPerSecond: 1000 / buildResult.buildTime,
+      meanTime: buildResult.buildTime,
+      variance: 0,
+      p99: buildResult.buildTime,
+      samples: 1,
+    };
+
+    let size: SizeMetric | undefined;
+    if (buildResult.outputSize) {
+      size = {
+        type: 'size',
+        value: buildResult.outputSize.total,
+        unit: 'bytes',
+        bytes: buildResult.outputSize.total,
+        breakdown: buildResult.outputSize.breakdown,
+      };
+    }
+
+    return { time, size };
   }
 }
