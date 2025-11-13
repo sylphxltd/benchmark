@@ -4,7 +4,7 @@
   "description": "Professional CSS framework benchmark suite comparing runtime performance, CSS output size, and build times",
   "type": "module",
   "scripts": {
-    "benchmark": "npm run bench:runtime && npm run bench:build && npm run merge:results && node ../../scripts/save-dated-result.cjs results",
+    "benchmark": "bun run index.ts",
     "bench:runtime": "vitest bench --run --outputJson=results/runtime.json",
     "bench:build": "tsx build-tests/run-all.ts",
     "merge:results": "tsx build-tests/merge-results.ts",

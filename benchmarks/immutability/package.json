@@ -3,7 +3,7 @@
   "version": "1.0.0",
   "type": "module",
   "scripts": {
-    "benchmark": "vitest bench --run --outputJson=results/latest.json && node ../../scripts/save-dated-result.cjs results"
+    "benchmark": "bun run index.ts"
   },
   "dependencies": {
     "@sylphx/craft": "^1.2.1",
