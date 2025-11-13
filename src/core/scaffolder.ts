@@ -342,11 +342,11 @@ export async function scaffoldCategory(options: ScaffoldOptions): Promise<void> 
   // Step 4: Install dependencies
   console.log('📦 Installing dependencies...');
   try {
-    const { stdout } = await execAsync('bun install', { cwd: categoryPath });
+    const { stdout } = await execAsync('npm install', { cwd: categoryPath });
     console.log('   ✅ Dependencies installed\n');
   } catch (error) {
     console.error('   ⚠️  Failed to install dependencies. Run manually:\n');
-    console.error(`   cd benchmarks/${options.categoryId} && bun install\n`);
+    console.error(`   cd benchmarks/${options.categoryId} && npm install\n`);
   }
 
   // Step 5: Success message
