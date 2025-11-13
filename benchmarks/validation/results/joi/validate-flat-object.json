@@ -4,12 +4,12 @@
   "packageName": "joi",
   "test": "Validate Flat Object",
   "group": "03-object-validation",
-  "timestamp": "2025-11-13T16:55:43.707Z",
+  "timestamp": "2025-11-13T17:05:47.110Z",
   "result": {
-    "opsPerSecond": 16751.381751726414,
-    "meanTime": 0.06192366100001618,
-    "variance": 0.0011942437195384306,
-    "p99": 0.09845965000011345,
+    "opsPerSecond": 16565.208173050785,
+    "meanTime": 0.06192744299999322,
+    "variance": 0.0007497897901791547,
+    "p99": 0.0974965100004465,
     "samples": 1000
   }
 }

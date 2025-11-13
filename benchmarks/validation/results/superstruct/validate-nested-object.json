@@ -4,12 +4,12 @@
   "packageName": "superstruct",
   "test": "Validate Nested Object",
   "group": "03-object-validation",
-  "timestamp": "2025-11-13T16:55:43.707Z",
+  "timestamp": "2025-11-13T17:05:47.110Z",
   "result": {
-    "opsPerSecond": 50380.164300118246,
-    "meanTime": 0.021088740999994117,
-    "variance": 0.0006424458082515539,
-    "p99": 0.04112630999887187,
+    "opsPerSecond": 53201.94354597213,
+    "meanTime": 0.019820808000020406,
+    "variance": 0.0006179128645117712,
+    "p99": 0.030841709999458542,
     "samples": 1000
   }
 }

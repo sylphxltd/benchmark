@@ -4,12 +4,12 @@
   "packageName": "mutative",
   "test": "Multiple Updates (3 changes)",
   "group": "04-deep-operations",
-  "timestamp": "2025-11-13T16:55:45.452Z",
+  "timestamp": "2025-11-13T17:05:50.895Z",
   "result": {
-    "opsPerSecond": 127824.54974568468,
-    "meanTime": 0.008202799000013328,
-    "variance": 0.0000071106170456930526,
-    "p99": 0.021690399999588408,
+    "opsPerSecond": 154977.29873407926,
+    "meanTime": 0.0065563570000394976,
+    "variance": 0.0000012824533649410697,
+    "p99": 0.010457080000305723,
     "samples": 1000
   }
 }

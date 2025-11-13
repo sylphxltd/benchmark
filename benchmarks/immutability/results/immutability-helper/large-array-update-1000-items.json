@@ -4,12 +4,12 @@
   "packageName": "immutability-helper",
   "test": "Large Array Update (1000 items)",
   "group": "05-large-scale",
-  "timestamp": "2025-11-13T16:55:45.452Z",
+  "timestamp": "2025-11-13T17:05:50.895Z",
   "result": {
-    "opsPerSecond": 13430.47179617786,
-    "meanTime": 0.075956162999988,
-    "variance": 0.0007396422338203214,
-    "p99": 0.10145592000157193,
+    "opsPerSecond": 8943.513929993554,
+    "meanTime": 0.11258656599993992,
+    "variance": 0.0004451130645707776,
+    "p99": 0.13227698999933632,
     "samples": 1000
   }
 }

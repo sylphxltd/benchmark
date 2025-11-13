@@ -4,12 +4,12 @@
   "packageName": "yup",
   "test": "Validate Flat Object",
   "group": "03-object-validation",
-  "timestamp": "2025-11-13T16:55:43.707Z",
+  "timestamp": "2025-11-13T17:05:47.110Z",
   "result": {
-    "opsPerSecond": 18920.2008464824,
-    "meanTime": 0.05934319499999492,
-    "variance": 0.0016209162515888253,
-    "p99": 0.112998639999887,
+    "opsPerSecond": 17699.686870635305,
+    "meanTime": 0.06710653300001013,
+    "variance": 0.012399843813516135,
+    "p99": 0.12369183999994673,
     "samples": 1000
   }
 }

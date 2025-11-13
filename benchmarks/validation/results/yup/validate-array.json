@@ -4,12 +4,12 @@
   "packageName": "yup",
   "test": "Validate Array",
   "group": "03-object-validation",
-  "timestamp": "2025-11-13T16:55:43.707Z",
+  "timestamp": "2025-11-13T17:05:47.110Z",
   "result": {
-    "opsPerSecond": 13815.436329445514,
-    "meanTime": 0.07538926200005334,
-    "variance": 0.001858490924003186,
-    "p99": 0.11690770000088373,
+    "opsPerSecond": 13764.936739338695,
+    "meanTime": 0.0757143430000433,
+    "variance": 0.0019299904245127363,
+    "p99": 0.12763603999828774,
     "samples": 1000
   }
 }

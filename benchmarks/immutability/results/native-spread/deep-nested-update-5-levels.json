@@ -4,12 +4,12 @@
   "packageName": "native",
   "test": "Deep Nested Update (5 levels)",
   "group": "04-deep-operations",
-  "timestamp": "2025-11-13T16:55:45.452Z",
+  "timestamp": "2025-11-13T17:05:50.895Z",
   "result": {
-    "opsPerSecond": 1200609.714185438,
-    "meanTime": 0.0008861690000067029,
-    "variance": 3.961627151796841e-7,
-    "p99": 0.001793099999467813,
+    "opsPerSecond": 2093958.240279061,
+    "meanTime": 0.0004983059999722172,
+    "variance": 2.055537175486182e-8,
+    "p99": 0.0012220100007834843,
     "samples": 1000
   }
 }
