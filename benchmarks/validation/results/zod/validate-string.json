@@ -4,12 +4,12 @@
   "packageName": "zod",
   "test": "Validate String",
   "group": "02-primitive-validation",
-  "timestamp": "2025-11-13T18:04:17.007Z",
+  "timestamp": "2025-11-13T18:06:21.686Z",
   "result": {
-    "opsPerSecond": 45585.412486345704,
-    "meanTime": 0.023019022999993467,
-    "variance": 0.0005242171297724805,
-    "p99": 0.038021289999846886,
+    "opsPerSecond": 43837.58097166532,
+    "meanTime": 0.02398888899999656,
+    "variance": 0.0006465277570933682,
+    "p99": 0.04655002000003605,
     "samples": 1000
   }
 }

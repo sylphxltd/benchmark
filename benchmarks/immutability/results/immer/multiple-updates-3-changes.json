@@ -4,12 +4,12 @@
   "packageName": "immer",
   "test": "Multiple Updates (3 changes)",
   "group": "04-deep-operations",
-  "timestamp": "2025-11-13T18:04:16.246Z",
+  "timestamp": "2025-11-13T18:06:26.669Z",
   "result": {
-    "opsPerSecond": 159034.3400574424,
-    "meanTime": 0.006364385000008042,
-    "variance": 0.0000010342374841552071,
-    "p99": 0.008461409999563324,
+    "opsPerSecond": 155533.89619736464,
+    "meanTime": 0.006555904000015289,
+    "variance": 0.0000016923257104625308,
+    "p99": 0.011823820000627155,
     "samples": 1000
   }
 }
