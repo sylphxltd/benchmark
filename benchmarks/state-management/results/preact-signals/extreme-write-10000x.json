@@ -4,12 +4,12 @@
   "packageName": "@preact/signals",
   "test": "Extreme Write (10000x)",
   "group": "06-performance-stress",
-  "timestamp": "2025-11-13T11:35:35.183Z",
+  "timestamp": "2025-11-13T11:46:40.730Z",
   "result": {
-    "opsPerSecond": 15969.896617117665,
-    "meanTime": 0.06261781299999959,
-    "variance": 0.0005157545523140475,
-    "p99": 0.1128400000000056,
+    "opsPerSecond": 17291.874565433412,
+    "meanTime": 0.057830630000000556,
+    "variance": 0.0006507617258131128,
+    "p99": 0.07572100000001569,
     "samples": 1000
   }
 }

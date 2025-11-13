@@ -4,12 +4,12 @@
   "packageName": "unocss",
   "test": "Conditional styling (1000 iterations)",
   "group": "01-style-application",
-  "timestamp": "2025-11-13T11:35:46.805Z",
+  "timestamp": "2025-11-13T11:46:43.817Z",
   "result": {
-    "opsPerSecond": 514071.41994235676,
-    "meanTime": 0.00194525500000006,
-    "variance": 0.0000025060677219743074,
-    "p99": 0.0070929999999975735,
+    "opsPerSecond": 430919.1375929532,
+    "meanTime": 0.0023206209999997755,
+    "variance": 0.0000028499903573579374,
+    "p99": 0.006574999999997999,
     "samples": 1000
   }
 }

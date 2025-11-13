@@ -4,12 +4,12 @@
   "packageName": "tailwindcss",
   "test": "String concatenation (complex className)",
   "group": "01-style-application",
-  "timestamp": "2025-11-13T11:35:46.805Z",
+  "timestamp": "2025-11-13T11:46:43.817Z",
   "result": {
-    "opsPerSecond": 768338.9050710212,
-    "meanTime": 0.0013015089999998963,
-    "variance": 0.000016546259261919412,
-    "p99": 0.006713000000004854,
+    "opsPerSecond": 844297.9493691211,
+    "meanTime": 0.0011844160000000273,
+    "variance": 0.0000013667565289440852,
+    "p99": 0.005401999999989471,
     "samples": 1000
   }
 }

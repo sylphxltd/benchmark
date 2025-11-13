@@ -4,12 +4,12 @@
   "packageName": "tailwindcss",
   "test": "Responsive breakpoint matching",
   "group": "02-dynamic-updates",
-  "timestamp": "2025-11-13T11:35:46.805Z",
+  "timestamp": "2025-11-13T11:46:43.817Z",
   "result": {
-    "opsPerSecond": 448127.45461812883,
-    "meanTime": 0.002231508000000019,
-    "variance": 0.000007311961045935235,
-    "p99": 0.015237999999996532,
+    "opsPerSecond": 394436.7069110762,
+    "meanTime": 0.0025352609999997923,
+    "variance": 0.000018372088554879788,
+    "p99": 0.03125400000000411,
     "samples": 1000
   }
 }

@@ -4,12 +4,12 @@
   "packageName": "@sylphx/craft",
   "test": "Set - Delete Operation",
   "group": "07-map-set",
-  "timestamp": "2025-11-13T11:35:32.893Z",
+  "timestamp": "2025-11-13T11:46:38.102Z",
   "result": {
-    "opsPerSecond": 423446.03772971407,
-    "meanTime": 0.002361576000005698,
-    "variance": 0.0000033312539642358005,
-    "p99": 0.009197000000312983,
+    "opsPerSecond": 441792.70644618233,
+    "meanTime": 0.002263504999989891,
+    "variance": 0.000001730050445991747,
+    "p99": 0.00712299999941024,
     "samples": 1000
   }
 }

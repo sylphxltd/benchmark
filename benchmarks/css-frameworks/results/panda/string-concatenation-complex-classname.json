@@ -4,12 +4,12 @@
   "packageName": "@pandacss/dev",
   "test": "String concatenation (complex className)",
   "group": "01-style-application",
-  "timestamp": "2025-11-13T11:35:46.805Z",
+  "timestamp": "2025-11-13T11:46:43.817Z",
   "result": {
-    "opsPerSecond": 934007.6868834223,
-    "meanTime": 0.0010706549999998174,
-    "variance": 0.000001989199285975167,
-    "p99": 0.007503999999997291,
+    "opsPerSecond": 747624.4233948068,
+    "meanTime": 0.0013375699999997436,
+    "variance": 0.0000011411584970994183,
+    "p99": 0.004724999999993429,
     "samples": 1000
   }
 }

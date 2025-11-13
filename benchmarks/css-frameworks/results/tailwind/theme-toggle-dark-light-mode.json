@@ -4,12 +4,12 @@
   "packageName": "tailwindcss",
   "test": "Theme toggle (dark/light mode)",
   "group": "02-dynamic-updates",
-  "timestamp": "2025-11-13T11:35:46.805Z",
+  "timestamp": "2025-11-13T11:46:43.817Z",
   "result": {
-    "opsPerSecond": 552040.5904404967,
-    "meanTime": 0.0018114610000001222,
-    "variance": 0.0000022630084104789357,
-    "p99": 0.006042000000007874,
+    "opsPerSecond": 502214.7671230591,
+    "meanTime": 0.001991179999999815,
+    "variance": 0.0000011113911575998796,
+    "p99": 0.004133999999993421,
     "samples": 1000
   }
 }

@@ -4,12 +4,12 @@
   "packageName": "@pandacss/dev",
   "test": "Apply 100 inline styles",
   "group": "01-style-application",
-  "timestamp": "2025-11-13T11:35:46.805Z",
+  "timestamp": "2025-11-13T11:46:43.817Z",
   "result": {
-    "opsPerSecond": 113247.51285812161,
-    "meanTime": 0.008830216000000078,
-    "variance": 0.00002367448266134265,
-    "p99": 0.019826000000009003,
+    "opsPerSecond": 126635.94647453017,
+    "meanTime": 0.007896652000000066,
+    "variance": 0.00001941554262689416,
+    "p99": 0.018115000000001658,
     "samples": 1000
   }
 }

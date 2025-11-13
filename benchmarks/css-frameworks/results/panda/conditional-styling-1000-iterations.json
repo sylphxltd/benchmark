@@ -4,12 +4,12 @@
   "packageName": "@pandacss/dev",
   "test": "Conditional styling (1000 iterations)",
   "group": "01-style-application",
-  "timestamp": "2025-11-13T11:35:46.805Z",
+  "timestamp": "2025-11-13T11:46:43.817Z",
   "result": {
-    "opsPerSecond": 560590.2791402749,
-    "meanTime": 0.001783834000000155,
-    "variance": 0.0000025713252264433176,
-    "p99": 0.00832499999999925,
+    "opsPerSecond": 502913.37719406595,
+    "meanTime": 0.0019884140000000767,
+    "variance": 0.0000021474965986044337,
+    "p99": 0.00813799999998821,
     "samples": 1000
   }
 }

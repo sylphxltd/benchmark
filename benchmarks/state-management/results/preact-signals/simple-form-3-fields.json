@@ -4,12 +4,12 @@
   "packageName": "@preact/signals",
   "test": "Simple Form (3 fields)",
   "group": "05-real-world",
-  "timestamp": "2025-11-13T11:35:35.183Z",
+  "timestamp": "2025-11-13T11:46:40.730Z",
   "result": {
-    "opsPerSecond": 1342903.760802197,
-    "meanTime": 0.0007446549999998808,
-    "variance": 2.1776575197491683e-7,
-    "p99": 0.0014630000000011023,
+    "opsPerSecond": 1324438.40500534,
+    "meanTime": 0.0007550369999999873,
+    "variance": 8.482912276320114e-7,
+    "p99": 0.0014730000000042764,
     "samples": 1000
   }
 }
