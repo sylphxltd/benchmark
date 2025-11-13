@@ -1,40 +1,67 @@
 /**
  * CSS Frameworks Category
  *
- * Runtime performance benchmarks for CSS-in-JS and utility-first CSS frameworks
+ * Build-time performance and CSS output size benchmarks for utility-first CSS frameworks.
+ *
+ * Measures:
+ * - Build time (cold build)
+ * - CSS output size (minified + gzipped)
+ *
+ * NOTE: Runtime tests were removed as they measured meaningless string concatenation.
+ * Utility-first CSS frameworks (Tailwind, UnoCSS, Panda) are build-time tools.
  */
 
 import { createCategory } from '../../src/core';
 
 // ============================================================================
-// 1. Create Category
+// 1. Create Category with Build Metrics
 // ============================================================================
 
 export const category = createCategory({
   id: 'css-frameworks',
   name: 'CSS Frameworks',
-  description: 'Runtime performance benchmarks for CSS-in-JS and utility-first CSS frameworks',
+  description: 'Build-time performance and CSS output size benchmarks',
   emoji: '🎨',
+
+  // Primary metric: Build time (lower is better)
+  // Secondary metric: CSS output size (lower is better)
+  metrics: {
+    primary: {
+      type: 'speed',
+      name: 'Build Time',
+      unit: 'ms',
+      lowerIsBetter: true,
+    },
+    secondary: [
+      {
+        type: 'size',
+        name: 'CSS Output',
+        unit: 'bytes',
+        lowerIsBetter: true,
+      },
+    ],
+  },
+
   performanceTiers: [
     {
-      name: 'Zero Runtime (Tier S)',
-      threshold: 10000000,
-      description: 'No runtime overhead, pure string operations',
+      name: 'Blazing Fast (Tier S)',
+      threshold: 700,
+      description: 'Sub-700ms build time',
     },
     {
-      name: 'Optimized (Tier A)',
-      threshold: 5000000,
-      description: 'Minimal runtime processing',
+      name: 'Fast (Tier A)',
+      threshold: 900,
+      description: '700-900ms build time',
     },
     {
       name: 'Standard (Tier B)',
-      threshold: 1000000,
-      description: 'Moderate runtime processing',
+      threshold: 1200,
+      description: '900-1200ms build time',
     },
     {
-      name: 'Heavy (Tier C)',
+      name: 'Slow (Tier C)',
       threshold: 0,
-      description: 'Significant runtime processing overhead',
+      description: 'Above 1200ms build time',
     },
   ],
 });
@@ -44,17 +71,10 @@ export const category = createCategory({
 // ============================================================================
 
 export const groups = {
-  styleApplication: category.createGroup({
-    id: '01-style-application',
-    title: 'Style Application',
-    description: 'Runtime performance of style generation and concatenation',
-    type: 'universal',
-  }),
-
-  dynamicUpdates: category.createGroup({
-    id: '02-dynamic-updates',
-    title: 'Dynamic Updates',
-    description: 'Runtime style updates and theme switching',
+  buildPerformance: category.createGroup({
+    id: '01-build-performance',
+    title: 'Build Performance',
+    description: 'Cold build time and CSS output size for small apps',
     type: 'universal',
   }),
 };
@@ -64,31 +84,11 @@ export const groups = {
 // ============================================================================
 
 export const tests = {
-  // Style Application
-  applyStyles: groups.styleApplication.createTest({
-    name: 'Apply 100 inline styles',
-    description: 'Generate and join 100 style classes',
-  }),
-
-  conditionalStyles: groups.styleApplication.createTest({
-    name: 'Conditional styling (1000 iterations)',
-    description: 'Toggle between conditional style classes',
-  }),
-
-  stringConcat: groups.styleApplication.createTest({
-    name: 'String concatenation (complex className)',
-    description: 'Concatenate 10 different utility classes',
-  }),
-
-  // Dynamic Updates
-  themeToggle: groups.dynamicUpdates.createTest({
-    name: 'Theme toggle (dark/light mode)',
-    description: 'Switch between dark and light theme classes',
-  }),
-
-  breakpointMatching: groups.dynamicUpdates.createTest({
-    name: 'Responsive breakpoint matching',
-    description: 'Match and apply responsive breakpoint classes',
+  // Build Performance
+  smallAppBuild: groups.buildPerformance.createTest({
+    name: 'Small App Build',
+    description: 'Build a small app (10 components) and measure build time + CSS output',
+    testType: 'build',
   }),
 };
 

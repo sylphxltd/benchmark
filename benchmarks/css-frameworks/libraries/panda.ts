@@ -1,8 +1,11 @@
 /**
  * Panda CSS Library Implementation
+ *
+ * Uses build tests to measure actual build time and CSS output size
  */
 
 import { category, tests } from '../index';
+import { measureFrameworkBuild, frameworkConfigs } from '../build-utils';
 
 // ============================================================================
 // Register Library
@@ -13,65 +16,24 @@ const panda = category.registerLibrary<any>({
   displayName: 'Panda CSS',
   packageName: '@pandacss/dev',
   githubUrl: 'https://github.com/chakra-ui/panda',
-  description: 'CSS-in-JS with build time generated styles',
+  description: 'Universal styling solution with build-time CSS generation and runtime type safety',
 
   setup: {
     createStore: () => ({}),
   },
 
-  features: [],
+  features: ['Build-Time', 'Type-Safe', 'Recipes', 'Variants'],
 });
 
 // ============================================================================
-// Implement Tests
+// Implement Build Tests
 // ============================================================================
 
-// Style Application
-panda.implement(tests.applyStyles, () => {
-  const styles: string[] = [];
-  for (let i = 0; i < 100; i++) {
-    styles.push(`panda-${i}`);
-  }
-  return styles.join(' ');
-});
-
-panda.implement(tests.conditionalStyles, () => {
-  const condition = true;
-  let result = '';
-  for (let i = 0; i < 1000; i++) {
-    result = condition ? 'panda-active' : 'panda-inactive';
-  }
-  return result;
-});
-
-panda.implement(tests.stringConcat, () => {
-  const base = 'panda-base';
-  const variant = 'panda-primary';
-  const size = 'panda-md';
-  const state = 'panda-hover';
-  const spacing = 'panda-p-4';
-  const layout = 'panda-flex';
-  const align = 'panda-center';
-  const border = 'panda-rounded';
-  const shadow = 'panda-shadow';
-  const transition = 'panda-transition';
-
-  return `${base} ${variant} ${size} ${state} ${spacing} ${layout} ${align} ${border} ${shadow} ${transition}`;
-});
-
-// Dynamic Updates
-panda.implement(tests.themeToggle, () => {
-  let theme = 'light';
-  for (let i = 0; i < 1000; i++) {
-    theme = theme === 'light' ? 'dark' : 'light';
-    const className = theme === 'dark' ? 'panda-dark' : 'panda-light';
-  }
-});
-
-panda.implement(tests.breakpointMatching, () => {
-  const breakpoints = ['sm', 'md', 'lg', 'xl', '2xl'];
-  for (let i = 0; i < 1000; i++) {
-    const bp = breakpoints[i % breakpoints.length];
-    const className = `panda-${bp}:hidden`;
-  }
+panda.implement(tests.smallAppBuild, {
+  type: 'build',
+  config: {
+    build: async () => {
+      return await measureFrameworkBuild(frameworkConfigs.panda);
+    },
+  },
 });

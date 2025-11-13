@@ -71,25 +71,71 @@ export class BenchmarkRunner {
           }
 
           try {
-            const result = await this.measurePerformance(library, test);
+            // Check if library has new-style implementation
+            const implementation = library.getTestImplementation(test);
 
-            results.push({
-              library: library.displayName,
-              libraryId: library.id,
-              packageName: library.packageName,
-              test: test.name,
-              group: group.id,
-              timestamp,
-              result,
-              // Backward compat fields
-              opsPerSecond: result.opsPerSecond,
-              meanTime: result.meanTime,
-            });
+            if (!implementation) {
+              console.log(`    ${library.displayName}: [not implemented]`);
+              continue;
+            }
 
-            console.log(
-              `    ${library.displayName}: ${result.opsPerSecond.toLocaleString()} ops/sec` +
-              ` (${result.meanTime.toFixed(3)}ms avg)`
-            );
+            // Determine if this is a new-style test (build, size, memory, custom)
+            const isNewStyleTest = typeof implementation !== 'function' &&
+              'type' in implementation &&
+              implementation.type !== 'performance';
+
+            if (isNewStyleTest) {
+              // Use new runner for build/size/memory/custom tests
+              const testResult = await this.runTestWithMetrics(library, test, implementation);
+
+              results.push({
+                library: library.displayName,
+                libraryId: library.id,
+                packageName: library.packageName,
+                test: test.name,
+                group: group.id,
+                timestamp,
+                result: testResult,
+              });
+
+              // Display appropriate metrics based on test type
+              if (implementation.type === 'build' && testResult.metrics.primary.type === 'speed') {
+                console.log(
+                  `    ${library.displayName}: ${testResult.metrics.primary.value.toFixed(0)}ms build time`
+                );
+                if (testResult.metrics.secondary && testResult.metrics.secondary[0]) {
+                  const sizeMetric = testResult.metrics.secondary[0];
+                  if (sizeMetric.type === 'size') {
+                    console.log(
+                      `      CSS output: ${(sizeMetric.value / 1024).toFixed(2)} KB (gzipped)`
+                    );
+                  }
+                }
+              } else {
+                console.log(`    ${library.displayName}: ${testResult.metrics.primary.value} ${testResult.metrics.primary.unit}`);
+              }
+            } else {
+              // Use old runner for backward compatibility (performance tests)
+              const result = await this.measurePerformance(library, test);
+
+              results.push({
+                library: library.displayName,
+                libraryId: library.id,
+                packageName: library.packageName,
+                test: test.name,
+                group: group.id,
+                timestamp,
+                result,
+                // Backward compat fields
+                opsPerSecond: result.opsPerSecond,
+                meanTime: result.meanTime,
+              });
+
+              console.log(
+                `    ${library.displayName}: ${result.opsPerSecond.toLocaleString()} ops/sec` +
+                ` (${result.meanTime.toFixed(3)}ms avg)`
+              );
+            }
           } catch (error) {
             console.error(`    ❌ ${library.displayName} failed:`, error);
           }
@@ -182,11 +228,8 @@ export class BenchmarkRunner {
    * Run a test with new multi-metric support
    *
    * This method handles TestImplementation types and returns TestResult.
-   * Will be used in Phase 1.4 after library.ts is updated.
-   *
-   * @internal - Not yet used, will be used after Phase 1.4
+   * Used for build, size, memory, and custom test types.
    */
-  // eslint-disable-next-line @typescript-eslint/no-unused-vars
   private async runTestWithMetrics(
     library: any,
     test: any,
