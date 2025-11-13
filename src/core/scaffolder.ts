@@ -185,8 +185,10 @@ export const tests = {
 async function main() {
   console.log('🎯 Running benchmarks for all libraries\\n');
 
-  // Import libraries AFTER category/groups/tests are defined
-  // This avoids circular dependency issues
+  // ⚠️  IMPORTANT: Import libraries using dynamic imports in this async function
+  // DO NOT use static imports at the top level (e.g., import './libraries/axios')
+  // This would cause a circular dependency error: "Cannot access 'category' before initialization"
+  // See CONTRIBUTING.md for details
 ${libraryImports}
 
   // Print summary
