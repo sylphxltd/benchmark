@@ -4,12 +4,12 @@
   "packageName": "@sylphx/craft",
   "test": "Map - Set Operation",
   "group": "07-map-set",
-  "timestamp": "2025-11-13T16:07:03.788Z",
+  "timestamp": "2025-11-13T16:12:01.683Z",
   "result": {
-    "opsPerSecond": 333777.59130739287,
-    "meanTime": 0.0029368310000118074,
-    "variance": 0.000006380057790418831,
-    "p99": 0.017031999999744585,
+    "opsPerSecond": 358377.72438746283,
+    "meanTime": 0.0027363239999967847,
+    "variance": 0.000006344744616953438,
+    "p99": 0.01677099999960774,
     "samples": 1000
   }
 }

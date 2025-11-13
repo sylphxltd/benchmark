@@ -7,7 +7,7 @@ Comprehensive performance benchmarks for React css-frameworks libraries.
 [![CI Status](https://img.shields.io/github/actions/workflow/status/SylphxAI/benchmark/benchmarks-per-library.yml?branch=main&label=Benchmarks&style=flat-square)](https://github.com/SylphxAI/benchmark/actions)
 [![Last Updated](https://img.shields.io/badge/Updated-Nov%2013,%202025-blue?style=flat-square)](https://github.com/SylphxAI/benchmark)
 [![Libraries](https://img.shields.io/badge/Libraries-4-green?style=flat-square)](#-libraries-tested)
-[![Tests](https://img.shields.io/badge/Tests-5-orange?style=flat-square)](#-test-coverage)
+[![Tests](https://img.shields.io/badge/Tests-6-orange?style=flat-square)](#-test-coverage)
 
 [⬅️ Back to Main](../../README.md) • [📊 All Categories](../../README.md#-benchmark-categories) • [🔬 Methodology](#-methodology) • [🚀 Run Locally](#-run-locally)
 
@@ -31,9 +31,9 @@ Comprehensive performance benchmarks for React css-frameworks libraries.
 
 **TL;DR** - Choose based on your needs:
 
-- **⚡ Maximum Performance**: Panda CSS - Fastest overall with 88.4/100 score
-- **⚖️ Best Balance**: UnoCSS - Great performance (87.0/100) with good ecosystem
-- **🎯 Popular Choice**: Silk - Widely used, good performance, minimal API
+- **⚡ Maximum Performance**: Panda CSS - Fastest overall with 0.0/100 score
+- **⚖️ Best Balance**: Silk - Great performance (0.0/100) with good ecosystem
+- **🎯 Popular Choice**: Tailwind CSS - Widely used, good performance, minimal API
 
 <details>
 <summary><b>📊 Detailed Performance Insights</b> (click to expand)</summary>
@@ -41,28 +41,28 @@ Comprehensive performance benchmarks for React css-frameworks libraries.
 ### When to Choose Each Library
 
 
-**Panda CSS** (Score: 88.4/100)
+**Panda CSS** (Score: 0.0/100)
 - High-performance state management solution
 - **Best for**: General purpose state management
 - [GitHub](#) • [npm](https://www.npmjs.com/package/panda)
 
 
-**UnoCSS** (Score: 87.0/100)
-- High-performance state management solution
-- **Best for**: General purpose state management
-- [GitHub](#) • [npm](https://www.npmjs.com/package/unocss)
-
-
-**Silk** (Score: 83.8/100)
+**Silk** (Score: 0.0/100)
 - High-performance state management solution
 - **Best for**: General purpose state management
 - [GitHub](#) • [npm](https://www.npmjs.com/package/silk)
 
 
-**Tailwind CSS** (Score: 77.8/100)
+**Tailwind CSS** (Score: 0.0/100)
 - High-performance state management solution
 - **Best for**: General purpose state management
 - [GitHub](#) • [npm](https://www.npmjs.com/package/tailwind)
+
+
+**UnoCSS** (Score: 0.0/100)
+- High-performance state management solution
+- **Best for**: General purpose state management
+- [GitHub](#) • [npm](https://www.npmjs.com/package/unocss)
 
 
 </details>
@@ -71,14 +71,14 @@ Comprehensive performance benchmarks for React css-frameworks libraries.
 
 ## 📊 Overall Performance Rankings
 
-Based on geometric mean of normalized scores across all 5 tests.
+Based on geometric mean of normalized scores across all 6 tests.
 
 | Rank | Library | Overall Score | Relative Performance | Links |
 |:----:|---------|--------------|---------------------|:-----:|
-| 🥇 1 | **[Panda CSS](#)** | 88.4/100 | 100% of fastest | [📦](https://www.npmjs.com/package/panda) [📊](https://bundlephobia.com/package/panda) |
-| 🥈 2 | **[UnoCSS](#)** | 87.0/100 | 98% of fastest | [📦](https://www.npmjs.com/package/unocss) [📊](https://bundlephobia.com/package/unocss) |
-| 🥉 3 | **[Silk](#)** | 83.8/100 | 95% of fastest | [📦](https://www.npmjs.com/package/silk) [📊](https://bundlephobia.com/package/silk) |
-|  4 | **[Tailwind CSS](#)** | 77.8/100 | 88% of fastest | [📦](https://www.npmjs.com/package/tailwind) [📊](https://bundlephobia.com/package/tailwind) |
+| 🥇 1 | **[Panda CSS](#)** | 0.0/100 | 0% of fastest | [📦](https://www.npmjs.com/package/panda) [📊](https://bundlephobia.com/package/panda) |
+| 🥈 2 | **[Silk](#)** | 0.0/100 | 0% of fastest | [📦](https://www.npmjs.com/package/silk) [📊](https://bundlephobia.com/package/silk) |
+| 🥉 3 | **[Tailwind CSS](#)** | 0.0/100 | 0% of fastest | [📦](https://www.npmjs.com/package/tailwind) [📊](https://bundlephobia.com/package/tailwind) |
+|  4 | **[UnoCSS](#)** | 0.0/100 | 0% of fastest | [📦](https://www.npmjs.com/package/unocss) [📊](https://bundlephobia.com/package/unocss) |
 
 
 *📦 = npm package • 📊 = bundle size*
@@ -89,10 +89,10 @@ Based on geometric mean of normalized scores across all 5 tests.
 
 | Library | Score | Bundle Size (gzip) | Description | Best For |
 |---------|:-----:|:------------------:|-------------|----------|
-| **[Panda CSS](#)** | **88.4** | **8.02 KB** | State management solution... | General purpose... |
-| **[UnoCSS](#)** | **87.0** | **0.28 KB** | State management solution... | General purpose... |
-| **[Silk](#)** | **83.8** | **9.46 KB** | State management solution... | General purpose... |
-| **[Tailwind CSS](#)** | **77.8** | **526.39 KB** | State management solution... | General purpose... |
+| **[Panda CSS](#)** | **0.0** | **8.02 KB** | State management solution... | General purpose... |
+| **[Silk](#)** | **0.0** | **9.46 KB** | State management solution... | General purpose... |
+| **[Tailwind CSS](#)** | **0.0** | **526.39 KB** | State management solution... | General purpose... |
+| **[UnoCSS](#)** | **0.0** | **0.28 KB** | State management solution... | General purpose... |
 
 ---
 
@@ -100,6 +100,24 @@ Based on geometric mean of normalized scores across all 5 tests.
 
 <details open>
 <summary><b>Click to expand/collapse detailed test results</b></summary>
+
+### 01-build-performance
+
+#### Small App Build
+
+```
+🥇 Panda CSS                                                     N/A ops/sec
+🥈 Silk                                                          N/A ops/sec
+🥉 Tailwind CSS                                                  N/A ops/sec
+ UnoCSS                                                        N/A ops/sec
+```
+
+| Library | ops/sec | Mean Time | P99 | Samples |
+|---------|---------|-----------|-----|----------|
+| Panda CSS | N/A | N/Ams | N/Ams | N/A |
+| Silk | N/A | N/Ams | N/Ams | N/A |
+| Tailwind CSS | N/A | N/Ams | N/Ams | N/A |
+| UnoCSS | N/A | N/Ams | N/Ams | N/A |
 
 ### 01-style-application
 
@@ -259,16 +277,16 @@ npx tsx ../../scripts/generate-simple-readme.ts .
 - **Real-World Scenarios**: 0 tests
 - **Stress Tests**: 0 tests
 
-**Total**: 5 tests × 4 libraries = 20 benchmark runs
+**Total**: 6 tests × 4 libraries = 24 benchmark runs
 
 ---
 
 ## 🚀 Libraries Tested
 
 - **[Panda CSS](#)** (`@pandacss/dev`) v1.4.3 • 8.02 KB gzip - [📦 npm](https://www.npmjs.com/package/panda) • [📊 bundle size](https://bundlephobia.com/package/panda)
-- **[UnoCSS](#)** (`unocss`) v0.65.3 • 0.28 KB gzip - [📦 npm](https://www.npmjs.com/package/unocss) • [📊 bundle size](https://bundlephobia.com/package/unocss)
 - **[Silk](#)** (`@sylphx/silk`) v1.0.0 • 9.46 KB gzip - [📦 npm](https://www.npmjs.com/package/silk) • [📊 bundle size](https://bundlephobia.com/package/silk)
 - **[Tailwind CSS](#)** (`tailwindcss`) v3.4.15 • 526.39 KB gzip - [📦 npm](https://www.npmjs.com/package/tailwind) • [📊 bundle size](https://bundlephobia.com/package/tailwind)
+- **[UnoCSS](#)** (`unocss`) v0.65.3 • 0.28 KB gzip - [📦 npm](https://www.npmjs.com/package/unocss) • [📊 bundle size](https://bundlephobia.com/package/unocss)
 
 ---
 
@@ -298,7 +316,7 @@ See [CONTRIBUTING.md](../../CONTRIBUTING.md) for detailed guidelines.
 
 **Found this useful? Give it a ⭐️!**
 
-*Generated on 2025-11-13T16:09:41.226Z*
+*Generated on 2025-11-13T16:13:41.526Z*
 
 [⬆️ Back to Top](#css-frameworks-benchmarks) • [⬅️ Main README](../../README.md)
 

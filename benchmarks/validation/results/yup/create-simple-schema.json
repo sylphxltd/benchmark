@@ -4,12 +4,12 @@
   "packageName": "yup",
   "test": "Create Simple Schema",
   "group": "01-schema-creation",
-  "timestamp": "2025-11-13T16:06:58.426Z",
+  "timestamp": "2025-11-13T16:12:03.529Z",
   "result": {
-    "opsPerSecond": 31011.72047660178,
-    "meanTime": 0.032124094999999644,
-    "variance": 0.0017391243702580095,
-    "p99": 0.09377499999999372,
+    "opsPerSecond": 34825.19354797818,
+    "meanTime": 0.02861417100000003,
+    "variance": 0.0012223007893097941,
+    "p99": 0.08333600000000274,
     "samples": 1000
   }
 }

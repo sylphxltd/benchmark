@@ -4,12 +4,12 @@
   "packageName": "yup",
   "test": "Validate String",
   "group": "02-primitive-validation",
-  "timestamp": "2025-11-13T16:06:58.426Z",
+  "timestamp": "2025-11-13T16:12:03.529Z",
   "result": {
-    "opsPerSecond": 75618.935314126,
-    "meanTime": 0.013127415000000838,
-    "variance": 0.0008675285346525677,
-    "p99": 0.04106600000000071,
+    "opsPerSecond": 77180.06278443795,
+    "meanTime": 0.012868728999999007,
+    "variance": 0.0015685823679796667,
+    "p99": 0.042059000000108426,
     "samples": 1000
   }
 }
