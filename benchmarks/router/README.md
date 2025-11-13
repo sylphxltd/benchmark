@@ -42,27 +42,27 @@ Comprehensive performance benchmarks for React router libraries.
 
 
 **SolidJS Router** (Score: 98.9/100)
-- High-performance state management solution
+- Universal router for Solid with nested routing and data APIs
 - **Best for**: General purpose state management
-- [GitHub](#) • [npm](https://www.npmjs.com/package/solidjs-router)
+- [GitHub](https://github.com/solidjs/solid-router) • [npm](https://www.npmjs.com/package/@solidjs/router)
 
 
 **Zen Router** (Score: 88.9/100)
-- High-performance state management solution
+- Tiny and fast router with regex-based matching
 - **Best for**: General purpose state management
-- [GitHub](#) • [npm](https://www.npmjs.com/package/zen-router)
+- [GitHub](https://github.com/SylphxAI/zen-router) • [npm](https://www.npmjs.com/package/@sylphx/zen-router)
 
 
 **Wouter** (Score: 22.6/100)
-- High-performance state management solution
+- Minimalist-friendly ~2.1KB routing for React and Preact
 - **Best for**: General purpose state management
-- [GitHub](#) • [npm](https://www.npmjs.com/package/wouter)
+- [GitHub](https://github.com/molefrog/wouter) • [npm](https://www.npmjs.com/package/wouter)
 
 
 **React Router** (Score: 4.4/100)
-- High-performance state management solution
+- Declarative routing for React
 - **Best for**: General purpose state management
-- [GitHub](#) • [npm](https://www.npmjs.com/package/react-router)
+- [GitHub](https://github.com/remix-run/react-router) • [npm](https://www.npmjs.com/package/react-router-dom)
 
 
 </details>
@@ -75,10 +75,10 @@ Based on geometric mean of normalized scores across all 9 tests.
 
 | Rank | Library | Overall Score | Relative Performance | Links |
 |:----:|---------|--------------|---------------------|:-----:|
-| 🥇 1 | **[SolidJS Router](#)** | 98.9/100 | 100% of fastest | [📦](https://www.npmjs.com/package/solidjs-router) [📊](https://bundlephobia.com/package/solidjs-router) |
-| 🥈 2 | **[Zen Router](#)** | 88.9/100 | 90% of fastest | [📦](https://www.npmjs.com/package/zen-router) [📊](https://bundlephobia.com/package/zen-router) |
-| 🥉 3 | **[Wouter](#)** | 22.6/100 | 23% of fastest | [📦](https://www.npmjs.com/package/wouter) [📊](https://bundlephobia.com/package/wouter) |
-|  4 | **[React Router](#)** | 4.4/100 | 4% of fastest | [📦](https://www.npmjs.com/package/react-router) [📊](https://bundlephobia.com/package/react-router) |
+| 🥇 1 | **[SolidJS Router](https://github.com/solidjs/solid-router)** | 98.9/100 | 100% of fastest | [📦](https://www.npmjs.com/package/@solidjs/router) [📊](https://bundlephobia.com/package/@solidjs/router) |
+| 🥈 2 | **[Zen Router](https://github.com/SylphxAI/zen-router)** | 88.9/100 | 90% of fastest | [📦](https://www.npmjs.com/package/@sylphx/zen-router) [📊](https://bundlephobia.com/package/@sylphx/zen-router) |
+| 🥉 3 | **[Wouter](https://github.com/molefrog/wouter)** | 22.6/100 | 23% of fastest | [📦](https://www.npmjs.com/package/wouter) [📊](https://bundlephobia.com/package/wouter) |
+|  4 | **[React Router](https://github.com/remix-run/react-router)** | 4.4/100 | 4% of fastest | [📦](https://www.npmjs.com/package/react-router-dom) [📊](https://bundlephobia.com/package/react-router-dom) |
 
 
 *📦 = npm package • 📊 = bundle size*
@@ -89,10 +89,10 @@ Based on geometric mean of normalized scores across all 9 tests.
 
 | Library | Score | Bundle Size (gzip) | Description | Best For |
 |---------|:-----:|:------------------:|-------------|----------|
-| **[SolidJS Router](#)** | **98.9** | N/A | State management solution... | General purpose... |
-| **[Zen Router](#)** | **88.9** | **1.57 KB** | State management solution... | General purpose... |
-| **[Wouter](#)** | **22.6** | **2.37 KB** | State management solution... | General purpose... |
-| **[React Router](#)** | **4.4** | **26.34 KB** | State management solution... | General purpose... |
+| **[SolidJS Router](https://github.com/solidjs/solid-router)** | **98.9** | **15.68 KB** | Universal router for Solid with nested routing and... | General purpose... |
+| **[Zen Router](https://github.com/SylphxAI/zen-router)** | **88.9** | **0.95 KB** | Tiny and fast router with regex-based matching... | General purpose... |
+| **[Wouter](https://github.com/molefrog/wouter)** | **22.6** | **4.44 KB** | Minimalist-friendly ~2.1KB routing for React and P... | General purpose... |
+| **[React Router](https://github.com/remix-run/react-router)** | **4.4** | **14.80 KB** | Declarative routing for React... | General purpose... |
 
 ---
 
@@ -303,7 +303,7 @@ cd benchmark
 npm install
 
 # Navigate to this category
-cd benchmarks/router
+cd /home/runner/work/benchmark/benchmark/benchmarks/router
 
 # Install category dependencies
 npm install
@@ -333,10 +333,10 @@ npx tsx ../../scripts/generate-simple-readme.ts .
 
 ## 🚀 Libraries Tested
 
-- **[SolidJS Router](#)** (`@solidjs/router`) v0.15.9 - [📦 npm](https://www.npmjs.com/package/solidjs-router) • [📊 bundle size](https://bundlephobia.com/package/solidjs-router)
-- **[Zen Router](#)** (`@sylphx/zen-router`) v1.0.2 • 1.57 KB gzip - [📦 npm](https://www.npmjs.com/package/zen-router) • [📊 bundle size](https://bundlephobia.com/package/zen-router)
-- **[Wouter](#)** (`wouter`) v3.7.1 • 2.37 KB gzip - [📦 npm](https://www.npmjs.com/package/wouter) • [📊 bundle size](https://bundlephobia.com/package/wouter)
-- **[React Router](#)** (`react-router-dom`) v6.30.1 • 26.34 KB gzip - [📦 npm](https://www.npmjs.com/package/react-router) • [📊 bundle size](https://bundlephobia.com/package/react-router)
+- **[SolidJS Router](https://github.com/solidjs/solid-router)** (`@solidjs/router`) v0.15.9 • 15.68 KB gzip - [📦 npm](https://www.npmjs.com/package/@solidjs/router) • [📊 bundle size](https://bundlephobia.com/package/@solidjs/router)
+- **[Zen Router](https://github.com/SylphxAI/zen-router)** (`@sylphx/zen-router`) v1.0.2 • 0.95 KB gzip - [📦 npm](https://www.npmjs.com/package/@sylphx/zen-router) • [📊 bundle size](https://bundlephobia.com/package/@sylphx/zen-router)
+- **[Wouter](https://github.com/molefrog/wouter)** (`wouter`) v3.7.1 • 4.44 KB gzip - [📦 npm](https://www.npmjs.com/package/wouter) • [📊 bundle size](https://bundlephobia.com/package/wouter)
+- **[React Router](https://github.com/remix-run/react-router)** (`react-router-dom`) v6.30.1 • 14.80 KB gzip - [📦 npm](https://www.npmjs.com/package/react-router-dom) • [📊 bundle size](https://bundlephobia.com/package/react-router-dom)
 
 ---
 
@@ -366,7 +366,7 @@ See [CONTRIBUTING.md](../../CONTRIBUTING.md) for detailed guidelines.
 
 **Found this useful? Give it a ⭐️!**
 
-*Generated on 2025-11-13T13:16:13.032Z*
+*Generated on 2025-11-13T14:29:20.721Z*
 
 [⬆️ Back to Top](#router-benchmarks) • [⬅️ Main README](../../README.md)
 

@@ -48,27 +48,27 @@ Comprehensive performance benchmarks for React immutability libraries.
 
 
 **Craft** (Score: 47.8/100)
-- High-performance state management solution
+- Performant immutable updates with structural sharing
 - **Best for**: General purpose state management
-- [GitHub](#) • [npm](https://www.npmjs.com/package/craft)
+- [GitHub](https://github.com/SylphxAI/craft) • [npm](https://www.npmjs.com/package/@sylphx/craft)
 
 
 **Immutability Helper** (Score: 24.8/100)
-- High-performance state management solution
+- Mutate a copy of data without changing the original source
 - **Best for**: General purpose state management
-- [GitHub](#) • [npm](https://www.npmjs.com/package/immutability-helper)
+- [GitHub](https://github.com/kolodny/immutability-helper) • [npm](https://www.npmjs.com/package/immutability-helper)
 
 
 **Mutative** (Score: 18.0/100)
-- High-performance state management solution
+- Efficient immutable updates, 2-6x faster than Immer
 - **Best for**: General purpose state management
-- [GitHub](#) • [npm](https://www.npmjs.com/package/mutative)
+- [GitHub](https://github.com/unadlib/mutative) • [npm](https://www.npmjs.com/package/mutative)
 
 
 **Immer** (Score: 17.2/100)
-- High-performance state management solution
+- Create the next immutable state by mutating the current one
 - **Best for**: General purpose state management
-- [GitHub](#) • [npm](https://www.npmjs.com/package/immer)
+- [GitHub](https://github.com/immerjs/immer) • [npm](https://www.npmjs.com/package/immer)
 
 
 </details>
@@ -82,12 +82,12 @@ Based on geometric mean of normalized scores across all 18 tests.
 | Rank | Library | Overall Score | Relative Performance | Links |
 |:----:|---------|--------------|---------------------|:-----:|
 | 🥇 1 | **[Native Spread](#)** | 99.3/100 | 100% of fastest | [📦](https://www.npmjs.com/package/native-spread) [📊](https://bundlephobia.com/package/native-spread) |
-| 🥈 2 | **[Craft](#)** | 47.8/100 | 48% of fastest | [📦](https://www.npmjs.com/package/craft) [📊](https://bundlephobia.com/package/craft) |
-| 🥉 3 | **[Immutability Helper](#)** | 24.8/100 | 25% of fastest | [📦](https://www.npmjs.com/package/immutability-helper) [📊](https://bundlephobia.com/package/immutability-helper) |
-|  4 | **[Mutative](#)** | 18.0/100 | 18% of fastest | [📦](https://www.npmjs.com/package/mutative) [📊](https://bundlephobia.com/package/mutative) |
-|  5 | **[Immer](#)** | 17.2/100 | 17% of fastest | [📦](https://www.npmjs.com/package/immer) [📊](https://bundlephobia.com/package/immer) |
-|  6 | **[Immutable.js](#)** | 8.7/100 | 9% of fastest | [📦](https://www.npmjs.com/package/immutable) [📊](https://bundlephobia.com/package/immutable) |
-|  7 | **[Seamless Immutable](#)** | 3.9/100 | 4% of fastest | [📦](https://www.npmjs.com/package/seamless-immutable) [📊](https://bundlephobia.com/package/seamless-immutable) |
+| 🥈 2 | **[Craft](https://github.com/SylphxAI/craft)** | 47.8/100 | 48% of fastest | [📦](https://www.npmjs.com/package/@sylphx/craft) [📊](https://bundlephobia.com/package/@sylphx/craft) |
+| 🥉 3 | **[Immutability Helper](https://github.com/kolodny/immutability-helper)** | 24.8/100 | 25% of fastest | [📦](https://www.npmjs.com/package/immutability-helper) [📊](https://bundlephobia.com/package/immutability-helper) |
+|  4 | **[Mutative](https://github.com/unadlib/mutative)** | 18.0/100 | 18% of fastest | [📦](https://www.npmjs.com/package/mutative) [📊](https://bundlephobia.com/package/mutative) |
+|  5 | **[Immer](https://github.com/immerjs/immer)** | 17.2/100 | 17% of fastest | [📦](https://www.npmjs.com/package/immer) [📊](https://bundlephobia.com/package/immer) |
+|  6 | **[Immutable.js](https://github.com/immutable-js/immutable-js)** | 8.7/100 | 9% of fastest | [📦](https://www.npmjs.com/package/immutable) [📊](https://bundlephobia.com/package/immutable) |
+|  7 | **[Seamless Immutable](https://github.com/rtfeldman/seamless-immutable)** | 3.9/100 | 4% of fastest | [📦](https://www.npmjs.com/package/seamless-immutable) [📊](https://bundlephobia.com/package/seamless-immutable) |
 
 
 *📦 = npm package • 📊 = bundle size*
@@ -99,12 +99,12 @@ Based on geometric mean of normalized scores across all 18 tests.
 | Library | Score | Bundle Size (gzip) | Description | Best For |
 |---------|:-----:|:------------------:|-------------|----------|
 | **[Native Spread](#)** | **99.3** | N/A | State management solution... | General purpose... |
-| **[Craft](#)** | **47.8** | **2.76 KB** | State management solution... | General purpose... |
-| **[Immutability Helper](#)** | **24.8** | **1.65 KB** | State management solution... | General purpose... |
-| **[Mutative](#)** | **18.0** | **7.16 KB** | State management solution... | General purpose... |
-| **[Immer](#)** | **17.2** | **4.70 KB** | State management solution... | General purpose... |
-| **[Immutable.js](#)** | **8.7** | **17.74 KB** | State management solution... | General purpose... |
-| **[Seamless Immutable](#)** | **3.9** | **2.71 KB** | State management solution... | General purpose... |
+| **[Craft](https://github.com/SylphxAI/craft)** | **47.8** | **2.84 KB** | Performant immutable updates with structural shari... | General purpose... |
+| **[Immutability Helper](https://github.com/kolodny/immutability-helper)** | **24.8** | **2.40 KB** | Mutate a copy of data without changing the origina... | General purpose... |
+| **[Mutative](https://github.com/unadlib/mutative)** | **18.0** | **12.16 KB** | Efficient immutable updates, 2-6x faster than Imme... | General purpose... |
+| **[Immer](https://github.com/immerjs/immer)** | **17.2** | **9.21 KB** | Create the next immutable state by mutating the cu... | General purpose... |
+| **[Immutable.js](https://github.com/immutable-js/immutable-js)** | **8.7** | **36.25 KB** | Immutable persistent data collections for Javascri... | General purpose... |
+| **[Seamless Immutable](https://github.com/rtfeldman/seamless-immutable)** | **3.9** | **5.99 KB** | Immutable data structures for JavaScript which are... | General purpose... |
 
 ---
 
@@ -485,7 +485,7 @@ cd benchmark
 npm install
 
 # Navigate to this category
-cd benchmarks/immutability
+cd /home/runner/work/benchmark/benchmark/benchmarks/immutability
 
 # Install category dependencies
 npm install
@@ -516,12 +516,12 @@ npx tsx ../../scripts/generate-simple-readme.ts .
 ## 🚀 Libraries Tested
 
 - **[Native Spread](#)** (`native`)  - [📦 npm](https://www.npmjs.com/package/native-spread) • [📊 bundle size](https://bundlephobia.com/package/native-spread)
-- **[Craft](#)** (`@sylphx/craft`) v1.2.1 • 2.76 KB gzip - [📦 npm](https://www.npmjs.com/package/craft) • [📊 bundle size](https://bundlephobia.com/package/craft)
-- **[Immutability Helper](#)** (`immutability-helper`) v3.1.1 • 1.65 KB gzip - [📦 npm](https://www.npmjs.com/package/immutability-helper) • [📊 bundle size](https://bundlephobia.com/package/immutability-helper)
-- **[Mutative](#)** (`mutative`) v1.3.0 • 7.16 KB gzip - [📦 npm](https://www.npmjs.com/package/mutative) • [📊 bundle size](https://bundlephobia.com/package/mutative)
-- **[Immer](#)** (`immer`) v10.2.0 • 4.70 KB gzip - [📦 npm](https://www.npmjs.com/package/immer) • [📊 bundle size](https://bundlephobia.com/package/immer)
-- **[Immutable.js](#)** (`immutable`) v5.1.4 • 17.74 KB gzip - [📦 npm](https://www.npmjs.com/package/immutable) • [📊 bundle size](https://bundlephobia.com/package/immutable)
-- **[Seamless Immutable](#)** (`seamless-immutable`) v7.1.4 • 2.71 KB gzip - [📦 npm](https://www.npmjs.com/package/seamless-immutable) • [📊 bundle size](https://bundlephobia.com/package/seamless-immutable)
+- **[Craft](https://github.com/SylphxAI/craft)** (`@sylphx/craft`) v1.2.1 • 2.84 KB gzip - [📦 npm](https://www.npmjs.com/package/@sylphx/craft) • [📊 bundle size](https://bundlephobia.com/package/@sylphx/craft)
+- **[Immutability Helper](https://github.com/kolodny/immutability-helper)** (`immutability-helper`) v3.1.1 • 2.40 KB gzip - [📦 npm](https://www.npmjs.com/package/immutability-helper) • [📊 bundle size](https://bundlephobia.com/package/immutability-helper)
+- **[Mutative](https://github.com/unadlib/mutative)** (`mutative`) v1.3.0 • 12.16 KB gzip - [📦 npm](https://www.npmjs.com/package/mutative) • [📊 bundle size](https://bundlephobia.com/package/mutative)
+- **[Immer](https://github.com/immerjs/immer)** (`immer`) v10.2.0 • 9.21 KB gzip - [📦 npm](https://www.npmjs.com/package/immer) • [📊 bundle size](https://bundlephobia.com/package/immer)
+- **[Immutable.js](https://github.com/immutable-js/immutable-js)** (`immutable`) v5.1.4 • 36.25 KB gzip - [📦 npm](https://www.npmjs.com/package/immutable) • [📊 bundle size](https://bundlephobia.com/package/immutable)
+- **[Seamless Immutable](https://github.com/rtfeldman/seamless-immutable)** (`seamless-immutable`) v7.1.4 • 5.99 KB gzip - [📦 npm](https://www.npmjs.com/package/seamless-immutable) • [📊 bundle size](https://bundlephobia.com/package/seamless-immutable)
 
 ---
 
@@ -551,7 +551,7 @@ See [CONTRIBUTING.md](../../CONTRIBUTING.md) for detailed guidelines.
 
 **Found this useful? Give it a ⭐️!**
 
-*Generated on 2025-11-13T13:16:12.210Z*
+*Generated on 2025-11-13T14:29:20.653Z*
 
 [⬆️ Back to Top](#immutability-benchmarks) • [⬅️ Main README](../../README.md)
 
