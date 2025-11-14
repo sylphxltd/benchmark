@@ -4,12 +4,12 @@
   "packageName": "react-router-dom",
   "test": "Mixed Route Matching (realistic usage)",
   "group": "04-real-world",
-  "timestamp": "2025-11-14T03:37:28.211Z",
+  "timestamp": "2025-11-14T06:00:06.853Z",
   "result": {
-    "opsPerSecond": 5903.920832200128,
-    "meanTime": 0.16937896500000063,
-    "variance": 0.0011161996086684793,
-    "p99": 0.419667000000004,
+    "opsPerSecond": 2228.1820631699884,
+    "meanTime": 0.45382611400000317,
+    "variance": 0.004957985392537011,
+    "p99": 1.01580084000052,
     "samples": 1000
   }
 }

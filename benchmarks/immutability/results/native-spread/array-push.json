@@ -4,12 +4,12 @@
   "packageName": "native",
   "test": "Array Push",
   "group": "03-array-operations",
-  "timestamp": "2025-11-14T03:28:43.588Z",
+  "timestamp": "2025-11-14T06:00:05.109Z",
   "result": {
-    "opsPerSecond": 9894426.469579386,
-    "meanTime": 0.00010106699999990099,
-    "variance": 4.61006671782813e-8,
-    "p99": 0.00041699999999877946,
+    "opsPerSecond": 10549174.981462508,
+    "meanTime": 0.00010458599999401486,
+    "variance": 4.96996056774581e-9,
+    "p99": 0.0005610999989403353,
     "samples": 1000
   }
 }

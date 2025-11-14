@@ -4,12 +4,12 @@
   "packageName": "@sylphx/zen-router",
   "test": "Static Route Matching",
   "group": "01-basic-routes",
-  "timestamp": "2025-11-14T03:37:28.211Z",
+  "timestamp": "2025-11-14T06:00:06.853Z",
   "result": {
-    "opsPerSecond": 5533636.207674159,
-    "meanTime": 0.0001807130000004662,
-    "variance": 6.708821684769996e-8,
-    "p99": 0.0009589999999946031,
+    "opsPerSecond": 8292807.043416076,
+    "meanTime": 0.0001365029999994931,
+    "variance": 1.0555960559335806e-7,
+    "p99": 0.0004511000001093634,
     "samples": 1000
   }
 }

@@ -4,12 +4,12 @@
   "packageName": "immutability-helper",
   "test": "Simple Object Update",
   "group": "01-simple-updates",
-  "timestamp": "2025-11-14T03:28:43.588Z",
+  "timestamp": "2025-11-14T06:00:05.109Z",
   "result": {
-    "opsPerSecond": 1313120.038868381,
-    "meanTime": 0.0007615449999999839,
-    "variance": 9.145138898644848e-7,
-    "p99": 0.0050420000000030996,
+    "opsPerSecond": 2263242.4302178803,
+    "meanTime": 0.0004607020000053126,
+    "variance": 1.157988180122734e-7,
+    "p99": 0.0009524899998723408,
     "samples": 1000
   }
 }

@@ -4,12 +4,12 @@
   "packageName": "@solidjs/router",
   "test": "Simple Route Matching",
   "group": "01-basic-routes",
-  "timestamp": "2025-11-14T03:37:28.211Z",
+  "timestamp": "2025-11-14T06:00:06.853Z",
   "result": {
-    "opsPerSecond": 8430423.71309193,
-    "meanTime": 0.00011861800000005473,
-    "variance": 1.8834710786822854e-8,
-    "p99": 0.00033400000000938235,
+    "opsPerSecond": 7516882.26328417,
+    "meanTime": 0.000136930000015127,
+    "variance": 1.6421092087678194e-9,
+    "p99": 0.00038109999983134904,
     "samples": 1000
   }
 }

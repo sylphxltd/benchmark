@@ -4,12 +4,12 @@
   "packageName": "immutable",
   "test": "Set - Large (100 items)",
   "group": "07-map-set",
-  "timestamp": "2025-11-14T03:28:43.588Z",
+  "timestamp": "2025-11-14T06:00:05.109Z",
   "result": {
-    "opsPerSecond": 2107197.343237572,
-    "meanTime": 0.00047456400000180565,
-    "variance": 8.458895485893762e-8,
-    "p99": 0.0014999999999645297,
+    "opsPerSecond": 1675407.3657805629,
+    "meanTime": 0.0006333999999114894,
+    "variance": 5.4262302339998704e-8,
+    "p99": 0.0014731000002575455,
     "samples": 1000
   }
 }

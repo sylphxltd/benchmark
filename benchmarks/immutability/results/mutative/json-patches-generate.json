@@ -4,12 +4,12 @@
   "packageName": "mutative",
   "test": "JSON Patches - Generate",
   "group": "06-patches",
-  "timestamp": "2025-11-14T03:28:43.588Z",
+  "timestamp": "2025-11-14T06:00:05.109Z",
   "result": {
-    "opsPerSecond": 238258.50189721817,
-    "meanTime": 0.004197122000000604,
-    "variance": 0.0000035193594745801404,
-    "p99": 0.011874999999918145,
+    "opsPerSecond": 123108.7603332092,
+    "meanTime": 0.008321211999973457,
+    "variance": 0.000004057709084114233,
+    "p99": 0.014914189998380565,
     "samples": 1000
   }
 }

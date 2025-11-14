@@ -4,12 +4,12 @@
   "packageName": "native",
   "test": "Set - Delete Operation",
   "group": "07-map-set",
-  "timestamp": "2025-11-14T03:28:43.588Z",
+  "timestamp": "2025-11-14T06:00:05.109Z",
   "result": {
-    "opsPerSecond": 5721347.491737454,
-    "meanTime": 0.00017478400000072724,
-    "variance": 2.950143878342073e-8,
-    "p99": 0.0005840000000034706,
+    "opsPerSecond": 6495028.61500396,
+    "meanTime": 0.00017278399995120707,
+    "variance": 7.609378722419576e-9,
+    "p99": 0.0005310100015049102,
     "samples": 1000
   }
 }

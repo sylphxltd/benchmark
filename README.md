@@ -17,7 +17,7 @@
 
 | Category | Description | Libraries | Status | View Results |
 |----------|-------------|-----------|--------|--------------|
-| **[🎨 CSS Frameworks](./benchmarks/css-frameworks/)** | Build-time performance and CSS output size benchmarks | 4 | ![Active](https://img.shields.io/badge/Active-success) | **[View →](./benchmarks/css-frameworks/)** |
+| **[🎨 CSS Frameworks](./benchmarks/css-frameworks/)** | Comprehensive CSS framework build performance and optimization benchmarks | 4 | ![Active](https://img.shields.io/badge/Active-success) | **[View →](./benchmarks/css-frameworks/)** |
 | **[🔒 Immutability](./benchmarks/immutability/)** | Performance benchmarks for immutable data structure libraries | 6 | ![Active](https://img.shields.io/badge/Active-success) | **[View →](./benchmarks/immutability/)** |
 | **[🧭 Router](./benchmarks/router/)** | Performance benchmarks for React routing libraries | 5 | ![Active](https://img.shields.io/badge/Active-success) | **[View →](./benchmarks/router/)** |
 | **[🗃️ State Management](./benchmarks/state-management/)** | React state management libraries performance benchmarks | 8 | ![Active](https://img.shields.io/badge/Active-success) | **[View →](./benchmarks/state-management/)** |
