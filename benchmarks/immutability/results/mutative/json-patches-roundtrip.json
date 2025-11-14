@@ -5,12 +5,12 @@
   "version": "1.3.0",
   "test": "JSON Patches - Roundtrip",
   "group": "06-patches",
-  "timestamp": "2025-11-14T15:13:38.954Z",
+  "timestamp": "2025-11-14T15:20:48.079Z",
   "result": {
-    "opsPerSecond": 71827.31280307219,
-    "meanTime": 0.014183928000009473,
-    "variance": 0.000007863036927563193,
-    "p99": 0.02709831999960442,
+    "opsPerSecond": 65922.72965550129,
+    "meanTime": 0.017569890999948257,
+    "variance": 0.0009469837712080422,
+    "p99": 0.04394571000022551,
     "samples": 1000
   }
 }

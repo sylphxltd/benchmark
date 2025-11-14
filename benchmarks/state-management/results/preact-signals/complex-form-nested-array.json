@@ -5,12 +5,12 @@
   "version": "2.4.0",
   "test": "Complex Form (nested + array)",
   "group": "05-real-world",
-  "timestamp": "2025-11-14T15:16:02.657Z",
+  "timestamp": "2025-11-14T15:20:48.828Z",
   "result": {
-    "opsPerSecond": 18744922.155217573,
-    "meanTime": 0.00005554800000754767,
-    "variance": 5.29963660814042e-10,
-    "p99": 0.00009010000132548148,
+    "opsPerSecond": 18537831.77617273,
+    "meanTime": 0.00006283999994775513,
+    "variance": 7.599898298451249e-9,
+    "p99": 0.00015340000019932413,
     "samples": 1000
   }
 }
