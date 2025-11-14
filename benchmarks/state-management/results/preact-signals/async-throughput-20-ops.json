@@ -4,12 +4,12 @@
   "packageName": "@preact/signals",
   "test": "Async Throughput (20 ops)",
   "group": "04-async-operations",
-  "timestamp": "2025-11-14T03:25:11.942Z",
+  "timestamp": "2025-11-14T04:07:13.460Z",
   "result": {
-    "opsPerSecond": 510790.6923746847,
-    "meanTime": 0.0019910219999655964,
-    "variance": 3.9236766922636434e-7,
-    "p99": 0.0026252000009844775,
+    "opsPerSecond": 510405.6554569088,
+    "meanTime": 0.0020232659999965107,
+    "variance": 0.0000012840071443831168,
+    "p99": 0.0027051999989998873,
     "samples": 1000
   }
 }

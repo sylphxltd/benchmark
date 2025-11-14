@@ -4,12 +4,12 @@
   "packageName": "@sylphx/zen-router",
   "test": "Mixed Route Matching (realistic usage)",
   "group": "04-real-world",
-  "timestamp": "2025-11-14T03:25:19.517Z",
+  "timestamp": "2025-11-14T04:07:09.454Z",
   "result": {
-    "opsPerSecond": 535710.1282211961,
-    "meanTime": 0.0020053390000175568,
-    "variance": 0.000002179597863852641,
-    "p99": 0.004074219999838527,
+    "opsPerSecond": 549139.8969048884,
+    "meanTime": 0.0019366169999957491,
+    "variance": 0.0000016279934657742061,
+    "p99": 0.0037863199999082922,
     "samples": 1000
   }
 }
