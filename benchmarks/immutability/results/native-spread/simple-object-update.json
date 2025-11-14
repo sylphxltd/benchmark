@@ -4,12 +4,12 @@
   "packageName": "native",
   "test": "Simple Object Update",
   "group": "01-simple-updates",
-  "timestamp": "2025-11-14T05:05:48.039Z",
+  "timestamp": "2025-11-14T05:46:05.268Z",
   "result": {
-    "opsPerSecond": 13347554.837550065,
-    "meanTime": 0.00007713899999498607,
-    "variance": 8.571027817063334e-10,
-    "p99": 0.00012011000014808804,
+    "opsPerSecond": 13221258.689895432,
+    "meanTime": 0.00007742599999619415,
+    "variance": 5.162167409121443e-10,
+    "p99": 0.00009999999975207174,
     "samples": 1000
   }
 }
