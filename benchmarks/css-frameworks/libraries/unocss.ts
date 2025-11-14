@@ -13,8 +13,7 @@
  */
 
 import { category, groups, tests } from '../index';
-import { createGenerator, presetUno, presetAttributify } from '@unocss/core';
-import { presetIcons } from '@unocss/preset-icons';
+import { createGenerator, presetUno, presetAttributify } from 'unocss';
 import type { BuildTestConfig } from '../../../src/core/types';
 import { writeFileSync, mkdirSync, rmSync, readFileSync } from 'fs';
 import { join } from 'path';
@@ -105,7 +104,7 @@ async function runUnoCSSBuild(
 const library = category.registerLibrary({
   id: 'unocss',
   displayName: 'UnoCSS',
-  packageName: '@unocss/core',
+  packageName: 'unocss',
   githubUrl: 'https://github.com/unocss/unocss',
   description: 'The instant on-demand atomic CSS engine',
 
