@@ -4,12 +4,12 @@
   "packageName": "@sylphx/zen",
   "test": "Deep Diamond (5 layers)",
   "group": "07-reactivity-patterns",
-  "timestamp": "2025-11-13T23:57:50.657Z",
+  "timestamp": "2025-11-14T00:00:29.364Z",
   "result": {
-    "opsPerSecond": 14058003.356666448,
-    "meanTime": 0.00007417399998666952,
-    "variance": 3.444661949697175e-10,
-    "p99": 0.0001199999970413046,
+    "opsPerSecond": 13294098.549338723,
+    "meanTime": 0.00007572200000140584,
+    "variance": 4.424095548561771e-11,
+    "p99": 0.00009100000170292333,
     "samples": 1000
   }
 }
