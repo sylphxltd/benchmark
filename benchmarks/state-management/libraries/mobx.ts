@@ -1,275 +1,785 @@
 /**
- * MobX Library Implementation
- *
- * Example of the new API:
- * - Library registration
- * - Test implementation using object references (no strings!)
+ * MobX (Observable-based) Implementation
+ * Uses MobX's observable/computed/action reactive system
  */
 
-import { makeAutoObservable, reaction } from 'mobx';
+import { makeAutoObservable, observable, computed, action, runInAction, autorun } from 'mobx';
 import { category, tests } from '../index';
 
+const library = category.registerLibrary({
+  id: 'mobx',
+  displayName: 'MobX',
+  packageName: 'mobx',
+  githubUrl: 'https://github.com/mobxjs/mobx',
+  description: 'Observable-based reactive state management',
+  setup: {
+    createStore: () => ({}),
+  },
+});
+
 // ============================================================================
-// Define Store Type
+// State Setup
 // ============================================================================
 
+// Basic counter store
 class CounterStore {
-  // Basic counter
-  count = 0;
-
-  // Nested object
-  nested = { nested: { value: 0 } };
-
-  // Array of users
-  users: Array<{ id: number; name: string }> = [];
-
-  // Form states
-  form = { name: '', email: '', age: 0 };
-  complexForm = { profile: { name: '' }, tags: [] as string[] };
-
-  // Large array
-  largeArray: number[] = [];
+  counter = 0;
 
   constructor() {
     makeAutoObservable(this);
   }
 
-  // Computed value (derived value)
-  get doubled() {
-    return this.count * 2;
-  }
-
-  // Methods for counter operations
   increment() {
-    this.count += 1;
+    this.counter++;
   }
 
-  setCount(value: number) {
-    this.count = value;
+  setCounter(value: number) {
+    this.counter = value;
+  }
+
+  get doubled() {
+    return this.counter * 2;
   }
 }
 
-// ============================================================================
-// Register Library
-// ============================================================================
+const counterStore = new CounterStore();
 
-const mobx = category.registerLibrary<CounterStore>({
-  id: 'mobx',
-  displayName: 'MobX',
-  packageName: 'mobx',
-  githubUrl: 'https://github.com/mobxjs/mobx',
-  description: 'Simple, scalable state management with transparent reactive programming',
-
-  setup: {
-    createStore: () => {
-      return new CounterStore();
+// Nested object store
+class NestedStore {
+  nestedObject = {
+    level1: {
+      level2: {
+        level3: {
+          value: 0,
+        },
+      },
     },
+  };
+
+  constructor() {
+    makeAutoObservable(this);
+  }
+
+  updateNested() {
+    this.nestedObject.level1.level2.level3.value++;
+  }
+}
+
+const nestedStore = new NestedStore();
+
+// Array store
+class ArrayStore {
+  items: Array<{ id: number; name: string; value: number }> = [];
+
+  constructor() {
+    makeAutoObservable(this);
+  }
+
+  pushItem() {
+    this.items.push({
+      id: this.items.length,
+      name: `item-${this.items.length}`,
+      value: Math.random(),
+    });
+  }
+
+  updateItem() {
+    if (this.items.length > 0) {
+      const index = Math.floor(this.items.length / 2);
+      this.items[index].value++;
+    }
+  }
+
+  setItems(items: Array<{ id: number; name: string; value: number }>) {
+    this.items = items;
+  }
+}
+
+const arrayStore = new ArrayStore();
+
+// Form store
+class FormStore {
+  username = '';
+  email = '';
+  age = 0;
+  profile = {
+    bio: '',
+    interests: [] as string[],
+  };
+
+  constructor() {
+    makeAutoObservable(this);
+  }
+
+  updateSimpleForm() {
+    this.username = 'user123';
+    this.email = 'user@example.com';
+    this.age = 25;
+  }
+
+  updateComplexForm() {
+    this.username = 'complexUser';
+    this.email = 'complex@example.com';
+    this.age = 30;
+    this.profile.bio = 'A detailed bio text';
+    this.profile.interests = ['coding', 'music', 'gaming'];
+  }
+}
+
+const formStore = new FormStore();
+
+// ============================================================================
+// BASIC READ TESTS
+// ============================================================================
+
+library.implement(tests.singleRead, {
+  fn: () => {
+    return counterStore.counter;
   },
+});
 
-  features: ['auto-tracking', 'computed'],
+library.implement(tests.moderateRead, {
+  fn: () => {
+    let sum = 0;
+    for (let i = 0; i < 100; i++) {
+      sum += counterStore.counter;
+    }
+    return sum;
+  },
+});
+
+library.implement(tests.highFrequencyRead, {
+  fn: () => {
+    let sum = 0;
+    for (let i = 0; i < 1000; i++) {
+      sum += counterStore.counter;
+    }
+    return sum;
+  },
 });
 
 // ============================================================================
-// Implement Tests (using object references!)
+// BASIC WRITE TESTS
 // ============================================================================
 
-// ✅ No strings! IDE autocomplete works!
-// ✅ Type-safe! Wrong test object = compile error!
-// ✅ Refactor-safe! Rename symbol = auto update!
-
-// ========== BASIC READ TESTS ==========
-
-mobx.implement(tests.singleRead, (ctx) => {
-  const value = ctx.store.count;
+library.implement(tests.singleWrite, {
+  beforeEach: () => {
+    runInAction(() => {
+      counterStore.setCounter(0);
+    });
+  },
+  fn: () => {
+    counterStore.increment();
+  },
 });
 
-mobx.implement(tests.moderateRead, (ctx) => {
-  ctx.store.count;
+library.implement(tests.batchWrite, {
+  beforeEach: () => {
+    runInAction(() => {
+      counterStore.setCounter(0);
+    });
+  },
+  fn: () => {
+    runInAction(() => {
+      for (let i = 0; i < 10; i++) {
+        counterStore.increment();
+      }
+    });
+  },
+});
+library.implement(tests.burstWrite, {
+  beforeEach: () => {
+    runInAction(() => {
+      counterStore.setCounter(0);
+    });
+  },
+  fn: () => {
+    runInAction(() => {
+      for (let i = 0; i < 100; i++) {
+        counterStore.increment();
+      }
+    });
+  },
+});
+library.implement(tests.heavyWrite, {
+  beforeEach: () => {
+    runInAction(() => {
+      counterStore.setCounter(0);
+    });
+  },
+  fn: () => {
+    runInAction(() => {
+      for (let i = 0; i < 1000; i++) {
+        counterStore.increment();
+      }
+    });
+  },
+});
+// ============================================================================
+// ADVANCED OPERATIONS
+// ============================================================================
+
+library.implement(tests.nestedUpdate, {
+  beforeEach: () => {
+    runInAction(() => {
+      nestedStore.nestedObject = {
+        level1: {
+          level2: {
+            level3: {
+              value: 0,
+            },
+          },
+        },
+      };
+    });
+  },
+  fn: () => {
+    nestedStore.updateNested();
+  },
 });
 
-mobx.implement(tests.highFrequencyRead, (ctx) => {
-  ctx.store.count;
+library.implement(tests.arrayPush, {
+  beforeEach: () => {
+    runInAction(() => {
+      arrayStore.setItems([]);
+    });
+  },
+  fn: () => {
+    arrayStore.pushItem();
+  },
 });
 
-// ========== BASIC WRITE TESTS ==========
-
-mobx.implement(tests.singleWrite, (ctx) => {
-  ctx.store.count += 1;
+library.implement(tests.arrayUpdate, {
+  beforeEach: () => {
+    runInAction(() => {
+      arrayStore.setItems([{ id: 0, name: 'item-0', value: 0 }]);
+    });
+  },
+  fn: () => {
+    arrayStore.updateItem();
+  },
 });
 
-mobx.implement(tests.batchWrite, (ctx) => {
-  ctx.store.count += 1;
+library.implement(tests.computedValue, {
+  fn: () => {
+    return counterStore.doubled;
+  },
 });
 
-mobx.implement(tests.burstWrite, (ctx) => {
-  ctx.store.count += 1;
+// ============================================================================
+// ASYNC OPERATIONS
+// ============================================================================
+
+library.implement(tests.asyncThroughput, {
+  beforeEach: () => {
+    runInAction(() => {
+      counterStore.setCounter(0);
+    });
+  },
+  fn: async () => {
+    const promises = [];
+    for (let i = 0; i < 20; i++) {
+      promises.push(
+        new Promise<void>((resolve) => {
+          setTimeout(() => {
+            runInAction(() => {
+              counterStore.increment();
+            });
+            resolve();
+          }, 0);
+        })
+      );
+    }
+    await Promise.all(promises);
+  },
 });
 
-mobx.implement(tests.heavyWrite, (ctx) => {
-  ctx.store.count += 1;
-});
-
-// ========== ADVANCED OPERATIONS ==========
-
-mobx.implement(tests.nestedUpdate, (ctx) => {
-  ctx.store.nested.nested.value += 1;
-});
-
-mobx.implement(tests.arrayPush, (ctx) => {
-  ctx.store.users.push({
-    id: ctx.store.users.length + 1,
-    name: `User ${ctx.store.users.length + 1}`,
-  });
-});
-
-mobx.implement(tests.arrayUpdate, (ctx) => {
-  // First ensure there's at least one user
-  if (ctx.store.users.length === 0) {
-    ctx.store.users.push({ id: 1, name: 'User 1' });
-  }
-  // Then update the first user
-  ctx.store.users[0].name = 'Updated User';
-});
-
-mobx.implement(tests.computedValue, (ctx) => {
-  const value = ctx.store.doubled;
-});
-
-// ========== ASYNC OPERATIONS ==========
-
-mobx.implement(tests.asyncThroughput, async (ctx) => {
-  // Simulate rapid async operations
-  for (let i = 0; i < 20; i++) {
-    await Promise.resolve();
-    ctx.store.count = i;
-  }
-});
-
-mobx.implement(tests.concurrentUpdates, async (ctx) => {
-  // Test concurrent async updates
-  const operations = [];
-
-  for (let i = 0; i < 50; i++) {
-    operations.push(
+library.implement(tests.concurrentUpdates, {
+  beforeEach: () => {
+    runInAction(() => {
+      counterStore.setCounter(0);
+    });
+  },
+  fn: async () => {
+    const promises = Array.from({ length: 50 }, (_, i) =>
       Promise.resolve().then(() => {
-        ctx.store.count++;
+        runInAction(() => {
+          counterStore.setCounter(i);
+        });
       })
     );
-  }
-
-  await Promise.all(operations);
+    await Promise.all(promises);
+  },
 });
 
-// ========== REAL-WORLD SCENARIOS ==========
+// ============================================================================
+// REAL-WORLD SCENARIOS
+// ============================================================================
 
-mobx.implement(tests.simpleForm, (ctx) => {
-  ctx.store.form.name = 'John Doe';
-  ctx.store.form.email = 'john@example.com';
-  ctx.store.form.age = 30;
+library.implement(tests.simpleForm, {
+  beforeEach: () => {
+    runInAction(() => {
+      formStore.username = '';
+      formStore.email = '';
+      formStore.age = 0;
+      formStore.profile.bio = '';
+      formStore.profile.interests = [];
+    });
+  },
+  fn: () => {
+    formStore.updateSimpleForm();
+  },
 });
 
-mobx.implement(tests.complexForm, (ctx) => {
-  // Update nested object
-  ctx.store.complexForm.profile.name = 'John Doe';
-  // Update array
-  ctx.store.complexForm.tags.push('developer', 'react');
+library.implement(tests.complexForm, {
+  beforeEach: () => {
+    runInAction(() => {
+      formStore.username = '';
+      formStore.email = '';
+      formStore.age = 0;
+      formStore.profile.bio = '';
+      formStore.profile.interests = [];
+    });
+  },
+  fn: () => {
+    formStore.updateComplexForm();
+  },
 });
 
-mobx.implement(tests.cacheInvalidation, (ctx) => {
-  // Update source data
-  ctx.store.count += 1;
-  // Access computed value (should reflect new value)
-  const doubled = ctx.store.doubled;
+library.implement(tests.cacheInvalidation, {
+  beforeEach: () => {
+    runInAction(() => {
+      counterStore.setCounter(0);
+    });
+  },
+  fn: () => {
+    // Update base value which should invalidate computed cache
+    counterStore.increment();
+    // Access computed to trigger recomputation
+    return counterStore.doubled;
+  },
 });
 
-mobx.implement(tests.memoryUsage, (ctx) => {
-  const disposers: Array<() => void> = [];
+library.implement(tests.memoryUsage, {
+  fn: () => {
+    const disposers: Array<() => void> = [];
 
-  // Create 100 reactions (MobX's way of subscribing)
-  for (let i = 0; i < 100; i++) {
-    const disposer = reaction(
-      () => ctx.store.count,
-      () => {
-        // Reaction callback
+    // Create 100 observers
+    for (let i = 0; i < 100; i++) {
+      const dispose = autorun(() => {
+        // Observer callback - access the value to create dependency
+        const value = counterStore.counter;
+      });
+      disposers.push(dispose);
+    }
+
+    // Cleanup all observers
+    disposers.forEach((dispose) => dispose());
+  },
+});
+
+// ============================================================================
+// PERFORMANCE STRESS TESTS
+// ============================================================================
+
+library.implement(tests.extremeRead, {
+  fn: () => {
+    let sum = 0;
+    for (let i = 0; i < 10000; i++) {
+      sum += counterStore.counter;
+    }
+    return sum;
+  },
+});
+
+library.implement(tests.extremeWrite, {
+  beforeEach: () => {
+    runInAction(() => {
+      counterStore.setCounter(0);
+    });
+  },
+  fn: () => {
+    runInAction(() => {
+      for (let i = 0; i < 10000; i++) {
+        counterStore.increment();
       }
-    );
-    disposers.push(disposer);
+    });
+  },
+});
+library.implement(tests.largeArray, {
+  beforeEach: () => {
+    runInAction(() => {
+      arrayStore.setItems(Array.from({ length: 1000 }, (_, i) => ({
+        id: i,
+        name: `item-${i}`,
+        value: i,
+      })));
+    });
+  },
+  fn: () => {
+    // Perform operation on large array
+    const middleIndex = 500;
+    runInAction(() => {
+      arrayStore.items[middleIndex].value++;
+    });
+  },
+});
+// ============================================================================
+// REACTIVITY PATTERNS
+// ============================================================================
+
+// Diamond pattern: A -> B, C -> D
+class DiamondStore {
+  a = 1;
+
+  constructor() {
+    makeAutoObservable(this);
   }
 
-  // Cleanup all reactions
-  disposers.forEach((disposer) => disposer());
-});
-
-// ========== PERFORMANCE STRESS TESTS ==========
-
-mobx.implement(tests.extremeRead, (ctx) => {
-  ctx.store.count;
-});
-
-mobx.implement(tests.extremeWrite, (ctx) => {
-  ctx.store.count += 1;
-});
-
-mobx.implement(tests.largeArray, (ctx) => {
-  // Initialize with 1000 items
-  ctx.store.largeArray = Array.from({ length: 1000 }, (_, i) => i);
-
-  // Read the array
-  const array = ctx.store.largeArray;
-
-  // Update one item
-  ctx.store.largeArray[500] = 999;
-});
-
-// ========== REACTIVITY PATTERNS ==========
-
-mobx.implement(tests.diamondPattern, (ctx) => {
-  ctx.store.increment();
-  const result = ctx.store.doubled;
-});
-
-mobx.implement(tests.deepDiamondPattern, (ctx) => {
-  for (let i = 0; i < 5; i++) {
-    ctx.store.increment();
+  incrementA() {
+    this.a++;
   }
-  const result = ctx.store.doubled;
-});
 
-mobx.implement(tests.deepChain, (ctx) => {
-  for (let i = 0; i < 10; i++) {
-    ctx.store.counter *= 2;
+  get b() {
+    return this.a * 2;
   }
-});
 
-mobx.implement(tests.veryDeepChain, (ctx) => {
-  for (let i = 0; i < 100; i++) {
-    ctx.store.counter *= 1.01;
+  get c() {
+    return this.a * 3;
   }
-});
 
-mobx.implement(tests.wideFanout, (ctx) => {
-  ctx.store.increment();
-  for (let i = 0; i < 100; i++) {
-    const v = ctx.store.counter;
+  get d() {
+    return this.b + this.c;
   }
+}
+
+const diamondStore = new DiamondStore();
+
+library.implement(tests.diamondPattern, {
+  beforeEach: () => {
+    runInAction(() => {
+      diamondStore.a = 1;
+    });
+  },
+  fn: () => {
+    diamondStore.incrementA();
+    return diamondStore.d;
+  },
 });
 
-mobx.implement(tests.massiveFanout, (ctx) => {
-  ctx.store.increment();
-  for (let i = 0; i < 1000; i++) {
-    const v = ctx.store.counter;
+// Deep diamond pattern (5 layers)
+class DeepDiamondStore {
+  a = 1;
+
+  constructor() {
+    makeAutoObservable(this);
   }
-});
 
-mobx.implement(tests.dynamicDependencies, (ctx) => {
-  const toggle = ctx.store.counter % 2 === 0;
-  ctx.store.counter += toggle ? 1 : 2;
-});
-
-mobx.implement(tests.repeatedDiamonds, (ctx) => {
-  for (let i = 0; i < 5; i++) {
-    ctx.store.increment();
-    const a = ctx.store.counter;
-    const b = ctx.store.doubled;
+  incrementA() {
+    this.a++;
   }
+
+  get b1() {
+    return this.a * 2;
+  }
+
+  get b2() {
+    return this.a * 3;
+  }
+
+  get c1() {
+    return this.b1 + this.b2;
+  }
+
+  get c2() {
+    return this.b1 - this.b2;
+  }
+
+  get d1() {
+    return this.c1 * this.c2;
+  }
+
+  get d2() {
+    return this.c1 + this.c2;
+  }
+
+  get e() {
+    return this.d1 + this.d2;
+  }
+}
+
+const deepDiamondStore = new DeepDiamondStore();
+
+library.implement(tests.deepDiamondPattern, {
+  beforeEach: () => {
+    runInAction(() => {
+      deepDiamondStore.a = 1;
+    });
+  },
+  fn: () => {
+    deepDiamondStore.incrementA();
+    return deepDiamondStore.e;
+  },
+});
+
+// Deep chain (10 layers)
+class ChainStore {
+  value = 1;
+
+  constructor() {
+    makeAutoObservable(this);
+  }
+
+  increment() {
+    this.value++;
+  }
+
+  get layer0() {
+    return this.value + 1;
+  }
+  get layer1() {
+    return this.layer0 + 1;
+  }
+  get layer2() {
+    return this.layer1 + 1;
+  }
+  get layer3() {
+    return this.layer2 + 1;
+  }
+  get layer4() {
+    return this.layer3 + 1;
+  }
+  get layer5() {
+    return this.layer4 + 1;
+  }
+  get layer6() {
+    return this.layer5 + 1;
+  }
+  get layer7() {
+    return this.layer6 + 1;
+  }
+  get layer8() {
+    return this.layer7 + 1;
+  }
+  get layer9() {
+    return this.layer8 + 1;
+  }
+}
+
+const chainStore = new ChainStore();
+
+library.implement(tests.deepChain, {
+  beforeEach: () => {
+    runInAction(() => {
+      chainStore.value = 1;
+    });
+  },
+  fn: () => {
+    chainStore.increment();
+    return chainStore.layer9;
+  },
+});
+
+// Very deep chain (100 layers) - Create dynamically
+class VeryDeepChainStore {
+  value = 1;
+  private computeds: Map<string, () => number> = new Map();
+
+  constructor() {
+    makeAutoObservable(this, {
+      computeds: false,
+    });
+
+    // Create 100 computed getters dynamically
+    for (let i = 0; i < 100; i++) {
+      const key = `layer${i}`;
+      if (i === 0) {
+        Object.defineProperty(this, key, {
+          get: () => this.value + 1,
+          enumerable: true,
+          configurable: true,
+        });
+      } else {
+        const prevKey = `layer${i - 1}`;
+        Object.defineProperty(this, key, {
+          get: () => (this as any)[prevKey] + 1,
+          enumerable: true,
+          configurable: true,
+        });
+      }
+    }
+  }
+
+  increment() {
+    this.value++;
+  }
+}
+
+const veryDeepChainStore = new VeryDeepChainStore();
+
+library.implement(tests.veryDeepChain, {
+  beforeEach: () => {
+    runInAction(() => {
+      veryDeepChainStore.value = 1;
+    });
+  },
+  fn: () => {
+    veryDeepChainStore.increment();
+    return (veryDeepChainStore as any).layer99;
+  },
+});
+
+// Wide fanout (1 -> 100)
+class FanoutStore {
+  source = 1;
+
+  constructor() {
+    makeAutoObservable(this);
+
+    // Create 100 computed values dynamically
+    for (let i = 0; i < 100; i++) {
+      const key = `computed${i}`;
+      Object.defineProperty(this, key, {
+        get: () => this.source * (i + 1),
+        enumerable: true,
+        configurable: true,
+      });
+    }
+  }
+
+  increment() {
+    this.source++;
+  }
+}
+
+const fanoutStore = new FanoutStore();
+
+library.implement(tests.wideFanout, {
+  beforeEach: () => {
+    runInAction(() => {
+      fanoutStore.source = 1;
+    });
+  },
+  fn: () => {
+    fanoutStore.increment();
+    let sum = 0;
+    for (let i = 0; i < 100; i++) {
+      sum += (fanoutStore as any)[`computed${i}`];
+    }
+    return sum;
+  },
+});
+
+// Massive fanout (1 -> 1000)
+class MassiveFanoutStore {
+  source = 1;
+
+  constructor() {
+    makeAutoObservable(this);
+
+    // Create 1000 computed values dynamically
+    for (let i = 0; i < 1000; i++) {
+      const key = `computed${i}`;
+      Object.defineProperty(this, key, {
+        get: () => this.source * (i + 1),
+        enumerable: true,
+        configurable: true,
+      });
+    }
+  }
+
+  increment() {
+    this.source++;
+  }
+}
+
+const massiveFanoutStore = new MassiveFanoutStore();
+
+library.implement(tests.massiveFanout, {
+  beforeEach: () => {
+    runInAction(() => {
+      massiveFanoutStore.source = 1;
+    });
+  },
+  fn: () => {
+    massiveFanoutStore.increment();
+    let sum = 0;
+    for (let i = 0; i < 1000; i++) {
+      sum += (massiveFanoutStore as any)[`computed${i}`];
+    }
+    return sum;
+  },
+});
+
+// Dynamic dependencies
+class DynamicStore {
+  condition = true;
+  a = 1;
+  b = 2;
+
+  constructor() {
+    makeAutoObservable(this);
+  }
+
+  toggleCondition() {
+    this.condition = !this.condition;
+  }
+
+  incrementA() {
+    this.a++;
+  }
+
+  incrementB() {
+    this.b++;
+  }
+
+  get computed() {
+    if (this.condition) {
+      return this.a * 2;
+    } else {
+      return this.b * 3;
+    }
+  }
+}
+
+const dynamicStore = new DynamicStore();
+
+library.implement(tests.dynamicDependencies, {
+  beforeEach: () => {
+    runInAction(() => {
+      dynamicStore.condition = true;
+      dynamicStore.a = 1;
+      dynamicStore.b = 2;
+    });
+  },
+  fn: () => {
+    dynamicStore.toggleCondition();
+    dynamicStore.incrementA();
+    dynamicStore.incrementB();
+    return dynamicStore.computed;
+  },
+});
+
+// Repeated diamonds (5 sequential diamond patterns)
+const repeatedDiamondStores: DiamondStore[] = [];
+for (let i = 0; i < 5; i++) {
+  repeatedDiamondStores.push(new DiamondStore());
+}
+
+library.implement(tests.repeatedDiamonds, {
+  beforeEach: () => {
+    runInAction(() => {
+      repeatedDiamondStores[0].a = 1;
+    });
+  },
+  fn: () => {
+    repeatedDiamondStores[0].incrementA();
+    // Propagate through all diamonds
+    for (let i = 1; i < 5; i++) {
+      runInAction(() => {
+        repeatedDiamondStores[i].a = repeatedDiamondStores[i - 1].d;
+      });
+    }
+    return repeatedDiamondStores[4].d;
+  },
 });

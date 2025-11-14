@@ -1,309 +1,534 @@
 /**
- * Preact Signals Library Implementation
- *
- * Example of the new API:
- * - Library registration
- * - Test implementation using object references (no strings!)
+ * Preact Signals (Signal-based) Implementation
+ * Uses @preact/signals' signal-based reactive system
  */
 
-import { signal, computed, effect } from '@preact/signals-core';
+import { signal, computed, batch, effect } from '@preact/signals';
 import { category, tests } from '../index';
 
-// ============================================================================
-// Define Store Type
-// ============================================================================
-
-interface SignalsStore {
-  counterSignal: ReturnType<typeof signal<number>>;
-  nestedSignal: ReturnType<typeof signal<{ nested: { value: number } }>>;
-  usersSignal: ReturnType<typeof signal<Array<{ id: number; name: string }>>>;
-  doubledSignal: ReturnType<typeof computed<number>>;
-  formSignal: ReturnType<typeof signal<{ name: string; email: string; age: number }>>;
-  complexFormSignal: ReturnType<typeof signal<{ profile: { name: string }; tags: string[] }>>;
-  largeArraySignal: ReturnType<typeof signal<number[]>>;
-}
-
-// ============================================================================
-// Register Library
-// ============================================================================
-
-const preactSignals = category.registerLibrary<SignalsStore>({
+const library = category.registerLibrary({
   id: 'preact-signals',
   displayName: 'Preact Signals',
   packageName: '@preact/signals',
   githubUrl: 'https://github.com/preactjs/signals',
-  description: 'Fast and reactive signals for Preact and React with automatic dependency tracking',
-
+  description: 'Signal-based reactive state management',
   setup: {
-    createStore: () => {
-      const counterSignal = signal(0);
-      const nestedSignal = signal({ nested: { value: 0 } });
-      const usersSignal = signal<Array<{ id: number; name: string }>>([]);
+    createStore: () => ({}),
+  },
+});
 
-      // Computed signal (derived value)
-      const doubledSignal = computed(() => counterSignal.value * 2);
+// ============================================================================
+// State Setup
+// ============================================================================
 
-      const formSignal = signal({ name: '', email: '', age: 0 });
-      const complexFormSignal = signal({ profile: { name: '' }, tags: [] as string[] });
-      const largeArraySignal = signal<number[]>([]);
+// Basic counter signal
+const counter = signal(0);
 
-      return {
-        counterSignal,
-        nestedSignal,
-        usersSignal,
-        doubledSignal,
-        formSignal,
-        complexFormSignal,
-        largeArraySignal,
-      };
+// Nested object structure
+const nestedObject = signal({
+  level1: {
+    level2: {
+      level3: {
+        value: 0,
+      },
     },
   },
+});
 
-  features: ['signals', 'computed-native'],
+// Array for operations
+const itemsArray = signal<Array<{ id: number; name: string; value: number }>>([]);
+
+// Computed value based on counter
+const doubledCounter = computed(() => counter.value * 2);
+
+// Form state
+const formState = signal({
+  username: '',
+  email: '',
+  age: 0,
+  profile: {
+    bio: '',
+    interests: [] as string[],
+  },
 });
 
 // ============================================================================
-// Implement Tests (using object references!)
+// BASIC READ TESTS
 // ============================================================================
 
-// ✅ No strings! IDE autocomplete works!
-// ✅ Type-safe! Wrong test object = compile error!
-// ✅ Refactor-safe! Rename symbol = auto update!
-
-// ========== BASIC READ TESTS ==========
-
-preactSignals.implement(tests.singleRead, (ctx) => {
-  const value = ctx.store.counterSignal.value;
+library.implement(tests.singleRead, {
+  fn: () => {
+    return counter.value;
+  },
 });
 
-preactSignals.implement(tests.moderateRead, (ctx) => {
-  ctx.store.counterSignal.value;
+library.implement(tests.moderateRead, {
+  fn: () => {
+    let sum = 0;
+    for (let i = 0; i < 100; i++) {
+      sum += counter.value;
+    }
+    return sum;
+  },
 });
 
-preactSignals.implement(tests.highFrequencyRead, (ctx) => {
-  ctx.store.counterSignal.value;
+library.implement(tests.highFrequencyRead, {
+  fn: () => {
+    let sum = 0;
+    for (let i = 0; i < 1000; i++) {
+      sum += counter.value;
+    }
+    return sum;
+  },
 });
 
-// ========== BASIC WRITE TESTS ==========
+// ============================================================================
+// BASIC WRITE TESTS
+// ============================================================================
 
-preactSignals.implement(tests.singleWrite, (ctx) => {
-  ctx.store.counterSignal.value += 1;
+library.implement(tests.singleWrite, {
+  beforeEach: () => {
+    counter.value = 0;
+  },
+  fn: () => {
+    counter.value++;
+  },
 });
 
-preactSignals.implement(tests.batchWrite, (ctx) => {
-  ctx.store.counterSignal.value += 1;
+library.implement(tests.batchWrite, {
+  beforeEach: () => {
+    counter.value = 0;
+  },
+  fn: () => {
+    batch(() => {
+      for (let i = 0; i < 10; i++) {
+        counter.value++;
+      }
+    });
+  },
 });
 
-preactSignals.implement(tests.burstWrite, (ctx) => {
-  ctx.store.counterSignal.value += 1;
+library.implement(tests.burstWrite, {
+  beforeEach: () => {
+    counter.value = 0;
+  },
+  fn: () => {
+    batch(() => {
+      for (let i = 0; i < 100; i++) {
+        counter.value++;
+      }
+    });
+  },
 });
 
-preactSignals.implement(tests.heavyWrite, (ctx) => {
-  ctx.store.counterSignal.value += 1;
+library.implement(tests.heavyWrite, {
+  beforeEach: () => {
+    counter.value = 0;
+  },
+  fn: () => {
+    batch(() => {
+      for (let i = 0; i < 1000; i++) {
+        counter.value++;
+      }
+    });
+  },
 });
 
-// ========== ADVANCED OPERATIONS ==========
+// ============================================================================
+// ADVANCED OPERATIONS
+// ============================================================================
 
-preactSignals.implement(tests.nestedUpdate, (ctx) => {
-  const prev = ctx.store.nestedSignal.value;
-  ctx.store.nestedSignal.value = {
-    ...prev,
-    nested: {
-      ...prev.nested,
-      value: prev.nested.value + 1,
-    },
-  };
+library.implement(tests.nestedUpdate, {
+  beforeEach: () => {
+    nestedObject.value = {
+      level1: {
+        level2: {
+          level3: {
+            value: 0,
+          },
+        },
+      },
+    };
+  },
+  fn: () => {
+    nestedObject.value = {
+      ...nestedObject.value,
+      level1: {
+        ...nestedObject.value.level1,
+        level2: {
+          ...nestedObject.value.level1.level2,
+          level3: {
+            value: nestedObject.value.level1.level2.level3.value + 1,
+          },
+        },
+      },
+    };
+  },
 });
 
-preactSignals.implement(tests.arrayPush, (ctx) => {
-  const prev = ctx.store.usersSignal.value;
-  ctx.store.usersSignal.value = [
-    ...prev,
-    { id: prev.length + 1, name: `User ${prev.length + 1}` },
-  ];
+library.implement(tests.arrayPush, {
+  beforeEach: () => {
+    itemsArray.value = [];
+  },
+  fn: () => {
+    itemsArray.value = [
+      ...itemsArray.value,
+      { id: itemsArray.value.length, name: `item-${itemsArray.value.length}`, value: Math.random() },
+    ];
+  },
 });
 
-preactSignals.implement(tests.arrayUpdate, (ctx) => {
-  // First ensure there's at least one user
-  const users = ctx.store.usersSignal.value;
-  if (users.length === 0) {
-    ctx.store.usersSignal.value = [{ id: 1, name: 'User 1' }];
-  }
-  // Then update the first user
-  const prev = ctx.store.usersSignal.value;
-  ctx.store.usersSignal.value = [
-    { ...prev[0], name: 'Updated User' },
-    ...prev.slice(1),
-  ];
+library.implement(tests.arrayUpdate, {
+  beforeEach: () => {
+    itemsArray.value = [{ id: 0, name: 'item-0', value: 0 }];
+  },
+  fn: () => {
+    if (itemsArray.value.length > 0) {
+      const index = Math.floor(itemsArray.value.length / 2);
+      itemsArray.value = itemsArray.value.map((item, i) =>
+        i === index ? { ...item, value: item.value + 1 } : item
+      );
+    }
+  },
 });
 
-preactSignals.implement(tests.computedValue, (ctx) => {
-  const value = ctx.store.doubledSignal.value;
+library.implement(tests.computedValue, {
+  fn: () => {
+    return doubledCounter.value;
+  },
 });
 
-// ========== ASYNC OPERATIONS ==========
+// ============================================================================
+// ASYNC OPERATIONS
+// ============================================================================
 
-preactSignals.implement(tests.asyncThroughput, async (ctx) => {
-  // Simulate rapid async operations
-  for (let i = 0; i < 20; i++) {
-    await Promise.resolve();
-    ctx.store.counterSignal.value = i;
-  }
+library.implement(tests.asyncThroughput, {
+  beforeEach: () => {
+    counter.value = 0;
+  },
+  fn: async () => {
+    const promises = [];
+    for (let i = 0; i < 20; i++) {
+      promises.push(
+        new Promise<void>((resolve) => {
+          setTimeout(() => {
+            counter.value++;
+            resolve();
+          }, 0);
+        })
+      );
+    }
+    await Promise.all(promises);
+  },
 });
 
-preactSignals.implement(tests.concurrentUpdates, async (ctx) => {
-  // Test concurrent async updates
-  const operations = [];
-
-  for (let i = 0; i < 50; i++) {
-    operations.push(
+library.implement(tests.concurrentUpdates, {
+  beforeEach: () => {
+    counter.value = 0;
+  },
+  fn: async () => {
+    const promises = Array.from({ length: 50 }, (_, i) =>
       Promise.resolve().then(() => {
-        ctx.store.counterSignal.value++;
+        counter.value = i;
       })
     );
-  }
-
-  await Promise.all(operations);
+    await Promise.all(promises);
+  },
 });
 
-// ========== REAL-WORLD SCENARIOS ==========
+// ============================================================================
+// REAL-WORLD SCENARIOS
+// ============================================================================
 
-preactSignals.implement(tests.simpleForm, (ctx) => {
-  const prev1 = ctx.store.formSignal.value;
-  ctx.store.formSignal.value = {
-    ...prev1,
-    name: 'John Doe',
-  };
-  const prev2 = ctx.store.formSignal.value;
-  ctx.store.formSignal.value = {
-    ...prev2,
-    email: 'john@example.com',
-  };
-  const prev3 = ctx.store.formSignal.value;
-  ctx.store.formSignal.value = {
-    ...prev3,
-    age: 30,
-  };
+library.implement(tests.simpleForm, {
+  beforeEach: () => {
+    formState.value = {
+      username: '',
+      email: '',
+      age: 0,
+      profile: {
+        bio: '',
+        interests: [],
+      },
+    };
+  },
+  fn: () => {
+    formState.value = {
+      ...formState.value,
+      username: 'user123',
+      email: 'user@example.com',
+      age: 25,
+    };
+  },
 });
 
-preactSignals.implement(tests.complexForm, (ctx) => {
-  // Update nested object
-  const prev1 = ctx.store.complexFormSignal.value;
-  ctx.store.complexFormSignal.value = {
-    ...prev1,
-    profile: {
-      ...prev1.profile,
-      name: 'John Doe',
-    },
-  };
-  // Update array
-  const prev2 = ctx.store.complexFormSignal.value;
-  ctx.store.complexFormSignal.value = {
-    ...prev2,
-    tags: [...prev2.tags, 'developer', 'react'],
-  };
+library.implement(tests.complexForm, {
+  beforeEach: () => {
+    formState.value = {
+      username: '',
+      email: '',
+      age: 0,
+      profile: {
+        bio: '',
+        interests: [],
+      },
+    };
+  },
+  fn: () => {
+    formState.value = {
+      username: 'complexUser',
+      email: 'complex@example.com',
+      age: 30,
+      profile: {
+        bio: 'A detailed bio text',
+        interests: ['coding', 'music', 'gaming'],
+      },
+    };
+  },
 });
 
-preactSignals.implement(tests.cacheInvalidation, (ctx) => {
-  // Update source data
-  ctx.store.counterSignal.value += 1;
-  // Access computed value (should reflect new value)
-  const doubled = ctx.store.doubledSignal.value;
+library.implement(tests.cacheInvalidation, {
+  beforeEach: () => {
+    counter.value = 0;
+  },
+  fn: () => {
+    // Update base value which should invalidate computed cache
+    counter.value++;
+    // Access computed to trigger recomputation
+    return doubledCounter.value;
+  },
 });
 
-preactSignals.implement(tests.memoryUsage, (ctx) => {
-  const disposers: Array<() => void> = [];
+library.implement(tests.memoryUsage, {
+  fn: () => {
+    const disposers: Array<() => void> = [];
 
-  // Create 100 subscribers using effect
-  for (let i = 0; i < 100; i++) {
-    const dispose = effect(() => {
-      // Read signal to create subscription
-      ctx.store.counterSignal.value;
+    // Create 100 effects/subscribers
+    for (let i = 0; i < 100; i++) {
+      const dispose = effect(() => {
+        // Effect callback - access the value to create dependency
+        const value = counter.value;
+      });
+      disposers.push(dispose);
+    }
+
+    // Cleanup all effects
+    disposers.forEach((dispose) => dispose());
+  },
+});
+
+// ============================================================================
+// PERFORMANCE STRESS TESTS
+// ============================================================================
+
+library.implement(tests.extremeRead, {
+  fn: () => {
+    let sum = 0;
+    for (let i = 0; i < 10000; i++) {
+      sum += counter.value;
+    }
+    return sum;
+  },
+});
+
+library.implement(tests.extremeWrite, {
+  beforeEach: () => {
+    counter.value = 0;
+  },
+  fn: () => {
+    batch(() => {
+      for (let i = 0; i < 10000; i++) {
+        counter.value++;
+      }
     });
-    disposers.push(dispose);
+  },
+});
+
+library.implement(tests.largeArray, {
+  beforeEach: () => {
+    itemsArray.value = Array.from({ length: 1000 }, (_, i) => ({
+      id: i,
+      name: `item-${i}`,
+      value: i,
+    }));
+  },
+  fn: () => {
+    // Perform operation on large array
+    const middleIndex = 500;
+    itemsArray.value = itemsArray.value.map((item, i) =>
+      i === middleIndex ? { ...item, value: item.value + 1 } : item
+    );
+  },
+});
+
+// ============================================================================
+// REACTIVITY PATTERNS
+// ============================================================================
+
+// Diamond pattern: A -> B, C -> D
+const diamondA = signal(1);
+const diamondB = computed(() => diamondA.value * 2);
+const diamondC = computed(() => diamondA.value * 3);
+const diamondD = computed(() => diamondB.value + diamondC.value);
+
+library.implement(tests.diamondPattern, {
+  beforeEach: () => {
+    diamondA.value = 1;
+  },
+  fn: () => {
+    diamondA.value++;
+    return diamondD.value;
+  },
+});
+
+// Deep diamond pattern (5 layers)
+const deepDiamondA = signal(1);
+const deepDiamondB1 = computed(() => deepDiamondA.value * 2);
+const deepDiamondB2 = computed(() => deepDiamondA.value * 3);
+const deepDiamondC1 = computed(() => deepDiamondB1.value + deepDiamondB2.value);
+const deepDiamondC2 = computed(() => deepDiamondB1.value - deepDiamondB2.value);
+const deepDiamondD1 = computed(() => deepDiamondC1.value * deepDiamondC2.value);
+const deepDiamondD2 = computed(() => deepDiamondC1.value + deepDiamondC2.value);
+const deepDiamondE = computed(() => deepDiamondD1.value + deepDiamondD2.value);
+
+library.implement(tests.deepDiamondPattern, {
+  beforeEach: () => {
+    deepDiamondA.value = 1;
+  },
+  fn: () => {
+    deepDiamondA.value++;
+    return deepDiamondE.value;
+  },
+});
+
+// Deep chain (10 layers)
+const chainSignals: ReturnType<typeof signal>[] = [signal(1)];
+const chainComputeds: ReturnType<typeof computed>[] = [];
+for (let i = 1; i <= 10; i++) {
+  const prevSignal = i === 1 ? chainSignals[0] : chainComputeds[i - 2];
+  chainComputeds.push(computed(() => prevSignal.value + 1));
+}
+
+library.implement(tests.deepChain, {
+  beforeEach: () => {
+    chainSignals[0].value = 1;
+  },
+  fn: () => {
+    chainSignals[0].value++;
+    return chainComputeds[9].value;
+  },
+});
+
+// Very deep chain (100 layers)
+const veryDeepChainSignal = signal(1);
+const veryDeepChainComputeds: ReturnType<typeof computed>[] = [];
+let prevComputed: any = veryDeepChainSignal;
+for (let i = 0; i < 100; i++) {
+  const current = prevComputed;
+  veryDeepChainComputeds.push(computed(() => current.value + 1));
+  prevComputed = veryDeepChainComputeds[i];
+}
+
+library.implement(tests.veryDeepChain, {
+  beforeEach: () => {
+    veryDeepChainSignal.value = 1;
+  },
+  fn: () => {
+    veryDeepChainSignal.value++;
+    return veryDeepChainComputeds[99].value;
+  },
+});
+
+// Wide fanout (1 -> 100)
+const fanoutSource = signal(1);
+const fanoutComputeds = Array.from({ length: 100 }, (_, i) =>
+  computed(() => fanoutSource.value * (i + 1))
+);
+
+library.implement(tests.wideFanout, {
+  beforeEach: () => {
+    fanoutSource.value = 1;
+  },
+  fn: () => {
+    fanoutSource.value++;
+    let sum = 0;
+    for (const comp of fanoutComputeds) {
+      sum += comp.value;
+    }
+    return sum;
+  },
+});
+
+// Massive fanout (1 -> 1000)
+const massiveFanoutSource = signal(1);
+const massiveFanoutComputeds = Array.from({ length: 1000 }, (_, i) =>
+  computed(() => massiveFanoutSource.value * (i + 1))
+);
+
+library.implement(tests.massiveFanout, {
+  beforeEach: () => {
+    massiveFanoutSource.value = 1;
+  },
+  fn: () => {
+    massiveFanoutSource.value++;
+    let sum = 0;
+    for (const comp of massiveFanoutComputeds) {
+      sum += comp.value;
+    }
+    return sum;
+  },
+});
+
+// Dynamic dependencies
+const dynamicCondition = signal(true);
+const dynamicA = signal(1);
+const dynamicB = signal(2);
+const dynamicComputed = computed(() => {
+  if (dynamicCondition.value) {
+    return dynamicA.value * 2;
+  } else {
+    return dynamicB.value * 3;
   }
-
-  // Cleanup all subscribers
-  disposers.forEach((dispose) => dispose());
 });
 
-// ========== PERFORMANCE STRESS TESTS ==========
-
-preactSignals.implement(tests.extremeRead, (ctx) => {
-  ctx.store.counterSignal.value;
+library.implement(tests.dynamicDependencies, {
+  beforeEach: () => {
+    dynamicCondition.value = true;
+    dynamicA.value = 1;
+    dynamicB.value = 2;
+  },
+  fn: () => {
+    dynamicCondition.value = !dynamicCondition.value;
+    dynamicA.value++;
+    dynamicB.value++;
+    return dynamicComputed.value;
+  },
 });
 
-preactSignals.implement(tests.extremeWrite, (ctx) => {
-  ctx.store.counterSignal.value += 1;
-});
+// Repeated diamonds (5 sequential diamond patterns)
+const repeatedDiamonds: any[] = [];
+let prevDiamond = signal(1);
 
-preactSignals.implement(tests.largeArray, (ctx) => {
-  // Initialize with 1000 items
-  const items = Array.from({ length: 1000 }, (_, i) => i);
-  ctx.store.largeArraySignal.value = items;
+for (let i = 0; i < 5; i++) {
+  const source = prevDiamond;
+  const b = computed(() => source.value * 2);
+  const c = computed(() => source.value * 3);
+  const d = computed(() => b.value + c.value);
+  repeatedDiamonds.push({ source, b, c, d });
+  const currentD = d;
+  prevDiamond = signal(currentD.value);
+}
 
-  // Read the array
-  const array = ctx.store.largeArraySignal.value;
-
-  // Update one item
-  const prev = ctx.store.largeArraySignal.value;
-  const newArray = [...prev];
-  newArray[500] = 999;
-  ctx.store.largeArraySignal.value = newArray;
-});
-
-// ========== REACTIVITY PATTERNS ==========
-
-preactSignals.implement(tests.diamondPattern, (ctx) => {
-  ctx.store.counterSignal.value++;
-  const result = ctx.store.doubledSignal.value;
-});
-
-preactSignals.implement(tests.deepDiamondPattern, (ctx) => {
-  for (let i = 0; i < 5; i++) {
-    ctx.store.counterSignal.value++;
-  }
-  const result = ctx.store.doubledSignal.value;
-});
-
-preactSignals.implement(tests.deepChain, (ctx) => {
-  for (let i = 0; i < 10; i++) {
-    ctx.store.counterSignal.value *= 2;
-  }
-  const result = ctx.store.counterSignal.value;
-});
-
-preactSignals.implement(tests.veryDeepChain, (ctx) => {
-  for (let i = 0; i < 100; i++) {
-    ctx.store.counterSignal.value *= 1.01;
-  }
-  const result = ctx.store.counterSignal.value;
-});
-
-preactSignals.implement(tests.wideFanout, (ctx) => {
-  ctx.store.counterSignal.value++;
-  for (let i = 0; i < 100; i++) {
-    const v = ctx.store.counterSignal.value;
-  }
-});
-
-preactSignals.implement(tests.massiveFanout, (ctx) => {
-  ctx.store.counterSignal.value++;
-  for (let i = 0; i < 1000; i++) {
-    const v = ctx.store.counterSignal.value;
-  }
-});
-
-preactSignals.implement(tests.dynamicDependencies, (ctx) => {
-  const toggle = ctx.store.counterSignal.value % 2 === 0;
-  ctx.store.counterSignal.value += toggle ? 1 : 2;
-  const result = ctx.store.counterSignal.value;
-});
-
-preactSignals.implement(tests.repeatedDiamonds, (ctx) => {
-  for (let i = 0; i < 5; i++) {
-    ctx.store.counterSignal.value++;
-    const a = ctx.store.counterSignal.value;
-    const b = ctx.store.doubledSignal.value;
-  }
+library.implement(tests.repeatedDiamonds, {
+  beforeEach: () => {
+    repeatedDiamonds[0].source.value = 1;
+  },
+  fn: () => {
+    repeatedDiamonds[0].source.value++;
+    // Update subsequent diamond sources
+    for (let i = 1; i < 5; i++) {
+      repeatedDiamonds[i].source.value = repeatedDiamonds[i - 1].d.value;
+    }
+    return repeatedDiamonds[4].d.value;
+  },
 });

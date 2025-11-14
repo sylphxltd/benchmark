@@ -1,337 +1,532 @@
 /**
- * Solid.js Signals Library Implementation
- *
- * Complete implementation with all 20 tests following the pattern from jotai.ts
+ * Solid.js (Reactive Primitives) Implementation
+ * Uses Solid.js's fine-grained reactive system
  */
 
-import { createSignal, createMemo, createEffect, onCleanup } from 'solid-js';
+import { createSignal, createMemo, batch, createEffect, createRoot, onCleanup } from 'solid-js';
+import { createStore } from 'solid-js/store';
 import { category, tests } from '../index';
 
-// ============================================================================
-// Define Store Type
-// ============================================================================
-
-interface SolidStore {
-  // Basic counter
-  getCounter: () => number;
-  setCounter: (value: number | ((prev: number) => number)) => void;
-
-  // Nested object
-  getNested: () => { nested: { value: number } };
-  setNested: (value: { nested: { value: number } } | ((prev: { nested: { value: number } }) => { nested: { value: number } })) => void;
-
-  // Users array
-  getUsers: () => Array<{ id: number; name: string }>;
-  setUsers: (value: Array<{ id: number; name: string }> | ((prev: Array<{ id: number; name: string }>) => Array<{ id: number; name: string }>)) => void;
-
-  // Computed value (doubled)
-  doubled: () => number;
-
-  // Form states
-  getForm: () => { name: string; email: string; age: number };
-  setForm: (value: { name: string; email: string; age: number } | ((prev: { name: string; email: string; age: number }) => { name: string; email: string; age: number })) => void;
-
-  getComplexForm: () => { profile: { name: string }; tags: string[] };
-  setComplexForm: (value: { profile: { name: string }; tags: string[] } | ((prev: { profile: { name: string }; tags: string[] }) => { profile: { name: string }; tags: string[] })) => void;
-
-  // Large array
-  getLargeArray: () => number[];
-  setLargeArray: (value: number[] | ((prev: number[]) => number[])) => void;
-}
-
-// ============================================================================
-// Register Library
-// ============================================================================
-
-const solidJs = category.registerLibrary<SolidStore>({
+const library = category.registerLibrary({
   id: 'solid-js',
-  displayName: 'Solid Signals',
+  displayName: 'Solid.js',
   packageName: 'solid-js',
   githubUrl: 'https://github.com/solidjs/solid',
-  description: 'Fine-grained reactivity primitive from Solid.js for building performant UIs',
-
+  description: 'Fine-grained reactive state management',
   setup: {
-    createStore: () => {
-      // Basic counter signal
-      const [getCounter, setCounter] = createSignal(0);
+    createStore: () => ({}),
+  },
+});
 
-      // Nested object signal
-      const [getNested, setNested] = createSignal({ nested: { value: 0 } });
+// ============================================================================
+// State Setup
+// ============================================================================
 
-      // Users array signal
-      const [getUsers, setUsers] = createSignal<Array<{ id: number; name: string }>>([]);
+// Basic counter signal
+const [counter, setCounter] = createSignal(0);
 
-      // Computed value (derived from counter)
-      const doubled = createMemo(() => getCounter() * 2);
-
-      // Form signals
-      const [getForm, setForm] = createSignal({ name: '', email: '', age: 0 });
-      const [getComplexForm, setComplexForm] = createSignal({ profile: { name: '' }, tags: [] as string[] });
-
-      // Large array signal
-      const [getLargeArray, setLargeArray] = createSignal<number[]>([]);
-
-      return {
-        getCounter,
-        setCounter,
-        getNested,
-        setNested,
-        getUsers,
-        setUsers,
-        doubled,
-        getForm,
-        setForm,
-        getComplexForm,
-        setComplexForm,
-        getLargeArray,
-        setLargeArray,
-      };
+// Nested object using store
+const [nestedObject, setNestedObject] = createStore({
+  level1: {
+    level2: {
+      level3: {
+        value: 0,
+      },
     },
   },
+});
 
-  features: ['computed-native', 'signals', 'fine-grained'],
+// Array for operations using store
+const [itemsArray, setItemsArray] = createStore<{ items: Array<{ id: number; name: string; value: number }> }>({
+  items: [],
+});
+
+// Computed value based on counter
+const doubledCounter = createMemo(() => counter() * 2);
+
+// Form state using store
+const [formState, setFormState] = createStore({
+  username: '',
+  email: '',
+  age: 0,
+  profile: {
+    bio: '',
+    interests: [] as string[],
+  },
 });
 
 // ============================================================================
-// Implement Tests (using object references!)
+// BASIC READ TESTS
 // ============================================================================
 
-// ✅ No strings! IDE autocomplete works!
-// ✅ Type-safe! Wrong test object = compile error!
-// ✅ Refactor-safe! Rename symbol = auto update!
-
-// ========== BASIC READ TESTS ==========
-
-solidJs.implement(tests.singleRead, (ctx) => {
-  const value = ctx.store.getCounter();
+library.implement(tests.singleRead, {
+  fn: () => {
+    return counter();
+  },
 });
 
-solidJs.implement(tests.moderateRead, (ctx) => {
-  ctx.store.getCounter();
+library.implement(tests.moderateRead, {
+  fn: () => {
+    let sum = 0;
+    for (let i = 0; i < 100; i++) {
+      sum += counter();
+    }
+    return sum;
+  },
 });
 
-solidJs.implement(tests.highFrequencyRead, (ctx) => {
-  ctx.store.getCounter();
+library.implement(tests.highFrequencyRead, {
+  fn: () => {
+    let sum = 0;
+    for (let i = 0; i < 1000; i++) {
+      sum += counter();
+    }
+    return sum;
+  },
 });
 
-// ========== BASIC WRITE TESTS ==========
+// ============================================================================
+// BASIC WRITE TESTS
+// ============================================================================
 
-solidJs.implement(tests.singleWrite, (ctx) => {
-  ctx.store.setCounter((prev) => prev + 1);
+library.implement(tests.singleWrite, {
+  beforeEach: () => {
+    setCounter(0);
+  },
+  fn: () => {
+    setCounter((prev) => prev + 1);
+  },
 });
 
-solidJs.implement(tests.batchWrite, (ctx) => {
-  ctx.store.setCounter((prev) => prev + 1);
+library.implement(tests.batchWrite, {
+  beforeEach: () => {
+    setCounter(0);
+  },
+  fn: () => {
+    batch(() => {
+      for (let i = 0; i < 10; i++) {
+        setCounter((prev) => prev + 1);
+      }
+    });
+  },
 });
 
-solidJs.implement(tests.burstWrite, (ctx) => {
-  ctx.store.setCounter((prev) => prev + 1);
+library.implement(tests.burstWrite, {
+  beforeEach: () => {
+    setCounter(0);
+  },
+  fn: () => {
+    batch(() => {
+      for (let i = 0; i < 100; i++) {
+        setCounter((prev) => prev + 1);
+      }
+    });
+  },
 });
 
-solidJs.implement(tests.heavyWrite, (ctx) => {
-  ctx.store.setCounter((prev) => prev + 1);
+library.implement(tests.heavyWrite, {
+  beforeEach: () => {
+    setCounter(0);
+  },
+  fn: () => {
+    batch(() => {
+      for (let i = 0; i < 1000; i++) {
+        setCounter((prev) => prev + 1);
+      }
+    });
+  },
 });
 
-// ========== ADVANCED OPERATIONS ==========
+// ============================================================================
+// ADVANCED OPERATIONS
+// ============================================================================
 
-solidJs.implement(tests.nestedUpdate, (ctx) => {
-  ctx.store.setNested((prev) => ({
-    ...prev,
-    nested: {
-      ...prev.nested,
-      value: prev.nested.value + 1,
-    },
-  }));
+library.implement(tests.nestedUpdate, {
+  beforeEach: () => {
+    setNestedObject({
+      level1: {
+        level2: {
+          level3: {
+            value: 0,
+          },
+        },
+      },
+    });
+  },
+  fn: () => {
+    setNestedObject('level1', 'level2', 'level3', 'value', (v) => v + 1);
+  },
 });
 
-solidJs.implement(tests.arrayPush, (ctx) => {
-  ctx.store.setUsers((prev) => [
-    ...prev,
-    { id: prev.length + 1, name: `User ${prev.length + 1}` },
-  ]);
+library.implement(tests.arrayPush, {
+  beforeEach: () => {
+    setItemsArray({ items: [] });
+  },
+  fn: () => {
+    const length = itemsArray.items.length;
+    setItemsArray('items', (items) => [
+      ...items,
+      { id: length, name: `item-${length}`, value: Math.random() },
+    ]);
+  },
 });
 
-solidJs.implement(tests.arrayUpdate, (ctx) => {
-  // First ensure there's at least one user
-  const users = ctx.store.getUsers();
-  if (users.length === 0) {
-    ctx.store.setUsers([{ id: 1, name: 'User 1' }]);
-  }
-  // Then update the first user
-  ctx.store.setUsers((prev) => [
-    { ...prev[0], name: 'Updated User' },
-    ...prev.slice(1),
-  ]);
+library.implement(tests.arrayUpdate, {
+  beforeEach: () => {
+    setItemsArray({ items: [{ id: 0, name: 'item-0', value: 0 }] });
+  },
+  fn: () => {
+    if (itemsArray.items.length > 0) {
+      const index = Math.floor(itemsArray.items.length / 2);
+      setItemsArray('items', index, 'value', (v) => v + 1);
+    }
+  },
 });
 
-solidJs.implement(tests.computedValue, (ctx) => {
-  const value = ctx.store.doubled();
+library.implement(tests.computedValue, {
+  fn: () => {
+    return doubledCounter();
+  },
 });
 
-// ========== ASYNC OPERATIONS ==========
+// ============================================================================
+// ASYNC OPERATIONS
+// ============================================================================
 
-solidJs.implement(tests.asyncThroughput, async (ctx) => {
-  // Simulate rapid async operations
-  for (let i = 0; i < 20; i++) {
-    await Promise.resolve();
-    ctx.store.setCounter(i);
-  }
+library.implement(tests.asyncThroughput, {
+  beforeEach: () => {
+    setCounter(0);
+  },
+  fn: async () => {
+    const promises = [];
+    for (let i = 0; i < 20; i++) {
+      promises.push(
+        new Promise<void>((resolve) => {
+          setTimeout(() => {
+            setCounter((prev) => prev + 1);
+            resolve();
+          }, 0);
+        })
+      );
+    }
+    await Promise.all(promises);
+  },
 });
 
-solidJs.implement(tests.concurrentUpdates, async (ctx) => {
-  // Test concurrent async updates
-  const operations = [];
-
-  for (let i = 0; i < 50; i++) {
-    operations.push(
+library.implement(tests.concurrentUpdates, {
+  beforeEach: () => {
+    setCounter(0);
+  },
+  fn: async () => {
+    const promises = Array.from({ length: 50 }, (_, i) =>
       Promise.resolve().then(() => {
-        ctx.store.setCounter((prev) => prev + 1);
+        setCounter(i);
       })
     );
-  }
-
-  await Promise.all(operations);
+    await Promise.all(promises);
+  },
 });
 
-// ========== REAL-WORLD SCENARIOS ==========
+// ============================================================================
+// REAL-WORLD SCENARIOS
+// ============================================================================
 
-solidJs.implement(tests.simpleForm, (ctx) => {
-  ctx.store.setForm((prev) => ({
-    ...prev,
-    name: 'John Doe',
-  }));
-  ctx.store.setForm((prev) => ({
-    ...prev,
-    email: 'john@example.com',
-  }));
-  ctx.store.setForm((prev) => ({
-    ...prev,
-    age: 30,
-  }));
-});
-
-solidJs.implement(tests.complexForm, (ctx) => {
-  // Update nested object
-  ctx.store.setComplexForm((prev) => ({
-    ...prev,
-    profile: {
-      ...prev.profile,
-      name: 'John Doe',
-    },
-  }));
-  // Update array
-  ctx.store.setComplexForm((prev) => ({
-    ...prev,
-    tags: [...prev.tags, 'developer', 'react'],
-  }));
-});
-
-solidJs.implement(tests.cacheInvalidation, (ctx) => {
-  // Update source data
-  ctx.store.setCounter((prev) => prev + 1);
-  // Access computed value (should reflect new value)
-  const doubled = ctx.store.doubled();
-});
-
-solidJs.implement(tests.memoryUsage, (ctx) => {
-  const cleanupFns: Array<() => void> = [];
-
-  // Create 100 effects (subscribers)
-  for (let i = 0; i < 100; i++) {
-    createEffect(() => {
-      // Subscribe to counter changes
-      ctx.store.getCounter();
-
-      // Register cleanup
-      onCleanup(() => {
-        // Cleanup callback
-      });
+library.implement(tests.simpleForm, {
+  beforeEach: () => {
+    setFormState({
+      username: '',
+      email: '',
+      age: 0,
+      profile: {
+        bio: '',
+        interests: [],
+      },
     });
+  },
+  fn: () => {
+    batch(() => {
+      setFormState('username', 'user123');
+      setFormState('email', 'user@example.com');
+      setFormState('age', 25);
+    });
+  },
+});
+
+library.implement(tests.complexForm, {
+  beforeEach: () => {
+    setFormState({
+      username: '',
+      email: '',
+      age: 0,
+      profile: {
+        bio: '',
+        interests: [],
+      },
+    });
+  },
+  fn: () => {
+    batch(() => {
+      setFormState('username', 'complexUser');
+      setFormState('email', 'complex@example.com');
+      setFormState('age', 30);
+      setFormState('profile', 'bio', 'A detailed bio text');
+      setFormState('profile', 'interests', ['coding', 'music', 'gaming']);
+    });
+  },
+});
+
+library.implement(tests.cacheInvalidation, {
+  beforeEach: () => {
+    setCounter(0);
+  },
+  fn: () => {
+    // Update base value which should invalidate computed cache
+    setCounter((prev) => prev + 1);
+    // Access computed to trigger recomputation
+    return doubledCounter();
+  },
+});
+
+library.implement(tests.memoryUsage, {
+  fn: () => {
+    const disposers: Array<() => void> = [];
+
+    // Create 100 effects/subscribers within a root
+    createRoot((dispose) => {
+      for (let i = 0; i < 100; i++) {
+        createEffect(() => {
+          // Effect callback - access the value to create dependency
+          const value = counter();
+        });
+      }
+
+      // Store the root dispose function
+      disposers.push(dispose);
+    });
+
+    // Cleanup all effects by disposing the root
+    disposers.forEach((dispose) => dispose());
+  },
+});
+
+// ============================================================================
+// PERFORMANCE STRESS TESTS
+// ============================================================================
+
+library.implement(tests.extremeRead, {
+  fn: () => {
+    let sum = 0;
+    for (let i = 0; i < 10000; i++) {
+      sum += counter();
+    }
+    return sum;
+  },
+});
+
+library.implement(tests.extremeWrite, {
+  beforeEach: () => {
+    setCounter(0);
+  },
+  fn: () => {
+    batch(() => {
+      for (let i = 0; i < 10000; i++) {
+        setCounter((prev) => prev + 1);
+      }
+    });
+  },
+});
+
+library.implement(tests.largeArray, {
+  beforeEach: () => {
+    setItemsArray({
+      items: Array.from({ length: 1000 }, (_, i) => ({
+        id: i,
+        name: `item-${i}`,
+        value: i,
+      })),
+    });
+  },
+  fn: () => {
+    // Perform operation on large array
+    const middleIndex = 500;
+    setItemsArray('items', middleIndex, 'value', (v) => v + 1);
+  },
+});
+
+// ============================================================================
+// REACTIVITY PATTERNS
+// ============================================================================
+
+// Diamond pattern: A -> B, C -> D
+const [diamondA, setDiamondA] = createSignal(1);
+const diamondB = createMemo(() => diamondA() * 2);
+const diamondC = createMemo(() => diamondA() * 3);
+const diamondD = createMemo(() => diamondB() + diamondC());
+
+library.implement(tests.diamondPattern, {
+  beforeEach: () => {
+    setDiamondA(1);
+  },
+  fn: () => {
+    setDiamondA((prev) => prev + 1);
+    return diamondD();
+  },
+});
+
+// Deep diamond pattern (5 layers)
+const [deepDiamondA, setDeepDiamondA] = createSignal(1);
+const deepDiamondB1 = createMemo(() => deepDiamondA() * 2);
+const deepDiamondB2 = createMemo(() => deepDiamondA() * 3);
+const deepDiamondC1 = createMemo(() => deepDiamondB1() + deepDiamondB2());
+const deepDiamondC2 = createMemo(() => deepDiamondB1() - deepDiamondB2());
+const deepDiamondD1 = createMemo(() => deepDiamondC1() * deepDiamondC2());
+const deepDiamondD2 = createMemo(() => deepDiamondC1() + deepDiamondC2());
+const deepDiamondE = createMemo(() => deepDiamondD1() + deepDiamondD2());
+
+library.implement(tests.deepDiamondPattern, {
+  beforeEach: () => {
+    setDeepDiamondA(1);
+  },
+  fn: () => {
+    setDeepDiamondA((prev) => prev + 1);
+    return deepDiamondE();
+  },
+});
+
+// Deep chain (10 layers)
+const [chainSignal, setChainSignal] = createSignal(1);
+const chainMemos: ReturnType<typeof createMemo>[] = [];
+let prevMemo: any = chainSignal;
+for (let i = 0; i < 10; i++) {
+  const current = prevMemo;
+  const memo = createMemo(() => current() + 1);
+  chainMemos.push(memo);
+  prevMemo = memo;
+}
+
+library.implement(tests.deepChain, {
+  beforeEach: () => {
+    setChainSignal(1);
+  },
+  fn: () => {
+    setChainSignal((prev) => prev + 1);
+    return chainMemos[9]();
+  },
+});
+
+// Very deep chain (100 layers)
+const [veryDeepChainSignal, setVeryDeepChainSignal] = createSignal(1);
+const veryDeepChainMemos: ReturnType<typeof createMemo>[] = [];
+let veryDeepPrevMemo: any = veryDeepChainSignal;
+for (let i = 0; i < 100; i++) {
+  const current = veryDeepPrevMemo;
+  const memo = createMemo(() => current() + 1);
+  veryDeepChainMemos.push(memo);
+  veryDeepPrevMemo = memo;
+}
+
+library.implement(tests.veryDeepChain, {
+  beforeEach: () => {
+    setVeryDeepChainSignal(1);
+  },
+  fn: () => {
+    setVeryDeepChainSignal((prev) => prev + 1);
+    return veryDeepChainMemos[99]();
+  },
+});
+
+// Wide fanout (1 -> 100)
+const [fanoutSource, setFanoutSource] = createSignal(1);
+const fanoutMemos = Array.from({ length: 100 }, (_, i) =>
+  createMemo(() => fanoutSource() * (i + 1))
+);
+
+library.implement(tests.wideFanout, {
+  beforeEach: () => {
+    setFanoutSource(1);
+  },
+  fn: () => {
+    setFanoutSource((prev) => prev + 1);
+    let sum = 0;
+    for (const memo of fanoutMemos) {
+      sum += memo();
+    }
+    return sum;
+  },
+});
+
+// Massive fanout (1 -> 1000)
+const [massiveFanoutSource, setMassiveFanoutSource] = createSignal(1);
+const massiveFanoutMemos = Array.from({ length: 1000 }, (_, i) =>
+  createMemo(() => massiveFanoutSource() * (i + 1))
+);
+
+library.implement(tests.massiveFanout, {
+  beforeEach: () => {
+    setMassiveFanoutSource(1);
+  },
+  fn: () => {
+    setMassiveFanoutSource((prev) => prev + 1);
+    let sum = 0;
+    for (const memo of massiveFanoutMemos) {
+      sum += memo();
+    }
+    return sum;
+  },
+});
+
+// Dynamic dependencies
+const [dynamicCondition, setDynamicCondition] = createSignal(true);
+const [dynamicA, setDynamicA] = createSignal(1);
+const [dynamicB, setDynamicB] = createSignal(2);
+const dynamicComputed = createMemo(() => {
+  if (dynamicCondition()) {
+    return dynamicA() * 2;
+  } else {
+    return dynamicB() * 3;
   }
-
-  // Note: In Solid.js, effects are automatically cleaned up when the reactive scope is disposed
-  // Since we're in a benchmark context, we don't have a component lifecycle to trigger cleanup
-  // In a real app, this would happen automatically when the component unmounts
 });
 
-// ========== PERFORMANCE STRESS TESTS ==========
-
-solidJs.implement(tests.extremeRead, (ctx) => {
-  ctx.store.getCounter();
+library.implement(tests.dynamicDependencies, {
+  beforeEach: () => {
+    setDynamicCondition(true);
+    setDynamicA(1);
+    setDynamicB(2);
+  },
+  fn: () => {
+    setDynamicCondition((prev) => !prev);
+    setDynamicA((prev) => prev + 1);
+    setDynamicB((prev) => prev + 1);
+    return dynamicComputed();
+  },
 });
 
-solidJs.implement(tests.extremeWrite, (ctx) => {
-  ctx.store.setCounter((prev) => prev + 1);
-});
+// Repeated diamonds (5 sequential diamond patterns)
+const repeatedDiamonds: any[] = [];
+let prevDiamondSignal = createSignal(1);
 
-solidJs.implement(tests.largeArray, (ctx) => {
-  // Initialize with 1000 items
-  const items = Array.from({ length: 1000 }, (_, i) => i);
-  ctx.store.setLargeArray(items);
-
-  // Read the array
-  const array = ctx.store.getLargeArray();
-
-  // Update one item
-  ctx.store.setLargeArray((prev) => {
-    const newArray = [...prev];
-    newArray[500] = 999;
-    return newArray;
-  });
-});
-
-// ========== REACTIVITY PATTERNS ==========
-
-solidJs.implement(tests.diamondPattern, (ctx) => {
-  ctx.store.setCounter((prev) => prev + 1);
-  const result = ctx.store.doubled();
-});
-
-solidJs.implement(tests.deepDiamondPattern, (ctx) => {
-  for (let i = 0; i < 5; i++) {
-    ctx.store.setCounter((prev) => prev + 1);
+for (let i = 0; i < 5; i++) {
+  const [source, setSource] = i === 0 ? prevDiamondSignal : createSignal(1);
+  const b = createMemo(() => source() * 2);
+  const c = createMemo(() => source() * 3);
+  const d = createMemo(() => b() + c());
+  repeatedDiamonds.push({ source, setSource, b, c, d });
+  if (i < 4) {
+    prevDiamondSignal = createSignal(1);
   }
-  const result = ctx.store.doubled();
-});
+}
 
-solidJs.implement(tests.deepChain, (ctx) => {
-  for (let i = 0; i < 10; i++) {
-    ctx.store.setCounter((prev) => prev * 2);
-  }
-  const result = ctx.store.getCounter();
-});
-
-solidJs.implement(tests.veryDeepChain, (ctx) => {
-  for (let i = 0; i < 100; i++) {
-    ctx.store.setCounter((prev) => prev * 1.01);
-  }
-  const result = ctx.store.getCounter();
-});
-
-solidJs.implement(tests.wideFanout, (ctx) => {
-  ctx.store.setCounter((prev) => prev + 1);
-  for (let i = 0; i < 100; i++) {
-    const v = ctx.store.getCounter();
-  }
-});
-
-solidJs.implement(tests.massiveFanout, (ctx) => {
-  ctx.store.setCounter((prev) => prev + 1);
-  for (let i = 0; i < 1000; i++) {
-    const v = ctx.store.getCounter();
-  }
-});
-
-solidJs.implement(tests.dynamicDependencies, (ctx) => {
-  const toggle = ctx.store.getCounter() % 2 === 0;
-  ctx.store.setCounter((prev) => prev + (toggle ? 1 : 2));
-  const result = ctx.store.getCounter();
-});
-
-solidJs.implement(tests.repeatedDiamonds, (ctx) => {
-  for (let i = 0; i < 5; i++) {
-    ctx.store.setCounter((prev) => prev + 1);
-    const a = ctx.store.getCounter();
-    const b = ctx.store.doubled();
-  }
+library.implement(tests.repeatedDiamonds, {
+  beforeEach: () => {
+    repeatedDiamonds[0].setSource(1);
+  },
+  fn: () => {
+    repeatedDiamonds[0].setSource((prev: number) => prev + 1);
+    // Propagate through all diamonds
+    for (let i = 1; i < 5; i++) {
+      const prevValue = repeatedDiamonds[i - 1].d();
+      repeatedDiamonds[i].setSource(prevValue);
+    }
+    return repeatedDiamonds[4].d();
+  },
 });

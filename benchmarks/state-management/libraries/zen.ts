@@ -1,300 +1,516 @@
 /**
- * Zen Library Implementation
- *
- * Zen 3.0 is an ultra-optimized reactive state library with auto-tracking.
- * Uses zen() to create signals, .value to read/write values.
+ * Zen (Signal-based) Implementation
+ * Uses @sylphx/zen's signal-based reactive system
  */
 
-import { zen, computed, subscribe } from '@sylphx/zen';
+import { zen, computed, batch, subscribe, effect } from '@sylphx/zen';
 import { category, tests } from '../index';
 
-// ============================================================================
-// Define Store Type
-// ============================================================================
-
-interface ZenStore {
-  counter: ReturnType<typeof zen<number>>;
-  nested: ReturnType<typeof zen<{ nested: { value: number } }>>;
-  users: ReturnType<typeof zen<Array<{ id: number; name: string }>>>;
-  doubled: ReturnType<typeof computed<number>>;
-  form: ReturnType<typeof zen<{ name: string; email: string; age: number }>>;
-  complexForm: ReturnType<typeof zen<{ profile: { name: string }; tags: string[] }>>;
-  largeArray: ReturnType<typeof zen<number[]>>;
-}
-
-// ============================================================================
-// Register Library
-// ============================================================================
-
-const zenLib = category.registerLibrary<ZenStore>({
+const library = category.registerLibrary({
   id: 'zen',
   displayName: 'Zen',
   packageName: '@sylphx/zen',
-  githubUrl: 'https://github.com/SylphxAI/zen',
-  description: 'Ultra-optimized reactive state with auto-tracking',
-
+  githubUrl: 'https://github.com/sylphx/zen',
+  description: 'Signal-based reactive state management',
   setup: {
-    createStore: () => {
-      const counter = zen(0);
-      const nested = zen({ nested: { value: 0 } });
-      const users = zen<Array<{ id: number; name: string }>>([]);
+    createStore: () => ({}),
+  },
+});
 
-      // Computed signal with auto-tracking
-      const doubled = computed(() => counter.value * 2);
+// ============================================================================
+// State Setup
+// ============================================================================
 
-      const form = zen({ name: '', email: '', age: 0 });
-      const complexForm = zen({ profile: { name: '' }, tags: [] as string[] });
-      const largeArray = zen<number[]>([]);
+// Basic counter signal
+const counter = zen(0);
 
-      return {
-        counter,
-        nested,
-        users,
-        doubled,
-        form,
-        complexForm,
-        largeArray,
-      };
+// Nested object structure
+const nestedObject = zen({
+  level1: {
+    level2: {
+      level3: {
+        value: 0,
+      },
     },
   },
+});
 
-  features: ['signals', 'minimal', 'computed-native'],
+// Array for operations
+const itemsArray = zen<Array<{ id: number; name: string; value: number }>>([]);
+
+// Computed value based on counter
+const doubledCounter = computed(() => counter.value * 2);
+
+// Form state
+const formState = zen({
+  username: '',
+  email: '',
+  age: 0,
+  profile: {
+    bio: '',
+    interests: [] as string[],
+  },
 });
 
 // ============================================================================
-// Implement Tests (using object references!)
+// BASIC READ TESTS
 // ============================================================================
 
-// ========== BASIC READ TESTS ==========
-
-zenLib.implement(tests.singleRead, (ctx) => {
-  const value = ctx.store.counter.value;
+library.implement(tests.singleRead, () => {
+  return counter.value;
 });
 
-zenLib.implement(tests.moderateRead, (ctx) => {
-  ctx.store.counter.value;
-});
-
-zenLib.implement(tests.highFrequencyRead, (ctx) => {
-  ctx.store.counter.value;
-});
-
-// ========== BASIC WRITE TESTS ==========
-
-zenLib.implement(tests.singleWrite, (ctx) => {
-  ctx.store.counter.value++;
-});
-
-zenLib.implement(tests.batchWrite, (ctx) => {
-  ctx.store.counter.value++;
-});
-
-zenLib.implement(tests.burstWrite, (ctx) => {
-  ctx.store.counter.value++;
-});
-
-zenLib.implement(tests.heavyWrite, (ctx) => {
-  ctx.store.counter.value++;
-});
-
-// ========== ADVANCED OPERATIONS ==========
-
-zenLib.implement(tests.nestedUpdate, (ctx) => {
-  const prev = ctx.store.nested.value;
-  ctx.store.nested.value = {
-    ...prev,
-    nested: {
-      ...prev.nested,
-      value: prev.nested.value + 1,
-    },
-  };
-});
-
-zenLib.implement(tests.arrayPush, (ctx) => {
-  const prev = ctx.store.users.value;
-  ctx.store.users.value = [
-    ...prev,
-    { id: prev.length + 1, name: `User ${prev.length + 1}` },
-  ];
-});
-
-zenLib.implement(tests.arrayUpdate, (ctx) => {
-  // First ensure there's at least one user
-  if (ctx.store.users.value.length === 0) {
-    ctx.store.users.value = [{ id: 1, name: 'User 1' }];
+library.implement(tests.moderateRead, () => {
+  let sum = 0;
+  for (let i = 0; i < 100; i++) {
+    sum += counter.value;
   }
-  // Then update the first user
-  const prev = ctx.store.users.value;
-  ctx.store.users.value = [
-    { ...prev[0], name: 'Updated User' },
-    ...prev.slice(1),
-  ];
+  return sum;
 });
 
-zenLib.implement(tests.computedValue, (ctx) => {
-  const value = ctx.store.doubled.value;
+library.implement(tests.highFrequencyRead, () => {
+  let sum = 0;
+  for (let i = 0; i < 1000; i++) {
+    sum += counter.value;
+  }
+  return sum;
 });
 
-// ========== ASYNC OPERATIONS ==========
+// ============================================================================
+// BASIC WRITE TESTS
+// ============================================================================
 
-zenLib.implement(tests.asyncThroughput, async (ctx) => {
-  // Simulate rapid async operations (e.g., API calls)
-  // Each operation: async work + state update
-  for (let i = 0; i < 20; i++) {
-    // Microtask (faster than setTimeout, tests library overhead)
-    await Promise.resolve();
-    ctx.store.counter.value = i;
+library.implement(tests.singleWrite, {
+  beforeEach: () => {
+    counter.value = 0;
+  },
+  fn: () => {
+    counter.value++;
   }
 });
 
-zenLib.implement(tests.concurrentUpdates, async (ctx) => {
-  // Test concurrent async updates to different parts of state
-  const operations = [];
+library.implement(tests.batchWrite, {
+  beforeEach: () => {
+    counter.value = 0;
+  },
+  fn: () => {
+    batch(() => {
+      for (let i = 0; i < 10; i++) {
+        counter.value++;
+      }
+    });
+  }
+});
 
-  for (let i = 0; i < 50; i++) {
-    operations.push(
+library.implement(tests.burstWrite, {
+  beforeEach: () => {
+    counter.value = 0;
+  },
+  fn: () => {
+    batch(() => {
+      for (let i = 0; i < 100; i++) {
+        counter.value++;
+      }
+    });
+  }
+});
+
+library.implement(tests.heavyWrite, {
+  beforeEach: () => {
+    counter.value = 0;
+  },
+  fn: () => {
+    batch(() => {
+      for (let i = 0; i < 1000; i++) {
+        counter.value++;
+      }
+    });
+  }
+});
+
+// ============================================================================
+// ADVANCED OPERATIONS
+// ============================================================================
+
+library.implement(tests.nestedUpdate, {
+  beforeEach: () => {
+    nestedObject.value = {
+      level1: {
+        level2: {
+          level3: {
+            value: 0,
+          },
+        },
+      },
+    };
+  },
+  fn: () => {
+    nestedObject.value = {
+      ...nestedObject.value,
+      level1: {
+        ...nestedObject.value.level1,
+        level2: {
+          ...nestedObject.value.level1.level2,
+          level3: {
+            value: nestedObject.value.level1.level2.level3.value + 1,
+          },
+        },
+      },
+    };
+  }
+});
+
+library.implement(tests.arrayPush, {
+  beforeEach: () => {
+    itemsArray.value = [];
+  },
+  fn: () => {
+    itemsArray.value = [
+      ...itemsArray.value,
+      { id: itemsArray.value.length, name: `item-${itemsArray.value.length}`, value: Math.random() },
+    ];
+  }
+});
+
+library.implement(tests.arrayUpdate, {
+  beforeEach: () => {
+    itemsArray.value = [{ id: 0, name: 'item-0', value: 0 }];
+  },
+  fn: () => {
+    if (itemsArray.value.length > 0) {
+      const index = Math.floor(itemsArray.value.length / 2);
+      itemsArray.value = itemsArray.value.map((item, i) =>
+        i === index ? { ...item, value: item.value + 1 } : item
+      );
+    }
+  }
+});
+
+library.implement(tests.computedValue, () => {
+  return doubledCounter.value;
+});
+
+// ============================================================================
+// ASYNC OPERATIONS
+// ============================================================================
+
+library.implement(tests.asyncThroughput, {
+  beforeEach: () => {
+    counter.value = 0;
+  },
+  fn: async () => {
+    const promises = [];
+    for (let i = 0; i < 20; i++) {
+      promises.push(
+        new Promise<void>((resolve) => {
+          setTimeout(() => {
+            counter.value++;
+            resolve();
+          }, 0);
+        })
+      );
+    }
+    await Promise.all(promises);
+  }
+});
+
+library.implement(tests.concurrentUpdates, {
+  beforeEach: () => {
+    counter.value = 0;
+  },
+  fn: async () => {
+    const promises = Array.from({ length: 50 }, (_, i) =>
       Promise.resolve().then(() => {
-        ctx.store.counter.value++;
+        counter.value = i;
       })
     );
+    await Promise.all(promises);
   }
-
-  await Promise.all(operations);
 });
 
-// ========== REAL-WORLD SCENARIOS ==========
+// ============================================================================
+// REAL-WORLD SCENARIOS
+// ============================================================================
 
-zenLib.implement(tests.simpleForm, (ctx) => {
-  ctx.store.form.value = {
-    ...ctx.store.form.value,
-    name: 'John Doe',
-  };
-  ctx.store.form.value = {
-    ...ctx.store.form.value,
-    email: 'john@example.com',
-  };
-  ctx.store.form.value = {
-    ...ctx.store.form.value,
-    age: 30,
-  };
+library.implement(tests.simpleForm, {
+  beforeEach: () => {
+    formState.value = {
+      username: '',
+      email: '',
+      age: 0,
+      profile: {
+        bio: '',
+        interests: [],
+      },
+    };
+  },
+  fn: () => {
+    formState.value = {
+      ...formState.value,
+      username: 'user123',
+      email: 'user@example.com',
+      age: 25,
+    };
+  }
 });
 
-zenLib.implement(tests.complexForm, (ctx) => {
-  // Update nested object
-  ctx.store.complexForm.value = {
-    ...ctx.store.complexForm.value,
-    profile: {
-      ...ctx.store.complexForm.value.profile,
-      name: 'John Doe',
-    },
-  };
-  // Update array
-  ctx.store.complexForm.value = {
-    ...ctx.store.complexForm.value,
-    tags: [...ctx.store.complexForm.value.tags, 'developer', 'react'],
-  };
+library.implement(tests.complexForm, {
+  beforeEach: () => {
+    formState.value = {
+      username: '',
+      email: '',
+      age: 0,
+      profile: {
+        bio: '',
+        interests: [],
+      },
+    };
+  },
+  fn: () => {
+    formState.value = {
+      username: 'complexUser',
+      email: 'complex@example.com',
+      age: 30,
+      profile: {
+        bio: 'A detailed bio text',
+        interests: ['coding', 'music', 'gaming'],
+      },
+    };
+  }
 });
 
-zenLib.implement(tests.cacheInvalidation, (ctx) => {
-  // Update source data
-  ctx.store.counter.value++;
-  // Access computed value (should reflect new value)
-  const doubled = ctx.store.doubled.value;
+library.implement(tests.cacheInvalidation, {
+  beforeEach: () => {
+    counter.value = 0;
+  },
+  fn: () => {
+    // Update base value which should invalidate computed cache
+    counter.value++;
+    // Access computed to trigger recomputation
+    return doubledCounter.value;
+  }
 });
 
-zenLib.implement(tests.memoryUsage, (ctx) => {
-  const unsubscribers: Array<() => void> = [];
+library.implement(tests.memoryUsage, () => {
+  const subscriptions: Array<() => void> = [];
 
   // Create 100 subscribers
   for (let i = 0; i < 100; i++) {
-    // Subscribe to signal changes
-    const unsub = subscribe(ctx.store.counter, () => {
+    const unsubscribe = subscribe(counter, () => {
       // Subscriber callback
     });
-    unsubscribers.push(unsub);
+    subscriptions.push(unsubscribe);
   }
 
   // Cleanup all subscribers
-  unsubscribers.forEach((unsub) => unsub());
+  subscriptions.forEach((unsub) => unsub());
 });
 
-// ========== PERFORMANCE STRESS TESTS ==========
+// ============================================================================
+// PERFORMANCE STRESS TESTS
+// ============================================================================
 
-zenLib.implement(tests.extremeRead, (ctx) => {
-  ctx.store.counter.value;
-});
-
-zenLib.implement(tests.extremeWrite, (ctx) => {
-  ctx.store.counter.value++;
-});
-
-zenLib.implement(tests.largeArray, (ctx) => {
-  // Initialize with 1000 items
-  const items = Array.from({ length: 1000 }, (_, i) => i);
-  ctx.store.largeArray.value = items;
-
-  // Read the array
-  const array = ctx.store.largeArray.value;
-
-  // Update one item
-  const prev = ctx.store.largeArray.value;
-  const newArray = [...prev];
-  newArray[500] = 999;
-  ctx.store.largeArray.value = newArray;
-});
-
-// ========== REACTIVITY PATTERNS ==========
-
-zenLib.implement(tests.diamondPattern, (ctx) => {
-  ctx.store.counter.value++;
-  const result = ctx.store.doubled.value;
-});
-
-zenLib.implement(tests.deepDiamondPattern, (ctx) => {
-  for (let i = 0; i < 5; i++) {
-    ctx.store.counter.value++;
+library.implement(tests.extremeRead, () => {
+  let sum = 0;
+  for (let i = 0; i < 10000; i++) {
+    sum += counter.value;
   }
-  const result = ctx.store.doubled.value;
+  return sum;
 });
 
-zenLib.implement(tests.deepChain, (ctx) => {
-  for (let i = 0; i < 10; i++) {
-    ctx.store.counter.value *= 2;
-  }
-  const result = ctx.store.counter.value;
-});
-
-zenLib.implement(tests.veryDeepChain, (ctx) => {
-  for (let i = 0; i < 100; i++) {
-    ctx.store.counter.value *= 1.01;
-  }
-  const result = ctx.store.counter.value;
-});
-
-zenLib.implement(tests.wideFanout, (ctx) => {
-  ctx.store.counter.value++;
-  for (let i = 0; i < 100; i++) {
-    const v = ctx.store.counter.value;
+library.implement(tests.extremeWrite, {
+  beforeEach: () => {
+    counter.value = 0;
+  },
+  fn: () => {
+    batch(() => {
+      for (let i = 0; i < 10000; i++) {
+        counter.value++;
+      }
+    });
   }
 });
 
-zenLib.implement(tests.massiveFanout, (ctx) => {
-  ctx.store.counter.value++;
-  for (let i = 0; i < 1000; i++) {
-    const v = ctx.store.counter.value;
+library.implement(tests.largeArray, {
+  beforeEach: () => {
+    itemsArray.value = Array.from({ length: 1000 }, (_, i) => ({
+      id: i,
+      name: `item-${i}`,
+      value: i,
+    }));
+  },
+  fn: () => {
+    // Perform operation on large array
+    const middleIndex = 500;
+    itemsArray.value = itemsArray.value.map((item, i) =>
+      i === middleIndex ? { ...item, value: item.value + 1 } : item
+    );
   }
 });
 
-zenLib.implement(tests.dynamicDependencies, (ctx) => {
-  const toggle = ctx.store.counter.value % 2 === 0;
-  ctx.store.counter.value += toggle ? 1 : 2;
-  const result = ctx.store.counter.value;
+// ============================================================================
+// REACTIVITY PATTERNS
+// ============================================================================
+
+// Diamond pattern: A -> B, C -> D
+const diamondA = zen(1);
+const diamondB = computed(() => diamondA.value * 2);
+const diamondC = computed(() => diamondA.value * 3);
+const diamondD = computed(() => diamondB.value + diamondC.value);
+
+library.implement(tests.diamondPattern, {
+  beforeEach: () => {
+    diamondA.value = 1;
+  },
+  fn: () => {
+    diamondA.value++;
+    return diamondD.value;
+  }
 });
 
-zenLib.implement(tests.repeatedDiamonds, (ctx) => {
-  for (let i = 0; i < 5; i++) {
-    ctx.store.counter.value++;
-    const a = ctx.store.counter.value;
-    const b = ctx.store.doubled.value;
+// Deep diamond pattern (5 layers)
+const deepDiamondA = zen(1);
+const deepDiamondB1 = computed(() => deepDiamondA.value * 2);
+const deepDiamondB2 = computed(() => deepDiamondA.value * 3);
+const deepDiamondC1 = computed(() => deepDiamondB1.value + deepDiamondB2.value);
+const deepDiamondC2 = computed(() => deepDiamondB1.value - deepDiamondB2.value);
+const deepDiamondD1 = computed(() => deepDiamondC1.value * deepDiamondC2.value);
+const deepDiamondD2 = computed(() => deepDiamondC1.value + deepDiamondC2.value);
+const deepDiamondE = computed(() => deepDiamondD1.value + deepDiamondD2.value);
+
+library.implement(tests.deepDiamondPattern, {
+  beforeEach: () => {
+    deepDiamondA.value = 1;
+  },
+  fn: () => {
+    deepDiamondA.value++;
+    return deepDiamondE.value;
+  }
+});
+
+// Deep chain (10 layers)
+const chainSignals: ReturnType<typeof zen>[] = [zen(1)];
+const chainComputeds: ReturnType<typeof computed>[] = [];
+for (let i = 1; i <= 10; i++) {
+  const prevSignal = i === 1 ? chainSignals[0] : chainComputeds[i - 2];
+  chainComputeds.push(computed(() => prevSignal.value + 1));
+}
+
+library.implement(tests.deepChain, {
+  beforeEach: () => {
+    chainSignals[0].value = 1;
+  },
+  fn: () => {
+    chainSignals[0].value++;
+    return chainComputeds[9].value;
+  }
+});
+
+// Very deep chain (100 layers)
+const veryDeepChainSignal = zen(1);
+const veryDeepChainComputeds: ReturnType<typeof computed>[] = [];
+let prevComputed: any = veryDeepChainSignal;
+for (let i = 0; i < 100; i++) {
+  const current = prevComputed;
+  veryDeepChainComputeds.push(computed(() => current.value + 1));
+  prevComputed = veryDeepChainComputeds[i];
+}
+
+library.implement(tests.veryDeepChain, {
+  beforeEach: () => {
+    veryDeepChainSignal.value = 1;
+  },
+  fn: () => {
+    veryDeepChainSignal.value++;
+    return veryDeepChainComputeds[99].value;
+  }
+});
+
+// Wide fanout (1 -> 100)
+const fanoutSource = zen(1);
+const fanoutComputeds = Array.from({ length: 100 }, (_, i) =>
+  computed(() => fanoutSource.value * (i + 1))
+);
+
+library.implement(tests.wideFanout, {
+  beforeEach: () => {
+    fanoutSource.value = 1;
+  },
+  fn: () => {
+    fanoutSource.value++;
+    let sum = 0;
+    for (const comp of fanoutComputeds) {
+      sum += comp.value;
+    }
+    return sum;
+  }
+});
+
+// Massive fanout (1 -> 1000)
+const massiveFanoutSource = zen(1);
+const massiveFanoutComputeds = Array.from({ length: 1000 }, (_, i) =>
+  computed(() => massiveFanoutSource.value * (i + 1))
+);
+
+library.implement(tests.massiveFanout, {
+  beforeEach: () => {
+    massiveFanoutSource.value = 1;
+  },
+  fn: () => {
+    massiveFanoutSource.value++;
+    let sum = 0;
+    for (const comp of massiveFanoutComputeds) {
+      sum += comp.value;
+    }
+    return sum;
+  }
+});
+
+// Dynamic dependencies
+const dynamicCondition = zen(true);
+const dynamicA = zen(1);
+const dynamicB = zen(2);
+const dynamicComputed = computed(() => {
+  if (dynamicCondition.value) {
+    return dynamicA.value * 2;
+  } else {
+    return dynamicB.value * 3;
+  }
+});
+
+library.implement(tests.dynamicDependencies, {
+  beforeEach: () => {
+    dynamicCondition.value = true;
+    dynamicA.value = 1;
+    dynamicB.value = 2;
+  },
+  fn: () => {
+    dynamicCondition.value = !dynamicCondition.value;
+    dynamicA.value++;
+    dynamicB.value++;
+    return dynamicComputed.value;
+  }
+});
+
+// Repeated diamonds (5 sequential diamond patterns)
+const repeatedDiamonds: any[] = [];
+let prevDiamond = zen(1);
+
+for (let i = 0; i < 5; i++) {
+  const source = prevDiamond;
+  const b = computed(() => source.value * 2);
+  const c = computed(() => source.value * 3);
+  const d = computed(() => b.value + c.value);
+  repeatedDiamonds.push({ source, b, c, d });
+  prevDiamond = zen(d.value);
+}
+
+library.implement(tests.repeatedDiamonds, {
+  beforeEach: () => {
+    repeatedDiamonds[0].source.value = 1;
+  },
+  fn: () => {
+    repeatedDiamonds[0].source.value++;
+    return repeatedDiamonds[4].d.value;
   }
 });

@@ -1,258 +1,569 @@
 /**
- * Valtio Library Implementation
- *
- * Example of the new API:
- * - Library registration
- * - Test implementation using object references (no strings!)
+ * Valtio (Proxy-based) Implementation
+ * Uses Valtio's proxy-based reactive state management
  */
 
-import { proxy, subscribe } from 'valtio';
+import { proxy, snapshot, subscribe } from 'valtio';
 import { category, tests } from '../index';
 
-// ============================================================================
-// Define Store Type
-// ============================================================================
-
-interface ValtioStore {
-  counter: number;
-  nested: { nested: { value: number } };
-  users: Array<{ id: number; name: string }>;
-  form: { name: string; email: string; age: number };
-  complexForm: { profile: { name: string }; tags: string[] };
-  largeArray: number[];
-  get doubled(): number; // Computed value using getter
-}
-
-// ============================================================================
-// Register Library
-// ============================================================================
-
-const valtio = category.registerLibrary<ValtioStore>({
+const library = category.registerLibrary({
   id: 'valtio',
   displayName: 'Valtio',
   packageName: 'valtio',
   githubUrl: 'https://github.com/pmndrs/valtio',
-  description: 'Proxy-based state management library that makes state usage simple',
-
+  description: 'Proxy-based reactive state management',
   setup: {
-    createStore: () => {
-      const store = proxy({
-        counter: 0,
-        nested: { nested: { value: 0 } },
-        users: [] as Array<{ id: number; name: string }>,
-        form: { name: '', email: '', age: 0 },
-        complexForm: { profile: { name: '' }, tags: [] as string[] },
-        largeArray: [] as number[],
-        // Computed value using getter
-        get doubled() {
-          return this.counter * 2;
-        },
-      });
+    createStore: () => ({}),
+  },
+});
 
-      return store as ValtioStore;
+// ============================================================================
+// State Setup
+// ============================================================================
+
+// Basic counter proxy
+const counterState = proxy({ value: 0 });
+
+// Nested object structure
+const nestedObjectState = proxy({
+  level1: {
+    level2: {
+      level3: {
+        value: 0,
+      },
     },
   },
+});
 
-  features: ['proxy-based', 'computed-native'],
+// Array for operations
+const arrayState = proxy<{ items: Array<{ id: number; name: string; value: number }> }>({
+  items: [],
+});
+
+// Computed value (Valtio doesn't have built-in computed, we'll use a getter proxy)
+const computedState = proxy({
+  get doubled() {
+    return snapshot(counterState).value * 2;
+  },
+});
+
+// Form state
+const formState = proxy({
+  username: '',
+  email: '',
+  age: 0,
+  profile: {
+    bio: '',
+    interests: [] as string[],
+  },
 });
 
 // ============================================================================
-// Implement Tests (using object references!)
+// BASIC READ TESTS
 // ============================================================================
 
-// ✅ No strings! IDE autocomplete works!
-// ✅ Type-safe! Wrong test object = compile error!
-// ✅ Refactor-safe! Rename symbol = auto update!
-
-// ========== BASIC READ TESTS ==========
-
-valtio.implement(tests.singleRead, (ctx) => {
-  const value = ctx.store.counter;
+library.implement(tests.singleRead, {
+  fn: () => {
+    return snapshot(counterState).value;
+  },
 });
 
-valtio.implement(tests.moderateRead, (ctx) => {
-  ctx.store.counter;
+library.implement(tests.moderateRead, {
+  fn: () => {
+    let sum = 0;
+    for (let i = 0; i < 100; i++) {
+      sum += snapshot(counterState).value;
+    }
+    return sum;
+  },
 });
 
-valtio.implement(tests.highFrequencyRead, (ctx) => {
-  ctx.store.counter;
+library.implement(tests.highFrequencyRead, {
+  fn: () => {
+    let sum = 0;
+    for (let i = 0; i < 1000; i++) {
+      sum += snapshot(counterState).value;
+    }
+    return sum;
+  },
 });
 
-// ========== BASIC WRITE TESTS ==========
+// ============================================================================
+// BASIC WRITE TESTS
+// ============================================================================
 
-valtio.implement(tests.singleWrite, (ctx) => {
-  ctx.store.counter += 1;
+library.implement(tests.singleWrite, {
+  beforeEach: () => {
+    counterState.value = 0;
+  },
+  fn: () => {
+    counterState.value++;
+  },
 });
 
-valtio.implement(tests.batchWrite, (ctx) => {
-  ctx.store.counter += 1;
+library.implement(tests.batchWrite, {
+  beforeEach: () => {
+    counterState.value = 0;
+  },
+  fn: () => {
+    for (let i = 0; i < 10; i++) {
+      counterState.value++;
+    }
+  },
 });
 
-valtio.implement(tests.burstWrite, (ctx) => {
-  ctx.store.counter += 1;
+library.implement(tests.burstWrite, {
+  beforeEach: () => {
+    counterState.value = 0;
+  },
+  fn: () => {
+    for (let i = 0; i < 100; i++) {
+      counterState.value++;
+    }
+  },
 });
 
-valtio.implement(tests.heavyWrite, (ctx) => {
-  ctx.store.counter += 1;
+library.implement(tests.heavyWrite, {
+  beforeEach: () => {
+    counterState.value = 0;
+  },
+  fn: () => {
+    for (let i = 0; i < 1000; i++) {
+      counterState.value++;
+    }
+  },
 });
 
-// ========== ADVANCED OPERATIONS ==========
+// ============================================================================
+// ADVANCED OPERATIONS
+// ============================================================================
 
-valtio.implement(tests.nestedUpdate, (ctx) => {
-  ctx.store.nested.nested.value += 1;
+library.implement(tests.nestedUpdate, {
+  beforeEach: () => {
+    nestedObjectState.level1.level2.level3.value = 0;
+  },
+  fn: () => {
+    nestedObjectState.level1.level2.level3.value++;
+  },
 });
 
-valtio.implement(tests.arrayPush, (ctx) => {
-  ctx.store.users.push({
-    id: ctx.store.users.length + 1,
-    name: `User ${ctx.store.users.length + 1}`,
-  });
+library.implement(tests.arrayPush, {
+  beforeEach: () => {
+    arrayState.items = [];
+  },
+  fn: () => {
+    arrayState.items.push({
+      id: arrayState.items.length,
+      name: `item-${arrayState.items.length}`,
+      value: Math.random(),
+    });
+  },
 });
 
-valtio.implement(tests.arrayUpdate, (ctx) => {
-  // First ensure there's at least one user
-  if (ctx.store.users.length === 0) {
-    ctx.store.users.push({ id: 1, name: 'User 1' });
-  }
-  // Then update the first user
-  ctx.store.users[0].name = 'Updated User';
+library.implement(tests.arrayUpdate, {
+  beforeEach: () => {
+    arrayState.items = [{ id: 0, name: 'item-0', value: 0 }];
+  },
+  fn: () => {
+    if (arrayState.items.length > 0) {
+      const index = Math.floor(arrayState.items.length / 2);
+      arrayState.items[index].value++;
+    }
+  },
 });
 
-valtio.implement(tests.computedValue, (ctx) => {
-  const value = ctx.store.doubled;
+library.implement(tests.computedValue, {
+  fn: () => {
+    return computedState.doubled;
+  },
 });
 
-// ========== ASYNC OPERATIONS ==========
+// ============================================================================
+// ASYNC OPERATIONS
+// ============================================================================
 
-valtio.implement(tests.asyncThroughput, async (ctx) => {
-  // Simulate rapid async operations
-  for (let i = 0; i < 20; i++) {
-    await Promise.resolve();
-    ctx.store.counter = i;
-  }
+library.implement(tests.asyncThroughput, {
+  beforeEach: () => {
+    counterState.value = 0;
+  },
+  fn: async () => {
+    const promises = [];
+    for (let i = 0; i < 20; i++) {
+      promises.push(
+        new Promise<void>((resolve) => {
+          setTimeout(() => {
+            counterState.value++;
+            resolve();
+          }, 0);
+        })
+      );
+    }
+    await Promise.all(promises);
+  },
 });
 
-valtio.implement(tests.concurrentUpdates, async (ctx) => {
-  // Test concurrent async updates
-  const operations = [];
-
-  for (let i = 0; i < 50; i++) {
-    operations.push(
+library.implement(tests.concurrentUpdates, {
+  beforeEach: () => {
+    counterState.value = 0;
+  },
+  fn: async () => {
+    const promises = Array.from({ length: 50 }, (_, i) =>
       Promise.resolve().then(() => {
-        ctx.store.counter++;
+        counterState.value = i;
       })
     );
-  }
-
-  await Promise.all(operations);
+    await Promise.all(promises);
+  },
 });
 
-// ========== REAL-WORLD SCENARIOS ==========
+// ============================================================================
+// REAL-WORLD SCENARIOS
+// ============================================================================
 
-valtio.implement(tests.simpleForm, (ctx) => {
-  ctx.store.form.name = 'John Doe';
-  ctx.store.form.email = 'john@example.com';
-  ctx.store.form.age = 30;
+library.implement(tests.simpleForm, {
+  beforeEach: () => {
+    formState.username = '';
+    formState.email = '';
+    formState.age = 0;
+    formState.profile.bio = '';
+    formState.profile.interests = [];
+  },
+  fn: () => {
+    formState.username = 'user123';
+    formState.email = 'user@example.com';
+    formState.age = 25;
+  },
 });
 
-valtio.implement(tests.complexForm, (ctx) => {
-  // Update nested object
-  ctx.store.complexForm.profile.name = 'John Doe';
-  // Update array
-  ctx.store.complexForm.tags.push('developer', 'react');
+library.implement(tests.complexForm, {
+  beforeEach: () => {
+    formState.username = '';
+    formState.email = '';
+    formState.age = 0;
+    formState.profile.bio = '';
+    formState.profile.interests = [];
+  },
+  fn: () => {
+    formState.username = 'complexUser';
+    formState.email = 'complex@example.com';
+    formState.age = 30;
+    formState.profile.bio = 'A detailed bio text';
+    formState.profile.interests = ['coding', 'music', 'gaming'];
+  },
 });
 
-valtio.implement(tests.cacheInvalidation, (ctx) => {
-  // Update source data
-  ctx.store.counter += 1;
-  // Access computed value (should reflect new value)
-  const doubled = ctx.store.doubled;
+library.implement(tests.cacheInvalidation, {
+  beforeEach: () => {
+    counterState.value = 0;
+  },
+  fn: () => {
+    // Update base value which should invalidate computed cache
+    counterState.value++;
+    // Access computed to trigger recomputation
+    return computedState.doubled;
+  },
 });
 
-valtio.implement(tests.memoryUsage, (ctx) => {
-  const unsubscribers: Array<() => void> = [];
+library.implement(tests.memoryUsage, {
+  fn: () => {
+    const subscriptions: Array<() => void> = [];
 
-  // Create 100 subscribers
-  for (let i = 0; i < 100; i++) {
-    const unsub = subscribe(ctx.store, () => {
-      // Subscriber callback
-    });
-    unsubscribers.push(unsub);
-  }
+    // Create 100 subscribers
+    for (let i = 0; i < 100; i++) {
+      const unsubscribe = subscribe(counterState, () => {
+        // Subscriber callback
+      });
+      subscriptions.push(unsubscribe);
+    }
 
-  // Cleanup all subscribers
-  unsubscribers.forEach((unsub) => unsub());
+    // Cleanup all subscribers
+    subscriptions.forEach((unsub) => unsub());
+  },
 });
 
-// ========== PERFORMANCE STRESS TESTS ==========
+// ============================================================================
+// PERFORMANCE STRESS TESTS
+// ============================================================================
 
-valtio.implement(tests.extremeRead, (ctx) => {
-  ctx.store.counter;
+library.implement(tests.extremeRead, {
+  fn: () => {
+    let sum = 0;
+    for (let i = 0; i < 10000; i++) {
+      sum += snapshot(counterState).value;
+    }
+    return sum;
+  },
 });
 
-valtio.implement(tests.extremeWrite, (ctx) => {
-  ctx.store.counter += 1;
+library.implement(tests.extremeWrite, {
+  beforeEach: () => {
+    counterState.value = 0;
+  },
+  fn: () => {
+    for (let i = 0; i < 10000; i++) {
+      counterState.value++;
+    }
+  },
 });
 
-valtio.implement(tests.largeArray, (ctx) => {
-  // Initialize with 1000 items
-  const items = Array.from({ length: 1000 }, (_, i) => i);
-  ctx.store.largeArray = items;
-
-  // Read the array
-  const array = ctx.store.largeArray;
-
-  // Update one item
-  ctx.store.largeArray[500] = 999;
+library.implement(tests.largeArray, {
+  beforeEach: () => {
+    arrayState.items = Array.from({ length: 1000 }, (_, i) => ({
+      id: i,
+      name: `item-${i}`,
+      value: i,
+    }));
+  },
+  fn: () => {
+    // Perform operation on large array
+    const middleIndex = 500;
+    arrayState.items[middleIndex].value++;
+  },
 });
 
-// ========== REACTIVITY PATTERNS ==========
+// ============================================================================
+// REACTIVITY PATTERNS
+// ============================================================================
 
-valtio.implement(tests.diamondPattern, (ctx) => {
-  ctx.store.counter++;
-  const result = ctx.store.counter;
+// Diamond pattern: A -> B, C -> D
+const diamondState = proxy({
+  a: 1,
+  get b() {
+    return this.a * 2;
+  },
+  get c() {
+    return this.a * 3;
+  },
+  get d() {
+    return this.b + this.c;
+  },
 });
 
-valtio.implement(tests.deepDiamondPattern, (ctx) => {
-  for (let i = 0; i < 5; i++) {
-    ctx.store.counter++;
-  }
+library.implement(tests.diamondPattern, {
+  beforeEach: () => {
+    diamondState.a = 1;
+  },
+  fn: () => {
+    diamondState.a++;
+    return diamondState.d;
+  },
 });
 
-valtio.implement(tests.deepChain, (ctx) => {
-  for (let i = 0; i < 10; i++) {
-    ctx.store.counter *= 2;
-  }
+// Deep diamond pattern (5 layers)
+const deepDiamondState = proxy({
+  a: 1,
+  get b1() {
+    return this.a * 2;
+  },
+  get b2() {
+    return this.a * 3;
+  },
+  get c1() {
+    return this.b1 + this.b2;
+  },
+  get c2() {
+    return this.b1 - this.b2;
+  },
+  get d1() {
+    return this.c1 * this.c2;
+  },
+  get d2() {
+    return this.c1 + this.c2;
+  },
+  get e() {
+    return this.d1 + this.d2;
+  },
 });
 
-valtio.implement(tests.veryDeepChain, (ctx) => {
-  for (let i = 0; i < 100; i++) {
-    ctx.store.counter *= 1.01;
-  }
+library.implement(tests.deepDiamondPattern, {
+  beforeEach: () => {
+    deepDiamondState.a = 1;
+  },
+  fn: () => {
+    deepDiamondState.a++;
+    return deepDiamondState.e;
+  },
 });
 
-valtio.implement(tests.wideFanout, (ctx) => {
-  ctx.store.counter++;
-  for (let i = 0; i < 100; i++) {
-    const v = ctx.store.counter;
-  }
+// Deep chain (10 layers)
+const chainState = proxy({
+  value: 1,
+  get layer0() {
+    return this.value + 1;
+  },
+  get layer1() {
+    return this.layer0 + 1;
+  },
+  get layer2() {
+    return this.layer1 + 1;
+  },
+  get layer3() {
+    return this.layer2 + 1;
+  },
+  get layer4() {
+    return this.layer3 + 1;
+  },
+  get layer5() {
+    return this.layer4 + 1;
+  },
+  get layer6() {
+    return this.layer5 + 1;
+  },
+  get layer7() {
+    return this.layer6 + 1;
+  },
+  get layer8() {
+    return this.layer7 + 1;
+  },
+  get layer9() {
+    return this.layer8 + 1;
+  },
 });
 
-valtio.implement(tests.massiveFanout, (ctx) => {
-  ctx.store.counter++;
-  for (let i = 0; i < 1000; i++) {
-    const v = ctx.store.counter;
-  }
+library.implement(tests.deepChain, {
+  beforeEach: () => {
+    chainState.value = 1;
+  },
+  fn: () => {
+    chainState.value++;
+    return chainState.layer9;
+  },
 });
 
-valtio.implement(tests.dynamicDependencies, (ctx) => {
-  const toggle = ctx.store.counter % 2 === 0;
-  ctx.store.counter += toggle ? 1 : 2;
+// Very deep chain (100 layers) - Create dynamically
+const veryDeepChainState: any = proxy({ value: 1 });
+for (let i = 0; i < 100; i++) {
+  Object.defineProperty(veryDeepChainState, `layer${i}`, {
+    get: function () {
+      if (i === 0) {
+        return this.value + 1;
+      } else {
+        return this[`layer${i - 1}`] + 1;
+      }
+    },
+    enumerable: true,
+    configurable: true,
+  });
+}
+
+library.implement(tests.veryDeepChain, {
+  beforeEach: () => {
+    veryDeepChainState.value = 1;
+  },
+  fn: () => {
+    veryDeepChainState.value++;
+    return veryDeepChainState.layer99;
+  },
 });
 
-valtio.implement(tests.repeatedDiamonds, (ctx) => {
-  for (let i = 0; i < 5; i++) {
-    ctx.store.counter++;
-    const v = ctx.store.counter;
-  }
+// Wide fanout (1 -> 100)
+const fanoutState: any = proxy({ source: 1 });
+for (let i = 0; i < 100; i++) {
+  Object.defineProperty(fanoutState, `computed${i}`, {
+    get: function () {
+      return this.source * (i + 1);
+    },
+    enumerable: true,
+    configurable: true,
+  });
+}
+
+library.implement(tests.wideFanout, {
+  beforeEach: () => {
+    fanoutState.source = 1;
+  },
+  fn: () => {
+    fanoutState.source++;
+    let sum = 0;
+    for (let i = 0; i < 100; i++) {
+      sum += fanoutState[`computed${i}`];
+    }
+    return sum;
+  },
+});
+
+// Massive fanout (1 -> 1000)
+const massiveFanoutState: any = proxy({ source: 1 });
+for (let i = 0; i < 1000; i++) {
+  Object.defineProperty(massiveFanoutState, `computed${i}`, {
+    get: function () {
+      return this.source * (i + 1);
+    },
+    enumerable: true,
+    configurable: true,
+  });
+}
+
+library.implement(tests.massiveFanout, {
+  beforeEach: () => {
+    massiveFanoutState.source = 1;
+  },
+  fn: () => {
+    massiveFanoutState.source++;
+    let sum = 0;
+    for (let i = 0; i < 1000; i++) {
+      sum += massiveFanoutState[`computed${i}`];
+    }
+    return sum;
+  },
+});
+
+// Dynamic dependencies
+const dynamicState = proxy({
+  condition: true,
+  a: 1,
+  b: 2,
+  get computed() {
+    if (this.condition) {
+      return this.a * 2;
+    } else {
+      return this.b * 3;
+    }
+  },
+});
+
+library.implement(tests.dynamicDependencies, {
+  beforeEach: () => {
+    dynamicState.condition = true;
+    dynamicState.a = 1;
+    dynamicState.b = 2;
+  },
+  fn: () => {
+    dynamicState.condition = !dynamicState.condition;
+    dynamicState.a++;
+    dynamicState.b++;
+    return dynamicState.computed;
+  },
+});
+
+// Repeated diamonds (5 sequential diamond patterns)
+const repeatedDiamonds: any[] = [];
+for (let i = 0; i < 5; i++) {
+  const diamond = proxy({
+    source: 1,
+    get b() {
+      return this.source * 2;
+    },
+    get c() {
+      return this.source * 3;
+    },
+    get d() {
+      return this.b + this.c;
+    },
+  });
+  repeatedDiamonds.push(diamond);
+}
+
+library.implement(tests.repeatedDiamonds, {
+  beforeEach: () => {
+    repeatedDiamonds[0].source = 1;
+  },
+  fn: () => {
+    repeatedDiamonds[0].source++;
+    // Propagate through all diamonds
+    for (let i = 1; i < 5; i++) {
+      repeatedDiamonds[i].source = repeatedDiamonds[i - 1].d;
+    }
+    return repeatedDiamonds[4].d;
+  },
 });

@@ -1,45 +1,42 @@
 /**
- * Redux Toolkit Library Implementation
- *
- * Complete implementation with all 20 tests following the jotai.ts pattern
+ * Redux Toolkit (Action-based) Implementation
+ * Uses Redux Toolkit's slice-based state management
  */
 
-import { configureStore, createSlice, createSelector, type PayloadAction } from '@reduxjs/toolkit';
+import { configureStore, createSlice, createSelector, PayloadAction } from '@reduxjs/toolkit';
 import { category, tests } from '../index';
 
-// ============================================================================
-// Define Store Type
-// ============================================================================
-
-interface ReduxToolkitStore {
-  store: ReturnType<typeof configureStore<RootState>>;
-  actions: {
-    counter: typeof counterSlice.actions;
-    nested: typeof nestedSlice.actions;
-    users: typeof usersSlice.actions;
-    form: typeof formSlice.actions;
-    complexForm: typeof complexFormSlice.actions;
-    largeArray: typeof largeArraySlice.actions;
-  };
-  selectors: {
-    selectDoubled: (state: RootState) => number;
-  };
-}
+const library = category.registerLibrary({
+  id: 'redux-toolkit',
+  displayName: 'Redux Toolkit',
+  packageName: '@reduxjs/toolkit',
+  githubUrl: 'https://github.com/reduxjs/redux-toolkit',
+  description: 'Action-based state management with Redux Toolkit',
+  setup: {
+    createStore: () => ({}),
+  },
+});
 
 // ============================================================================
-// Redux Toolkit Slices
+// State Setup
 // ============================================================================
 
 // Counter slice
 const counterSlice = createSlice({
   name: 'counter',
-  initialState: { count: 0 },
+  initialState: { value: 0 },
   reducers: {
     increment: (state) => {
-      state.count += 1;
+      state.value++;
     },
-    setCount: (state, action: PayloadAction<number>) => {
-      state.count = action.payload;
+    incrementBy: (state, action: PayloadAction<number>) => {
+      state.value += action.payload;
+    },
+    setCounter: (state, action: PayloadAction<number>) => {
+      state.value = action.payload;
+    },
+    reset: (state) => {
+      state.value = 0;
     },
   },
 });
@@ -47,355 +44,558 @@ const counterSlice = createSlice({
 // Nested object slice
 const nestedSlice = createSlice({
   name: 'nested',
-  initialState: { nested: { value: 0 } },
+  initialState: {
+    level1: {
+      level2: {
+        level3: {
+          value: 0,
+        },
+      },
+    },
+  },
   reducers: {
     updateNested: (state) => {
-      state.nested.value += 1;
+      state.level1.level2.level3.value++;
+    },
+    reset: (state) => {
+      state.level1.level2.level3.value = 0;
     },
   },
 });
 
-// Users array slice
-const usersSlice = createSlice({
-  name: 'users',
-  initialState: [] as Array<{ id: number; name: string }>,
+// Array slice
+interface ArrayItem {
+  id: number;
+  name: string;
+  value: number;
+}
+
+const arraySlice = createSlice({
+  name: 'array',
+  initialState: { items: [] as ArrayItem[] },
   reducers: {
-    addUser: (state, action: PayloadAction<{ id: number; name: string }>) => {
-      state.push(action.payload);
+    pushItem: (state) => {
+      state.items.push({
+        id: state.items.length,
+        name: `item-${state.items.length}`,
+        value: Math.random(),
+      });
     },
-    updateUser: (state, action: PayloadAction<{ id: number; name: string }>) => {
-      const index = state.findIndex((u) => u.id === action.payload.id);
-      if (index !== -1) {
-        state[index] = action.payload;
+    updateItem: (state) => {
+      if (state.items.length > 0) {
+        const index = Math.floor(state.items.length / 2);
+        state.items[index].value++;
       }
     },
-    setUsers: (state, action: PayloadAction<Array<{ id: number; name: string }>>) => {
-      return action.payload;
+    setItems: (state, action: PayloadAction<ArrayItem[]>) => {
+      state.items = action.payload;
+    },
+    reset: (state) => {
+      state.items = [];
     },
   },
 });
 
-// Simple form slice
+// Form slice
 const formSlice = createSlice({
   name: 'form',
-  initialState: { name: '', email: '', age: 0 },
+  initialState: {
+    username: '',
+    email: '',
+    age: 0,
+    profile: {
+      bio: '',
+      interests: [] as string[],
+    },
+  },
   reducers: {
-    updateName: (state, action: PayloadAction<string>) => {
-      state.name = action.payload;
+    updateSimpleForm: (state) => {
+      state.username = 'user123';
+      state.email = 'user@example.com';
+      state.age = 25;
     },
-    updateEmail: (state, action: PayloadAction<string>) => {
-      state.email = action.payload;
+    updateComplexForm: (state) => {
+      state.username = 'complexUser';
+      state.email = 'complex@example.com';
+      state.age = 30;
+      state.profile.bio = 'A detailed bio text';
+      state.profile.interests = ['coding', 'music', 'gaming'];
     },
-    updateAge: (state, action: PayloadAction<number>) => {
-      state.age = action.payload;
+    reset: (state) => {
+      state.username = '';
+      state.email = '';
+      state.age = 0;
+      state.profile.bio = '';
+      state.profile.interests = [];
     },
   },
 });
 
-// Complex form slice
-const complexFormSlice = createSlice({
-  name: 'complexForm',
-  initialState: { profile: { name: '' }, tags: [] as string[] },
-  reducers: {
-    updateProfileName: (state, action: PayloadAction<string>) => {
-      state.profile.name = action.payload;
-    },
-    addTags: (state, action: PayloadAction<string[]>) => {
-      state.tags.push(...action.payload);
-    },
+// Configure store
+const store = configureStore({
+  reducer: {
+    counter: counterSlice.reducer,
+    nested: nestedSlice.reducer,
+    array: arraySlice.reducer,
+    form: formSlice.reducer,
   },
 });
 
-// Large array slice
-const largeArraySlice = createSlice({
-  name: 'largeArray',
-  initialState: [] as number[],
-  reducers: {
-    setArray: (state, action: PayloadAction<number[]>) => {
-      return action.payload;
-    },
-    updateItem: (state, action: PayloadAction<{ index: number; value: number }>) => {
-      state[action.payload.index] = action.payload.value;
-    },
-  },
-});
+type RootState = ReturnType<typeof store.getState>;
 
-// Root state type
-type RootState = {
-  counter: ReturnType<typeof counterSlice.reducer>;
-  nested: ReturnType<typeof nestedSlice.reducer>;
-  users: ReturnType<typeof usersSlice.reducer>;
-  form: ReturnType<typeof formSlice.reducer>;
-  complexForm: ReturnType<typeof complexFormSlice.reducer>;
-  largeArray: ReturnType<typeof largeArraySlice.reducer>;
-};
+// Selectors
+const selectCounter = (state: RootState) => state.counter.value;
+const selectDoubledCounter = createSelector([selectCounter], (counter) => counter * 2);
 
 // ============================================================================
-// Register Library
+// BASIC READ TESTS
 // ============================================================================
 
-const reduxToolkit = category.registerLibrary<ReduxToolkitStore>({
-  id: 'redux-toolkit',
-  displayName: 'Redux Toolkit',
-  packageName: '@reduxjs/toolkit',
-  githubUrl: 'https://github.com/reduxjs/redux-toolkit',
-  description: 'The official, opinionated, batteries-included toolset for efficient Redux development',
+library.implement(tests.singleRead, {
+  fn: () => {
+    return store.getState().counter.value;
+  },
+});
 
-  setup: {
-    createStore: () => {
-      const store = configureStore({
-        reducer: {
-          counter: counterSlice.reducer,
-          nested: nestedSlice.reducer,
-          users: usersSlice.reducer,
-          form: formSlice.reducer,
-          complexForm: complexFormSlice.reducer,
-          largeArray: largeArraySlice.reducer,
-        },
-      });
+library.implement(tests.moderateRead, {
+  fn: () => {
+    let sum = 0;
+    for (let i = 0; i < 100; i++) {
+      sum += store.getState().counter.value;
+    }
+    return sum;
+  },
+});
 
-      // Create computed selector
-      const selectDoubled = createSelector(
-        [(state: RootState) => state.counter.count],
-        (count) => count * 2
+library.implement(tests.highFrequencyRead, {
+  fn: () => {
+    let sum = 0;
+    for (let i = 0; i < 1000; i++) {
+      sum += store.getState().counter.value;
+    }
+    return sum;
+  },
+});
+
+// ============================================================================
+// BASIC WRITE TESTS
+// ============================================================================
+
+library.implement(tests.singleWrite, {
+  beforeEach: () => {
+    store.dispatch(counterSlice.actions.reset());
+  },
+  fn: () => {
+    store.dispatch(counterSlice.actions.increment());
+  },
+});
+
+library.implement(tests.batchWrite, {
+  beforeEach: () => {
+    store.dispatch(counterSlice.actions.reset());
+  },
+  fn: () => {
+    for (let i = 0; i < 10; i++) {
+      store.dispatch(counterSlice.actions.increment());
+    }
+  },
+});
+
+library.implement(tests.burstWrite, {
+  beforeEach: () => {
+    store.dispatch(counterSlice.actions.reset());
+  },
+  fn: () => {
+    for (let i = 0; i < 100; i++) {
+      store.dispatch(counterSlice.actions.increment());
+    }
+  },
+});
+
+library.implement(tests.heavyWrite, {
+  beforeEach: () => {
+    store.dispatch(counterSlice.actions.reset());
+  },
+  fn: () => {
+    for (let i = 0; i < 1000; i++) {
+      store.dispatch(counterSlice.actions.increment());
+    }
+  },
+});
+
+// ============================================================================
+// ADVANCED OPERATIONS
+// ============================================================================
+
+library.implement(tests.nestedUpdate, {
+  beforeEach: () => {
+    store.dispatch(nestedSlice.actions.reset());
+  },
+  fn: () => {
+    store.dispatch(nestedSlice.actions.updateNested());
+  },
+});
+
+library.implement(tests.arrayPush, {
+  beforeEach: () => {
+    store.dispatch(arraySlice.actions.reset());
+  },
+  fn: () => {
+    store.dispatch(arraySlice.actions.pushItem());
+  },
+});
+
+library.implement(tests.arrayUpdate, {
+  beforeEach: () => {
+    store.dispatch(arraySlice.actions.setItems([{ id: 0, name: 'item-0', value: 0 }]));
+  },
+  fn: () => {
+    store.dispatch(arraySlice.actions.updateItem());
+  },
+});
+
+library.implement(tests.computedValue, {
+  fn: () => {
+    return selectDoubledCounter(store.getState());
+  },
+});
+
+// ============================================================================
+// ASYNC OPERATIONS
+// ============================================================================
+
+library.implement(tests.asyncThroughput, {
+  beforeEach: () => {
+    store.dispatch(counterSlice.actions.reset());
+  },
+  fn: async () => {
+    const promises = [];
+    for (let i = 0; i < 20; i++) {
+      promises.push(
+        new Promise<void>((resolve) => {
+          setTimeout(() => {
+            store.dispatch(counterSlice.actions.increment());
+            resolve();
+          }, 0);
+        })
       );
-
-      return {
-        store,
-        actions: {
-          counter: counterSlice.actions,
-          nested: nestedSlice.actions,
-          users: usersSlice.actions,
-          form: formSlice.actions,
-          complexForm: complexFormSlice.actions,
-          largeArray: largeArraySlice.actions,
-        },
-        selectors: {
-          selectDoubled,
-        },
-      };
-    },
+    }
+    await Promise.all(promises);
   },
-
-  features: ['devtools', 'middleware'],
 });
 
-// ============================================================================
-// Implement Tests (using object references!)
-// ============================================================================
-
-// ========== BASIC READ TESTS ==========
-
-reduxToolkit.implement(tests.singleRead, (ctx) => {
-  const value = ctx.store.store.getState().counter.count;
-});
-
-reduxToolkit.implement(tests.moderateRead, (ctx) => {
-  ctx.store.store.getState().counter.count;
-});
-
-reduxToolkit.implement(tests.highFrequencyRead, (ctx) => {
-  ctx.store.store.getState().counter.count;
-});
-
-// ========== BASIC WRITE TESTS ==========
-
-reduxToolkit.implement(tests.singleWrite, (ctx) => {
-  ctx.store.store.dispatch(ctx.store.actions.counter.increment());
-});
-
-reduxToolkit.implement(tests.batchWrite, (ctx) => {
-  ctx.store.store.dispatch(ctx.store.actions.counter.increment());
-});
-
-reduxToolkit.implement(tests.burstWrite, (ctx) => {
-  ctx.store.store.dispatch(ctx.store.actions.counter.increment());
-});
-
-reduxToolkit.implement(tests.heavyWrite, (ctx) => {
-  ctx.store.store.dispatch(ctx.store.actions.counter.increment());
-});
-
-// ========== ADVANCED OPERATIONS ==========
-
-reduxToolkit.implement(tests.nestedUpdate, (ctx) => {
-  ctx.store.store.dispatch(ctx.store.actions.nested.updateNested());
-});
-
-reduxToolkit.implement(tests.arrayPush, (ctx) => {
-  const state = ctx.store.store.getState();
-  const nextId = state.users.length + 1;
-  ctx.store.store.dispatch(
-    ctx.store.actions.users.addUser({
-      id: nextId,
-      name: `User ${nextId}`,
-    })
-  );
-});
-
-reduxToolkit.implement(tests.arrayUpdate, (ctx) => {
-  const state = ctx.store.store.getState();
-  // First ensure there's at least one user
-  if (state.users.length === 0) {
-    ctx.store.store.dispatch(
-      ctx.store.actions.users.addUser({ id: 1, name: 'User 1' })
-    );
-  }
-  // Then update the first user
-  ctx.store.store.dispatch(
-    ctx.store.actions.users.updateUser({ id: 1, name: 'Updated User' })
-  );
-});
-
-reduxToolkit.implement(tests.computedValue, (ctx) => {
-  const state = ctx.store.store.getState();
-  const doubled = ctx.store.selectors.selectDoubled(state);
-});
-
-// ========== ASYNC OPERATIONS ==========
-
-reduxToolkit.implement(tests.asyncThroughput, async (ctx) => {
-  // Simulate rapid async operations
-  for (let i = 0; i < 20; i++) {
-    await Promise.resolve();
-    ctx.store.store.dispatch(ctx.store.actions.counter.increment());
-  }
-});
-
-reduxToolkit.implement(tests.concurrentUpdates, async (ctx) => {
-  // Test concurrent async updates
-  const operations = [];
-
-  for (let i = 0; i < 50; i++) {
-    operations.push(
+library.implement(tests.concurrentUpdates, {
+  beforeEach: () => {
+    store.dispatch(counterSlice.actions.reset());
+  },
+  fn: async () => {
+    const promises = Array.from({ length: 50 }, (_, i) =>
       Promise.resolve().then(() => {
-        ctx.store.store.dispatch(ctx.store.actions.counter.increment());
+        store.dispatch(counterSlice.actions.setCounter(i));
       })
     );
-  }
-
-  await Promise.all(operations);
+    await Promise.all(promises);
+  },
 });
 
-// ========== REAL-WORLD SCENARIOS ==========
+// ============================================================================
+// REAL-WORLD SCENARIOS
+// ============================================================================
 
-reduxToolkit.implement(tests.simpleForm, (ctx) => {
-  ctx.store.store.dispatch(ctx.store.actions.form.updateName('John Doe'));
-  ctx.store.store.dispatch(ctx.store.actions.form.updateEmail('john@example.com'));
-  ctx.store.store.dispatch(ctx.store.actions.form.updateAge(30));
+library.implement(tests.simpleForm, {
+  beforeEach: () => {
+    store.dispatch(formSlice.actions.reset());
+  },
+  fn: () => {
+    store.dispatch(formSlice.actions.updateSimpleForm());
+  },
 });
 
-reduxToolkit.implement(tests.complexForm, (ctx) => {
-  // Update nested object
-  ctx.store.store.dispatch(ctx.store.actions.complexForm.updateProfileName('John Doe'));
-  // Update array
-  ctx.store.store.dispatch(ctx.store.actions.complexForm.addTags(['developer', 'react']));
+library.implement(tests.complexForm, {
+  beforeEach: () => {
+    store.dispatch(formSlice.actions.reset());
+  },
+  fn: () => {
+    store.dispatch(formSlice.actions.updateComplexForm());
+  },
 });
 
-reduxToolkit.implement(tests.cacheInvalidation, (ctx) => {
-  // Update source data
-  ctx.store.store.dispatch(ctx.store.actions.counter.increment());
-  // Access computed value (should reflect new value)
-  const state = ctx.store.store.getState();
-  const doubled = ctx.store.selectors.selectDoubled(state);
+library.implement(tests.cacheInvalidation, {
+  beforeEach: () => {
+    store.dispatch(counterSlice.actions.reset());
+  },
+  fn: () => {
+    // Update base value which should invalidate computed cache
+    store.dispatch(counterSlice.actions.increment());
+    // Access computed to trigger recomputation
+    return selectDoubledCounter(store.getState());
+  },
 });
 
-reduxToolkit.implement(tests.memoryUsage, (ctx) => {
-  const unsubscribers: Array<() => void> = [];
+library.implement(tests.memoryUsage, {
+  fn: () => {
+    const unsubscribers: Array<() => void> = [];
 
-  // Create 100 subscribers
-  for (let i = 0; i < 100; i++) {
-    const unsub = ctx.store.store.subscribe(() => {
-      // Subscriber callback
-      const state = ctx.store.store.getState();
-    });
-    unsubscribers.push(unsub);
-  }
+    // Create 100 subscribers
+    for (let i = 0; i < 100; i++) {
+      const unsubscribe = store.subscribe(() => {
+        // Subscriber callback
+      });
+      unsubscribers.push(unsubscribe);
+    }
 
-  // Cleanup all subscribers
-  unsubscribers.forEach((unsub) => unsub());
+    // Cleanup all subscribers
+    unsubscribers.forEach((unsub) => unsub());
+  },
 });
 
-// ========== PERFORMANCE STRESS TESTS ==========
+// ============================================================================
+// PERFORMANCE STRESS TESTS
+// ============================================================================
 
-reduxToolkit.implement(tests.extremeRead, (ctx) => {
-  ctx.store.store.getState().counter.count;
+library.implement(tests.extremeRead, {
+  fn: () => {
+    let sum = 0;
+    for (let i = 0; i < 10000; i++) {
+      sum += store.getState().counter.value;
+    }
+    return sum;
+  },
 });
 
-reduxToolkit.implement(tests.extremeWrite, (ctx) => {
-  ctx.store.store.dispatch(ctx.store.actions.counter.increment());
+library.implement(tests.extremeWrite, {
+  beforeEach: () => {
+    store.dispatch(counterSlice.actions.reset());
+  },
+  fn: () => {
+    for (let i = 0; i < 10000; i++) {
+      store.dispatch(counterSlice.actions.increment());
+    }
+  },
 });
 
-reduxToolkit.implement(tests.largeArray, (ctx) => {
-  // Initialize with 1000 items
-  const items = Array.from({ length: 1000 }, (_, i) => i);
-  ctx.store.store.dispatch(ctx.store.actions.largeArray.setArray(items));
-
-  // Read the array
-  const state = ctx.store.store.getState();
-  const array = state.largeArray;
-
-  // Update one item
-  ctx.store.store.dispatch(
-    ctx.store.actions.largeArray.updateItem({ index: 500, value: 999 })
-  );
+library.implement(tests.largeArray, {
+  beforeEach: () => {
+    const largeArray = Array.from({ length: 1000 }, (_, i) => ({
+      id: i,
+      name: `item-${i}`,
+      value: i,
+    }));
+    store.dispatch(arraySlice.actions.setItems(largeArray));
+  },
+  fn: () => {
+    // Perform operation on large array
+    store.dispatch(arraySlice.actions.updateItem());
+  },
 });
 
-// ========== REACTIVITY PATTERNS ==========
+// ============================================================================
+// REACTIVITY PATTERNS (Redux doesn't have computed values like reactive libraries)
+// We'll simulate patterns using selectors and multiple slices
+// ============================================================================
 
-reduxToolkit.implement(tests.diamondPattern, (ctx) => {
-  ctx.store.store.dispatch(ctx.store.actions.counter.increment());
-  const result = ctx.store.selectors.selectDoubled(ctx.store.store.getState());
+// Diamond pattern slices
+const diamondASlice = createSlice({
+  name: 'diamondA',
+  initialState: { value: 1 },
+  reducers: {
+    increment: (state) => {
+      state.value++;
+    },
+    reset: (state) => {
+      state.value = 1;
+    },
+  },
 });
 
-reduxToolkit.implement(tests.deepDiamondPattern, (ctx) => {
-  for (let i = 0; i < 5; i++) {
-    ctx.store.store.dispatch(ctx.store.actions.counter.increment());
-  }
-  const result = ctx.store.selectors.selectDoubled(ctx.store.store.getState());
+// Add to store
+const diamondStore = configureStore({
+  reducer: {
+    ...store.getState() as any,
+    diamondA: diamondASlice.reducer,
+  },
 });
 
-reduxToolkit.implement(tests.deepChain, (ctx) => {
-  for (let i = 0; i < 10; i++) {
-    const prev = ctx.store.store.getState().counter.count;
-    ctx.store.store.dispatch(ctx.store.actions.counter.setCount(prev * 2));
-  }
-  const result = ctx.store.store.getState().counter.count;
+// Diamond pattern selectors
+const selectDiamondA = (state: any) => state.diamondA?.value || 1;
+const selectDiamondB = createSelector([selectDiamondA], (a) => a * 2);
+const selectDiamondC = createSelector([selectDiamondA], (a) => a * 3);
+const selectDiamondD = createSelector([selectDiamondB, selectDiamondC], (b, c) => b + c);
+
+library.implement(tests.diamondPattern, {
+  beforeEach: () => {
+    store.dispatch(counterSlice.actions.setCounter(1));
+  },
+  fn: () => {
+    store.dispatch(counterSlice.actions.increment());
+    // Since Redux doesn't have reactive computeds, we just compute the value
+    const state = store.getState();
+    const a = state.counter.value;
+    const b = a * 2;
+    const c = a * 3;
+    const d = b + c;
+    return d;
+  },
 });
 
-reduxToolkit.implement(tests.veryDeepChain, (ctx) => {
-  for (let i = 0; i < 100; i++) {
-    const prev = ctx.store.store.getState().counter.count;
-    ctx.store.store.dispatch(ctx.store.actions.counter.setCount(prev * 1.01));
-  }
-  const result = ctx.store.store.getState().counter.count;
+// Deep diamond pattern
+library.implement(tests.deepDiamondPattern, {
+  beforeEach: () => {
+    store.dispatch(counterSlice.actions.setCounter(1));
+  },
+  fn: () => {
+    store.dispatch(counterSlice.actions.increment());
+    const state = store.getState();
+    const a = state.counter.value;
+    const b1 = a * 2;
+    const b2 = a * 3;
+    const c1 = b1 + b2;
+    const c2 = b1 - b2;
+    const d1 = c1 * c2;
+    const d2 = c1 + c2;
+    const e = d1 + d2;
+    return e;
+  },
 });
 
-reduxToolkit.implement(tests.wideFanout, (ctx) => {
-  ctx.store.store.dispatch(ctx.store.actions.counter.increment());
-  for (let i = 0; i < 100; i++) {
-    const v = ctx.store.store.getState().counter.count;
-  }
+// Deep chain
+library.implement(tests.deepChain, {
+  beforeEach: () => {
+    store.dispatch(counterSlice.actions.setCounter(1));
+  },
+  fn: () => {
+    store.dispatch(counterSlice.actions.increment());
+    const state = store.getState();
+    let value = state.counter.value;
+    for (let i = 0; i < 10; i++) {
+      value = value + 1;
+    }
+    return value;
+  },
 });
 
-reduxToolkit.implement(tests.massiveFanout, (ctx) => {
-  ctx.store.store.dispatch(ctx.store.actions.counter.increment());
-  for (let i = 0; i < 1000; i++) {
-    const v = ctx.store.store.getState().counter.count;
-  }
+// Very deep chain
+library.implement(tests.veryDeepChain, {
+  beforeEach: () => {
+    store.dispatch(counterSlice.actions.setCounter(1));
+  },
+  fn: () => {
+    store.dispatch(counterSlice.actions.increment());
+    const state = store.getState();
+    let value = state.counter.value;
+    for (let i = 0; i < 100; i++) {
+      value = value + 1;
+    }
+    return value;
+  },
 });
 
-reduxToolkit.implement(tests.dynamicDependencies, (ctx) => {
-  const toggle = ctx.store.store.getState().counter.count % 2 === 0;
-  const prev = ctx.store.store.getState().counter.count;
-  ctx.store.store.dispatch(ctx.store.actions.counter.setCount(prev + (toggle ? 1 : 2)));
-  const result = ctx.store.store.getState().counter.count;
+// Wide fanout
+library.implement(tests.wideFanout, {
+  beforeEach: () => {
+    store.dispatch(counterSlice.actions.setCounter(1));
+  },
+  fn: () => {
+    store.dispatch(counterSlice.actions.increment());
+    const state = store.getState();
+    const source = state.counter.value;
+    let sum = 0;
+    for (let i = 0; i < 100; i++) {
+      sum += source * (i + 1);
+    }
+    return sum;
+  },
 });
 
-reduxToolkit.implement(tests.repeatedDiamonds, (ctx) => {
-  for (let i = 0; i < 5; i++) {
-    ctx.store.store.dispatch(ctx.store.actions.counter.increment());
-    const a = ctx.store.store.getState().counter.count;
-    const b = ctx.store.selectors.selectDoubled(ctx.store.store.getState());
-  }
+// Massive fanout
+library.implement(tests.massiveFanout, {
+  beforeEach: () => {
+    store.dispatch(counterSlice.actions.setCounter(1));
+  },
+  fn: () => {
+    store.dispatch(counterSlice.actions.increment());
+    const state = store.getState();
+    const source = state.counter.value;
+    let sum = 0;
+    for (let i = 0; i < 1000; i++) {
+      sum += source * (i + 1);
+    }
+    return sum;
+  },
+});
+
+// Dynamic dependencies
+const dynamicSlice = createSlice({
+  name: 'dynamic',
+  initialState: {
+    condition: true,
+    a: 1,
+    b: 2,
+  },
+  reducers: {
+    toggleCondition: (state) => {
+      state.condition = !state.condition;
+    },
+    incrementA: (state) => {
+      state.a++;
+    },
+    incrementB: (state) => {
+      state.b++;
+    },
+    reset: (state) => {
+      state.condition = true;
+      state.a = 1;
+      state.b = 2;
+    },
+  },
+});
+
+// Add dynamic slice to store
+const dynamicStore = configureStore({
+  reducer: {
+    counter: counterSlice.reducer,
+    nested: nestedSlice.reducer,
+    array: arraySlice.reducer,
+    form: formSlice.reducer,
+    dynamic: dynamicSlice.reducer,
+  },
+});
+
+library.implement(tests.dynamicDependencies, {
+  beforeEach: () => {
+    dynamicStore.dispatch(dynamicSlice.actions.reset());
+  },
+  fn: () => {
+    dynamicStore.dispatch(dynamicSlice.actions.toggleCondition());
+    dynamicStore.dispatch(dynamicSlice.actions.incrementA());
+    dynamicStore.dispatch(dynamicSlice.actions.incrementB());
+    const state = dynamicStore.getState().dynamic;
+    if (state.condition) {
+      return state.a * 2;
+    } else {
+      return state.b * 3;
+    }
+  },
+});
+
+// Repeated diamonds
+library.implement(tests.repeatedDiamonds, {
+  beforeEach: () => {
+    store.dispatch(counterSlice.actions.setCounter(1));
+  },
+  fn: () => {
+    store.dispatch(counterSlice.actions.increment());
+    const state = store.getState();
+    let value = state.counter.value;
+
+    // Simulate 5 diamond patterns in sequence
+    for (let i = 0; i < 5; i++) {
+      const b = value * 2;
+      const c = value * 3;
+      const d = b + c;
+      value = d;
+    }
+
+    return value;
+  },
 });

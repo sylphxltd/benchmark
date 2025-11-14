@@ -92,59 +92,96 @@ jotai.implement(tests.highFrequencyRead, (ctx) => {
 
 // ========== BASIC WRITE TESTS ==========
 
-jotai.implement(tests.singleWrite, (ctx) => {
-  const { store, counterAtom } = ctx.store;
-  store.set(counterAtom, (prev) => prev + 1);
+jotai.implement(tests.singleWrite, {
+  beforeEach: (ctx) => {
+    const { store, counterAtom } = ctx.store;
+    store.set(counterAtom, 0);
+  },
+  fn: (ctx) => {
+    const { store, counterAtom } = ctx.store;
+    store.set(counterAtom, (prev) => prev + 1);
+  }
 });
 
-jotai.implement(tests.batchWrite, (ctx) => {
-  const { store, counterAtom } = ctx.store;
-  store.set(counterAtom, (prev) => prev + 1);
+jotai.implement(tests.batchWrite, {
+  beforeEach: (ctx) => {
+    const { store, counterAtom } = ctx.store;
+    store.set(counterAtom, 0);
+  },
+  fn: (ctx) => {
+    const { store, counterAtom } = ctx.store;
+    store.set(counterAtom, (prev) => prev + 1);
+  }
 });
 
-jotai.implement(tests.burstWrite, (ctx) => {
-  const { store, counterAtom } = ctx.store;
-  store.set(counterAtom, (prev) => prev + 1);
+jotai.implement(tests.burstWrite, {
+  beforeEach: (ctx) => {
+    const { store, counterAtom } = ctx.store;
+    store.set(counterAtom, 0);
+  },
+  fn: (ctx) => {
+    const { store, counterAtom } = ctx.store;
+    store.set(counterAtom, (prev) => prev + 1);
+  }
 });
 
-jotai.implement(tests.heavyWrite, (ctx) => {
-  const { store, counterAtom } = ctx.store;
-  store.set(counterAtom, (prev) => prev + 1);
+jotai.implement(tests.heavyWrite, {
+  beforeEach: (ctx) => {
+    const { store, counterAtom } = ctx.store;
+    store.set(counterAtom, 0);
+  },
+  fn: (ctx) => {
+    const { store, counterAtom } = ctx.store;
+    store.set(counterAtom, (prev) => prev + 1);
+  }
 });
 
 // ========== ADVANCED OPERATIONS ==========
 
-jotai.implement(tests.nestedUpdate, (ctx) => {
-  const { store, nestedAtom } = ctx.store;
-  store.set(nestedAtom, (prev) => ({
-    ...prev,
-    nested: {
-      ...prev.nested,
-      value: prev.nested.value + 1,
-    },
-  }));
-});
-
-jotai.implement(tests.arrayPush, (ctx) => {
-  const { store, usersAtom } = ctx.store;
-  store.set(usersAtom, (prev) => [
-    ...prev,
-    { id: prev.length + 1, name: `User ${prev.length + 1}` },
-  ]);
-});
-
-jotai.implement(tests.arrayUpdate, (ctx) => {
-  const { store, usersAtom } = ctx.store;
-  // First ensure there's at least one user
-  const users = store.get(usersAtom);
-  if (users.length === 0) {
-    store.set(usersAtom, [{ id: 1, name: 'User 1' }]);
+jotai.implement(tests.nestedUpdate, {
+  beforeEach: (ctx) => {
+    const { store, nestedAtom } = ctx.store;
+    store.set(nestedAtom, { nested: { value: 0 } });
+  },
+  fn: (ctx) => {
+    const { store, nestedAtom } = ctx.store;
+    store.set(nestedAtom, (prev) => ({
+      ...prev,
+      nested: {
+        ...prev.nested,
+        value: prev.nested.value + 1,
+      },
+    }));
   }
-  // Then update the first user
-  store.set(usersAtom, (prev) => [
-    { ...prev[0], name: 'Updated User' },
-    ...prev.slice(1),
-  ]);
+});
+
+jotai.implement(tests.arrayPush, {
+  beforeEach: (ctx) => {
+    const { store, usersAtom } = ctx.store;
+    store.set(usersAtom, []);
+  },
+  fn: (ctx) => {
+    const { store, usersAtom } = ctx.store;
+    store.set(usersAtom, (prev) => [
+      ...prev,
+      { id: prev.length + 1, name: `User ${prev.length + 1}` },
+    ]);
+  }
+});
+
+jotai.implement(tests.arrayUpdate, {
+  beforeEach: (ctx) => {
+    const { store, usersAtom } = ctx.store;
+    store.set(usersAtom, [{ id: 1, name: 'User 1' }]);
+  },
+  fn: (ctx) => {
+    const { store, usersAtom } = ctx.store;
+    // Update the first user
+    store.set(usersAtom, (prev) => [
+      { ...prev[0], name: 'Updated User' },
+      ...prev.slice(1),
+    ]);
+  }
 });
 
 jotai.implement(tests.computedValue, (ctx) => {
@@ -154,74 +191,104 @@ jotai.implement(tests.computedValue, (ctx) => {
 
 // ========== ASYNC OPERATIONS ==========
 
-jotai.implement(tests.asyncThroughput, async (ctx) => {
-  const { store, counterAtom } = ctx.store;
+jotai.implement(tests.asyncThroughput, {
+  beforeEach: (ctx) => {
+    const { store, counterAtom } = ctx.store;
+    store.set(counterAtom, 0);
+  },
+  fn: async (ctx) => {
+    const { store, counterAtom } = ctx.store;
 
-  // Simulate rapid async operations
-  for (let i = 0; i < 20; i++) {
-    await Promise.resolve();
-    store.set(counterAtom, i);
+    // Simulate rapid async operations
+    for (let i = 0; i < 20; i++) {
+      await Promise.resolve();
+      store.set(counterAtom, i);
+    }
   }
 });
 
-jotai.implement(tests.concurrentUpdates, async (ctx) => {
-  const { store, counterAtom } = ctx.store;
+jotai.implement(tests.concurrentUpdates, {
+  beforeEach: (ctx) => {
+    const { store, counterAtom } = ctx.store;
+    store.set(counterAtom, 0);
+  },
+  fn: async (ctx) => {
+    const { store, counterAtom } = ctx.store;
 
-  // Test concurrent async updates
-  const operations = [];
+    // Test concurrent async updates
+    const operations = [];
 
-  for (let i = 0; i < 50; i++) {
-    operations.push(
-      Promise.resolve().then(() => {
-        store.set(counterAtom, (prev) => prev + 1);
-      })
-    );
+    for (let i = 0; i < 50; i++) {
+      operations.push(
+        Promise.resolve().then(() => {
+          store.set(counterAtom, (prev) => prev + 1);
+        })
+      );
+    }
+
+    await Promise.all(operations);
   }
-
-  await Promise.all(operations);
 });
 
 // ========== REAL-WORLD SCENARIOS ==========
 
-jotai.implement(tests.simpleForm, (ctx) => {
-  const { store, formAtom } = ctx.store;
-  store.set(formAtom, (prev) => ({
-    ...prev,
-    name: 'John Doe',
-  }));
-  store.set(formAtom, (prev) => ({
-    ...prev,
-    email: 'john@example.com',
-  }));
-  store.set(formAtom, (prev) => ({
-    ...prev,
-    age: 30,
-  }));
-});
-
-jotai.implement(tests.complexForm, (ctx) => {
-  const { store, complexFormAtom } = ctx.store;
-  // Update nested object
-  store.set(complexFormAtom, (prev) => ({
-    ...prev,
-    profile: {
-      ...prev.profile,
+jotai.implement(tests.simpleForm, {
+  beforeEach: (ctx) => {
+    const { store, formAtom } = ctx.store;
+    store.set(formAtom, { name: '', email: '', age: 0 });
+  },
+  fn: (ctx) => {
+    const { store, formAtom } = ctx.store;
+    store.set(formAtom, (prev) => ({
+      ...prev,
       name: 'John Doe',
-    },
-  }));
-  // Update array
-  store.set(complexFormAtom, (prev) => ({
-    ...prev,
-    tags: [...prev.tags, 'developer', 'react'],
-  }));
+    }));
+    store.set(formAtom, (prev) => ({
+      ...prev,
+      email: 'john@example.com',
+    }));
+    store.set(formAtom, (prev) => ({
+      ...prev,
+      age: 30,
+    }));
+  }
 });
 
-jotai.implement(tests.cacheInvalidation, (ctx) => {
-  const { store, counterAtom, doubledAtom } = ctx.store;
-  // Update source data
-  store.set(counterAtom, (prev) => prev + 1);
-  // Access computed value (should reflect new value)
-  const doubled = store.get(doubledAtom);
+jotai.implement(tests.complexForm, {
+  beforeEach: (ctx) => {
+    const { store, complexFormAtom } = ctx.store;
+    store.set(complexFormAtom, { profile: { name: '' }, tags: [] });
+  },
+  fn: (ctx) => {
+    const { store, complexFormAtom } = ctx.store;
+    // Update nested object
+    store.set(complexFormAtom, (prev) => ({
+      ...prev,
+      profile: {
+        ...prev.profile,
+        name: 'John Doe',
+      },
+    }));
+    // Update array
+    store.set(complexFormAtom, (prev) => ({
+      ...prev,
+      tags: [...prev.tags, 'developer', 'react'],
+    }));
+  }
+});
+
+jotai.implement(tests.cacheInvalidation, {
+  beforeEach: (ctx) => {
+    const { store, counterAtom } = ctx.store;
+    store.set(counterAtom, 0);
+  },
+  fn: (ctx) => {
+    const { store, counterAtom, doubledAtom } = ctx.store;
+    // Update source data
+    store.set(counterAtom, (prev) => prev + 1);
+    // Access computed value (should reflect new value)
+    const doubled = store.get(doubledAtom);
+  }
 });
 
 jotai.implement(tests.memoryUsage, (ctx) => {
@@ -247,88 +314,145 @@ jotai.implement(tests.extremeRead, (ctx) => {
   store.get(counterAtom);
 });
 
-jotai.implement(tests.extremeWrite, (ctx) => {
-  const { store, counterAtom } = ctx.store;
-  store.set(counterAtom, (prev) => prev + 1);
+jotai.implement(tests.extremeWrite, {
+  beforeEach: (ctx) => {
+    const { store, counterAtom } = ctx.store;
+    store.set(counterAtom, 0);
+  },
+  fn: (ctx) => {
+    const { store, counterAtom } = ctx.store;
+    store.set(counterAtom, (prev) => prev + 1);
+  }
 });
 
-jotai.implement(tests.largeArray, (ctx) => {
-  const { store, largeArrayAtom } = ctx.store;
-  // Initialize with 1000 items
-  const items = Array.from({ length: 1000 }, (_, i) => i);
-  store.set(largeArrayAtom, items);
+jotai.implement(tests.largeArray, {
+  beforeEach: (ctx) => {
+    const { store, largeArrayAtom } = ctx.store;
+    const items = Array.from({ length: 1000 }, (_, i) => i);
+    store.set(largeArrayAtom, items);
+  },
+  fn: (ctx) => {
+    const { store, largeArrayAtom } = ctx.store;
+    // Read the array
+    const array = store.get(largeArrayAtom);
 
-  // Read the array
-  const array = store.get(largeArrayAtom);
-
-  // Update one item
-  store.set(largeArrayAtom, (prev) => {
-    const newArray = [...prev];
-    newArray[500] = 999;
-    return newArray;
-  });
+    // Update one item
+    store.set(largeArrayAtom, (prev) => {
+      const newArray = [...prev];
+      newArray[500] = 999;
+      return newArray;
+    });
+  }
 });
 
 // ========== REACTIVITY PATTERNS ==========
 
-jotai.implement(tests.diamondPattern, (ctx) => {
-  const { store, counterAtom, doubledAtom } = ctx.store;
-  store.set(counterAtom, (prev) => prev + 1);
-  const result = store.get(doubledAtom);
-});
-
-jotai.implement(tests.deepDiamondPattern, (ctx) => {
-  const { store, counterAtom, doubledAtom } = ctx.store;
-  for (let i = 0; i < 5; i++) {
+jotai.implement(tests.diamondPattern, {
+  beforeEach: (ctx) => {
+    const { store, counterAtom } = ctx.store;
+    store.set(counterAtom, 0);
+  },
+  fn: (ctx) => {
+    const { store, counterAtom, doubledAtom } = ctx.store;
     store.set(counterAtom, (prev) => prev + 1);
-  }
-  const result = store.get(doubledAtom);
-});
-
-jotai.implement(tests.deepChain, (ctx) => {
-  const { store, counterAtom } = ctx.store;
-  for (let i = 0; i < 10; i++) {
-    store.set(counterAtom, (prev) => prev * 2);
-  }
-  const result = store.get(counterAtom);
-});
-
-jotai.implement(tests.veryDeepChain, (ctx) => {
-  const { store, counterAtom } = ctx.store;
-  for (let i = 0; i < 100; i++) {
-    store.set(counterAtom, (prev) => prev * 1.01);
-  }
-  const result = store.get(counterAtom);
-});
-
-jotai.implement(tests.wideFanout, (ctx) => {
-  const { store, counterAtom } = ctx.store;
-  store.set(counterAtom, (prev) => prev + 1);
-  for (let i = 0; i < 100; i++) {
-    const v = store.get(counterAtom);
+    const result = store.get(doubledAtom);
   }
 });
 
-jotai.implement(tests.massiveFanout, (ctx) => {
-  const { store, counterAtom } = ctx.store;
-  store.set(counterAtom, (prev) => prev + 1);
-  for (let i = 0; i < 1000; i++) {
-    const v = store.get(counterAtom);
+jotai.implement(tests.deepDiamondPattern, {
+  beforeEach: (ctx) => {
+    const { store, counterAtom } = ctx.store;
+    store.set(counterAtom, 0);
+  },
+  fn: (ctx) => {
+    const { store, counterAtom, doubledAtom } = ctx.store;
+    for (let i = 0; i < 5; i++) {
+      store.set(counterAtom, (prev) => prev + 1);
+    }
+    const result = store.get(doubledAtom);
   }
 });
 
-jotai.implement(tests.dynamicDependencies, (ctx) => {
-  const { store, counterAtom } = ctx.store;
-  const toggle = store.get(counterAtom) % 2 === 0;
-  store.set(counterAtom, (prev) => prev + (toggle ? 1 : 2));
-  const result = store.get(counterAtom);
+jotai.implement(tests.deepChain, {
+  beforeEach: (ctx) => {
+    const { store, counterAtom } = ctx.store;
+    store.set(counterAtom, 1);
+  },
+  fn: (ctx) => {
+    const { store, counterAtom } = ctx.store;
+    for (let i = 0; i < 10; i++) {
+      store.set(counterAtom, (prev) => prev * 2);
+    }
+    const result = store.get(counterAtom);
+  }
 });
 
-jotai.implement(tests.repeatedDiamonds, (ctx) => {
-  const { store, counterAtom, doubledAtom } = ctx.store;
-  for (let i = 0; i < 5; i++) {
+jotai.implement(tests.veryDeepChain, {
+  beforeEach: (ctx) => {
+    const { store, counterAtom } = ctx.store;
+    store.set(counterAtom, 1);
+  },
+  fn: (ctx) => {
+    const { store, counterAtom } = ctx.store;
+    for (let i = 0; i < 100; i++) {
+      store.set(counterAtom, (prev) => prev * 1.01);
+    }
+    const result = store.get(counterAtom);
+  }
+});
+
+jotai.implement(tests.wideFanout, {
+  beforeEach: (ctx) => {
+    const { store, counterAtom } = ctx.store;
+    store.set(counterAtom, 0);
+  },
+  fn: (ctx) => {
+    const { store, counterAtom } = ctx.store;
     store.set(counterAtom, (prev) => prev + 1);
-    const a = store.get(counterAtom);
-    const b = store.get(doubledAtom);
+    for (let i = 0; i < 100; i++) {
+      const v = store.get(counterAtom);
+    }
+  }
+});
+
+jotai.implement(tests.massiveFanout, {
+  beforeEach: (ctx) => {
+    const { store, counterAtom } = ctx.store;
+    store.set(counterAtom, 0);
+  },
+  fn: (ctx) => {
+    const { store, counterAtom } = ctx.store;
+    store.set(counterAtom, (prev) => prev + 1);
+    for (let i = 0; i < 1000; i++) {
+      const v = store.get(counterAtom);
+    }
+  }
+});
+
+jotai.implement(tests.dynamicDependencies, {
+  beforeEach: (ctx) => {
+    const { store, counterAtom } = ctx.store;
+    store.set(counterAtom, 0);
+  },
+  fn: (ctx) => {
+    const { store, counterAtom } = ctx.store;
+    const toggle = store.get(counterAtom) % 2 === 0;
+    store.set(counterAtom, (prev) => prev + (toggle ? 1 : 2));
+    const result = store.get(counterAtom);
+  }
+});
+
+jotai.implement(tests.repeatedDiamonds, {
+  beforeEach: (ctx) => {
+    const { store, counterAtom } = ctx.store;
+    store.set(counterAtom, 0);
+  },
+  fn: (ctx) => {
+    const { store, counterAtom, doubledAtom } = ctx.store;
+    for (let i = 0; i < 5; i++) {
+      store.set(counterAtom, (prev) => prev + 1);
+      const a = store.get(counterAtom);
+      const b = store.get(doubledAtom);
+    }
   }
 });
