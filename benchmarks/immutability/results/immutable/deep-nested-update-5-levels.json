@@ -2,14 +2,15 @@
   "library": "Immutable.js",
   "libraryId": "immutable",
   "packageName": "immutable",
+  "version": "5.1.4",
   "test": "Deep Nested Update (5 levels)",
   "group": "04-deep-operations",
-  "timestamp": "2025-11-14T14:05:33.095Z",
+  "timestamp": "2025-11-14T14:35:43.129Z",
   "result": {
-    "opsPerSecond": 1151164.32561234,
-    "meanTime": 0.0009138250000269181,
-    "variance": 1.8942177416016963e-7,
-    "p99": 0.0018944999990890205,
+    "opsPerSecond": 1092142.128803655,
+    "meanTime": 0.0009592429999938758,
+    "variance": 1.5915692285973715e-7,
+    "p99": 0.001844290000353794,
     "samples": 1000
   }
 }

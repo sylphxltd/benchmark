@@ -2,14 +2,15 @@
   "library": "Preact Signals",
   "libraryId": "preact-signals",
   "packageName": "@preact/signals",
+  "version": "2.4.0",
   "test": "Massive Fanout (1→1000)",
   "group": "07-reactivity-patterns",
-  "timestamp": "2025-11-14T14:05:34.884Z",
+  "timestamp": "2025-11-14T14:35:48.708Z",
   "result": {
-    "opsPerSecond": 27563.394930718438,
-    "meanTime": 0.036365811999887226,
-    "variance": 0.00000410687886253383,
-    "p99": 0.044766309998376524,
+    "opsPerSecond": 27976.70088834337,
+    "meanTime": 0.035856221999936676,
+    "variance": 0.000005755557656345621,
+    "p99": 0.04488570999536023,
     "samples": 1000
   }
 }

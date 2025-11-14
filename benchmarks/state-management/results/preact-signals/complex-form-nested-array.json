@@ -2,14 +2,15 @@
   "library": "Preact Signals",
   "libraryId": "preact-signals",
   "packageName": "@preact/signals",
+  "version": "2.4.0",
   "test": "Complex Form (nested + array)",
   "group": "05-real-world",
-  "timestamp": "2025-11-14T14:05:34.884Z",
+  "timestamp": "2025-11-14T14:35:48.708Z",
   "result": {
-    "opsPerSecond": 18785013.221955158,
-    "meanTime": 0.000057868000036251034,
-    "variance": 2.7056682408239317e-9,
-    "p99": 0.00009010000136186127,
+    "opsPerSecond": 18949768.25707106,
+    "meanTime": 0.00006571200001053512,
+    "variance": 1.0611673581118642e-7,
+    "p99": 0.00011010000085661878,
     "samples": 1000
   }
 }

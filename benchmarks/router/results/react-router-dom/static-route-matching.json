@@ -2,14 +2,15 @@
   "library": "React Router",
   "libraryId": "react-router-dom",
   "packageName": "react-router-dom",
+  "version": "6.30.1",
   "test": "Static Route Matching",
   "group": "01-basic-routes",
-  "timestamp": "2025-11-14T14:05:40.088Z",
+  "timestamp": "2025-11-14T14:35:46.209Z",
   "result": {
-    "opsPerSecond": 11795.086232212754,
-    "meanTime": 0.09058729800000037,
-    "variance": 0.0013312217000193496,
-    "p99": 0.1797842100000014,
+    "opsPerSecond": 11292.899385257906,
+    "meanTime": 0.0996965070000012,
+    "variance": 0.002878653508292237,
+    "p99": 0.21540979999998058,
     "samples": 1000
   }
 }

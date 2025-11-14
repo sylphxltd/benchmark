@@ -2,14 +2,15 @@
   "library": "Zen Router",
   "libraryId": "@sylphx/zen-router",
   "packageName": "@sylphx/zen-router",
+  "version": "1.0.2",
   "test": "Static Route Matching",
   "group": "01-basic-routes",
-  "timestamp": "2025-11-14T14:05:40.088Z",
+  "timestamp": "2025-11-14T14:35:46.209Z",
   "result": {
-    "opsPerSecond": 8154945.781659994,
-    "meanTime": 0.0001291679999992539,
-    "variance": 3.981122899103924e-9,
-    "p99": 0.00043120000015960596,
+    "opsPerSecond": 8281771.375915059,
+    "meanTime": 0.00012897199999770237,
+    "variance": 4.628970185742878e-9,
+    "p99": 0.000621099999909802,
     "samples": 1000
   }
 }

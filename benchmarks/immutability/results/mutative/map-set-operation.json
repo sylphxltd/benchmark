@@ -2,14 +2,15 @@
   "library": "Mutative",
   "libraryId": "mutative",
   "packageName": "mutative",
+  "version": "1.3.0",
   "test": "Map - Set Operation",
   "group": "07-map-set",
-  "timestamp": "2025-11-14T14:05:33.095Z",
+  "timestamp": "2025-11-14T14:35:43.129Z",
   "result": {
-    "opsPerSecond": 505631.37476831145,
-    "meanTime": 0.0020805209999562066,
-    "variance": 6.078254050361158e-7,
-    "p99": 0.004320109999353006,
+    "opsPerSecond": 497534.008798937,
+    "meanTime": 0.0021070679999975256,
+    "variance": 4.738476550012584e-7,
+    "p99": 0.004744109999955976,
     "samples": 1000
   }
 }

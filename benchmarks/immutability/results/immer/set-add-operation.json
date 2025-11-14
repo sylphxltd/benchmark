@@ -2,14 +2,15 @@
   "library": "Immer",
   "libraryId": "immer",
   "packageName": "immer",
+  "version": "10.2.0",
   "test": "Set - Add Operation",
   "group": "07-map-set",
-  "timestamp": "2025-11-14T14:05:33.095Z",
+  "timestamp": "2025-11-14T14:35:43.129Z",
   "result": {
-    "opsPerSecond": 256015.30106401275,
-    "meanTime": 0.003997827000112011,
-    "variance": 0.0000011809089060335975,
-    "p99": 0.006492700000417243,
+    "opsPerSecond": 240034.64895640814,
+    "meanTime": 0.004249343000006775,
+    "variance": 7.104706080361252e-7,
+    "p99": 0.007283009999046044,
     "samples": 1000
   }
 }

@@ -2,14 +2,15 @@
   "library": "Zen Router",
   "libraryId": "@sylphx/zen-router",
   "packageName": "@sylphx/zen-router",
+  "version": "1.0.2",
   "test": "Optional Parameter Route (without param)",
   "group": "03-advanced-routes",
-  "timestamp": "2025-11-14T14:05:40.088Z",
+  "timestamp": "2025-11-14T14:35:46.209Z",
   "result": {
-    "opsPerSecond": 954881.3243091123,
-    "meanTime": 0.0010644239999910497,
-    "variance": 1.7137750770640306e-7,
-    "p99": 0.0011321000012321746,
+    "opsPerSecond": 957034.0341523158,
+    "meanTime": 0.0010632340000011028,
+    "variance": 1.8820931856954935e-7,
+    "p99": 0.0011320999994131851,
     "samples": 1000
   }
 }

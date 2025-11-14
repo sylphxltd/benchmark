@@ -2,14 +2,15 @@
   "library": "Preact Signals",
   "libraryId": "preact-signals",
   "packageName": "@preact/signals",
+  "version": "2.4.0",
   "test": "Very Deep Chain (100 layers)",
   "group": "07-reactivity-patterns",
-  "timestamp": "2025-11-14T14:05:34.884Z",
+  "timestamp": "2025-11-14T14:35:48.708Z",
   "result": {
-    "opsPerSecond": 797163.7740398659,
-    "meanTime": 0.0012995280000614002,
-    "variance": 0.000001366037280210722,
-    "p99": 0.0014330900048662443,
+    "opsPerSecond": 735190.9008738453,
+    "meanTime": 0.0013819589999693562,
+    "variance": 1.6123504030279118e-7,
+    "p99": 0.0014729999966948525,
     "samples": 1000
   }
 }

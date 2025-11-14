@@ -2,13 +2,14 @@
   "library": "Preact Signals",
   "libraryId": "preact-signals",
   "packageName": "@preact/signals",
+  "version": "2.4.0",
   "test": "Moderate Read (100x)",
   "group": "01-basic-read",
-  "timestamp": "2025-11-14T14:05:34.884Z",
+  "timestamp": "2025-11-14T14:35:48.708Z",
   "result": {
-    "opsPerSecond": 6884601.00021797,
-    "meanTime": 0.00015716400000201247,
-    "variance": 1.396955926948193e-7,
+    "opsPerSecond": 6934083.527581896,
+    "meanTime": 0.00014442900000858572,
+    "variance": 3.394690603005215e-11,
     "p99": 0.00015100000018719584,
     "samples": 1000
   }

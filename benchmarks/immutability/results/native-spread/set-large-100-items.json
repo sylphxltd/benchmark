@@ -2,14 +2,15 @@
   "library": "Native Spread",
   "libraryId": "native-spread",
   "packageName": "native",
+  "version": "unknown",
   "test": "Set - Large (100 items)",
   "group": "07-map-set",
-  "timestamp": "2025-11-14T14:05:33.095Z",
+  "timestamp": "2025-11-14T14:35:43.129Z",
   "result": {
-    "opsPerSecond": 691337.503910197,
-    "meanTime": 0.0015117450000761892,
-    "variance": 7.302912152272332e-7,
-    "p99": 0.003306209998700069,
+    "opsPerSecond": 741602.9952479358,
+    "meanTime": 0.001385827999922185,
+    "variance": 1.8442310953859512e-7,
+    "p99": 0.003066799997504858,
     "samples": 1000
   }
 }

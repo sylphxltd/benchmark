@@ -2,14 +2,15 @@
   "library": "Immutable.js",
   "libraryId": "immutable",
   "packageName": "immutable",
+  "version": "5.1.4",
   "test": "Map - Large (100 items)",
   "group": "07-map-set",
-  "timestamp": "2025-11-14T14:05:33.095Z",
+  "timestamp": "2025-11-14T14:35:43.129Z",
   "result": {
-    "opsPerSecond": 753491.4922143248,
-    "meanTime": 0.0013986560000084863,
-    "variance": 2.618903640802219e-7,
-    "p99": 0.0028149999998277053,
+    "opsPerSecond": 761413.410108882,
+    "meanTime": 0.0013856680001263157,
+    "variance": 5.162519416532991e-7,
+    "p99": 0.002515100000127859,
     "samples": 1000
   }
 }

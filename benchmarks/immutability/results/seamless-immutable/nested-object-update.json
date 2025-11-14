@@ -2,14 +2,15 @@
   "library": "Seamless Immutable",
   "libraryId": "seamless-immutable",
   "packageName": "seamless-immutable",
+  "version": "7.1.4",
   "test": "Nested Object Update",
   "group": "02-nested-updates",
-  "timestamp": "2025-11-14T14:05:33.095Z",
+  "timestamp": "2025-11-14T14:35:43.129Z",
   "result": {
-    "opsPerSecond": 130551.77452176143,
-    "meanTime": 0.007939713000002485,
-    "variance": 0.000007264002236851125,
-    "p99": 0.01775721000008161,
+    "opsPerSecond": 132893.7333986496,
+    "meanTime": 0.007632536000003711,
+    "variance": 0.0000015098435962932402,
+    "p99": 0.011524600000693679,
     "samples": 1000
   }
 }

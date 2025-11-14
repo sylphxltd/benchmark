@@ -2,14 +2,15 @@
   "library": "Preact Signals",
   "libraryId": "preact-signals",
   "packageName": "@preact/signals",
+  "version": "2.4.0",
   "test": "Computed Value Access",
   "group": "03-advanced-operations",
-  "timestamp": "2025-11-14T14:05:34.884Z",
+  "timestamp": "2025-11-14T14:35:48.708Z",
   "result": {
-    "opsPerSecond": 20862569.654956535,
-    "meanTime": 0.00004853100000400445,
-    "variance": 3.788492393382539e-11,
-    "p99": 0.00006999999823165126,
+    "opsPerSecond": 21037689.152618825,
+    "meanTime": 0.00004809799994109198,
+    "variance": 3.07271230116915e-11,
+    "p99": 0.000060100002083345226,
     "samples": 1000
   }
 }

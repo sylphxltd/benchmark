@@ -2,14 +2,15 @@
   "library": "Wouter",
   "libraryId": "wouter",
   "packageName": "wouter",
+  "version": "3.7.1",
   "test": "Optional Parameter Route (without param)",
   "group": "03-advanced-routes",
-  "timestamp": "2025-11-14T14:05:40.088Z",
+  "timestamp": "2025-11-14T14:35:46.209Z",
   "result": {
-    "opsPerSecond": 1633521.6907768352,
-    "meanTime": 0.0006171050000066316,
-    "variance": 5.176564545986283e-9,
-    "p99": 0.0009819999995852413,
+    "opsPerSecond": 1536080.5975118263,
+    "meanTime": 0.0006574940000155039,
+    "variance": 8.360708665831997e-9,
+    "p99": 0.001142099999160564,
     "samples": 1000
   }
 }

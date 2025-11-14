@@ -2,14 +2,15 @@
   "library": "Immutability Helper",
   "libraryId": "immutability-helper",
   "packageName": "immutability-helper",
+  "version": "3.1.1",
   "test": "Simple Object Update",
   "group": "01-simple-updates",
-  "timestamp": "2025-11-14T14:05:33.095Z",
+  "timestamp": "2025-11-14T14:35:43.129Z",
   "result": {
-    "opsPerSecond": 2262399.4782522055,
-    "meanTime": 0.0004740600000018276,
-    "variance": 1.5650290930882689e-7,
-    "p99": 0.0012323100000730845,
+    "opsPerSecond": 2338689.171905546,
+    "meanTime": 0.00044216599999663233,
+    "variance": 1.372629273923037e-8,
+    "p99": 0.0010420999998723346,
     "samples": 1000
   }
 }

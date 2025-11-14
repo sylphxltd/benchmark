@@ -2,14 +2,15 @@
   "library": "Immutability Helper",
   "libraryId": "immutability-helper",
   "packageName": "immutability-helper",
+  "version": "3.1.1",
   "test": "Nested Object Update",
   "group": "02-nested-updates",
-  "timestamp": "2025-11-14T14:05:33.095Z",
+  "timestamp": "2025-11-14T14:35:43.129Z",
   "result": {
-    "opsPerSecond": 863621.1183526899,
-    "meanTime": 0.001236863999994057,
-    "variance": 5.645271306256437e-7,
-    "p99": 0.0026762900000630906,
+    "opsPerSecond": 899216.5875741952,
+    "meanTime": 0.0011536620000033508,
+    "variance": 2.4479596171904535e-7,
+    "p99": 0.0020340900000974213,
     "samples": 1000
   }
 }

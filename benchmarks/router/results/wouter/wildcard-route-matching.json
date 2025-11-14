@@ -2,14 +2,15 @@
   "library": "Wouter",
   "libraryId": "wouter",
   "packageName": "wouter",
+  "version": "3.7.1",
   "test": "Wildcard Route Matching",
   "group": "03-advanced-routes",
-  "timestamp": "2025-11-14T14:05:40.088Z",
+  "timestamp": "2025-11-14T14:35:46.209Z",
   "result": {
-    "opsPerSecond": 1637132.8249168994,
-    "meanTime": 0.0006288739999981772,
-    "variance": 1.3387255668445048e-7,
-    "p99": 0.001103190000503673,
+    "opsPerSecond": 1644011.7058640474,
+    "meanTime": 0.0006154370000076597,
+    "variance": 8.491523553523212e-9,
+    "p99": 0.0011432999995031421,
     "samples": 1000
   }
 }

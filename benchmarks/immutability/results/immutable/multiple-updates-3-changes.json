@@ -2,14 +2,15 @@
   "library": "Immutable.js",
   "libraryId": "immutable",
   "packageName": "immutable",
+  "version": "5.1.4",
   "test": "Multiple Updates (3 changes)",
   "group": "04-deep-operations",
-  "timestamp": "2025-11-14T14:05:33.095Z",
+  "timestamp": "2025-11-14T14:35:43.129Z",
   "result": {
-    "opsPerSecond": 379905.43913246156,
-    "meanTime": 0.002756684999978461,
-    "variance": 0.0000010877364982667227,
-    "p99": 0.005580810000938072,
+    "opsPerSecond": 380192.2916277741,
+    "meanTime": 0.00270667999995203,
+    "variance": 4.83500960589979e-7,
+    "p99": 0.0041871000022729275,
     "samples": 1000
   }
 }

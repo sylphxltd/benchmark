@@ -2,14 +2,15 @@
   "library": "Immutability Helper",
   "libraryId": "immutability-helper",
   "packageName": "immutability-helper",
+  "version": "3.1.1",
   "test": "Large Array Update (1000 items)",
   "group": "05-large-scale",
-  "timestamp": "2025-11-14T14:05:33.095Z",
+  "timestamp": "2025-11-14T14:35:43.129Z",
   "result": {
-    "opsPerSecond": 15115.81682095457,
-    "meanTime": 0.06656644200006485,
-    "variance": 0.00011667317671920288,
-    "p99": 0.07824900999730744,
+    "opsPerSecond": 15163.668777742072,
+    "meanTime": 0.06665924499996254,
+    "variance": 0.00041078483382880687,
+    "p99": 0.0791384099973584,
     "samples": 1000
   }
 }

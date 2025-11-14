@@ -2,14 +2,15 @@
   "library": "Craft",
   "libraryId": "craft",
   "packageName": "@sylphx/craft",
+  "version": "1.2.1",
   "test": "Simple Object Update",
   "group": "01-simple-updates",
-  "timestamp": "2025-11-14T14:05:33.095Z",
+  "timestamp": "2025-11-14T14:35:43.129Z",
   "result": {
-    "opsPerSecond": 1731596.906121143,
-    "meanTime": 0.0006127070000047751,
-    "variance": 6.56246698191556e-8,
-    "p99": 0.0019941999999696235,
+    "opsPerSecond": 1761907.9218743683,
+    "meanTime": 0.0005907739999986461,
+    "variance": 3.1946449373419135e-8,
+    "p99": 0.0012522100000228419,
     "samples": 1000
   }
 }

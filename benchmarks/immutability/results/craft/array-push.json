@@ -2,14 +2,15 @@
   "library": "Craft",
   "libraryId": "craft",
   "packageName": "@sylphx/craft",
+  "version": "1.2.1",
   "test": "Array Push",
   "group": "03-array-operations",
-  "timestamp": "2025-11-14T14:05:33.095Z",
+  "timestamp": "2025-11-14T14:35:43.129Z",
   "result": {
-    "opsPerSecond": 249721.32938467973,
-    "meanTime": 0.004370859999991808,
-    "variance": 0.000003300547632041829,
-    "p99": 0.008746199999523014,
+    "opsPerSecond": 396731.00983167643,
+    "meanTime": 0.0026471230000106516,
+    "variance": 0.00000170067955144293,
+    "p99": 0.006204400000478925,
     "samples": 1000
   }
 }

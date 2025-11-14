@@ -2,14 +2,15 @@
   "library": "Seamless Immutable",
   "libraryId": "seamless-immutable",
   "packageName": "seamless-immutable",
+  "version": "7.1.4",
   "test": "Simple Object Update",
   "group": "01-simple-updates",
-  "timestamp": "2025-11-14T14:05:33.095Z",
+  "timestamp": "2025-11-14T14:35:43.129Z",
   "result": {
-    "opsPerSecond": 530988.8084658975,
-    "meanTime": 0.0019301629999954456,
-    "variance": 3.1224183227058216e-7,
-    "p99": 0.0030413000000635245,
+    "opsPerSecond": 526919.8796487733,
+    "meanTime": 0.0019613370000047324,
+    "variance": 4.256040655068387e-7,
+    "p99": 0.003509320000016484,
     "samples": 1000
   }
 }

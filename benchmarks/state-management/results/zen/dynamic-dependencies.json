@@ -5,12 +5,12 @@
   "version": "3.1.1",
   "test": "Dynamic Dependencies",
   "group": "07-reactivity-patterns",
-  "timestamp": "2025-11-14T14:31:26.119Z",
+  "timestamp": "2025-11-14T14:35:48.708Z",
   "result": {
-    "opsPerSecond": 11887920.683811108,
-    "meanTime": 0.00008411899999987327,
-    "variance": 2.7740683521667106e-8,
-    "p99": 0.0005000000001018634,
+    "opsPerSecond": 15926250.834417928,
+    "meanTime": 0.0000634050000080606,
+    "variance": 5.097595128281704e-11,
+    "p99": 0.00009999999747378752,
     "samples": 1000
   }
 }

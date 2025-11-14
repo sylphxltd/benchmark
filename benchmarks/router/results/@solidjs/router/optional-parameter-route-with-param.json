@@ -2,14 +2,15 @@
   "library": "SolidJS Router",
   "libraryId": "@solidjs/router",
   "packageName": "@solidjs/router",
+  "version": "0.15.9",
   "test": "Optional Parameter Route (with param)",
   "group": "03-advanced-routes",
-  "timestamp": "2025-11-14T14:05:40.088Z",
+  "timestamp": "2025-11-14T14:35:46.209Z",
   "result": {
-    "opsPerSecond": 971522.6611072308,
-    "meanTime": 0.0010390390000338812,
-    "variance": 8.389264611007332e-8,
-    "p99": 0.0011219999996683327,
+    "opsPerSecond": 996841.9178719913,
+    "meanTime": 0.0010131060000057915,
+    "variance": 1.0048126201731875e-7,
+    "p99": 0.0010821000006762914,
     "samples": 1000
   }
 }

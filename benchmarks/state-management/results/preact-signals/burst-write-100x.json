@@ -2,14 +2,15 @@
   "library": "Preact Signals",
   "libraryId": "preact-signals",
   "packageName": "@preact/signals",
+  "version": "2.4.0",
   "test": "Burst Write (100x)",
   "group": "02-basic-write",
-  "timestamp": "2025-11-14T14:05:34.884Z",
+  "timestamp": "2025-11-14T14:35:48.708Z",
   "result": {
-    "opsPerSecond": 2431012.1918139444,
-    "meanTime": 0.00042529400000057647,
-    "variance": 7.545384946137899e-9,
-    "p99": 0.0006909999992967641,
+    "opsPerSecond": 2651261.813199447,
+    "meanTime": 0.0003901650000079826,
+    "variance": 1.3419519894211776e-7,
+    "p99": 0.00046099999963189475,
     "samples": 1000
   }
 }

@@ -2,14 +2,15 @@
   "library": "Preact Signals",
   "libraryId": "preact-signals",
   "packageName": "@preact/signals",
+  "version": "2.4.0",
   "test": "Async Throughput (20 ops)",
   "group": "04-async-operations",
-  "timestamp": "2025-11-14T14:05:34.884Z",
+  "timestamp": "2025-11-14T14:35:48.708Z",
   "result": {
-    "opsPerSecond": 974.0578795233444,
-    "meanTime": 1.0979200189999028,
-    "variance": 0.02157815596042939,
-    "p99": 1.92507833000127,
+    "opsPerSecond": 913.2527234862505,
+    "meanTime": 1.110808873000009,
+    "variance": 0.03168188678583495,
+    "p99": 2.14120992000182,
     "samples": 1000
   }
 }

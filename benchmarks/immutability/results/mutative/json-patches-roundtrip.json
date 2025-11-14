@@ -2,14 +2,15 @@
   "library": "Mutative",
   "libraryId": "mutative",
   "packageName": "mutative",
+  "version": "1.3.0",
   "test": "JSON Patches - Roundtrip",
   "group": "06-patches",
-  "timestamp": "2025-11-14T14:05:33.095Z",
+  "timestamp": "2025-11-14T14:35:43.129Z",
   "result": {
-    "opsPerSecond": 74587.67584262157,
-    "meanTime": 0.014265844000034122,
-    "variance": 0.00038760114266944056,
-    "p99": 0.027462020001730696,
+    "opsPerSecond": 70622.11940962716,
+    "meanTime": 0.015244343999947887,
+    "variance": 0.0005317918223638561,
+    "p99": 0.031534409999876514,
     "samples": 1000
   }
 }

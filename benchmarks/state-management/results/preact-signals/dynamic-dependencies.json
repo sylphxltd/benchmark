@@ -2,14 +2,15 @@
   "library": "Preact Signals",
   "libraryId": "preact-signals",
   "packageName": "@preact/signals",
+  "version": "2.4.0",
   "test": "Dynamic Dependencies",
   "group": "07-reactivity-patterns",
-  "timestamp": "2025-11-14T14:05:34.884Z",
+  "timestamp": "2025-11-14T14:35:48.708Z",
   "result": {
-    "opsPerSecond": 6640286.952293509,
-    "meanTime": 0.00016144100004748907,
-    "variance": 1.156223769251742e-7,
-    "p99": 0.00016999999934341758,
+    "opsPerSecond": 7015311.1789455805,
+    "meanTime": 0.0001432000002314453,
+    "variance": 1.0943944229602778e-10,
+    "p99": 0.00018099999579135329,
     "samples": 1000
   }
 }

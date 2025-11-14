@@ -2,14 +2,15 @@
   "library": "Immutable.js",
   "libraryId": "immutable",
   "packageName": "immutable",
+  "version": "5.1.4",
   "test": "Set - Add Operation",
   "group": "07-map-set",
-  "timestamp": "2025-11-14T14:05:33.095Z",
+  "timestamp": "2025-11-14T14:35:43.129Z",
   "result": {
-    "opsPerSecond": 4899822.988217005,
-    "meanTime": 0.00021757699998124736,
-    "variance": 1.1465499570570562e-8,
-    "p99": 0.0008122999984334453,
+    "opsPerSecond": 4863792.860819954,
+    "meanTime": 0.00022540400000070805,
+    "variance": 2.226006082787263e-8,
+    "p99": 0.0009309999987090123,
     "samples": 1000
   }
 }

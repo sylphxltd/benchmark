@@ -2,14 +2,15 @@
   "library": "Preact Signals",
   "libraryId": "preact-signals",
   "packageName": "@preact/signals",
+  "version": "2.4.0",
   "test": "Array Update",
   "group": "03-advanced-operations",
-  "timestamp": "2025-11-14T14:05:34.884Z",
+  "timestamp": "2025-11-14T14:35:48.708Z",
   "result": {
-    "opsPerSecond": 9039248.664999198,
-    "meanTime": 0.00011668900000768189,
-    "variance": 3.435896175784436e-9,
-    "p99": 0.0004020000011405491,
+    "opsPerSecond": 8999943.21037294,
+    "meanTime": 0.00011661200002163241,
+    "variance": 2.640614070490344e-9,
+    "p99": 0.00046109999962936846,
     "samples": 1000
   }
 }

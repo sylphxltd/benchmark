@@ -2,14 +2,15 @@
   "library": "Immutability Helper",
   "libraryId": "immutability-helper",
   "packageName": "immutability-helper",
+  "version": "3.1.1",
   "test": "Array Push",
   "group": "03-array-operations",
-  "timestamp": "2025-11-14T14:05:33.095Z",
+  "timestamp": "2025-11-14T14:35:43.129Z",
   "result": {
-    "opsPerSecond": 5379788.981263216,
-    "meanTime": 0.000198219999992034,
-    "variance": 8.099967564363573e-9,
-    "p99": 0.0007520999999178456,
+    "opsPerSecond": 5302025.000082273,
+    "meanTime": 0.00021331499999723745,
+    "variance": 1.1893872450785195e-7,
+    "p99": 0.0008011100001294834,
     "samples": 1000
   }
 }

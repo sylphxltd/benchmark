@@ -2,14 +2,15 @@
   "library": "Preact Signals",
   "libraryId": "preact-signals",
   "packageName": "@preact/signals",
+  "version": "2.4.0",
   "test": "Memory Management",
   "group": "05-real-world",
-  "timestamp": "2025-11-14T14:05:34.884Z",
+  "timestamp": "2025-11-14T14:35:48.708Z",
   "result": {
-    "opsPerSecond": 130129.58897523339,
-    "meanTime": 0.008218105999960245,
-    "variance": 0.00016900637661366674,
-    "p99": 0.013859899997805765,
+    "opsPerSecond": 132951.35822453524,
+    "meanTime": 0.00805784499996298,
+    "variance": 0.00016852945721527405,
+    "p99": 0.013817789999120577,
     "samples": 1000
   }
 }

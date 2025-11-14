@@ -2,14 +2,15 @@
   "library": "Zen Router",
   "libraryId": "@sylphx/zen-router",
   "packageName": "@sylphx/zen-router",
+  "version": "1.0.2",
   "test": "Dynamic Route Matching (1 param)",
   "group": "02-dynamic-routes",
-  "timestamp": "2025-11-14T14:05:40.088Z",
+  "timestamp": "2025-11-14T14:35:46.209Z",
   "result": {
-    "opsPerSecond": 2350693.3933497975,
-    "meanTime": 0.0004296639999947729,
-    "variance": 3.6038169220951414e-9,
-    "p99": 0.0007412100007331899,
+    "opsPerSecond": 2342436.068073435,
+    "meanTime": 0.00046061399999689455,
+    "variance": 2.455860890999607e-7,
+    "p99": 0.0010521000005246604,
     "samples": 1000
   }
 }

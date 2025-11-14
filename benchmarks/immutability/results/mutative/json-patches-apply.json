@@ -2,14 +2,15 @@
   "library": "Mutative",
   "libraryId": "mutative",
   "packageName": "mutative",
+  "version": "1.3.0",
   "test": "JSON Patches - Apply",
   "group": "06-patches",
-  "timestamp": "2025-11-14T14:05:33.095Z",
+  "timestamp": "2025-11-14T14:35:43.129Z",
   "result": {
-    "opsPerSecond": 115174.91660760462,
-    "meanTime": 0.008874598999958835,
-    "variance": 0.0000033969497878094263,
-    "p99": 0.020589519999666652,
+    "opsPerSecond": 113407.28539381048,
+    "meanTime": 0.008956029999993917,
+    "variance": 0.0000022860705456868355,
+    "p99": 0.015663970001914964,
     "samples": 1000
   }
 }

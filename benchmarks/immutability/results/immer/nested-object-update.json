@@ -2,14 +2,15 @@
   "library": "Immer",
   "libraryId": "immer",
   "packageName": "immer",
+  "version": "10.2.0",
   "test": "Nested Object Update",
   "group": "02-nested-updates",
-  "timestamp": "2025-11-14T14:05:33.095Z",
+  "timestamp": "2025-11-14T14:35:43.129Z",
   "result": {
-    "opsPerSecond": 272736.31819022464,
-    "meanTime": 0.00377711100000306,
-    "variance": 8.487176523090049e-7,
-    "p99": 0.00761439999965205,
+    "opsPerSecond": 271360.8648199118,
+    "meanTime": 0.0037700000000081674,
+    "variance": 7.080843943962328e-7,
+    "p99": 0.005972799999931339,
     "samples": 1000
   }
 }

@@ -2,14 +2,15 @@
   "library": "Immutable.js",
   "libraryId": "immutable",
   "packageName": "immutable",
+  "version": "5.1.4",
   "test": "Nested Object Update",
   "group": "02-nested-updates",
-  "timestamp": "2025-11-14T14:05:33.095Z",
+  "timestamp": "2025-11-14T14:35:43.129Z",
   "result": {
-    "opsPerSecond": 1462811.6915603897,
-    "meanTime": 0.0007295899999999164,
-    "variance": 6.500648438060722e-8,
-    "p99": 0.0016929999992498779,
+    "opsPerSecond": 1520662.3258808905,
+    "meanTime": 0.0007003380000160178,
+    "variance": 2.1962272849590166e-7,
+    "p99": 0.0016836099995089166,
     "samples": 1000
   }
 }

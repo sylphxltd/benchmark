@@ -2,14 +2,15 @@
   "library": "Native Spread",
   "libraryId": "native-spread",
   "packageName": "native",
+  "version": "unknown",
   "test": "Array Update",
   "group": "03-array-operations",
-  "timestamp": "2025-11-14T14:05:33.095Z",
+  "timestamp": "2025-11-14T14:35:43.129Z",
   "result": {
-    "opsPerSecond": 7324635.026889639,
-    "meanTime": 0.00015398800002549252,
-    "variance": 9.476650501593675e-9,
-    "p99": 0.0006414000005315753,
+    "opsPerSecond": 8171838.538419868,
+    "meanTime": 0.00013430500004687928,
+    "variance": 6.552898875707038e-9,
+    "p99": 0.000591099999983271,
     "samples": 1000
   }
 }

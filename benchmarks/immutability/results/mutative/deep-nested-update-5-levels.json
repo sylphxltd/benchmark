@@ -2,14 +2,15 @@
   "library": "Mutative",
   "libraryId": "mutative",
   "packageName": "mutative",
+  "version": "1.3.0",
   "test": "Deep Nested Update (5 levels)",
   "group": "04-deep-operations",
-  "timestamp": "2025-11-14T14:05:33.095Z",
+  "timestamp": "2025-11-14T14:35:43.129Z",
   "result": {
-    "opsPerSecond": 214908.5283149102,
-    "meanTime": 0.004758373999975447,
-    "variance": 0.0000011987220762342365,
-    "p99": 0.008055799998437578,
+    "opsPerSecond": 209319.36125192797,
+    "meanTime": 0.005483397000018158,
+    "variance": 0.00032412028539392297,
+    "p99": 0.008615310001223397,
     "samples": 1000
   }
 }

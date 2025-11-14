@@ -2,14 +2,15 @@
   "library": "Immutable.js",
   "libraryId": "immutable",
   "packageName": "immutable",
+  "version": "5.1.4",
   "test": "Map - Update Nested Value",
   "group": "07-map-set",
-  "timestamp": "2025-11-14T14:05:33.095Z",
+  "timestamp": "2025-11-14T14:35:43.129Z",
   "result": {
-    "opsPerSecond": 1629129.6832317493,
-    "meanTime": 0.0006313050000280782,
-    "variance": 2.129974771786228e-8,
-    "p99": 0.0013421099995684926,
+    "opsPerSecond": 1600858.1513921027,
+    "meanTime": 0.0006438659999948868,
+    "variance": 2.9549667710977767e-8,
+    "p99": 0.0013431999999011165,
     "samples": 1000
   }
 }

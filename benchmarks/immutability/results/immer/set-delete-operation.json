@@ -2,14 +2,15 @@
   "library": "Immer",
   "libraryId": "immer",
   "packageName": "immer",
+  "version": "10.2.0",
   "test": "Set - Delete Operation",
   "group": "07-map-set",
-  "timestamp": "2025-11-14T14:05:33.095Z",
+  "timestamp": "2025-11-14T14:35:43.129Z",
   "result": {
-    "opsPerSecond": 261268.4986365663,
-    "meanTime": 0.003903769999935321,
-    "variance": 7.475498508603033e-7,
-    "p99": 0.005922199999949952,
+    "opsPerSecond": 249744.2544168978,
+    "meanTime": 0.0041310469999734775,
+    "variance": 0.0000012168723351093724,
+    "p99": 0.008257300000987015,
     "samples": 1000
   }
 }

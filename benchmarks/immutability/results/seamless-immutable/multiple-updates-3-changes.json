@@ -2,14 +2,15 @@
   "library": "Seamless Immutable",
   "libraryId": "seamless-immutable",
   "packageName": "seamless-immutable",
+  "version": "7.1.4",
   "test": "Multiple Updates (3 changes)",
   "group": "04-deep-operations",
-  "timestamp": "2025-11-14T14:05:33.095Z",
+  "timestamp": "2025-11-14T14:35:43.129Z",
   "result": {
-    "opsPerSecond": 81456.86590511152,
-    "meanTime": 0.01314413400003832,
-    "variance": 0.0004545234318694455,
-    "p99": 0.022818409999563295,
+    "opsPerSecond": 82199.6793295689,
+    "meanTime": 0.012278903000034916,
+    "variance": 0.000002370471929466065,
+    "p99": 0.016907080000382806,
     "samples": 1000
   }
 }

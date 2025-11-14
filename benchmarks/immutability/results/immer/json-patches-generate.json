@@ -2,14 +2,15 @@
   "library": "Immer",
   "libraryId": "immer",
   "packageName": "immer",
+  "version": "10.2.0",
   "test": "JSON Patches - Generate",
   "group": "06-patches",
-  "timestamp": "2025-11-14T14:05:33.095Z",
+  "timestamp": "2025-11-14T14:35:43.129Z",
   "result": {
-    "opsPerSecond": 143960.26461828643,
-    "meanTime": 0.007071144999958051,
-    "variance": 0.0000018003633453443569,
-    "p99": 0.011605399998661593,
+    "opsPerSecond": 126498.11944500468,
+    "meanTime": 0.008641220999968937,
+    "variance": 0.000009750394284358807,
+    "p99": 0.018437849998299477,
     "samples": 1000
   }
 }

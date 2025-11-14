@@ -2,14 +2,15 @@
   "library": "Mutative",
   "libraryId": "mutative",
   "packageName": "mutative",
+  "version": "1.3.0",
   "test": "Map - Update Nested Value",
   "group": "07-map-set",
-  "timestamp": "2025-11-14T14:05:33.095Z",
+  "timestamp": "2025-11-14T14:35:43.129Z",
   "result": {
-    "opsPerSecond": 313182.77196809783,
-    "meanTime": 0.0033086329999678127,
-    "variance": 8.910296579481973e-7,
-    "p99": 0.006896099997975395,
+    "opsPerSecond": 295911.4919011203,
+    "meanTime": 0.0035062939999697847,
+    "variance": 9.795387282490976e-7,
+    "p99": 0.006444710001705969,
     "samples": 1000
   }
 }

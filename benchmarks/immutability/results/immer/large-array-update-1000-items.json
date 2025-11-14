@@ -2,14 +2,15 @@
   "library": "Immer",
   "libraryId": "immer",
   "packageName": "immer",
+  "version": "10.2.0",
   "test": "Large Array Update (1000 items)",
   "group": "05-large-scale",
-  "timestamp": "2025-11-14T14:05:33.095Z",
+  "timestamp": "2025-11-14T14:35:43.129Z",
   "result": {
-    "opsPerSecond": 4104.395978538089,
-    "meanTime": 0.24711435099997833,
-    "variance": 0.00269068815903949,
-    "p99": 0.35598042999848983,
+    "opsPerSecond": 4293.372811236534,
+    "meanTime": 0.23560462399997414,
+    "variance": 0.0016099488059328152,
+    "p99": 0.4209754599997177,
     "samples": 1000
   }
 }
