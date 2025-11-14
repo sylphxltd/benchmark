@@ -4,12 +4,12 @@
   "packageName": "@preact/signals",
   "test": "Batch Write (10x)",
   "group": "02-basic-write",
-  "timestamp": "2025-11-14T13:49:50.822Z",
+  "timestamp": "2025-11-14T14:05:34.884Z",
   "result": {
-    "opsPerSecond": 11331370.065705938,
-    "meanTime": 0.00009353900001588044,
-    "variance": 1.4179704503416996e-9,
-    "p99": 0.00017999999910898624,
+    "opsPerSecond": 12463249.646503566,
+    "meanTime": 0.00008312700004171348,
+    "variance": 1.1747396132340391e-9,
+    "p99": 0.00014999999984866008,
     "samples": 1000
   }
 }

@@ -4,12 +4,12 @@
   "packageName": "wouter",
   "test": "Sequential Route Matching (worst case)",
   "group": "04-real-world",
-  "timestamp": "2025-11-14T13:49:50.195Z",
+  "timestamp": "2025-11-14T14:05:40.088Z",
   "result": {
-    "opsPerSecond": 858379.512298149,
-    "meanTime": 0.0011929909999980736,
-    "variance": 2.650203993163584e-7,
-    "p99": 0.00186340999951426,
+    "opsPerSecond": 904650.7894448647,
+    "meanTime": 0.0011295589999936056,
+    "variance": 1.9158009256992703e-7,
+    "p99": 0.0016335099998650545,
     "samples": 1000
   }
 }

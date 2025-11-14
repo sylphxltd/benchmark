@@ -4,11 +4,11 @@
   "packageName": "@preact/signals",
   "test": "Repeated Diamonds (5x)",
   "group": "07-reactivity-patterns",
-  "timestamp": "2025-11-14T13:49:50.822Z",
+  "timestamp": "2025-11-14T14:05:34.884Z",
   "result": {
-    "opsPerSecond": 2916976.936209823,
-    "meanTime": 0.0003430740000549122,
-    "variance": 1.0223675769867787e-10,
+    "opsPerSecond": 2839430.682106961,
+    "meanTime": 0.0003523479999275878,
+    "variance": 6.392882533608747e-11,
     "p99": 0.000371000001905486,
     "samples": 1000
   }

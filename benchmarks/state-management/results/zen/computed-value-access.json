@@ -4,11 +4,11 @@
   "packageName": "@sylphx/zen",
   "test": "Computed Value Access",
   "group": "03-advanced-operations",
-  "timestamp": "2025-11-14T13:49:50.822Z",
+  "timestamp": "2025-11-14T14:05:34.884Z",
   "result": {
-    "opsPerSecond": 23252040.500798896,
-    "meanTime": 0.00004367500003718306,
-    "variance": 4.292429891925717e-11,
+    "opsPerSecond": 23334009.836957943,
+    "meanTime": 0.00004340999994747108,
+    "variance": 2.9293192656577394e-11,
     "p99": 0.00005100000271340832,
     "samples": 1000
   }

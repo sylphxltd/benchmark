@@ -4,12 +4,12 @@
   "packageName": "immutable",
   "test": "Map - Update Nested Value",
   "group": "07-map-set",
-  "timestamp": "2025-11-14T13:49:54.491Z",
+  "timestamp": "2025-11-14T14:05:33.095Z",
   "result": {
-    "opsPerSecond": 1615097.4946002504,
-    "meanTime": 0.0006418589999811956,
-    "variance": 1.1894971289173648e-7,
-    "p99": 0.001192099999716447,
+    "opsPerSecond": 1629129.6832317493,
+    "meanTime": 0.0006313050000280782,
+    "variance": 2.129974771786228e-8,
+    "p99": 0.0013421099995684926,
     "samples": 1000
   }
 }
