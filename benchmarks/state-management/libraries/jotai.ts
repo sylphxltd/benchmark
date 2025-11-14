@@ -82,12 +82,20 @@ jotai.implement(tests.singleRead, (ctx) => {
 
 jotai.implement(tests.moderateRead, (ctx) => {
   const { store, counterAtom } = ctx.store;
-  store.get(counterAtom);
+  let sum = 0;
+  for (let i = 0; i < 100; i++) {
+    sum += store.get(counterAtom);
+  }
+  return sum;
 });
 
 jotai.implement(tests.highFrequencyRead, (ctx) => {
   const { store, counterAtom } = ctx.store;
-  store.get(counterAtom);
+  let sum = 0;
+  for (let i = 0; i < 1000; i++) {
+    sum += store.get(counterAtom);
+  }
+  return sum;
 });
 
 // ========== BASIC WRITE TESTS ==========
@@ -110,7 +118,9 @@ jotai.implement(tests.batchWrite, {
   },
   fn: (ctx) => {
     const { store, counterAtom } = ctx.store;
-    store.set(counterAtom, (prev) => prev + 1);
+    for (let i = 0; i < 10; i++) {
+      store.set(counterAtom, (prev) => prev + 1);
+    }
   }
 });
 
@@ -121,7 +131,9 @@ jotai.implement(tests.burstWrite, {
   },
   fn: (ctx) => {
     const { store, counterAtom } = ctx.store;
-    store.set(counterAtom, (prev) => prev + 1);
+    for (let i = 0; i < 100; i++) {
+      store.set(counterAtom, (prev) => prev + 1);
+    }
   }
 });
 
@@ -132,7 +144,9 @@ jotai.implement(tests.heavyWrite, {
   },
   fn: (ctx) => {
     const { store, counterAtom } = ctx.store;
-    store.set(counterAtom, (prev) => prev + 1);
+    for (let i = 0; i < 1000; i++) {
+      store.set(counterAtom, (prev) => prev + 1);
+    }
   }
 });
 
@@ -311,7 +325,11 @@ jotai.implement(tests.memoryUsage, (ctx) => {
 
 jotai.implement(tests.extremeRead, (ctx) => {
   const { store, counterAtom } = ctx.store;
-  store.get(counterAtom);
+  let sum = 0;
+  for (let i = 0; i < 10000; i++) {
+    sum += store.get(counterAtom);
+  }
+  return sum;
 });
 
 jotai.implement(tests.extremeWrite, {
@@ -321,7 +339,9 @@ jotai.implement(tests.extremeWrite, {
   },
   fn: (ctx) => {
     const { store, counterAtom } = ctx.store;
-    store.set(counterAtom, (prev) => prev + 1);
+    for (let i = 0; i < 10000; i++) {
+      store.set(counterAtom, (prev) => prev + 1);
+    }
   }
 });
 
