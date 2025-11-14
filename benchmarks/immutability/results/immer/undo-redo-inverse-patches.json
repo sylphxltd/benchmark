@@ -5,12 +5,12 @@
   "version": "10.2.0",
   "test": "Undo/Redo - Inverse Patches",
   "group": "06-patches",
-  "timestamp": "2025-11-14T17:04:44.961Z",
+  "timestamp": "2025-11-14T18:07:14.304Z",
   "result": {
-    "opsPerSecond": 222868.5518548895,
-    "meanTime": 0.00457528399997318,
-    "variance": 8.186311464700075e-7,
-    "p99": 0.006886479999229777,
+    "opsPerSecond": 206590.40599681958,
+    "meanTime": 0.004952003000034892,
+    "variance": 0.0000017324695224500516,
+    "p99": 0.008470119999547011,
     "samples": 1000
   }
 }
