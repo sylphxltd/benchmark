@@ -4,12 +4,12 @@
   "packageName": "@sylphx/zen",
   "test": "Array Update",
   "group": "03-advanced-operations",
-  "timestamp": "2025-11-14T01:33:04.227Z",
+  "timestamp": "2025-11-14T02:34:59.525Z",
   "result": {
-    "opsPerSecond": 8116552.2297423305,
-    "meanTime": 0.00012996400005067698,
-    "variance": 2.121113825262058e-9,
-    "p99": 0.00038416999905166433,
+    "opsPerSecond": 7025435.83280837,
+    "meanTime": 0.000147013000001607,
+    "variance": 2.5945493803205776e-9,
+    "p99": 0.0004013900011341317,
     "samples": 1000
   }
 }

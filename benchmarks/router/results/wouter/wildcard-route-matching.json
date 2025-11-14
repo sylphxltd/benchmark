@@ -4,12 +4,12 @@
   "packageName": "wouter",
   "test": "Wildcard Route Matching",
   "group": "03-advanced-routes",
-  "timestamp": "2025-11-14T01:33:00.351Z",
+  "timestamp": "2025-11-14T02:34:56.518Z",
   "result": {
-    "opsPerSecond": 270813.82354459947,
-    "meanTime": 0.00381333399999221,
-    "variance": 9.762297101841186e-7,
-    "p99": 0.007013199999473727,
+    "opsPerSecond": 272809.446305409,
+    "meanTime": 0.003813991000016358,
+    "variance": 0.00000215678649336404,
+    "p99": 0.00687399999936133,
     "samples": 1000
   }
 }

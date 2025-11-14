@@ -4,12 +4,12 @@
   "packageName": "mutative",
   "test": "Map - Update Nested Value",
   "group": "07-map-set",
-  "timestamp": "2025-11-14T01:32:59.210Z",
+  "timestamp": "2025-11-14T02:34:57.136Z",
   "result": {
-    "opsPerSecond": 204626.66848129802,
-    "meanTime": 0.005035155999950803,
-    "variance": 0.000001821767142641478,
-    "p99": 0.009450020000367656,
+    "opsPerSecond": 247621.90285598967,
+    "meanTime": 0.004780528000017512,
+    "variance": 0.00034343226697506354,
+    "p99": 0.008650809998434848,
     "samples": 1000
   }
 }

@@ -4,12 +4,12 @@
   "packageName": "@sylphx/craft",
   "test": "Undo/Redo - Inverse Patches",
   "group": "06-patches",
-  "timestamp": "2025-11-14T01:32:59.210Z",
+  "timestamp": "2025-11-14T02:34:57.136Z",
   "result": {
-    "opsPerSecond": 282469.69412041584,
-    "meanTime": 0.003643724000015936,
-    "variance": 0.0000011075212292689489,
-    "p99": 0.007395100000176171,
+    "opsPerSecond": 261992.22211931428,
+    "meanTime": 0.004079301999983727,
+    "variance": 0.000002758125412073831,
+    "p99": 0.01061200000116514,
     "samples": 1000
   }
 }
