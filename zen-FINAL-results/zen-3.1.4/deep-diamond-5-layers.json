@@ -1,0 +1,15 @@
+{
+  "library": "Zen",
+  "libraryId": "zen",
+  "packageName": "@sylphx/zen",
+  "test": "Deep Diamond (5 layers)",
+  "group": "07-reactivity-patterns",
+  "timestamp": "2025-11-14T01:24:36.916Z",
+  "result": {
+    "opsPerSecond": 9127168.84350638,
+    "meanTime": 0.00010956299999988062,
+    "variance": 3.848581184294237e-8,
+    "p99": 0.0007920000000041227,
+    "samples": 1000
+  }
+}

@@ -1,0 +1,15 @@
+{
+  "library": "Zustand",
+  "libraryId": "zustand",
+  "packageName": "zustand",
+  "test": "Deep Diamond (5 layers)",
+  "group": "07-reactivity-patterns",
+  "timestamp": "2025-11-14T00:59:46.963Z",
+  "result": {
+    "opsPerSecond": 1974856.131748262,
+    "meanTime": 0.0005063659999955235,
+    "variance": 5.3286130176003547e-8,
+    "p99": 0.0014999999998508429,
+    "samples": 1000
+  }
+}

@@ -1,0 +1,43 @@
+
+📊 Benchmark Results:
+
+Single Read:
+  12785186.49 ops/sec
+  0.0782 ms/op (mean)
+  0.2080 ms/op (p99)
+
+Moderate Read (100x):
+  9931195.60 ops/sec
+  0.1007 ms/op (mean)
+  0.2090 ms/op (p99)
+
+Single Write:
+  12450996.10 ops/sec
+  0.0803 ms/op (mean)
+  0.2080 ms/op (p99)
+
+Computed Value Access:
+  6890870.32 ops/sec
+  0.1451 ms/op (mean)
+  0.2920 ms/op (p99)
+
+Batch Updates (10x):
+  9717533.50 ops/sec
+  0.1029 ms/op (mean)
+  0.2920 ms/op (p99)
+
+Nested Read:
+  11564557.70 ops/sec
+  0.0865 ms/op (mean)
+  0.2090 ms/op (p99)
+
+Array Read:
+  12084622.79 ops/sec
+  0.0827 ms/op (mean)
+  0.2080 ms/op (p99)
+
+Array Update:
+  9701772.47 ops/sec
+  0.1031 ms/op (mean)
+  0.2920 ms/op (p99)
+

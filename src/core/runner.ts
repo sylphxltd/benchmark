@@ -211,16 +211,44 @@ export class BenchmarkRunner {
     const ctx = await this.createContext(library);
 
     try {
-      // Get implementation function
-      const fn = library.getImplementation(test);
-      if (!fn) {
+      // Get implementation - can be function or object with hooks
+      const implementation = library.getTestImplementation(test);
+      if (!implementation) {
         throw new Error(`Test '${test.name}' not implemented for library '${library.id}'`);
       }
 
-      // Use new measurement utility
+      // Extract function and hooks
+      let fn: (ctx: any) => void | Promise<void>;
+      let beforeEach: ((ctx: any) => void | Promise<void>) | undefined;
+      let afterEach: ((ctx: any) => void | Promise<void>) | undefined;
+
+      if (typeof implementation === 'function') {
+        // Plain function
+        fn = implementation;
+      } else if ('fn' in implementation) {
+        // Object with fn and optional hooks (PerformanceTestWithHooks)
+        fn = implementation.fn;
+        beforeEach = implementation.beforeEach;
+        afterEach = implementation.afterEach;
+      } else if ('type' in implementation && implementation.type === 'performance') {
+        // Explicit performance test with hooks
+        fn = implementation.run;
+        beforeEach = implementation.beforeEach;
+        afterEach = implementation.afterEach;
+      } else {
+        // Legacy: try to get as plain function
+        fn = library.getImplementation(test);
+        if (!fn) {
+          throw new Error(`Test '${test.name}' not implemented for library '${library.id}'`);
+        }
+      }
+
+      // Use new measurement utility with hooks
       const metric = await measurePerformanceMetric(fn, ctx, {
         warmupIterations: 100,
         benchmarkIterations: 1000,
+        beforeEach,
+        afterEach,
       });
 
       // Convert SpeedMetric to BenchmarkResult for backward compatibility

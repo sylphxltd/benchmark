@@ -1,0 +1,15 @@
+{
+  "library": "Zen",
+  "libraryId": "zen",
+  "packageName": "@sylphx/zen",
+  "test": "High-Frequency Read (1000x)",
+  "group": "01-basic-read",
+  "timestamp": "2025-11-14T01:52:01.563Z",
+  "result": {
+    "opsPerSecond": 9263204.698296862,
+    "meanTime": 0.00010795400000000655,
+    "variance": 2.0073324913308455e-7,
+    "p99": 0.00020900000000168006,
+    "samples": 1000
+  }
+}

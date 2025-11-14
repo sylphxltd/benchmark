@@ -1,0 +1,15 @@
+{
+  "library": "Immutable.js",
+  "libraryId": "immutable",
+  "packageName": "immutable",
+  "test": "Map - Set Operation",
+  "group": "07-map-set",
+  "timestamp": "2025-11-14T03:28:43.588Z",
+  "result": {
+    "opsPerSecond": 2027377.708565895,
+    "meanTime": 0.000493248000002609,
+    "variance": 2.2931591841268153e-7,
+    "p99": 0.003083000000060565,
+    "samples": 1000
+  }
+}

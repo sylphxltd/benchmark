@@ -1,0 +1,15 @@
+{
+  "library": "Solid Signals",
+  "libraryId": "solid-js",
+  "packageName": "solid-js",
+  "test": "Extreme Write (10000x)",
+  "group": "06-performance-stress",
+  "timestamp": "2025-11-14T00:59:46.963Z",
+  "result": {
+    "opsPerSecond": 11312857.062226726,
+    "meanTime": 0.0000883949999986271,
+    "variance": 0.000002089558597569688,
+    "p99": 0.0004999999998744897,
+    "samples": 1000
+  }
+}

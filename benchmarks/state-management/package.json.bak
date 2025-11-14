@@ -1,0 +1,22 @@
+{
+  "name": "@benchmark-hub/state-management",
+  "version": "1.0.0",
+  "description": "State management library benchmarks",
+  "private": true,
+  "type": "module",
+  "scripts": {
+    "benchmark": "bun run index.ts"
+  },
+  "dependencies": {
+    "@preact/signals": "^2.4.0",
+    "@reduxjs/toolkit": "^2.10.1",
+    "@sylphx/zen": "^3.7.0",
+    "jotai": "^2.15.1",
+    "mobx": "^6.15.0",
+    "react": "^18.3.1",
+    "react-dom": "^18.3.1",
+    "solid-js": "^1.9.10",
+    "valtio": "^2.2.0",
+    "zustand": "^5.0.8"
+  }
+}

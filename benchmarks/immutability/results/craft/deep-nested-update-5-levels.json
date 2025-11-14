@@ -4,12 +4,12 @@
   "packageName": "@sylphx/craft",
   "test": "Deep Nested Update (5 levels)",
   "group": "04-deep-operations",
-  "timestamp": "2025-11-14T05:46:05.268Z",
+  "timestamp": "2025-11-14T03:28:43.588Z",
   "result": {
-    "opsPerSecond": 377565.07111184124,
-    "meanTime": 0.0027146699999775594,
-    "variance": 4.108842033176859e-7,
-    "p99": 0.0048996099995747494,
+    "opsPerSecond": 502016.60068501823,
+    "meanTime": 0.001991965999999735,
+    "variance": 8.434159227669577e-7,
+    "p99": 0.005457999999975982,
     "samples": 1000
   }
 }

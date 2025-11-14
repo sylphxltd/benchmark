@@ -1,0 +1,25 @@
+[33mBenchmarking is an experimental feature.
+Breaking changes might not follow SemVer, please pin Vitest's version when using it.[39m
+
+[1m[46m RUN [49m[22m [36mv4.0.8 [39m[90m/Users/kyle/benchmark-state/benchmarks/state-management[39m
+
+
+[1m[46m BENCH [49m[22m [36mSummary
+[39m
+  read single value[2m - zen-benchmark.bench.ts[2m > [22m[2mZen State Management Benchmarks[2m > [22m[2mSingle Read[22m
+
+  read 100 times[2m - zen-benchmark.bench.ts[2m > [22m[2mZen State Management Benchmarks[2m > [22m[2mModerate Read (100x)[22m
+
+  write single value[2m - zen-benchmark.bench.ts[2m > [22m[2mZen State Management Benchmarks[2m > [22m[2mSingle Write[22m
+
+  access computed value[2m - zen-benchmark.bench.ts[2m > [22m[2mZen State Management Benchmarks[2m > [22m[2mComputed Value Access[22m
+
+  batch 10 updates[2m - zen-benchmark.bench.ts[2m > [22m[2mZen State Management Benchmarks[2m > [22m[2mBatch Updates[22m
+
+  read nested property[2m - zen-benchmark.bench.ts[2m > [22m[2mZen State Management Benchmarks[2m > [22m[2mNested State Read[22m
+
+  read array item[2m - zen-benchmark.bench.ts[2m > [22m[2mZen State Management Benchmarks[2m > [22m[2mArray Operations[22m
+[32m    NaNx [39m[90mfaster than [39mupdate array
+
+  create and read from 5 stores[2m - zen-benchmark.bench.ts[2m > [22m[2mZen State Management Benchmarks[2m > [22m[2mMultiple Stores[22m
+

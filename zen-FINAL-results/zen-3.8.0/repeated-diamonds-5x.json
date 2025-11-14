@@ -1,0 +1,15 @@
+{
+  "library": "Zen",
+  "libraryId": "zen",
+  "packageName": "@sylphx/zen",
+  "test": "Repeated Diamonds (5x)",
+  "group": "07-reactivity-patterns",
+  "timestamp": "2025-11-14T01:24:44.444Z",
+  "result": {
+    "opsPerSecond": 3686500.0368649303,
+    "meanTime": 0.00027126000000000515,
+    "variance": 1.1085710750754997e-7,
+    "p99": 0.0010830000000012774,
+    "samples": 1000
+  }
+}

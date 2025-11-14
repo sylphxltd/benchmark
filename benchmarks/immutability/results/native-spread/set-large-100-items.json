@@ -1,0 +1,15 @@
+{
+  "library": "Native Spread",
+  "libraryId": "native-spread",
+  "packageName": "native",
+  "test": "Set - Large (100 items)",
+  "group": "07-map-set",
+  "timestamp": "2025-11-14T03:28:43.588Z",
+  "result": {
+    "opsPerSecond": 805311.8368761003,
+    "meanTime": 0.0012417549999998983,
+    "variance": 0.0001473183805795503,
+    "p99": 0.0019579999999450592,
+    "samples": 1000
+  }
+}

@@ -1,0 +1,15 @@
+{
+  "library": "Zen",
+  "libraryId": "zen",
+  "packageName": "@sylphx/zen",
+  "test": "Heavy Write (1000x)",
+  "group": "02-basic-write",
+  "timestamp": "2025-11-14T01:24:34.081Z",
+  "result": {
+    "opsPerSecond": 20494743.09838935,
+    "meanTime": 0.00004879300000001407,
+    "variance": 9.099984135144832e-9,
+    "p99": 0.0002080000000006521,
+    "samples": 1000
+  }
+}

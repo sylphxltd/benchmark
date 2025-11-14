@@ -197,6 +197,24 @@ export type PerformanceTestFunction<TStore = any> = (
 ) => void | Promise<void>;
 
 /**
+ * Lifecycle hooks for performance tests
+ */
+export interface PerformanceTestHooks<TStore = any> {
+  /** Run before each benchmark iteration */
+  beforeEach?: (ctx: TestContext<TStore>) => void | Promise<void>;
+  /** Run after each benchmark iteration */
+  afterEach?: (ctx: TestContext<TStore>) => void | Promise<void>;
+}
+
+/**
+ * Performance test with lifecycle hooks
+ */
+export interface PerformanceTestWithHooks<TStore = any> extends PerformanceTestHooks<TStore> {
+  /** The test function to benchmark */
+  fn: PerformanceTestFunction<TStore>;
+}
+
+/**
  * Measurement function for size/memory/custom metrics
  */
 export type MeasurementFunction<TStore = any> = (
@@ -225,10 +243,14 @@ export interface BuildResult {
 export type TestImplementation<TStore = any> =
   // Legacy: Plain function = performance test
   | PerformanceTestFunction<TStore>
+  // NEW: Performance test with lifecycle hooks
+  | PerformanceTestWithHooks<TStore>
   // Explicit type with function
   | {
       type: 'performance';
       run: PerformanceTestFunction<TStore>;
+      beforeEach?: (ctx: TestContext<TStore>) => void | Promise<void>;
+      afterEach?: (ctx: TestContext<TStore>) => void | Promise<void>;
     }
   | {
       type: 'size';

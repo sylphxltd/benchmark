@@ -1,0 +1,15 @@
+{
+  "library": "MobX",
+  "libraryId": "mobx",
+  "packageName": "mobx",
+  "test": "Complex Form (nested + array)",
+  "group": "05-real-world",
+  "timestamp": "2025-11-14T00:59:46.963Z",
+  "result": {
+    "opsPerSecond": 1631757.9254509264,
+    "meanTime": 0.0006128359999989925,
+    "variance": 4.540954405463232e-7,
+    "p99": 0.0025000000000545697,
+    "samples": 1000
+  }
+}

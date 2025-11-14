@@ -1,0 +1,15 @@
+{
+  "library": "Preact Signals",
+  "libraryId": "preact-signals",
+  "packageName": "@preact/signals",
+  "test": "Concurrent Updates (50x)",
+  "group": "04-async-operations",
+  "timestamp": "2025-11-14T00:59:46.963Z",
+  "result": {
+    "opsPerSecond": 173387.09257933547,
+    "meanTime": 0.005767442000000301,
+    "variance": 0.00037802056976039085,
+    "p99": 0.009625000000028194,
+    "samples": 1000
+  }
+}

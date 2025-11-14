@@ -1,0 +1,15 @@
+{
+  "library": "Zustand",
+  "libraryId": "zustand",
+  "packageName": "zustand",
+  "test": "Extreme Read (10000x)",
+  "group": "06-performance-stress",
+  "timestamp": "2025-11-14T00:59:46.963Z",
+  "result": {
+    "opsPerSecond": 14484776.499497788,
+    "meanTime": 0.0000690380000019104,
+    "variance": 5.8089558115410586e-8,
+    "p99": 0.0002500000000509317,
+    "samples": 1000
+  }
+}

@@ -1,0 +1,15 @@
+{
+  "library": "Redux Toolkit",
+  "libraryId": "redux-toolkit",
+  "packageName": "@reduxjs/toolkit",
+  "test": "Deep Diamond (5 layers)",
+  "group": "07-reactivity-patterns",
+  "timestamp": "2025-11-14T00:59:46.963Z",
+  "result": {
+    "opsPerSecond": 59317.12817073011,
+    "meanTime": 0.01685853700000007,
+    "variance": 0.0009145114041412,
+    "p99": 0.021749999999883585,
+    "samples": 1000
+  }
+}

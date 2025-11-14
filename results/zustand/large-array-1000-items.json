@@ -1,0 +1,15 @@
+{
+  "library": "Zustand",
+  "libraryId": "zustand",
+  "packageName": "zustand",
+  "test": "Large Array (1000 items)",
+  "group": "06-performance-stress",
+  "timestamp": "2025-11-14T00:59:46.963Z",
+  "result": {
+    "opsPerSecond": 126172.83963079979,
+    "meanTime": 0.007925635999999259,
+    "variance": 0.00020089528382126264,
+    "p99": 0.011874999999918145,
+    "samples": 1000
+  }
+}

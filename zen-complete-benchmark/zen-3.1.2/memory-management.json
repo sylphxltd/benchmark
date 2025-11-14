@@ -1,0 +1,15 @@
+{
+  "library": "Zen",
+  "libraryId": "zen",
+  "packageName": "@sylphx/zen",
+  "test": "Memory Management",
+  "group": "05-real-world",
+  "timestamp": "2025-11-14T01:52:02.929Z",
+  "result": {
+    "opsPerSecond": 188142.11728742262,
+    "meanTime": 0.005315130999999916,
+    "variance": 0.000015532015018858678,
+    "p99": 0.014082999999999402,
+    "samples": 1000
+  }
+}

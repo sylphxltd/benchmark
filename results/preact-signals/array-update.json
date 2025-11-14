@@ -1,0 +1,15 @@
+{
+  "library": "Preact Signals",
+  "libraryId": "preact-signals",
+  "packageName": "@preact/signals",
+  "test": "Array Update",
+  "group": "03-advanced-operations",
+  "timestamp": "2025-11-14T00:59:46.963Z",
+  "result": {
+    "opsPerSecond": 6904551.480294805,
+    "meanTime": 0.0001448320000008607,
+    "variance": 1.234777715473417e-7,
+    "p99": 0.0005830000000059954,
+    "samples": 1000
+  }
+}

@@ -1,0 +1,15 @@
+{
+  "library": "Solid Signals",
+  "libraryId": "solid-js",
+  "packageName": "solid-js",
+  "test": "Nested Object Update",
+  "group": "03-advanced-operations",
+  "timestamp": "2025-11-14T00:59:46.963Z",
+  "result": {
+    "opsPerSecond": 4262047.743457306,
+    "meanTime": 0.00023462900000008346,
+    "variance": 2.243134493528806e-9,
+    "p99": 0.00033299999999769625,
+    "samples": 1000
+  }
+}

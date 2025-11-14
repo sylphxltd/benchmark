@@ -1,0 +1,15 @@
+{
+  "library": "Zen",
+  "libraryId": "zen",
+  "packageName": "@sylphx/zen",
+  "test": "Extreme Read (10000x)",
+  "group": "06-performance-stress",
+  "timestamp": "2025-11-14T00:59:46.963Z",
+  "result": {
+    "opsPerSecond": 6678197.687868265,
+    "meanTime": 0.0001497410000031323,
+    "variance": 0.0000016058863142298291,
+    "p99": 0.0006250000001273293,
+    "samples": 1000
+  }
+}

@@ -1,0 +1,15 @@
+{
+  "library": "Zustand",
+  "libraryId": "zustand",
+  "packageName": "zustand",
+  "test": "Single Write",
+  "group": "02-basic-write",
+  "timestamp": "2025-11-14T00:59:46.963Z",
+  "result": {
+    "opsPerSecond": 4991962.939665722,
+    "meanTime": 0.00020032200000005674,
+    "variance": 1.9341104936526065e-7,
+    "p99": 0.0011669999999952552,
+    "samples": 1000
+  }
+}

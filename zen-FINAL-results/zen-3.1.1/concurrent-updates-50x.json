@@ -1,0 +1,15 @@
+{
+  "library": "Zen",
+  "libraryId": "zen",
+  "packageName": "@sylphx/zen",
+  "test": "Concurrent Updates (50x)",
+  "group": "04-async-operations",
+  "timestamp": "2025-11-14T01:24:31.790Z",
+  "result": {
+    "opsPerSecond": 132508.67004228503,
+    "meanTime": 0.007546675999999764,
+    "variance": 0.000008213097979003441,
+    "p99": 0.020625000000002558,
+    "samples": 1000
+  }
+}

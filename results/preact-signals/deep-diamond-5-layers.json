@@ -1,0 +1,15 @@
+{
+  "library": "Preact Signals",
+  "libraryId": "preact-signals",
+  "packageName": "@preact/signals",
+  "test": "Deep Diamond (5 layers)",
+  "group": "07-reactivity-patterns",
+  "timestamp": "2025-11-14T00:59:46.963Z",
+  "result": {
+    "opsPerSecond": 6381254.427000784,
+    "meanTime": 0.0001567089999998643,
+    "variance": 1.4105042673811718e-7,
+    "p99": 0.0009169999998448475,
+    "samples": 1000
+  }
+}

@@ -1,0 +1,15 @@
+{
+  "library": "Redux Toolkit",
+  "libraryId": "redux-toolkit",
+  "packageName": "@reduxjs/toolkit",
+  "test": "High-Frequency Read (1000x)",
+  "group": "01-basic-read",
+  "timestamp": "2025-11-14T00:59:46.963Z",
+  "result": {
+    "opsPerSecond": 28247789.61047413,
+    "meanTime": 0.00003540099999998603,
+    "variance": 1.637270890792058e-8,
+    "p99": 0.00012500000000414957,
+    "samples": 1000
+  }
+}

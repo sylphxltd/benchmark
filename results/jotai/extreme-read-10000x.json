@@ -1,0 +1,15 @@
+{
+  "library": "Jotai",
+  "libraryId": "jotai",
+  "packageName": "jotai",
+  "test": "Extreme Read (10000x)",
+  "group": "06-performance-stress",
+  "timestamp": "2025-11-14T00:59:46.963Z",
+  "result": {
+    "opsPerSecond": 2911971.11325663,
+    "meanTime": 0.00034340999999881203,
+    "variance": 0.0000019566352451578224,
+    "p99": 0.002167000000099506,
+    "samples": 1000
+  }
+}

@@ -1,0 +1,15 @@
+{
+  "library": "SolidJS Router",
+  "libraryId": "@solidjs/router",
+  "packageName": "@solidjs/router",
+  "test": "Dynamic Route Matching (1 param)",
+  "group": "02-dynamic-routes",
+  "timestamp": "2025-11-14T03:37:28.211Z",
+  "result": {
+    "opsPerSecond": 2573194.518069423,
+    "meanTime": 0.00038862199999954326,
+    "variance": 6.291250762352904e-8,
+    "p99": 0.0013749999999959073,
+    "samples": 1000
+  }
+}

@@ -1,0 +1,15 @@
+{
+  "library": "React Router",
+  "libraryId": "react-router-dom",
+  "packageName": "react-router-dom",
+  "test": "Dynamic Route Matching (1 param)",
+  "group": "02-dynamic-routes",
+  "timestamp": "2025-11-14T03:37:28.211Z",
+  "result": {
+    "opsPerSecond": 46529.84812983256,
+    "meanTime": 0.02149158100000011,
+    "variance": 0.0002520098319093415,
+    "p99": 0.029583999999999833,
+    "samples": 1000
+  }
+}

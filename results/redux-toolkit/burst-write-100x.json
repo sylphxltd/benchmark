@@ -1,0 +1,15 @@
+{
+  "library": "Redux Toolkit",
+  "libraryId": "redux-toolkit",
+  "packageName": "@reduxjs/toolkit",
+  "test": "Burst Write (100x)",
+  "group": "02-basic-write",
+  "timestamp": "2025-11-14T00:59:46.963Z",
+  "result": {
+    "opsPerSecond": 284815.5705254713,
+    "meanTime": 0.0035110439999998847,
+    "variance": 4.5130674480852945e-7,
+    "p99": 0.0062080000000008795,
+    "samples": 1000
+  }
+}

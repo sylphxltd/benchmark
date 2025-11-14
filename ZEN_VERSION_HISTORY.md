@@ -6,32 +6,66 @@ This document tracks Zen's performance across versions to monitor improvements a
 
 | Version | Release Date | Hybrid Score | Variance Score | Rank | Bundle (gzipped) | vs Previous | Notes |
 |---------|-------------|--------------|----------------|------|------------------|-------------|-------|
-| **3.2.0** | 2025-11-14 | **85.5/100** | **83.4/100** | 🥇 #1 | **1.93 KB** | Same performance, +0.27 KB | ✅ Maintains #1, slight bundle increase |
-| 3.1.1 | 2025-11-13 | 85.5/100 | 83.4/100 | 🥇 #1 | 1.66 KB | - | Fixed dist files, stable performance |
+| **3.3.0** | 2025-11-14 | **56.8/100** | **52.4/100** | 🥈 #2 / #5 | **1.985 KB** | +0.0 hybrid, +0.0 variance, +0.055 KB | ⚠️ **NO FIX** - Same as 3.2.0 |
+| 3.2.0 | 2025-11-14 | 56.8/100 | 52.4/100 | ⬇️ #2 → #5 | 1.93 KB | -28.7 hybrid, -31.0 variance, +0.27 KB | ⚠️ **MAJOR REGRESSION** - DO NOT UPGRADE |
+| 3.1.1 | 2025-11-13 | 85.5/100 | 83.4/100 | 🥇 #1 | 1.66 KB | - | ✅ STABLE - Recommended version |
 | 3.1.0 | 2025-11-13 | - | - | - | - | - | ⚠️ Broken release (missing dist files) |
 | 3.0.0 | 2025-11-12 | - | ~80/100 | 🥇 #1 | ~1.6 KB | Major upgrade | Major performance improvements |
 | 2.0.0 | Earlier | - | ~65/100 | #2-3 | ~1.2 KB | - | Previous stable version |
 
 ## Detailed Version Analysis
 
-### 3.2.0 (Current - 2025-11-14)
+### 3.3.0 (Current - 2025-11-14) ⚠️ NO FIX
+
+**⚠️ Same performance as 3.2.0 - Regression not fixed**
 
 **Overall Performance:**
-- Hybrid Weighted Score: **85.5/100** (primary metric)
-- Variance-Based Score: **83.4/100** (reference)
-- **Rank: 🥇 #1** - Outperforms Solid Signals by 15% (85.5 vs 74.5)
+- Hybrid Weighted Score: **56.8/100** (primary metric)
+- Variance-Based Score: **52.4/100** (reference)
+- **Rank: 🥈 #2 (hybrid) / #5 (variance)** - Lost #1 position to Solid Signals
+- Bundle Size: **1.985 KB** (gzipped) - up from 1.93 KB in 3.2.0
+
+**Performance vs 3.2.0:**
+- Hybrid Score: 56.8 vs 56.8 (**0.0 points change, 0.0% change**)
+- Variance Score: 52.4 vs 52.4 (**0.0 points change, 0.0% change**)
+- Rank: Same #2 (hybrid), Same #5 (variance)
+- Bundle: 1.985 KB vs 1.93 KB (+0.055 KB / +2.8%)
+
+**Performance vs 3.1.1 (Still Regressed):**
+- Hybrid Score: 56.8 vs 85.5 (**-28.7 points, -33.5% regression**)
+- Variance Score: 52.4 vs 83.4 (**-31.0 points, -37.2% regression**)
+- Rank: ⬇️ #1 → #2 (hybrid), #1 → #5 (variance)
+- Bundle: 1.985 KB vs 1.66 KB (+0.325 KB / +19.6%)
+
+**Summary:**
+❌ **Regression persists** - performance identical to 3.2.0
+⚠️ **Bundle size increased further** by 55 bytes from 3.2.0 (325 bytes total from 3.1.1)
+⬇️ **Still #2/#5** - no improvement over 3.2.0
+🚫 **Recommendation**: Revert to 3.1.1 immediately
+
+---
+
+### 3.2.0 (2025-11-14) ⚠️ MAJOR REGRESSION
+
+**⛔ DO NOT UPGRADE - Performance regression detected**
+
+**Overall Performance:**
+- Hybrid Weighted Score: **56.8/100** (primary metric)
+- Variance-Based Score: **52.4/100** (reference)
+- **Rank: ⬇️ #2 (hybrid) / #5 (variance)** - Lost #1 position to Solid Signals
 - Bundle Size: **1.93 KB** (gzipped) - up from 1.66 KB in 3.1.1
 
-**Performance vs 3.1.1:**
-- Hybrid Score: 85.5 vs 85.5 (**identical**)
-- Variance Score: 83.4 vs 83.4 (**identical**)
-- Rank: 🥇 #1 (maintained)
+**Performance vs 3.1.1 (REGRESSION):**
+- Hybrid Score: 56.8 vs 85.5 (**-28.7 points, -33.5% regression**)
+- Variance Score: 52.4 vs 83.4 (**-31.0 points, -37.2% regression**)
+- Rank: ⬇️ #1 → #2 (hybrid), #1 → #5 (variance)
 - Bundle: 1.93 KB vs 1.66 KB (+0.27 KB / +16.4%)
 
 **Summary:**
-✅ **Performance identical** - same benchmark results as 3.1.1
-⚠️ **Bundle size increased** by 279 bytes (16.4%) - still very competitive at 1.93 KB
-🥇 **#1 ranking maintained** - continues to significantly outperform all competitors
+❌ **CRITICAL PERFORMANCE REGRESSION** - massive performance loss across all metrics
+⚠️ **Bundle size increased** by 279 bytes (16.4%)
+⬇️ **Lost #1 ranking** - now trails Solid Signals by 21 points (56.8 vs 77.8)
+🚫 **Recommendation**: Revert to 3.1.1 immediately
 
 **Key Strengths:**
 - Basic read operations (35% weight): Excellent performance

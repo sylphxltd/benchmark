@@ -1,0 +1,15 @@
+{
+  "library": "Zen",
+  "libraryId": "zen",
+  "packageName": "@sylphx/zen",
+  "test": "Batch Write (10x)",
+  "group": "02-basic-write",
+  "timestamp": "2025-11-14T01:52:02.929Z",
+  "result": {
+    "opsPerSecond": 9073010.515619004,
+    "meanTime": 0.00011021700000000223,
+    "variance": 3.789579971068768e-8,
+    "p99": 0.00037499999999823785,
+    "samples": 1000
+  }
+}

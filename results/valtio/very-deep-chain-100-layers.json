@@ -1,0 +1,15 @@
+{
+  "library": "Valtio",
+  "libraryId": "valtio",
+  "packageName": "valtio",
+  "test": "Very Deep Chain (100 layers)",
+  "group": "07-reactivity-patterns",
+  "timestamp": "2025-11-14T00:59:46.963Z",
+  "result": {
+    "opsPerSecond": 511105.55709816003,
+    "meanTime": 0.0019565429999970547,
+    "variance": 0.0000015041332233649057,
+    "p99": 0.005499999999756255,
+    "samples": 1000
+  }
+}

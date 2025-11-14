@@ -1,0 +1,15 @@
+{
+  "library": "React Router",
+  "libraryId": "react-router-dom",
+  "packageName": "react-router-dom",
+  "test": "Optional Parameter Route (without param)",
+  "group": "03-advanced-routes",
+  "timestamp": "2025-11-14T03:37:28.211Z",
+  "result": {
+    "opsPerSecond": 43935.75625848357,
+    "meanTime": 0.02276050500000008,
+    "variance": 0.0001630712507346985,
+    "p99": 0.031125000000002956,
+    "samples": 1000
+  }
+}

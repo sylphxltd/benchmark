@@ -1,0 +1,15 @@
+{
+  "library": "Redux Toolkit",
+  "libraryId": "redux-toolkit",
+  "packageName": "@reduxjs/toolkit",
+  "test": "Computed Value Access",
+  "group": "03-advanced-operations",
+  "timestamp": "2025-11-14T00:59:46.963Z",
+  "result": {
+    "opsPerSecond": 2691239.477254846,
+    "meanTime": 0.00037157599999983404,
+    "variance": 1.9736388811261495e-7,
+    "p99": 0.0011660000000119908,
+    "samples": 1000
+  }
+}

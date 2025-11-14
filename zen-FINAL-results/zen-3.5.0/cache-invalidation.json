@@ -1,0 +1,15 @@
+{
+  "library": "Zen",
+  "libraryId": "zen",
+  "packageName": "@sylphx/zen",
+  "test": "Cache Invalidation",
+  "group": "05-real-world",
+  "timestamp": "2025-11-14T01:24:42.033Z",
+  "result": {
+    "opsPerSecond": 12684077.677303933,
+    "meanTime": 0.00007883899999992394,
+    "variance": 4.0786915994966606e-8,
+    "p99": 0.0003330000000048017,
+    "samples": 1000
+  }
+}

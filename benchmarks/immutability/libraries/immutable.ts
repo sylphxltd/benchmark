@@ -1,128 +1,164 @@
 /**
- * Immutable.js Library Implementation
+ * Immutable.js Library Benchmark
+ *
+ * Using Immutable.js's custom data structures and methods
+ * Supports: Most operations except JSON patches (uses own data structures)
  */
 
-import { Map as ImmutableMap, List as ImmutableList, fromJS } from 'immutable';
+import { Map, List, Set, fromJS, Range } from 'immutable';
 import { category, tests } from '../index';
 
-// ============================================================================
-// Register Library
-// ============================================================================
-
-const immutable = category.registerLibrary<any>({
+// Register library
+const immutableLib = category.registerLibrary({
   id: 'immutable',
   displayName: 'Immutable.js',
   packageName: 'immutable',
   githubUrl: 'https://github.com/immutable-js/immutable-js',
-  description: 'Immutable persistent data collections for JavaScript',
-
+  description: 'Facebook\'s immutable data structures with persistent data structures',
   setup: {
     createStore: () => ({}),
   },
-
-  features: [],
 });
 
 // ============================================================================
-// Implement Tests
+// Test Data Setup (converted to Immutable.js structures)
 // ============================================================================
 
-// Simple Updates
-immutable.implement(tests.simpleObjectUpdate, () => {
-  const simpleObject = { count: 0, name: 'test', value: 100 };
-  const map = ImmutableMap(simpleObject);
-  const result = map.set('count', (map.get('count') as number) + 1);
-});
-
-// Nested Updates
-immutable.implement(tests.nestedObjectUpdate, () => {
-  const nestedObject = {
-    user: {
-      profile: {
+const simpleObject = Map({ name: 'John', age: 30, active: true });
+const nestedObject = fromJS({
+  user: {
+    profile: {
+      details: {
         name: 'John',
         age: 30,
-        address: {
-          city: 'New York',
-          country: 'USA',
-        },
       },
     },
-  };
-  const map = fromJS(nestedObject);
-  const result = map.setIn(
-    ['user', 'profile', 'age'],
-    map.getIn(['user', 'profile', 'age']) + 1
-  );
+  },
 });
-
-// Array Operations
-immutable.implement(tests.arrayPush, () => {
-  const arr = [1, 2, 3, 4, 5];
-  const list = ImmutableList(arr);
-  const result = list.push(6);
-});
-
-immutable.implement(tests.arrayRemove, () => {
-  const arr = [1, 2, 3, 4, 5];
-  const list = ImmutableList(arr);
-  const result = list.delete(2);
-});
-
-immutable.implement(tests.arrayUpdate, () => {
-  const arr = [
-    { id: 1, value: 10 },
-    { id: 2, value: 20 },
-    { id: 3, value: 30 },
-  ];
-  const list = fromJS(arr);
-  const result = list.setIn([1, 'value'], 25);
-});
-
-// Deep Operations
-immutable.implement(tests.deepNestedUpdate, () => {
-  const deepObject = {
-    level1: {
-      level2: {
-        level3: {
-          level4: {
-            level5: {
-              value: 0,
-            },
+const arrayOfObjects = List(Range(0, 10).map(i => Map({ id: i, value: `item-${i}` })));
+const deepObject = fromJS({
+  level1: {
+    level2: {
+      level3: {
+        level4: {
+          level5: {
+            value: 42,
           },
         },
       },
     },
-  };
-  const map = fromJS(deepObject);
-  const result = map.setIn(['level1', 'level2', 'level3', 'level4', 'level5', 'value'], 42);
+  },
+});
+const largeArray = List(Range(0, 1000).map(i => Map({ id: i, value: `item-${i}` })));
+const mapData = Map(Range(0, 10).map(i => [`key-${i}`, Map({ value: i })]).toArray());
+const setData = Set(Range(0, 10).map(i => `item-${i}`));
+const largeMap = Map(Range(0, 100).map(i => [`key-${i}`, Map({ value: i })]).toArray());
+const largeSet = Set(Range(0, 100).map(i => `item-${i}`));
+
+// ============================================================================
+// Simple Updates
+// ============================================================================
+
+immutableLib.implement(tests.simpleObjectUpdate, () => {
+  const state = simpleObject;
+  return state.set('age', 31);
 });
 
-immutable.implement(tests.multipleUpdates, () => {
-  const nestedObject = {
-    user: {
-      profile: {
-        name: 'John',
-        age: 30,
-        address: {
-          city: 'New York',
-          country: 'USA',
-        },
-      },
-    },
-  };
-  const map = fromJS(nestedObject);
-  const result = map
-    .setIn(['user', 'profile', 'name'], 'Jane')
-    .setIn(['user', 'profile', 'age'], 25)
-    .setIn(['user', 'profile', 'address', 'city'], 'San Francisco');
+// ============================================================================
+// Nested Updates
+// ============================================================================
+
+immutableLib.implement(tests.nestedObjectUpdate, () => {
+  const state = nestedObject;
+  return state.setIn(['user', 'profile', 'details', 'age'], 31);
 });
 
+// ============================================================================
+// Array Operations
+// ============================================================================
+
+immutableLib.implement(tests.arrayPush, () => {
+  const state = arrayOfObjects;
+  return state.push(Map({ id: state.size, value: `item-${state.size}` }));
+});
+
+immutableLib.implement(tests.arrayRemove, () => {
+  const state = arrayOfObjects;
+  return state.delete(5);
+});
+
+immutableLib.implement(tests.arrayUpdate, () => {
+  const state = arrayOfObjects;
+  return state.setIn([5, 'value'], 'updated');
+});
+
+// ============================================================================
+// Deep Operations
+// ============================================================================
+
+immutableLib.implement(tests.deepNestedUpdate, () => {
+  const state = deepObject;
+  return state.setIn(['level1', 'level2', 'level3', 'level4', 'level5', 'value'], 100);
+});
+
+immutableLib.implement(tests.multipleUpdates, () => {
+  const state = fromJS({ a: 1, b: 2, c: 3, nested: { x: 10, y: 20 } });
+  return state
+    .set('a', 10)
+    .set('b', 20)
+    .setIn(['nested', 'x'], 100);
+});
+
+// ============================================================================
 // Large Scale
-immutable.implement(tests.largeArrayUpdate, () => {
-  const largeArray = Array.from({ length: 1000 }, (_, i) => ({
-    id: i,
-    value: i * 2,
-  }));
-  const list = fromJS(largeArray);
-  const result = list.setIn([500, 'value'], list.getIn([500, 'value']) + 1);
+// ============================================================================
+
+immutableLib.implement(tests.largeArrayUpdate, () => {
+  const state = largeArray;
+  return state.setIn([500, 'value'], 'updated');
+});
+
+// ============================================================================
+// Patches (Not supported by Immutable.js - using skip pattern)
+// ============================================================================
+
+// Immutable.js doesn't support JSON patches, so we skip these tests
+// by not registering them. The framework will handle this gracefully.
+
+// ============================================================================
+// Map & Set Operations (Feature-Specific)
+// ============================================================================
+
+immutableLib.implement(tests.mapSet, () => {
+  const state = mapData;
+  return state.set('new-key', Map({ value: 999 }));
+});
+
+immutableLib.implement(tests.mapUpdate, () => {
+  const state = mapData;
+  return state.updateIn(['key-5', 'value'], () => 999);
+});
+
+immutableLib.implement(tests.setAdd, () => {
+  const state = setData;
+  return state.add('new-item');
+});
+
+immutableLib.implement(tests.setDelete, () => {
+  const state = setData;
+  return state.delete('item-5');
+});
+
+immutableLib.implement(tests.mapLarge, () => {
+  const state = largeMap;
+  return state
+    .set('key-50', Map({ value: 999 }))
+    .updateIn(['key-25', 'value'], () => 1000);
+});
+
+immutableLib.implement(tests.setLarge, () => {
+  const state = largeSet;
+  return state
+    .delete('item-50')
+    .add('new-item');
 });

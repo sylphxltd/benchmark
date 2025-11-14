@@ -1,0 +1,15 @@
+{
+  "library": "Jotai",
+  "libraryId": "jotai",
+  "packageName": "jotai",
+  "test": "Very Deep Chain (100 layers)",
+  "group": "07-reactivity-patterns",
+  "timestamp": "2025-11-14T00:59:46.963Z",
+  "result": {
+    "opsPerSecond": 13131.084345381007,
+    "meanTime": 0.07615517299999373,
+    "variance": 0.0017800653089935802,
+    "p99": 0.09366700000009587,
+    "samples": 1000
+  }
+}

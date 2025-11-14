@@ -1,0 +1,15 @@
+{
+  "library": "Solid Signals",
+  "libraryId": "solid-js",
+  "packageName": "solid-js",
+  "test": "Cache Invalidation",
+  "group": "05-real-world",
+  "timestamp": "2025-11-14T00:59:46.963Z",
+  "result": {
+    "opsPerSecond": 14980824.544440778,
+    "meanTime": 0.00006675200000063342,
+    "variance": 3.818484333918547e-8,
+    "p99": 0.00041699999997035775,
+    "samples": 1000
+  }
+}

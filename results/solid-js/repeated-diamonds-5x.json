@@ -1,0 +1,15 @@
+{
+  "library": "Solid Signals",
+  "libraryId": "solid-js",
+  "packageName": "solid-js",
+  "test": "Repeated Diamonds (5x)",
+  "group": "07-reactivity-patterns",
+  "timestamp": "2025-11-14T00:59:46.963Z",
+  "result": {
+    "opsPerSecond": 2421665.1854318287,
+    "meanTime": 0.0004129389999970954,
+    "variance": 1.3497683211419333e-7,
+    "p99": 0.0010420000003250607,
+    "samples": 1000
+  }
+}

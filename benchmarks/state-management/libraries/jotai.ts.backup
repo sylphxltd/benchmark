@@ -1,0 +1,521 @@
+/**
+ * Jotai (Atom-based) Implementation
+ * Uses Jotai's atom-based reactive system
+ */
+
+import { atom, createStore } from 'jotai';
+import { category, tests } from '../index';
+
+const library = category.registerLibrary({
+  id: 'jotai',
+  displayName: 'Jotai',
+  packageName: 'jotai',
+  githubUrl: 'https://github.com/pmndrs/jotai',
+  description: 'Atom-based state management',
+  setup: {
+    createStore: () => ({}),
+  },
+});
+
+// Create a store for imperative access
+const store = createStore();
+
+// ============================================================================
+// State Setup
+// ============================================================================
+
+// Basic counter atom
+const counterAtom = atom(0);
+
+// Nested object structure
+const nestedObjectAtom = atom({
+  level1: {
+    level2: {
+      level3: {
+        value: 0,
+      },
+    },});
+
+// Array for operations
+const itemsArrayAtom = atom<Array<{ id: number; name: string; value: number }>>([]);
+
+// Computed atom based on counter
+const doubledCounterAtom = atom((get) => get(counterAtom) * 2);
+
+// Form state
+const formStateAtom = atom({
+  username: '',
+  email: '',
+  age: 0,
+  profile: {
+    bio: '',
+    interests: [] as string[],});
+
+// ============================================================================
+// BASIC READ TESTS
+// ============================================================================
+
+library.addTest(tests.singleRead, {
+  name: 'Single Read',
+  fn: () => {
+    return store.get(counterAtom);});
+
+library.addTest(tests.moderateRead, {
+  name: 'Moderate Read (100x)',
+  fn: () => {
+    let sum = 0;
+    for (let i = 0; i < 100; i++) {
+      sum += store.get(counterAtom);
+    }
+    return sum;});
+
+library.addTest(tests.highFrequencyRead, {
+  name: 'High-Frequency Read (1000x)',
+  fn: () => {
+    let sum = 0;
+    for (let i = 0; i < 1000; i++) {
+      sum += store.get(counterAtom);
+    }
+    return sum;});
+
+// ============================================================================
+// BASIC WRITE TESTS
+// ============================================================================
+
+library.addTest(tests.singleWrite, {
+  name: 'Single Write',
+  beforeEach: () => {
+    store.set(counterAtom, 0);
+  },
+  fn: () => {
+    store.set(counterAtom, (prev) => prev + 1);
+  },
+});
+
+library.addTest(tests.batchWrite, {
+  name: 'Batch Write (10x)',
+  beforeEach: () => {
+    store.set(counterAtom, 0);
+  },
+  fn: () => {
+    for (let i = 0; i < 10; i++) {
+      store.set(counterAtom, (prev) => prev + 1);
+    }
+  },
+});
+
+library.addTest(tests.burstWrite, {
+  name: 'Burst Write (100x)',
+  beforeEach: () => {
+    store.set(counterAtom, 0);
+  },
+  fn: () => {
+    for (let i = 0; i < 100; i++) {
+      store.set(counterAtom, (prev) => prev + 1);
+    }
+  },
+});
+
+library.addTest(tests.heavyWrite, {
+  name: 'Heavy Write (1000x)',
+  beforeEach: () => {
+    store.set(counterAtom, 0);
+  },
+  fn: () => {
+    for (let i = 0; i < 1000; i++) {
+      store.set(counterAtom, (prev) => prev + 1);
+    }
+  },
+});
+
+// ============================================================================
+// ADVANCED OPERATIONS
+// ============================================================================
+
+library.addTest(tests.nestedUpdate, {
+  name: 'Nested Object Update',
+  beforeEach: () => {
+    store.set(nestedObjectAtom, {
+      level1: {
+        level2: {
+          level3: {
+            value: 0,
+          },
+        },
+      },
+    });
+  },
+  fn: () => {
+    store.set(nestedObjectAtom, (prev) => ({
+      ...prev,
+      level1: {
+        ...prev.level1,
+        level2: {
+          ...prev.level1.level2,
+          level3: {
+            value: prev.level1.level2.level3.value + 1,
+          },
+        },
+      },
+    }));
+  },
+});
+
+library.addTest(tests.arrayPush, {
+  name: 'Array Push',
+  beforeEach: () => {
+    store.set(itemsArrayAtom, []);
+  },
+  fn: () => {
+    store.set(itemsArrayAtom, (prev) => [
+      ...prev,
+      { id: prev.length, name: `item-${prev.length}`, value: Math.random() },
+    ]);
+  },
+});
+
+library.addTest(tests.arrayUpdate, {
+  name: 'Array Update',
+  fn: () => {
+    store.set(itemsArrayAtom, (prev) => {
+      if (prev.length > 0) {
+        const index = Math.floor(prev.length / 2);
+        return prev.map((item, i) =>
+          i === index ? { ...item, value: item.value + 1 } : item
+        );
+      }
+      return prev;
+    });
+
+library.addTest(tests.computedValue, {
+  name: 'Computed Value Access',
+  fn: () => {
+    return store.get(doubledCounterAtom);});
+
+// ============================================================================
+// ASYNC OPERATIONS
+// ============================================================================
+
+library.addTest(tests.asyncThroughput, {
+  name: 'Async Throughput (20 ops)',
+  beforeEach: () => {
+    store.set(counterAtom, 0);
+  },
+  fn: async () => {
+    const promises = [];
+    for (let i = 0; i < 20; i++) {
+      promises.push(
+        new Promise<void>((resolve) => {
+          setTimeout(() => {
+            store.set(counterAtom, (prev) => prev + 1);
+            resolve();
+          }, 0);
+        })
+      );
+    }
+    await Promise.all(promises);
+  },
+});
+
+library.addTest(tests.concurrentUpdates, {
+  name: 'Concurrent Updates (50x)',
+  beforeEach: () => {
+    store.set(counterAtom, 0);
+  },
+  fn: async () => {
+    const promises = Array.from({ length: 50 }, (_, i) =>
+      Promise.resolve().then(() => {
+        store.set(counterAtom, i);
+      })
+    );
+    await Promise.all(promises);
+  },
+});
+
+// ============================================================================
+// REAL-WORLD SCENARIOS
+// ============================================================================
+
+library.addTest(tests.simpleForm, {
+  name: 'Simple Form (3 fields)',
+  beforeEach: () => {
+    store.set(formStateAtom, {
+      username: '',
+      email: '',
+      age: 0,
+      profile: {
+        bio: '',
+        interests: [],
+      },
+    });
+  },
+  fn: () => {
+    store.set(formStateAtom, (prev) => ({
+      ...prev,
+      username: 'user123',
+      email: 'user@example.com',
+      age: 25,
+    }));
+  },
+});
+
+library.addTest(tests.complexForm, {
+  name: 'Complex Form (nested + array)',
+  fn: () => {
+    store.set(formStateAtom, {
+      username: 'complexUser',
+      email: 'complex@example.com',
+      age: 30,
+      profile: {
+        bio: 'A detailed bio text',
+        interests: ['coding', 'music', 'gaming'],
+      },
+    });
+
+library.addTest(tests.cacheInvalidation, {
+  name: 'Cache Invalidation',
+  beforeEach: () => {
+    store.set(counterAtom, 0);
+  },
+  fn: () => {
+    // Update base value which should invalidate computed cache
+    store.set(counterAtom, (prev) => prev + 1);
+    // Access computed to trigger recomputation
+    return store.get(doubledCounterAtom);
+  },
+});
+
+library.addTest(tests.memoryUsage, {
+  name: 'Memory Management',
+  fn: () => {
+    const subscriptions: Array<() => void> = [];
+
+    // Create 100 subscribers
+    for (let i = 0; i < 100; i++) {
+      const unsubscribe = store.sub(counterAtom, () => {
+        // Subscriber callback
+      });
+      subscriptions.push(unsubscribe);
+    }
+
+    // Cleanup all subscribers
+    subscriptions.forEach((unsub) => unsub());});
+
+// ============================================================================
+// PERFORMANCE STRESS TESTS
+// ============================================================================
+
+library.addTest(tests.extremeRead, {
+  name: 'Extreme Read (10000x)',
+  fn: () => {
+    let sum = 0;
+    for (let i = 0; i < 10000; i++) {
+      sum += store.get(counterAtom);
+    }
+    return sum;});
+
+library.addTest(tests.extremeWrite, {
+  name: 'Extreme Write (10000x)',
+  beforeEach: () => {
+    store.set(counterAtom, 0);
+  },
+  fn: () => {
+    for (let i = 0; i < 10000; i++) {
+      store.set(counterAtom, (prev) => prev + 1);
+    }
+  },
+});
+
+library.addTest(tests.largeArray, {
+  name: 'Large Array (1000 items)',
+  fn: () => {
+    // Initialize large array if needed
+    const currentArray = store.get(itemsArrayAtom);
+    if (currentArray.length < 1000) {
+      const largeArray = Array.from({ length: 1000 }, (_, i) => ({
+        id: i,
+        name: `item-${i}`,
+        value: Math.random(),
+      }));
+      store.set(itemsArrayAtom, largeArray);
+    }
+
+    // Perform operation on large array
+    store.set(itemsArrayAtom, (prev) => {
+      const middleIndex = 500;
+      return prev.map((item, i) =>
+        i === middleIndex ? { ...item, value: item.value + 1 } : item
+      );
+    });
+
+// ============================================================================
+// REACTIVITY PATTERNS
+// ============================================================================
+
+// Diamond pattern: A -> B, C -> D
+const diamondA = atom(1);
+const diamondB = atom((get) => get(diamondA) * 2);
+const diamondC = atom((get) => get(diamondA) * 3);
+const diamondD = atom((get) => get(diamondB) + get(diamondC));
+
+library.addTest(tests.diamondPattern, {
+  name: 'Diamond Pattern (3 layers)',
+  beforeEach: () => {
+    store.set(diamondA, 1);
+  },
+  fn: () => {
+    store.set(diamondA, (prev) => prev + 1);
+    return store.get(diamondD);
+  },
+});
+
+// Deep diamond pattern (5 layers)
+const deepDiamondA = atom(1);
+const deepDiamondB1 = atom((get) => get(deepDiamondA) * 2);
+const deepDiamondB2 = atom((get) => get(deepDiamondA) * 3);
+const deepDiamondC1 = atom((get) => get(deepDiamondB1) + get(deepDiamondB2));
+const deepDiamondC2 = atom((get) => get(deepDiamondB1) - get(deepDiamondB2));
+const deepDiamondD1 = atom((get) => get(deepDiamondC1) * get(deepDiamondC2));
+const deepDiamondD2 = atom((get) => get(deepDiamondC1) + get(deepDiamondC2));
+const deepDiamondE = atom((get) => get(deepDiamondD1) + get(deepDiamondD2));
+
+library.addTest(tests.deepDiamondPattern, {
+  name: 'Deep Diamond (5 layers)',
+  beforeEach: () => {
+    store.set(deepDiamondA, 1);
+  },
+  fn: () => {
+    store.set(deepDiamondA, (prev) => prev + 1);
+    return store.get(deepDiamondE);
+  },
+});
+
+// Deep chain (10 layers)
+const chainAtoms: ReturnType<typeof atom>[] = [atom(1)];
+for (let i = 1; i <= 10; i++) {
+  const prevAtom = chainAtoms[i - 1];
+  chainAtoms.push(atom((get) => get(prevAtom) + 1));
+}
+
+library.addTest(tests.deepChain, {
+  name: 'Deep Chain (10 layers)',
+  beforeEach: () => {
+    store.set(chainAtoms[0], 1);
+  },
+  fn: () => {
+    store.set(chainAtoms[0], (prev) => prev + 1);
+    return store.get(chainAtoms[10]);
+  },
+});
+
+// Very deep chain (100 layers)
+const veryDeepChainAtoms: ReturnType<typeof atom>[] = [atom(1)];
+for (let i = 1; i <= 100; i++) {
+  const prevAtom = veryDeepChainAtoms[i - 1];
+  veryDeepChainAtoms.push(atom((get) => get(prevAtom) + 1));
+}
+
+library.addTest(tests.veryDeepChain, {
+  name: 'Very Deep Chain (100 layers)',
+  beforeEach: () => {
+    store.set(veryDeepChainAtoms[0], 1);
+  },
+  fn: () => {
+    store.set(veryDeepChainAtoms[0], (prev) => prev + 1);
+    return store.get(veryDeepChainAtoms[100]);
+  },
+});
+
+// Wide fanout (1 -> 100)
+const fanoutSource = atom(1);
+const fanoutAtoms = Array.from({ length: 100 }, (_, i) =>
+  atom((get) => get(fanoutSource) * (i + 1))
+);
+
+library.addTest(tests.wideFanout, {
+  name: 'Wide Fanout (1→100)',
+  beforeEach: () => {
+    store.set(fanoutSource, 1);
+  },
+  fn: () => {
+    store.set(fanoutSource, (prev) => prev + 1);
+    let sum = 0;
+    for (const a of fanoutAtoms) {
+      sum += store.get(a);
+    }
+    return sum;
+  },
+});
+
+// Massive fanout (1 -> 1000)
+const massiveFanoutSource = atom(1);
+const massiveFanoutAtoms = Array.from({ length: 1000 }, (_, i) =>
+  atom((get) => get(massiveFanoutSource) * (i + 1))
+);
+
+library.addTest(tests.massiveFanout, {
+  name: 'Massive Fanout (1→1000)',
+  beforeEach: () => {
+    store.set(massiveFanoutSource, 1);
+  },
+  fn: () => {
+    store.set(massiveFanoutSource, (prev) => prev + 1);
+    let sum = 0;
+    for (const a of massiveFanoutAtoms) {
+      sum += store.get(a);
+    }
+    return sum;
+  },
+});
+
+// Dynamic dependencies
+const dynamicCondition = atom(true);
+const dynamicA = atom(1);
+const dynamicB = atom(2);
+const dynamicComputed = atom((get) => {
+  if (get(dynamicCondition)) {
+    return get(dynamicA) * 2;
+  } else {
+    return get(dynamicB) * 3;
+  }
+});
+
+library.addTest(tests.dynamicDependencies, {
+  name: 'Dynamic Dependencies',
+  beforeEach: () => {
+    store.set(dynamicCondition, true);
+    store.set(dynamicA, 1);
+    store.set(dynamicB, 2);
+  },
+  fn: () => {
+    store.set(dynamicCondition, (prev) => !prev);
+    store.set(dynamicA, (prev) => prev + 1);
+    store.set(dynamicB, (prev) => prev + 1);
+    return store.get(dynamicComputed);
+  },
+});
+
+// Repeated diamonds (5 sequential diamond patterns)
+const repeatedDiamonds: any[] = [];
+let prevDiamondAtom = atom(1);
+
+for (let i = 0; i < 5; i++) {
+  const source = prevDiamondAtom;
+  const b = atom((get) => get(source) * 2);
+  const c = atom((get) => get(source) * 3);
+  const d = atom((get) => get(b) + get(c));
+  repeatedDiamonds.push({ source, b, c, d });
+  const currentD = d;
+  prevDiamondAtom = atom((get) => get(currentD));
+}
+
+library.addTest(tests.repeatedDiamonds, {
+  name: 'Repeated Diamonds (5x)',
+  beforeEach: () => {
+    store.set(repeatedDiamonds[0].source, 1);
+  },
+  fn: () => {
+    store.set(repeatedDiamonds[0].source, (prev) => prev + 1);
+    return store.get(repeatedDiamonds[4].d);
+  },
+});

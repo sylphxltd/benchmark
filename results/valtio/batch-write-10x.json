@@ -1,0 +1,15 @@
+{
+  "library": "Valtio",
+  "libraryId": "valtio",
+  "packageName": "valtio",
+  "test": "Batch Write (10x)",
+  "group": "02-basic-write",
+  "timestamp": "2025-11-14T00:59:46.963Z",
+  "result": {
+    "opsPerSecond": 3385836.3692987566,
+    "meanTime": 0.0002953480000001036,
+    "variance": 1.276518267228351e-7,
+    "p99": 0.001333000000002471,
+    "samples": 1000
+  }
+}

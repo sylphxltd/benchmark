@@ -1,0 +1,15 @@
+{
+  "library": "MobX",
+  "libraryId": "mobx",
+  "packageName": "mobx",
+  "test": "Massive Fanout (1→1000)",
+  "group": "07-reactivity-patterns",
+  "timestamp": "2025-11-14T00:59:46.963Z",
+  "result": {
+    "opsPerSecond": 987942.1658713856,
+    "meanTime": 0.0010122049999940828,
+    "variance": 2.709421451087899e-7,
+    "p99": 0.002791999999772088,
+    "samples": 1000
+  }
+}

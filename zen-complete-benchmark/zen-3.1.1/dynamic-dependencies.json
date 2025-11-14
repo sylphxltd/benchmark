@@ -1,0 +1,15 @@
+{
+  "library": "Zen",
+  "libraryId": "zen",
+  "packageName": "@sylphx/zen",
+  "test": "Dynamic Dependencies",
+  "group": "07-reactivity-patterns",
+  "timestamp": "2025-11-14T01:52:01.563Z",
+  "result": {
+    "opsPerSecond": 12139458.094584897,
+    "meanTime": 0.00008237600000003908,
+    "variance": 1.702442905310399e-8,
+    "p99": 0.0003749999999911324,
+    "samples": 1000
+  }
+}

@@ -1,0 +1,15 @@
+{
+  "library": "Zen",
+  "libraryId": "zen",
+  "packageName": "@sylphx/zen",
+  "test": "Nested Object Update",
+  "group": "03-advanced-operations",
+  "timestamp": "2025-11-14T01:24:44.444Z",
+  "result": {
+    "opsPerSecond": 7840615.95879142,
+    "meanTime": 0.00012754099999997238,
+    "variance": 8.711750982881419e-8,
+    "p99": 0.0006669999999999732,
+    "samples": 1000
+  }
+}

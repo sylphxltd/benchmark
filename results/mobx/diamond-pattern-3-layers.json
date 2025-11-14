@@ -1,0 +1,15 @@
+{
+  "library": "MobX",
+  "libraryId": "mobx",
+  "packageName": "mobx",
+  "test": "Diamond Pattern (3 layers)",
+  "group": "07-reactivity-patterns",
+  "timestamp": "2025-11-14T00:59:46.963Z",
+  "result": {
+    "opsPerSecond": 2775226.1115415115,
+    "meanTime": 0.00036033100000076954,
+    "variance": 1.9566256600512766e-7,
+    "p99": 0.0017499999999017746,
+    "samples": 1000
+  }
+}

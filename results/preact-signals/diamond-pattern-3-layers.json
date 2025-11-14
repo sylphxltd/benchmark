@@ -1,0 +1,15 @@
+{
+  "library": "Preact Signals",
+  "libraryId": "preact-signals",
+  "packageName": "@preact/signals",
+  "test": "Diamond Pattern (3 layers)",
+  "group": "07-reactivity-patterns",
+  "timestamp": "2025-11-14T00:59:46.963Z",
+  "result": {
+    "opsPerSecond": 4932571.744245832,
+    "meanTime": 0.00020273400000041873,
+    "variance": 9.184807732107148e-8,
+    "p99": 0.0004580000004352769,
+    "samples": 1000
+  }
+}

@@ -1,0 +1,15 @@
+{
+  "library": "React Router",
+  "libraryId": "react-router-dom",
+  "packageName": "react-router-dom",
+  "test": "Static Route Matching",
+  "group": "01-basic-routes",
+  "timestamp": "2025-11-14T03:37:28.211Z",
+  "result": {
+    "opsPerSecond": 28540.34487410704,
+    "meanTime": 0.035038118999999916,
+    "variance": 0.0003974744908136506,
+    "p99": 0.0866250000000015,
+    "samples": 1000
+  }
+}

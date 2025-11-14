@@ -1,0 +1,309 @@
+/**
+ * Preact Signals Library Implementation
+ *
+ * Example of the new API:
+ * - Library registration
+ * - Test implementation using object references (no strings!)
+ */
+
+import { signal, computed, effect } from '@preact/signals-core';
+import { category, tests } from '../index';
+
+// ============================================================================
+// Define Store Type
+// ============================================================================
+
+interface SignalsStore {
+  counterSignal: ReturnType<typeof signal<number>>;
+  nestedSignal: ReturnType<typeof signal<{ nested: { value: number } }>>;
+  usersSignal: ReturnType<typeof signal<Array<{ id: number; name: string }>>>;
+  doubledSignal: ReturnType<typeof computed<number>>;
+  formSignal: ReturnType<typeof signal<{ name: string; email: string; age: number }>>;
+  complexFormSignal: ReturnType<typeof signal<{ profile: { name: string }; tags: string[] }>>;
+  largeArraySignal: ReturnType<typeof signal<number[]>>;
+}
+
+// ============================================================================
+// Register Library
+// ============================================================================
+
+const preactSignals = category.registerLibrary<SignalsStore>({
+  id: 'preact-signals',
+  displayName: 'Preact Signals',
+  packageName: '@preact/signals',
+  githubUrl: 'https://github.com/preactjs/signals',
+  description: 'Fast and reactive signals for Preact and React with automatic dependency tracking',
+
+  setup: {
+    createStore: () => {
+      const counterSignal = signal(0);
+      const nestedSignal = signal({ nested: { value: 0 } });
+      const usersSignal = signal<Array<{ id: number; name: string }>>([]);
+
+      // Computed signal (derived value)
+      const doubledSignal = computed(() => counterSignal.value * 2);
+
+      const formSignal = signal({ name: '', email: '', age: 0 });
+      const complexFormSignal = signal({ profile: { name: '' }, tags: [] as string[] });
+      const largeArraySignal = signal<number[]>([]);
+
+      return {
+        counterSignal,
+        nestedSignal,
+        usersSignal,
+        doubledSignal,
+        formSignal,
+        complexFormSignal,
+        largeArraySignal,
+      };
+    },
+  },
+
+  features: ['signals', 'computed-native'],
+});
+
+// ============================================================================
+// Implement Tests (using object references!)
+// ============================================================================
+
+// ✅ No strings! IDE autocomplete works!
+// ✅ Type-safe! Wrong test object = compile error!
+// ✅ Refactor-safe! Rename symbol = auto update!
+
+// ========== BASIC READ TESTS ==========
+
+preactSignals.implement(tests.singleRead, (ctx) => {
+  const value = ctx.store.counterSignal.value;
+});
+
+preactSignals.implement(tests.moderateRead, (ctx) => {
+  ctx.store.counterSignal.value;
+});
+
+preactSignals.implement(tests.highFrequencyRead, (ctx) => {
+  ctx.store.counterSignal.value;
+});
+
+// ========== BASIC WRITE TESTS ==========
+
+preactSignals.implement(tests.singleWrite, (ctx) => {
+  ctx.store.counterSignal.value += 1;
+});
+
+preactSignals.implement(tests.batchWrite, (ctx) => {
+  ctx.store.counterSignal.value += 1;
+});
+
+preactSignals.implement(tests.burstWrite, (ctx) => {
+  ctx.store.counterSignal.value += 1;
+});
+
+preactSignals.implement(tests.heavyWrite, (ctx) => {
+  ctx.store.counterSignal.value += 1;
+});
+
+// ========== ADVANCED OPERATIONS ==========
+
+preactSignals.implement(tests.nestedUpdate, (ctx) => {
+  const prev = ctx.store.nestedSignal.value;
+  ctx.store.nestedSignal.value = {
+    ...prev,
+    nested: {
+      ...prev.nested,
+      value: prev.nested.value + 1,
+    },
+  };
+});
+
+preactSignals.implement(tests.arrayPush, (ctx) => {
+  const prev = ctx.store.usersSignal.value;
+  ctx.store.usersSignal.value = [
+    ...prev,
+    { id: prev.length + 1, name: `User ${prev.length + 1}` },
+  ];
+});
+
+preactSignals.implement(tests.arrayUpdate, (ctx) => {
+  // First ensure there's at least one user
+  const users = ctx.store.usersSignal.value;
+  if (users.length === 0) {
+    ctx.store.usersSignal.value = [{ id: 1, name: 'User 1' }];
+  }
+  // Then update the first user
+  const prev = ctx.store.usersSignal.value;
+  ctx.store.usersSignal.value = [
+    { ...prev[0], name: 'Updated User' },
+    ...prev.slice(1),
+  ];
+});
+
+preactSignals.implement(tests.computedValue, (ctx) => {
+  const value = ctx.store.doubledSignal.value;
+});
+
+// ========== ASYNC OPERATIONS ==========
+
+preactSignals.implement(tests.asyncThroughput, async (ctx) => {
+  // Simulate rapid async operations
+  for (let i = 0; i < 20; i++) {
+    await Promise.resolve();
+    ctx.store.counterSignal.value = i;
+  }
+});
+
+preactSignals.implement(tests.concurrentUpdates, async (ctx) => {
+  // Test concurrent async updates
+  const operations = [];
+
+  for (let i = 0; i < 50; i++) {
+    operations.push(
+      Promise.resolve().then(() => {
+        ctx.store.counterSignal.value++;
+      })
+    );
+  }
+
+  await Promise.all(operations);
+});
+
+// ========== REAL-WORLD SCENARIOS ==========
+
+preactSignals.implement(tests.simpleForm, (ctx) => {
+  const prev1 = ctx.store.formSignal.value;
+  ctx.store.formSignal.value = {
+    ...prev1,
+    name: 'John Doe',
+  };
+  const prev2 = ctx.store.formSignal.value;
+  ctx.store.formSignal.value = {
+    ...prev2,
+    email: 'john@example.com',
+  };
+  const prev3 = ctx.store.formSignal.value;
+  ctx.store.formSignal.value = {
+    ...prev3,
+    age: 30,
+  };
+});
+
+preactSignals.implement(tests.complexForm, (ctx) => {
+  // Update nested object
+  const prev1 = ctx.store.complexFormSignal.value;
+  ctx.store.complexFormSignal.value = {
+    ...prev1,
+    profile: {
+      ...prev1.profile,
+      name: 'John Doe',
+    },
+  };
+  // Update array
+  const prev2 = ctx.store.complexFormSignal.value;
+  ctx.store.complexFormSignal.value = {
+    ...prev2,
+    tags: [...prev2.tags, 'developer', 'react'],
+  };
+});
+
+preactSignals.implement(tests.cacheInvalidation, (ctx) => {
+  // Update source data
+  ctx.store.counterSignal.value += 1;
+  // Access computed value (should reflect new value)
+  const doubled = ctx.store.doubledSignal.value;
+});
+
+preactSignals.implement(tests.memoryUsage, (ctx) => {
+  const disposers: Array<() => void> = [];
+
+  // Create 100 subscribers using effect
+  for (let i = 0; i < 100; i++) {
+    const dispose = effect(() => {
+      // Read signal to create subscription
+      ctx.store.counterSignal.value;
+    });
+    disposers.push(dispose);
+  }
+
+  // Cleanup all subscribers
+  disposers.forEach((dispose) => dispose());
+});
+
+// ========== PERFORMANCE STRESS TESTS ==========
+
+preactSignals.implement(tests.extremeRead, (ctx) => {
+  ctx.store.counterSignal.value;
+});
+
+preactSignals.implement(tests.extremeWrite, (ctx) => {
+  ctx.store.counterSignal.value += 1;
+});
+
+preactSignals.implement(tests.largeArray, (ctx) => {
+  // Initialize with 1000 items
+  const items = Array.from({ length: 1000 }, (_, i) => i);
+  ctx.store.largeArraySignal.value = items;
+
+  // Read the array
+  const array = ctx.store.largeArraySignal.value;
+
+  // Update one item
+  const prev = ctx.store.largeArraySignal.value;
+  const newArray = [...prev];
+  newArray[500] = 999;
+  ctx.store.largeArraySignal.value = newArray;
+});
+
+// ========== REACTIVITY PATTERNS ==========
+
+preactSignals.implement(tests.diamondPattern, (ctx) => {
+  ctx.store.counterSignal.value++;
+  const result = ctx.store.doubledSignal.value;
+});
+
+preactSignals.implement(tests.deepDiamondPattern, (ctx) => {
+  for (let i = 0; i < 5; i++) {
+    ctx.store.counterSignal.value++;
+  }
+  const result = ctx.store.doubledSignal.value;
+});
+
+preactSignals.implement(tests.deepChain, (ctx) => {
+  for (let i = 0; i < 10; i++) {
+    ctx.store.counterSignal.value *= 2;
+  }
+  const result = ctx.store.counterSignal.value;
+});
+
+preactSignals.implement(tests.veryDeepChain, (ctx) => {
+  for (let i = 0; i < 100; i++) {
+    ctx.store.counterSignal.value *= 1.01;
+  }
+  const result = ctx.store.counterSignal.value;
+});
+
+preactSignals.implement(tests.wideFanout, (ctx) => {
+  ctx.store.counterSignal.value++;
+  for (let i = 0; i < 100; i++) {
+    const v = ctx.store.counterSignal.value;
+  }
+});
+
+preactSignals.implement(tests.massiveFanout, (ctx) => {
+  ctx.store.counterSignal.value++;
+  for (let i = 0; i < 1000; i++) {
+    const v = ctx.store.counterSignal.value;
+  }
+});
+
+preactSignals.implement(tests.dynamicDependencies, (ctx) => {
+  const toggle = ctx.store.counterSignal.value % 2 === 0;
+  ctx.store.counterSignal.value += toggle ? 1 : 2;
+  const result = ctx.store.counterSignal.value;
+});
+
+preactSignals.implement(tests.repeatedDiamonds, (ctx) => {
+  for (let i = 0; i < 5; i++) {
+    ctx.store.counterSignal.value++;
+    const a = ctx.store.counterSignal.value;
+    const b = ctx.store.doubledSignal.value;
+  }
+});

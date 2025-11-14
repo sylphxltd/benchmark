@@ -1,0 +1,15 @@
+{
+  "library": "Zen",
+  "libraryId": "zen",
+  "packageName": "@sylphx/zen",
+  "test": "Array Push",
+  "group": "03-advanced-operations",
+  "timestamp": "2025-11-14T01:52:10.949Z",
+  "result": {
+    "opsPerSecond": 644431.6274154235,
+    "meanTime": 0.001551754999999968,
+    "variance": 0.000001943058871846894,
+    "p99": 0.0050829999999990605,
+    "samples": 1000
+  }
+}

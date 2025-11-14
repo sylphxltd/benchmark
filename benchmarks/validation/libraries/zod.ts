@@ -1,186 +1,250 @@
 /**
- * Zod Library Implementation
+ * Zod Validation Library Benchmarks (Simplified)
  */
 
 import { z } from 'zod';
 import { category, tests } from '../index';
 
-const zodLib = category.registerLibrary({
+const library = category.registerLibrary({
   id: 'zod',
   displayName: 'Zod',
   packageName: 'zod',
   githubUrl: 'https://github.com/colinhacks/zod',
-  description: 'TypeScript-first schema declaration and validation library with static type inference',
-
-  setup: {
-    createStore: () => {
-      return null;
-    },
-  },
+  description: 'TypeScript-first schema validation with static type inference',
 });
 
-// ============================================================================
-// Schema Creation Tests
-// ============================================================================
+// Simple string schema
+const stringSchema = z.string().min(3).max(50);
 
-zodLib.implement(tests.createSimpleSchema, async () => {
+// Simple user schema
+const userSchema = z.object({
+  id: z.number().positive(),
+  username: z.string().min(3).max(20),
+  email: z.string().email(),
+  age: z.number().min(18).max(120),
+  active: z.boolean(),
+});
+
+// Complex profile schema
+const profileSchema = z.object({
+  user: userSchema,
+  address: z.object({
+    street: z.string(),
+    city: z.string(),
+    country: z.string(),
+    zipCode: z.string().regex(/^\d{5}$/),
+  }),
+  preferences: z.object({
+    theme: z.enum(['light', 'dark']),
+    notifications: z.boolean(),
+    language: z.string(),
+  }),
+  tags: z.array(z.string()),
+  metadata: z.record(z.string(), z.any()),
+});
+
+// Test data
+const validUser = {
+  id: 1,
+  username: 'johndoe',
+  email: 'john@example.com',
+  age: 30,
+  active: true,
+};
+
+const invalidUser = {
+  id: -1,
+  username: 'ab',
+  email: 'invalid-email',
+  age: 150,
+  active: 'yes',
+};
+
+// Schema Creation Tests
+library.implement(tests.createSimpleSchema, () => {
   const schema = z.object({
     name: z.string(),
     age: z.number(),
-    isActive: z.boolean(),
+    email: z.string().email(),
   });
-  return schema !== null;
+  return schema;
 });
 
-zodLib.implement(tests.createComplexSchema, async () => {
+library.implement(tests.createComplexSchema, () => {
   const schema = z.object({
     user: z.object({
+      id: z.number(),
       profile: z.object({
-        name: z.string(),
-        email: z.string().email(),
-      }),
-      settings: z.object({
-        notifications: z.boolean(),
-        theme: z.enum(['light', 'dark']),
+        bio: z.string(),
+        avatar: z.string().url(),
       }),
     }),
-    tags: z.array(z.string()),
-    metadata: z.record(z.string()),
+    settings: z.array(z.object({
+      key: z.string(),
+      value: z.any(),
+    })),
   });
-  return schema !== null;
+  return schema;
 });
 
-// ============================================================================
 // Primitive Validation Tests
-// ============================================================================
+library.implement(tests.validateString, () => {
+  const validData = 'Hello World';
+  const invalidData = 'Hi';
 
-zodLib.implement(tests.validateString, async () => {
-  const schema = z.string().min(3).max(50);
-  const result = schema.safeParse('Hello World');
-  return result.success;
+  const valid = stringSchema.safeParse(validData);
+  const invalid = stringSchema.safeParse(invalidData);
+
+  return { valid: valid.success, invalid: !invalid.success };
 });
 
-zodLib.implement(tests.validateNumber, async () => {
-  const schema = z.number().min(0).max(100);
-  const result = schema.safeParse(42);
-  return result.success;
+library.implement(tests.validateNumber, () => {
+  const numberSchema = z.number().min(0).max(100);
+  const validData = 42;
+  const invalidData = 150;
+
+  const valid = numberSchema.safeParse(validData);
+  const invalid = numberSchema.safeParse(invalidData);
+
+  return { valid: valid.success, invalid: !invalid.success };
 });
 
-zodLib.implement(tests.validateEmail, async () => {
-  const schema = z.string().email();
-  const result = schema.safeParse('test@example.com');
-  return result.success;
+library.implement(tests.validateEmail, () => {
+  const emailSchema = z.string().email();
+  const validEmails = ['user@example.com', 'john.doe@company.org', 'test+tag@domain.co.uk'];
+  const invalidEmails = ['invalid', '@example.com', 'user@', 'user..name@example.com'];
+
+  let validCount = 0;
+  let invalidCount = 0;
+
+  for (const email of validEmails) {
+    if (emailSchema.safeParse(email).success) validCount++;
+  }
+
+  for (const email of invalidEmails) {
+    if (!emailSchema.safeParse(email).success) invalidCount++;
+  }
+
+  return { validCount, invalidCount };
 });
 
-// ============================================================================
 // Object Validation Tests
-// ============================================================================
+library.implement(tests.validateFlatObject, () => {
+  const valid = userSchema.safeParse(validUser);
+  const invalid = userSchema.safeParse(invalidUser);
 
-zodLib.implement(tests.validateFlatObject, async () => {
-  const schema = z.object({
+  return {
+    valid: valid.success,
+    invalid: !invalid.success,
+    validData: valid.success ? valid.data : null,
+  };
+});
+
+library.implement(tests.validateNestedObject, () => {
+  const validProfile = {
+    user: validUser,
+    address: {
+      street: '123 Main St',
+      city: 'New York',
+      country: 'USA',
+      zipCode: '12345',
+    },
+    preferences: {
+      theme: 'dark' as const,
+      notifications: true,
+      language: 'en',
+    },
+    tags: ['developer', 'designer', 'manager'],
+    metadata: {
+      lastLogin: '2024-01-01',
+      loginCount: '42',
+    },
+  };
+
+  const valid = profileSchema.safeParse(validProfile);
+
+  return {
+    valid: valid.success,
+    hasData: valid.success ? !!valid.data : false,
+  };
+});
+
+library.implement(tests.validateArray, () => {
+  const itemSchema = z.object({
     id: z.number(),
     name: z.string(),
-    email: z.string().email(),
-    age: z.number().min(0),
-    isActive: z.boolean(),
+    price: z.number().positive(),
+    quantity: z.number().int().min(0),
   });
 
-  const data = {
-    id: 1,
-    name: 'John Doe',
-    email: 'john@example.com',
-    age: 30,
-    isActive: true,
+  const itemsArraySchema = z.array(itemSchema);
+
+  const validItems = Array.from({ length: 10 }, (_, i) => ({
+    id: i + 1,
+    name: `Item ${i + 1}`,
+    price: Math.random() * 100,
+    quantity: Math.floor(Math.random() * 100),
+  }));
+
+  const valid = itemsArraySchema.safeParse(validItems);
+
+  return {
+    valid: valid.success,
+    itemCount: valid.success ? valid.data.length : 0,
   };
-
-  const result = schema.safeParse(data);
-  return result.success;
 });
 
-zodLib.implement(tests.validateNestedObject, async () => {
-  const schema = z.object({
-    user: z.object({
-      id: z.number(),
-      profile: z.object({
-        name: z.string(),
-        email: z.string().email(),
-        address: z.object({
-          street: z.string(),
-          city: z.string(),
-          country: z.string(),
-        }),
-      }),
-    }),
-  });
-
-  const data = {
-    user: {
-      id: 1,
-      profile: {
-        name: 'John Doe',
-        email: 'john@example.com',
-        address: {
-          street: '123 Main St',
-          city: 'New York',
-          country: 'USA',
-        },
-      },
-    },
-  };
-
-  const result = schema.safeParse(data);
-  return result.success;
-});
-
-zodLib.implement(tests.validateArray, async () => {
-  const schema = z.array(
-    z.object({
-      id: z.number(),
-      name: z.string(),
-      tags: z.array(z.string()),
-    })
-  );
-
-  const data = [
-    { id: 1, name: 'Item 1', tags: ['tag1', 'tag2'] },
-    { id: 2, name: 'Item 2', tags: ['tag3', 'tag4'] },
-    { id: 3, name: 'Item 3', tags: ['tag5', 'tag6'] },
-  ];
-
-  const result = schema.safeParse(data);
-  return result.success;
-});
-
-// ============================================================================
 // Error Handling Tests
-// ============================================================================
+library.implement(tests.catchValidationErrors, () => {
+  const result = userSchema.safeParse(invalidUser);
 
-zodLib.implement(tests.catchValidationErrors, async () => {
-  const schema = z.object({
-    name: z.string(),
-    age: z.number(),
-  });
+  if (!result.success) {
+    const errors = result.error.issues;
+    return {
+      success: false,
+      errorCount: errors.length,
+      hasErrors: true,
+      firstError: errors[0]?.message,
+    };
+  }
 
-  const result = schema.safeParse({
-    name: 'John',
-    age: 'invalid', // Wrong type
-  });
-
-  return !result.success && result.error.issues.length > 0;
+  return { success: true, errorCount: 0, hasErrors: false };
 });
 
-zodLib.implement(tests.multipleErrors, async () => {
-  const schema = z.object({
-    name: z.string().min(3),
-    email: z.string().email(),
-    age: z.number().min(18),
-  });
+library.implement(tests.multipleErrors, () => {
+  const invalidProfile = {
+    user: invalidUser,
+    address: {
+      street: '',
+      city: '',
+      country: '',
+      zipCode: 'abc',
+    },
+    preferences: {
+      theme: 'blue',
+      notifications: 'true',
+      language: 123,
+    },
+    tags: [1, 2, 3],
+    metadata: null,
+  };
 
-  const result = schema.safeParse({
-    name: 'ab', // Too short
-    email: 'invalid-email', // Invalid format
-    age: 10, // Too young
-  });
+  const result = profileSchema.safeParse(invalidProfile);
 
-  return !result.success && result.error.issues.length >= 3;
+  if (!result.success) {
+    const errors = result.error.issues;
+    const errorPaths = errors.map(e => e.path.join('.'));
+    const errorTypes = errors.map(e => e.code);
+
+    return {
+      errorCount: errors.length,
+      hasMultiple: errors.length > 1,
+      paths: errorPaths.length,
+      types: new Set(errorTypes).size,
+    };
+  }
+
+  return { errorCount: 0, hasMultiple: false, paths: 0, types: 0 };
 });
+
+console.log('✅ Zod library benchmarks registered');

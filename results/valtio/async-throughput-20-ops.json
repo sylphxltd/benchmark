@@ -1,0 +1,15 @@
+{
+  "library": "Valtio",
+  "libraryId": "valtio",
+  "packageName": "valtio",
+  "test": "Async Throughput (20 ops)",
+  "group": "04-async-operations",
+  "timestamp": "2025-11-14T00:59:46.963Z",
+  "result": {
+    "opsPerSecond": 265003.29399095813,
+    "meanTime": 0.003773537999999803,
+    "variance": 0.000001036639211768376,
+    "p99": 0.007583000000010998,
+    "samples": 1000
+  }
+}

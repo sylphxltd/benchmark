@@ -1,0 +1,15 @@
+{
+  "library": "MobX",
+  "libraryId": "mobx",
+  "packageName": "mobx",
+  "test": "Async Throughput (20 ops)",
+  "group": "04-async-operations",
+  "timestamp": "2025-11-14T00:59:46.963Z",
+  "result": {
+    "opsPerSecond": 313057.53590536857,
+    "meanTime": 0.0031943009999998253,
+    "variance": 6.634117501497161e-7,
+    "p99": 0.00637499999999136,
+    "samples": 1000
+  }
+}

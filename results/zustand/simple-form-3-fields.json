@@ -1,0 +1,15 @@
+{
+  "library": "Zustand",
+  "libraryId": "zustand",
+  "packageName": "zustand",
+  "test": "Simple Form (3 fields)",
+  "group": "05-real-world",
+  "timestamp": "2025-11-14T00:59:46.963Z",
+  "result": {
+    "opsPerSecond": 2118666.511301905,
+    "meanTime": 0.0004719949999990831,
+    "variance": 8.066391889355472e-8,
+    "p99": 0.0016249999999899956,
+    "samples": 1000
+  }
+}

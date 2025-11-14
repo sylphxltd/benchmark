@@ -1,0 +1,15 @@
+{
+  "library": "Valtio",
+  "libraryId": "valtio",
+  "packageName": "valtio",
+  "test": "Large Array (1000 items)",
+  "group": "06-performance-stress",
+  "timestamp": "2025-11-14T00:59:46.963Z",
+  "result": {
+    "opsPerSecond": 6426.783460688118,
+    "meanTime": 0.1555988320000017,
+    "variance": 0.0010526905941760233,
+    "p99": 0.37941700000010314,
+    "samples": 1000
+  }
+}

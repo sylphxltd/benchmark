@@ -1,0 +1,15 @@
+{
+  "library": "Zen",
+  "libraryId": "zen",
+  "packageName": "@sylphx/zen",
+  "test": "Deep Chain (10 layers)",
+  "group": "07-reactivity-patterns",
+  "timestamp": "2025-11-14T01:24:43.012Z",
+  "result": {
+    "opsPerSecond": 6704165.297903762,
+    "meanTime": 0.00014916099999990706,
+    "variance": 6.686292200096926e-8,
+    "p99": 0.0013749999999959073,
+    "samples": 1000
+  }
+}

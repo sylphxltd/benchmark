@@ -1,0 +1,15 @@
+{
+  "library": "Jotai",
+  "libraryId": "jotai",
+  "packageName": "jotai",
+  "test": "Deep Diamond (5 layers)",
+  "group": "07-reactivity-patterns",
+  "timestamp": "2025-11-14T00:59:46.963Z",
+  "result": {
+    "opsPerSecond": 164620.65146320622,
+    "meanTime": 0.00607457199999908,
+    "variance": 0.00019406402032697093,
+    "p99": 0.008666999999604741,
+    "samples": 1000
+  }
+}

@@ -1,0 +1,15 @@
+{
+  "library": "Zen Router",
+  "libraryId": "@sylphx/zen-router",
+  "packageName": "@sylphx/zen-router",
+  "test": "Optional Parameter Route (with param)",
+  "group": "03-advanced-routes",
+  "timestamp": "2025-11-14T03:37:28.211Z",
+  "result": {
+    "opsPerSecond": 2161984.5288404617,
+    "meanTime": 0.00046253799999962554,
+    "variance": 1.9257952508444454e-8,
+    "p99": 0.0007500000000106866,
+    "samples": 1000
+  }
+}

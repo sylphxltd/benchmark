@@ -1,0 +1,15 @@
+{
+  "library": "Valtio",
+  "libraryId": "valtio",
+  "packageName": "valtio",
+  "test": "Extreme Read (10000x)",
+  "group": "06-performance-stress",
+  "timestamp": "2025-11-14T00:59:46.963Z",
+  "result": {
+    "opsPerSecond": 28463268.152747095,
+    "meanTime": 0.00003513299999963238,
+    "variance": 9.154323634971194e-9,
+    "p99": 0.00016700000014679972,
+    "samples": 1000
+  }
+}

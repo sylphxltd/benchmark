@@ -1,0 +1,15 @@
+{
+  "library": "Immutable.js",
+  "libraryId": "immutable",
+  "packageName": "immutable",
+  "test": "Map - Large (100 items)",
+  "group": "07-map-set",
+  "timestamp": "2025-11-14T03:28:43.588Z",
+  "result": {
+    "opsPerSecond": 1211142.0221480124,
+    "meanTime": 0.000825666999999271,
+    "variance": 3.3774653464684136e-7,
+    "p99": 0.0028330000000096334,
+    "samples": 1000
+  }
+}

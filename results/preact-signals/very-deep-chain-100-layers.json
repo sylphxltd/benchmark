@@ -1,0 +1,15 @@
+{
+  "library": "Preact Signals",
+  "libraryId": "preact-signals",
+  "packageName": "@preact/signals",
+  "test": "Very Deep Chain (100 layers)",
+  "group": "07-reactivity-patterns",
+  "timestamp": "2025-11-14T00:59:46.963Z",
+  "result": {
+    "opsPerSecond": 985333.3136230871,
+    "meanTime": 0.0010148850000036872,
+    "variance": 0.0000015124089947774995,
+    "p99": 0.0026670000002013694,
+    "samples": 1000
+  }
+}

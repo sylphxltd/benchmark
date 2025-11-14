@@ -1,0 +1,15 @@
+{
+  "library": "Zen",
+  "libraryId": "zen",
+  "packageName": "@sylphx/zen",
+  "test": "Computed Value Access",
+  "group": "03-advanced-operations",
+  "timestamp": "2025-11-14T01:52:05.154Z",
+  "result": {
+    "opsPerSecond": 8069722.401549038,
+    "meanTime": 0.00012392000000000536,
+    "variance": 4.3186904504497936e-8,
+    "p99": 0.00016699999999758575,
+    "samples": 1000
+  }
+}

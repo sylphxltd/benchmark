@@ -1,194 +1,242 @@
 /**
- * Mutative Library Implementation
+ * Mutative Library Benchmark
+ *
+ * High-performance alternative to Immer with similar API
+ * Supports: All operations including patches and Map/Set
  */
 
-import { create } from 'mutative';
+import { create, apply } from 'mutative';
 import { category, tests } from '../index';
 
-// ============================================================================
-// Register Library
-// ============================================================================
-
-const mutative = category.registerLibrary<any>({
+// Register library
+const mutative = category.registerLibrary({
   id: 'mutative',
   displayName: 'Mutative',
   packageName: 'mutative',
   githubUrl: 'https://github.com/unadlib/mutative',
-  description: 'Fast immutable updates with high performance',
-
+  description: 'High-performance immutability library, faster alternative to Immer',
   setup: {
     createStore: () => ({}),
   },
-
-  features: ['map-set'],
 });
 
 // ============================================================================
-// Implement Tests
+// Test Data Setup (reused across tests for consistency)
 // ============================================================================
 
-// Simple Updates
-mutative.implement(tests.simpleObjectUpdate, () => {
-  const simpleObject = { count: 0, name: 'test', value: 100 };
-  const result = create(simpleObject, (draft) => {
-    draft.count += 1;
-  });
-});
-
-// Nested Updates
-mutative.implement(tests.nestedObjectUpdate, () => {
-  const nestedObject = {
-    user: {
-      profile: {
+const simpleObject = { name: 'John', age: 30, active: true };
+const nestedObject = {
+  user: {
+    profile: {
+      details: {
         name: 'John',
         age: 30,
-        address: {
-          city: 'New York',
-          country: 'USA',
-        },
       },
     },
-  };
-  const result = create(nestedObject, (draft) => {
-    draft.user.profile.age += 1;
-  });
-});
-
-// Array Operations
-mutative.implement(tests.arrayPush, () => {
-  const arr = [1, 2, 3, 4, 5];
-  const result = create(arr, (draft) => {
-    draft.push(6);
-  });
-});
-
-mutative.implement(tests.arrayRemove, () => {
-  const arr = [1, 2, 3, 4, 5];
-  const result = create(arr, (draft) => {
-    draft.splice(2, 1);
-  });
-});
-
-mutative.implement(tests.arrayUpdate, () => {
-  const arr = [
-    { id: 1, value: 10 },
-    { id: 2, value: 20 },
-    { id: 3, value: 30 },
-  ];
-  const result = create(arr, (draft) => {
-    draft[1].value = 25;
-  });
-});
-
-// Deep Operations
-mutative.implement(tests.deepNestedUpdate, () => {
-  const deepObject = {
-    level1: {
-      level2: {
-        level3: {
-          level4: {
-            level5: {
-              value: 0,
-            },
+  },
+};
+const arrayOfObjects = Array.from({ length: 10 }, (_, i) => ({ id: i, value: `item-${i}` }));
+const deepObject = {
+  level1: {
+    level2: {
+      level3: {
+        level4: {
+          level5: {
+            value: 42,
           },
         },
       },
     },
-  };
-  const result = create(deepObject, (draft) => {
-    draft.level1.level2.level3.level4.level5.value = 42;
+  },
+};
+const largeArray = Array.from({ length: 1000 }, (_, i) => ({ id: i, value: `item-${i}` }));
+const mapData = new Map(Array.from({ length: 10 }, (_, i) => [`key-${i}`, { value: i }]));
+const setData = new Set(Array.from({ length: 10 }, (_, i) => `item-${i}`));
+const largeMap = new Map(Array.from({ length: 100 }, (_, i) => [`key-${i}`, { value: i }]));
+const largeSet = new Set(Array.from({ length: 100 }, (_, i) => `item-${i}`));
+
+// ============================================================================
+// Simple Updates
+// ============================================================================
+
+mutative.implement(tests.simpleObjectUpdate, () => {
+  const state = simpleObject;
+  return create(state, draft => {
+    draft.age = 31;
+  });
+});
+
+// ============================================================================
+// Nested Updates
+// ============================================================================
+
+mutative.implement(tests.nestedObjectUpdate, () => {
+  const state = nestedObject;
+  return create(state, draft => {
+    draft.user.profile.details.age = 31;
+  });
+});
+
+// ============================================================================
+// Array Operations
+// ============================================================================
+
+mutative.implement(tests.arrayPush, () => {
+  const state = arrayOfObjects;
+  return create(state, draft => {
+    draft.push({ id: draft.length, value: `item-${draft.length}` });
+  });
+});
+
+mutative.implement(tests.arrayRemove, () => {
+  const state = arrayOfObjects;
+  return create(state, draft => {
+    draft.splice(5, 1);
+  });
+});
+
+mutative.implement(tests.arrayUpdate, () => {
+  const state = arrayOfObjects;
+  return create(state, draft => {
+    draft[5].value = 'updated';
+  });
+});
+
+// ============================================================================
+// Deep Operations
+// ============================================================================
+
+mutative.implement(tests.deepNestedUpdate, () => {
+  const state = deepObject;
+  return create(state, draft => {
+    draft.level1.level2.level3.level4.level5.value = 100;
   });
 });
 
 mutative.implement(tests.multipleUpdates, () => {
-  const nestedObject = {
-    user: {
-      profile: {
-        name: 'John',
-        age: 30,
-        address: {
-          city: 'New York',
-          country: 'USA',
-        },
-      },
-    },
-  };
-  const result = create(nestedObject, (draft) => {
-    draft.user.profile.name = 'Jane';
-    draft.user.profile.age = 25;
-    draft.user.profile.address.city = 'San Francisco';
+  const state = { a: 1, b: 2, c: 3, nested: { x: 10, y: 20 } };
+  return create(state, draft => {
+    draft.a = 10;
+    draft.b = 20;
+    draft.nested.x = 100;
   });
 });
 
+// ============================================================================
 // Large Scale
+// ============================================================================
+
 mutative.implement(tests.largeArrayUpdate, () => {
-  const largeArray = Array.from({ length: 1000 }, (_, i) => ({
-    id: i,
-    value: i * 2,
-  }));
-  const result = create(largeArray, (draft) => {
-    draft[500].value += 1;
+  const state = largeArray;
+  return create(state, draft => {
+    draft[500].value = 'updated';
   });
 });
 
-// Map & Set Operations
+// ============================================================================
+// Patches (Feature-Specific)
+// ============================================================================
+
+mutative.implement(tests.patchesGenerate, () => {
+  const state = { counter: 0, items: [1, 2, 3] };
+  const [nextState, patches] = create(
+    state,
+    draft => {
+      draft.counter++;
+      draft.items.push(4);
+    },
+    { enablePatches: true }
+  );
+  return { nextState, patches };
+});
+
+mutative.implement(tests.patchesApply, () => {
+  const state = { counter: 0, items: [1, 2, 3] };
+  const patches = [
+    { op: 'replace', path: ['counter'], value: 1 },
+    { op: 'add', path: ['items', 3], value: 4 },
+  ];
+  return apply(state, patches);
+});
+
+mutative.implement(tests.patchesRoundtrip, () => {
+  const state = { counter: 0, items: [1, 2, 3] };
+  const [nextState, patches, inversePatches] = create(
+    state,
+    draft => {
+      draft.counter++;
+      draft.items.push(4);
+    },
+    { enablePatches: true }
+  );
+  const reverted = apply(nextState, inversePatches);
+  return { nextState, reverted };
+});
+
+mutative.implement(tests.undoRedo, () => {
+  const state = { value: 10 };
+  const [nextState, patches, inversePatches] = create(
+    state,
+    draft => {
+      draft.value = 20;
+    },
+    { enablePatches: true }
+  );
+  const undone = apply(nextState, inversePatches);
+  const redone = apply(undone, patches);
+  return { undone, redone };
+});
+
+// ============================================================================
+// Map & Set Operations (Feature-Specific)
+// ============================================================================
+
 mutative.implement(tests.mapSet, () => {
-  const mapState = {
-    users: new Map([
-      ['alice', { name: 'Alice', age: 25 }],
-      ['bob', { name: 'Bob', age: 30 }],
-    ]),
-  };
-  const result = create(mapState, (draft) => {
-    draft.users.set('charlie', { name: 'Charlie', age: 35 });
+  const state = mapData;
+  return create(state, draft => {
+    draft.set('new-key', { value: 999 });
   });
 });
 
 mutative.implement(tests.mapUpdate, () => {
-  const mapState = {
-    users: new Map([
-      ['alice', { name: 'Alice', age: 25 }],
-      ['bob', { name: 'Bob', age: 30 }],
-    ]),
-  };
-  const result = create(mapState, (draft) => {
-    const bob = draft.users.get('bob');
-    if (bob) bob.age = 31;
+  const state = mapData;
+  return create(state, draft => {
+    const item = draft.get('key-5');
+    if (item) {
+      item.value = 999;
+    }
   });
 });
 
 mutative.implement(tests.setAdd, () => {
-  const setState = {
-    tags: new Set(['javascript', 'typescript']),
-  };
-  const result = create(setState, (draft) => {
-    draft.tags.add('react');
+  const state = setData;
+  return create(state, draft => {
+    draft.add('new-item');
   });
 });
 
 mutative.implement(tests.setDelete, () => {
-  const setState = {
-    tags: new Set(['javascript', 'typescript', 'react']),
-  };
-  const result = create(setState, (draft) => {
-    draft.tags.delete('javascript');
+  const state = setData;
+  return create(state, draft => {
+    draft.delete('item-5');
   });
 });
 
 mutative.implement(tests.mapLarge, () => {
-  const largeMap = new Map(
-    Array.from({ length: 100 }, (_, i) => [`key${i}`, { value: i }])
-  );
-  const mapState = { data: largeMap };
-  const result = create(mapState, (draft) => {
-    draft.data.set('key50', { value: 9999 });
+  const state = largeMap;
+  return create(state, draft => {
+    draft.set('key-50', { value: 999 });
+    const item = draft.get('key-25');
+    if (item) {
+      item.value = 1000;
+    }
   });
 });
 
 mutative.implement(tests.setLarge, () => {
-  const largeSet = new Set(Array.from({ length: 100 }, (_, i) => i));
-  const setState = { data: largeSet };
-  const result = create(setState, (draft) => {
-    draft.data.add(200);
+  const state = largeSet;
+  return create(state, draft => {
+    draft.delete('item-50');
+    draft.add('new-item');
   });
 });

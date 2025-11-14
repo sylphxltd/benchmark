@@ -1,0 +1,15 @@
+{
+  "library": "Zen",
+  "libraryId": "zen",
+  "packageName": "@sylphx/zen",
+  "test": "Large Array (1000 items)",
+  "group": "06-performance-stress",
+  "timestamp": "2025-11-14T01:24:35.356Z",
+  "result": {
+    "opsPerSecond": 176225.1170134744,
+    "meanTime": 0.005674560000000106,
+    "variance": 0.00028816594935575796,
+    "p99": 0.010625000000004547,
+    "samples": 1000
+  }
+}

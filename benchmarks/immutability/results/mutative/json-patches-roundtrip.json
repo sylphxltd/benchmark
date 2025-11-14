@@ -1,0 +1,15 @@
+{
+  "library": "Mutative",
+  "libraryId": "mutative",
+  "packageName": "mutative",
+  "test": "JSON Patches - Roundtrip",
+  "group": "06-patches",
+  "timestamp": "2025-11-14T03:28:43.588Z",
+  "result": {
+    "opsPerSecond": 212551.37100954753,
+    "meanTime": 0.004704744999998524,
+    "variance": 0.0000013119913232996896,
+    "p99": 0.009875000000079126,
+    "samples": 1000
+  }
+}

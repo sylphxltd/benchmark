@@ -1,0 +1,15 @@
+{
+  "library": "MobX",
+  "libraryId": "mobx",
+  "packageName": "mobx",
+  "test": "Dynamic Dependencies",
+  "group": "07-reactivity-patterns",
+  "timestamp": "2025-11-14T00:59:46.963Z",
+  "result": {
+    "opsPerSecond": 18118567.917263966,
+    "meanTime": 0.00005519199997297619,
+    "variance": 4.3870379515889056e-8,
+    "p99": 0.00020800000038434519,
+    "samples": 1000
+  }
+}

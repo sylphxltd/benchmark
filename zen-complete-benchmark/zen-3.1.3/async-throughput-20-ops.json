@@ -1,0 +1,15 @@
+{
+  "library": "Zen",
+  "libraryId": "zen",
+  "packageName": "@sylphx/zen",
+  "test": "Async Throughput (20 ops)",
+  "group": "04-async-operations",
+  "timestamp": "2025-11-14T01:52:04.156Z",
+  "result": {
+    "opsPerSecond": 555946.2622342801,
+    "meanTime": 0.0017987350000000398,
+    "variance": 7.906930157907643e-7,
+    "p99": 0.0042500000000025295,
+    "samples": 1000
+  }
+}

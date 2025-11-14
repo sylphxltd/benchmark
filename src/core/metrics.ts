@@ -44,13 +44,16 @@ export interface BuildOptions {
  *
  * @param fn - Test function to benchmark
  * @param ctx - Test context with store instance
- * @param options - Warmup and iteration counts
+ * @param options - Warmup and iteration counts, lifecycle hooks
  * @returns Speed metric with ops/sec, mean time, variance, p99
  */
 export async function measurePerformance<TStore>(
   fn: (ctx: TestContext<TStore>) => void | Promise<void>,
   ctx: TestContext<TStore>,
-  options?: PerformanceOptions
+  options?: PerformanceOptions & {
+    beforeEach?: (ctx: TestContext<TStore>) => void | Promise<void>;
+    afterEach?: (ctx: TestContext<TStore>) => void | Promise<void>;
+  }
 ): Promise<SpeedMetric> {
   // Use tinybench defaults: warmupTime: 100ms, warmupIterations: 5
   // These are battle-tested defaults that handle JIT optimization properly
@@ -60,9 +63,12 @@ export async function measurePerformance<TStore>(
     time: options?.benchmarkIterations ? 0 : undefined,
   });
 
-  // Add benchmark task
+  // Add benchmark task with lifecycle hooks
   // Let tinybench handle both sync and async functions naturally
-  bench.add('test', () => fn(ctx));
+  bench.add('test', () => fn(ctx), {
+    beforeEach: options?.beforeEach ? () => options.beforeEach!(ctx) : undefined,
+    afterEach: options?.afterEach ? () => options.afterEach!(ctx) : undefined,
+  });
 
   // Run benchmark
   await bench.run();

@@ -4,12 +4,12 @@
   "packageName": "wouter",
   "test": "Dynamic Route Matching (1 param)",
   "group": "02-dynamic-routes",
-  "timestamp": "2025-11-14T05:46:09.425Z",
+  "timestamp": "2025-11-14T03:37:28.211Z",
   "result": {
-    "opsPerSecond": 458092.5507891822,
-    "meanTime": 0.0022505100000180392,
-    "variance": 4.605030209302287e-7,
-    "p99": 0.005239610000071479,
+    "opsPerSecond": 2625209.3604452345,
+    "meanTime": 0.00038092200000018297,
+    "variance": 1.0573939330951103e-7,
+    "p99": 0.0017090000000052896,
     "samples": 1000
   }
 }

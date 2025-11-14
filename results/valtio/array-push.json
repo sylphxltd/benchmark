@@ -1,0 +1,15 @@
+{
+  "library": "Valtio",
+  "libraryId": "valtio",
+  "packageName": "valtio",
+  "test": "Array Push",
+  "group": "03-advanced-operations",
+  "timestamp": "2025-11-14T00:59:46.963Z",
+  "result": {
+    "opsPerSecond": 921220.8756020073,
+    "meanTime": 0.0010855160000000125,
+    "variance": 5.740728646081889e-7,
+    "p99": 0.00433400000000006,
+    "samples": 1000
+  }
+}

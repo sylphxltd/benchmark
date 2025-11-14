@@ -1,0 +1,15 @@
+{
+  "library": "Zen",
+  "libraryId": "zen",
+  "packageName": "@sylphx/zen",
+  "test": "Burst Write (100x)",
+  "group": "02-basic-write",
+  "timestamp": "2025-11-14T01:24:41.020Z",
+  "result": {
+    "opsPerSecond": 14108949.306558697,
+    "meanTime": 0.0000708769999999319,
+    "variance": 5.5187427298293753e-8,
+    "p99": 0.0007500000000000284,
+    "samples": 1000
+  }
+}

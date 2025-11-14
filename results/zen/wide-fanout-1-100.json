@@ -1,0 +1,15 @@
+{
+  "library": "Zen",
+  "libraryId": "zen",
+  "packageName": "@sylphx/zen",
+  "test": "Wide Fanout (1→100)",
+  "group": "07-reactivity-patterns",
+  "timestamp": "2025-11-14T01:15:31.414Z",
+  "result": {
+    "opsPerSecond": 1879996.0896080995,
+    "meanTime": 0.0005319160000000097,
+    "variance": 0.000001311750575519395,
+    "p99": 0.006709000000000742,
+    "samples": 1000
+  }
+}

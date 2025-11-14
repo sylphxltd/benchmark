@@ -1,0 +1,15 @@
+{
+  "library": "Zustand",
+  "libraryId": "zustand",
+  "packageName": "zustand",
+  "test": "Dynamic Dependencies",
+  "group": "07-reactivity-patterns",
+  "timestamp": "2025-11-14T00:59:46.963Z",
+  "result": {
+    "opsPerSecond": 5751357.320167208,
+    "meanTime": 0.00017387200000484881,
+    "variance": 3.253989350719036e-8,
+    "p99": 0.0010829999996531114,
+    "samples": 1000
+  }
+}

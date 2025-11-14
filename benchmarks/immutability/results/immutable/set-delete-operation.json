@@ -1,0 +1,15 @@
+{
+  "library": "Immutable.js",
+  "libraryId": "immutable",
+  "packageName": "immutable",
+  "test": "Set - Delete Operation",
+  "group": "07-map-set",
+  "timestamp": "2025-11-14T03:28:43.588Z",
+  "result": {
+    "opsPerSecond": 2311353.135460766,
+    "meanTime": 0.00043264700000099766,
+    "variance": 1.5455229668876416e-7,
+    "p99": 0.0014580000000705695,
+    "samples": 1000
+  }
+}

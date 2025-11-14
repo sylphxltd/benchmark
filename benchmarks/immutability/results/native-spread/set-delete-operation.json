@@ -1,0 +1,15 @@
+{
+  "library": "Native Spread",
+  "libraryId": "native-spread",
+  "packageName": "native",
+  "test": "Set - Delete Operation",
+  "group": "07-map-set",
+  "timestamp": "2025-11-14T03:28:43.588Z",
+  "result": {
+    "opsPerSecond": 5721347.491737454,
+    "meanTime": 0.00017478400000072724,
+    "variance": 2.950143878342073e-8,
+    "p99": 0.0005840000000034706,
+    "samples": 1000
+  }
+}

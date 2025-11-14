@@ -1,0 +1,15 @@
+{
+  "library": "Solid Signals",
+  "libraryId": "solid-js",
+  "packageName": "solid-js",
+  "test": "Array Update",
+  "group": "03-advanced-operations",
+  "timestamp": "2025-11-14T00:59:46.963Z",
+  "result": {
+    "opsPerSecond": 7080598.452163841,
+    "meanTime": 0.00014123100000034582,
+    "variance": 7.638169333284799e-8,
+    "p99": 0.0007920000000467553,
+    "samples": 1000
+  }
+}

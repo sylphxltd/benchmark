@@ -1,0 +1,15 @@
+{
+  "library": "Redux Toolkit",
+  "libraryId": "redux-toolkit",
+  "packageName": "@reduxjs/toolkit",
+  "test": "Array Push",
+  "group": "03-advanced-operations",
+  "timestamp": "2025-11-14T00:59:46.963Z",
+  "result": {
+    "opsPerSecond": 3738.978724582899,
+    "meanTime": 0.2674527120000007,
+    "variance": 0.022530192228820158,
+    "p99": 0.521458999999993,
+    "samples": 1000
+  }
+}

@@ -1,30 +1,32 @@
 /**
  * CSS Frameworks Category
  *
- * Build-time performance and CSS output size benchmarks for utility-first CSS frameworks.
+ * Comprehensive benchmarks for modern CSS frameworks measuring:
+ * - Build performance (cold, incremental, watch mode)
+ * - Bundle size optimization (raw, minified, gzipped)
+ * - CSS generation efficiency
+ * - PurgeCSS/tree-shaking effectiveness
  *
- * Measures:
- * - Build time (cold build)
- * - CSS output size (minified + gzipped)
- *
- * NOTE: Runtime tests were removed as they measured meaningless string concatenation.
- * Utility-first CSS frameworks (Tailwind, UnoCSS, Panda) are build-time tools.
+ * Frameworks tested:
+ * - Tailwind CSS: Utility-first CSS framework
+ * - UnoCSS: Instant on-demand atomic CSS engine
+ * - Panda CSS: Type-safe CSS-in-JS with build-time extraction
+ * - Silk UI: Modern component-based styling solution
  */
 
 import { createCategory } from '../../src/core';
 
 // ============================================================================
-// 1. Create Category with Build Metrics
+// 1. Create Category with Comprehensive Metrics
 // ============================================================================
 
 export const category = createCategory({
   id: 'css-frameworks',
   name: 'CSS Frameworks',
-  description: 'Build-time performance and CSS output size benchmarks',
+  description: 'Comprehensive CSS framework build performance and optimization benchmarks',
   emoji: '🎨',
 
-  // Primary metric: Build time (lower is better)
-  // Secondary metric: CSS output size (lower is better)
+  // Multi-metric approach for CSS frameworks
   metrics: {
     primary: {
       type: 'speed',
@@ -35,59 +37,160 @@ export const category = createCategory({
     secondary: [
       {
         type: 'size',
-        name: 'CSS Output',
+        name: 'CSS Output (Gzipped)',
         unit: 'bytes',
         lowerIsBetter: true,
+      },
+      {
+        type: 'size',
+        name: 'CSS Output (Raw)',
+        unit: 'bytes',
+        lowerIsBetter: true,
+      },
+      {
+        type: 'quality',
+        name: 'Tree-shaking Efficiency',
+        unit: '%',
       },
     ],
   },
 
   performanceTiers: [
     {
-      name: 'Blazing Fast (Tier S)',
-      threshold: 700,
-      description: 'Sub-700ms build time',
+      name: 'Lightning Fast (Tier S)',
+      threshold: 500,
+      description: 'Sub-500ms cold build time',
     },
     {
       name: 'Fast (Tier A)',
-      threshold: 900,
-      description: '700-900ms build time',
+      threshold: 800,
+      description: '500-800ms cold build time',
     },
     {
       name: 'Standard (Tier B)',
       threshold: 1200,
-      description: '900-1200ms build time',
+      description: '800-1200ms cold build time',
     },
     {
       name: 'Slow (Tier C)',
       threshold: 0,
-      description: 'Above 1200ms build time',
+      description: 'Above 1200ms cold build time',
     },
   ],
 });
 
 // ============================================================================
-// 2. Create Groups (returns object references!)
+// 2. Create Comprehensive Test Groups
 // ============================================================================
 
 export const groups = {
   buildPerformance: category.createGroup({
     id: '01-build-performance',
     title: 'Build Performance',
-    description: 'Cold build time and CSS output size for small apps',
+    description: 'Cold and incremental build performance metrics',
+    type: 'universal',
+  }),
+
+  bundleOptimization: category.createGroup({
+    id: '02-bundle-optimization',
+    title: 'Bundle Size Optimization',
+    description: 'CSS output size and compression efficiency',
+    type: 'universal',
+  }),
+
+  scalability: category.createGroup({
+    id: '03-scalability',
+    title: 'Scalability',
+    description: 'Performance with increasing component complexity',
+    type: 'universal',
+  }),
+
+  developmentExperience: category.createGroup({
+    id: '04-development-experience',
+    title: 'Development Experience',
+    description: 'Watch mode, HMR, and development workflow performance',
     type: 'universal',
   }),
 };
 
 // ============================================================================
-// 3. Create Tests (returns object references!)
+// 3. Create Comprehensive Tests
 // ============================================================================
 
 export const tests = {
-  // Build Performance
-  smallAppBuild: groups.buildPerformance.createTest({
-    name: 'Small App Build',
-    description: 'Build a small app (10 components) and measure build time + CSS output',
+  // Build Performance Tests
+  coldBuildSmall: groups.buildPerformance.createTest({
+    name: 'Cold Build - Small App',
+    description: 'Build time for a small app (10 components, 50 unique utilities)',
+    testType: 'build',
+  }),
+
+  coldBuildMedium: groups.buildPerformance.createTest({
+    name: 'Cold Build - Medium App',
+    description: 'Build time for a medium app (50 components, 200 unique utilities)',
+    testType: 'build',
+  }),
+
+  coldBuildLarge: groups.buildPerformance.createTest({
+    name: 'Cold Build - Large App',
+    description: 'Build time for a large app (200 components, 1000 unique utilities)',
+    testType: 'build',
+  }),
+
+  incrementalBuild: groups.buildPerformance.createTest({
+    name: 'Incremental Build',
+    description: 'Rebuild time after single file change',
+    testType: 'build',
+  }),
+
+  // Bundle Optimization Tests
+  minimalCSS: groups.bundleOptimization.createTest({
+    name: 'Minimal CSS Generation',
+    description: 'CSS size for minimal component (button only)',
+    testType: 'build',
+  }),
+
+  treeShakingEfficiency: groups.bundleOptimization.createTest({
+    name: 'Tree-shaking Efficiency',
+    description: 'Unused CSS elimination effectiveness (used vs available utilities)',
+    testType: 'build',
+  }),
+
+  compressionRatio: groups.bundleOptimization.createTest({
+    name: 'Compression Ratio',
+    description: 'Gzip compression efficiency (raw vs gzipped size)',
+    testType: 'build',
+  }),
+
+  // Scalability Tests
+  utilityGrowth: groups.scalability.createTest({
+    name: 'Utility Class Growth',
+    description: 'CSS size growth with increasing unique utilities (10, 100, 1000)',
+    testType: 'build',
+  }),
+
+  componentScaling: groups.scalability.createTest({
+    name: 'Component Scaling',
+    description: 'Build time scaling with component count (10, 50, 200)',
+    testType: 'build',
+  }),
+
+  // Development Experience Tests
+  watchModeStartup: groups.developmentExperience.createTest({
+    name: 'Watch Mode Startup',
+    description: 'Time to start development server with file watching',
+    testType: 'build',
+  }),
+
+  hotReload: groups.developmentExperience.createTest({
+    name: 'Hot Reload Speed',
+    description: 'CSS regeneration time on file change in watch mode',
+    testType: 'build',
+  }),
+
+  configChangeRebuild: groups.developmentExperience.createTest({
+    name: 'Config Change Rebuild',
+    description: 'Rebuild time after configuration change',
     testType: 'build',
   }),
 };

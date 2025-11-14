@@ -1,0 +1,15 @@
+{
+  "library": "Zen",
+  "libraryId": "zen",
+  "packageName": "@sylphx/zen",
+  "test": "Diamond Pattern (3 layers)",
+  "group": "07-reactivity-patterns",
+  "timestamp": "2025-11-14T01:24:44.444Z",
+  "result": {
+    "opsPerSecond": 14384970.582700366,
+    "meanTime": 0.00006951700000016814,
+    "variance": 3.8705180891946796e-8,
+    "p99": 0.0002500000000011937,
+    "samples": 1000
+  }
+}
