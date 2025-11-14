@@ -95,7 +95,7 @@ jobs:
       - name: Generate root README
         run: |
           echo "📝 Generating root README..."
-          npx tsx scripts/generate-root-readme.ts
+          bun run src/cli.ts generate-readme
 
       - name: Show summary
         run: |

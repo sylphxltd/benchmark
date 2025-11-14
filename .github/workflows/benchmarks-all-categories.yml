@@ -156,7 +156,7 @@ jobs:
           done
 
       - name: Generate root README
-        run: npx tsx scripts/generate-root-readme.ts
+        run: bun run src/cli.ts generate-readme
 
       - name: Check if there are changes
         id: changes
