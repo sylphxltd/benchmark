@@ -365,114 +365,17 @@ jotai.implement(tests.largeArray, {
   }
 });
 
-// ========== REACTIVITY PATTERNS ==========
-
-jotai.implement(tests.diamondPattern, {
-  beforeEach: (ctx) => {
-    const { store, counterAtom } = ctx.store;
-    store.set(counterAtom, 0);
-  },
-  fn: (ctx) => {
-    const { store, counterAtom, doubledAtom } = ctx.store;
-    store.set(counterAtom, (prev) => prev + 1);
-    const result = store.get(doubledAtom);
-  }
-});
-
-jotai.implement(tests.deepDiamondPattern, {
-  beforeEach: (ctx) => {
-    const { store, counterAtom } = ctx.store;
-    store.set(counterAtom, 0);
-  },
-  fn: (ctx) => {
-    const { store, counterAtom, doubledAtom } = ctx.store;
-    for (let i = 0; i < 5; i++) {
-      store.set(counterAtom, (prev) => prev + 1);
-    }
-    const result = store.get(doubledAtom);
-  }
-});
-
-jotai.implement(tests.deepChain, {
-  beforeEach: (ctx) => {
-    const { store, counterAtom } = ctx.store;
-    store.set(counterAtom, 1);
-  },
-  fn: (ctx) => {
-    const { store, counterAtom } = ctx.store;
-    for (let i = 0; i < 10; i++) {
-      store.set(counterAtom, (prev) => prev * 2);
-    }
-    const result = store.get(counterAtom);
-  }
-});
-
-jotai.implement(tests.veryDeepChain, {
-  beforeEach: (ctx) => {
-    const { store, counterAtom } = ctx.store;
-    store.set(counterAtom, 1);
-  },
-  fn: (ctx) => {
-    const { store, counterAtom } = ctx.store;
-    for (let i = 0; i < 100; i++) {
-      store.set(counterAtom, (prev) => prev * 1.01);
-    }
-    const result = store.get(counterAtom);
-  }
-});
-
-jotai.implement(tests.wideFanout, {
-  beforeEach: (ctx) => {
-    const { store, counterAtom } = ctx.store;
-    store.set(counterAtom, 0);
-  },
-  fn: (ctx) => {
-    const { store, counterAtom } = ctx.store;
-    store.set(counterAtom, (prev) => prev + 1);
-    for (let i = 0; i < 100; i++) {
-      const v = store.get(counterAtom);
-    }
-  }
-});
-
-jotai.implement(tests.massiveFanout, {
-  beforeEach: (ctx) => {
-    const { store, counterAtom } = ctx.store;
-    store.set(counterAtom, 0);
-  },
-  fn: (ctx) => {
-    const { store, counterAtom } = ctx.store;
-    store.set(counterAtom, (prev) => prev + 1);
-    for (let i = 0; i < 1000; i++) {
-      const v = store.get(counterAtom);
-    }
-  }
-});
-
-jotai.implement(tests.dynamicDependencies, {
-  beforeEach: (ctx) => {
-    const { store, counterAtom } = ctx.store;
-    store.set(counterAtom, 0);
-  },
-  fn: (ctx) => {
-    const { store, counterAtom } = ctx.store;
-    const toggle = store.get(counterAtom) % 2 === 0;
-    store.set(counterAtom, (prev) => prev + (toggle ? 1 : 2));
-    const result = store.get(counterAtom);
-  }
-});
-
-jotai.implement(tests.repeatedDiamonds, {
-  beforeEach: (ctx) => {
-    const { store, counterAtom } = ctx.store;
-    store.set(counterAtom, 0);
-  },
-  fn: (ctx) => {
-    const { store, counterAtom, doubledAtom } = ctx.store;
-    for (let i = 0; i < 5; i++) {
-      store.set(counterAtom, (prev) => prev + 1);
-      const a = store.get(counterAtom);
-      const b = store.get(doubledAtom);
-    }
-  }
-});
+// ============================================================================
+// REACTIVITY PATTERNS - NOT APPLICABLE
+// ============================================================================
+// Jotai is an atom-based library without implicit reactive graph propagation.
+// Derived atoms are only evaluated when explicitly accessed via store.get(),
+// not automatically computed like signal-based (Zen, Preact, Solid) or
+// observer-based (MobX, Valtio) libraries. Reactivity pattern tests measure
+// automatic dependency tracking, propagation efficiency, and computation
+// deduplication - features that Jotai doesn't implement. These tests would
+// only measure imperative operations, not reactive graphs, making comparison
+// unfair.
+//
+// Removed tests: diamondPattern, deepDiamondPattern, deepChain, veryDeepChain,
+//                wideFanout, massiveFanout, dynamicDependencies, repeatedDiamonds
