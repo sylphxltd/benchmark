@@ -4,12 +4,12 @@
   "packageName": "immer",
   "test": "Map - Update Nested Value",
   "group": "07-map-set",
-  "timestamp": "2025-11-14T06:02:45.545Z",
+  "timestamp": "2025-11-14T06:07:27.843Z",
   "result": {
-    "opsPerSecond": 206856.87689008223,
-    "meanTime": 0.004909025999986625,
-    "variance": 8.615620934573362e-7,
-    "p99": 0.0074835200011875705,
+    "opsPerSecond": 198200.32383067405,
+    "meanTime": 0.00512973499997679,
+    "variance": 0.0000010530144732022357,
+    "p99": 0.0074258099994403875,
     "samples": 1000
   }
 }

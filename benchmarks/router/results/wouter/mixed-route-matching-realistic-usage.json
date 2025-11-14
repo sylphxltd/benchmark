@@ -4,12 +4,12 @@
   "packageName": "wouter",
   "test": "Mixed Route Matching (realistic usage)",
   "group": "04-real-world",
-  "timestamp": "2025-11-14T06:02:43.417Z",
+  "timestamp": "2025-11-14T06:07:24.630Z",
   "result": {
-    "opsPerSecond": 330131.18588252435,
-    "meanTime": 0.0030931839999811927,
-    "variance": 6.880628308955497e-7,
-    "p99": 0.0051911999998628736,
+    "opsPerSecond": 330767.9990261028,
+    "meanTime": 0.0030611299999618495,
+    "variance": 3.387981072048123e-7,
+    "p99": 0.004198189998733142,
     "samples": 1000
   }
 }

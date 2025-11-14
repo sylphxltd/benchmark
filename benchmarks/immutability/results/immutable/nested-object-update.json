@@ -4,12 +4,12 @@
   "packageName": "immutable",
   "test": "Nested Object Update",
   "group": "02-nested-updates",
-  "timestamp": "2025-11-14T06:02:45.545Z",
+  "timestamp": "2025-11-14T06:07:27.843Z",
   "result": {
-    "opsPerSecond": 1625855.9176010373,
-    "meanTime": 0.0006427279999988969,
-    "variance": 1.70003969990576e-7,
-    "p99": 0.0011719999993238161,
+    "opsPerSecond": 851702.8217425365,
+    "meanTime": 0.0012356169999911799,
+    "variance": 7.168896499472631e-7,
+    "p99": 0.002344610000445754,
     "samples": 1000
   }
 }

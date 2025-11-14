@@ -4,12 +4,12 @@
   "packageName": "@preact/signals",
   "test": "Concurrent Updates (50x)",
   "group": "04-async-operations",
-  "timestamp": "2025-11-14T06:02:49.488Z",
+  "timestamp": "2025-11-14T06:07:34.202Z",
   "result": {
-    "opsPerSecond": 106164.36051700512,
-    "meanTime": 0.010075110000052519,
-    "variance": 0.00023931939502049463,
-    "p99": 0.019242500000073045,
+    "opsPerSecond": 103636.92080282123,
+    "meanTime": 0.009825819000026968,
+    "variance": 0.000003284993391520998,
+    "p99": 0.017724499999021644,
     "samples": 1000
   }
 }

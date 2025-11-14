@@ -4,12 +4,12 @@
   "packageName": "mutative",
   "test": "Undo/Redo - Inverse Patches",
   "group": "06-patches",
-  "timestamp": "2025-11-14T06:02:45.545Z",
+  "timestamp": "2025-11-14T06:07:27.843Z",
   "result": {
-    "opsPerSecond": 155449.4105651348,
-    "meanTime": 0.006532866000045033,
-    "variance": 0.0000012170236636721487,
-    "p99": 0.009839500001726263,
+    "opsPerSecond": 147622.84850179133,
+    "meanTime": 0.006907541000015044,
+    "variance": 0.0000016638257839938133,
+    "p99": 0.011191800001397495,
     "samples": 1000
   }
 }

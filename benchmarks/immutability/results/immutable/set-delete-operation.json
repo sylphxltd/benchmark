@@ -4,12 +4,12 @@
   "packageName": "immutable",
   "test": "Set - Delete Operation",
   "group": "07-map-set",
-  "timestamp": "2025-11-14T06:02:45.545Z",
+  "timestamp": "2025-11-14T06:07:27.843Z",
   "result": {
-    "opsPerSecond": 4626542.367211656,
-    "meanTime": 0.00023625299998457195,
-    "variance": 1.1128350645408646e-7,
-    "p99": 0.0007520999999178456,
+    "opsPerSecond": 4447160.944636983,
+    "meanTime": 0.0007461979999643518,
+    "variance": 0.0002436781110378713,
+    "p99": 0.0014438999974299795,
     "samples": 1000
   }
 }

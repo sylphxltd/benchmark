@@ -4,12 +4,12 @@
   "packageName": "immutable",
   "test": "Set - Add Operation",
   "group": "07-map-set",
-  "timestamp": "2025-11-14T06:02:45.545Z",
+  "timestamp": "2025-11-14T06:07:27.843Z",
   "result": {
-    "opsPerSecond": 4876287.662927863,
-    "meanTime": 0.00021929599998111372,
-    "variance": 1.0559836228562569e-8,
-    "p99": 0.0008420899976772488,
+    "opsPerSecond": 4933133.884863247,
+    "meanTime": 0.0002172170000121696,
+    "variance": 1.1897777695141722e-8,
+    "p99": 0.0008209999978498672,
     "samples": 1000
   }
 }
