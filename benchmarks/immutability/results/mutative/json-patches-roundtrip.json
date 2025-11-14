@@ -4,12 +4,12 @@
   "packageName": "mutative",
   "test": "JSON Patches - Roundtrip",
   "group": "06-patches",
-  "timestamp": "2025-11-14T13:07:20.067Z",
+  "timestamp": "2025-11-14T13:12:57.275Z",
   "result": {
-    "opsPerSecond": 73961.9228866925,
-    "meanTime": 0.013919359000021359,
-    "variance": 0.000016515141688223746,
-    "p99": 0.03136901000052602,
+    "opsPerSecond": 75797.77913576434,
+    "meanTime": 0.014253373000039574,
+    "variance": 0.0006322083605201386,
+    "p99": 0.0269995299985021,
     "samples": 1000
   }
 }

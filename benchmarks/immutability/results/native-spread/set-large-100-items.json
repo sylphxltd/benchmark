@@ -4,12 +4,12 @@
   "packageName": "native",
   "test": "Set - Large (100 items)",
   "group": "07-map-set",
-  "timestamp": "2025-11-14T13:07:20.067Z",
+  "timestamp": "2025-11-14T13:12:57.275Z",
   "result": {
-    "opsPerSecond": 791878.2289990482,
-    "meanTime": 0.0012953889999516833,
-    "variance": 1.8066069237712874e-7,
-    "p99": 0.0030349999979080167,
+    "opsPerSecond": 354616.7579791433,
+    "meanTime": 0.006600308000000951,
+    "variance": 0.0007079245113200553,
+    "p99": 0.01593109999779699,
     "samples": 1000
   }
 }
