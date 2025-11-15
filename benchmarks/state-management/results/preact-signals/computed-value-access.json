@@ -5,12 +5,12 @@
   "version": "2.4.0",
   "test": "Computed Value Access",
   "group": "03-advanced-operations",
-  "timestamp": "2025-11-15T18:05:58.467Z",
+  "timestamp": "2025-11-15T18:17:38.591Z",
   "result": {
-    "opsPerSecond": 20794226.233040493,
-    "meanTime": 0.000048668000035831935,
-    "variance": 3.7463239620774895e-11,
-    "p99": 0.0000599999985206523,
+    "opsPerSecond": 20960726.280830372,
+    "meanTime": 0.00004840899999908288,
+    "variance": 4.394966901270031e-11,
+    "p99": 0.00007099999857018702,
     "samples": 1000
   }
 }

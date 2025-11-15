@@ -5,12 +5,12 @@
   "version": "3.7.1",
   "test": "Dynamic Route Matching (1 param)",
   "group": "02-dynamic-routes",
-  "timestamp": "2025-11-15T18:06:01.607Z",
+  "timestamp": "2025-11-15T18:17:36.176Z",
   "result": {
-    "opsPerSecond": 2947169.4055358167,
-    "meanTime": 0.0003463010000259601,
-    "variance": 5.3491615595154174e-9,
-    "p99": 0.0007281899999816231,
+    "opsPerSecond": 2346172.0293120733,
+    "meanTime": 0.00044086899999183513,
+    "variance": 1.270386585056661e-7,
+    "p99": 0.0007411999998294048,
     "samples": 1000
   }
 }
