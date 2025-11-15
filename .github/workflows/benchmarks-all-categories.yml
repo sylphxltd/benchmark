@@ -5,12 +5,12 @@ on:
   #   # Run every hour at minute 0
   #   - cron: '0 * * * *'
   workflow_dispatch:
-  push:
-    paths:
-      - 'benchmarks/**'
-      - 'scripts/**'
-      - 'src/**'
-      - '.github/workflows/benchmarks-all-categories.yml'
+  # push:
+  #   paths:
+  #     - 'benchmarks/**'
+  #     - 'scripts/**'
+  #     - 'src/**'
+  #     - '.github/workflows/benchmarks-all-categories.yml'
 
 jobs:
   # Discover all benchmark categories dynamically
