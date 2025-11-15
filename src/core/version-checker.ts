@@ -138,12 +138,23 @@ export async function checkVersions(benchmarkDir: string): Promise<boolean> {
       }).trim();
 
       const cleanCurrent = currentVersion.replace(/^[~^]/, '');
-      const hasUpdate = latestVersion !== cleanCurrent;
+      const trackedVersion = versions.libraries[name]?.current;
 
-      if (hasUpdate) {
-        console.log(`   ✨ ${name}: ${cleanCurrent} → ${latestVersion}`);
+      // Detect changes: either package.json changed OR npm has newer version
+      const packageChanged = trackedVersion && trackedVersion !== cleanCurrent;
+      const hasNpmUpdate = latestVersion !== cleanCurrent;
+
+      if (packageChanged || hasNpmUpdate || !versions.libraries[name]) {
+        if (packageChanged && !hasNpmUpdate) {
+          console.log(`   📦 ${name}: ${trackedVersion} → ${cleanCurrent} (package.json updated)`);
+        } else if (hasNpmUpdate) {
+          console.log(`   ✨ ${name}: ${cleanCurrent} → ${latestVersion}`);
+        } else {
+          console.log(`   ➕ ${name}: ${cleanCurrent} (new)`);
+        }
+
         updatedLibs.push(name);
-        newVersions[name] = latestVersion;
+        newVersions[name] = cleanCurrent;
 
         // Update tracker
         versions.libraries[name] = {
@@ -154,15 +165,6 @@ export async function checkVersions(benchmarkDir: string): Promise<boolean> {
         };
       } else {
         console.log(`   ✓ ${name}: ${cleanCurrent} (up to date)`);
-
-        // Initialize if not exists
-        if (!versions.libraries[name]) {
-          versions.libraries[name] = {
-            current: cleanCurrent,
-            latest: latestVersion,
-            lastUpdated: new Date().toISOString()
-          };
-        }
       }
     } catch (error) {
       console.error(`   ⚠️  Failed to check ${name}: ${error instanceof Error ? error.message : 'Unknown error'}`);
