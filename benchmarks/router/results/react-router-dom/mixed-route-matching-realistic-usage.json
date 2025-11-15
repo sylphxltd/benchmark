@@ -5,12 +5,12 @@
   "version": "6.30.1",
   "test": "Mixed Route Matching (realistic usage)",
   "group": "04-real-world",
-  "timestamp": "2025-11-15T09:05:19.411Z",
+  "timestamp": "2025-11-15T10:05:18.747Z",
   "result": {
-    "opsPerSecond": 2194.123823338567,
-    "meanTime": 0.46127651999999764,
-    "variance": 0.005667003135446703,
-    "p99": 1.0572934699992946,
+    "opsPerSecond": 2240.7690721145077,
+    "meanTime": 0.4518482719999574,
+    "variance": 0.0055034401758258435,
+    "p99": 1.027296870000009,
     "samples": 1000
   }
 }
