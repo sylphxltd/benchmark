@@ -5,12 +5,12 @@
   "version": "10.2.0",
   "test": "Set - Delete Operation",
   "group": "07-map-set",
-  "timestamp": "2025-11-15T16:05:05.517Z",
+  "timestamp": "2025-11-15T17:04:05.030Z",
   "result": {
-    "opsPerSecond": 268264.52309489704,
-    "meanTime": 0.003787923999956547,
-    "variance": 5.069734796531443e-7,
-    "p99": 0.005360900002779089,
+    "opsPerSecond": 268447.2627149019,
+    "meanTime": 0.0037884539999904518,
+    "variance": 6.446390288078561e-7,
+    "p99": 0.005672089998988667,
     "samples": 1000
   }
 }
