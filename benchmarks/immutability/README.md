@@ -31,8 +31,8 @@ Comprehensive performance benchmarks for React immutability libraries.
 
 **TL;DR** - Choose based on your needs:
 
-- **⚡ Maximum Performance**: Craft - Fastest overall with 59.1/100 score
-- **⚖️ Best Balance**: Immer - Great performance (24.1/100) with good ecosystem
+- **⚡ Maximum Performance**: Craft - Fastest overall with 58.9/100 score
+- **⚖️ Best Balance**: Immer - Great performance (24.7/100) with good ecosystem
 - **🎯 Popular Choice**: Mutative - Widely used, good performance, minimal API
 
 <details>
@@ -41,19 +41,19 @@ Comprehensive performance benchmarks for React immutability libraries.
 ### When to Choose Each Library
 
 
-**Craft** (Score: 59.1/100)
+**Craft** (Score: 58.9/100)
 - Performant immutable updates with structural sharing
 - **Best for**: General purpose state management
 - [GitHub](https://github.com/SylphxAI/craft) • [npm](https://www.npmjs.com/package/@sylphx/craft)
 
 
-**Immer** (Score: 24.1/100)
+**Immer** (Score: 24.7/100)
 - Create the next immutable state by mutating the current one
 - **Best for**: General purpose state management
 - [GitHub](https://github.com/immerjs/immer) • [npm](https://www.npmjs.com/package/immer)
 
 
-**Mutative** (Score: 22.4/100)
+**Mutative** (Score: 23.8/100)
 - Efficient immutable updates, 2-6x faster than Immer
 - **Best for**: General purpose state management
 - [GitHub](https://github.com/unadlib/mutative) • [npm](https://www.npmjs.com/package/mutative)
@@ -93,13 +93,13 @@ Based on **two-tier weighted geometric mean** combining category importance with
 
 | Rank | Library | Overall Score | Relative Performance | Links |
 |:----:|---------|--------------|---------------------|:-----:|
-| 🥇 1 | **[Native Spread](#)** | 72.8/100 | 100% of fastest | [📦](#) [📊](#) |
-| 🥈 2 | **[Immutable.js](https://github.com/immutable-js/immutable-js)** | 26.1/100 | 36% of fastest | [📦](https://www.npmjs.com/package/immutable) [📊](https://bundlephobia.com/package/immutable) |
-| 🥉 3 | **[Immutability Helper](https://github.com/kolodny/immutability-helper)** | 8.9/100 | 12% of fastest | [📦](https://www.npmjs.com/package/immutability-helper) [📊](https://bundlephobia.com/package/immutability-helper) |
-|  4 | **[Craft](https://github.com/SylphxAI/craft)** | 5.8/100 | 8% of fastest | [📦](https://www.npmjs.com/package/@sylphx/craft) [📊](https://bundlephobia.com/package/@sylphx/craft) |
-|  5 | **[Mutative](https://github.com/unadlib/mutative)** | 5.4/100 | 7% of fastest | [📦](https://www.npmjs.com/package/mutative) [📊](https://bundlephobia.com/package/mutative) |
-|  6 | **[Immer](https://github.com/immerjs/immer)** | 3.0/100 | 4% of fastest | [📦](https://www.npmjs.com/package/immer) [📊](https://bundlephobia.com/package/immer) |
-|  7 | **[Seamless Immutable](https://github.com/rtfeldman/seamless-immutable)** | 1.4/100 | 2% of fastest | [📦](https://www.npmjs.com/package/seamless-immutable) [📊](https://bundlephobia.com/package/seamless-immutable) |
+| 🥇 1 | **[Native Spread](#)** | 74.0/100 | 100% of fastest | [📦](#) [📊](#) |
+| 🥈 2 | **[Immutable.js](https://github.com/immutable-js/immutable-js)** | 29.4/100 | 40% of fastest | [📦](https://www.npmjs.com/package/immutable) [📊](https://bundlephobia.com/package/immutable) |
+| 🥉 3 | **[Immutability Helper](https://github.com/kolodny/immutability-helper)** | 9.2/100 | 12% of fastest | [📦](https://www.npmjs.com/package/immutability-helper) [📊](https://bundlephobia.com/package/immutability-helper) |
+|  4 | **[Mutative](https://github.com/unadlib/mutative)** | 5.9/100 | 8% of fastest | [📦](https://www.npmjs.com/package/mutative) [📊](https://bundlephobia.com/package/mutative) |
+|  5 | **[Craft](https://github.com/SylphxAI/craft)** | 5.8/100 | 8% of fastest | [📦](https://www.npmjs.com/package/@sylphx/craft) [📊](https://bundlephobia.com/package/@sylphx/craft) |
+|  6 | **[Immer](https://github.com/immerjs/immer)** | 2.6/100 | 4% of fastest | [📦](https://www.npmjs.com/package/immer) [📊](https://bundlephobia.com/package/immer) |
+|  7 | **[Seamless Immutable](https://github.com/rtfeldman/seamless-immutable)** | 1.5/100 | 2% of fastest | [📦](https://www.npmjs.com/package/seamless-immutable) [📊](https://bundlephobia.com/package/seamless-immutable) |
 
 
 *📦 = npm package • 📊 = bundle size*
@@ -110,9 +110,9 @@ Pure data-driven weighting based on test stability across implementations.
 
 | Rank | Library | Overall Score | Relative Performance | Links |
 |:----:|---------|--------------|---------------------|:-----:|
-| 🥇 1 | **[Craft](https://github.com/SylphxAI/craft)** | 59.1/100 | 100% of fastest | [📦](https://www.npmjs.com/package/@sylphx/craft) [📊](https://bundlephobia.com/package/@sylphx/craft) |
-| 🥈 2 | **[Immer](https://github.com/immerjs/immer)** | 24.1/100 | 41% of fastest | [📦](https://www.npmjs.com/package/immer) [📊](https://bundlephobia.com/package/immer) |
-| 🥉 3 | **[Mutative](https://github.com/unadlib/mutative)** | 22.4/100 | 38% of fastest | [📦](https://www.npmjs.com/package/mutative) [📊](https://bundlephobia.com/package/mutative) |
+| 🥇 1 | **[Craft](https://github.com/SylphxAI/craft)** | 58.9/100 | 100% of fastest | [📦](https://www.npmjs.com/package/@sylphx/craft) [📊](https://bundlephobia.com/package/@sylphx/craft) |
+| 🥈 2 | **[Immer](https://github.com/immerjs/immer)** | 24.7/100 | 42% of fastest | [📦](https://www.npmjs.com/package/immer) [📊](https://bundlephobia.com/package/immer) |
+| 🥉 3 | **[Mutative](https://github.com/unadlib/mutative)** | 23.8/100 | 40% of fastest | [📦](https://www.npmjs.com/package/mutative) [📊](https://bundlephobia.com/package/mutative) |
 |  4 | **[Native Spread](#)** | 3.2/100 | 5% of fastest | [📦](https://www.npmjs.com/package/native-spread) [📊](https://bundlephobia.com/package/native-spread) |
 |  5 | **[Immutable.js](https://github.com/immutable-js/immutable-js)** | 2.8/100 | 5% of fastest | [📦](https://www.npmjs.com/package/immutable) [📊](https://bundlephobia.com/package/immutable) |
 |  6 | **[Immutability Helper](https://github.com/kolodny/immutability-helper)** | 1.2/100 | 2% of fastest | [📦](https://www.npmjs.com/package/immutability-helper) [📊](https://bundlephobia.com/package/immutability-helper) |
@@ -127,9 +127,9 @@ Pure data-driven weighting based on test stability across implementations.
 
 | Library | Score | Bundle Size (gzip) | Description | Best For |
 |---------|:-----:|:------------------:|-------------|----------|
-| **[Craft](https://github.com/SylphxAI/craft)** | **59.1** | **2.76 KB** | Performant immutable updates with structural shari... | General purpose... |
-| **[Immer](https://github.com/immerjs/immer)** | **24.1** | **4.90 KB** | Create the next immutable state by mutating the cu... | General purpose... |
-| **[Mutative](https://github.com/unadlib/mutative)** | **22.4** | **7.16 KB** | Efficient immutable updates, 2-6x faster than Imme... | General purpose... |
+| **[Craft](https://github.com/SylphxAI/craft)** | **58.9** | **2.76 KB** | Performant immutable updates with structural shari... | General purpose... |
+| **[Immer](https://github.com/immerjs/immer)** | **24.7** | **4.90 KB** | Create the next immutable state by mutating the cu... | General purpose... |
+| **[Mutative](https://github.com/unadlib/mutative)** | **23.8** | **7.16 KB** | Efficient immutable updates, 2-6x faster than Imme... | General purpose... |
 | **[Native Spread](#)** | **3.2** | N/A | State management solution... | General purpose... |
 | **[Immutable.js](https://github.com/immutable-js/immutable-js)** | **2.8** | **17.58 KB** | Immutable persistent data collections for Javascri... | General purpose... |
 | **[Immutability Helper](https://github.com/kolodny/immutability-helper)** | **1.2** | **1.65 KB** | Mutate a copy of data without changing the origina... | General purpose... |
@@ -147,162 +147,162 @@ Pure data-driven weighting based on test stability across implementations.
 #### Simple Object Update
 
 ```
-🥇 Native Spread      ████████████████████████████████████████   13.1M ops/sec
-🥈 Immutable.js       █████████████████████████                  8.3M ops/sec
-🥉 Immutability Helper ███████                                    2.2M ops/sec
+🥇 Native Spread      ████████████████████████████████████████   14.7M ops/sec
+🥈 Immutable.js       ███████████████████████                    8.5M ops/sec
+🥉 Immutability Helper ██████                                     2.4M ops/sec
  Craft              █████                                      1.8M ops/sec
- Mutative           ████                                       1.2M ops/sec
- Immer              ███                                        1.1M ops/sec
- Seamless Immutable ██                                         542K ops/sec
+ Mutative           ████                                       1.3M ops/sec
+ Immer              ██                                         783K ops/sec
+ Seamless Immutable ██                                         550K ops/sec
 ```
 
 | Library | ops/sec | Mean Time | P99 | Samples |
 |---------|---------|-----------|-----|----------|
-| Native Spread | 13.1M | 0.000ms | 0.000ms | 1000 |
-| Immutable.js | 8.3M | 0.000ms | 0.001ms | 1000 |
-| Immutability Helper | 2.2M | 0.000ms | 0.001ms | 1000 |
+| Native Spread | 14.7M | 0.000ms | 0.000ms | 1000 |
+| Immutable.js | 8.5M | 0.000ms | 0.000ms | 1000 |
+| Immutability Helper | 2.4M | 0.000ms | 0.001ms | 1000 |
 | Craft | 1.8M | 0.001ms | 0.001ms | 1000 |
-| Mutative | 1.2M | 0.001ms | 0.002ms | 1000 |
-| Immer | 1.1M | 0.001ms | 0.002ms | 1000 |
-| Seamless Immutable | 542K | 0.002ms | 0.004ms | 1000 |
+| Mutative | 1.3M | 0.001ms | 0.002ms | 1000 |
+| Immer | 783K | 0.001ms | 0.003ms | 1000 |
+| Seamless Immutable | 550K | 0.002ms | 0.003ms | 1000 |
 
 ### 02-nested-updates
 
 #### Nested Object Update
 
 ```
-🥇 Native Spread      ████████████████████████████████████████   7.8M ops/sec
-🥈 Immutable.js       █████                                      979K ops/sec
-🥉 Immutability Helper █████                                      891K ops/sec
- Craft              ███                                        560K ops/sec
- Mutative           ██                                         403K ops/sec
- Immer              █                                          266K ops/sec
- Seamless Immutable                                            80K ops/sec
+🥇 Native Spread      ████████████████████████████████████████   7.7M ops/sec
+🥈 Immutable.js       ████████                                   1.6M ops/sec
+🥉 Immutability Helper █████                                      908K ops/sec
+ Craft              ███                                        602K ops/sec
+ Mutative           ██                                         436K ops/sec
+ Immer              █                                          276K ops/sec
+ Seamless Immutable █                                          139K ops/sec
 ```
 
 | Library | ops/sec | Mean Time | P99 | Samples |
 |---------|---------|-----------|-----|----------|
-| Native Spread | 7.8M | 0.000ms | 0.000ms | 1000 |
-| Immutable.js | 979K | 0.001ms | 0.002ms | 1000 |
-| Immutability Helper | 891K | 0.001ms | 0.002ms | 1000 |
-| Craft | 560K | 0.002ms | 0.004ms | 1000 |
-| Mutative | 403K | 0.003ms | 0.006ms | 1000 |
-| Immer | 266K | 0.004ms | 0.007ms | 1000 |
-| Seamless Immutable | 80K | 0.013ms | 0.026ms | 1000 |
+| Native Spread | 7.7M | 0.000ms | 0.000ms | 1000 |
+| Immutable.js | 1.6M | 0.001ms | 0.001ms | 1000 |
+| Immutability Helper | 908K | 0.001ms | 0.002ms | 1000 |
+| Craft | 602K | 0.002ms | 0.003ms | 1000 |
+| Mutative | 436K | 0.002ms | 0.005ms | 1000 |
+| Immer | 276K | 0.004ms | 0.006ms | 1000 |
+| Seamless Immutable | 139K | 0.007ms | 0.011ms | 1000 |
 
 ### 03-array-operations
 
 #### Array Push
 
 ```
-🥇 Native Spread      ████████████████████████████████████████   10.9M ops/sec
+🥇 Native Spread      ████████████████████████████████████████   10.7M ops/sec
 🥈 Immutability Helper ████████████████████                       5.3M ops/sec
-🥉 Immutable.js       ████████                                   2.2M ops/sec
- Craft              ██                                         413K ops/sec
- Mutative           █                                          295K ops/sec
- Immer              █                                          160K ops/sec
- Seamless Immutable                                            69K ops/sec
+🥉 Immutable.js       █████████                                  2.3M ops/sec
+ Craft              █                                          394K ops/sec
+ Mutative           █                                          298K ops/sec
+ Immer              █                                          164K ops/sec
+ Seamless Immutable                                            106K ops/sec
 ```
 
 | Library | ops/sec | Mean Time | P99 | Samples |
 |---------|---------|-----------|-----|----------|
-| Native Spread | 10.9M | 0.000ms | 0.001ms | 1000 |
-| Immutability Helper | 5.3M | 0.000ms | 0.001ms | 1000 |
-| Immutable.js | 2.2M | 0.000ms | 0.001ms | 1000 |
-| Craft | 413K | 0.003ms | 0.006ms | 1000 |
-| Mutative | 295K | 0.004ms | 0.011ms | 1000 |
-| Immer | 160K | 0.006ms | 0.010ms | 1000 |
-| Seamless Immutable | 69K | 0.016ms | 0.032ms | 1000 |
+| Native Spread | 10.7M | 0.000ms | 0.000ms | 1000 |
+| Immutability Helper | 5.3M | 0.000ms | 0.000ms | 1000 |
+| Immutable.js | 2.3M | 0.000ms | 0.001ms | 1000 |
+| Craft | 394K | 0.003ms | 0.006ms | 1000 |
+| Mutative | 298K | 0.004ms | 0.008ms | 1000 |
+| Immer | 164K | 0.006ms | 0.011ms | 1000 |
+| Seamless Immutable | 106K | 0.010ms | 0.014ms | 1000 |
 
 #### Array Remove
 
 ```
-🥇 Native Spread      ████████████████████████████████████████   9.2M ops/sec
-🥈 Immutability Helper █████                                      1.1M ops/sec
-🥉 Immutable.js       ████                                       954K ops/sec
- Craft              █                                          157K ops/sec
- Seamless Immutable █                                          128K ops/sec
- Mutative                                                      74K ops/sec
- Immer                                                         64K ops/sec
+🥇 Native Spread      ████████████████████████████████████████   11.0M ops/sec
+🥈 Immutability Helper ████                                       1.1M ops/sec
+🥉 Immutable.js       ████                                       1.0M ops/sec
+ Craft              █                                          154K ops/sec
+ Seamless Immutable                                            134K ops/sec
+ Mutative                                                      73K ops/sec
+ Immer                                                         50K ops/sec
 ```
 
 | Library | ops/sec | Mean Time | P99 | Samples |
 |---------|---------|-----------|-----|----------|
-| Native Spread | 9.2M | 0.000ms | 0.001ms | 1000 |
+| Native Spread | 11.0M | 0.000ms | 0.000ms | 1000 |
 | Immutability Helper | 1.1M | 0.001ms | 0.002ms | 1000 |
-| Immutable.js | 954K | 0.001ms | 0.004ms | 1000 |
-| Craft | 157K | 0.006ms | 0.013ms | 1000 |
-| Seamless Immutable | 128K | 0.008ms | 0.016ms | 1000 |
-| Mutative | 74K | 0.014ms | 0.026ms | 1000 |
-| Immer | 64K | 0.018ms | 0.047ms | 1000 |
+| Immutable.js | 1.0M | 0.001ms | 0.002ms | 1000 |
+| Craft | 154K | 0.007ms | 0.018ms | 1000 |
+| Seamless Immutable | 134K | 0.008ms | 0.011ms | 1000 |
+| Mutative | 73K | 0.014ms | 0.029ms | 1000 |
+| Immer | 50K | 0.021ms | 0.036ms | 1000 |
 
 #### Array Update
 
 ```
 🥇 Native Spread      ████████████████████████████████████████   8.2M ops/sec
-🥈 Immutable.js       █████████                                  1.8M ops/sec
-🥉 Immutability Helper ███                                        541K ops/sec
- Craft              ██                                         369K ops/sec
- Mutative           █                                          265K ops/sec
- Immer              █                                          187K ops/sec
- Seamless Immutable                                            98K ops/sec
+🥈 Immutable.js       ████████████                               2.5M ops/sec
+🥉 Immutability Helper ███                                        550K ops/sec
+ Craft              ██                                         375K ops/sec
+ Mutative           █                                          294K ops/sec
+ Immer              █                                          189K ops/sec
+ Seamless Immutable                                            101K ops/sec
 ```
 
 | Library | ops/sec | Mean Time | P99 | Samples |
 |---------|---------|-----------|-----|----------|
-| Native Spread | 8.2M | 0.000ms | 0.001ms | 1000 |
-| Immutable.js | 1.8M | 0.001ms | 0.001ms | 1000 |
-| Immutability Helper | 541K | 0.002ms | 0.004ms | 1000 |
-| Craft | 369K | 0.003ms | 0.004ms | 1000 |
-| Mutative | 265K | 0.004ms | 0.007ms | 1000 |
-| Immer | 187K | 0.005ms | 0.010ms | 1000 |
-| Seamless Immutable | 98K | 0.011ms | 0.021ms | 1000 |
+| Native Spread | 8.2M | 0.000ms | 0.000ms | 1000 |
+| Immutable.js | 2.5M | 0.000ms | 0.001ms | 1000 |
+| Immutability Helper | 550K | 0.002ms | 0.003ms | 1000 |
+| Craft | 375K | 0.003ms | 0.004ms | 1000 |
+| Mutative | 294K | 0.003ms | 0.006ms | 1000 |
+| Immer | 189K | 0.005ms | 0.010ms | 1000 |
+| Seamless Immutable | 101K | 0.010ms | 0.020ms | 1000 |
 
 ### 04-deep-operations
 
 #### Deep Nested Update (5 levels)
 
 ```
-🥇 Native Spread      ████████████████████████████████████████   4.7M ops/sec
-🥈 Immutable.js       █████████                                  1.0M ops/sec
-🥉 Immutability Helper █████                                      610K ops/sec
- Craft              ███                                        349K ops/sec
- Mutative           ██                                         209K ops/sec
- Immer              █                                          148K ops/sec
- Seamless Immutable █                                          86K ops/sec
+🥇 Native Spread      ████████████████████████████████████████   5.7M ops/sec
+🥈 Immutable.js       ████████                                   1.2M ops/sec
+🥉 Immutability Helper ████                                       626K ops/sec
+ Craft              ███                                        369K ops/sec
+ Mutative           ██                                         227K ops/sec
+ Immer              █                                          155K ops/sec
+ Seamless Immutable █                                          90K ops/sec
 ```
 
 | Library | ops/sec | Mean Time | P99 | Samples |
 |---------|---------|-----------|-----|----------|
-| Native Spread | 4.7M | 0.000ms | 0.001ms | 1000 |
-| Immutable.js | 1.0M | 0.002ms | 0.003ms | 1000 |
-| Immutability Helper | 610K | 0.002ms | 0.004ms | 1000 |
-| Craft | 349K | 0.003ms | 0.005ms | 1000 |
-| Mutative | 209K | 0.005ms | 0.008ms | 1000 |
-| Immer | 148K | 0.008ms | 0.012ms | 1000 |
-| Seamless Immutable | 86K | 0.012ms | 0.022ms | 1000 |
+| Native Spread | 5.7M | 0.000ms | 0.000ms | 1000 |
+| Immutable.js | 1.2M | 0.001ms | 0.001ms | 1000 |
+| Immutability Helper | 626K | 0.002ms | 0.003ms | 1000 |
+| Craft | 369K | 0.003ms | 0.005ms | 1000 |
+| Mutative | 227K | 0.004ms | 0.007ms | 1000 |
+| Immer | 155K | 0.007ms | 0.009ms | 1000 |
+| Seamless Immutable | 90K | 0.011ms | 0.021ms | 1000 |
 
 #### Multiple Updates (3 changes)
 
 ```
-🥇 Native Spread      ████████████████████████████████████████   9.5M ops/sec
-🥈 Immutability Helper ████                                       891K ops/sec
-🥉 Craft              ███                                        620K ops/sec
- Immutable.js       ██                                         378K ops/sec
- Immer              ██                                         362K ops/sec
- Mutative           █                                          315K ops/sec
- Seamless Immutable                                            83K ops/sec
+🥇 Native Spread      ████████████████████████████████████████   8.9M ops/sec
+🥈 Immutability Helper ████                                       906K ops/sec
+🥉 Craft              ███                                        637K ops/sec
+ Immutable.js       ██                                         391K ops/sec
+ Immer              ██                                         369K ops/sec
+ Mutative           ██                                         344K ops/sec
+ Seamless Immutable                                            85K ops/sec
 ```
 
 | Library | ops/sec | Mean Time | P99 | Samples |
 |---------|---------|-----------|-----|----------|
-| Native Spread | 9.5M | 0.000ms | 0.001ms | 1000 |
-| Immutability Helper | 891K | 0.001ms | 0.002ms | 1000 |
-| Craft | 620K | 0.002ms | 0.003ms | 1000 |
-| Immutable.js | 378K | 0.003ms | 0.005ms | 1000 |
-| Immer | 362K | 0.003ms | 0.004ms | 1000 |
-| Mutative | 315K | 0.003ms | 0.007ms | 1000 |
-| Seamless Immutable | 83K | 0.012ms | 0.027ms | 1000 |
+| Native Spread | 8.9M | 0.000ms | 0.000ms | 1000 |
+| Immutability Helper | 906K | 0.002ms | 0.002ms | 1000 |
+| Craft | 637K | 0.002ms | 0.002ms | 1000 |
+| Immutable.js | 391K | 0.003ms | 0.004ms | 1000 |
+| Immer | 369K | 0.003ms | 0.004ms | 1000 |
+| Mutative | 344K | 0.003ms | 0.005ms | 1000 |
+| Seamless Immutable | 85K | 0.012ms | 0.021ms | 1000 |
 
 ### 05-large-scale
 
@@ -310,23 +310,23 @@ Pure data-driven weighting based on test stability across implementations.
 
 ```
 🥇 Immutable.js       ████████████████████████████████████████   1.9M ops/sec
-🥈 Native Spread      ███████                                    333K ops/sec
-🥉 Mutative           ████                                       209K ops/sec
- Immutability Helper                                            14K ops/sec
+🥈 Native Spread      ████████                                   384K ops/sec
+🥉 Mutative           █████                                      241K ops/sec
+ Immutability Helper                                            15K ops/sec
  Craft                                                         7K ops/sec
- Immer                                                         4K ops/sec
  Seamless Immutable                                            4K ops/sec
+ Immer                                                         4K ops/sec
 ```
 
 | Library | ops/sec | Mean Time | P99 | Samples |
 |---------|---------|-----------|-----|----------|
 | Immutable.js | 1.9M | 0.001ms | 0.002ms | 1000 |
-| Native Spread | 333K | 0.004ms | 0.006ms | 1000 |
-| Mutative | 209K | 0.005ms | 0.009ms | 1000 |
-| Immutability Helper | 14K | 0.070ms | 0.085ms | 1000 |
-| Craft | 7K | 0.153ms | 0.209ms | 1000 |
-| Immer | 4K | 0.235ms | 0.277ms | 1000 |
-| Seamless Immutable | 4K | 0.253ms | 0.361ms | 1000 |
+| Native Spread | 384K | 0.003ms | 0.005ms | 1000 |
+| Mutative | 241K | 0.004ms | 0.007ms | 1000 |
+| Immutability Helper | 15K | 0.066ms | 0.076ms | 1000 |
+| Craft | 7K | 0.146ms | 0.203ms | 1000 |
+| Seamless Immutable | 4K | 0.237ms | 0.362ms | 1000 |
+| Immer | 4K | 0.236ms | 0.299ms | 1000 |
 
 ### 06-patches
 
@@ -334,167 +334,167 @@ Pure data-driven weighting based on test stability across implementations.
 
 ```
 🥇 Craft              ████████████████████████████████████████   2.7M ops/sec
-🥈 Immer              ██                                         148K ops/sec
-🥉 Mutative           ██                                         109K ops/sec
+🥈 Immer              ██                                         149K ops/sec
+🥉 Mutative           ██                                         108K ops/sec
 ```
 
 | Library | ops/sec | Mean Time | P99 | Samples |
 |---------|---------|-----------|-----|----------|
 | Craft | 2.7M | 0.000ms | 0.001ms | 1000 |
-| Immer | 148K | 0.007ms | 0.012ms | 1000 |
-| Mutative | 109K | 0.009ms | 0.018ms | 1000 |
+| Immer | 149K | 0.007ms | 0.011ms | 1000 |
+| Mutative | 108K | 0.010ms | 0.025ms | 1000 |
 
 #### JSON Patches - Generate
 
 ```
 🥇 Craft              ████████████████████████████████████████   338K ops/sec
-🥈 Immer              ███████████████████                        159K ops/sec
-🥉 Mutative           ██████████████                             116K ops/sec
+🥈 Immer              ██████████████████                         154K ops/sec
+🥉 Mutative           ██████████████                             121K ops/sec
 ```
 
 | Library | ops/sec | Mean Time | P99 | Samples |
 |---------|---------|-----------|-----|----------|
 | Craft | 338K | 0.003ms | 0.006ms | 1000 |
-| Immer | 159K | 0.006ms | 0.010ms | 1000 |
-| Mutative | 116K | 0.009ms | 0.019ms | 1000 |
+| Immer | 154K | 0.007ms | 0.010ms | 1000 |
+| Mutative | 121K | 0.008ms | 0.014ms | 1000 |
 
 #### JSON Patches - Roundtrip
 
 ```
 🥇 Craft              ████████████████████████████████████████   304K ops/sec
-🥈 Mutative           ██████████                                 76K ops/sec
-🥉 Immer              █████████                                  66K ops/sec
+🥈 Mutative           ██████████                                 75K ops/sec
+🥉 Immer              █████████                                  67K ops/sec
 ```
 
 | Library | ops/sec | Mean Time | P99 | Samples |
 |---------|---------|-----------|-----|----------|
 | Craft | 304K | 0.003ms | 0.006ms | 1000 |
-| Mutative | 76K | 0.013ms | 0.027ms | 1000 |
-| Immer | 66K | 0.015ms | 0.030ms | 1000 |
+| Mutative | 75K | 0.014ms | 0.028ms | 1000 |
+| Immer | 67K | 0.015ms | 0.029ms | 1000 |
 
 #### Undo/Redo - Inverse Patches
 
 ```
 🥇 Craft              ████████████████████████████████████████   299K ops/sec
-🥈 Immer              ██████████████████████████                 196K ops/sec
-🥉 Mutative           ███████████████████                        143K ops/sec
+🥈 Immer              ████████████████████████████               211K ops/sec
+🥉 Mutative           ████████████████████                       151K ops/sec
 ```
 
 | Library | ops/sec | Mean Time | P99 | Samples |
 |---------|---------|-----------|-----|----------|
 | Craft | 299K | 0.003ms | 0.007ms | 1000 |
-| Immer | 196K | 0.005ms | 0.009ms | 1000 |
-| Mutative | 143K | 0.007ms | 0.013ms | 1000 |
+| Immer | 211K | 0.005ms | 0.007ms | 1000 |
+| Mutative | 151K | 0.007ms | 0.011ms | 1000 |
 
 ### 07-map-set
 
 #### Map - Large (100 items)
 
 ```
-🥇 Immutable.js       ████████████████████████████████████████   775K ops/sec
-🥈 Native Spread      ██████████████████████████                 510K ops/sec
-🥉 Mutative           ██████                                     124K ops/sec
+🥇 Immutable.js       ████████████████████████████████████████   794K ops/sec
+🥈 Native Spread      ████████████████████████████████           630K ops/sec
+🥉 Mutative           █████████                                  182K ops/sec
  Craft              ████                                       78K ops/sec
- Immer              ███                                        58K ops/sec
+ Immer              ███                                        59K ops/sec
 ```
 
 | Library | ops/sec | Mean Time | P99 | Samples |
 |---------|---------|-----------|-----|----------|
-| Immutable.js | 775K | 0.001ms | 0.003ms | 1000 |
-| Native Spread | 510K | 0.003ms | 0.004ms | 1000 |
-| Mutative | 124K | 0.011ms | 0.029ms | 1000 |
+| Immutable.js | 794K | 0.001ms | 0.002ms | 1000 |
+| Native Spread | 630K | 0.002ms | 0.003ms | 1000 |
+| Mutative | 182K | 0.006ms | 0.014ms | 1000 |
 | Craft | 78K | 0.014ms | 0.023ms | 1000 |
-| Immer | 58K | 0.018ms | 0.029ms | 1000 |
+| Immer | 59K | 0.018ms | 0.029ms | 1000 |
 
 #### Map - Set Operation
 
 ```
-🥇 Native Spread      ████████████████████████████████████████   4.9M ops/sec
-🥈 Immutable.js       ████████████████████                       2.4M ops/sec
+🥇 Native Spread      ████████████████████████████████████████   5.2M ops/sec
+🥈 Immutable.js       ███████████████████                        2.4M ops/sec
 🥉 Craft              ██████████                                 1.2M ops/sec
- Mutative           ████                                       525K ops/sec
- Immer              ██                                         270K ops/sec
+ Mutative           █████                                      612K ops/sec
+ Immer              ██                                         279K ops/sec
 ```
 
 | Library | ops/sec | Mean Time | P99 | Samples |
 |---------|---------|-----------|-----|----------|
-| Native Spread | 4.9M | 0.000ms | 0.001ms | 1000 |
+| Native Spread | 5.2M | 0.000ms | 0.001ms | 1000 |
 | Immutable.js | 2.4M | 0.000ms | 0.001ms | 1000 |
 | Craft | 1.2M | 0.001ms | 0.002ms | 1000 |
-| Mutative | 525K | 0.002ms | 0.003ms | 1000 |
-| Immer | 270K | 0.004ms | 0.006ms | 1000 |
+| Mutative | 612K | 0.002ms | 0.004ms | 1000 |
+| Immer | 279K | 0.004ms | 0.005ms | 1000 |
 
 #### Map - Update Nested Value
 
 ```
-🥇 Native Spread      ████████████████████████████████████████   3.8M ops/sec
+🥇 Native Spread      ████████████████████████████████████████   3.9M ops/sec
 🥈 Immutable.js       █████████████████                          1.6M ops/sec
-🥉 Craft              ████████████████                           1.5M ops/sec
- Mutative           ███                                        311K ops/sec
- Immer              ██                                         197K ops/sec
+🥉 Craft              ███████████████                            1.5M ops/sec
+ Mutative           ███                                        331K ops/sec
+ Immer              ██                                         209K ops/sec
 ```
 
 | Library | ops/sec | Mean Time | P99 | Samples |
 |---------|---------|-----------|-----|----------|
-| Native Spread | 3.8M | 0.000ms | 0.001ms | 1000 |
-| Immutable.js | 1.6M | 0.001ms | 0.002ms | 1000 |
+| Native Spread | 3.9M | 0.000ms | 0.001ms | 1000 |
+| Immutable.js | 1.6M | 0.001ms | 0.001ms | 1000 |
 | Craft | 1.5M | 0.001ms | 0.001ms | 1000 |
-| Mutative | 311K | 0.003ms | 0.007ms | 1000 |
-| Immer | 197K | 0.005ms | 0.009ms | 1000 |
+| Mutative | 331K | 0.004ms | 0.008ms | 1000 |
+| Immer | 209K | 0.005ms | 0.007ms | 1000 |
 
 #### Set - Add Operation
 
 ```
-🥇 Native Spread      ████████████████████████████████████████   6.6M ops/sec
-🥈 Immutable.js       █████████████████████████████              4.9M ops/sec
+🥇 Native Spread      ████████████████████████████████████████   6.4M ops/sec
+🥈 Immutable.js       ██████████████████████████████             4.8M ops/sec
 🥉 Craft              ███████                                    1.1M ops/sec
- Immer              █                                          245K ops/sec
- Mutative           █                                          221K ops/sec
+ Immer              ██                                         265K ops/sec
+ Mutative           █                                          225K ops/sec
 ```
 
 | Library | ops/sec | Mean Time | P99 | Samples |
 |---------|---------|-----------|-----|----------|
-| Native Spread | 6.6M | 0.000ms | 0.001ms | 1000 |
-| Immutable.js | 4.9M | 0.000ms | 0.001ms | 1000 |
+| Native Spread | 6.4M | 0.000ms | 0.001ms | 1000 |
+| Immutable.js | 4.8M | 0.000ms | 0.001ms | 1000 |
 | Craft | 1.1M | 0.001ms | 0.001ms | 1000 |
-| Immer | 245K | 0.005ms | 0.006ms | 1000 |
-| Mutative | 221K | 0.005ms | 0.008ms | 1000 |
+| Immer | 265K | 0.004ms | 0.007ms | 1000 |
+| Mutative | 225K | 0.005ms | 0.008ms | 1000 |
 
 #### Set - Delete Operation
 
 ```
-🥇 Native Spread      ████████████████████████████████████████   6.3M ops/sec
-🥈 Immutable.js       ██████████████████████████████             4.8M ops/sec
+🥇 Native Spread      ████████████████████████████████████████   6.4M ops/sec
+🥈 Immutable.js       ████████████████████████████               4.5M ops/sec
 🥉 Craft              ███████                                    1.1M ops/sec
- Immer              ██                                         254K ops/sec
- Mutative           █                                          229K ops/sec
+ Immer              ██                                         276K ops/sec
+ Mutative           █                                          224K ops/sec
 ```
 
 | Library | ops/sec | Mean Time | P99 | Samples |
 |---------|---------|-----------|-----|----------|
-| Native Spread | 6.3M | 0.000ms | 0.001ms | 1000 |
-| Immutable.js | 4.8M | 0.000ms | 0.001ms | 1000 |
+| Native Spread | 6.4M | 0.000ms | 0.000ms | 1000 |
+| Immutable.js | 4.5M | 0.000ms | 0.001ms | 1000 |
 | Craft | 1.1M | 0.001ms | 0.002ms | 1000 |
-| Immer | 254K | 0.005ms | 0.007ms | 1000 |
-| Mutative | 229K | 0.005ms | 0.009ms | 1000 |
+| Immer | 276K | 0.004ms | 0.005ms | 1000 |
+| Mutative | 224K | 0.005ms | 0.010ms | 1000 |
 
 #### Set - Large (100 items)
 
 ```
 🥇 Immutable.js       ████████████████████████████████████████   1.6M ops/sec
-🥈 Native Spread      █████████████████                          691K ops/sec
+🥈 Native Spread      ███████████████████                        783K ops/sec
 🥉 Craft              ██                                         91K ops/sec
- Immer              █                                          41K ops/sec
- Mutative           █                                          40K ops/sec
+ Immer              █                                          45K ops/sec
+ Mutative           █                                          45K ops/sec
 ```
 
 | Library | ops/sec | Mean Time | P99 | Samples |
 |---------|---------|-----------|-----|----------|
-| Immutable.js | 1.6M | 0.001ms | 0.002ms | 1000 |
-| Native Spread | 691K | 0.001ms | 0.003ms | 1000 |
+| Immutable.js | 1.6M | 0.001ms | 0.001ms | 1000 |
+| Native Spread | 783K | 0.001ms | 0.003ms | 1000 |
 | Craft | 91K | 0.017ms | 0.045ms | 1000 |
-| Immer | 41K | 0.026ms | 0.041ms | 1000 |
-| Mutative | 40K | 0.027ms | 0.046ms | 1000 |
+| Immer | 45K | 0.025ms | 0.052ms | 1000 |
+| Mutative | 45K | 0.024ms | 0.051ms | 1000 |
 
 
 
@@ -625,7 +625,7 @@ See [CONTRIBUTING.md](../../CONTRIBUTING.md) for detailed guidelines.
 
 **Found this useful? Give it a ⭐️!**
 
-*Generated on 2025-11-15T21:58:15.143Z*
+*Generated on 2025-11-15T23:29:19.249Z*
 
 [⬆️ Back to Top](#immutability-benchmarks) • [⬅️ Main README](../../README.md)
 
