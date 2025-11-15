@@ -5,12 +5,12 @@
   "version": "7.1.4",
   "test": "Simple Object Update",
   "group": "01-simple-updates",
-  "timestamp": "2025-11-15T18:17:35.528Z",
+  "timestamp": "2025-11-15T18:21:13.969Z",
   "result": {
-    "opsPerSecond": 538160.5082059085,
-    "meanTime": 0.001904743999990842,
-    "variance": 3.882286651335787e-7,
-    "p99": 0.0032990099998642082,
+    "opsPerSecond": 539428.6808195105,
+    "meanTime": 0.001895244999995157,
+    "variance": 2.947154664431267e-7,
+    "p99": 0.0027368999995815084,
     "samples": 1000
   }
 }
