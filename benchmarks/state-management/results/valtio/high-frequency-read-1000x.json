@@ -5,18 +5,18 @@
   "version": "2.2.0",
   "test": "High-Frequency Read (1000x)",
   "group": "01-basic-read",
-  "timestamp": "2025-11-16T00:49:01.339Z",
+  "timestamp": "2025-11-16T01:35:49.415Z",
   "result": {
-    "opsPerSecond": 50902.28795095121,
-    "meanTime": 0.02091197300003114,
-    "variance": 0.00047317832728521243,
-    "p99": 0.030758910000440662,
+    "opsPerSecond": 52739.55264672528,
+    "meanTime": 0.020239055000001827,
+    "variance": 0.0004907971162515901,
+    "p99": 0.029085420000374132,
     "samples": 1000
   },
   "runMetadata": {
-    "runId": "run-2025-11-16T00-49-01-339Z",
+    "runId": "run-2025-11-16T01-35-49-415Z",
     "mode": "production",
-    "timestamp": "2025-11-16T00:49:01.339Z",
+    "timestamp": "2025-11-16T01:35:49.415Z",
     "completedLibraries": [
       "zen",
       "solid-js",

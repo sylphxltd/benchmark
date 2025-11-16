@@ -5,18 +5,18 @@
   "version": "5.0.8",
   "test": "Cache Invalidation",
   "group": "05-real-world",
-  "timestamp": "2025-11-16T00:49:01.339Z",
+  "timestamp": "2025-11-16T01:35:49.415Z",
   "result": {
-    "opsPerSecond": 5028609.877105092,
-    "meanTime": 0.00020376700018823613,
-    "variance": 3.0492619464353562e-9,
-    "p99": 0.0005113999910827257,
+    "opsPerSecond": 4582839.851595432,
+    "meanTime": 0.00022611999967193697,
+    "variance": 1.1337491141042424e-8,
+    "p99": 0.0006610999982513021,
     "samples": 1000
   },
   "runMetadata": {
-    "runId": "run-2025-11-16T00-49-01-339Z",
+    "runId": "run-2025-11-16T01-35-49-415Z",
     "mode": "production",
-    "timestamp": "2025-11-16T00:49:01.339Z",
+    "timestamp": "2025-11-16T01:35:49.415Z",
     "completedLibraries": [
       "zen",
       "solid-js",

@@ -5,18 +5,18 @@
   "version": "6.15.0",
   "test": "Dynamic Dependencies",
   "group": "07-reactivity-patterns",
-  "timestamp": "2025-11-16T00:49:01.339Z",
+  "timestamp": "2025-11-16T01:35:49.415Z",
   "result": {
-    "opsPerSecond": 759413.2805152184,
-    "meanTime": 0.001344705001451075,
-    "variance": 1.9148273635103638e-7,
-    "p99": 0.0023641000723000614,
+    "opsPerSecond": 770823.840129507,
+    "meanTime": 0.0013283510035835206,
+    "variance": 2.5158862876485645e-7,
+    "p99": 0.0021742000232916323,
     "samples": 1000
   },
   "runMetadata": {
-    "runId": "run-2025-11-16T00-49-01-339Z",
+    "runId": "run-2025-11-16T01-35-49-415Z",
     "mode": "production",
-    "timestamp": "2025-11-16T00:49:01.339Z",
+    "timestamp": "2025-11-16T01:35:49.415Z",
     "completedLibraries": [
       "zen",
       "solid-js",
