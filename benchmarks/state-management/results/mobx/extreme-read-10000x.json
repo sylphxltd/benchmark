@@ -5,18 +5,18 @@
   "version": "6.15.0",
   "test": "Extreme Read (10000x)",
   "group": "06-performance-stress",
-  "timestamp": "2025-11-15T23:40:11.972Z",
+  "timestamp": "2025-11-16T00:29:48.226Z",
   "result": {
-    "opsPerSecond": 7108.199171439377,
-    "meanTime": 0.141052927000419,
-    "variance": 0.00008889253946168155,
-    "p99": 0.16118144000909518,
+    "opsPerSecond": 7831.139091928589,
+    "meanTime": 0.12776783800005798,
+    "variance": 0.000010215314730690155,
+    "p99": 0.13638461000446114,
     "samples": 1000
   },
   "runMetadata": {
-    "runId": "run-2025-11-15T23-40-11-972Z",
+    "runId": "run-2025-11-16T00-29-48-226Z",
     "mode": "production",
-    "timestamp": "2025-11-15T23:40:11.972Z",
+    "timestamp": "2025-11-16T00:29:48.226Z",
     "completedLibraries": [
       "zen",
       "solid-js",

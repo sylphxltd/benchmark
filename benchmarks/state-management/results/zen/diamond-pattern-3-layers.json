@@ -2,21 +2,21 @@
   "library": "Zen",
   "libraryId": "zen",
   "packageName": "@sylphx/zen",
-  "version": "3.14.0",
+  "version": "3.15.0",
   "test": "Diamond Pattern (3 layers)",
   "group": "07-reactivity-patterns",
-  "timestamp": "2025-11-15T23:40:11.972Z",
+  "timestamp": "2025-11-16T00:29:48.226Z",
   "result": {
-    "opsPerSecond": 10790977.606828721,
-    "meanTime": 0.00009339499939233064,
-    "variance": 7.72202114641377e-11,
+    "opsPerSecond": 10539568.015354304,
+    "meanTime": 0.000095801001181826,
+    "variance": 9.911855264580712e-11,
     "p99": 0.00012099999003112316,
     "samples": 1000
   },
   "runMetadata": {
-    "runId": "run-2025-11-15T23-40-11-972Z",
+    "runId": "run-2025-11-16T00-29-48-226Z",
     "mode": "production",
-    "timestamp": "2025-11-15T23:40:11.972Z",
+    "timestamp": "2025-11-16T00:29:48.226Z",
     "completedLibraries": [
       "zen",
       "solid-js",

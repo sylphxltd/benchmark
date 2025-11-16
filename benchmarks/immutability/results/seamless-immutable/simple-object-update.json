@@ -5,18 +5,18 @@
   "version": "7.1.4",
   "test": "Simple Object Update",
   "group": "01-simple-updates",
-  "timestamp": "2025-11-15T23:40:02.200Z",
+  "timestamp": "2025-11-16T00:29:30.762Z",
   "result": {
-    "opsPerSecond": 538240.3050491121,
-    "meanTime": 0.0019092590000086601,
-    "variance": 4.6581661453329493e-7,
-    "p99": 0.0028469099999801966,
+    "opsPerSecond": 533774.0652374309,
+    "meanTime": 0.0019172129999979006,
+    "variance": 2.975971047370935e-7,
+    "p99": 0.002906590000166033,
     "samples": 1000
   },
   "runMetadata": {
-    "runId": "run-2025-11-15T23-40-02-200Z",
+    "runId": "run-2025-11-16T00-29-30-762Z",
     "mode": "production",
-    "timestamp": "2025-11-15T23:40:02.200Z",
+    "timestamp": "2025-11-16T00:29:30.762Z",
     "completedLibraries": [
       "immer",
       "mutative",

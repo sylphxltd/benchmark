@@ -5,18 +5,18 @@
   "version": "0.15.4",
   "test": "Optional Parameter Route (with param)",
   "group": "03-advanced-routes",
-  "timestamp": "2025-11-15T23:40:05.838Z",
+  "timestamp": "2025-11-16T00:29:32.470Z",
   "result": {
-    "opsPerSecond": 983533.2558241244,
-    "meanTime": 0.0010261950000385696,
-    "variance": 6.791430327911773e-8,
-    "p99": 0.0011022000001685225,
+    "opsPerSecond": 990188.3671358697,
+    "meanTime": 0.0010193710000075953,
+    "variance": 9.958514250062959e-8,
+    "p99": 0.0010821000006762914,
     "samples": 1000
   },
   "runMetadata": {
-    "runId": "run-2025-11-15T23-40-05-838Z",
+    "runId": "run-2025-11-16T00-29-32-470Z",
     "mode": "production",
-    "timestamp": "2025-11-15T23:40:05.838Z",
+    "timestamp": "2025-11-16T00:29:32.470Z",
     "completedLibraries": [
       "react-router-dom",
       "wouter",

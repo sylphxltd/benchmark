@@ -5,18 +5,18 @@
   "version": "10.2.0",
   "test": "Set - Large (100 items)",
   "group": "07-map-set",
-  "timestamp": "2025-11-15T23:40:02.200Z",
+  "timestamp": "2025-11-16T00:29:30.762Z",
   "result": {
-    "opsPerSecond": 42989.2556815473,
-    "meanTime": 0.024658356999996613,
-    "variance": 0.0005777417896431869,
-    "p99": 0.04756069999872124,
+    "opsPerSecond": 42872.66835377588,
+    "meanTime": 0.02500791899993419,
+    "variance": 0.001232076313459305,
+    "p99": 0.0344263099976888,
     "samples": 1000
   },
   "runMetadata": {
-    "runId": "run-2025-11-15T23-40-02-200Z",
+    "runId": "run-2025-11-16T00-29-30-762Z",
     "mode": "production",
-    "timestamp": "2025-11-15T23:40:02.200Z",
+    "timestamp": "2025-11-16T00:29:30.762Z",
     "completedLibraries": [
       "immer",
       "mutative",
