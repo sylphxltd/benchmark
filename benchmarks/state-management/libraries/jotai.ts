@@ -205,22 +205,6 @@ jotai.implement(tests.computedValue, (ctx) => {
 
 // ========== ASYNC OPERATIONS ==========
 
-jotai.implement(tests.asyncThroughput, {
-  beforeEach: (ctx) => {
-    const { store, counterAtom } = ctx.store;
-    store.set(counterAtom, 0);
-  },
-  fn: async (ctx) => {
-    const { store, counterAtom } = ctx.store;
-
-    // Simulate rapid async operations
-    for (let i = 0; i < 20; i++) {
-      await Promise.resolve();
-      store.set(counterAtom, i);
-    }
-  }
-});
-
 jotai.implement(tests.concurrentUpdates, {
   beforeEach: (ctx) => {
     const { store, counterAtom } = ctx.store;

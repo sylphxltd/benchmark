@@ -272,19 +272,6 @@ library.implement(tests.computedValue, {
 // ASYNC OPERATIONS
 // ============================================================================
 
-library.implement(tests.asyncThroughput, {
-  beforeEach: () => {
-    useCounterStore.getState().setCounter(0);
-  },
-  fn: async () => {
-    // Simulate rapid async operations
-    for (let i = 0; i < 20; i++) {
-      await Promise.resolve();
-      useCounterStore.getState().setCounter(i);
-    }
-  },
-});
-
 library.implement(tests.concurrentUpdates, {
   beforeEach: () => {
     useCounterStore.getState().setCounter(0);

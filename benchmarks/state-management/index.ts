@@ -158,11 +158,6 @@ export const tests = {
   }),
 
   // ========== ASYNC OPERATIONS ==========
-  asyncThroughput: groups.asyncOperations.createTest({
-    name: 'Async Throughput (20 ops)',
-    description: 'Rapid async operations with state updates',
-  }),
-
   concurrentUpdates: groups.asyncOperations.createTest({
     name: 'Concurrent Updates (50x)',
     description: 'Many concurrent async state updates',
